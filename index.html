@@ -85,7 +85,9 @@
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 12px 28px;
             background: var(--primary);
             color: white;
@@ -98,6 +100,7 @@
             cursor: pointer;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
+            height: 44px;
         }
 
         .btn:hover {
@@ -313,6 +316,9 @@
 
         .project-content {
             padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 200px);
         }
 
         .project-title {
@@ -325,6 +331,7 @@
             color: var(--gray);
             margin-bottom: 20px;
             font-size: 0.95rem;
+            flex-grow: 1;
         }
 
         .project-tech {
@@ -346,15 +353,21 @@
         .project-links {
             display: flex;
             gap: 15px;
+            margin-top: auto;
         }
 
         .project-link {
-            display: flex;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 5px;
             font-size: 0.9rem;
             font-weight: 500;
             color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 4px;
+            background-color: rgba(67, 97, 238, 0.1);
+            transition: var(--transition);
         }
 
         .project-link i {
@@ -362,7 +375,8 @@
         }
 
         .project-link:hover {
-            color: var(--secondary);
+            color: white;
+            background-color: var(--primary);
         }
 
         /* Experience & Education */
@@ -756,6 +770,11 @@
                 padding: 10px 15px;
                 font-size: 0.9rem;
             }
+
+            .project-links {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
 
         /* Smooth scrolling */
@@ -772,7 +791,7 @@
             <div class="tagline">Data Analyst | Transforming Data into Actionable Insights</div>
             <div class="header-buttons">
                 <a href="#projects" class="btn">View Projects</a>
-                <a href="#contact" class="btn btn-outline">Contact Me</a>
+                <a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="btn btn-outline">Contact Me</a>
             </div>
         </div>
         <a href="#about" class="scroll-down">
@@ -1033,20 +1052,4 @@
                     <div class="timeline-icon">
                         <i class="fas fa-school"></i>
                     </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">
-                            <i class="far fa-calendar-alt"></i> 2018
-                        </div>
-                        <h3 class="timeline-title">Class XII (AISSCE)</h3>
-                        <p class="timeline-subtitle">DAV Public School, Rupnarayanpur | Percentage: 76.4%</p>
-                        <ul class="timeline-details">
-                            <li>Specialized in Physics, Chemistry, and Mathematics</li>
-                            <li>Participated in national-level science exhibitions and competitions</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section
+                    <div class="timeline
