@@ -343,17 +343,32 @@
 
         .tech-tag {
             background: var(--light-gray);
-            padding: 4px 12px;
+            padding: 6px 12px;
             border-radius: 50px;
             font-size: 0.75rem;
             font-weight: 500;
             color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background: var(--primary-light);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .tech-tag i {
+            font-size: 0.8rem;
         }
 
         .project-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             margin-top: auto;
+            flex-wrap: wrap;
         }
 
         .project-link {
@@ -805,17 +820,17 @@
         <p>A passionate data analyst with expertise in Python, SQL, and BI tools for cleaning, analyzing, and visualizing data. I specialize in turning complex datasets into clear, actionable insights that drive business decisions.</p>
         
         <div class="skills">
-     <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
-     <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
-     <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
-     <span class="skill-tag"><i class="fas fa-chart-line"></i> Tableau</span>
-     <span class="skill-tag"><i class="fas fa-snowflake"></i> Snowflake</span>
-     <span class="skill-tag"><i class="fas fa-file-excel"></i> Excel</span>
-     <span class="skill-tag"><i class="fas fa-file-powerpoint"></i> PowerPoint</span>
-     <span class="skill-tag"><i class="fas fa-file-word"></i> MS Word</span>
-     <span class="skill-tag"><i class="fas fa-percent"></i> Statistics</span>
-     <span class="skill-tag"><i class="fas fa-project-diagram"></i> ETL</span>
-     <span class="skill-tag"><i class="fab fa-figma"></i> Figma</span>
+            <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
+            <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+            <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
+            <span class="skill-tag"><i class="fas fa-chart-line"></i> Tableau</span>
+            <span class="skill-tag"><i class="fas fa-snowflake"></i> Snowflake</span>
+            <span class="skill-tag"><i class="fas fa-file-excel"></i> Excel</span>
+            <span class="skill-tag"><i class="fas fa-file-powerpoint"></i> PowerPoint</span>
+            <span class="skill-tag"><i class="fas fa-file-word"></i> MS Word</span>
+            <span class="skill-tag"><i class="fas fa-percent"></i> Statistics</span>
+            <span class="skill-tag"><i class="fas fa-project-diagram"></i> ETL</span>
+            <span class="skill-tag"><i class="fab fa-figma"></i> Figma</span>
         </div>
     </section>
 
@@ -833,126 +848,153 @@
             </div>
             
             <div class="projects-grid">
-             <!-- Project 1 - Enhanced Version -->
-<div class="project-card" data-category="python bi">
-    <img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img">
-    <div class="project-content">
-        <h3 class="project-title">AI Job Market Analysis 2025</h3>
-        <p class="project-description">Comprehensive analysis of global AI job market trends, salary distributions, and skill demands using real-world datasets from 2020-2024 to predict 2025 trends.</p>
-        
-        <div class="project-tech">
-            <!-- Primary Technologies -->
-            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
-            <span class="tech-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
-            
-            <!-- Data & Tools -->
-            <span class="tech-tag"><i class="fas fa-file-csv"></i> CSV</span>
-            <span class="tech-tag"><i class="fas fa-flask"></i> Jupyter Notebook</span>
-
-        </div>
-        
-                  <div class="project-links">
-                  <a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank">
-                  <i class="fab fa-github"></i> Code
-            </a>
-        </div>
-    </div>
-</div>
+                <!-- Project 1 - AI Job Market Analysis -->
+                <div class="project-card" data-category="python bi">
+                    <img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">AI Job Market Analysis 2025</h3>
+                        <p class="project-description">Analyzed emerging trends in AI job market using Python for data processing and Power BI for interactive visualizations, identifying top skills in demand.</p>
+                        
+                        <div class="project-tech">
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-tag"><i class="fas fa-table"></i> Pandas</span>
+                            <span class="tech-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
+                            <span class="tech-tag"><i class="fas fa-file-csv"></i> CSV</span>
+                            <span class="tech-tag"><i class="fas fa-flask"></i> Jupyter</span>
+                        </div>
+                        
+                        <div class="project-links">
+                            <a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 
-                <!-- Project 2 -->
+                <!-- Project 2 - UPI Transaction Analytics -->
                 <div class="project-card" data-category="sql bi">
-                    <img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Data Analytics" class="project-img">
+                    <img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Dashboard" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">UPI Transaction Analytics</h3>
-                        <p class="project-description">Interactive dashboard analyzing UPI transaction patterns across India with SQL for data processing and Power BI for visualization.</p>
+                        <p class="project-description">Developed an interactive dashboard analyzing UPI transaction patterns across India, processing 2M+ records with SQL and visualizing in Power BI.</p>
+                        
                         <div class="project-tech">
-                             <!-- Primary Technologies -->
-                             <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
-                             <span class="tech-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
-            
-                             <!-- Data & Tools -->
-                            <span class="tech-tag"><i class="fas fa-file-csv"></i> CSV</span>
-                            <span class="tech-tag"><i class="fas fa-flask"></i> Jupyter Notebook</span>
+                            <span class="tech-tag"><i class="fas fa-database"></i> SQL</span>
+                            <span class="tech-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
+                            <span class="tech-tag"><i class="fas fa-calculator"></i> DAX</span>
+                            <span class="tech-tag"><i class="fas fa-project-diagram"></i> ETL</span>
                         </div>
+                        
                         <div class="project-links">
                             <a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank">
                                 <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project 3 - Heart Stroke Prediction -->
                 <div class="project-card" data-category="python ml">
-                    <img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction" class="project-img">
+                    <img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction Model" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">Heart Stroke Prediction</h3>
-                        <p class="project-description">Machine learning model to predict heart stroke risk with 87% accuracy using Scikit-learn and feature engineering techniques.</p>
+                        <p class="project-description">Built a machine learning model with 87% accuracy to predict stroke risk using patient health data and feature engineering techniques.</p>
+                        
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                            <span class="tech-tag">Pandas</span>
-                            <span class="tech-tag">Feature Engineering</span>
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-tag"><i class="fas fa-brain"></i> Scikit-learn</span>
+                            <span class="tech-tag"><i class="fas fa-table"></i> Pandas</span>
+                            <span class="tech-tag"><i class="fas fa-magic"></i> Feature Engineering</span>
                         </div>
+                        
                         <div class="project-links">
                             <a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank">
                                 <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 4 -->
+                <!-- Project 4 - Student Performance Analysis -->
                 <div class="project-card" data-category="python sql">
-                    <img src="images/Student Performance Analysis.png" alt="Student Performance Analysis" class="project-img">
+                    <img src="images/Student Performance Analysis.png" alt="Student Performance Dashboard" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">Student Performance Analysis</h3>
-                        <p class="project-description">Comprehensive analysis of student performance factors using Python for statistical analysis and SQL for data aggregation.</p>
+                        <p class="project-description">Identified key factors affecting student performance through statistical analysis and SQL queries on educational datasets.</p>
+                        
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Seaborn</span>
-                            <span class="tech-tag">Statistical Analysis</span>
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-tag"><i class="fas fa-database"></i> SQL</span>
+                            <span class="tech-tag"><i class="fas fa-chart-pie"></i> Seaborn</span>
+                            <span class="tech-tag"><i class="fas fa-calculator"></i> Stats</span>
                         </div>
+                        
                         <div class="project-links">
                             <a href="https://github.com/niranjan910/Student-performance-Analysis/blob/main/README.md" class="project-link" target="_blank">
                                 <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 5 -->
+                <!-- Project 5 - Bank Loan Prediction -->
                 <div class="project-card" data-category="python ml">
-                    <img src="images/Bank Loan Prediction.png" alt="Bank Loan Prediction" class="project-img">
+                    <img src="images/Bank Loan Prediction.png" alt="Loan Prediction Model" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">Bank Loan Prediction</h3>
-                        <p class="project-description">Machine learning model to predict loan approval likelihood with 92% accuracy using ensemble methods and hyperparameter tuning.</p>
+                        <p class="project-description">Developed a loan approval prediction system with 92% accuracy using ensemble methods and hyperparameter tuning.</p>
+                        
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Random Forest</span>
-                            <span class="tech-tag">XGBoost</span>
-                            <span class="tech-tag">Hyperparameter Tuning</span>
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-tag"><i class="fas fa-tree"></i> Random Forest</span>
+                            <span class="tech-tag"><i class="fas fa-rocket"></i> XGBoost</span>
+                            <span class="tech-tag"><i class="fas fa-sliders-h"></i> Hyperparameter</span>
                         </div>
+                        
                         <div class="project-links">
                             <a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank">
                                 <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 6 -->
+                <!-- Project 6 - COVID-19 Analysis -->
                 <div class="project-card" data-category="python bi">
-                    <img src="images/COVID-19 Analysis.png" alt="COVID-19 Data Analysis" class="project-img">
+                    <img src="images/COVID-19 Analysis.png" alt="COVID-19 Dashboard" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">COVID-19 Data Analysis</h3>
-                        <p class="project-description">Global COVID-19 data analysis with interactive dashboards showing infection trends, vaccination rates, and recovery statistics.</p>
+                        <p class="project-description">Created interactive dashboards tracking infection trends, vaccination rates, and recovery statistics across countries.</p>
+                        
                         <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Power BI</span>
-                            <span class="tech-tag">Data Cleaning</span>
-                            <span class="tech-tag">Time Series Analysis</span>
+                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span>
+                            <span class="tech-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
+                            <span class="tech-tag"><i class="fas fa-broom"></i> Data Cleaning</span>
+                            <span class="tech-tag"><i class="fas fa-clock"></i> Time Series</span>
                         </div>
+                        
                         <div class="project-links">
                             <a href="#" class="project-link" target="_blank">
                                 <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -996,47 +1038,4 @@
                             <i class="far fa-calendar-alt"></i> Jan 2024 - Present
                         </div>
                         <h3 class="timeline-title">Freelance Data Analyst</h3>
-                        <p class="timeline-subtitle">Self-Employed | Remote</p>
-                        <ul class="timeline-details">
-                            <li>Completed 5+ freelance projects analyzing datasets for small businesses and startups</li>
-                            <li>Developed predictive models for client datasets with up to 90% accuracy</li>
-                            <li>Created custom Excel solutions with VBA to automate repetitive tasks</li>
-                            <li>Translated complex data findings into clear, actionable business recommendations</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            
-            <div class="timeline">
-                <!-- Education 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">
-                            <i class="far fa-calendar-alt"></i> 2019 - 2023
-                        </div>
-                        <h3 class="timeline-title">B.Tech in Computer Science</h3>
-                        <p class="timeline-subtitle">Institute of Professional Studies, Gwalior | CGPA: 8.75</p>
-                        <ul class="timeline-details">
-                            <li>Specialized in Data Structures, Algorithms, and Database Management Systems</li>
-                            <li>Coursework included Machine Learning, Big Data Analytics, and Business Intelligence</li>
-                            <li>Final year project on "Predictive Analytics for Healthcare" using Python and ML</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Education 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <div class="timeline
+                        <p class="timeline-subtitle">Self
