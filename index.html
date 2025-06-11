@@ -1001,18 +1001,43 @@
     </div>
 </section>
 
+<!-- Portfolio Enhancements -->
+<section id="portfolio-highlights" class="portfolio-section elite-highlights">
+    <div class="container">
+        <h2 class="section-title">Highlights & Insights</h2>
+        <div class="card-grid elite-grid">
+            <div class="card elite-card">
+                <h3 class="card-title">Insightful Plot 1</h3>
+                <img src="images/plot1.png" alt="Plot 1" class="card-image">
+            </div>
+            <div class="card elite-card">
+                <h3 class="card-title">Insightful Plot 2</h3>
+                <img src="images/plot2.png" alt="Plot 2" class="card-image">
+            </div>
+            <div class="card elite-card">
+                <h3 class="card-title">Case Study 1</h3>
+                <p class="card-text">A strategic analysis of fraud patterns in real-time data streams.</p>
+            </div>
+            <div class="card elite-card">
+                <h3 class="card-title">Case Study 2</h3>
+                <p class="card-text">Optimizing product returns with machine learning in e-commerce.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Experience Summary -->
 <section id="experience-summary" class="experience-section">
     <div class="container">
         <h2 class="section-title">Experience</h2>
         <div class="edu-flex">
             <div class="edu-item">
-                <h3>Naresh i Technologies</h3>
-                <p>Location: Hyderabad<br>Mode: In-office<br>Duration: Feb 2025 - June 2025</p>
-            </div>
-            <div class="edu-item">
                 <h3>Independent Consultancy</h3>
                 <p>Location: Remote<br>Mode: Online<br>Duration: Jan 2024 - Present</p>
+            </div>
+            <div class="edu-item">
+                <h3>Naresh i Technologies</h3>
+                <p>Location: Hyderabad<br>Mode: In-office<br>Duration: Feb 2025 - June 2025</p>
             </div>
         </div>
     </div>
@@ -1066,10 +1091,16 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     padding: 20px;
     text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 .card-title {
     font-size: 1.2rem;
     margin-bottom: 15px;
+    color: #3a0ca3;
 }
 .card-image {
     width: 100%;
@@ -1079,6 +1110,16 @@
 .card-text {
     font-size: 0.95rem;
     color: #444;
+}
+
+/* Elite highlight styling */
+.elite-highlights {
+    background: linear-gradient(to right, #edf2fb, #e0e7ff);
+    padding: 60px 0;
+}
+.elite-card {
+    border-left: 5px solid #3a0ca3;
+    background-color: #ffffff;
 }
 
 /* Education & Experience Flex */
