@@ -1005,20 +1005,22 @@
 <section id="portfolio-highlights" class="portfolio-section minimal-highlights">
     <div class="container">
         <h2 class="section-title">Highlights</h2>
-        <div class="card-grid masonry-grid">
-            <div class="card masonry-card tall">
-                <img src="images/plot1.png" alt="Plot 1" class="card-image">
-                <p class="card-caption">Insightful Plot 1</p>
+        <div class="card-grid-4">
+            <div class="highlight-card">
+                <img src="images/thumb1.jpg" alt="Thumbnail 1" class="highlight-thumb">
+                <a class="view-btn" href="https://example.com/demo1" target="_blank">View</a>
             </div>
-            <div class="card masonry-card">
-                <img src="images/plot2.png" alt="Plot 2" class="card-image">
-                <p class="card-caption">Insightful Plot 2</p>
+            <div class="highlight-card">
+                <img src="images/thumb2.jpg" alt="Thumbnail 2" class="highlight-thumb">
+                <a class="view-btn" href="https://example.com/demo2" target="_blank">View</a>
             </div>
-            <div class="card masonry-card wide">
-                <p class="card-caption">Case Study 1: Fraud pattern analysis in real-time data streams.</p>
+            <div class="highlight-card">
+                <img src="images/thumb3.jpg" alt="Thumbnail 3" class="highlight-thumb">
+                <a class="view-btn" href="https://example.com/demo3" target="_blank">View</a>
             </div>
-            <div class="card masonry-card">
-                <p class="card-caption">Case Study 2: ML optimization of product return in e-commerce.</p>
+            <div class="highlight-card">
+                <img src="images/thumb4.jpg" alt="Thumbnail 4" class="highlight-thumb">
+                <a class="view-btn" href="https://example.com/demo4" target="_blank">View</a>
             </div>
         </div>
     </div>
@@ -1032,10 +1034,6 @@
             <div class="edu-item">
                 <h3>B.Tech Internship - Naresh i Technologies</h3>
                 <p>Location: Hyderabad<br>Mode: In-office<br>Duration: Feb 2025 - June 2025</p>
-            </div>
-            <div class="edu-item">
-                <h3>Principal Data Architect - Independent Consultancy</h3>
-                <p>Location: Remote<br>Mode: Online<br>Duration: Jan 2024 - Present</p>
             </div>
         </div>
     </div>
@@ -1075,43 +1073,40 @@
 </footer>
 
 <style>
-/* Minimal Portfolio Cards */
-.masonry-grid {
+/* Highlight Card Grid */
+.card-grid-4 {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    grid-auto-flow: dense;
     margin-top: 30px;
 }
-.masonry-card {
+.highlight-card {
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
-    padding: 15px;
+    padding: 16px;
     text-align: center;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-.masonry-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-.card-image {
+.highlight-thumb {
     width: 100%;
     height: auto;
     border-radius: 6px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
-.card-caption {
-    font-size: 0.95rem;
-    color: #333;
+.view-btn {
+    display: inline-block;
+    background: #d0bfff;
+    color: #1b263b;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
 }
-.tall {
-    grid-row: span 2;
-}
-.wide {
-    grid-column: span 2;
+.view-btn:hover {
+    background: #b197fc;
+    color: white;
 }
 
 /* Experience & Education Flex */
