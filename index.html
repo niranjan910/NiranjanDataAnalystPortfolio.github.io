@@ -11,11 +11,11 @@
     <style>
         /*
           ============================================
-          FINAL VISUAL REFRESH BY AI
+          FINAL VISUAL REFRESH (VERSION 3)
           - Hybrid Theme: Dark, modern header with a clean, light body.
           - New Color Palette: LinkedIn Blue and Emerald Green.
-          - Fixed all visibility issues with buttons.
-          - Layout is completely unchanged.
+          - FIXED: Skill tag icon color on hover.
+          - ADDED: All 6 projects are now included.
           ============================================
         */
 
@@ -87,10 +87,9 @@
             padding: 80px 0;
         }
         
-        /* --- Header Section (Dark Theme) --- */
         header {
             background: linear-gradient(135deg, var(--dark-bg), var(--dark-bg-light));
-            color: var(--text-light); /* Set default text color for header */
+            color: var(--text-light);
             padding: 100px 0 120px;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
@@ -113,7 +112,6 @@
         .scroll-down { position: absolute; bottom: 30px; left: 50%; color: var(--secondary); font-size: 1.8rem; animation: bounce 2s infinite; cursor: pointer; transform: translateX(-50%);}
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-20px) translateX(-50%); } 60% { transform: translateY(-10px) translateX(-50%); } }
 
-        /* General Button Styles */
         .btn {
             display: inline-flex;
             align-items: center; justify-content: center; padding: 12px 28px;
@@ -127,8 +125,7 @@
             transform: translateY(-3px);
             box-shadow: var(--shadow-md);
         }
-
-        /* --- FIX: Make Header Outline Button Visible --- */
+        
         header .btn.btn-outline {
             background: transparent;
             border-color: var(--secondary);
@@ -137,11 +134,9 @@
         
         header .btn.btn-outline:hover {
             background: var(--secondary);
-            color: white; /* Text color changes to white for contrast */
+            color: white;
         }
         
-        /* Main page sections starting from here (Light Theme) */
-
         .section-title {
             position: relative;
             margin-bottom: 50px; text-align: center; font-size: 2.5rem;
@@ -176,13 +171,19 @@
         .intro p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; color: var(--text-muted); }
         
         .skills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px auto; max-width: 800px; }
+        
         .skill-tag {
             background: #ecf0f1; padding: 8px 18px; border-radius: 50px; font-size: 0.9rem;
             font-weight: 500; color: var(--text-dark); border: 1px solid var(--border-color);
-            transition: var(--transition);
+            transition: var(--transition); display: flex; align-items: center;
         }
         .skill-tag:hover { background: var(--primary); color: white; transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-        .skill-tag i { margin-right: 8px; color: var(--primary); }
+        .skill-tag i { margin-right: 8px; color: var(--primary); transition: var(--transition); }
+        
+        /* --- CSS FIX: Change icon color on hover --- */
+        .skill-tag:hover i {
+            color: white; 
+        }
 
         .projects-container { background-color: var(--section-bg); }
         
@@ -197,7 +198,7 @@
         .project-card {
             background: var(--card-bg); border-radius: 10px; overflow: hidden;
             transition: var(--transition); box-shadow: var(--shadow-md); position: relative;
-            display: flex; flex-direction: column;
+            display: flex; flex-direction: column; border: 1px solid transparent;
         }
         .project-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border: 1px solid var(--primary); }
         
@@ -209,11 +210,11 @@
         .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
         .tech-tag {
             background: rgba(46, 204, 113, 0.1); padding: 6px 12px; border-radius: 50px;
-            font-size: 0.8rem; font-weight: 600; color: #27ae60; /* Slightly darker green */
+            font-size: 0.8rem; font-weight: 600; color: #27ae60;
             display: flex; align-items: center; gap: 5px;
         }
 
-        .project-links { margin-top: auto; } /* Ensures links are at the bottom */
+        .project-links { margin-top: auto; }
         .project-links a { font-weight: 500; } 
         .project-link {
             display: inline-flex; align-items: center; justify-content: center;
@@ -248,7 +249,6 @@
         .edu-date { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
         .edu-item p { color: var(--text-muted); }
 
-        /* Footer */
         .site-footer {
             background-color: var(--dark-bg); color: rgba(255, 255, 255, 0.8);
             padding: 40px 20px; text-align: center; margin-top: 40px;
@@ -259,16 +259,14 @@
         .social-links a { font-size: 1.1rem; }
         .social-links a i { margin-right: 8px; }
         
-        /* --- FIX: Make Footer Button Text Visible --- */
         .connect-btn {
             margin-top: 15px; display: inline-block; background: var(--secondary);
-            color: white; /* Ensure text is white */
+            color: white;
             padding: 12px 25px; border-radius: 25px; text-decoration: none;
             transition: var(--transition); font-weight: bold;
         }
         .connect-btn:hover { background-color: white; color: var(--dark-bg); transform: scale(1.05); }
 
-        /* Responsive Styles (unchanged from your original, with small additions) */
         @media (max-width: 992px) {
             .logo { font-size: 2.8rem; } .tagline { font-size: 1.3rem; }
             .intro h1 { font-size: 2.4rem; } .section-title { font-size: 2.2rem; }
@@ -287,13 +285,10 @@
             .intro h1 { font-size: 1.8rem; }
             .project-links { flex-direction: column; gap: 10px; }
         }
-        /* Hiding sections you replaced with simpler alternatives */
         .timeline, .contact, .back-to-top { display: none; }
-
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="header-content">
             <div class="logo">Niranjan Kumar</div>
@@ -308,12 +303,10 @@
         </a>
     </header>
 
-    <!-- About Section -->
     <section id="about" class="intro">
         <div class="container">
             <h1>Transforming Data <span>Into Insights</span></h1>
             <p>A passionate data analyst with expertise in Python, SQL, and BI tools for cleaning, analyzing, and visualizing data. I specialize in turning complex datasets into clear, actionable insights that drive business decisions.</p>
-            
             <div class="skills">
                 <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
                 <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
@@ -330,12 +323,10 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="projects-container">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <p class="section-subtitle">Here are some of the key projects I've worked on, showcasing my skills in data analysis, visualization, and machine learning.</p>
-            
             <div class="projects-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="python">Python</button>
@@ -344,100 +335,112 @@
             </div>
             
             <div class="projects-grid">
-                 <!-- Project 1 -->
                 <div class="project-card" data-category="python">
                     <img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">AI Job Market Analysis 2025</h3>
-                        <p class="project-description">Analyzed emerging trends in AI job market using Python, identifying top skills and locations in demand through data scraping and analysis.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag"><i class="fab fa-python"></i> Python</span><span class="tech-tag"><i class="fas fa-table"></i> Pandas</span><span class="tech-tag"><i class="fas fa-file-csv"></i> CSV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a>
-                        </div>
+                        <p class="project-description">Analyzed emerging trends in AI job market using Python to scrape and process data, identifying top skills in demand.</p>
+                        <div class="project-tech"><span class="tech-tag"><i class="fab fa-python"></i> Python</span><span class="tech-tag">Pandas</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
-                <!-- Project 2 -->
                 <div class="project-card" data-category="bi">
                     <img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Dashboard" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">UPI Transaction Analytics</h3>
-                        <p class="project-description">Developed an interactive Power BI dashboard analyzing UPI transaction patterns across India, processing over 2M+ records with SQL for backend data manipulation.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag"><i class="fas fa-chart-bar"></i> Power BI</span><span class="tech-tag"><i class="fas fa-database"></i> SQL</span><span class="tech-tag"><i class="fas fa-project-diagram"></i> ETL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a>
-                        </div>
+                        <p class="project-description">Developed an interactive Power BI dashboard analyzing UPI patterns, processing 2M+ records with SQL for data manipulation.</p>
+                        <div class="project-tech"><span class="tech-tag"><i class="fas fa-chart-bar"></i> Power BI</span><span class="tech-tag"><i class="fas fa-database"></i> SQL</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
-                <!-- Project 3 -->
                 <div class="project-card" data-category="python">
                     <img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction Model" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">Heart Stroke Prediction</h3>
-                        <p class="project-description">Built a machine learning model with 87% accuracy to predict stroke risk using patient health data and advanced feature engineering techniques in Python.</p>
-                        <div class="project-tech">
-                           <span class="tech-tag"><i class="fab fa-python"></i> Python</span><span class="tech-tag">Scikit-learn</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a>
-                        </div>
+                        <p class="project-description">Built a machine learning model with 87% accuracy to predict stroke risk using patient health data and feature engineering.</p>
+                        <div class="project-tech"><span class="tech-tag"><i class="fab fa-python"></i> Python</span><span class="tech-tag">Scikit-learn</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
+                
+                <!-- Added Projects Start Here -->
+                <div class="project-card" data-category="python">
+                    <img src="images/Student Performance Analysis.png" alt="Student Performance Dashboard" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Student Performance Analysis</h3>
+                        <p class="project-description">Identified key factors affecting student performance through statistical analysis and SQL queries on educational datasets.</p>
+                        <div class="project-tech"><span class="tech-tag"><i class="fab fa-python"></i> Python</span><span class="tech-tag"><i class="fas fa-chart-bar"></i> Power BI</span><span class="tech-tag"><i class="fas fa-database"></i> SQL</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/Student-performance-Analysis/blob/main/README.md" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a></div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="python">
+                    <img src="images/Bank Loan Prediction.png" alt="Loan Prediction Model" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Bank Loan Prediction</h3>
+                        <p class="project-description">Developed a loan approval prediction system with 92% accuracy using ensemble methods and hyperparameter tuning.</p>
+                        <div class="project-tech"><span class="tech-tag"><i class="fab fa-python"></i> Python</span><span class="tech-tag">Scikit-learn</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a></div>
+                    </div>
+                </div>
+                <div class="project-card" data-category="python">
+                    <img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">The-Rollercoaster Analysis</h3>
+                        <p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades, using Python and Pandas.</p>
+                        <div class="project-tech"><span class="tech-tag"><i class="fab fa-python"></i> Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a></div>
+                    </div>
+                </div>
+                <!-- Added Projects End Here -->
             </div>
         </div>
     </section>
 
- <!-- Other Sections -->
-<section id="portfolio-highlights">
-    <div class="container">
-        <h2 class="section-title">Highlights & Insights</h2>
-        <p class="section-subtitle">A quick glance at some of my key project dashboards and visualizations.</p>
-        <div class="card-grid-4">
-            <div class="highlight-card"><h4 class="card-title">Project 1</h4><img src="images/thumb1.jpg" alt="Thumbnail 1" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
-            <div class="highlight-card"><h4 class="card-title">Project 2</h4><img src="images/thumb2.jpg" alt="Thumbnail 2" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
-            <div class="highlight-card"><h4 class="card-title">Project 3</h4><img src="images/thumb3.jpg" alt="Thumbnail 3" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
-            <div class="highlight-card"><h4 class="card-title">Project 4</h4><img src="images/thumb4.jpg" alt="Thumbnail 4" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
+    <section id="portfolio-highlights">
+        <div class="container">
+            <h2 class="section-title">Highlights & Insights</h2>
+            <p class="section-subtitle">A quick glance at some of my key project dashboards and visualizations.</p>
+            <div class="card-grid-4">
+                <div class="highlight-card"><h4 class="card-title">AI Job Market</h4><img src="images/thumb1.jpg" alt="Thumbnail 1" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
+                <div class="highlight-card"><h4 class="card-title">UPI Analytics</h4><img src="images/thumb2.jpg" alt="Thumbnail 2" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
+                <div class="highlight-card"><h4 class="card-title">Stroke Prediction</h4><img src="images/thumb3.jpg" alt="Thumbnail 3" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
+                <div class="highlight-card"><h4 class="card-title">Loan Analysis</h4><img src="images/thumb4.jpg" alt="Thumbnail 4" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="experience-summary">
-    <div class="container">
-        <h2 class="section-title">Experience</h2>
-        <div class="edu-flex"><div class="edu-item"><h3>B.Tech Internship - Naresh i Technologies</h3><p>Location: Hyderabad<br>Mode: In-office<br>Duration: Feb 2025 - June 2025</p><span class="edu-date">Upcoming</span></div></div>
-    </div>
-</section>
+    <section id="experience-summary">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="edu-flex"><div class="edu-item"><h3>B.Tech Internship - Naresh i Technologies</h3><p>Location: Hyderabad<br>Mode: In-office<br>Duration: Feb 2025 - June 2025</p><span class="edu-date">Upcoming</span></div></div>
+        </div>
+    </section>
 
-<section id="education">
-    <div class="container">
-        <h2 class="section-title">Education</h2>
-        <div class="edu-flex">
-            <div class="edu-item"><h3>B.Tech in Computer Science</h3><p>IPS College of Technology and Management, Gwalior<br>Grade: First Grade | CGPA: 8.8</p><span class="edu-date">2020 - 2023</span></div>
-            <div class="edu-item"><h3>12th Standard - Computer Science</h3><p>DAV Public School, West Bengal<br>Percentage: 80%</p><span class="edu-date">2018 - 2020</span></div>
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-flex">
+                <div class="edu-item"><h3>B.Tech in Computer Science</h3><p>IPS College of Technology and Management, Gwalior<br>Grade: First Grade | CGPA: 8.8</p><span class="edu-date">2020 - 2023</span></div>
+                <div class="edu-item"><h3>12th Standard - Computer Science</h3><p>DAV Public School, West Bengal<br>Percentage: 80%</p><span class="edu-date">2018 - 2020</span></div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Footer -->
-<footer class="site-footer">
-    <div class="container footer-content">
-        <div class="connect-section">
-            <h2>Let's Get In Touch!</h2>
-            <p style="color: rgba(255, 255, 255, 0.7); max-width: 500px; margin: 15px auto;">I'm always excited to discuss new data challenges and opportunities. Feel free to connect!</p>
-            <a class="connect-btn" href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">Say Hello</a>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="connect-section">
+                <h2>Let's Get In Touch!</h2>
+                <p style="color: rgba(255, 255, 255, 0.7); max-width: 500px; margin: 15px auto;">I'm always excited to discuss new data challenges and opportunities. Feel free to connect!</p>
+                <a class="connect-btn" href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">Say Hello</a>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/niranjan-k-a83517229/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/niranjan910" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
         </div>
-        <div class="social-links">
-            <a href="https://linkedin.com/in/niranjan-k-a83517229/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/niranjan910" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 <script>
-    // Simple filter functionality for projects
     document.addEventListener('DOMContentLoaded', function() {
         const filterButtons = document.querySelectorAll('.filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
@@ -450,7 +453,7 @@
 
                 projectCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
-                    if (filter === 'all' || cardCategory === filter || (filter === 'bi' && cardCategory === 'bi')) {
+                    if (filter === 'all' || card.getAttribute('data-category').includes(filter)) {
                         card.style.display = 'flex';
                     } else {
                         card.style.display = 'none';
