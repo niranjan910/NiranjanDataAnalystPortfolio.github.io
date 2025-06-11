@@ -8,6 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /*
+          ============================================
+          FINAL VISUAL REFRESH (VERSION 4)
+          - FIXED: Button text updated on all projects & highlights.
+          - FIXED: Footer button text visibility is now correct.
+          - All previous fixes and features remain.
+          ============================================
+        */
+
         :root {
             --primary: #0A66C2;
             --secondary: #2ecc71;
@@ -55,7 +64,6 @@
         .skill-tag { background: #ecf0f1; padding: 8px 18px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; color: var(--text-dark); border: 1px solid var(--border-color); transition: var(--transition); display: flex; align-items: center; }
         .skill-tag:hover { background: var(--primary); color: white; transform: translateY(-2px); box-shadow: var(--shadow-sm); }
         .skill-tag i { margin-right: 8px; color: var(--primary); transition: var(--transition); }
-        /* ICON HOVER FIX */
         .skill-tag:hover i { color: white; }
         .projects-container { background-color: var(--section-bg); }
         .projects-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
@@ -88,8 +96,9 @@
         .edu-item p { color: var(--text-muted); }
         .site-footer { background-color: var(--dark-bg); color: rgba(255, 255, 255, 0.8); padding: 40px 20px; text-align: center; margin-top: 40px; }
         .footer-content { display: flex; flex-direction: column; align-items: center; gap: 25px; }
-        .footer-content a { color: var(--secondary); margin: 0 10px; font-weight: 600; text-decoration: none; }
-        .footer-content a:hover { color: white; }
+        /* CSS FIX: Make this selector specific to social links so it doesn't affect the button */
+        .social-links a { color: var(--secondary); margin: 0 10px; font-weight: 600; text-decoration: none; }
+        .social-links a:hover { color: white; }
         .social-links a { font-size: 1.1rem; }
         .social-links a i { margin-right: 8px; }
         .connect-btn { margin-top: 15px; display: inline-block; background: var(--secondary); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; transition: var(--transition); font-weight: bold; }
@@ -124,8 +133,6 @@
                 <span class="skill-tag"><i class="fas fa-chart-line"></i> Tableau</span>
                 <span class="skill-tag"><i class="fas fa-snowflake"></i> Snowflake</span>
                 <span class="skill-tag"><i class="fas fa-file-excel"></i> Excel</span>
-                <span class="skill-tag"><i class="fas fa-file-powerpoint"></i> PowerPoint</span>
-                <span class="skill-tag"><i class="fas fa-file-word"></i> MS Word</span>
             </div>
         </div>
     </section>
@@ -142,7 +149,6 @@
             </div>
             
             <div class="projects-grid">
-                <!-- Project 1 (Standardized Tags) -->
                 <div class="project-card" data-tags="python pandas seaborn csv">
                     <img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img">
                     <div class="project-content">
@@ -152,79 +158,75 @@
                         <div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
-                <!-- Project 2 (Standardized Tags) -->
-                <div class="project-card" data-tags="python pandas seaborn power-bi sql">
+                <div class="project-card" data-tags="python pandas power-bi sql">
                     <img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Dashboard" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">UPI Transaction Analytics</h3>
                         <p class="project-description">Developed an interactive dashboard analyzing UPI patterns, processing over 2M+ records with SQL and visualizing in Power BI.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Power BI</span><span class="tech-tag">SQL</span></div>
                         <div class="project-links"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
-                <!-- Project 3 (Standardized Tags) -->
                 <div class="project-card" data-tags="python pandas seaborn scikit-learn">
                     <img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction Model" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">Heart Stroke Prediction</h3>
                         <p class="project-description">Built a machine learning model with 87% accuracy to predict stroke risk using advanced feature engineering.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Seaborn</span><span class="tech-tag">Scikit-learn</span></div>
                         <div class="project-links"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
-                <!-- Project 4 -->
                 <div class="project-card" data-tags="python power-bi sql">
                     <img src="images/Student Performance Analysis.png" alt="Student Performance Dashboard" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">Student Performance Analysis</h3>
                         <p class="project-description">Identified key factors affecting student performance through statistical analysis and queries on educational datasets.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Power BI</span><span class="tech-tag">CSV</span></div>
-                        <div class="project-links"><a href="https://github.com/niranjan910/Student-performance-Analysis/blob/main/README.md" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a></div>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Power BI</span><span class="tech-tag">SQL</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/Student-performance-Analysis/blob/main/README.md" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
-                <!-- Project 5 -->
                 <div class="project-card" data-tags="python scikit-learn">
                     <img src="images/Bank Loan Prediction.png" alt="Loan Prediction Model" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">Bank Loan Prediction</h3>
                         <p class="project-description">Developed a loan approval prediction system with 92% accuracy using ensemble methods and hyperparameter tuning.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Power BI</span><span class="tech-tag">CSV</span></div>
-                        <div class="project-links"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a></div>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Scikit-learn</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
-                <!-- Project 6 -->
                 <div class="project-card" data-tags="python pandas matplotlib">
                     <img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img">
                     <div class="project-content">
                         <h3 class="project-title">The-Rollercoaster Analysis</h3>
                         <p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Power BI</span><span class="tech-tag">CSV</span></div>
-                        <div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> Code</a></div>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- OTHER SECTIONS AS BEFORE -->
     <section id="portfolio-highlights">
         <div class="container">
             <h2 class="section-title">Highlights & Insights</h2>
             <p class="section-subtitle">A quick glance at some of my key project dashboards and visualizations.</p>
             <div class="card-grid-4">
-                <div class="highlight-card"><h4 class="card-title">AI Job Market</h4><img src="images/thumb1.jpg" alt="Thumbnail 1" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
-                <div class="highlight-card"><h4 class="card-title">UPI Analytics</h4><img src="images/thumb2.jpg" alt="Thumbnail 2" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
-                <div class="highlight-card"><h4 class="card-title">Stroke Prediction</h4><img src="images/thumb3.jpg" alt="Thumbnail 3" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
-                <div class="highlight-card"><h4 class="card-title">Loan Analysis</h4><img src="images/thumb4.jpg" alt="Thumbnail 4" class="highlight-thumb"><a class="view-btn" href="#">View</a></div>
+                <div class="highlight-card"><h4 class="card-title">AI Job Market</h4><img src="images/thumb1.jpg" alt="Thumbnail 1" class="highlight-thumb"><a class="view-btn" href="#">View Project</a></div>
+                <div class="highlight-card"><h4 class="card-title">UPI Analytics</h4><img src="images/thumb2.jpg" alt="Thumbnail 2" class="highlight-thumb"><a class="view-btn" href="#">View Project</a></div>
+                <div class="highlight-card"><h4 class="card-title">Stroke Prediction</h4><img src="images/thumb3.jpg" alt="Thumbnail 3" class="highlight-thumb"><a class="view-btn" href="#">View Project</a></div>
+                <div class="highlight-card"><h4 class="card-title">Loan Analysis</h4><img src="images/thumb4.jpg" alt="Thumbnail 4" class="highlight-thumb"><a class="view-btn" href="#">View Project</a></div>
             </div>
         </div>
     </section>
+
     <section id="experience-summary">
         <div class="container">
             <h2 class="section-title">Experience</h2>
             <div class="edu-flex"><div class="edu-item"><h3>B.Tech Internship - Naresh i Technologies</h3><p>Location: Hyderabad<br>Mode: In-office<br>Duration: Feb 2025 - June 2025</p><span class="edu-date">Upcoming</span></div></div>
         </div>
     </section>
+    
     <section id="education">
         <div class="container">
             <h2 class="section-title">Education</h2>
@@ -249,30 +251,24 @@
         </div>
     </footer>
 
-    <!-- UPDATED JAVASCRIPT FOR TAG-BASED FILTERING -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
-
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Update active state of buttons
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-
                     const filterTag = this.getAttribute('data-filter');
-
-                    // Loop through each project card to show/hide
                     projectCards.forEach(card => {
                         if (filterTag === 'all') {
-                            card.style.display = 'flex'; // Show all cards
+                            card.style.display = 'flex';
                         } else {
                             const cardTags = card.getAttribute('data-tags');
-                            if (cardTags.includes(filterTag)) {
-                                card.style.display = 'flex'; // Show card if it has the filter tag
+                            if (cardTags && cardTags.includes(filterTag)) {
+                                card.style.display = 'flex';
                             } else {
-                                card.style.display = 'none'; // Hide card if it doesn't
+                                card.style.display = 'none';
                             }
                         }
                     });
@@ -280,6 +276,5 @@
             });
         });
     </script>
-
 </body>
 </html>
