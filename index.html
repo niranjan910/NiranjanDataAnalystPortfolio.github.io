@@ -1002,25 +1002,23 @@
 </section>
 
 <!-- Portfolio Enhancements -->
-<section id="portfolio-highlights" class="portfolio-section elite-highlights">
+<section id="portfolio-highlights" class="portfolio-section minimal-highlights">
     <div class="container">
-        <h2 class="section-title">Highlights & Insights</h2>
-        <div class="card-grid elite-grid">
-            <div class="card elite-card">
-                <h3 class="card-title">Insightful Plot 1</h3>
+        <h2 class="section-title">Highlights</h2>
+        <div class="card-grid minimal-grid">
+            <div class="card minimal-card">
                 <img src="images/plot1.png" alt="Plot 1" class="card-image">
+                <p class="card-caption">Insightful Plot 1</p>
             </div>
-            <div class="card elite-card">
-                <h3 class="card-title">Insightful Plot 2</h3>
+            <div class="card minimal-card">
                 <img src="images/plot2.png" alt="Plot 2" class="card-image">
+                <p class="card-caption">Insightful Plot 2</p>
             </div>
-            <div class="card elite-card">
-                <h3 class="card-title">Case Study 1</h3>
-                <p class="card-text">A strategic analysis of fraud patterns in real-time data streams.</p>
+            <div class="card minimal-card">
+                <p class="card-caption">Case Study 1: Fraud pattern analysis in real-time data streams.</p>
             </div>
-            <div class="card elite-card">
-                <h3 class="card-title">Case Study 2</h3>
-                <p class="card-text">Optimizing product returns with machine learning in e-commerce.</p>
+            <div class="card minimal-card">
+                <p class="card-caption">Case Study 2: ML optimization of product return in e-commerce.</p>
             </div>
         </div>
     </div>
@@ -1032,12 +1030,12 @@
         <h2 class="section-title">Experience</h2>
         <div class="edu-flex">
             <div class="edu-item">
-                <h3>Independent Consultancy</h3>
-                <p>Location: Remote<br>Mode: Online<br>Duration: Jan 2024 - Present</p>
+                <h3>B.Tech Internship - Naresh i Technologies</h3>
+                <p>Location: Hyderabad<br>Mode: In-office<br>Duration: Feb 2025 - June 2025</p>
             </div>
             <div class="edu-item">
-                <h3>Naresh i Technologies</h3>
-                <p>Location: Hyderabad<br>Mode: In-office<br>Duration: Feb 2025 - June 2025</p>
+                <h3>Principal Data Architect - Independent Consultancy</h3>
+                <p>Location: Remote<br>Mode: Online<br>Duration: Jan 2024 - Present</p>
             </div>
         </div>
     </div>
@@ -1077,52 +1075,36 @@
 </footer>
 
 <style>
-/* Portfolio Cards */
-.card-grid {
+/* Minimal Portfolio Cards */
+.minimal-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
     margin-top: 30px;
 }
-.card {
+.minimal-card {
     background: #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #e0e0e0;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    padding: 20px;
+    padding: 15px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-.card-title {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-    color: #3a0ca3;
+.minimal-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 .card-image {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: 6px;
+    margin-bottom: 10px;
 }
-.card-text {
+.card-caption {
     font-size: 0.95rem;
-    color: #444;
+    color: #333;
 }
 
-/* Elite highlight styling */
-.elite-highlights {
-    background: linear-gradient(to right, #edf2fb, #e0e7ff);
-    padding: 60px 0;
-}
-.elite-card {
-    border-left: 5px solid #3a0ca3;
-    background-color: #ffffff;
-}
-
-/* Education & Experience Flex */
+/* Experience & Education Flex */
 .edu-flex {
     display: flex;
     flex-wrap: wrap;
@@ -1132,11 +1114,11 @@
 }
 .edu-item {
     flex: 1 1 45%;
-    background: #f4f6fb;
+    background: #f9f9f9;
     padding: 20px;
     border-left: 4px solid #3a0ca3;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 .edu-item h3 {
     margin-top: 0;
