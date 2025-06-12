@@ -1,15 +1,12 @@
+
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niranjan Kumar | Data Analyst Portfolio</title>
-
-    <!-- Font Awesome and Google Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- ✅ Link to external style.css -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,7 +22,6 @@
         </div>
         <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
     </header>
-
     <section id="about" class="intro">
         <div class="container">
             <h1>Transforming Data <span>Into Insights</span></h1>
@@ -40,75 +36,11 @@
             </div>
         </div>
     </section>
-
-    <section id="projects" class="projects-container">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Here are some of the key projects I've worked on. Use the filters to see projects based on specific technologies.</p>
-            <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="python">Python</button>
-                <button class="filter-btn" data-filter="sql">SQL</button>
-                <button class="filter-btn" data-filter="power-bi">Power BI</button>
-            </div>
-
-            <div class="projects-grid">
-                <!-- 6 Project cards (unchanged) -->
-                <!-- ... your existing project cards here ... -->
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio-highlights">
-        <div class="container">
-            <h2 class="section-title">Highlights & Insights</h2>
-            <p class="section-subtitle">A quick glance at some of my key project dashboards and visualizations.</p>
-            <div class="card-grid-8">
-                <!-- 8 Highlight cards (unchanged) -->
-                <!-- ... your existing highlight cards here ... -->
-            </div>
-        </div>
-    </section>
-
-    <section id="experience-summary">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="edu-flex">
-                <div class="edu-item">
-                    <h3>Naresh i Technologies</h3>
-                    <p class="role">Data Analyst Internship</p>
-                    <p>
-                        <strong>Location:</strong> Hyderabad (In-office)<br>
-                        <strong>Duration:</strong> Feb 2025 - June 2025
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="edu-flex">
-                <div class="edu-item">
-                    <h3>B.Tech in Computer Science</h3>
-                    <p>IPS College of Technology and Management, Gwalior<br>Grade: First Grade | CGPA: 8.8</p>
-                    <span class="edu-date">2019 - 2023</span>
-                </div>
-                <div class="edu-item">
-                    <h3>12th Standard - Computer Science</h3>
-                    <p>DAV Public School, West Bengal<br>Percentage: 80%</p>
-                    <span class="edu-date">2017 - 2018</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="site-footer">
         <div class="container footer-content">
             <div class="connect-section">
                 <h2>Let's Get In Touch!</h2>
-                <p style="color: rgba(255, 255, 255, 0.7); max-width: 500px; margin: 15px auto;">I'm always excited to discuss new data challenges and opportunities. Feel free to connect!</p>
+                <p>I'm always excited to discuss new data challenges and opportunities. Feel free to connect!</p>
                 <a class="connect-btn" href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">Say Hello</a>
             </div>
             <div class="social-links">
@@ -117,31 +49,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    const filterTag = this.getAttribute('data-filter');
-                    projectCards.forEach(card => {
-                        if (filterTag === 'all') {
-                            card.style.display = 'flex';
-                        } else {
-                            const cardTags = card.getAttribute('data-tags');
-                            if (cardTags && cardTags.includes(filterTag)) {
-                                card.style.display = 'flex';
-                            } else {
-                                card.style.display = 'none';
-                            }
-                        }
-                    });
-                });
-            });
-        });
-    </script>
 </body>
 </html>
