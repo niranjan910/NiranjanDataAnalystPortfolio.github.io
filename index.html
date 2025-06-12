@@ -1,48 +1,147 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niranjan Kumar | Data Analyst</title>
+    <title>Niranjan Kumar | Data Analyst Portfolio</title>
+
+    <!-- Font Awesome and Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- ✅ Link to external style.css -->
     <link rel="stylesheet" href="style.css">
-    <!-- Add this for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <div class="logo-container">
-            <img src="images/Niranjan%20Logo.png" alt="Logo" class="logo">
-            <h1>Niranjan Kumar | Data Analytics Specialist</h1>
+        <div class="header-content">
+            <div class="logo">Niranjan Kumar</div>
+            <div class="tagline">Data Analyst | Transforming Data into Actionable Insights</div>
+            <div class="header-buttons">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="#" class="btn btn-secondary" target="_blank">Resume</a>
+                <a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="btn btn-outline">Contact Me</a>
+            </div>
         </div>
+        <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
     </header>
 
-    <section class="hero">
-        <h2>🔍 Data-to-Insights Professional</h2>
-        <p>Expert in transforming raw data into strategic business intelligence with 3+ years of experience in:</p>
-        <ul>
-            <li>Business intelligence development</li>
-            <li>Advanced analytical modeling</li>
-            <li>Data visualization storytelling</li>
-            <li>Cross-functional stakeholder collaboration</li>
-        </ul>
-        <div class="badges">
-            <span class="tech-badge">SQL</span>
-            <span class="tech-badge">Python</span>
-            <span class="tech-badge">Power BI</span>
-            <span class="tech-badge">Tableau</span>
-        </div>
-        <div class="cta-buttons">
-            <a href="https://niranjan910.github.io/" class="cta-button portfolio">🌐 View Portfolio</a>
-            <a href="https://linkedin.com/in/niranjan-k" class="cta-button linkedin">🔗 Connect</a>
-            <a href="https://drive.google.com/file/d/xyz" class="cta-button resume">📄 Download CV</a>
+    <section id="about" class="intro">
+        <div class="container">
+            <h1>Transforming Data <span>Into Insights</span></h1>
+            <p>A passionate data analyst with expertise in Python, SQL, and BI tools for cleaning, analyzing, and visualizing data. I specialize in turning complex datasets into clear, actionable insights that drive business decisions.</p>
+            <div class="skills">
+                <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
+                <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
+                <span class="skill-tag"><i class="fas fa-chart-line"></i> Tableau</span>
+                <span class="skill-tag"><i class="fas fa-snowflake"></i> Snowflake</span>
+                <span class="skill-tag"><i class="fas fa-file-excel"></i> Excel</span>
+            </div>
         </div>
     </section>
 
-    <!-- Continue with other sections following the same pattern -->
-    <!-- Add remaining sections from the README content here -->
-    
-    <footer>
-        <p>© 2024 Niranjan Kumar | Data-Driven Solutions</p>
+    <section id="projects" class="projects-container">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Here are some of the key projects I've worked on. Use the filters to see projects based on specific technologies.</p>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="sql">SQL</button>
+                <button class="filter-btn" data-filter="power-bi">Power BI</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- 6 Project cards (unchanged) -->
+                <!-- ... your existing project cards here ... -->
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio-highlights">
+        <div class="container">
+            <h2 class="section-title">Highlights & Insights</h2>
+            <p class="section-subtitle">A quick glance at some of my key project dashboards and visualizations.</p>
+            <div class="card-grid-8">
+                <!-- 8 Highlight cards (unchanged) -->
+                <!-- ... your existing highlight cards here ... -->
+            </div>
+        </div>
+    </section>
+
+    <section id="experience-summary">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="edu-flex">
+                <div class="edu-item">
+                    <h3>Naresh i Technologies</h3>
+                    <p class="role">Data Analyst Internship</p>
+                    <p>
+                        <strong>Location:</strong> Hyderabad (In-office)<br>
+                        <strong>Duration:</strong> Feb 2025 - June 2025
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-flex">
+                <div class="edu-item">
+                    <h3>B.Tech in Computer Science</h3>
+                    <p>IPS College of Technology and Management, Gwalior<br>Grade: First Grade | CGPA: 8.8</p>
+                    <span class="edu-date">2019 - 2023</span>
+                </div>
+                <div class="edu-item">
+                    <h3>12th Standard - Computer Science</h3>
+                    <p>DAV Public School, West Bengal<br>Percentage: 80%</p>
+                    <span class="edu-date">2017 - 2018</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="connect-section">
+                <h2>Let's Get In Touch!</h2>
+                <p style="color: rgba(255, 255, 255, 0.7); max-width: 500px; margin: 15px auto;">I'm always excited to discuss new data challenges and opportunities. Feel free to connect!</p>
+                <a class="connect-btn" href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">Say Hello</a>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/niranjan-k-a83517229/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/niranjan910" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const filterTag = this.getAttribute('data-filter');
+                    projectCards.forEach(card => {
+                        if (filterTag === 'all') {
+                            card.style.display = 'flex';
+                        } else {
+                            const cardTags = card.getAttribute('data-tags');
+                            if (cardTags && cardTags.includes(filterTag)) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
