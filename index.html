@@ -10,10 +10,11 @@
     <style>
         /*
           ============================================
-          FINAL VISUAL REFRESH (VERSION 12)
-          - FIXED: Featured Projects card alignment is corrected. Removed conflicting 'flex-grow'
-                   property from the project description for a robust and stable grid layout.
-          - All previous sections and features remain intact.
+          FINAL VISUAL REFRESH (VERSION 13)
+          - NEW: The main header background is now a dynamic, animated gradient for a
+                 modern and engaging look, replacing the previous static background.
+          - FIXED: Project card alignment from the previous version is maintained.
+          - All other sections and features remain unchanged.
           ============================================
         */
 
@@ -42,7 +43,25 @@
         a:hover { color: var(--secondary); }
         .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         section { padding: 80px 0; }
-        header { background: linear-gradient(135deg, var(--dark-bg), var(--dark-bg-light)); color: var(--text-light); padding: 100px 0 120px; text-align: center; clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); position: relative; }
+        
+        /* --- NEW ANIMATED HEADER BACKGROUND --- */
+        header { 
+            color: var(--text-light);
+            padding: 100px 0 120px; 
+            text-align: center; 
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); 
+            position: relative; 
+            background: linear-gradient(-45deg, #0A66C2, #1d2430, #2c3e50, #0c5aa2);
+            background-size: 400% 400%;
+            animation: animateGradient 15s ease infinite;
+        }
+
+        @keyframes animateGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
         .logo { font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .tagline { font-size: 1.5rem; font-weight: 300; margin-bottom: 40px; opacity: 0.9; }
@@ -77,11 +96,9 @@
         .project-img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
         .project-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
         .project-title { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-dark); }
-        /* --- FIX APPLIED HERE --- */
-        .project-description { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; } /* Removed flex-grow: 1; */
+        .project-description { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; } 
         .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
         .tech-tag { background: rgba(46, 204, 113, 0.1); padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #27ae60; display: flex; align-items: center; gap: 5px; }
-        /* This rule is the key to aligning the buttons at the bottom */
         .project-links { margin-top: auto; }
         .project-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--primary); padding: 8px 16px; border-radius: 4px; background-color: rgba(10, 102, 194, 0.1); transition: var(--transition); }
         .project-link:hover { color: white; background-color: var(--primary); }
@@ -120,12 +137,13 @@
     </style>
 </head>
 <body>
+    <!-- The header will now render with the new animated background -->
     <header>
         <div class="header-content">
             <div class="logo">Niranjan Kumar</div>
             <div class="tagline">Data Analyst | Transforming Data into Actionable Insights</div>
             <div class="header-buttons">
-                <a href="#projects" class="btn">Projects</a>
+                <a href="#projects" class="btn">View Projects</a>
                 <a href="#" class="btn btn-secondary" target="_blank">Resume</a>
                 <a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="btn btn-outline">Contact Me</a>
             </div>
@@ -160,8 +178,7 @@
             </div>
             
             <div class="projects-grid">
-                <!-- All project cards are now correctly styled and will align perfectly -->
-                <div class="project-card" data-tags="python pandas seaborn csv"><img src="images/EV.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">An end-to-end real-time data project using Python and SQL to analyze EV adoption trends, top manufacturers, and regional growth across the U.S.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">CSV </span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python pandas seaborn csv"><img src="images/EV.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">A real-time EV adoption analysis project using Python and SQL to guide infrastructure planning through dynamic, data-driven insights.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
                 <div class="project-card" data-tags="python pandas seaborn csv"><img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis 2025</h3><p class="project-description">Analyzed emerging trends in the AI job market using Python, identifying top skills and locations in demand.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
                 <div class="project-card" data-tags="python pandas matplotlib"><img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img"><div class="project-content"><h3 class="project-title">The-Rollercoaster Analysis</h3><p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
                 <div class="project-card" data-tags="python pandas matplotlib"><img src="images/E-commerce Return Rate Analysis.png" alt="E-commerce Return Rate Analysis" class="project-img"><div class="project-content"><h3 class="project-title">E-commerce Return Rate Analysis</h3><p class="project-description">E-commerce analytics project analyzing product returns to optimize pricing, discounts, and delivery, improving sales and reducing losses.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
@@ -178,7 +195,6 @@
             <h2 class="section-title">Highlights & Insights</h2>
             <p class="section-subtitle">A quick glance at some of my key project dashboards and visualizations.</p>
             <div class="card-grid-8">
-                <!-- Highlight cards -->
                 <div class="highlight-card"><h4 class="card-title">UPI Transaction Analytics</h4><img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Analytics Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                 <div class="highlight-card"><h4 class="card-title">Heart Stroke Prediction</h4><img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                 <div class="highlight-card"><h4 class="card-title">Student Performance Analysis</h4><img src="images/Student Performance Analysis.png" alt="Student Performance Analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Student-performance-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
