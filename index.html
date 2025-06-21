@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- NEW: Animate On Scroll (AOS) Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         /*
           ============================================
-          FINAL VISUAL REFRESH (VERSION 14)
-          - EXTRAORDINARY HEADER: Replaced the header background with a dynamic,
-                                  interactive particle constellation animation.
-                                  This creates a stunning, high-tech first impression.
-          - All other sections and their styles remain perfectly intact.
+          FINAL VISUAL REFRESH (VERSION 15) - THE PROFESSIONAL UPGRADE
+          - NEW: Added site-wide "Animate On Scroll" (AOS) effects. All content sections
+                 now fade and slide into view as the user scrolls for a dynamic,
+                 professional, and highly engaging user experience.
+          - The extraordinary particle header is maintained.
           ============================================
         */
 
@@ -44,7 +47,6 @@
         .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         section { padding: 80px 0; }
         
-        /* --- NEW PARTICLE EFFECT HEADER --- */
         header { 
             background-color: #1a222f;
             background-image: linear-gradient(135deg, #1d2430, #2c3e50);
@@ -53,7 +55,7 @@
             text-align: center; 
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); 
             position: relative;
-            overflow: hidden; /* Ensures particles don't escape the header bounds */
+            overflow: hidden; 
         }
         #particles-js {
             position: absolute;
@@ -61,14 +63,9 @@
             height: 100%;
             top: 0;
             left: 0;
-            z-index: 0; /* Sits behind the content */
+            z-index: 0;
         }
-        .header-content { 
-            position: relative; 
-            z-index: 1; /* Sits on top of the particles */
-            max-width: 800px; 
-            margin: 0 auto; 
-        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
         .logo { font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .tagline { font-size: 1.5rem; font-weight: 300; margin-bottom: 40px; opacity: 0.9; }
         .header-buttons { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
@@ -141,9 +138,7 @@
 </head>
 <body>
     <header>
-        <!-- Canvas for the particle animation -->
         <div id="particles-js"></div>
-        
         <div class="header-content">
             <div class="logo">Niranjan Kumar</div>
             <div class="tagline">Data Analyst | Transforming Data into Actionable Insights</div>
@@ -158,24 +153,25 @@
 
     <section id="about" class="intro">
         <div class="container">
-            <h1>Transforming Data <span>Into Insights</span></h1>
-            <p>A passionate data analyst with expertise in Python, SQL, and BI tools for cleaning, analyzing, and visualizing data. I specialize in turning complex datasets into clear, actionable insights that drive business decisions.</p>
-            <div class="skills">
-                <span class="skill-tag"><i class="fas fa-database"></i> SQL</span>
-                <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
-                <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
-                <span class="skill-tag"><i class="fas fa-chart-line"></i> Tableau</span>
-                <span class="skill-tag"><i class="fas fa-snowflake"></i> Snowflake</span>
-                <span class="skill-tag"><i class="fas fa-file-excel"></i> Excel</span>
+            <!-- AOS Animation Attributes Added -->
+            <h1 data-aos="fade-up">Transforming Data <span>Into Insights</span></h1>
+            <p data-aos="fade-up" data-aos-delay="100">A passionate data analyst with expertise in Python, SQL, and BI tools for cleaning, analyzing, and visualizing data. I specialize in turning complex datasets into clear, actionable insights that drive business decisions.</p>
+            <div class="skills" data-aos="fade-up" data-aos-delay="200">
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-database"></i> SQL</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="350"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="400"><i class="fas fa-chart-bar"></i> Power BI</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="450"><i class="fas fa-chart-line"></i> Tableau</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="500"><i class="fas fa-snowflake"></i> Snowflake</span>
+                <span class="skill-tag" data-aos="zoom-in" data-aos-delay="550"><i class="fas fa-file-excel"></i> Excel</span>
             </div>
         </div>
     </section>
 
     <section id="projects" class="projects-container">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Here are some of the key projects I've worked on. Use the filters to see projects based on specific technologies.</p>
-            <div class="projects-filter">
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Here are some of the key projects I've worked on. Use the filters to see projects based on specific technologies.</p>
+            <div class="projects-filter" data-aos="fade-up" data-aos-delay="200">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="python">Python</button>
                 <button class="filter-btn" data-filter="sql">SQL</button>
@@ -183,59 +179,44 @@
             </div>
             
             <div class="projects-grid">
-                <div class="project-card" data-tags="python pandas seaborn csv"><img src="images/EV.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">A real-time EV adoption analysis project using Python and SQL to guide infrastructure planning through dynamic, data-driven insights.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas seaborn csv"><img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis 2025</h3><p class="project-description">Analyzed emerging trends in the AI job market using Python, identifying top skills and locations in demand.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img"><div class="project-content"><h3 class="project-title">The-Rollercoaster Analysis</h3><p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/E-commerce Return Rate Analysis.png" alt="E-commerce Return Rate Analysis" class="project-img"><div class="project-content"><h3 class="project-title">E-commerce Return Rate Analysis</h3><p class="project-description">E-commerce analytics project analyzing product returns to optimize pricing, discounts, and delivery, improving sales and reducing losses.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/Bigbasket.png" alt="Inventory Optimization Analysis for BigBasket" class="project-img"><div class="project-content"><h3 class="project-title">Inventory Optimization Analysis for BigBasket</h3><p class="project-description">Optimizing BigBasket's inventory by analyzing demand patterns to reduce waste and improve stock efficiency.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/US_Accident_Analysis.png" alt="USA Accident Analysis" class="project-img"><div class="project-content"><h3 class="project-title">USA Accident Analysis</h3><p class="project-description">Analyzing USA accident data to identify trends, high-risk areas, and improve road safety measures.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/US-Accident-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/FraudRisk_Analysis.png" alt="FraudRisk Analysis" class="project-img"><div class="project-content"><h3 class="project-title">FraudRisk Analysis</h3><p class="project-description">Detecting and mitigating fraud risks through data analysis to enhance security and reduce financial losses.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/FraudRisk_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas power-bi sql"><img src="images/AI Job Market Analysis.png" alt="AI Job Market Analysis" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">Analyzing AI job trends to identify in-demand skills, top employers, and salary benchmarks for career growth.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Power BI</span><span class="tech-tag">CSV</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI_CareerScope_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas seaborn csv"><img src="images/EV.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">A real-time EV adoption analysis project using Python and SQL to guide infrastructure planning through dynamic, data-driven insights.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas seaborn csv"><img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis 2025</h3><p class="project-description">Analyzed emerging trends in the AI job market using Python, identifying top skills and locations in demand.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img"><div class="project-content"><h3 class="project-title">The-Rollercoaster Analysis</h3><p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/E-commerce Return Rate Analysis.png" alt="E-commerce Return Rate Analysis" class="project-img"><div class="project-content"><h3 class="project-title">E-commerce Return Rate Analysis</h3><p class="project-description">E-commerce analytics project analyzing product returns to optimize pricing, discounts, and delivery, improving sales and reducing losses.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/Bigbasket.png" alt="Inventory Optimization Analysis for BigBasket" class="project-img"><div class="project-content"><h3 class="project-title">Inventory Optimization Analysis for BigBasket</h3><p class="project-description">Optimizing BigBasket's inventory by analyzing demand patterns to reduce waste and improve stock efficiency.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/US_Accident_Analysis.png" alt="USA Accident Analysis" class="project-img"><div class="project-content"><h3 class="project-title">USA Accident Analysis</h3><p class="project-description">Analyzing USA accident data to identify trends, high-risk areas, and improve road safety measures.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/US-Accident-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
             </div>
         </div>
     </section>
 
     <section id="portfolio-highlights">
         <div class="container">
-            <h2 class="section-title">Highlights & Insights</h2>
-            <p class="section-subtitle">A quick glance at some of my key project dashboards and visualizations.</p>
+            <h2 class="section-title" data-aos="fade-up">Highlights & Insights</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">A quick glance at some of my key project dashboards and visualizations.</p>
             <div class="card-grid-8">
-                <div class="highlight-card"><h4 class="card-title">UPI Transaction Analytics</h4><img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Analytics Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card"><h4 class="card-title">Heart Stroke Prediction</h4><img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card"><h4 class="card-title">Student Performance Analysis</h4><img src="images/Student Performance Analysis.png" alt="Student Performance Analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Student-performance-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card"><h4 class="card-title">Bank Loan Prediction</h4><img src="images/Bank Loan Prediction.png" alt="Bank Loan Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card"><h4 class="card-title">Sleep pattern analysis</h4><img src="images/Sleep pattern analysis.png" alt="Sleep pattern analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Sleep_pattern__Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card"><h4 class="card-title">AI Job Market</h4><img src="images/AI Market analysis 2025.png" alt="AI Market analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card"><h4 class="card-title">Rollercoaster Data</h4><img src="images/The-Rollercoaster Analysis.png" alt="Rollercoaster Analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card"><h4 class="card-title">BigBasket Analysis</h4><img src="images/Bigbasket.png" alt="Placeholder Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                <div class="highlight-card" data-aos="zoom-in-up"><h4 class="card-title">UPI Transaction Analytics</h4><img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Analytics Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="50"><h4 class="card-title">Heart Stroke Prediction</h4><img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="100"><h4 class="card-title">Student Performance Analysis</h4><img src="images/Student Performance Analysis.png" alt="Student Performance Analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Student-performance-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="150"><h4 class="card-title">Bank Loan Prediction</h4><img src="images/Bank Loan Prediction.png" alt="Bank Loan Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
             </div>
         </div>
     </section>
 
     <section id="certifications">
         <div class="container">
-            <h2 class="section-title">Certifications & Credentials</h2>
-            <p class="section-subtitle">My commitment to continuous learning and professional development.</p>
+            <h2 class="section-title" data-aos="fade-up">Certifications & Credentials</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">My commitment to continuous learning and professional development.</p>
             <div class="certifications-grid">
-                <div class="certification-card">
-                    <div>
-                        <h4 class="cert-title">IBM Data Analyst Professional Certificate</h4>
-                        <p class="cert-issuer">Issued by Coursera</p>
-                    </div>
+                <div class="certification-card" data-aos="fade-up">
+                    <div><h4 class="cert-title">IBM Data Analyst Professional Certificate</h4><p class="cert-issuer">Issued by Coursera</p></div>
                     <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
                 </div>
-                <div class="certification-card">
-                     <div>
-                        <h4 class="cert-title">Data Analysis with Python</h4>
-                        <p class="cert-issuer">Issued by FreeCodeCamp</p>
-                    </div>
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="100">
+                     <div><h4 class="cert-title">Data Analysis with Python</h4><p class="cert-issuer">Issued by FreeCodeCamp</p></div>
                     <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
                 </div>
-                <div class="certification-card">
-                     <div>
-                        <h4 class="cert-title">Microsoft Certified: Power BI Data Analyst</h4>
-                        <p class="cert-issuer">Issued by Microsoft</p>
-                    </div>
+                <div class="certification-card" data-aos="fade-up" data-aos-delay="200">
+                     <div><h4 class="cert-title">Microsoft Certified: Power BI Data Analyst</h4><p class="cert-issuer">Issued by Microsoft</p></div>
                     <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
                 </div>
             </div>
@@ -244,15 +225,11 @@
   
     <section id="experience-summary">
         <div class="container">
-            <h2 class="section-title">Experience</h2>
+            <h2 class="section-title" data-aos="fade-up">Experience</h2>
             <div class="edu-flex">
-                <div class="edu-item">
-                    <h3>Naresh i Technologies</h3>
-                    <p class="role">Data Analyst Internship</p>
-                    <p>
-                        <strong>Location:</strong> Hyderabad (In-office)<br>
-                        <strong>Duration:</strong> Feb 2025 - June 2025
-                    </p>
+                <div class="edu-item" data-aos="zoom-in">
+                    <h3>Naresh i Technologies</h3><p class="role">Data Analyst Internship</p>
+                    <p><strong>Location:</strong> Hyderabad (In-office)<br><strong>Duration:</strong> Feb 2025 - June 2025</p>
                 </div>
             </div>
         </div>
@@ -260,16 +237,16 @@
     
     <section id="education">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title" data-aos="fade-up">Education</h2>
             <div class="edu-flex">
-                <div class="edu-item"><h3>B.Tech in Computer Science</h3><p>IPS College of Technology and Management, Gwalior<br>Grade: First Grade | CGPA: 8.8</p><span class="edu-date">2019 - 2023</span></div>
-                <div class="edu-item"><h3>12th Standard - Computer Science</h3><p>DAV Public School, West Bengal<br>Percentage: 80%</p><span class="edu-date">2017 - 2018</span></div>
+                <div class="edu-item" data-aos="fade-right"><h3>B.Tech in Computer Science</h3><p>IPS College of Technology and Management, Gwalior<br>Grade: First Grade | CGPA: 8.8</p><span class="edu-date">2019 - 2023</span></div>
+                <div class="edu-item" data-aos="fade-left"><h3>12th Standard - Computer Science</h3><p>DAV Public School, West Bengal<br>Percentage: 80%</p><span class="edu-date">2017 - 2018</span></div>
             </div>
         </div>
     </section>
 
     <footer class="site-footer">
-        <div class="container footer-content">
+        <div class="container footer-content" data-aos="fade-up">
             <div class="connect-section">
                 <h2>Let's Get In Touch!</h2>
                 <p style="color: rgba(255, 255, 255, 0.7); max-width: 500px; margin: 15px auto;">I'm always excited to discuss new data challenges and opportunities. Feel free to connect!</p>
@@ -282,28 +259,26 @@
         </div>
     </footer>
 
-    <!-- Scripts for Particle.js and Filter Logic -->
+    <!-- Scripts: Particle.js, AOS, and Custom Logic -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Particle.js Configuration
-        particlesJS('particles-js', {
-          "particles": {
-            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-            "color": { "value": "#ffffff" },
-            "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 } },
-            "opacity": { "value": 0.5, "random": false, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
-            "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } },
-            "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-            "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } }
-          },
-          "interactivity": {
-            "detect_on": "canvas",
-            "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
-            "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } }
-          }, "retina_detect": true
+        // NEW: Initialize AOS Library
+        AOS.init({
+            duration: 800,      // Animation duration
+            easing: 'ease-in-out', // Animation easing
+            once: true,         // Animate elements only once
+            offset: 100,        // Offset (in px) from the original trigger point
         });
 
-        // Filter Logic
+        // Particle.js Configuration
+        particlesJS('particles-js', {
+          "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }},
+          "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 }}},
+          "retina_detect": true
+        });
+
+        // Original Filter Logic (no changes needed)
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
