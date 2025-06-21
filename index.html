@@ -10,10 +10,10 @@
     <style>
         /*
           ============================================
-          FINAL VISUAL REFRESH (VERSION 11)
-          - UPDATED: Certification section now includes a styled subheading for the issuing platform.
-                     This creates a clean, professional hierarchy as requested.
-          - All previous fixes and features remain.
+          FINAL VISUAL REFRESH (VERSION 12)
+          - FIXED: Featured Projects card alignment is corrected. Removed conflicting 'flex-grow'
+                   property from the project description for a robust and stable grid layout.
+          - All previous sections and features remain intact.
           ============================================
         */
 
@@ -77,9 +77,11 @@
         .project-img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
         .project-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
         .project-title { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-dark); }
-        .project-description { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; flex-grow: 1; }
+        /* --- FIX APPLIED HERE --- */
+        .project-description { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; } /* Removed flex-grow: 1; */
         .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
         .tech-tag { background: rgba(46, 204, 113, 0.1); padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #27ae60; display: flex; align-items: center; gap: 5px; }
+        /* This rule is the key to aligning the buttons at the bottom */
         .project-links { margin-top: auto; }
         .project-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--primary); padding: 8px 16px; border-radius: 4px; background-color: rgba(10, 102, 194, 0.1); transition: var(--transition); }
         .project-link:hover { color: white; background-color: var(--primary); }
@@ -102,49 +104,14 @@
         .connect-btn { margin-top: 15px; display: inline-block; background: var(--secondary); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; transition: var(--transition); font-weight: bold; }
         .connect-btn:hover { background-color: white; color: var(--dark-bg); transform: scale(1.05); }
 
-        /* Styles for the updated Certifications section */
+        /* Styles for the Certifications section */
         #certifications { background-color: white; }
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .certification-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: var(--transition);
-            min-height: 180px; /* Gives the cards a uniform height */
-        }
-        .certification-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--secondary);
-        }
-        .cert-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            line-height: 1.4;
-            margin-bottom: 5px; /* Reduced margin to bring issuer closer */
-        }
-        /* NEW STYLE for the issuer subheading */
-        .cert-issuer {
-            font-size: 1rem;
-            color: var(--text-muted);
-            margin-bottom: auto; /* Pushes the button to the bottom */
-            font-weight: 400;
-        }
-        .certification-card .project-link {
-            align-self: center;
-            margin-top: 20px; /* Ensure space between text and button */
-        }
+        .certifications-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .certification-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 25px; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); min-height: 180px; }
+        .certification-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--secondary); }
+        .cert-title { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); line-height: 1.4; margin-bottom: 5px; }
+        .cert-issuer { font-size: 1rem; color: var(--text-muted); margin-bottom: auto; font-weight: 400; }
+        .certification-card .project-link { align-self: center; margin-top: 20px; }
 
         @media (max-width: 992px) { .logo { font-size: 2.8rem; } .tagline { font-size: 1.3rem; } .intro h1 { font-size: 2.4rem; } .section-title { font-size: 2.2rem; } }
         @media (max-width: 768px) { header { padding: 80px 0 100px; clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);} .logo { font-size: 2.2rem; } .tagline { font-size: 1.1rem; } .intro { padding: 40px; margin-top: -70px; } .intro h1 { font-size: 2rem; } .section-title { font-size: 1.8rem; } .projects-grid { grid-template-columns: 1fr; } .edu-item { flex-basis: 100%; } }
@@ -193,15 +160,15 @@
             </div>
             
             <div class="projects-grid">
-                <!-- Project cards remain unchanged -->
+                <!-- All project cards are now correctly styled and will align perfectly -->
                 <div class="project-card" data-tags="python pandas seaborn csv"><img src="images/EV.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">A real-time EV adoption analysis project using Python and SQL to guide infrastructure planning through dynamic, data-driven insights.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
                 <div class="project-card" data-tags="python pandas seaborn csv"><img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis 2025</h3><p class="project-description">Analyzed emerging trends in the AI job market using Python, identifying top skills and locations in demand.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
                 <div class="project-card" data-tags="python pandas matplotlib"><img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img"><div class="project-content"><h3 class="project-title">The-Rollercoaster Analysis</h3><p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
                 <div class="project-card" data-tags="python pandas matplotlib"><img src="images/E-commerce Return Rate Analysis.png" alt="E-commerce Return Rate Analysis" class="project-img"><div class="project-content"><h3 class="project-title">E-commerce Return Rate Analysis</h3><p class="project-description">E-commerce analytics project analyzing product returns to optimize pricing, discounts, and delivery, improving sales and reducing losses.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/Bigbasket.png" alt="Inventory Optimization Analysis for BigBasket" class="project-img"><div class="project-content"><h3 class="project-title">Inventory Optimization Analysis for BigBasket</h3><p class="project-description">Optimizing BigBasket's inventory by analyzing demand patterns to reduce waste and improve stock efficiency.</p<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/US_Accident_Analysis.png" alt="USA Accident Analysis" class="project-img"><div class="project-content"><h3 class="project-title">USA Accident Analysis</h3><p class="project-description">Analyzing USA accident data to identify trends, high-risk areas, and improve road safety measures.</p<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/US-Accident-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/FraudRisk_Analysis.png" alt="FraudRisk Analysis" class="project-img"><div class="project-content"><h3 class="project-title">FraudRisk Analysis</h3><p class="project-description">Detecting and mitigating fraud risks through data analysis to enhance security and reduce financial losses.</p<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/FraudRisk_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-tags="python pandas power-bi sql"><img src="images/AI Job Market Analysis.png" alt="AI Job Market Analysis" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">Analyzing AI job trends to identify in-demand skills, top employers, and salary benchmarks for career growth.</p<div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Power BI</span><span class="tech-tag">CSV</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI_CareerScope_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/Bigbasket.png" alt="Inventory Optimization Analysis for BigBasket" class="project-img"><div class="project-content"><h3 class="project-title">Inventory Optimization Analysis for BigBasket</h3><p class="project-description">Optimizing BigBasket's inventory by analyzing demand patterns to reduce waste and improve stock efficiency.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/US_Accident_Analysis.png" alt="USA Accident Analysis" class="project-img"><div class="project-content"><h3 class="project-title">USA Accident Analysis</h3><p class="project-description">Analyzing USA accident data to identify trends, high-risk areas, and improve road safety measures.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/US-Accident-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python pandas matplotlib"><img src="images/FraudRisk_Analysis.png" alt="FraudRisk Analysis" class="project-img"><div class="project-content"><h3 class="project-title">FraudRisk Analysis</h3><p class="project-description">Detecting and mitigating fraud risks through data analysis to enhance security and reduce financial losses.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/FraudRisk_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python pandas power-bi sql"><img src="images/AI Job Market Analysis.png" alt="AI Job Market Analysis" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">Analyzing AI job trends to identify in-demand skills, top employers, and salary benchmarks for career growth.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Power BI</span><span class="tech-tag">CSV</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI_CareerScope_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
             </div>
         </div>
     </section>
@@ -211,7 +178,7 @@
             <h2 class="section-title">Highlights & Insights</h2>
             <p class="section-subtitle">A quick glance at some of my key project dashboards and visualizations.</p>
             <div class="card-grid-8">
-                <!-- Highlight cards remain unchanged -->
+                <!-- Highlight cards -->
                 <div class="highlight-card"><h4 class="card-title">UPI Transaction Analytics</h4><img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Analytics Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                 <div class="highlight-card"><h4 class="card-title">Heart Stroke Prediction</h4><img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
                 <div class="highlight-card"><h4 class="card-title">Student Performance Analysis</h4><img src="images/Student Performance Analysis.png" alt="Student Performance Analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Student-performance-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
@@ -224,21 +191,18 @@
         </div>
     </section>
 
-    <!-- UPDATED CERTIFICATIONS SECTION -->
     <section id="certifications">
         <div class="container">
             <h2 class="section-title">Certifications & Credentials</h2>
             <p class="section-subtitle">My commitment to continuous learning and professional development.</p>
             <div class="certifications-grid">
-                <!-- Certification Card 1: Updated with Subheading -->
                 <div class="certification-card">
-                    <div> <!-- Wrapper for text content -->
+                    <div>
                         <h4 class="cert-title">IBM Data Analyst Professional Certificate</h4>
                         <p class="cert-issuer">Issued by Coursera</p>
                     </div>
                     <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
                 </div>
-                <!-- Certification Card 2: Updated with Subheading -->
                 <div class="certification-card">
                      <div>
                         <h4 class="cert-title">Data Analysis with Python</h4>
@@ -246,7 +210,6 @@
                     </div>
                     <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
                 </div>
-                <!-- Certification Card 3: Updated with Subheading -->
                 <div class="certification-card">
                      <div>
                         <h4 class="cert-title">Microsoft Certified: Power BI Data Analyst</h4>
@@ -254,7 +217,6 @@
                     </div>
                     <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
                 </div>
-                 <!-- Add more certification cards here using the same format -->
             </div>
         </div>
     </section>
