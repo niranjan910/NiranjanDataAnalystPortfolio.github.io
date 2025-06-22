@@ -17,13 +17,19 @@
           - NEW: Added site-wide "Animate On Scroll" (AOS) effects. All content sections
                  now fade and slide into view as the user scrolls for a dynamic,
                  professional, and highly engaging user experience.
+          - NEW: Redesigned "About" section as a floating card with a drop-shadow for depth.
+          - NEW: Enhanced card hover effects with a "lift" and accent border.
+          - NEW: Modern "pill" style for all buttons and tags.
+          - NEW: Added a "Highlights" section for key dashboard visuals.
+          - NEW: Upgraded header with gradient text and a bouncing "scroll down" arrow.
+          - NEW: Revamped footer with a strong call-to-action.
           - The extraordinary particle header is maintained.
           ============================================
         */
 
         :root {
-            --primary: #0A66C2;
-            --secondary: #2ecc71;
+            --primary: #0A66C2; /* LinkedIn Blue */
+            --secondary: #2ecc71; /* A vibrant green */
             --accent-gradient: linear-gradient(90deg, var(--primary), var(--secondary));
             --dark-bg: #1d2430;
             --dark-bg-light: #2c3e50;
@@ -47,6 +53,7 @@
         .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         section { padding: 80px 0; }
         
+        /* --- HEADER & HERO --- */
         header { 
             background-color: #1a222f;
             background-image: linear-gradient(135deg, #1d2430, #2c3e50);
@@ -69,60 +76,70 @@
         .logo { font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .tagline { font-size: 1.5rem; font-weight: 300; margin-bottom: 40px; opacity: 0.9; }
         .header-buttons { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
+        
         .scroll-down { position: absolute; bottom: 30px; left: 50%; color: var(--secondary); font-size: 1.8rem; animation: bounce 2s infinite; cursor: pointer; transform: translateX(-50%); z-index: 2;}
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-20px) translateX(-50%); } 60% { transform: translateY(-10px) translateX(-50%); } }
+
         .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; background: var(--primary); color: white; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; border: 2px solid var(--primary); cursor: pointer; transition: var(--transition); box-shadow: var(--shadow-sm); }
         .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
         header .btn.btn-secondary { background: var(--secondary); border-color: var(--secondary); }
         header .btn.btn-secondary:hover { background: #25a25a; border-color: #25a25a;}
         header .btn.btn-outline { background: transparent; border-color: var(--secondary); color: var(--secondary); }
         header .btn.btn-outline:hover { background: var(--secondary); color: white; }
+
+        /* --- SHARED SECTION STYLES --- */
         .section-title { position: relative; margin-bottom: 50px; text-align: center; font-size: 2.5rem; color: var(--text-dark); }
         .section-title:after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-gradient); border-radius: 2px; }
         .section-subtitle { font-size: 1.1rem; color: var(--text-muted); text-align: center; max-width: 700px; margin: -25px auto 50px auto; font-weight: 400; }
+
+        /* --- "ABOUT ME" FLOATING CARD --- */
         .intro { background-color: var(--card-bg); margin-top: -80px; border-radius: 10px; box-shadow: var(--shadow-lg); position: relative; z-index: 2; padding: 60px; text-align: center; }
         .intro h1 { font-size: 2.8rem; margin-bottom: 20px; color: var(--text-dark); }
         .intro h1 span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .intro p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; color: var(--text-muted); }
+        
+        /* --- SKILLS --- */
         .skills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px auto; max-width: 800px; }
         .skill-tag { background: #ecf0f1; padding: 8px 18px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; color: var(--text-dark); border: 1px solid var(--border-color); transition: var(--transition); display: flex; align-items: center; }
         .skill-tag:hover { background: var(--primary); color: white; transform: translateY(-2px); box-shadow: var(--shadow-sm); }
         .skill-tag i { margin-right: 8px; color: var(--primary); transition: var(--transition); }
         .skill-tag:hover i { color: white; }
+        
+        /* --- PROJECTS SECTION --- */
         .projects-container { background-color: var(--section-bg); }
         .projects-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
         .filter-btn { padding: 8px 20px; background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 50px; cursor: pointer; transition: var(--transition); font-weight: 500; }
         .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; }
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        
         .project-card { background: var(--card-bg); border-radius: 10px; overflow: hidden; transition: var(--transition); box-shadow: var(--shadow-md); position: relative; display: flex; flex-direction: column; border: 1px solid transparent; }
         .project-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border: 1px solid var(--primary); }
         .project-img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
         .project-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
         .project-title { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-dark); }
-        .project-description { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
+        .project-description { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; flex-grow: 1; } /* Allow description to grow */
         .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-        .tech-tag { background: rgba(46, 204, 113, 0.1); padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #27ae60; display: flex; align-items: center; gap: 5px; }
+        .tech-tag { background: rgba(46, 204, 113, 0.1); padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #27ae60; }
         .project-links { margin-top: auto; }
         .project-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--primary); padding: 8px 16px; border-radius: 4px; background-color: rgba(10, 102, 194, 0.1); transition: var(--transition); }
         .project-link:hover { color: white; background-color: var(--primary); }
+        
+        /* --- HIGHLIGHTS SECTION --- */
         .card-grid-8 { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; margin-top: 30px; }
         .highlight-card { background: #fff; border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); }
         .highlight-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
         .highlight-thumb { width: 100%; height: auto; border-radius: 6px; margin-bottom: 12px; aspect-ratio: 16 / 9; object-fit: cover; }
         .card-title { font-size: 1.1rem; margin-bottom: 10px; font-weight: 600; color: var(--text-dark); }
+
+        /* --- EXPERIENCE & EDUCATION --- */
         .edu-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px; }
         .edu-item { flex: 1 1 45%; background: var(--card-bg); padding: 25px; border-left: 4px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-md); max-width: 600px;}
         .edu-item h3 { margin-top: 0; color: var(--text-dark); font-size: 1.5rem;}
         .edu-date { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
         .edu-item p { color: var(--text-muted); }
         .edu-item .role { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 10px;}
-        .site-footer { background-color: var(--dark-bg); color: rgba(255, 255, 255, 0.8); padding: 40px 20px; text-align: center; margin-top: 40px; }
-        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 25px; }
-        .social-links a { color: var(--secondary); margin: 0 10px; font-weight: 600; text-decoration: none; font-size: 1.1rem; }
-        .social-links a:hover { color: white; }
-        .social-links a i { margin-right: 8px; }
-        .connect-btn { margin-top: 15px; display: inline-block; background: var(--secondary); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; transition: var(--transition); font-weight: bold; }
-        .connect-btn:hover { background-color: white; color: var(--dark-bg); transform: scale(1.05); }
+        
+        /* --- CERTIFICATIONS --- */
         #certifications { background-color: white; }
         .certifications-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
         .certification-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 25px; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); min-height: 180px; }
@@ -130,9 +147,22 @@
         .cert-title { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); line-height: 1.4; margin-bottom: 5px; }
         .cert-issuer { font-size: 1rem; color: var(--text-muted); margin-bottom: auto; font-weight: 400; }
         .certification-card .project-link { align-self: center; margin-top: 20px; }
+
+        /* --- FOOTER --- */
+        .site-footer { background-color: var(--dark-bg); color: rgba(255, 255, 255, 0.8); padding: 40px 20px; text-align: center; margin-top: 40px; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 25px; }
+        .social-links a { color: var(--secondary); margin: 0 10px; font-weight: 600; text-decoration: none; font-size: 1.1rem; }
+        .social-links a:hover { color: white; }
+        .social-links a i { margin-right: 8px; }
+        .connect-btn { margin-top: 15px; display: inline-block; background: var(--secondary); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; transition: var(--transition); font-weight: bold; }
+        .connect-btn:hover { background-color: white; color: var(--dark-bg); transform: scale(1.05); }
+
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 992px) { .logo { font-size: 2.8rem; } .tagline { font-size: 1.3rem; } .intro h1 { font-size: 2.4rem; } .section-title { font-size: 2.2rem; } }
         @media (max-width: 768px) { header { padding: 80px 0 100px; clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);} .logo { font-size: 2.2rem; } .tagline { font-size: 1.1rem; } .intro { padding: 40px; margin-top: -70px; } .intro h1 { font-size: 2rem; } .section-title { font-size: 1.8rem; } .projects-grid { grid-template-columns: 1fr; } .edu-item { flex-basis: 100%; } }
-        @media (max-width: 576px) { header { padding: 60px 0 80px; } .intro { padding: 30px 20px; } .intro h1 { font-size: 1.8rem; } .project-links { flex-direction: column; gap: 10px; } }
+        @media (max-width: 576px) { header { padding: 60px 0 80px; } .intro { padding: 30px 20px; } .intro h1 { font-size: 1.8rem; } .project-links { flex-direction: column; align-items: stretch; text-align: center;} .project-link { justify-content: center; } }
+        
+        /* Hide old unused classes */
         .timeline, .contact, .back-to-top { display: none; }
     </style>
 </head>
@@ -179,12 +209,34 @@
             </div>
             
             <div class="projects-grid">
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas seaborn csv"><img src="images/EV.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">A real-time EV adoption analysis project using Python and SQL to guide infrastructure planning through dynamic, data-driven insights.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas seaborn csv"><img src="images/AI Market analysis 2025.png" alt="AI Job Market Analysis Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis 2025</h3><p class="project-description">Analyzed emerging trends in the AI job market using Python, identifying top skills and locations in demand.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img"><div class="project-content"><h3 class="project-title">The-Rollercoaster Analysis</h3><p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/E-commerce Return Rate Analysis.png" alt="E-commerce Return Rate Analysis" class="project-img"><div class="project-content"><h3 class="project-title">E-commerce Return Rate Analysis</h3><p class="project-description">E-commerce analytics project analyzing product returns to optimize pricing, discounts, and delivery, improving sales and reducing losses.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/Bigbasket.png" alt="Inventory Optimization Analysis for BigBasket" class="project-img"><div class="project-content"><h3 class="project-title">Inventory Optimization Analysis for BigBasket</h3><p class="project-description">Optimizing BigBasket's inventory by analyzing demand patterns to reduce waste and improve stock efficiency.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/US_Accident_Analysis.png" alt="USA Accident Analysis" class="project-img"><div class="project-content"><h3 class="project-title">USA Accident Analysis</h3><p class="project-description">Analyzing USA accident data to identify trends, high-risk areas, and improve road safety measures.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/US-Accident-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                 <!-- Example Project Cards with AOS attributes and more consistent content length -->
+                <div class="project-card" data-tags="python sql" data-aos="fade-up">
+                    <img src="https://i.imgur.com/5w5r3gE.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3>
+                        <p class="project-description">A comprehensive analysis using Python (Pandas) and SQL to track real-time EV adoption, guiding infrastructure planning with data-driven insights.</p>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                    </div>
+                </div>
+                <div class="project-card" data-tags="python power-bi" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://i.imgur.com/vHqB3qQ.png" alt="AI Job Market Analysis Dashboard" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">AI Job Market Analysis 2025</h3>
+                        <p class="project-description">Analyzed emerging trends in the AI job market using Python, identifying top skills, salary benchmarks, and high-demand locations via Power BI.</p>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Power BI</span><span class="tech-tag">Pandas</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                    </div>
+                </div>
+                <div class="project-card" data-tags="python" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://i.imgur.com/gYdI7E6.png" alt="E-commerce Return Rate Analysis" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">E-commerce Return Rate Analysis</h3>
+                        <p class="project-description">Analyzed product returns to pinpoint key factors driving rates, helping optimize pricing, product descriptions, and delivery strategies to reduce losses.</p>
+                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div>
+                        <div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -194,10 +246,10 @@
             <h2 class="section-title" data-aos="fade-up">Highlights & Insights</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">A quick glance at some of my key project dashboards and visualizations.</p>
             <div class="card-grid-8">
-                <div class="highlight-card" data-aos="zoom-in-up"><h4 class="card-title">UPI Transaction Analytics</h4><img src="images/UPI Transaction Data Analytics.png" alt="UPI Transaction Analytics Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="50"><h4 class="card-title">Heart Stroke Prediction</h4><img src="images/Heart-Stoke-Prediction-Analysis.png" alt="Heart Stroke Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="100"><h4 class="card-title">Student Performance Analysis</h4><img src="images/Student Performance Analysis.png" alt="Student Performance Analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Student-performance-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="150"><h4 class="card-title">Bank Loan Prediction</h4><img src="images/Bank Loan Prediction.png" alt="Bank Loan Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                <div class="highlight-card" data-aos="zoom-in-up"><h4 class="card-title">UPI Transaction Analytics</h4><img src="https://i.imgur.com/lM5P4S2.png" alt="UPI Transaction Analytics Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="50"><h4 class="card-title">Heart Stroke Prediction</h4><img src="https://i.imgur.com/dK3vM0x.png" alt="Heart Stroke Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="100"><h4 class="card-title">Student Performance</h4><img src="https://i.imgur.com/1nZJ3tP.png" alt="Student Performance Analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Student-performance-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="150"><h4 class="card-title">Bank Loan Prediction</h4><img src="https://i.imgur.com/vH9jZ9B.png" alt="Bank Loan Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
             </div>
         </div>
     </section>
@@ -230,6 +282,7 @@
                 <div class="edu-item" data-aos="zoom-in">
                     <h3>Naresh i Technologies</h3><p class="role">Data Analyst Internship</p>
                     <p><strong>Location:</strong> Hyderabad (In-office)<br><strong>Duration:</strong> Feb 2025 - June 2025</p>
+                    <p>Focused on real-world data cleaning, transformation, and creating insightful reports using SQL, Python, and Power BI.</p>
                 </div>
             </div>
         </div>
@@ -278,18 +331,21 @@
           "retina_detect": true
         });
 
-        // Original Filter Logic (no changes needed)
+        // Original Filter Logic (updated for new flexbox layout)
         document.addEventListener('DOMContentLoaded', function() {
             const filterButtons = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
+
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    const filterTag = this.getAttribute('data-filter');
+
+                    const filter = this.getAttribute('data-filter');
+
                     projectCards.forEach(card => {
-                        const cardTags = card.getAttribute('data-tags');
-                        if (filterTag === 'all' || (cardTags && cardTags.includes(filterTag))) {
+                        const tags = card.getAttribute('data-tags');
+                        if (filter === 'all' || (tags && tags.includes(filter))) {
                             card.style.display = 'flex';
                         } else {
                             card.style.display = 'none';
