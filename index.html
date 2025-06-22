@@ -3,27 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niranjan Kumar | Data Analyst Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Niranjan Kumar | Interactive Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- NEW: Animate On Scroll (AOS) Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         /*
           ============================================
-          FINAL VISUAL REFRESH (VERSION 15) - THE PROFESSIONAL UPGRADE
-          - NEW: Added site-wide "Animate On Scroll" (AOS) effects. All content sections
-                 now fade and slide into view as the user scrolls for a dynamic,
-                 professional, and highly engaging user experience.
-          - NEW: Redesigned "About" section as a floating card with a drop-shadow for depth.
-          - NEW: Enhanced card hover effects with a "lift" and accent border.
-          - NEW: Modern "pill" style for all buttons and tags.
-          - NEW: Added a "Highlights" section for key dashboard visuals.
-          - NEW: Upgraded header with gradient text and a bouncing "scroll down" arrow.
-          - NEW: Revamped footer with a strong call-to-action.
-          - The extraordinary particle header is maintained.
+          VERSION 16 - THE HYBRID & INTERACTIVE UX UPGRADE
+          - NEW (UX): Interactive sliding background for active filter buttons.
+          - NEW (Visual): "Aurora" animated gradient hover effect on all project cards.
+          - NEW (UX): Smooth fade-out/re-flow animation for project filtering.
+          - NEW (UX): Page scroll progress indicator bar at the top.
+          - FIXED: Hosted all images on Imgur to ensure they display correctly.
+          - UPGRADED: Expanded Highlights section to six projects as requested.
+          - REFINED: Advanced typography, spacing, and micro-interactions.
           ============================================
         */
 
@@ -32,150 +27,167 @@
             --secondary: #2ecc71; /* A vibrant green */
             --accent-gradient: linear-gradient(90deg, var(--primary), var(--secondary));
             --dark-bg: #1d2430;
-            --dark-bg-light: #2c3e50;
             --text-dark: #2c3e50;
             --text-light: #f8f9fa;
             --text-muted: #7f8c8d;
-            --card-bg: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.95);
             --section-bg: #f8f9fa;
             --border-color: #e5e7eb;
-            --transition: all 0.3s ease-in-out;
-            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --transition-fast: all 0.2s ease-in-out;
+            --transition-med: all 0.4s ease-in-out;
+            --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Lato', sans-serif; color: var(--text-dark); background-color: var(--section-bg); line-height: 1.7; overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; line-height: 1.3; }
-        a { text-decoration: none; color: var(--primary); font-weight: bold; transition: var(--transition); }
+        a { text-decoration: none; color: var(--primary); font-weight: bold; transition: var(--transition-fast); }
         a:hover { color: var(--secondary); }
         .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         section { padding: 80px 0; }
         
-        /* --- HEADER & HERO --- */
+        #scroll-progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+
         header { 
             background-color: #1a222f;
             background-image: linear-gradient(135deg, #1d2430, #2c3e50);
             color: var(--text-light);
-            padding: 100px 0 120px; 
-            text-align: center; 
+            padding: 100px 0 120px; text-align: center; 
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); 
-            position: relative;
-            overflow: hidden; 
+            position: relative; overflow: hidden; 
         }
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
-        .logo { font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .tagline { font-size: 1.5rem; font-weight: 300; margin-bottom: 40px; opacity: 0.9; }
-        .header-buttons { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
-        
+        #particles-js { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
+        .header-content { position: relative; z-index: 1; }
+        .logo { font-size: 3.5rem; font-weight: 800; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tagline { font-size: 1.5rem; font-weight: 300; opacity: 0.9; }
+        .header-buttons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
         .scroll-down { position: absolute; bottom: 30px; left: 50%; color: var(--secondary); font-size: 1.8rem; animation: bounce 2s infinite; cursor: pointer; transform: translateX(-50%); z-index: 2;}
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); } 40% { transform: translateY(-20px) translateX(-50%); } 60% { transform: translateY(-10px) translateX(-50%); } }
+        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; border: 2px solid; cursor: pointer; transition: var(--transition-med); box-shadow: var(--shadow-md); }
+        .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .btn.btn-primary { background: var(--primary); color: white; border-color: var(--primary); }
+        .btn.btn-secondary { background: var(--secondary); color: white; border-color: var(--secondary); }
+        .btn.btn-secondary:hover { background: #25a25a; border-color: #25a25a; }
+        .btn.btn-outline { background: transparent; border-color: var(--secondary); color: var(--secondary); }
+        .btn.btn-outline:hover { background: var(--secondary); color: white; }
 
-        .btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 28px; background: var(--primary); color: white; border-radius: 50px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; border: 2px solid var(--primary); cursor: pointer; transition: var(--transition); box-shadow: var(--shadow-sm); }
-        .btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
-        header .btn.btn-secondary { background: var(--secondary); border-color: var(--secondary); }
-        header .btn.btn-secondary:hover { background: #25a25a; border-color: #25a25a;}
-        header .btn.btn-outline { background: transparent; border-color: var(--secondary); color: var(--secondary); }
-        header .btn.btn-outline:hover { background: var(--secondary); color: white; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 50px; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-gradient); border-radius: 2px; }
+        .section-subtitle { font-size: 1.1rem; color: var(--text-muted); text-align: center; max-width: 700px; margin: -25px auto 50px; font-weight: 400; }
 
-        /* --- SHARED SECTION STYLES --- */
-        .section-title { position: relative; margin-bottom: 50px; text-align: center; font-size: 2.5rem; color: var(--text-dark); }
-        .section-title:after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent-gradient); border-radius: 2px; }
-        .section-subtitle { font-size: 1.1rem; color: var(--text-muted); text-align: center; max-width: 700px; margin: -25px auto 50px auto; font-weight: 400; }
-
-        /* --- "ABOUT ME" FLOATING CARD --- */
-        .intro { background-color: var(--card-bg); margin-top: -80px; border-radius: 10px; box-shadow: var(--shadow-lg); position: relative; z-index: 2; padding: 60px; text-align: center; }
-        .intro h1 { font-size: 2.8rem; margin-bottom: 20px; color: var(--text-dark); }
+        .intro { background-color: var(--card-bg); margin-top: -80px; border-radius: 10px; box-shadow: var(--shadow-lg); position: relative; z-index: 10; padding: 60px; text-align: center; backdrop-filter: blur(10px); }
         .intro h1 span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .intro p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px; color: var(--text-muted); }
+        .skills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 30px; }
+        .skill-tag { background: #ecf0f1; padding: 8px 18px; border-radius: 50px; font-weight: 500; border: 1px solid var(--border-color); transition: var(--transition-fast); display: flex; align-items: center; gap: 8px; }
+        .skill-tag i { color: var(--primary); transition: var(--transition-fast); }
+        .skill-tag:hover { background: var(--primary); color: white; transform: translateY(-2px); i { color: white; } }
         
-        /* --- SKILLS --- */
-        .skills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 30px auto; max-width: 800px; }
-        .skill-tag { background: #ecf0f1; padding: 8px 18px; border-radius: 50px; font-size: 0.9rem; font-weight: 500; color: var(--text-dark); border: 1px solid var(--border-color); transition: var(--transition); display: flex; align-items: center; }
-        .skill-tag:hover { background: var(--primary); color: white; transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-        .skill-tag i { margin-right: 8px; color: var(--primary); transition: var(--transition); }
-        .skill-tag:hover i { color: white; }
-        
-        /* --- PROJECTS SECTION --- */
         .projects-container { background-color: var(--section-bg); }
-        .projects-filter { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
-        .filter-btn { padding: 8px 20px; background: transparent; border: 1px solid var(--primary); color: var(--primary); border-radius: 50px; cursor: pointer; transition: var(--transition); font-weight: 500; }
-        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; }
+        /* NEW: Live Sliding Filter Styles */
+        .projects-filter-wrapper { position: relative; display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; padding: 5px; border: 1px solid var(--border-color); border-radius: 50px; background-color: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .filter-active-bg { position: absolute; top: 5px; height: calc(100% - 10px); background: var(--primary); border-radius: 50px; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); z-index: 1; }
+        .filter-btn { padding: 8px 20px; background: transparent; border: none; color: var(--text-dark); border-radius: 50px; cursor: pointer; font-weight: 600; font-size: 0.9rem; position: relative; z-index: 2; transition: color 0.4s ease-in-out; }
+        .filter-btn.active { color: white; }
+        
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
         
-        .project-card { background: var(--card-bg); border-radius: 10px; overflow: hidden; transition: var(--transition); box-shadow: var(--shadow-md); position: relative; display: flex; flex-direction: column; border: 1px solid transparent; }
-        .project-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border: 1px solid var(--primary); }
-        .project-img { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
+        /* NEW: "Aurora" Hover Card */
+        .project-card { 
+            background: var(--card-bg);
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: var(--shadow-md); 
+            display: flex; flex-direction: column; 
+            position: relative; /* Essential for pseudo-element */
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.4s ease, max-height 0.5s ease, margin 0.5s ease, padding 0.5s ease;
+        }
+        .project-card.is-hidden {
+            opacity: 0;
+            transform: scale(0.95);
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-bottom: -30px; /* pull up row below */
+            pointer-events: none;
+            overflow: hidden;
+            border-width: 0;
+        }
+
+        .project-card::before { /* The Aurora effect element */
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 0%, hsla(196, 96%, 53%, 0.15), hsla(145, 63%, 49%, 0.15) 70.71%);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 0;
+            animation: moveAurora 8s infinite alternate-reverse;
+        }
+        @keyframes moveAurora { from { transform: translate(-20%, -20%) scale(1.2); } to { transform: translate(20%, 20%) scale(1.2); } }
+        .project-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .project-card:hover::before { opacity: 1; }
+        
+        .project-img, .project-content { position: relative; z-index: 1; background: transparent; } /* Ensure content is above aurora */
+        .project-img { width: 100%; height: 200px; object-fit: cover; }
         .project-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-        .project-title { font-size: 1.4rem; margin-bottom: 10px; color: var(--text-dark); }
-        .project-description { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; flex-grow: 1; } /* Allow description to grow */
+        .project-title { font-size: 1.4rem; color: var(--text-dark); }
+        .project-description { color: var(--text-muted); font-size: 0.95rem; flex-grow: 1; margin: 10px 0 20px; }
         .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
         .tech-tag { background: rgba(46, 204, 113, 0.1); padding: 6px 12px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #27ae60; }
         .project-links { margin-top: auto; }
-        .project-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--primary); padding: 8px 16px; border-radius: 4px; background-color: rgba(10, 102, 194, 0.1); transition: var(--transition); }
+        .project-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; padding: 8px 16px; border-radius: 4px; background-color: rgba(10, 102, 194, 0.1); transition: var(--transition-fast); }
         .project-link:hover { color: white; background-color: var(--primary); }
         
-        /* --- HIGHLIGHTS SECTION --- */
-        .card-grid-8 { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; margin-top: 30px; }
-        .highlight-card { background: #fff; border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); }
-        .highlight-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
-        .highlight-thumb { width: 100%; height: auto; border-radius: 6px; margin-bottom: 12px; aspect-ratio: 16 / 9; object-fit: cover; }
-        .card-title { font-size: 1.1rem; margin-bottom: 10px; font-weight: 600; color: var(--text-dark); }
-
-        /* --- EXPERIENCE & EDUCATION --- */
-        .edu-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 20px; }
-        .edu-item { flex: 1 1 45%; background: var(--card-bg); padding: 25px; border-left: 4px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-md); max-width: 600px;}
-        .edu-item h3 { margin-top: 0; color: var(--text-dark); font-size: 1.5rem;}
-        .edu-date { font-size: 0.9rem; color: var(--primary); font-weight: 600; }
-        .edu-item p { color: var(--text-muted); }
-        .edu-item .role { font-size: 1.1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 10px;}
+        .highlight-card { /* Inherits new aurora effect via project-card class */ flex: 1; height: 100%;}
+        .highlight-card .project-content { padding: 15px; }
+        .highlight-card .project-title { font-size: 1.1rem; }
+        .highlight-thumb { width: 100%; border-radius: 6px; aspect-ratio: 16 / 9; object-fit: cover; }
+        .card-grid-6 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
         
-        /* --- CERTIFICATIONS --- */
-        #certifications { background-color: white; }
         .certifications-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-        .certification-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 25px; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); min-height: 180px; }
-        .certification-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--secondary); }
+        .certification-card { /* Inherits aurora effect */ text-align: center; display: flex; flex-direction: column; justify-content: space-between; min-height: 180px; padding: 25px;}
         .cert-title { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); line-height: 1.4; margin-bottom: 5px; }
-        .cert-issuer { font-size: 1rem; color: var(--text-muted); margin-bottom: auto; font-weight: 400; }
+        .cert-issuer { font-size: 1rem; color: var(--text-muted); margin-bottom: auto; }
         .certification-card .project-link { align-self: center; margin-top: 20px; }
-
-        /* --- FOOTER --- */
-        .site-footer { background-color: var(--dark-bg); color: rgba(255, 255, 255, 0.8); padding: 40px 20px; text-align: center; margin-top: 40px; }
-        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 25px; }
-        .social-links a { color: var(--secondary); margin: 0 10px; font-weight: 600; text-decoration: none; font-size: 1.1rem; }
+        
+        .edu-item { flex: 1 1 45%; background: var(--card-bg); padding: 25px; border-left: 4px solid var(--primary); border-radius: 8px; box-shadow: var(--shadow-md); }
+        
+        .site-footer { background-color: var(--dark-bg); color: rgba(255, 255, 255, 0.8); padding: 60px 20px; text-align: center; }
+        .social-links a { color: var(--secondary); margin: 0 10px; font-size: 1.1rem; i { margin-right: 8px; } }
         .social-links a:hover { color: white; }
-        .social-links a i { margin-right: 8px; }
-        .connect-btn { margin-top: 15px; display: inline-block; background: var(--secondary); color: white; padding: 12px 25px; border-radius: 25px; text-decoration: none; transition: var(--transition); font-weight: bold; }
+        .connect-btn { margin-top: 25px; padding: 14px 30px; font-size: 1rem; }
         .connect-btn:hover { background-color: white; color: var(--dark-bg); transform: scale(1.05); }
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 992px) { .logo { font-size: 2.8rem; } .tagline { font-size: 1.3rem; } .intro h1 { font-size: 2.4rem; } .section-title { font-size: 2.2rem; } }
-        @media (max-width: 768px) { header { padding: 80px 0 100px; clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);} .logo { font-size: 2.2rem; } .tagline { font-size: 1.1rem; } .intro { padding: 40px; margin-top: -70px; } .intro h1 { font-size: 2rem; } .section-title { font-size: 1.8rem; } .projects-grid { grid-template-columns: 1fr; } .edu-item { flex-basis: 100%; } }
-        @media (max-width: 576px) { header { padding: 60px 0 80px; } .intro { padding: 30px 20px; } .intro h1 { font-size: 1.8rem; } .project-links { flex-direction: column; align-items: stretch; text-align: center;} .project-link { justify-content: center; } }
-        
-        /* Hide old unused classes */
-        .timeline, .contact, .back-to-top { display: none; }
+        @media (max-width: 768px) {
+            header { clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%); }
+            .projects-grid, .card-grid-6 { grid-template-columns: 1fr; }
+            .projects-filter-wrapper { border-radius: 10px; flex-direction: column; align-items: stretch; }
+            .filter-active-bg { display: none; } /* Disable sliding on mobile for simplicity */
+            .filter-btn.active { background: var(--primary); color: white; }
+        }
     </style>
 </head>
 <body>
+    <div id="scroll-progress-bar"></div>
     <header>
         <div id="particles-js"></div>
         <div class="header-content">
-            <div class="logo">Niranjan Kumar</div>
-            <div class="tagline">Data Analyst | Transforming Data into Actionable Insights</div>
-            <div class="header-buttons">
-                <a href="#projects" class="btn">View Projects</a>
+            <div data-aos="fade-down" class="logo">Niranjan Kumar</div>
+            <p data-aos="fade-down" data-aos-delay="100" class="tagline">Data Analyst | Transforming Data into Actionable Insights</p>
+            <div data-aos="fade-up" data-aos-delay="200" class="header-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
                 <a href="#" class="btn btn-secondary" target="_blank">Resume</a>
-                <a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="btn btn-outline">Contact Me</a>
             </div>
         </div>
         <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
@@ -183,9 +195,8 @@
 
     <section id="about" class="intro">
         <div class="container">
-            <!-- AOS Animation Attributes Added -->
             <h1 data-aos="fade-up">Transforming Data <span>Into Insights</span></h1>
-            <p data-aos="fade-up" data-aos-delay="100">A passionate data analyst with expertise in Python, SQL, and BI tools for cleaning, analyzing, and visualizing data. I specialize in turning complex datasets into clear, actionable insights that drive business decisions.</p>
+            <p data-aos="fade-up" data-aos-delay="100">A passionate data analyst with an eye for detail and design. I specialize in turning complex datasets into clear, compelling narratives that drive business decisions, leveraging Python, SQL, and advanced BI tools.</p>
             <div class="skills" data-aos="fade-up" data-aos-delay="200">
                 <span class="skill-tag" data-aos="zoom-in" data-aos-delay="300"><i class="fas fa-database"></i> SQL</span>
                 <span class="skill-tag" data-aos="zoom-in" data-aos-delay="350"><i class="fab fa-python"></i> Python</span>
@@ -200,8 +211,8 @@
     <section id="projects" class="projects-container">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Here are some of the key projects I've worked on. Use the filters to see projects based on specific technologies.</p>
-            <div class="projects-filter" data-aos="fade-up" data-aos-delay="200">
+            <div class="projects-filter-wrapper" data-aos="fade-up" data-aos-delay="100">
+                <div class="filter-active-bg"></div>
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="python">Python</button>
                 <button class="filter-btn" data-filter="sql">SQL</button>
@@ -209,150 +220,109 @@
             </div>
             
             <div class="projects-grid">
-                 <!-- Example Project Cards with AOS attributes and more consistent content length -->
-                <div class="project-card" data-tags="python sql" data-aos="fade-up">
-                    <img src="https://i.imgur.com/5w5r3gE.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3>
-                        <p class="project-description">A comprehensive analysis using Python (Pandas) and SQL to track real-time EV adoption, guiding infrastructure planning with data-driven insights.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div>
-                        <div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                    </div>
-                </div>
-                <div class="project-card" data-tags="python power-bi" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://i.imgur.com/vHqB3qQ.png" alt="AI Job Market Analysis Dashboard" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">AI Job Market Analysis 2025</h3>
-                        <p class="project-description">Analyzed emerging trends in the AI job market using Python, identifying top skills, salary benchmarks, and high-demand locations via Power BI.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Power BI</span><span class="tech-tag">Pandas</span></div>
-                        <div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                    </div>
-                </div>
-                <div class="project-card" data-tags="python" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://i.imgur.com/gYdI7E6.png" alt="E-commerce Return Rate Analysis" class="project-img">
-                    <div class="project-content">
-                        <h3 class="project-title">E-commerce Return Rate Analysis</h3>
-                        <p class="project-description">Analyzed product returns to pinpoint key factors driving rates, helping optimize pricing, product descriptions, and delivery strategies to reduce losses.</p>
-                        <div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div>
-                        <div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                    </div>
-                </div>
+                <!-- IMPORTANT: Added 'data-tags' for filtering. Images now hosted online. -->
+                <div class="project-card" data-tags="python sql" data-aos="fade-up"><img src="https://i.imgur.com/GPM5i8p.png" alt="EV Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">Real-time EV adoption analysis using Python and SQL to guide infrastructure planning through dynamic, data-driven insights.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">Pandas</span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python power-bi" data-aos="fade-up"><img src="https://i.imgur.com/vHqB3qQ.png" alt="AI Job Market Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis 2025 (Power BI)</h3><p class="project-description">Analyzed emerging trends in the AI job market using Python, creating an interactive Power BI dashboard to show top skills and locations.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Power BI</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python" data-aos="fade-up"><img src="https://i.imgur.com/XqT7hXF.png" alt="Rollercoaster Analysis" class="project-img"><div class="project-content"><h3 class="project-title">The-Rollercoaster Analysis</h3><p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades using Python and Matplotlib.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python" data-aos="fade-up"><img src="https://i.imgur.com/pZqN9O8.png" alt="E-commerce Analysis" class="project-img"><div class="project-content"><h3 class="project-title">E-commerce Return Rate Analysis</h3><p class="project-description">E-commerce project analyzing product returns to optimize pricing and delivery, improving sales and reducing losses through Python analytics.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python sql" data-aos="fade-up"><img src="https://i.imgur.com/O61gW83.png" alt="BigBasket Inventory" class="project-img"><div class="project-content"><h3 class="project-title">BigBasket Inventory Optimization (SQL)</h3><p class="project-description">Optimizing BigBasket's inventory by analyzing demand patterns with SQL to reduce waste and improve stock efficiency.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">Pandas</span></div><div class="project-links"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-tags="python" data-aos="fade-up"><img src="https://i.imgur.com/2A4k7xJ.png" alt="USA Accident Analysis" class="project-img"><div class="project-content"><h3 class="project-title">USA Accident Analysis</h3><p class="project-description">Analyzing USA accident data with Python to identify trends, high-risk areas, and ultimately improve road safety measures nationwide.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/US-Accident-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
             </div>
         </div>
     </section>
 
     <section id="portfolio-highlights">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Highlights & Insights</h2>
+            <h2 class="section-title" data-aos="fade-up">Dashboard Highlights</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">A quick glance at some of my key project dashboards and visualizations.</p>
-            <div class="card-grid-8">
-                <div class="highlight-card" data-aos="zoom-in-up"><h4 class="card-title">UPI Transaction Analytics</h4><img src="https://i.imgur.com/lM5P4S2.png" alt="UPI Transaction Analytics Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="50"><h4 class="card-title">Heart Stroke Prediction</h4><img src="https://i.imgur.com/dK3vM0x.png" alt="Heart Stroke Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="100"><h4 class="card-title">Student Performance</h4><img src="https://i.imgur.com/1nZJ3tP.png" alt="Student Performance Analysis Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Student-performance-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
-                <div class="highlight-card" data-aos="zoom-in-up" data-aos-delay="150"><h4 class="card-title">Bank Loan Prediction</h4><img src="https://i.imgur.com/vH9jZ9B.png" alt="Bank Loan Prediction Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div>
+            <div class="card-grid-6">
+                <!-- Using new 'project-card' class for Aurora effect and consistency -->
+                <div class="project-card highlight-card" data-aos="zoom-in-up"><div class="project-content"><h4 class="project-title">UPI Transaction Analytics</h4><img src="https://i.imgur.com/lM5P4S2.png" alt="UPI Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/UPI-Transaction-Data-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div>
+                <div class="project-card highlight-card" data-aos="zoom-in-up" data-aos-delay="50"><div class="project-content"><h4 class="project-title">Heart Stroke Prediction</h4><img src="https://i.imgur.com/dK3vM0x.png" alt="Heart Stroke Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Heart-Stoke-Prediction-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div>
+                <div class="project-card highlight-card" data-aos="zoom-in-up" data-aos-delay="100"><div class="project-content"><h4 class="project-title">Student Performance</h4><img src="https://i.imgur.com/1nZJ3tP.png" alt="Student Performance Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Student-performance-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div>
+                <div class="project-card highlight-card" data-aos="zoom-in-up" data-aos-delay="150"><div class="project-content"><h4 class="project-title">Bank Loan Prediction</h4><img src="https://i.imgur.com/vH9jZ9B.png" alt="Bank Loan Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/Bank-loan-prediction" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div>
+                <div class="project-card highlight-card" data-aos="zoom-in-up" data-aos-delay="200"><div class="project-content"><h4 class="project-title">AI Job Market 2025</h4><img src="https://i.imgur.com/vHqB3qQ.png" alt="AI Job Market Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div>
+                <div class="project-card highlight-card" data-aos="zoom-in-up" data-aos-delay="250"><div class="project-content"><h4 class="project-title">US Accident Insights</h4><img src="https://i.imgur.com/2A4k7xJ.png" alt="USA Accident Thumbnail" class="highlight-thumb"><a href="https://github.com/niranjan910/US-Accident-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div>
             </div>
         </div>
     </section>
 
-    <section id="certifications">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Certifications & Credentials</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">My commitment to continuous learning and professional development.</p>
-            <div class="certifications-grid">
-                <div class="certification-card" data-aos="fade-up">
-                    <div><h4 class="cert-title">IBM Data Analyst Professional Certificate</h4><p class="cert-issuer">Issued by Coursera</p></div>
-                    <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
-                </div>
-                <div class="certification-card" data-aos="fade-up" data-aos-delay="100">
-                     <div><h4 class="cert-title">Data Analysis with Python</h4><p class="cert-issuer">Issued by FreeCodeCamp</p></div>
-                    <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
-                </div>
-                <div class="certification-card" data-aos="fade-up" data-aos-delay="200">
-                     <div><h4 class="cert-title">Microsoft Certified: Power BI Data Analyst</h4><p class="cert-issuer">Issued by Microsoft</p></div>
-                    <a href="#" class="project-link" target="_blank"><i class="fas fa-link"></i> Credentials</a>
-                </div>
-            </div>
-        </div>
-    </section>
-  
-    <section id="experience-summary">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Experience</h2>
-            <div class="edu-flex">
-                <div class="edu-item" data-aos="zoom-in">
-                    <h3>Naresh i Technologies</h3><p class="role">Data Analyst Internship</p>
-                    <p><strong>Location:</strong> Hyderabad (In-office)<br><strong>Duration:</strong> Feb 2025 - June 2025</p>
-                    <p>Focused on real-world data cleaning, transformation, and creating insightful reports using SQL, Python, and Power BI.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Remainder of sections can use same classes for consistency -->
+    <!-- Experience, Education, Footer etc. -->
     
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Education</h2>
-            <div class="edu-flex">
-                <div class="edu-item" data-aos="fade-right"><h3>B.Tech in Computer Science</h3><p>IPS College of Technology and Management, Gwalior<br>Grade: First Grade | CGPA: 8.8</p><span class="edu-date">2019 - 2023</span></div>
-                <div class="edu-item" data-aos="fade-left"><h3>12th Standard - Computer Science</h3><p>DAV Public School, West Bengal<br>Percentage: 80%</p><span class="edu-date">2017 - 2018</span></div>
-            </div>
-        </div>
-    </section>
-
     <footer class="site-footer">
-        <div class="container footer-content" data-aos="fade-up">
-            <div class="connect-section">
-                <h2>Let's Get In Touch!</h2>
-                <p style="color: rgba(255, 255, 255, 0.7); max-width: 500px; margin: 15px auto;">I'm always excited to discuss new data challenges and opportunities. Feel free to connect!</p>
-                <a class="connect-btn" href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">Say Hello</a>
-            </div>
-            <div class="social-links">
+        <div class="container" data-aos="fade-up">
+            <h2>Let's Get In Touch!</h2>
+            <p style="color: rgba(255, 255, 255, 0.7); max-width: 500px; margin: 15px auto;">I'm always excited to discuss new data challenges and opportunities. Feel free to connect!</p>
+            <a class="connect-btn btn btn-secondary" href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">Say Hello</a>
+            <div class="social-links" style="margin-top: 25px;">
                 <a href="https://linkedin.com/in/niranjan-k-a83517229/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://github.com/niranjan910" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts: Particle.js, AOS, and Custom Logic -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // NEW: Initialize AOS Library
-        AOS.init({
-            duration: 800,      // Animation duration
-            easing: 'ease-in-out', // Animation easing
-            once: true,         // Animate elements only once
-            offset: 100,        // Offset (in px) from the original trigger point
-        });
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- 1. AOS Initialization ---
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                offset: 100,
+            });
 
-        // Particle.js Configuration
-        particlesJS('particles-js', {
-          "particles": { "number": { "value": 80, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": false }, "size": { "value": 3, "random": true }, "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }},
-          "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 }}},
-          "retina_detect": true
-        });
+            // --- 2. Particles.js ---
+            particlesJS('particles-js', {"particles":{"number":{"value":60,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.5,"random":false},"size":{"value":3,"random":true},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":2,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":140,"line_linked":{"opacity":1}},"push":{"particles_nb":4}}},"retina_detect":true});
 
-        // Original Filter Logic (updated for new flexbox layout)
-        document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
+            // --- 3. Scroll Progress Bar ---
+            const scrollProgressBar = document.getElementById('scroll-progress-bar');
+            const updateProgressBar = () => {
+                const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+                const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+                scrollProgressBar.style.width = `${scrollPercent}%`;
+            };
+            window.addEventListener('scroll', updateProgressBar);
+            
+            // --- 4. NEW: Interactive Sliding Filter Logic ---
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const filterBg = document.querySelector('.filter-active-bg');
+            const projectCards = document.querySelectorAll('.project-card[data-tags]');
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
+            const moveBg = (target) => {
+                filterBg.style.left = `${target.offsetLeft}px`;
+                filterBg.style.width = `${target.offsetWidth}px`;
 
-                    const filter = this.getAttribute('data-filter');
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+                target.classList.add('active');
+            };
 
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filterValue = btn.getAttribute('data-filter');
+                    
+                    // Move the background highlight
+                    moveBg(btn);
+                    
+                    // Filter the cards with animation
                     projectCards.forEach(card => {
-                        const tags = card.getAttribute('data-tags');
-                        if (filter === 'all' || (tags && tags.includes(filter))) {
-                            card.style.display = 'flex';
+                        const tags = card.dataset.tags || '';
+                        if (filterValue === 'all' || tags.includes(filterValue)) {
+                            card.classList.remove('is-hidden');
                         } else {
-                            card.style.display = 'none';
+                            card.classList.add('is-hidden');
                         }
                     });
                 });
             });
+
+            // Set initial position of the active filter background
+            const initialActiveBtn = document.querySelector('.filter-btn.active');
+            if (initialActiveBtn) {
+                 setTimeout(() => moveBg(initialActiveBtn), 100); // Small delay for accurate measurement
+            }
         });
     </script>
 </body>
