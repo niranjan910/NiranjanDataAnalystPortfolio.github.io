@@ -6,18 +6,17 @@
     <title>Niranjan Kumar | Data Analyst Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- NEW: Animate On Scroll (AOS) Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         /*
           ============================================
-          FINAL VISUAL REFRESH (VERSION 15) - THE PROFESSIONAL UPGRADE
-          - NEW: Added site-wide "Animate On Scroll" (AOS) effects. All content sections
-                 now fade and slide into view as the user scrolls for a dynamic,
-                 professional, and highly engaging user experience.
-          - The extraordinary particle header is maintained.
+          FINAL VISUAL REFRESH (VERSION 16) - FUNCTIONAL UPGRADE
+          - NEW: Added a "Show More" arrow button for the projects section.
+                 Initially shows 6 cards, clicking the arrow reveals 3 more at a time.
+          - NEW: Implemented fully functional JavaScript for the project filters.
+                 Filters now work with the "Show More" logic.
+          - The extraordinary particle header and AOS animations are maintained.
           ============================================
         */
 
@@ -105,6 +104,38 @@
         .project-links { margin-top: auto; }
         .project-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.9rem; font-weight: 600; color: var(--primary); padding: 8px 16px; border-radius: 4px; background-color: rgba(10, 102, 194, 0.1); transition: var(--transition); }
         .project-link:hover { color: white; background-color: var(--primary); }
+        
+        /* === NEW CSS FOR PROJECT SECTION === */
+        .show-more-container {
+            text-align: center;
+            margin-top: 40px; /* Space above the button */
+        }
+        .show-more-arrow {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            margin: 0 auto; /* Center the button itself */
+        }
+        .show-more-arrow:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-lg);
+        }
+        .hidden {
+            display: none !important; /* Utility class to hide elements */
+        }
+        /* ==================================== */
+
         .card-grid-8 { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 24px; margin-top: 30px; }
         .highlight-card { background: #fff; border: 1px solid var(--border-color); border-radius: 10px; padding: 16px; text-align: center; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: var(--transition); }
         .highlight-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
@@ -153,7 +184,6 @@
 
     <section id="about" class="intro">
         <div class="container">
-            <!-- AOS Animation Attributes Added -->
             <h1 data-aos="fade-up">Transforming Data <span>Into Insights</span></h1>
             <p data-aos="fade-up" data-aos-delay="100">A passionate data analyst with expertise in Python, SQL, and BI tools for cleaning, analyzing, and visualizing data. I specialize in turning complex datasets into clear, actionable insights that drive business decisions.</p>
             <div class="skills" data-aos="fade-up" data-aos-delay="200">
@@ -171,25 +201,44 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Here are some of the key projects I've worked on. Use the filters to see projects based on specific technologies.</p>
+            
+            <!-- NEW: Updated filter buttons -->
             <div class="projects-filter" data-aos="fade-up" data-aos-delay="200">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="python">Python</button>
-                <button class="filter-btn" data-filter="sql">SQL</button>
                 <button class="filter-btn" data-filter="power-bi">Power BI</button>
+                <button class="filter-btn" data-filter="tableau">Tableau</button>
+                <button class="filter-btn" data-filter="excel">Excel</button>
             </div>
             
+            <!-- NEW: Project cards now have cleaned 'data-tags' for filtering -->
             <div class="projects-grid">
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas seaborn My SQL"><img src="images/EV Project image.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">Data-Driven U.S. EV Adoption Insights with Python & MySQL</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">My SQL</span><span class="tech-tag">Folium</span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas seaborn numpy JSON"><img src="images/Covid 19.png" alt="COVID-19 Hospitalization Rates Analysis" class="project-img"><div class="project-content"><h3 class="project-title">COVID-19 Hospitalization Rates Analysis</h3><p class="project-description">An End-to-End Analysis with Python & JSON Data</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Seaborn</span><span class="tech-tag">JSON</span></div><div class="project-links"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python sql pandas folium"><img src="images/EV Project image.png" alt="U.S. Electric Vehicle Adoption Analysis" class="project-img"><div class="project-content"><h3 class="project-title">U.S. Electric Vehicle Adoption Analysis</h3><p class="project-description">Data-Driven U.S. EV Adoption Insights with Python & MySQL</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">SQL</span><span class="tech-tag">Folium</span></div><div class="project-links"><a href="https://github.com/niranjan910/Electric_Vehicle_Adoption_Analysis_Using_Python_SQL" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas seaborn numpy json"><img src="images/Covid 19.png" alt="COVID-19 Hospitalization Rates Analysis" class="project-img"><div class="project-content"><h3 class="project-title">COVID-19 Hospitalization Rates Analysis</h3><p class="project-description">An End-to-End Analysis with Python & JSON Data</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Seaborn</span><span class="tech-tag">JSON</span></div><div class="project-links"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
                 <div class="project-card" data-aos="fade-up" data-tags="python pandas seaborn csv"><img src="images/AI Job  image.png" alt="AI Job Market Analysis Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">AI Job Market Analysis 2025</h3><p class="project-description">Complete Workflow: Python-Based CSV Analysis</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Seaborn</span></div><div class="project-links"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img"><div class="project-content"><h3 class="project-title">The-Rollercoaster Analysis</h3><p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib tableau"><img src="images/The-Rollercoaster Analysis.png" alt="The-Rollercoaster Analysis" class="project-img"><div class="project-content"><h3 class="project-title">The-Rollercoaster Analysis</h3><p class="project-description">Analyzed global rollercoaster data to find trends in speed, height, and construction over decades.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Tableau</span></div><div class="project-links"><a href="https://github.com/niranjan910/The-Rollercoaster-Database" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
                 <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/E-commerce Return Rate Analysis.png" alt="E-commerce Return Rate Analysis" class="project-img"><div class="project-content"><h3 class="project-title">E-commerce Return Rate Analysis</h3><p class="project-description">E-commerce analytics project analyzing product returns to optimize pricing, discounts, and delivery, improving sales and reducing losses.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/E-commerce-Return-Rate-Analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
-                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/Bigbasket.png" alt="Inventory Optimization Analysis for BigBasket" class="project-img"><div class="project-content"><h3 class="project-title">Inventory Optimization Analysis for BigBasket</h3><p class="project-description">Optimizing BigBasket's inventory by analyzing demand patterns to reduce waste and improve stock efficiency.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib excel"><img src="images/Bigbasket.png" alt="Inventory Optimization Analysis for BigBasket" class="project-img"><div class="project-content"><h3 class="project-title">Inventory Optimization Analysis for BigBasket</h3><p class="project-description">Optimizing BigBasket's inventory by analyzing demand patterns to reduce waste and improve stock efficiency.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Excel</span></div><div class="project-links"><a href="https://github.com/niranjan910/Big_Basket_inventory_analysis" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                
+                <!-- EXAMPLE POWER BI CARD: Remember to replace 'power-bi-dashboard.png' with your actual image path -->
+                <div class="project-card" data-aos="fade-up" data-tags="power-bi sql excel dax"><img src="images/power-bi-dashboard.png" alt="Sales Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">Global Sales Performance Dashboard</h3><p class="project-description">An interactive Power BI dashboard tracking sales metrics, revenue, and regional performance.</p><div class="project-tech"><span class="tech-tag">Power BI</span><span class="tech-tag">DAX</span><span class="tech-tag">Excel</span></div><div class="project-links"><a href="#" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+                
                 <div class="project-card" data-aos="fade-up" data-tags="python pandas matplotlib"><img src="images/US_Accident_Analysis.png" alt="USA Accident Analysis" class="project-img"><div class="project-content"><h3 class="project-title">USA Accident Analysis</h3><p class="project-description">Analyzing USA accident data to identify trends, high-risk areas, and improve road safety measures.</p><div class="project-tech"><span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">Matplotlib</span></div><div class="project-links"><a href="https://github.com/niranjan910/US-Accident-Analytics" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+
+                <!-- EXAMPLE TABLEAU CARD: Remember to replace 'tableau-dashboard.png' with your actual image path -->
+                <div class="project-card" data-aos="fade-up" data-tags="tableau sql"><img src="images/tableau-dashboard.png" alt="HR Analytics Dashboard" class="project-img"><div class="project-content"><h3 class="project-title">HR Attrition Analytics</h3><p class="project-description">Tableau dashboard visualizing employee attrition rates, identifying key factors and trends.</p><div class="project-tech"><span class="tech-tag">Tableau</span><span class="tech-tag">SQL</span></div><div class="project-links"><a href="#" class="project-link" target="_blank"><i class="fab fa-github"></i> View Project</a></div></div></div>
+            </div>
+            
+            <!-- NEW: "Show More" arrow button container -->
+            <div class="show-more-container" data-aos="fade-up">
+                <button id="show-more-projects-btn" class="show-more-arrow hidden">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
         </div>
     </section>
 
+    <!-- ... rest of your HTML from <section id="portfolio-highlights"> downwards ... -->
     <section id="portfolio-highlights">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Highlights & Insights</h2>
@@ -264,12 +313,12 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // NEW: Initialize AOS Library
+        // Initialize AOS Library
         AOS.init({
-            duration: 800,      // Animation duration
-            easing: 'ease-in-out', // Animation easing
-            once: true,         // Animate elements only once
-            offset: 100,        // Offset (in px) from the original trigger point
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100,
         });
 
         // Particle.js Configuration
@@ -279,25 +328,92 @@
           "retina_detect": true
         });
 
-        // Original Filter Logic (no changes needed)
+        // --- NEW & IMPROVED SCRIPT FOR PROJECT FILTERING AND "SHOW MORE" ---
         document.addEventListener('DOMContentLoaded', function() {
+            // --- CONFIGURATION ---
+            // You can easily change these values
+            const INITIAL_CARDS_TO_SHOW = 6;
+            const CARDS_TO_SHOW_ON_CLICK = 3;
+
+            // --- DOM ELEMENT SELECTION ---
             const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
+            const allProjectCards = Array.from(document.querySelectorAll('.projects-grid .project-card'));
+            const showMoreBtn = document.getElementById('show-more-projects-btn');
+
+            let currentFilter = 'all';
+
+            // --- MAIN LOGIC FUNCTIONS ---
+
+            // Function to get the relevant cards based on the current filter
+            const getRelevantCards = () => {
+                return allProjectCards.filter(card => {
+                    if (currentFilter === 'all') {
+                        return true; // Show all cards if filter is 'all'
+                    }
+                    const cardTags = card.dataset.tags || '';
+                    // Check if the card's tags string includes the filter word
+                    return cardTags.split(' ').includes(currentFilter);
+                });
+            };
+
+            // Function to update the view (run on filter change or initial load)
+            const updateView = () => {
+                const relevantCards = getRelevantCards();
+
+                // Hide all cards to reset the view
+                allProjectCards.forEach(card => card.style.display = 'none');
+                
+                // Show the initial batch of relevant cards
+                relevantCards.slice(0, INITIAL_CARDS_TO_SHOW).forEach(card => {
+                    card.style.display = 'flex';
+                });
+
+                // Update the "Show More" button visibility
+                if (relevantCards.length > INITIAL_CARDS_TO_SHOW) {
+                    showMoreBtn.classList.remove('hidden');
+                } else {
+                    showMoreBtn.classList.add('hidden');
+                }
+                
+                // Refresh AOS to apply animations to newly visible items
+                AOS.refresh();
+            };
+            
+            // Function to handle showing more cards on button click
+            const showMore = () => {
+                const relevantCards = getRelevantCards();
+                const currentlyVisibleCount = relevantCards.filter(card => card.style.display === 'flex').length;
+                
+                const nextCardsToShow = relevantCards.slice(currentlyVisibleCount, currentlyVisibleCount + CARDS_TO_SHOW_ON_CLICK);
+                nextCardsToShow.forEach(card => card.style.display = 'flex');
+                
+                // Hide the button if all relevant cards are now visible
+                if (relevantCards.length <= currentlyVisibleCount + CARDS_TO_SHOW_ON_CLICK) {
+                    showMoreBtn.classList.add('hidden');
+                }
+                
+                AOS.refresh();
+            };
+
+            // --- EVENT LISTENERS ---
+
+            // 1. Filter button clicks
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     this.classList.add('active');
-                    const filterTag = this.getAttribute('data-filter');
-                    projectCards.forEach(card => {
-                        const cardTags = card.getAttribute('data-tags');
-                        if (filterTag === 'all' || (cardTags && cardTags.includes(filterTag))) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
+                    currentFilter = this.dataset.filter;
+                    updateView(); // Re-render the view with the new filter
                 });
             });
+
+            // 2. Show More button click
+            if(showMoreBtn) {
+               showMoreBtn.addEventListener('click', showMore);
+            }
+
+            // --- INITIAL PAGE LOAD ---
+            updateView(); 
         });
     </script>
 </body>
