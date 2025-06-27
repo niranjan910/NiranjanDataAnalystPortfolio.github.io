@@ -14,10 +14,10 @@
     <style>
         /*
           ============================================
-          ELITE PORTFOLIO REDESIGN - V3.2 (GALAXY VOYAGE)
-          - NEW: Immersive, multi-layered parallax space background.
-          - FEATURES: Animated stars, a distant galaxy/nebula, and drifting planets for a true "space voyage" feel.
-          - Replaces previous starfield effects for a more visually striking and complex aesthetic.
+          ELITE PORTFOLIO REDESIGN - V3.3 (GALAXY VOYAGE - FIX)
+          - FIX: Corrected a layering (z-index) issue that was hiding the animated background.
+          - UPGRADE: Replaced the subtle nebula texture with a high-impact galaxy image for a vivid space background.
+          - TWEAKED: Adjusted animations for planets and stars to be more dynamic and immediately visible.
           ============================================
         */
 
@@ -44,8 +44,7 @@
             font-family: var(--font-sans);
             color: var(--slate);
             -webkit-font-smoothing: antialiased;
-            /* The base color is now black for the space theme */
-            background: #000;
+            background: var(--dark-navy); /* Fallback background */
         }
         main { padding: 0 150px; }
         section { padding: 120px 0; position: relative; }
@@ -56,170 +55,128 @@
 
         /* --- 1. HERO SECTION & GALAXY BACKGROUND --- */
         #hero {
-            display: flex; justify-content: center; flex-direction: column;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
             min-height: 100vh;
             text-align: left;
             position: relative; 
-            overflow: hidden; 
-            /* Set the base color for the hero section, other sections can override */
-            background: var(--dark-navy);
+            overflow: hidden;
+            /* CRITICAL: No background color here, so the div behind it can be seen */
         }
         
-        /* NEW: GALAXY VOYAGE EFFECT */
-        .background-container {
+        /* NEW: GALAXY VOYAGE EFFECT CONTAINER */
+        #space-background {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            z-index: -1;
+            z-index: 0; /* Sits at the back of the section */
             background-color: #000;
-            /* Faint nebula/galaxy in the far background */
-            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            background-image: url('https://images.pexels.com/photos/1169754/pexels-photo-1169754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-position: center;
+            background-size: cover;
         }
 
-        @keyframes move-stars {
-            from { transform: translateY(0px); }
-            to { transform: translateY(-2000px); }
+        @keyframes move-stars-bg {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100%); }
         }
 
-        .stars, .stars-fast, .stars-faster {
+        .stars-p, .stars-p-fast, .stars-p-faster {
             position: absolute;
             top: 0; left: 0;
-            width: 100%; height: 2000px; /* Taller to allow for vertical movement */
+            width: 100%; height: 200%; /* Extra height for smooth animation loop */
             background-repeat: repeat;
-            opacity: 0.8;
+            animation: move-stars-bg linear infinite;
         }
 
-        /* Slowest star layer */
-        .stars {
-            background-image: radial-gradient(1px 1px at 20px 30px, #fff, rgba(255, 255, 255, 0)),
-                              radial-gradient(1px 1px at 40px 70px, #fff, rgba(255, 255, 255, 0)),
-                              radial-gradient(1px 1px at 50px 160px, #fff, rgba(255, 255, 255, 0)),
-                              radial-gradient(2px 2px at 90px 40px, #fff, rgba(255, 255, 255, 0));
-            background-size: 200px 200px;
-            animation: move-stars 150s linear infinite;
-        }
-        
-        /* Medium speed star layer */
-        .stars-fast {
-            background-image: radial-gradient(1px 1px at 50px 80px, #fff, rgba(255, 255, 255, 0)),
-                              radial-gradient(2px 2px at 60px 220px, #fff, rgba(255, 255, 255, 0));
-            background-size: 250px 250px;
-            animation: move-stars 100s linear infinite;
+        .stars-p {
+            background-image: 
+              radial-gradient(1px 1px at 10% 30%, white, #ffffff00),
+              radial-gradient(1px 1px at 80% 20%, white, #ffffff00),
+              radial-gradient(1px 1px at 45% 70%, white, #ffffff00);
+            background-size: 500px 500px;
+            animation-duration: 100s;
         }
 
-        /* Fastest star layer */
-        .stars-faster {
-            background-image: radial-gradient(2px 2px at 100px 100px, #fff, rgba(255, 255, 255, 0)),
-                              radial-gradient(2px 2px at 30px 240px, #fff, rgba(255, 255, 255, 0));
+        .stars-p-fast {
+            background-image: 
+              radial-gradient(1px 1px at 25% 55%, white, #ffffff00),
+              radial-gradient(2px 2px at 90% 80%, white, #ffffff00);
+            background-size: 400px 400px;
+            animation-duration: 60s;
+        }
+
+        .stars-p-faster {
+            background-image: 
+              radial-gradient(2px 2px at 50% 50%, white, #ffffff00),
+              radial-gradient(2px 2px at 5% 90%, white, #ffffff00);
             background-size: 300px 300px;
-            animation: move-stars 50s linear infinite;
+            animation-duration: 30s;
         }
-        
+
         /* Drifting Planets */
         .planet {
           position: absolute;
           border-radius: 50%;
-          background: #33405b; /* A generic dark planet color */
-          box-shadow: inset -15px -15px 30px rgba(0,0,0,0.7), inset 5px 5px 10px rgba(255,255,255,0.2);
-          animation: drift 200s linear infinite alternate;
+          background: #3d4e6d; 
+          box-shadow: inset -20px -20px 40px rgba(0,0,0,0.8), inset 8px 8px 15px rgba(255,255,255,0.25);
+          animation: drift ease-in-out infinite;
         }
 
         .planet-1 {
-          width: 80px; height: 80px;
-          top: 20%; left: -100px; /* Start off screen */
-          animation-duration: 180s;
+          width: 100px; height: 100px;
+          top: 15%; left: 10%;
+          animation-duration: 120s;
         }
         
         .planet-2 {
-          width: 50px; height: 50px;
-          top: 70%; left: -60px; /* Start off screen */
-          animation-duration: 120s;
-          background-color: #645443;
+          width: 60px; height: 60px;
+          top: 65%; left: 80%;
+          background-color: #8b6c42;
+          animation-duration: 80s;
         }
 
         @keyframes drift {
-          from { transform: translateX(-150px); }
-          to { transform: translateX(calc(100vw + 150px)); }
+          0% { transform: translate(0, 0) rotate(0deg); }
+          50% { transform: translate(40px, -60px) rotate(180deg); }
+          100% { transform: translate(0, 0) rotate(360deg); }
         }
 
         .hero-content {
-             position: relative; z-index: 1; display: flex; align-items: center; gap: 2rem;
-        }
-        #hero h1 {
-            margin: 0 0 20px 4px; color: var(--accent); font-family: var(--font-mono);
-            font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 400;
-        }
-        #hero .big-heading {
-            font-size: clamp(40px, 8vw, 75px); line-height: 1.1; font-weight: 800; color: var(--white);
-            text-shadow: 0 0 15px rgba(204, 214, 246, 0.2);
-        }
-        #hero .sub-heading {
-            font-size: clamp(35px, 7vw, 65px); color: var(--slate); font-weight: 700;
-        }
-        
-        /* Set section backgrounds to the dark navy to cover the space effect on scroll */
-        #about, #journey, #projects, #certs, #contact {
-          background-color: var(--dark-navy);
+             position: relative; 
+             z-index: 1; /* Sits on top of the #space-background */
+             display: flex; align-items: center; gap: 2rem;
         }
 
-        /* --- 2. GLASS CARDS WITH INTERACTIVE AURORA EFFECT --- */
+        #hero h1 { margin: 0 0 20px 4px; color: var(--accent); font-family: var(--font-mono); font-size: clamp(0.9rem, 2vw, 1.1rem); font-weight: 400; }
+        #hero .big-heading { font-size: clamp(40px, 8vw, 75px); line-height: 1.1; font-weight: 800; color: var(--white); text-shadow: 0 0 15px rgba(204, 214, 246, 0.2); }
+        #hero .sub-heading { font-size: clamp(35px, 7vw, 65px); color: var(--slate); font-weight: 700; }
+        
+        /* Ensures other sections have a solid background, hiding the animation on scroll */
+        #about, #journey, #projects, #certs, #contact, .footer {
+            background: var(--dark-navy);
+        }
+
+        /* --- GLASS CARDS AND OTHER STYLES (Unchanged) --- */
         .glass-grid { list-style: none; display: grid; gap: 25px; }
         .projects-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
         .certs-grid { grid-template-columns: repeat(4, 1fr); }
-
-        .glass-card {
-            background-color: rgba(17, 34, 64, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: var(--border-radius);
-            border: 1px solid var(--lightest-navy);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden; 
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: var(--y); left: var(--x);
-            transform: translate(-50%, -50%);
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle closest-side, var(--accent), transparent);
-            border-radius: 50%;
-            opacity: 0;
-            transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
-        }
-        .glass-card:hover::before {
-            width: 400px;
-            height: 400px;
-            opacity: 0.15;
-        }
-        .card-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
+        .glass-card { background-color: rgba(17, 34, 64, 0.7); backdrop-filter: blur(10px); border-radius: var(--border-radius); border: 1px solid var(--lightest-navy); transition: var(--transition); position: relative; overflow: hidden; }
+        .glass-card::before { content: ''; position: absolute; top: var(--y); left: var(--x); transform: translate(-50%, -50%); width: 0; height: 0; background: radial-gradient(circle closest-side, var(--accent), transparent); border-radius: 50%; opacity: 0; transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease; }
+        .glass-card:hover::before { width: 400px; height: 400px; opacity: 0.15; }
+        .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
         .project-image { width: 100%; height: 180px; object-fit: cover; }
         .project-content-inner, .cert-content-inner { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; }
         .project-title, .cert-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; }
         .cert-title { font-size: 1.1rem; }
-
-        /* --- 3. OTHER POLISHES --- */
-        .btn {
-            border: 1px solid var(--accent); transition: var(--transition);
-            box-shadow: 0 0 5px rgba(100, 255, 218, 0);
-        }
-        .btn:hover {
-            background-color: var(--accent-tint); box-shadow: 0 0 15px rgba(100, 255, 218, 0.5);
-            transform: translateY(-3px);
-        }
+        .btn { border: 1px solid var(--accent); transition: var(--transition); box-shadow: 0 0 5px rgba(100, 255, 218, 0); }
+        .btn:hover { background-color: var(--accent-tint); box-shadow: 0 0 15px rgba(100, 255, 218, 0.5); transform: translateY(-3px); }
         #about .styled-pic .wrapper { transition: var(--transition); }
         #about .styled-pic .wrapper:hover { box-shadow: 0 0 25px var(--accent-tint); transform: scale(1.02); }
 
         /* --- Minified Base CSS --- */
-       :root{--dark-navy:#0a192f;--mid-navy:#112240;--lightest-navy:#233554;--slate:#8892b0;--light-slate:#a8b2d1;--lightest-slate:#ccd6f6;--white:#e6f1ff;--accent:#64ffda;--accent-tint:rgba(100,255,218,0.1);--font-sans:'Inter',sans-serif;--font-mono:'SF Mono','Fira Code',monospace;--border-radius:4px;--nav-height:100px;--transition:all 0.25s cubic-bezier(0.645,0.045,0.355,1)}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}h2.section-heading{display:flex;align-items:center;margin-bottom:50px;width:100%;white-space:nowrap;font-weight:800;font-size:clamp(28px,5vw,34px);color:var(--white)}h2.section-heading::after{content:'';display:block;width:300px;height:1px;margin-left:20px;background-image:linear-gradient(to left,var(--lightest-navy),transparent)}p{margin-bottom:15px;line-height:1.7}.btn{color:var(--accent);background-color:transparent;border:1px solid var(--accent);border-radius:var(--border-radius);padding:.75rem 1rem;font-size:clamp(0.8rem, 2vw, 0.9rem);font-family:var(--font-mono);cursor:pointer;transition:var(--transition);box-shadow:0 0 5px rgba(100,255,218,0)}.btn:hover{background-color:var(--accent-tint);box-shadow:0 0 15px rgba(100,255,218,.5);transform:translateY(-3px)}.btn-large{padding:1.25rem 2rem}.fade-in-section{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s ease-out;will-change:opacity,transform}.fade-in-section.is-visible{opacity:1;transform:translateY(0)}.main-nav{display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;width:100%;padding:0 50px;height:var(--nav-height);background-color:rgba(10,25,47,.85);backdrop-filter:blur(10px);z-index:11;transition:var(--transition);transform:translateY(-100%)}.main-nav.scrolled{transform:translateY(0)}.nav-logo a{color:var(--accent);font-weight:800;font-size:1.4rem}.nav-links ol{list-style:none;display:flex;align-items:center}.nav-links li{margin:0 15px;font-family:var(--font-mono);font-size:clamp(0.8rem, 2vw, 0.9rem);}.nav-links li a{color:var(--lightest-slate);transition:var(--transition);padding:10px}.nav-links li a:hover,.nav-links li a.active{color:var(--accent)}.nav-links li .resume-btn{margin-left:15px}.hamburger-menu{display:none;z-index:12}#hero p{max-width:540px;margin:20px 0 0}.animated-robot{width:clamp(100px,15vw,150px);height:auto;display:block}#robot-arm{transform-origin:75% 70%;animation:wave-animation 2.5s infinite}@keyframes wave-animation{0%{transform:rotate(0deg)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}#about .inner{display:grid;grid-template-columns:3fr 2fr;gap:50px}#about ul.skills-list{display:grid;grid-template-columns:repeat(2,minmax(140px,200px));gap:0 10px;list-style:none;margin:20px 0 0;padding:0}#about ul.skills-list li{position:relative;margin-bottom:10px;padding-left:20px;font-family:var(--font-mono);font-size:clamp(0.8rem, 2vw, 0.9rem);;}#about ul.skills-list li::before{content:"▹";position:absolute;left:0;color:var(--accent)}#about .styled-pic{position:relative;max-width:300px}#about .styled-pic .wrapper{display:block;position:relative;width:100%;border-radius:var(--border-radius);transition:var(--transition)}#about .styled-pic .wrapper img{width:100%;height:100%;object-fit:cover;border-radius:var(--border-radius)}#about .styled-pic .wrapper:hover{box-shadow:0 0 25px var(--accent-tint);transform:scale(1.02)}#journey .timeline{position:relative;max-width:750px;margin:0 auto}#journey .timeline::after{content:'';position:absolute;width:2px;background-color:var(--lightest-navy);top:0;bottom:0;left:20px;margin-left:-1px}#journey .timeline-item{padding:10px 40px 10px 60px;position:relative}#journey .timeline-item::before{content:' ';height:18px;width:18px;position:absolute;top:22px;left:20px;margin-left:-9px;background-color:var(--accent);border-radius:50%;z-index:1}.timeline-content h3{font-size:1.3rem;margin-bottom:5px}.timeline-content p{margin:0;color:var(--light-slate)}.timeline-date{font-family:var(--font-mono);color:var(--slate);font-size:clamp(0.7rem, 2vw, 0.8rem);margin-bottom:8px}.projects-footer{text-align:center;margin-top:60px}.hidden{display:none!important}.cert-content-inner{text-align:center;justify-content:space-between}.cert-issuer{font-size:.8rem;color:var(--slate);margin:5px 0 15px}.cert-link{display:inline-block;font-family:var(--font-mono);font-size:clamp(0.7rem, 2vw, 0.8rem);}.cert-link i{margin-left:5px;font-size:.8em}#contact{text-align:center;max-width:600px;margin:0 auto;padding-bottom:120px}.contact-cta-container{margin-top:50px;width:100%;display:flex;justify-content:center}#contact .section-heading{font-size:1.1rem;color:var(--accent);justify-content:center;margin:10px 0 20px}#contact .section-heading::after{display:none}#contact .title{font-size:clamp(40px,5vw,60px);font-weight:800;color:var(--white)}.footer{text-align:center;padding:20px;font-family:var(--font-mono);font-size:clamp(0.7rem, 2vw, 0.8rem);background:var(--dark-navy)}@media (max-width:1200px){.certs-grid{grid-template-columns:repeat(2,1fr)}}@media (max-width:1080px){main{padding:0 100px}.hero-content{flex-direction:column;text-align:center}#hero{align-items:center}.hero-cta-container{justify-content:center}}@media (max-width:768px){main{padding:0 50px}section{padding:100px 0}h2.section-heading::after{display:none}.hero-content{text-align:left}#hero{align-items:flex-start}#about .inner{grid-template-columns:1fr}#about .styled-pic{margin:50px auto 0;max-width:250px}.animated-robot{display:none}.main-nav{padding:0 25px}.nav-links{display:none;position:fixed;top:0;right:0;height:100vh;width:min(75vw,400px);background-color:var(--light-navy);flex-direction:column;justify-content:center;align-items:center;transition:transform .3s ease-in-out;transform:translateX(100%)}.nav-links.active{transform:translateX(0)}.nav-links ol{flex-direction:column}.nav-links li{margin:20px 0;font-size:1.3rem}.nav-links .resume-btn{margin-top:30px}.hamburger-menu{display:flex;flex-direction:column;justify-content:space-around;width:30px;height:25px;background:transparent;border:none;cursor:pointer;z-index:12}.hamburger-menu .bar{width:30px;height:3px;background-color:var(--accent);border-radius:5px;transition:all .3s linear;transform-origin:1px}.hamburger-menu.active .bar:nth-child(1){transform:rotate(45deg)}.hamburger-menu.active .bar:nth-child(2){opacity:0}.hamburger-menu.active .bar:nth-child(3){transform:rotate(-45deg)}}@media (max-width:576px){.certs-grid{grid-template-columns:1fr}main{padding:0 25px}}
+        h2.section-heading{display:flex;align-items:center;margin-bottom:50px;width:100%;white-space:nowrap;font-weight:800;font-size:clamp(28px,5vw,34px);color:var(--white)}h2.section-heading::after{content:'';display:block;width:300px;height:1px;margin-left:20px;background-image:linear-gradient(to left,var(--lightest-navy),transparent)}p{margin-bottom:15px;line-height:1.7}a{text-decoration:none;color:var(--accent)}.btn{color:var(--accent);background-color:transparent;border:1px solid var(--accent);border-radius:var(--border-radius);padding:.75rem 1rem;font-size:clamp(0.8rem,2vw,0.9rem);font-family:var(--font-mono);cursor:pointer;transition:var(--transition);box-shadow:0 0 5px rgba(100,255,218,0)}.btn:hover{background-color:var(--accent-tint);box-shadow:0 0 15px rgba(100,255,218,.5);transform:translateY(-3px)}.btn-large{padding:1.25rem 2rem}.fade-in-section{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s ease-out;will-change:opacity,transform}.fade-in-section.is-visible{opacity:1;transform:translateY(0)}.main-nav{display:flex;justify-content:space-between;align-items:center;position:fixed;top:0;left:0;width:100%;padding:0 50px;height:var(--nav-height);background-color:rgba(10,25,47,.85);backdrop-filter:blur(10px);z-index:11;transition:var(--transition);transform:translateY(-100%)}.main-nav.scrolled{transform:translateY(0)}.nav-logo a{color:var(--accent);font-weight:800;font-size:1.4rem}.nav-links ol{list-style:none;display:flex;align-items:center}.nav-links li{margin:0 15px;font-family:var(--font-mono);font-size:clamp(0.8rem,2vw,0.9rem)}.nav-links li a{color:var(--lightest-slate);transition:var(--transition);padding:10px}.nav-links li a:hover,.nav-links li a.active{color:var(--accent)}.nav-links li .resume-btn{margin-left:15px}.hamburger-menu{display:none;z-index:12}#hero p{max-width:540px;margin:20px 0 0}.animated-robot{width:clamp(100px,15vw,150px);height:auto;display:block}#robot-arm{transform-origin:75% 70%;animation:wave-animation 2.5s infinite}@keyframes wave-animation{0%{transform:rotate(0deg)}10%{transform:rotate(14deg)}20%{transform:rotate(-8deg)}30%{transform:rotate(14deg)}40%{transform:rotate(-4deg)}50%{transform:rotate(10deg)}60%{transform:rotate(0deg)}100%{transform:rotate(0deg)}}#about .inner{display:grid;grid-template-columns:3fr 2fr;gap:50px}#about ul.skills-list{display:grid;grid-template-columns:repeat(2,minmax(140px,200px));gap:0 10px;list-style:none;margin:20px 0 0;padding:0}#about ul.skills-list li{position:relative;margin-bottom:10px;padding-left:20px;font-family:var(--font-mono);font-size:clamp(0.8rem,2vw,0.9rem)}#about ul.skills-list li::before{content:"▹";position:absolute;left:0;color:var(--accent)}#about .styled-pic{position:relative;max-width:300px}#about .styled-pic .wrapper{display:block;position:relative;width:100%;border-radius:var(--border-radius);transition:var(--transition)}#about .styled-pic .wrapper img{width:100%;height:100%;object-fit:cover;border-radius:var(--border-radius)}#about .styled-pic .wrapper:hover{box-shadow:0 0 25px var(--accent-tint);transform:scale(1.02)}#journey .timeline{position:relative;max-width:750px;margin:0 auto}#journey .timeline::after{content:'';position:absolute;width:2px;background-color:var(--lightest-navy);top:0;bottom:0;left:20px;margin-left:-1px}#journey .timeline-item{padding:10px 40px 10px 60px;position:relative}#journey .timeline-item::before{content:' ';height:18px;width:18px;position:absolute;top:22px;left:20px;margin-left:-9px;background-color:var(--accent);border-radius:50%;z-index:1}.timeline-content h3{font-size:1.3rem;margin-bottom:5px}.timeline-content p{margin:0;color:var(--light-slate)}.timeline-date{font-family:var(--font-mono);color:var(--slate);font-size:clamp(0.7rem,2vw,0.8rem);margin-bottom:8px}.projects-footer{text-align:center;margin-top:60px}.hidden{display:none!important}.cert-content-inner{text-align:center;justify-content:space-between}.cert-issuer{font-size:.8rem;color:var(--slate);margin:5px 0 15px}.cert-link{display:inline-block;font-family:var(--font-mono);font-size:clamp(0.7rem,2vw,0.8rem)}.cert-link i{margin-left:5px;font-size:.8em}#contact{text-align:center;max-width:600px;margin:0 auto;padding-bottom:120px}.contact-cta-container{margin-top:50px;width:100%;display:flex;justify-content:center}#contact .section-heading{font-size:1.1rem;color:var(--accent);justify-content:center;margin:10px 0 20px}#contact .section-heading::after{display:none}#contact .title{font-size:clamp(40px,5vw,60px);font-weight:800;color:var(--white)}.footer{text-align:center;padding:20px;font-family:var(--font-mono);font-size:clamp(0.7rem,2vw,0.8rem)}@media (max-width:1200px){.certs-grid{grid-template-columns:repeat(2,1fr)}}@media (max-width:1080px){main{padding:0 100px}.hero-content{flex-direction:column;text-align:center}#hero{align-items:center}}@media (max-width:768px){main{padding:0 50px}section{padding:100px 0}h2.section-heading::after{display:none}.hero-content{text-align:left}#hero{align-items:flex-start}#about .inner{grid-template-columns:1fr}#about .styled-pic{margin:50px auto 0;max-width:250px}.animated-robot{display:none}.main-nav{padding:0 25px}.nav-links{display:none;position:fixed;top:0;right:0;height:100vh;width:min(75vw,400px);background-color:var(--mid-navy);flex-direction:column;justify-content:center;align-items:center;transition:transform .3s ease-in-out;transform:translateX(100%)}.nav-links.active{transform:translateX(0)}.nav-links ol{flex-direction:column}.nav-links li{margin:20px 0;font-size:1.3rem}.nav-links .resume-btn{margin-top:30px}.hamburger-menu{display:flex;flex-direction:column;justify-content:space-around;width:30px;height:25px;background:transparent;border:none;cursor:pointer;z-index:12}.hamburger-menu .bar{width:30px;height:3px;background-color:var(--accent);border-radius:5px;transition:all .3s linear;transform-origin:1px}.hamburger-menu.active .bar:nth-child(1){transform:rotate(45deg)}.hamburger-menu.active .bar:nth-child(2){opacity:0}.hamburger-menu.active .bar:nth-child(3){transform:rotate(-45deg)}}@media (max-width:576px){.certs-grid{grid-template-columns:1fr}main{padding:0 25px}}
     </style>
 </head>
 <body>
@@ -242,17 +199,17 @@
     </nav>
 
     <main>
-        <!-- The hero section now contains the background elements -->
         <section id="hero">
-            <!-- NEW: Background Container -->
-            <div class="background-container">
-                <div class="stars"></div>
-                <div class="stars-fast"></div>
-                <div class="stars-faster"></div>
+            <!-- All background elements are now in a dedicated div -->
+            <div id="space-background">
+                <div class="stars-p"></div>
+                <div class="stars-p-fast"></div>
+                <div class="stars-p-faster"></div>
                 <div class="planet planet-1"></div>
                 <div class="planet planet-2"></div>
             </div>
 
+            <!-- The hero content is separate and renders on top -->
             <div class="hero-content">
                 <div>
                     <h1>Hi, my name is</h1>
@@ -267,6 +224,7 @@
             </div>
         </section>
 
+        <!-- The rest of your content remains unchanged -->
         <section id="about" class="fade-in-section">
              <h2 class="section-heading">01. About Me</h2>
             <div class="inner">
@@ -325,7 +283,6 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- AURORA CARD EFFECT ---
         const cards = document.querySelectorAll('.glass-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', e => {
@@ -337,7 +294,6 @@
             });
         });
 
-        // --- Minified and self-contained JS ---
         const sections=document.querySelectorAll('.fade-in-section');const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}})},{rootMargin:'0px 0px -100px 0px'});sections.forEach(section=>observer.observe(section));const nav=document.getElementById('mainNav');const hamburger=document.getElementById('hamburgerMenu');const navLinks=document.getElementById('navLinks');let lastScrollY=window.scrollY;window.addEventListener('scroll',()=>{if(window.scrollY>50)nav.classList.add('scrolled');else nav.classList.remove('scrolled');lastScrollY=window.scrollY});hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');navLinks.classList.toggle('active')});navLinks.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{hamburger.classList.remove('active');navLinks.classList.remove('active')})});const navAnchors=document.querySelectorAll('.nav-links ol li a');const contentSections=document.querySelectorAll('main section');const activateNavLink=()=>{let currentSectionId='';contentSections.forEach(section=>{const sectionTop=section.offsetTop;if(window.pageYOffset>=sectionTop-150){currentSectionId=section.getAttribute('id')}});navAnchors.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')===`#${currentSectionId}`){a.classList.add('active')}})};window.addEventListener('scroll',activateNavLink);
     });
     </script>
