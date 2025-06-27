@@ -14,14 +14,12 @@
     <style>
         /*
           ============================================
-          ELITE PORTFOLIO REIMAGINED - V6.0 (AESTHETIC & ARTISANAL)
-          - NEW: Animated Gradient Aurora background for a living, breathing feel.
-          - NEW: Sophisticated "slide & fade" reveal animations for all text and content.
-          - NEW: Scroll-driven animations for section heading lines that draw themselves in.
-          - NEW: Interactive "Spotlight" effect on all cards; a glow follows the cursor.
-          - NEW: Added "Skip to Content" link for superior accessibility.
-          - REFINED: Complete overhaul of typography, spacing, and micro-interactions.
-          - POLISHED: Code is modernized, extensively commented, and uses latest best practices.
+          ELITE PORTFOLIO REIMAGINED - V6.1 (FINAL POLISH)
+          - NEW: Dynamic moving starfield is back in the hero section by popular demand.
+          - NEW: Subtle, elegant glow effect added to the main heading "Niranjan Kumar".
+          - FIXED: "My Journey" timeline alignment has been perfected.
+          - CLEANED: Period removed from main heading for a cleaner look.
+          - RETAINED: All aesthetic features from V6.0, including aurora, spotlight cards, and reveals.
           ============================================
         */
 
@@ -58,37 +56,35 @@
             color: var(--slate);
             -webkit-font-smoothing: antialiased;
             background-color: var(--space-black-blue);
-            
-            /* The new animated aurora background */
-            background-image: radial-gradient(at 47% 33%, hsl(209.79, 89%, 15%) 0, transparent 59%), 
-                              radial-gradient(at 82% 65%, hsl(211.33, 93%, 20%) 0, transparent 55%);
-            
             line-height: 1.5;
             overflow-x: hidden;
         }
 
-        /* Skip to Content Link for accessibility */
+        /* --- BACKGROUND EFFECTS CONTAINER --- */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .aurora-background {
+            background-image: radial-gradient(at 47% 33%, hsl(209.79, 89%, 15%) 0, transparent 59%), 
+                              radial-gradient(at 82% 65%, hsl(211.33, 93%, 20%) 0, transparent 55%);
+            width: 100%;
+            height: 100%;
+        }
+
         .skip-to-content {
-            position: absolute;
-            top: auto;
-            left: -999px;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            z-index: -999;
-            padding: 1rem;
-            background-color: var(--accent);
-            color: var(--dark-navy);
-            border-radius: var(--border-radius);
-            font-weight: 700;
+            position: absolute; top: auto; left: -999px;
+            width: 1px; height: 1px; overflow: hidden; z-index: -999;
+            padding: 1rem; background-color: var(--accent);
+            color: var(--dark-navy); border-radius: var(--border-radius); font-weight: 700;
         }
         .skip-to-content:focus {
-            top: 1rem;
-            left: 1rem;
-            width: auto;
-            height: auto;
-            overflow: auto;
-            z-index: 10000;
+            top: 1rem; left: 1rem; width: auto;
+            height: auto; overflow: auto; z-index: 10000;
         }
 
         main { padding: 0 150px; position: relative; }
@@ -99,74 +95,52 @@
         a { text-decoration: none; color: var(--accent); transition: var(--transition-fast); }
         a:hover, button:hover { color: var(--accent); filter: brightness(1.2); }
 
-        /* --- MODERN REVEAL ANIMATIONS --- */
         .reveal {
-            opacity: 0;
-            transform: translateY(20px);
+            opacity: 0; transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             will-change: opacity, transform;
         }
-        .reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Staggered reveals for list items */
-        .reveal-child {
-            transition-delay: var(--delay, 0s);
-        }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .reveal-child { transition-delay: var(--delay, 0s); }
 
         /* --- NAVIGATION --- */
         .main-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 0 50px;
-            height: var(--nav-height);
-            background-color: transparent; /* Start transparent */
-            z-index: 11;
-            transition: var(--transition-slow);
-            transform: translateY(0);
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; right: 0;
+            padding: 0 50px; height: var(--nav-height); background-color: transparent;
+            z-index: 11; transition: var(--transition-slow);
         }
         .main-nav.scrolled {
-            transform: translateY(0);
-            background-color: rgba(2, 12, 27, 0.85);
-            backdrop-filter: blur(10px);
-            height: 70px; /* Shrink on scroll */
-            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+            background-color: rgba(2, 12, 27, 0.85); backdrop-filter: blur(10px);
+            height: 70px; box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
         }
-        .nav-logo a {
-            color: var(--accent);
-            font-weight: 800;
-            font-size: 1.8rem;
-            font-family: var(--font-mono);
-        }
-        .nav-links ol {
-            list-style: none;
-            display: flex;
-            align-items: center;
-        }
+        .nav-logo a { color: var(--accent); font-weight: 800; font-size: 1.8rem; font-family: var(--font-mono); }
+        .nav-links ol { list-style: none; display: flex; align-items: center; }
         .nav-links li { margin: 0 1.25rem; font-family: var(--font-mono); }
         .nav-links li a { color: var(--lightest-slate); padding: 0.75rem; font-size: 0.9rem; }
         .nav-links li a.active { color: var(--accent); }
         .hamburger-menu { display: none; }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO & STARFIELD SECTION --- */
         #hero {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            min-height: 100vh;
-            text-align: left;
+            display: flex; justify-content: center; flex-direction: column;
+            min-height: 100vh; text-align: left; position: relative;
         }
+        #stars-container {
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            overflow: hidden; z-index: -1; /* Behind content, but on top of fixed BG */
+        }
+        .star {
+            position: absolute; background-color: var(--white);
+            border-radius: 50%; animation: move-stars linear infinite;
+        }
+        @keyframes move-stars {
+            from { transform: translateY(-50px); } /* Start slightly off-screen */
+            to { transform: translateY(100vh); } /* Move to bottom of viewport */
+        }
+
         #hero h1, #hero h2, #hero h3, #hero p, .hero-cta-container {
-            /* For individual reveals */
-            opacity: 0;
-            animation: fadeInSlideUp 0.8s forwards;
+            opacity: 0; animation: fadeInSlideUp 0.8s forwards;
         }
         #hero h1 { animation-delay: 100ms; }
         #hero .big-heading { animation-delay: 200ms; }
@@ -180,153 +154,82 @@
         }
 
         #hero h1 { 
-            margin: 0 0 1.5rem 0.25rem; 
-            color: var(--accent); 
-            font-family: var(--font-mono); 
-            font-size: clamp(1rem, 2vw, 1.1rem); 
-            font-weight: 400;
+            margin: 0 0 1.5rem 0.25rem; color: var(--accent); font-family: var(--font-mono); 
+            font-size: clamp(1rem, 2vw, 1.1rem); font-weight: 400;
         }
         #hero .big-heading { 
-            font-size: clamp(40px, 8vw, 80px); 
-            font-weight: 800; 
-            color: var(--white);
+            font-size: clamp(40px, 8vw, 80px); font-weight: 800; color: var(--white);
+            /* NEW: Glow effect */
+            text-shadow: 0 0 30px rgba(100, 255, 218, 0.4);
         }
-        #hero .sub-heading { 
-            font-size: clamp(35px, 7vw, 70px); 
-            color: var(--slate); 
-            font-weight: 700; 
-        }
+        #hero .sub-heading { font-size: clamp(35px, 7vw, 70px); color: var(--slate); font-weight: 700; }
         #hero p { max-width: 580px; margin-top: 1.5rem; }
         .hero-cta-container { margin-top: 3rem; }
 
         /* --- GENERAL COMPONENTS --- */
         .btn {
-            color: var(--accent);
-            background-color: transparent;
-            border: 1px solid var(--accent);
-            border-radius: var(--border-radius);
-            padding: 0.75rem 1.75rem;
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-            font-family: var(--font-mono);
-            cursor: pointer;
-            transition: var(--transition-fast);
-            line-height: 1;
+            color: var(--accent); background-color: transparent; border: 1px solid var(--accent);
+            border-radius: var(--border-radius); padding: 0.75rem 1.75rem; font-size: 0.9rem;
+            font-family: var(--font-mono); cursor: pointer; transition: var(--transition-fast); line-height: 1;
         }
         .btn:hover {
-            background-color: var(--accent-tint);
-            transform: translateY(-3px);
+            background-color: var(--accent-tint); transform: translateY(-3px);
             box-shadow: 0 5px 15px -5px var(--accent-tint);
         }
         .btn-large { padding: 1.25rem 2rem; }
         
         h2.section-heading {
-            display: flex;
-            align-items: center;
-            margin-bottom: 3rem;
-            font-size: clamp(26px, 5vw, 32px);
-            color: var(--white);
-            width: 100%;
+            display: flex; align-items: center; margin-bottom: 3rem;
+            font-size: clamp(26px, 5vw, 32px); color: var(--white); width: 100%;
         }
         h2.section-heading::after {
-            content: '';
-            display: block;
-            position: relative;
-            flex-grow: 1;
-            height: 1px;
-            margin-left: 1.5rem;
-            background-color: var(--lightest-navy);
-            /* This is for the scroll-driven animation */
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.8s ease-out;
+            content: ''; display: block; position: relative; flex-grow: 1;
+            height: 1px; margin-left: 1.5rem; background-color: var(--lightest-navy);
+            transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-out;
         }
-        h2.section-heading.is-visible::after {
-            transform: scaleX(1);
-        }
+        h2.section-heading.is-visible::after { transform: scaleX(1); }
 
         /* --- ABOUT SECTION --- */
-        #about .inner {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 50px;
-        }
-        #about .styled-pic {
-            position: relative;
-            max-width: 300px;
-            margin: auto;
-        }
-        #about .styled-pic .wrapper {
-            position: relative;
-            border-radius: var(--border-radius);
-            transition: var(--transition-fast);
-        }
-        #about .styled-pic .wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--border-radius);
-        }
+        #about .inner { display: grid; grid-template-columns: 3fr 2fr; gap: 50px; }
+        #about .styled-pic { position: relative; max-width: 300px; margin: auto; }
+        #about .styled-pic .wrapper { position: relative; border-radius: var(--border-radius); transition: var(--transition-fast); }
+        #about .styled-pic .wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--border-radius); }
         #about .styled-pic .wrapper:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 10px 10px 0px -2px var(--accent-tint);
+            transform: translate(-3px, -3px); box-shadow: 10px 10px 0 -2px var(--accent-tint);
         }
-        
         ul.skills-list {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(160px, 220px));
-            gap: 0.5rem 1rem;
-            list-style: none;
-            margin-top: 2rem;
+            display: grid; grid-template-columns: repeat(2, minmax(160px, 220px));
+            gap: 0.5rem 1rem; list-style: none; margin-top: 2rem;
         }
         ul.skills-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            font-family: var(--font-mono);
-            font-size: clamp(0.85rem, 2vw, 0.9rem);
+            position: relative; padding-left: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem;
         }
         ul.skills-list li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
+            content: "▹"; position: absolute; left: 0; color: var(--accent);
         }
 
-        /* --- JOURNEY SECTION --- */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+        /* --- JOURNEY SECTION (FIXED ALIGNMENT) --- */
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
         .timeline::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: var(--lightest-navy);
-            top: 0; bottom: 0;
-            left: 0;
+            content: ''; position: absolute; width: 2px;
+            background-color: var(--lightest-navy); top: 0.5rem; bottom: 0; left: 7px; /* Positioned precisely */
         }
         .timeline-item {
-            padding: 0.5rem 0 2.5rem 2.5rem;
+            padding: 0.5rem 0 2.5rem 30px; /* Adjusted padding */
             position: relative;
         }
         .timeline-item::before {
-            content: '';
-            height: 15px; width: 15px;
-            position: absolute;
-            top: 0.5rem;
-            left: 0;
-            transform: translateX(-50%);
-            background-color: var(--accent);
-            border-radius: 50%;
-            z-index: 1;
+            content: ''; height: 15px; width: 15px;
+            position: absolute; top: 0.5rem;
+            left: 7px; /* Aligned with the line */
+            transform: translateX(-50%); /* Centered on the line */
+            background-color: var(--accent); border-radius: 50%; z-index: 1;
         }
         .timeline-content h3 { font-size: 1.3rem; margin-bottom: 0.25rem; }
         .timeline-content p { color: var(--light-slate); margin: 0; }
         .timeline-date {
-            font-family: var(--font-mono);
-            color: var(--slate);
-            font-size: clamp(0.75rem, 2vw, 0.8rem);
-            margin-bottom: 0.75rem;
+            font-family: var(--font-mono); color: var(--slate);
+            font-size: clamp(0.75rem, 2vw, 0.8rem); margin-bottom: 0.75rem;
         }
 
         /* --- PROJECTS & CARDS --- */
@@ -336,50 +239,34 @@
         
         .spotlight-card {
             background: linear-gradient(135deg, var(--mid-navy) 0%, var(--dark-navy) 100%);
-            border-radius: var(--border-radius);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--lightest-navy);
+            border-radius: var(--border-radius); transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative; overflow: hidden; border: 1px solid var(--lightest-navy);
         }
-        /* Spotlight Effect */
         .spotlight-card::before {
-            content: "";
-            position: absolute;
-            top: var(--y, 50%); left: var(--x, 50%);
-            transform: translate(-50%, -50%);
-            width: 0px; height: 0px;
+            content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%);
+            transform: translate(-50%, -50%); width: 0; height: 0;
             background: radial-gradient(circle closest-side, var(--accent), transparent);
-            opacity: 0;
-            transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+            opacity: 0; transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
         }
         .spotlight-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7);
+            transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7);
             border-color: var(--accent);
         }
-        .spotlight-card:hover::before {
-            width: 300px;
-            height: 300px;
-            opacity: 0.1;
-        }
+        .spotlight-card:hover::before { width: 300px; height: 300px; opacity: 0.1; }
         
         .card-content {
-            position: relative; z-index: 2;
-            height: 100%; display: flex; flex-direction: column;
+            position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column;
         }
         .project-image { width: 100%; height: 180px; object-fit: cover; }
         .card-inner {
-            padding: 1.75rem; display: flex;
-            flex-direction: column; flex-grow: 1;
+            padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1;
         }
         .project-title, .cert-title { font-size: 1.3rem; margin-bottom: 0.75rem; }
         .project-title a:hover { color: var(--accent); }
         .project-description { color: var(--light-slate); flex-grow: 1; font-size: 1rem; }
         .project-tech-list {
             list-style: none; display: flex; flex-wrap: wrap; gap: 1rem;
-            font-family: var(--font-mono); font-size: 0.8rem; margin-top: 1.5rem;
-            color: var(--slate);
+            font-family: var(--font-mono); font-size: 0.8rem; margin-top: 1.5rem; color: var(--slate);
         }
         .projects-footer { text-align: center; margin-top: 4rem; }
         .cert-inner { text-align: center; justify-content: space-between; }
@@ -395,11 +282,8 @@
 
         /* --- FOOTER --- */
         .footer {
-            text-align: center;
-            padding: 1.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--slate);
+            text-align: center; padding: 1.5rem; font-family: var(--font-mono);
+            font-size: 0.8rem; color: var(--slate);
         }
         .social-links { list-style: none; display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
         .social-links a { color: var(--slate); font-size: 1.25rem; }
@@ -439,7 +323,10 @@
     </style>
 </head>
 <body>
-
+    <div class="background-container">
+        <div class="aurora-background"></div>
+    </div>
+    
     <a href="#main-content" class="skip-to-content">Skip to Content</a>
     
     <nav class="main-nav" id="mainNav">
@@ -461,8 +348,9 @@
 
     <main id="main-content">
         <section id="hero">
+            <div id="stars-container"></div>
             <h1>Hi, my name is</h1>
-            <h2 class="big-heading">Niranjan Kumar.</h2>
+            <h2 class="big-heading">Niranjan Kumar</h2>
             <h3 class="sub-heading">I build insights from data.</h3>
             <p>I’m a data analyst specializing in transforming complex datasets into clear, actionable stories. I blend analytical skills with an aesthetic mindset to create solutions that are both powerful and elegant.</p>
             <div class="hero-cta-container">
@@ -506,7 +394,7 @@
         <section id="projects" class="reveal">
             <h2 class="section-heading">Featured Projects</h2>
             <ul class="projects-grid cards-grid">
-                <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="https://i.ibb.co/VMyhGkT/EV-Project-image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Data-Driven U.S. EV Adoption Insights with Python & MySQL, visualizing geographical trends.</p></div><ul class="project-tech-list"><li>Python</li><li>SQL</li><li>Folium</li></ul></div></div></li>
+                 <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="https://i.ibb.co/VMyhGkT/EV-Project-image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Data-Driven U.S. EV Adoption Insights with Python & MySQL, visualizing geographical trends.</p></div><ul class="project-tech-list"><li>Python</li><li>SQL</li><li>Folium</li></ul></div></div></li>
                 <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="https://i.ibb.co/51x88Vp/Covid-19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">COVID-19 Hospitalization</a></h3><div class="project-description"><p>End-to-End Analysis with Python & JSON Data to understand hospitalization patterns.</p></div><ul class="project-tech-list"><li>Python</li><li>Power BI</li></ul></div></div></li>
                 <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="https://i.ibb.co/zHChsDb/power-bi-dashboard.png" alt="Sales dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">Global Sales Dashboard</a></h3><div class="project-description"><p>Interactive Power BI dashboard tracking KPIs, revenue, and regional performance.</p></div><ul class="project-tech-list"><li>Power BI</li><li>DAX</li><li>Excel</li></ul></div></div></li>
                 <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">E-commerce Funnel Analysis</a></h3><div class="project-description"><p>Analyzed user journey from landing to purchase, identifying drop-off points to boost conversion rates.</p></div><ul class="project-tech-list"><li>SQL</li><li>Tableau</li><li>Python</li></ul></div></div></li>
@@ -549,62 +437,68 @@
     <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-        // --- Intersection Observer for revealing elements on scroll ---
+        // --- DYNAMIC STARFIELD GENERATION ---
+        function createStarfield() {
+            const container = document.getElementById('stars-container');
+            if (!container) return;
+            const starCount = 150; // Adjusted for a subtler effect
+            const frag = document.createDocumentFragment();
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 2 + 1; // Star size: 1px to 3px
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random() * 0.4 + 0.3; // Opacity: 0.3 to 0.7
+
+                const duration = Math.random() * 80 + 60; // Duration: 60s to 140s
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${Math.random() * -duration}s`;
+                frag.appendChild(star);
+            }
+            container.appendChild(frag);
+        }
+        createStarfield();
+        
+        // --- INTERSECTION OBSERVER ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    // Stagger child elements if they exist
-                    const children = entry.target.querySelectorAll('.reveal-child');
-                    children.forEach(child => child.classList.add('is-visible'));
-                    // No need to observe it anymore
                     observer.unobserve(entry.target);
                 }
             });
-        }, {
-            rootMargin: '0px 0px -100px 0px', // Trigger a bit before it's fully in view
-        });
+        }, { rootMargin: '0px 0px -100px 0px' });
 
-        // Observe all elements with the class 'reveal'
-        const revealElements = document.querySelectorAll('.reveal, .section-heading');
+        const revealElements = document.querySelectorAll('.reveal, .section-heading, .reveal-child');
         revealElements.forEach(el => observer.observe(el));
 
-
-        // --- Navbar scroll behavior ---
+        // --- NAVBAR SCROLL BEHAVIOR ---
         const nav = document.getElementById('mainNav');
-        let lastScrollY = window.scrollY;
-
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-            lastScrollY = window.scrollY;
+            nav.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-
-        // --- Spotlight card effect ---
+        // --- SPOTLIGHT CARD EFFECT ---
         const cards = document.querySelectorAll('.spotlight-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--x', `${x}px`);
-                card.style.setProperty('--y', `${y}px`);
+                card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--y', `${e.clientY - rect.top}px`);
             });
         });
 
-
-        // --- Mobile hamburger menu ---
+        // --- MOBILE HAMBURGER MENU ---
         const hamburger = document.getElementById('hamburgerMenu');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
-
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
@@ -612,20 +506,16 @@
             });
         });
 
-
-        // --- Active Nav Link Highlighting ---
+        // --- ACTIVE NAV LINK HIGHLIGHTING ---
         const sections = document.querySelectorAll('main section');
         const navAnchors = document.querySelectorAll('.nav-links ol li a');
-
         const activateNavLink = () => {
             let current = '';
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - nav.offsetHeight) {
+                if (pageYOffset >= section.offsetTop - nav.offsetHeight) {
                     current = section.getAttribute('id');
                 }
             });
-
             navAnchors.forEach(a => {
                 a.classList.remove('active');
                 if (a.getAttribute('href') === `#${current}`) {
@@ -633,9 +523,8 @@
                 }
             });
         };
-        
         window.addEventListener('scroll', activateNavLink);
-        activateNavLink(); // Initial check on load
+        activateNavLink();
     });
     </script>
 </body>
