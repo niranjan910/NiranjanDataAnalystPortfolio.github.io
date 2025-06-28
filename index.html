@@ -68,7 +68,7 @@
         
         h1, h2, h3, h4 { color: var(--lightest-slate); font-weight: 700; line-height: 1.2; }
         p { margin-bottom: 1rem; max-width: 65ch; }
-        a { text-decoration: none; color: var(--accent); transition: var(--transition-fast); }
+        a { text-decoration: none; color: var(--light-slate); transition: var(--transition-fast); }
         a:hover, button:hover { color: var(--accent); filter: brightness(1.2); }
 
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, transform; }
@@ -106,25 +106,32 @@
 
         .btn { color: var(--accent); background-color: transparent; border: 1px solid var(--accent); border-radius: var(--border-radius); padding: 0.75rem 1.75rem; font-size: 0.9rem; font-family: var(--font-mono); cursor: pointer; transition: var(--transition-fast); line-height: 1; }
         .btn:hover { background-color: var(--accent-tint); transform: translateY(-3px); box-shadow: 0 5px 15px -5px var(--accent-tint); }
+        .btn a.special-link { color: var(--accent) !important; }
+        a.special-link:hover { color: var(--accent) !important; }
         .btn-large { padding: 1.25rem 2rem; }
         
         h2.section-heading { display: flex; align-items: center; margin-bottom: 3rem; font-size: clamp(26px, 5vw, 32px); color: var(--white); width: 100%; }
         h2.section-heading::after { content: ''; display: block; position: relative; flex-grow: 1; height: 1px; margin-left: 1.5rem; background-color: var(--lightest-navy); transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-out; }
         h2.section-heading.is-visible::after { transform: scaleX(1); }
 
-        /* EDITED: Styles for 3-Column About Section layout */
+        /* EDITED: Styles for About Section including new Contact Info block */
         .about-container { display: flex; gap: 50px; align-items: flex-start; }
-        .about-left { flex: 0 0 250px; text-align: center; }
+        .about-left { flex: 0 0 250px; text-align: left; } /* Changed text-align to left */
         .about-image-wrapper { max-width: 250px; margin-bottom: 1.5rem; position: relative; border-radius: var(--border-radius); }
         .about-image-wrapper img { width: 100%; height: auto; object-fit: cover; border-radius: var(--border-radius); border: 2px solid var(--lightest-navy); }
         .about-name { font-size: 1.8rem; color: var(--white); margin-bottom: 0.5rem; }
         .about-title { font-family: var(--font-mono); font-size: 1rem; color: var(--accent); margin-bottom: 0; }
+        .contact-info { margin-top: 2rem; } /* ADDED */
+        .contact-info ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; } /* ADDED */
+        .contact-info li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.75rem; color: var(--slate); } /* ADDED */
+        .contact-info i { color: var(--accent); margin-top: 3px; } /* ADDED */
+
         .about-right { flex: 1; }
         .about-right .bio { margin-bottom: 2.5rem; }
         
         .about-details-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3-column layout */
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px;
         }
         .about-details-grid h3 { color: var(--lightest-slate); font-size: 1.4rem; margin-bottom: 1.5rem; }
@@ -185,16 +192,14 @@
 
         .footer { text-align: center; padding: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--slate); }
         .social-links { list-style: none; display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
-        .social-links a { color: var(--slate); font-size: 1.25rem; }
         
-        /* EDITED: Responsive rules for 3-column layout */
         @media (max-width: 1080px) { 
             main { padding: 0 100px; } 
             .about-details-grid {
-                grid-template-columns: 1fr 1fr; /* 2-column layout on tablets */
+                grid-template-columns: 1fr 1fr;
             }
             .about-details-grid .grid-column:nth-child(3) {
-                grid-column: 1 / span 2; /* Skills column spans full width */
+                grid-column: 1 / span 2;
             }
         }
 
@@ -203,12 +208,12 @@
             section { padding: 100px 0; }
             h2.section-heading::after { display: none; }
             .about-container { flex-direction: column; align-items: center; }
-            .about-left { flex: 0 0 auto; width: 100%; max-width: 250px; margin-bottom: 2rem; }
+            .about-left { flex: 0 0 auto; width: 100%; max-width: 250px; margin-bottom: 2rem; text-align: center; }
             .about-details-grid {
-                grid-template-columns: 1fr; /* 1-column layout on mobile */
+                grid-template-columns: 1fr;
             }
             .about-details-grid .grid-column:nth-child(3) {
-                grid-column: auto; /* Reset column span for mobile */
+                grid-column: auto;
             }
 
             .nav-links { display: none; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--mid-navy); flex-direction: column; justify-content: center; align-items: center; transition: transform 0.3s ease-out; transform: translateX(100%); }
@@ -239,7 +244,7 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#certs">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="YOUR_RESUME_LINK.pdf" class="btn resume-btn" target="_blank">Resume</a></li>
+                <li><a href="YOUR_RESUME_LINK.pdf" class="btn resume-btn" target="_blank"><span class="special-link">Resume</span></a></li>
             </ol>
         </div>
     </nav>
@@ -252,11 +257,11 @@
             <h3 class="sub-heading">I build insights from data.</h3>
             <p>I’m a data analyst specializing in transforming complex datasets into clear, actionable stories. I blend analytical skills with an aesthetic mindset to create solutions that are both powerful and elegant.</p>
             <div class="hero-cta-container">
-                <a href="#projects" class="btn btn-large">Explore My Work</a>
+                <a href="#projects" class="btn btn-large"><span class="special-link">Explore My Work</span></a>
             </div>
         </section>
 
-        <!-- EDITED: About Me Section with new 3-column grid layout -->
+        <!-- EDITED: About Me Section with new Contact block -->
         <section id="about" class="reveal">
             <h2 class="section-heading">About Me</h2>
             <div class="about-container">
@@ -266,12 +271,22 @@
                     </div>
                     <h2 class="about-name">Niranjan Kumar</h2>
                     <p class="about-title">Data Analyst</p>
+
+                    <!-- ADDED: Contact Info Block -->
+                    <div class="contact-info">
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt"></i><div>Hyderabad, India</div></li>
+                            <li><i class="fas fa-phone-alt"></i><div><a href="tel:+919641143646">+91 9641143646</a></div></li>
+                            <li><i class="fas fa-envelope"></i><div><a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></div></li>
+                            <li><i class="fab fa-linkedin"></i><div><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">LinkedIn</a></div></li>
+                            <li><i class="fab fa-github"></i><div><a href="https://github.com/niranjan910" target="_blank">GitHub</a></div></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="about-right reveal reveal-child" style="--delay: 200ms;">
                     <p class="bio">I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p>
                     
                     <div class="about-details-grid">
-                        <!-- Column 1: Education -->
                         <div class="grid-column">
                             <h3>Education</h3>
                             <div class="timeline">
@@ -281,7 +296,6 @@
                             </div>
                         </div>
 
-                        <!-- Column 2: Experience -->
                         <div class="grid-column">
                             <h3>Experience</h3>
                             <div class="timeline">
@@ -289,7 +303,6 @@
                             </div>
                         </div>
 
-                        <!-- Column 3: Capabilities -->
                         <div class="grid-column">
                             <h3>Core Skills</h3>
                             <ul class="core-skills-list">
@@ -320,25 +333,25 @@
         <section id="projects" class="reveal">
             <h2 class="section-heading">Featured Projects</h2>
             <ul class="projects-grid">
-                 <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Data-Driven U.S. EV Adoption Insights with Python & MySQL, visualizing geographical trends.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li><li>Seaborn</li><li>Folium</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">COVID-19 Hospitalization</a></h3><div class="project-description"><p>End-to-End Analysis with Python & JSON Data to understand hospitalization patterns.</p></div><ul class="project-tech-list"><li>Python</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="https://i.ibb.co/zHChsDb/power-bi-dashboard.png" alt="Sales dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">Global Sales Dashboard</a></h3><div class="project-description"><p>Interactive Power BI dashboard tracking KPIs, revenue, and regional performance.</p></div><ul class="project-tech-list"><li>Power BI</li><li>DAX</li><li>Excel</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">E-commerce Funnel Analysis</a></h3><div class="project-description"><p>Analyzed user journey from landing to purchase, identifying drop-off points to boost conversion rates.</p></div><ul class="project-tech-list"><li>SQL</li><li>Tableau</li><li>Python</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sentiment Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">Social Media Sentiment</a></h3><div class="project-description"><p>Used NLP to classify social media mentions by sentiment, providing insights for brand strategy.</p></div><ul class="project-tech-list"><li>Python</li><li>NLTK</li><li>APIs</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                 <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Data-Driven U.S. EV Adoption Insights with Python & MySQL, visualizing geographical trends.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li><li>Seaborn</li><li>Folium</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">COVID-19 Hospitalization</a></h3><div class="project-description"><p>End-to-End Analysis with Python & JSON Data to understand hospitalization patterns.</p></div><ul class="project-tech-list"><li>Python</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="https://i.ibb.co/zHChsDb/power-bi-dashboard.png" alt="Sales dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Global Sales Dashboard</a></h3><div class="project-description"><p>Interactive Power BI dashboard tracking KPIs, revenue, and regional performance.</p></div><ul class="project-tech-list"><li>Power BI</li><li>DAX</li><li>Excel</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">E-commerce Funnel Analysis</a></h3><div class="project-description"><p>Analyzed user journey from landing to purchase, identifying drop-off points to boost conversion rates.</p></div><ul class="project-tech-list"><li>SQL</li><li>Tableau</li><li>Python</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sentiment Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Social Media Sentiment</a></h3><div class="project-description"><p>Used NLP to classify social media mentions by sentiment, providing insights for brand strategy.</p></div><ul class="project-tech-list"><li>Python</li><li>NLTK</li><li>APIs</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
             </ul>
              <div class="projects-footer reveal">
-                <a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large" target="_blank">View All on GitHub</a>
+                <a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large" target="_blank"><span class="special-link">View All on GitHub</span></a>
             </div>
         </section>
         
         <section id="certs" class="reveal">
             <h2 class="section-heading">Credentials</h2>
             <ul class="certs-grid">
-                <li class="spotlight-card reveal reveal-child"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">IBM Data Analyst Professional Certificate</h3><p class="cert-issuer">Issued by Coursera</p><a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Data Analysis with Python</h3><p class="cert-issuer">Issued by FreeCodeCamp</p><a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Power BI Data Analyst (PL-300)</h3><p class="cert-issuer">Issued by Microsoft</p><a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 300ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">SQL for Data Science</h3><p class="cert-issuer">Issued by IBM</p><a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
+                <li class="spotlight-card reveal reveal-child"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">IBM Data Analyst Professional Certificate</h3><p class="cert-issuer">Issued by Coursera</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
+                <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Data Analysis with Python</h3><p class="cert-issuer">Issued by FreeCodeCamp</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
+                <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Power BI Data Analyst (PL-300)</h3><p class="cert-issuer">Issued by Microsoft</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
+                <li class="spotlight-card reveal reveal-child" style="--delay: 300ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">SQL for Data Science</h3><p class="cert-issuer">Issued by IBM</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
             </ul>
         </section>
 
@@ -346,7 +359,7 @@
             <h2 class="title">Get In Touch</h2>
             <p>I'm actively seeking new opportunities and I'm excited to collaborate on new projects. My inbox is always open, so please feel free to reach out — I'd love to chat.</p>
             <div class="contact-cta-container">
-                <a href="mailto:your-email@example.com" class="btn btn-large">Say Hello</a>
+                <a href="mailto:niranjan991100@gmail.com" class="btn btn-large"><span class="special-link">Say Hello</span></a>
             </div>
         </section>
     </main>
@@ -354,7 +367,7 @@
     <footer class="footer">
         <ul class="social-links">
             <li><a href="https://github.com/niranjan910" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/in/your-profile" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
             <li><a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
         </ul>
         <a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a>
