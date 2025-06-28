@@ -128,15 +128,15 @@
         }
         #stars-container {
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            overflow: hidden; z-index: -1; /* Behind content, but on top of fixed BG */
+            overflow: hidden; z-index: -1;
         }
         .star {
             position: absolute; background-color: var(--white);
             border-radius: 50%; animation: move-stars linear infinite;
         }
         @keyframes move-stars {
-            from { transform: translateY(-50px); } /* Start slightly off-screen */
-            to { transform: translateY(100vh); } /* Move to bottom of viewport */
+            from { transform: translateY(-50px); }
+            to { transform: translateY(100vh); }
         }
 
         #hero h1, #hero h2, #hero h3, #hero p, .hero-cta-container {
@@ -159,7 +159,6 @@
         }
         #hero .big-heading { 
             font-size: clamp(40px, 8vw, 80px); font-weight: 800; color: var(--white);
-            /* NEW: Glow effect */
             text-shadow: 0 0 30px rgba(100, 255, 218, 0.4);
         }
         #hero .sub-heading { font-size: clamp(35px, 7vw, 70px); color: var(--slate); font-weight: 700; }
@@ -208,26 +207,75 @@
             content: "▹"; position: absolute; left: 0; color: var(--accent);
         }
 
+        /* ADDED: Styles for Core Skills Section */
+        .core-skills-heading {
+            color: var(--lightest-slate);
+            font-size: 1.5rem;
+            margin-top: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        .core-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .skill-category {
+            background-color: var(--mid-navy);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--lightest-navy);
+            transition: var(--transition-fast);
+        }
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        .skill-category h4 {
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        .skill-sublist {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        .skill-sublist li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: var(--light-slate);
+        }
+        .skill-sublist li:last-child {
+            margin-bottom: 0;
+        }
+        .skill-sublist li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
         /* --- JOURNEY SECTION (FIXED ALIGNMENT) --- */
         .timeline { position: relative; max-width: 800px; margin: 0 auto; }
         .timeline::after {
             content: ''; position: absolute; width: 2px;
-            background-color: var(--lightest-navy); top: 0.5rem; bottom: 0; left: 7px; /* Positioned precisely */
-            /* z-index is implicitly 0 or -1 here */
+            background-color: var(--lightest-navy); top: 0.5rem; bottom: 0; left: 7px;
         }
         .timeline-item {
-            padding: 0.5rem 0 2.5rem 30px; /* Adjusted padding */
+            padding: 0.5rem 0 2.5rem 30px;
             position: relative;
-            /* EDITED: Added z-index to ensure the entire item (and its ::before pseudo-element) sits on top of the parent's ::after line. */
             z-index: 2; 
         }
         .timeline-item::before {
             content: ''; height: 15px; width: 15px;
             position: absolute; top: 0.5rem;
-            left: 7px; /* Aligned with the line */
-            transform: translateX(-50%); /* Centered on the line */
+            left: 7px;
+            transform: translateX(-50%);
             background-color: var(--accent); border-radius: 50%;
-            /* z-index is no longer needed here as the parent item controls the layering */
         }
         .timeline-content h3 { font-size: 1.3rem; margin-bottom: 0.25rem; }
         .timeline-content p { color: var(--light-slate); margin: 0; }
@@ -273,29 +321,14 @@
             font-family: var(--font-mono); font-size: 0.8rem; margin-top: 1.5rem; color: var(--slate);
         }
         
-        /* EDITED: Styles for the new creative project link */
-        .project-link-wrapper {
-            margin-top: 1.5rem;
-        }
+        .project-link-wrapper { margin-top: 1.5rem; }
         .project-view-link {
-            color: var(--lightest-slate);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            color: var(--lightest-slate); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 0.5rem;
         }
-        .project-view-link .arrow-icon {
-            display: inline-block;
-            transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-        }
-        .project-view-link:hover {
-            color: var(--accent);
-        }
-        .project-view-link:hover .arrow-icon {
-            transform: translateX(5px);
-        }
+        .project-view-link .arrow-icon { display: inline-block; transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
+        .project-view-link:hover { color: var(--accent); }
+        .project-view-link:hover .arrow-icon { transform: translateX(5px); }
         
         .projects-footer { text-align: center; margin-top: 4rem; }
         .cert-inner { text-align: center; justify-content: space-between; }
@@ -324,7 +357,7 @@
             section { padding: 100px 0; }
             h2.section-heading::after { display: none; }
             #about .inner { grid-template-columns: 1fr; }
-            #about .styled-pic { margin-top: 3rem; }
+            #about .styled-pic { margin-top: 3rem; max-width: 100%; }
             .nav-links {
                 display: none; position: fixed; top: 0; right: 0;
                 height: 100vh; width: min(75vw, 350px);
@@ -402,10 +435,59 @@
                         <li class="reveal reveal-child" style="--delay: 500ms;">Advanced Excel</li>
                         <li class="reveal reveal-child" style="--delay: 600ms;">Snowflake</li>
                     </ul>
+
+                    <!-- ADDED: Core Skills Section -->
+                    <h3 class="core-skills-heading reveal reveal-child" style="--delay: 200ms;">Core Skills</h3>
+                    <div class="core-skills-grid">
+                        <div class="skill-category reveal reveal-child" style="--delay: 300ms;">
+                            <h4>Data Visualization & BI Tools</h4>
+                            <ul class="skill-sublist">
+                                <li>Power BI (DAX, Power Query, Report Server)</li>
+                                <li>Tableau (Calculated Fields, Parameters, LOD)</li>
+                                <li>Excel (PivotTables, Advanced Charts, Power Pivot)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category reveal reveal-child" style="--delay: 400ms;">
+                            <h4>Programming & Analytics</h4>
+                            <ul class="skill-sublist">
+                                <li>Python (Pandas, NumPy, Matplotlib, Folium)</li>
+                                <li>Statistics (Regression, Hypothesis & A/B Testing)</li>
+                                <li>MySQL (Schema Design, Stored Procedures)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category reveal reveal-child" style="--delay: 500ms;">
+                            <h4>Data Management & Cloud</h4>
+                            <ul class="skill-sublist">
+                                <li>ETL Processes (Data Extraction, Transformation)</li>
+                                <li>Snowflake (Data Sharing, Virtual Warehouses)</li>
+                                <li>Database & Query Languages</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category reveal reveal-child" style="--delay: 300ms;">
+                            <h4>Advanced Excel Skills</h4>
+                            <ul class="skill-sublist">
+                                <li>Advanced Formulas (INDEX-MATCH, Array)</li>
+                                <li>Data Models (Relationship Management)</li>
+                                <li>Power Query (M Language, Custom Functions)</li>
+                                <li>VBA (Macros Automation, User Forms)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category reveal reveal-child" style="--delay: 400ms;">
+                            <h4>Business Intelligence</h4>
+                            <ul class="skill-sublist">
+                                <li>KPI Development (SMART Metrics Framework)</li>
+                                <li>Dashboard Design (UI/UX Principles)</li>
+                                <li>Data Storytelling (Narrative Visualization)</li>
+                                <li>Requirements Gathering (BRD Documentation)</li>
+                            </ul>
+                        </div>
+                    </div>
+                     <!-- END: Core Skills Section -->
+
                 </div>
                 <div class="styled-pic reveal reveal-child" style="--delay: 300ms;">
                     <div class="wrapper">
-                        <img src="images/Profile pic.png" alt="Niranjan Kumar Headshot">
+                        <img src="images/Instagram post - 165.png" alt="Niranjan Kumar Headshot">
                     </div>
                 </div>
             </div>
@@ -423,7 +505,6 @@
         <section id="projects" class="reveal">
             <h2 class="section-heading">Featured Projects</h2>
             <ul class="projects-grid cards-grid">
-                <!-- EDITED: Replaced the old button with the new creative link structure for each card -->
                 <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Data-Driven U.S. EV Adoption Insights with Python & MySQL, visualizing geographical trends.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li><li>Seaborn</li><li>Folium</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
                 <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">COVID-19 Hospitalization</a></h3><div class="project-description"><p>End-to-End Analysis with Python & JSON Data to understand hospitalization patterns.</p></div><ul class="project-tech-list"><li>Python</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
                 <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="https://i.ibb.co/zHChsDb/power-bi-dashboard.png" alt="Sales dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">Global Sales Dashboard</a></h3><div class="project-description"><p>Interactive Power BI dashboard tracking KPIs, revenue, and regional performance.</p></div><ul class="project-tech-list"><li>Power BI</li><li>DAX</li><li>Excel</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
@@ -471,20 +552,20 @@
         function createStarfield() {
             const container = document.getElementById('stars-container');
             if (!container) return;
-            const starCount = 150; // Adjusted for a subtler effect
+            const starCount = 150;
             const frag = document.createDocumentFragment();
 
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                const size = Math.random() * 2 + 1; // Star size: 1px to 3px
+                const size = Math.random() * 2 + 1;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 star.style.top = `${Math.random() * 100}%`;
                 star.style.left = `${Math.random() * 100}%`;
-                star.style.opacity = Math.random() * 0.4 + 0.3; // Opacity: 0.3 to 0.7
+                star.style.opacity = Math.random() * 0.4 + 0.3;
 
-                const duration = Math.random() * 80 + 60; // Duration: 60s to 140s
+                const duration = Math.random() * 80 + 60;
                 star.style.animationDuration = `${duration}s`;
                 star.style.animationDelay = `${Math.random() * -duration}s`;
                 frag.appendChild(star);
@@ -513,7 +594,7 @@
         });
 
         // --- SPOTLIGHT CARD EFFECT ---
-        const cards = document.querySelectorAll('.spotlight-card');
+        const cards = document.querySelectorAll('.spotlight-card, .skill-category');
         cards.forEach(card => {
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
