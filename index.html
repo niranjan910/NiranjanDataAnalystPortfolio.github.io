@@ -112,7 +112,7 @@
         h2.section-heading::after { content: ''; display: block; position: relative; flex-grow: 1; height: 1px; margin-left: 1.5rem; background-color: var(--lightest-navy); transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-out; }
         h2.section-heading.is-visible::after { transform: scaleX(1); }
 
-        /* EDITED: Styles for new About Section layout */
+        /* EDITED: Styles for compact About Section layout */
         .about-container { display: flex; gap: 50px; align-items: flex-start; }
         .about-left { flex: 0 0 250px; text-align: center; }
         .about-image-wrapper { max-width: 250px; margin-bottom: 1.5rem; position: relative; border-radius: var(--border-radius); }
@@ -120,12 +120,21 @@
         .about-name { font-size: 1.8rem; color: var(--white); margin-bottom: 0.5rem; }
         .about-title { font-family: var(--font-mono); font-size: 1rem; color: var(--accent); margin-bottom: 0; }
         .about-right { flex: 1; }
-        .about-right h3 { color: var(--lightest-slate); font-size: 1.4rem; margin-top: 2.5rem; margin-bottom: 1.5rem; }
-        .about-right h3:first-of-type { margin-top: 0; }
-
+        .about-right .bio { margin-bottom: 2.5rem; }
+        
+        .about-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .about-details-grid h3 { color: var(--lightest-slate); font-size: 1.4rem; margin-bottom: 1.5rem; }
+        .about-details-grid > div > h3:first-child { margin-top: 0; }
+        
         ul.core-skills-list {
-            display: grid; grid-template-columns: repeat(2, minmax(180px, 1fr)); gap: 0.5rem 1.5rem;
-            list-style: none; padding: 0; margin-top: 0;
+            list-style: none; padding: 0; margin: 0;
+            display: grid; /* changed to grid for better control */
+            grid-template-columns: 1fr; /* Set to 1 column to fit container */
+            gap: 0.5rem;
         }
         ul.core-skills-list li {
             position: relative; padding-left: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem;
@@ -133,16 +142,14 @@
         }
         ul.core-skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
 
-        .software-skills-list {
-            display: flex; flex-wrap: wrap; gap: 2rem; list-style: none; margin-top: 1rem; padding: 0;
-        }
+        .software-skills-list { display: flex; flex-wrap: wrap; gap: 2rem; list-style: none; margin-top: 1.5rem; padding: 0; }
         .software-skills-list i { font-size: 2.5rem; color: var(--light-slate); transition: var(--transition-fast); }
         .software-skills-list i:hover { color: var(--accent); transform: scale(1.1); }
         
         .timeline { position: relative; }
         .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--lightest-navy); top: 0.5rem; bottom: 0; left: 7px; z-index: 1; }
-        .timeline-item { padding: 0.5rem 0 2.5rem 30px; position: relative; z-index: 2; }
-        .timeline-item:last-child { padding-bottom: 0.5rem; }
+        .timeline-item { padding: 0 0 2.5rem 30px; position: relative; z-index: 2; } /* changed padding-top to 0 */
+        .timeline-item:last-child { padding-bottom: 0; }
         .timeline-item::before { content: ''; height: 15px; width: 15px; position: absolute; top: 0.5rem; left: 7px; transform: translateX(-50%); background-color: var(--accent); border-radius: 50%; z-index: 2;}
         .timeline-content h4 { font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 600; }
         .timeline-content p { color: var(--light-slate); margin: 0; }
@@ -183,15 +190,18 @@
         .social-links a { color: var(--slate); font-size: 1.25rem; }
 
         @media (max-width: 1080px) { main { padding: 0 100px; } }
+        @media (max-width: 992px) {
+            .about-details-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             main { padding: 0 50px; }
             section { padding: 100px 0; }
             h2.section-heading::after { display: none; }
-            /* EDITED: Responsive rules for new About section */
             .about-container { flex-direction: column; align-items: center; }
             .about-left { flex: 0 0 auto; width: 100%; max-width: 250px; margin-bottom: 2rem; }
-            .about-right h3 { margin-top: 3rem; }
-            .core-skills-list { grid-template-columns: 1fr; }
 
             .nav-links { display: none; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--mid-navy); flex-direction: column; justify-content: center; align-items: center; transition: transform 0.3s ease-out; transform: translateX(100%); }
             .nav-links.active { transform: translateX(0); }
@@ -218,7 +228,6 @@
         <div class="nav-links reveal reveal-child" style="--delay: 100ms;" id="navLinks">
             <ol>
                 <li><a href="#about">About</a></li>
-                <!-- REMOVED "Journey" link -->
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#certs">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -239,7 +248,7 @@
             </div>
         </section>
 
-        <!-- EDITED: Entire About Me Section Rebuilt -->
+        <!-- EDITED: About Me Section with new compact grid layout -->
         <section id="about" class="reveal">
             <h2 class="section-heading">About Me</h2>
             <div class="about-container">
@@ -251,46 +260,47 @@
                     <p class="about-title">Data Analyst</p>
                 </div>
                 <div class="about-right reveal reveal-child" style="--delay: 200ms;">
-                    <p>I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p>
-
-                    <h3>Experience</h3>
-                    <div class="timeline">
-                        <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">Feb 2025 - July 2025</h4><h4>Data Analyst Trainee</h4><p>Naresh i Technologies, Hyderabad</p></div></div>
-                    </div>
-
-                    <h3>Education</h3>
-                    <div class="timeline">
-                        <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2019 - 2023</h4><h4>B.Tech, Computer Science</h4><p>Institute of Professional Studies, Gwalior (8.9 CGPA)</p></div></div>
-                        <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2018</h4><h4>Higher Secondary (12th)</h4><p>D.A.V. Public School (85%)</p></div></div>
-                        <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2016</h4><h4>Secondary (10th)</h4><p>D.A.V. Public School (9.2 CGPA)</p></div></div>
-                    </div>
+                    <p class="bio">I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p>
                     
-                    <h3>Core Skills</h3>
-                    <ul class="core-skills-list">
-                        <li>Data Analysis & Visualization</li>
-                        <li>Statistical Analysis</li>
-                        <li>SQL & Database Management</li>
-                        <li>ETL Processes</li>
-                        <li>Python (Pandas, NumPy)</li>
-                        <li>Dashboard Design</li>
-                        <li>Problem Solving</li>
-                        <li>Stakeholder Communication</li>
-                    </ul>
-
-                    <h3>Software Skills</h3>
-                    <ul class="software-skills-list">
-                        <li><i class="fas fa-database" title="MySQL"></i></li>
-                        <li><i class="fab fa-python" title="Python"></i></li>
-                        <li><i class="fas fa-chart-bar" title="Power BI"></i></li>
-                        <li><i class="fas fa-chart-pie" title="Tableau"></i></li>
-                        <li><i class="fas fa-file-excel" title="Excel"></i></li>
-                        <li><i class="fas fa-file-powerpoint" title="PowerPoint"></i></li>
-                    </ul>
+                    <div class="about-details-grid">
+                        <div class="grid-column-1">
+                            <h3>Experience</h3>
+                            <div class="timeline">
+                                <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">Feb 2025 - July 2025</h4><h4>Data Analyst Trainee</h4><p>Naresh i Technologies, Hyderabad</p></div></div>
+                            </div>
+                            <h3 style="margin-top: 2.5rem;">Education</h3>
+                            <div class="timeline">
+                                <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2019 - 2023</h4><h4>B.Tech, Computer Science</h4><p>Institute of Professional Studies, Gwalior (8.9 CGPA)</p></div></div>
+                                <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2018</h4><h4>Higher Secondary (12th)</h4><p>D.A.V. Public School (85%)</p></div></div>
+                                <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2016</h4><h4>Secondary (10th)</h4><p>D.A.V. Public School (9.2 CGPA)</p></div></div>
+                            </div>
+                        </div>
+                        <div class="grid-column-2">
+                            <h3>Core Skills</h3>
+                            <ul class="core-skills-list">
+                                <li>Data Analysis & Visualization</li>
+                                <li>Statistical Analysis</li>
+                                <li>SQL & Database Management</li>
+                                <li>ETL Processes</li>
+                                <li>Python (Pandas, NumPy)</li>
+                                <li>Dashboard Design</li>
+                                <li>Problem Solving</li>
+                                <li>Stakeholder Communication</li>
+                            </ul>
+                            <h3 style="margin-top: 2.5rem;">Software Skills</h3>
+                            <ul class="software-skills-list">
+                                <li><i class="fas fa-database" title="MySQL"></i></li>
+                                <li><i class="fab fa-python" title="Python"></i></li>
+                                <li><i class="fas fa-chart-bar" title="Power BI"></i></li>
+                                <li><i class="fas fa-chart-pie" title="Tableau"></i></li>
+                                <li><i class="fas fa-file-excel" title="Excel"></i></li>
+                                <li><i class="fas fa-file-powerpoint" title="PowerPoint"></i></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- REMOVED: Old #journey section is now integrated into #about -->
 
         <section id="projects" class="reveal">
             <h2 class="section-heading">Featured Projects</h2>
