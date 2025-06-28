@@ -114,17 +114,16 @@
         h2.section-heading::after { content: ''; display: block; position: relative; flex-grow: 1; height: 1px; margin-left: 1.5rem; background-color: var(--lightest-navy); transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-out; }
         h2.section-heading.is-visible::after { transform: scaleX(1); }
 
-        /* EDITED: Styles for About Section including new Contact Info block */
         .about-container { display: flex; gap: 50px; align-items: flex-start; }
-        .about-left { flex: 0 0 250px; text-align: left; } /* Changed text-align to left */
+        .about-left { flex: 0 0 250px; text-align: left; }
         .about-image-wrapper { max-width: 250px; margin-bottom: 1.5rem; position: relative; border-radius: var(--border-radius); }
         .about-image-wrapper img { width: 100%; height: auto; object-fit: cover; border-radius: var(--border-radius); border: 2px solid var(--lightest-navy); }
         .about-name { font-size: 1.8rem; color: var(--white); margin-bottom: 0.5rem; }
         .about-title { font-family: var(--font-mono); font-size: 1rem; color: var(--accent); margin-bottom: 0; }
-        .contact-info { margin-top: 2rem; } /* ADDED */
-        .contact-info ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; } /* ADDED */
-        .contact-info li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.75rem; color: var(--slate); } /* ADDED */
-        .contact-info i { color: var(--accent); margin-top: 3px; } /* ADDED */
+        .contact-info { margin-top: 2rem; }
+        .contact-info ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+        .contact-info li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.75rem; color: var(--slate); }
+        .contact-info i { color: var(--accent); margin-top: 3px; }
 
         .about-right { flex: 1; }
         .about-right .bio { margin-bottom: 2.5rem; }
@@ -147,8 +146,9 @@
         }
         ul.core-skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
 
-        .software-skills-list { display: flex; flex-wrap: wrap; gap: 2rem; list-style: none; margin-top: 1.5rem; padding: 0; }
-        .software-skills-list i { font-size: 2.5rem; color: var(--light-slate); transition: var(--transition-fast); }
+        /* EDITED: Adjusted Software Skills icon size and spacing */
+        .software-skills-list { display: flex; flex-wrap: wrap; gap: 1.8rem; list-style: none; margin-top: 1.5rem; padding: 0; }
+        .software-skills-list i { font-size: 2.2rem; color: var(--light-slate); transition: var(--transition-fast); }
         .software-skills-list i:hover { color: var(--accent); transform: scale(1.1); }
         
         .timeline { position: relative; }
@@ -261,7 +261,6 @@
             </div>
         </section>
 
-        <!-- EDITED: About Me Section with new Contact block -->
         <section id="about" class="reveal">
             <h2 class="section-heading">About Me</h2>
             <div class="about-container">
@@ -272,7 +271,6 @@
                     <h2 class="about-name">Niranjan Kumar</h2>
                     <p class="about-title">Data Analyst</p>
 
-                    <!-- ADDED: Contact Info Block -->
                     <div class="contact-info">
                         <ul>
                             <li><i class="fas fa-map-marker-alt"></i><div>Hyderabad, India</div></li>
