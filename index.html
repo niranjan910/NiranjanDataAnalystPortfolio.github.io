@@ -92,7 +92,7 @@
         .nav-logo a { color: var(--accent); font-weight: 800; font-size: 1.8rem; font-family: var(--font-mono); }
         .nav-links ol { list-style: none; display: flex; align-items: center; }
         .nav-links li { margin: 0 1.25rem; }
-        .nav-links li a { color: var(--lightest-slate); padding: 0.75rem 0; font-size: 0.9rem; position: relative;}
+        .nav-links li a:not(.btn) { color: var(--lightest-slate); padding: 0.75rem 0; font-size: 0.9rem; position: relative;}
         .hamburger-menu { display: none; }
 
         #hero { display: flex; justify-content: center; flex-direction: column; min-height: 100vh; text-align: left; position: relative; }
@@ -216,7 +216,7 @@
         .social-links { list-style: none; display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
         
         @media (min-width: 769px) {
-            .nav-links li a::after {
+            .nav-links li a:not(.btn)::after {
                 content: '';
                 position: absolute;
                 bottom: 0;
@@ -228,13 +228,10 @@
                 transform-origin: bottom right;
                 transition: transform 0.25s ease-out;
             }
-            .nav-links li a:hover::after,
-            .nav-links li a.active::after {
+            .nav-links li a:not(.btn):hover::after,
+            .nav-links li a:not(.btn).active::after {
                 transform: scaleX(1);
                 transform-origin: bottom left;
-            }
-            .nav-links .resume-btn-wrapper a.btn::after {
-                display: none; 
             }
         }
         
@@ -295,7 +292,7 @@
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#certs">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li class="resume-btn-wrapper"><a href="YOUR_RESUME_LINK.pdf" class="btn resume-btn" target="_blank"><span class="special-link">Resume</span></a></li>
+                <li><a href="YOUR_RESUME_LINK.pdf" class="btn resume-btn" target="_blank"><span class="special-link">Resume</span></a></li>
             </ol>
         </div>
     </nav>
@@ -391,6 +388,7 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Static elements ---
         function createStarfield() {
             const container = document.getElementById('stars-container');
             if (!container) return;
@@ -406,8 +404,7 @@
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.opacity = Math.random() * 0.5 + 0.5;
                 const duration = Math.random() * 2 + 1;
-                const drift = (Math.random() - 0.5) * 200; 
-
+                const drift = (Math.random() - 0.5) * 200;
                 star.style.setProperty('--drift-x', `${drift}px`);
                 star.style.animationDuration = `${duration}s`;
                 star.style.animationDelay = `${Math.random() * duration}s`;
@@ -416,85 +413,104 @@
             container.appendChild(frag);
         }
         createStarfield();
-        
-        const observer = new IntersectionObserver((entries) => {
+
+        // --- Reveal on Scroll (for content) ---
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+                    revealObserver.unobserve(entry.target);
                 }
             });
         }, { rootMargin: '0px 0px -100px 0px' });
-        const revealElements = document.querySelectorAll('.reveal');
-        revealElements.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+        // --- Scrolled Nav ---
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        const cards = document.querySelectorAll('.spotlight-card');
-        cards.forEach(card => {
+        // --- Spotlight Card Effect ---
+        document.querySelectorAll('.spotlight-card').forEach(card => {
             card.addEventListener('mousemove', e => {
                 const rect = card.getBoundingClientRect();
                 card.style.setProperty('--x', `${e.clientX - rect.left}px`);
                 card.style.setProperty('--y', `${e.clientY - rect.top}px`);
             });
         });
-        
+
+        // --- Hamburger Menu Logic ---
         const hamburger = document.getElementById('hamburgerMenu');
         const navLinks = document.getElementById('navLinks');
         if (hamburger && navLinks) {
             hamburger.addEventListener('click', (e) => {
-                e.stopPropagation(); hamburger.classList.toggle('active'); navLinks.classList.toggle('active');
+                e.stopPropagation();
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
             });
             navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
-                    hamburger.classList.remove('active'); navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
                 });
             });
         }
-        
+
+        // --- Project Filtering Logic ---
         const filtersContainer = document.querySelector('.project-filters');
         const projectCards = document.querySelectorAll('.projects-grid .spotlight-card');
-        if(filtersContainer && projectCards.length > 0) {
+        if (filtersContainer && projectCards.length > 0) {
             filtersContainer.addEventListener('click', (e) => {
-                if(e.target.tagName !== 'BUTTON') return;
+                if (e.target.tagName !== 'BUTTON') return;
                 filtersContainer.querySelector('.active').classList.remove('active');
                 e.target.classList.add('active');
                 const filter = e.target.dataset.filter;
                 projectCards.forEach(card => {
                     const tags = card.dataset.tags || '';
                     const isMatch = filter === 'all' || tags.toLowerCase().includes(filter.toLowerCase());
-                    if(isMatch) {
+                    if (isMatch) {
                         card.style.display = 'flex';
                         setTimeout(() => card.classList.remove('hidden'), 10);
                     } else {
                         card.classList.add('hidden');
-                        setTimeout(() => { card.style.display = 'none'; }, 400);
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 400);
                     }
                 });
             });
         }
         
+        // --- NEW: Active Nav Link on Scroll using IntersectionObserver ---
         const sections = document.querySelectorAll('main section[id]');
-        const navAnchors = document.querySelectorAll('#navLinks ol a');
-        
-        const activateNavLink = () => {
-            let index = sections.length;
-        
-            while(--index && window.scrollY + nav.offsetHeight < sections[index].offsetTop) {}
-            
-            navAnchors.forEach((a) => a.classList.remove('active'));
-
-            if (index > -1) {
-                const activeAnchor = document.querySelector(`#navLinks ol a[href="#${sections[index].id}"]`);
-                if(activeAnchor) activeAnchor.classList.add('active');
+        const navLinkMap = {};
+        document.querySelectorAll('#navLinks ol li a').forEach(a => {
+            const href = a.getAttribute('href');
+            if(href.startsWith('#')) {
+                navLinkMap[href.substring(1)] = a;
             }
-        };
-        
-        window.addEventListener('scroll', activateNavLink);
-        activateNavLink();
+        });
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                if (entry.isIntersecting) {
+                    // When a section is on screen, remove active from all and add to the current one
+                    Object.values(navLinkMap).forEach(link => link.classList.remove('active'));
+                    if(navLinkMap[id]) {
+                       navLinkMap[id].classList.add('active');
+                    }
+                }
+            });
+        }, { 
+            // Trigger when the section is 40% from the top and 40% from the bottom of the viewport
+            rootMargin: '-40% 0px -40% 0px' 
+        });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
     });
     </script>
 </body>
