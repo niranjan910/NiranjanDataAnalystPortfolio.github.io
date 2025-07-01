@@ -128,25 +128,14 @@
         .about-right { flex: 1; }
         .about-right .bio { margin-bottom: 2.5rem; }
         
-        .about-details-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-        }
+        .about-details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
         .about-details-grid h3 { color: var(--lightest-slate); font-size: 1.4rem; margin-bottom: 1.5rem; }
         .about-details-grid .grid-column h3:first-child { margin-top: 0; }
         
-        ul.core-skills-list {
-            list-style: none; padding: 0; margin: 0;
-            display: grid; grid-template-columns: 1fr; gap: 0.5rem;
-        }
-        ul.core-skills-list li {
-            position: relative; padding-left: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem;
-            color: var(--light-slate); margin-bottom: 0.5rem;
-        }
+        ul.core-skills-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+        ul.core-skills-list li { position: relative; padding-left: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem; color: var(--light-slate); margin-bottom: 0.5rem; }
         ul.core-skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
         
-        /* IMPROVEMENT 1: Colorful Software Skills Icons */
         .software-skills-list { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; list-style: none; margin-top: 1.5rem; padding: 0; }
         .software-skills-list li { transition: var(--transition-fast); }
         .software-skills-list li:hover { transform: scale(1.1); }
@@ -160,34 +149,35 @@
         .timeline-content h4 { font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 600; }
         .timeline-content p { color: var(--light-slate); margin: 0; }
         .timeline-date { font-family: var(--font-mono); color: var(--slate); font-size: 0.8rem; margin-bottom: 0.5rem; }
-
-        /* IMPROVEMENT 2: 4-Card Grid & Masonry Layout */
-        .projects-grid {
-            list-style: none;
-            display: grid;
-            gap: 1.5rem;
-            /* On screens > 1200px, create 4 columns. It will auto-adjust for smaller screens */
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        }
-
-        /* IMPROVEMENT 3: Glassmorphism effect for cards */
+        
+        /* IMPROVEMENT 2: Styling for the new project filter buttons */
+        .project-filters { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+        .project-filters button { font-family: var(--font-mono); font-size: 0.85rem; background-color: transparent; color: var(--light-slate); border: 1px solid var(--lightest-navy); border-radius: 20px; padding: 0.5rem 1rem; cursor: pointer; transition: var(--transition-fast); }
+        .project-filters button:hover { background-color: var(--lightest-navy); color: var(--dark-navy); }
+        .project-filters button.active { background-color: var(--accent); color: var(--dark-navy); border-color: var(--accent); }
+        
+        .projects-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+        
         .spotlight-card {
             background: linear-gradient(135deg, rgba(23, 37, 64, 0.5), rgba(10, 25, 47, 0.5));
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            -webkit-backdrop-filter: blur(10px);
             border-radius: var(--border-radius);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--lightest-navy);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, opacity 0.4s ease, transform 0.4s ease; /* Added opacity and transform for filtering */
+            position: relative; overflow: hidden; border: 1px solid var(--lightest-navy);
+        }
+        
+        /* Add a class for hiding filtered-out cards smoothly */
+        .spotlight-card.hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            /* Set display to none after the animation to remove from layout */
+            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s 0.4s;
+            visibility: hidden;
+            display: none;
         }
 
-        .spotlight-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7);
-            border-color: var(--accent);
-        }
-        /* Spotlight hover effect is now more subtle on the glass background */
+        .spotlight-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7); border-color: var(--accent); }
         .spotlight-card::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 0; height: 0; background: radial-gradient(circle closest-side, var(--accent-tint), transparent); opacity: 0; transition: width 0.3s ease, height 0.3s ease, opacity: 0.3s ease; }
         .spotlight-card:hover::before { width: 300px; height: 300px; opacity: 1; }
 
@@ -222,12 +212,8 @@
         
         @media (max-width: 1080px) { 
             main { padding: 0 100px; } 
-            .about-details-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .about-details-grid .grid-column:nth-child(3) {
-                grid-column: 1 / span 2;
-            }
+            .about-details-grid { grid-template-columns: 1fr 1fr; }
+            .about-details-grid .grid-column:nth-child(3) { grid-column: 1 / span 2; }
         }
 
         @media (max-width: 768px) {
@@ -236,16 +222,11 @@
             h2.section-heading::after { display: none; }
             .about-container { flex-direction: column; align-items: center; }
             .about-left { flex: 0 0 auto; width: 100%; max-width: 250px; margin-bottom: 2rem; text-align: center; }
-            .about-details-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-details-grid .grid-column:nth-child(3) {
-                grid-column: auto;
-            }
+            .about-details-grid { grid-template-columns: 1fr; }
+            .about-details-grid .grid-column:nth-child(3) { grid-column: auto; }
 
-            /* IMPROVEMENT 4: Fixed Hamburger Menu Logic */
+            /* IMPROVEMENT 1: Fixed Hamburger Menu Logic */
             .nav-links {
-                /* Changed display: none to display: flex so the element is always in the DOM for transitions. */
                 display: flex;
                 position: fixed;
                 top: 0;
@@ -257,29 +238,13 @@
                 justify-content: center;
                 align-items: center;
                 transition: transform 0.3s ease-out;
-                /* Start off-screen */
                 transform: translateX(100%);
-                z-index: 11;
+                z-index: 10; 
             }
-
-            .nav-links.active {
-                /* Slide into view when active */
-                transform: translateX(0);
-            }
+            .nav-links.active { transform: translateX(0); }
             .nav-links ol { flex-direction: column; gap: 2rem; }
 
-            .hamburger-menu {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                width: 30px;
-                height: 25px;
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                /* Increased z-index to ensure it's on top of the sliding nav panel */
-                z-index: 12;
-            }
+            .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; z-index: 12; }
             .hamburger-menu .bar { width: 30px; height: 3px; background-color: var(--accent); border-radius: 5px; transition: var(--transition-fast); transform-origin: center; }
             .hamburger-menu.active .bar:nth-child(1){ transform: translateY(11px) rotate(45deg); }
             .hamburger-menu.active .bar:nth-child(2){ opacity: 0; }
@@ -298,7 +263,6 @@
         <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </button>
-        <!-- This div now starts hidden off-screen on mobile and slides in with the 'active' class -->
         <div class="nav-links reveal reveal-child" style="--delay: 100ms;" id="navLinks">
             <ol>
                 <li><a href="#about">About</a></li>
@@ -344,47 +308,14 @@
                 </div>
                 <div class="about-right reveal reveal-child" style="--delay: 200ms;">
                     <p class="bio">I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p>
-                    
                     <div class="about-details-grid">
-                        <div class="grid-column">
-                            <h3>Education</h3>
-                            <div class="timeline">
-                                <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2019 - 2023</h4><h4>B.Tech, Computer Science</h4><p>Institute of Professional Studies, Gwalior (8.9 CGPA)</p></div></div>
-                                <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2018</h4><h4>Higher Secondary (12th)</h4><p>D.A.V. Public School (85%)</p></div></div>
-                                <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2016</h4><h4>Secondary (10th)</h4><p>D.A.V. Public School (9.2 CGPA)</p></div></div>
-                            </div>
-                        </div>
-
-                        <div class="grid-column">
-                            <h3>Experience</h3>
-                            <div class="timeline">
-                                <div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">Feb 2025 - July 2025</h4><h4>Data Analyst Trainee</h4><p>Naresh i Technologies, Hyderabad</p></div></div>
-                            </div>
-                        </div>
-
+                        <div class="grid-column"><h3>Education</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2019 - 2023</h4><h4>B.Tech, Computer Science</h4><p>Institute of Professional Studies, Gwalior (8.9 CGPA)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2018</h4><h4>Higher Secondary (12th)</h4><p>D.A.V. Public School (85%)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2016</h4><h4>Secondary (10th)</h4><p>D.A.V. Public School (9.2 CGPA)</p></div></div></div></div>
+                        <div class="grid-column"><h3>Experience</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">Feb 2025 - July 2025</h4><h4>Data Analyst Trainee</h4><p>Naresh i Technologies, Hyderabad</p></div></div></div></div>
                         <div class="grid-column">
                             <h3>Core Skills</h3>
-                            <ul class="core-skills-list">
-                                <li>Data Analysis & Visualization</li>
-                                <li>Statistical Analysis</li>
-                                <li>SQL & Database Management</li>
-                                <li>ETL Processes</li>
-                                <li>Python (Pandas, NumPy, Folium)</li>
-                                <li>Dashboard Design</li>
-                                <li>Critical Thinking</li>
-                                <li>Problem Solving</li>
-                                <li>Stakeholder Communication</li>
-                            </ul>
+                            <ul class="core-skills-list"><li>Data Analysis & Visualization</li><li>Statistical Analysis</li><li>SQL & Database Management</li><li>ETL Processes</li><li>Python (Pandas, NumPy, Folium)</li><li>Dashboard Design</li><li>Critical Thinking</li><li>Problem Solving</li><li>Stakeholder Communication</li></ul>
                             <h3 style="margin-top: 2.5rem;">Software Skills</h3>
-                             <!-- IMPROVEMENT 1: Replaced Font Awesome icons with colorful SVGs -->
-                            <ul class="software-skills-list">
-                                <li title="MySQL"><img src="https://www.svgrepo.com/show/303251/mysql-logo.svg" alt="MySQL Icon"></li>
-                                <li title="Python"><img src="https://www.svgrepo.com/show/452091/python.svg" alt="Python Icon"></li>
-                                <li title="Power BI"><img src="https://www.svgrepo.com/show/354200/power-bi.svg" alt="Power BI Icon"></li>
-                                <li title="Tableau"><img src="https://www.svgrepo.com/show/330322/tableau-software.svg" alt="Tableau Icon"></li>
-                                <li title="Excel"><img src="https://www.svgrepo.com/show/353731/excel.svg" alt="Excel Icon"></li>
-                                <li title="PowerPoint"><img src="https://www.svgrepo.com/show/354199/powerpoint.svg" alt="PowerPoint Icon"></li>
-                            </ul>
+                            <ul class="software-skills-list"><li title="MySQL"><img src="https://www.svgrepo.com/show/303251/mysql-logo.svg" alt="MySQL Icon"></li><li title="Python"><img src="https://www.svgrepo.com/show/452091/python.svg" alt="Python Icon"></li><li title="Power BI"><img src="https://www.svgrepo.com/show/354200/power-bi.svg" alt="Power BI Icon"></li><li title="Tableau"><img src="https://www.svgrepo.com/show/330322/tableau-software.svg" alt="Tableau Icon"></li><li title="Excel"><img src="https://www.svgrepo.com/show/353731/excel.svg" alt="Excel Icon"></li><li title="PowerPoint"><img src="https://www.svgrepo.com/show/354199/powerpoint.svg" alt="PowerPoint Icon"></li></ul>
                         </div>
                     </div>
                 </div>
@@ -392,15 +323,28 @@
         </section>
 
         <section id="projects" class="reveal">
-            <!-- IMPROVEMENT 2 & 3 APPLIED HERE (4-card layout & Glassmorphism) -->
             <h2 class="section-heading">Featured Projects</h2>
+            
+            <!-- IMPROVEMENT 2: Project filter buttons -->
+            <div class="project-filters">
+                <button type="button" class="active" data-filter="all">All</button>
+                <button type="button" data-filter="Python">Python</button>
+                <button type="button" data-filter="Power BI">Power BI</button>
+                <button type="button" data-filter="Tableau">Tableau</button>
+                <button type="button" data-filter="Excel">Excel</button>
+            </div>
+            
             <ul class="projects-grid">
-                 <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" target="_blank" class="special-link">COVID-19 Hospitalization</a></h3><div class="project-description"><p>Complete COVID-19 hospitalization trends (2019–2025) with real-time insights using Python & JSON.</p></div><ul class="project-tech-list"><li>Python</li><li>JASON</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" class="special-link">AI Job Market Analysis</a></h3><div class="project-description"><p>Analyzed real 2025 AI job market data with Python and CSV — actionable insights in real time.</p></div><ul class="project-tech-list"><li>Python</li><li>CSV</li><li>Seaborn</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" class="special-link">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sentiment Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Social Media Sentiment</a></h3><div class="project-description"><p>Used NLP to classify social media mentions by sentiment, providing insights for brand strategy.</p></div><ul class="project-tech-list"><li>Python</li><li>NLTK</li><li>APIs</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <!-- IMPORTANT: Add data-tags attribute to each project card for filtering -->
+                 <li class="spotlight-card reveal reveal-child" data-tags="Python, MySQL"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" data-tags="Python, JSON" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" target="_blank" class="special-link">COVID-19 Hospitalization</a></h3><div class="project-description"><p>Complete COVID-19 hospitalization trends (2019–2025) with real-time insights using Python & JSON.</p></div><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" data-tags="Python, CSV, Seaborn" style="--delay: 200ms;"><div class="card-content"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" class="special-link">AI Job Market Analysis</a></h3><div class="project-description"><p>Analyzed real 2025 AI job market data with Python and CSV — actionable insights in real time.</p></div><ul class="project-tech-list"><li>Python</li><li>CSV</li><li>Seaborn</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" data-tags="MySQL, Power BI"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" class="special-link">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" data-tags="Python, NLTK" style="--delay: 100ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sentiment Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Social Media Sentiment</a></h3><div class="project-description"><p>Used NLP to classify social media mentions by sentiment, providing insights for brand strategy.</p></div><ul class="project-tech-list"><li>Python</li><li>NLTK</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal reveal-child" data-tags="Power BI, SQL, Excel" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <!-- IMPROVEMENT 3: Added two new cards for Tableau and Excel -->
+                <li class="spotlight-card reveal reveal-child" data-tags="Tableau, SQL" style="--delay: 300ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1629903673322-257b5f5d3513?auto=format&fit=crop&w=1470&q=80" alt="Sales Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Regional Sales Dashboard</a></h3><div class="project-description"><p>Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p></div><ul class="project-tech-list"><li>Tableau</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                 <li class="spotlight-card reveal reveal-child" data-tags="Excel, VBA" style="--delay: 400ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80" alt="Excel Automation" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Inventory Management System</a></h3><div class="project-description"><p>Developed an automated inventory tracking system in Excel using VBA macros to streamline data entry and reporting.</p></div><ul class="project-tech-list"><li>Excel</li><li>VBA</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
             </ul>
              <div class="projects-footer reveal">
                 <a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large" target="_blank"><span class="special-link">View All on GitHub</span></a>
@@ -437,6 +381,7 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Starfield Animation ---
         function createStarfield() {
             const container = document.getElementById('stars-container');
             if (!container) return;
@@ -460,6 +405,7 @@
         }
         createStarfield();
         
+        // --- Reveal on Scroll ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -468,15 +414,16 @@
                 }
             });
         }, { rootMargin: '0px 0px -100px 0px' });
-
         const revealElements = document.querySelectorAll('.reveal, .section-heading, .reveal-child');
         revealElements.forEach(el => observer.observe(el));
 
+        // --- Scrolled Nav ---
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 50);
         });
 
+        // --- Spotlight Card Effect ---
         const cards = document.querySelectorAll('.spotlight-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', e => {
@@ -485,23 +432,63 @@
                 card.style.setProperty('--y', `${e.clientY - rect.top}px`);
             });
         });
-
-        // Hamburger Menu click functionality
+        
+        // --- IMPROVEMENT 1: Robust Hamburger Menu Logic ---
         const hamburger = document.getElementById('hamburgerMenu');
         const navLinks = document.getElementById('navLinks');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        // Close the mobile menu when a link is clicked
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent event bubbling
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
             });
-        });
 
+            // Close menu if a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close menu if clicking outside of it
+            document.addEventListener('click', (e) => {
+                if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+        
+        // --- IMPROVEMENT 2: Project Filtering Logic ---
+        const filtersContainer = document.querySelector('.project-filters');
+        const projects = document.querySelectorAll('.projects-grid .spotlight-card');
+        if(filtersContainer && projects.length > 0) {
+            filtersContainer.addEventListener('click', (e) => {
+                // Only run if a button is clicked
+                if(e.target.tagName === 'BUTTON') {
+                    // Update active state on buttons
+                    filtersContainer.querySelector('.active').classList.remove('active');
+                    e.target.classList.add('active');
+                    
+                    const filter = e.target.dataset.filter;
+                    
+                    projects.forEach(project => {
+                        const tags = project.dataset.tags || '';
+                        const isMatch = filter === 'all' || tags.toLowerCase().includes(filter.toLowerCase());
+
+                        // Use a class to toggle visibility for smooth animations
+                        if(isMatch) {
+                            project.classList.remove('hidden');
+                        } else {
+                            project.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+        }
+        
+        // --- Active Nav Link on Scroll ---
         const sections = document.querySelectorAll('main section');
         const navAnchors = document.querySelectorAll('.nav-links ol li a');
         const activateNavLink = () => {
@@ -513,7 +500,8 @@
             });
             navAnchors.forEach(a => {
                 a.classList.remove('active');
-                if (a.getAttribute('href') === `#${current}`) {
+                const linkHref = a.getAttribute('href');
+                if (linkHref && linkHref.includes(current)) {
                     a.classList.add('active');
                 }
             });
