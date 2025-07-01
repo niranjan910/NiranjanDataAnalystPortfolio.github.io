@@ -146,6 +146,7 @@
         }
         ul.core-skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
         
+        /* IMPROVEMENT 1: Colorful Software Skills Icons */
         .software-skills-list { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; list-style: none; margin-top: 1.5rem; padding: 0; }
         .software-skills-list li { transition: var(--transition-fast); }
         .software-skills-list li:hover { transform: scale(1.1); }
@@ -160,37 +161,16 @@
         .timeline-content p { color: var(--light-slate); margin: 0; }
         .timeline-date { font-family: var(--font-mono); color: var(--slate); font-size: 0.8rem; margin-bottom: 0.5rem; }
 
-        /* --- VISUALLY APPEALING PROJECT LAYOUT --- */
+        /* IMPROVEMENT 2: 4-Card Grid & Masonry Layout */
         .projects-grid {
-            display: grid;
-            /* Creates a responsive grid with a minimum column width of 300px */
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            /* Sets a base height for the rows, allowing taller items to span multiples of this height */
-            grid-auto-rows: minmax(280px, auto);
-            /* This is the magic property! It tells the grid to fill in any holes, creating the masonry effect */
-            grid-auto-flow: dense;
-            gap: 1.5rem;
             list-style: none;
+            display: grid;
+            gap: 1.5rem;
+            /* On screens > 1200px, create 4 columns. It will auto-adjust for smaller screens */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         }
 
-        /* Class to make a card span two columns (wider) */
-        .card-wide {
-            grid-column: span 2;
-        }
-
-        /* Class to make a card span two rows (taller) */
-        .card-tall {
-            grid-row: span 2;
-        }
-        
-        /* Ensure image in tall cards covers the new space properly */
-        .card-tall .project-image {
-             height: 100%; /* Or a specific larger height like 400px */
-             max-height: 450px;
-        }
-        /* ---- END OF PROJECT LAYOUT ---- */
-
-
+        /* IMPROVEMENT 3: Glassmorphism effect for cards */
         .spotlight-card {
             background: linear-gradient(135deg, rgba(23, 37, 64, 0.5), rgba(10, 25, 47, 0.5));
             backdrop-filter: blur(10px);
@@ -200,8 +180,6 @@
             position: relative;
             overflow: hidden;
             border: 1px solid var(--lightest-navy);
-            display: flex; /* Using flexbox for card content alignment */
-            flex-direction: column;
         }
 
         .spotlight-card:hover {
@@ -209,11 +187,12 @@
             box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7);
             border-color: var(--accent);
         }
+        /* Spotlight hover effect is now more subtle on the glass background */
         .spotlight-card::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 0; height: 0; background: radial-gradient(circle closest-side, var(--accent-tint), transparent); opacity: 0; transition: width 0.3s ease, height 0.3s ease, opacity: 0.3s ease; }
         .spotlight-card:hover::before { width: 300px; height: 300px; opacity: 1; }
 
         .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
-        .project-image { width: 100%; height: 180px; object-fit: cover; flex-shrink: 0; }
+        .project-image { width: 100%; height: 180px; object-fit: cover; }
         .card-inner { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; }
         .project-title, .cert-title { font-size: 1.3rem; margin-bottom: 0.75rem; }
         .project-title a:hover { color: var(--accent); }
@@ -249,8 +228,6 @@
             .about-details-grid .grid-column:nth-child(3) {
                 grid-column: 1 / span 2;
             }
-            /* On smaller screens, remove the wide span to allow for better flow */
-            .card-wide { grid-column: span 1; }
         }
 
         @media (max-width: 768px) {
@@ -265,10 +242,10 @@
             .about-details-grid .grid-column:nth-child(3) {
                 grid-column: auto;
             }
-            /* On mobile, all cards should be regular size */
-            .card-wide, .card-tall { grid-column: span 1; grid-row: span 1; }
-            
+
+            /* IMPROVEMENT 4: Fixed Hamburger Menu Logic */
             .nav-links {
+                /* Changed display: none to display: flex so the element is always in the DOM for transitions. */
                 display: flex;
                 position: fixed;
                 top: 0;
@@ -280,13 +257,17 @@
                 justify-content: center;
                 align-items: center;
                 transition: transform 0.3s ease-out;
+                /* Start off-screen */
                 transform: translateX(100%);
                 z-index: 11;
             }
+
             .nav-links.active {
+                /* Slide into view when active */
                 transform: translateX(0);
             }
             .nav-links ol { flex-direction: column; gap: 2rem; }
+
             .hamburger-menu {
                 display: flex;
                 flex-direction: column;
@@ -296,6 +277,7 @@
                 background: transparent;
                 border: none;
                 cursor: pointer;
+                /* Increased z-index to ensure it's on top of the sliding nav panel */
                 z-index: 12;
             }
             .hamburger-menu .bar { width: 30px; height: 3px; background-color: var(--accent); border-radius: 5px; transition: var(--transition-fast); transform-origin: center; }
@@ -316,6 +298,7 @@
         <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </button>
+        <!-- This div now starts hidden off-screen on mobile and slides in with the 'active' class -->
         <div class="nav-links reveal reveal-child" style="--delay: 100ms;" id="navLinks">
             <ol>
                 <li><a href="#about">About</a></li>
@@ -393,6 +376,7 @@
                                 <li>Stakeholder Communication</li>
                             </ul>
                             <h3 style="margin-top: 2.5rem;">Software Skills</h3>
+                             <!-- IMPROVEMENT 1: Replaced Font Awesome icons with colorful SVGs -->
                             <ul class="software-skills-list">
                                 <li title="MySQL"><img src="https://www.svgrepo.com/show/303251/mysql-logo.svg" alt="MySQL Icon"></li>
                                 <li title="Python"><img src="https://www.svgrepo.com/show/452091/python.svg" alt="Python Icon"></li>
@@ -408,20 +392,14 @@
         </section>
 
         <section id="projects" class="reveal">
+            <!-- IMPROVEMENT 2 & 3 APPLIED HERE (4-card layout & Glassmorphism) -->
             <h2 class="section-heading">Featured Projects</h2>
             <ul class="projects-grid">
-                <!-- ADDED `card-wide` to make this featured project span two columns -->
-                 <li class="spotlight-card card-wide reveal reveal-child"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                
+                 <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
                 <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" target="_blank" class="special-link">COVID-19 Hospitalization</a></h3><div class="project-description"><p>Complete COVID-19 hospitalization trends (2019–2025) with real-time insights using Python & JSON.</p></div><ul class="project-tech-list"><li>Python</li><li>JASON</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                
                 <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" class="special-link">AI Job Market Analysis</a></h3><div class="project-description"><p>Analyzed real 2025 AI job market data with Python and CSV — actionable insights in real time.</p></div><ul class="project-tech-list"><li>Python</li><li>CSV</li><li>Seaborn</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                
-                 <!-- ADDED `card-tall` to make this project span two rows, creating a dynamic look -->
-                <li class="spotlight-card card-tall reveal reveal-child"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" class="special-link">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                
+                <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" class="special-link">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
                 <li class="spotlight-card reveal reveal-child" style="--delay: 100ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sentiment Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Social Media Sentiment</a></h3><div class="project-description"><p>Used NLP to classify social media mentions by sentiment, providing insights for brand strategy.</p></div><ul class="project-tech-list"><li>Python</li><li>NLTK</li><li>APIs</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                
                 <li class="spotlight-card reveal reveal-child" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
             </ul>
              <div class="projects-footer reveal">
