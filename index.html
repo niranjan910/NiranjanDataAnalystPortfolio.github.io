@@ -33,57 +33,89 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         
-        html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--slate) transparent; }
-
-        body {
-            font-family: var(--font-sans); color: var(--slate); -webkit-font-smoothing: antialiased;
-            background-color: var(--space-black-blue); line-height: 1.5; overflow-x: hidden;
+        html { 
+            scroll-behavior: smooth; 
+            scrollbar-width: thin;
+            scrollbar-color: var(--slate) transparent;
         }
 
-        .background-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+        body {
+            font-family: var(--font-sans);
+            color: var(--slate);
+            -webkit-font-smoothing: antialiased;
+            background-color: var(--space-black-blue);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .background-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+        }
         .aurora-background {
             background-image: radial-gradient(at 47% 33%, hsl(209.79, 89%, 15%) 0, transparent 59%), 
                               radial-gradient(at 82% 65%, hsl(211.33, 93%, 20%) 0, transparent 55%);
             width: 100%; height: 100%;
         }
 
+        .skip-to-content {
+            position: absolute; top: auto; left: -999px; width: 1px; height: 1px; overflow: hidden; z-index: -999;
+            padding: 1rem; background-color: var(--accent); color: var(--dark-navy); border-radius: var(--border-radius); font-weight: 700;
+        }
+        .skip-to-content:focus { top: 1rem; left: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; }
+
         main { padding: 0 150px; position: relative; }
         section { padding: 120px 0; }
         
+        /* IMPROVEMENT 2: Section divider style */
         section[id]::after {
-            content: ''; display: block; width: 60%; max-width: 400px; height: 1px;
+            content: '';
+            display: block;
+            width: 60%;
+            max-width: 400px;
+            height: 1px;
             background: linear-gradient(to right, transparent, var(--lightest-navy), transparent);
             margin: 100px auto 0 auto;
         }
-        #hero::after, #contact::after { display: none; }
+        /* Remove divider from the last section */
+        #contact::after {
+            display: none;
+        }
 
         h1, h2, h3, h4 { color: var(--lightest-slate); font-weight: 700; line-height: 1.2; }
         p { margin-bottom: 1rem; max-width: 65ch; }
         a { text-decoration: none; color: var(--light-slate); transition: var(--transition-fast); }
-        a:hover, button:hover { color: var(--accent); }
+        a:hover, button:hover { color: var(--accent); filter: brightness(1.2); }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, transform; }
         .reveal.is-visible { opacity: 1; transform: translateY(0); }
         
         .main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: transparent; z-index: 11; transition: var(--transition-slow); }
         .main-nav.scrolled { background-color: rgba(2, 12, 27, 0.85); backdrop-filter: blur(10px); height: 70px; box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7); }
         .nav-logo a { color: var(--accent); font-weight: 800; font-size: 1.8rem; font-family: var(--font-mono); }
-        
-        .nav-links ol { list-style: none; display: flex; align-items: center; position: relative; }
-        .nav-links li:not(.nav-highlight) { margin: 0 1.25rem; }
-        .nav-links li a { color: var(--lightest-slate); padding: 0.75rem 0; font-size: 0.9rem; position: relative; }
+        .nav-links ol { list-style: none; display: flex; align-items: center; }
+        .nav-links li { margin: 0 1.25rem; }
+        .nav-links li a { color: var(--lightest-slate); padding: 0.75rem 0; font-size: 0.9rem; position: relative;}
         .hamburger-menu { display: none; }
 
         #hero { display: flex; justify-content: center; flex-direction: column; min-height: 100vh; text-align: left; position: relative; }
+        /* Hero section does not need a bottom divider */
+        #hero::after { display: none; }
         #stars-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; }
         .star { position: absolute; background-color: var(--white); border-radius: 50%; animation: move-stars linear infinite; }
         
+        /* IMPROVEMENT 3: New "Star Fall" animation */
         @keyframes move-stars { 
             from { transform: translateY(-50px); opacity: 1; } 
             to { transform: translate(var(--drift-x, 0), 100vh); opacity: 0.5; } 
         }
 
         #hero h1, #hero h2, #hero h3, #hero p, .hero-cta-container { opacity: 0; animation: fadeInSlideUp 0.8s forwards; }
+        #hero h1 { animation-delay: 100ms; }
+        #hero .big-heading { animation-delay: 200ms; }
+        #hero .sub-heading { animation-delay: 300ms; }
+        #hero p { animation-delay: 400ms; }
+        .hero-cta-container { animation-delay: 500ms; }
+
         @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         #hero h1 { margin: 0 0 1.5rem 0.25rem; color: var(--accent); font-family: var(--font-mono); font-size: clamp(1rem, 2vw, 1.1rem); font-weight: 400; }
@@ -94,17 +126,50 @@
 
         .btn { color: var(--accent); background-color: transparent; border: 1px solid var(--accent); border-radius: var(--border-radius); padding: 0.75rem 1.75rem; font-size: 0.9rem; font-family: var(--font-mono); cursor: pointer; transition: var(--transition-fast); line-height: 1; }
         .btn:hover { background-color: var(--accent-tint); transform: translateY(-3px); box-shadow: 0 5px 15px -5px var(--accent-tint); }
-        .special-link { color: var(--accent); }
+        .btn a.special-link { color: var(--accent) !important; }
+        a.special-link:hover { color: var(--accent) !important; }
+        .btn-large { padding: 1.25rem 2rem; }
         
         h2.section-heading { display: flex; align-items: center; margin-bottom: 3rem; font-size: clamp(26px, 5vw, 32px); color: var(--white); width: 100%; }
         h2.section-heading::after { content: ''; display: block; position: relative; flex-grow: 1; height: 1px; margin-left: 1.5rem; background-color: var(--lightest-navy); transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-out; }
         h2.section-heading.is-visible::after { transform: scaleX(1); }
 
+        .about-container { display: flex; gap: 50px; align-items: flex-start; }
+        .about-left { flex: 0 0 250px; text-align: left; }
+        .about-image-wrapper { max-width: 250px; margin-bottom: 1.5rem; position: relative; border-radius: var(--border-radius); }
+        .about-image-wrapper img { width: 100%; height: auto; object-fit: cover; border-radius: var(--border-radius); border: 2px solid var(--lightest-navy); }
+        .about-name { font-size: 1.8rem; color: var(--white); margin-bottom: 0.5rem; }
+        .about-title { font-family: var(--font-mono); font-size: 1rem; color: var(--accent); margin-bottom: 0; }
+        .contact-info { margin-top: 2rem; }
+        .contact-info ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+        .contact-info li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.75rem; color: var(--slate); }
+        .contact-info i { color: var(--accent); margin-top: 3px; }
+
+        .about-right { flex: 1; }
+        .about-right .bio { margin-bottom: 2.5rem; }
+        
+        .about-details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .about-details-grid h3 { color: var(--lightest-slate); font-size: 1.4rem; margin-bottom: 1.5rem; }
+        .about-details-grid .grid-column h3:first-child { margin-top: 0; }
+        
+        ul.core-skills-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+        ul.core-skills-list li { position: relative; padding-left: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem; color: var(--light-slate); margin-bottom: 0.5rem; }
+        ul.core-skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+        
         .software-skills-list { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; list-style: none; margin-top: 1.5rem; padding: 0; }
         .software-skills-list li { transition: var(--transition-fast); }
         .software-skills-list li:hover { transform: translateY(-3px); }
         .software-skills-list svg { width: 40px; height: 40px; }
 
+        .timeline { position: relative; }
+        .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--lightest-navy); top: 0.5rem; bottom: 0; left: 7px; z-index: 1; }
+        .timeline-item { padding: 0 0 2.5rem 30px; position: relative; z-index: 2; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before { content: ''; height: 15px; width: 15px; position: absolute; top: 0.5rem; left: 7px; transform: translateX(-50%); background-color: var(--accent); border-radius: 50%; z-index: 2;}
+        .timeline-content h4 { font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 600; }
+        .timeline-content p { color: var(--light-slate); margin: 0; }
+        .timeline-date { font-family: var(--font-mono); color: var(--slate); font-size: 0.8rem; margin-bottom: 0.5rem; }
+        
         .project-filters { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
         .project-filters button { font-family: var(--font-mono); font-size: 0.85rem; background-color: transparent; color: var(--light-slate); border: 1px solid var(--lightest-navy); border-radius: 20px; padding: 0.5rem 1rem; cursor: pointer; transition: var(--transition-fast); }
         .project-filters button:hover { background-color: var(--accent-tint); color: var(--accent); border-color: var(--accent);}
@@ -122,57 +187,106 @@
         .spotlight-card.hidden { transform: scale(0.95); opacity: 0; pointer-events: none; }
         .spotlight-card:not(.hidden) { transform: scale(1); opacity: 1; }
         .spotlight-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7); border-color: var(--accent); }
+        .spotlight-card::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 0; height: 0; background: radial-gradient(circle closest-side, var(--accent-tint), transparent); opacity: 0; transition: width 0.3s ease, height 0.3s ease, opacity: 0.3s ease; }
+        .spotlight-card:hover::before { width: 300px; height: 300px; opacity: 1; }
 
+        .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
+        .project-image { width: 100%; height: 180px; object-fit: cover; }
+        .card-inner { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-title, .cert-title { font-size: 1.3rem; margin-bottom: 0.75rem; }
+        .project-title a:hover { color: var(--accent); }
+        .project-description { color: var(--light-slate); flex-grow: 1; font-size: 1rem; }
+        .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; font-family: var(--font-mono); font-size: 0.8rem; margin-top: 1.5rem; color: var(--slate); }
+        
+        .project-link-wrapper { margin-top: 1.5rem; }
+        .project-view-link { color: var(--lightest-slate); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .project-view-link .arrow-icon { display: inline-block; transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
+        .project-view-link:hover { color: var(--accent); }
+        .project-view-link:hover .arrow-icon { transform: translateX(5px); }
+        
+        .projects-footer { text-align: center; margin-top: 4rem; }
+        .certs-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+        .cert-inner { text-align: center; justify-content: space-between; }
+        .cert-issuer { font-size: 0.8rem; color: var(--slate); margin: 5px 0 15px; }
+        .cert-link { display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; }
+        .cert-link i { margin-left: 5px; }
+        
+        #contact { text-align: center; max-width: 650px; margin: 0 auto; }
+        #contact .title { font-size: clamp(40px, 5vw, 60px); color: var(--white); }
+        #contact p { margin-left: auto; margin-right: auto; }
+        .contact-cta-container { margin-top: 3rem; }
+
+        .footer { text-align: center; padding: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--slate); }
+        .social-links { list-style: none; display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+        
         /* Desktop-only Styles */
         @media (min-width: 769px) {
-            /* IMPROVEMENT: ADVANCED NAVIGATION HIGHLIGHT */
-            .nav-highlight {
+            /* IMPROVEMENT 1: Navigation link highlight with underline */
+            .nav-links li a::after {
+                content: '';
                 position: absolute;
-                bottom: 10px; /* Adjust position to sit under the text */
+                bottom: 0;
+                left: 0;
+                width: 100%;
                 height: 2px;
                 background-color: var(--accent);
-                border-radius: 2px;
-                /* Fluid motion transition */
-                transition: transform 0.3s cubic-bezier(0.65, 0.05, 0.36, 1), 
-                            width 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+                transform: scaleX(0);
+                transform-origin: bottom right;
+                transition: transform 0.25s ease-out;
             }
-            .nav-links li a:hover,
-            .nav-links li a.active {
-                color: var(--accent);
+            .nav-links li a:hover::after,
+            .nav-links li a.active::after {
+                transform: scaleX(1);
+                transform-origin: bottom left;
             }
         }
         
+        @media (max-width: 1080px) { 
+            main { padding: 0 100px; } 
+            .about-details-grid { grid-template-columns: 1fr 1fr; }
+            .about-details-grid .grid-column:nth-child(3) { grid-column: 1 / span 2; }
+        }
+
         @media (max-width: 768px) {
             main { padding: 0 50px; }
             section { padding: 100px 0; }
             h2.section-heading::after { display: none; }
+            .about-container { flex-direction: column; align-items: center; }
+            .about-left { flex: 0 0 auto; width: 100%; max-width: 250px; margin-bottom: 2rem; text-align: center; }
+            .about-details-grid { grid-template-columns: 1fr; }
+            .about-details-grid .grid-column:nth-child(3) { grid-column: auto; }
             
             .nav-links {
                 display: flex; position: fixed; top: 0; right: 0;
                 height: 100vh; width: min(75vw, 350px);
                 background-color: var(--mid-navy);
                 flex-direction: column; justify-content: center; align-items: center;
-                transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 10;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-out;
+                z-index: 10;
             }
             .nav-links.active { transform: translateX(0); }
             .nav-links ol { flex-direction: column; gap: 2rem; text-align: center;}
-            .nav-links li a.active { color: var(--accent); } /* Simple active state for mobile */
-            .nav-highlight { display: none; } /* Hide the advanced highlight on mobile */
+            /* Color active link on mobile without the underline */
+            .nav-links li a.active { color: var(--accent); }
 
             .hamburger-menu {
                 display: flex; flex-direction: column; justify-content: space-around;
                 width: 30px; height: 25px;
-                background: transparent; border: none; cursor: pointer; padding: 0; z-index: 12;
+                background: transparent; border: none; cursor: pointer; padding: 0;
+                z-index: 12;
             }
             .hamburger-menu .bar { width: 30px; height: 3px; background-color: var(--accent); border-radius: 5px; transition: var(--transition-fast); transform-origin: center; }
             .hamburger-menu.active .bar:nth-child(1){ transform: translateY(11px) rotate(45deg); }
             .hamburger-menu.active .bar:nth-child(2){ opacity: 0; }
             .hamburger-menu.active .bar:nth-child(3){ transform: translateY(-11px) rotate(-45deg); }
         }
+        @media (max-width: 600px) { main { padding: 0 25px; } }
     </style>
 </head>
 <body>
     <div class="background-container"><div class="aurora-background"></div></div>
+    <a href="#main-content" class="skip-to-content">Skip to Content</a>
     
     <nav class="main-nav" id="mainNav">
         <div class="nav-logo reveal"><a href="#">NK</a></div>
@@ -180,22 +294,17 @@
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </button>
         <div class="nav-links" id="navLinks">
-            <!-- IMPROVEMENT: The <ol> now contains the new nav-highlight element for the advanced animation -->
             <ol>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#certs" class="nav-link">Certificates</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <!-- This resume button is styled separately and not part of the highlight logic -->
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certs">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="YOUR_RESUME_LINK.pdf" class="btn resume-btn" target="_blank"><span class="special-link">Resume</span></a></li>
-                <!-- The magic highlight element! -->
-                <li class="nav-highlight"></li>
             </ol>
         </div>
     </nav>
 
     <main id="main-content">
-        <!-- Content Sections (About, Projects, etc.) remain unchanged -->
         <section id="hero">
             <div id="stars-container"></div>
             <h1>Hi, my name is</h1>
@@ -209,10 +318,9 @@
 
         <section id="about" class="reveal">
             <h2 class="section-heading">About Me</h2>
-             <!-- Content unchanged... -->
-             <div class="about-container">
-                <div class="about-left"><div class="about-image-wrapper"><img src="images/Instagram post - 165.png" alt="Niranjan Kumar Headshot"></div><h2 class="about-name">Niranjan Kumar</h2><p class="about-title">Data Analyst</p><div class="contact-info"><ul><li><i class="fas fa-map-marker-alt"></i><div>Hyderabad, India</div></li><li><i class="fas fa-phone-alt"></i><div><a href="tel:+919641143646">+91 9641143646</a></div></li><li><i class="fas fa-envelope"></i><div><a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></div></li><li><i class="fab fa-linkedin"></i><div><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">LinkedIn</a></div></li><li><i class="fab fa-github"></i><div><a href="https://github.com/niranjan910" target="_blank">GitHub</a></div></li></ul></div></div>
-                <div class="about-right"><p class="bio">I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p><div class="about-details-grid"><div class="grid-column"><h3>Education</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2019 - 2023</h4><h4>B.Tech, Computer Science</h4><p>Institute of Professional Studies, Gwalior (8.9 CGPA)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2018</h4><h4>Higher Secondary (12th)</h4><p>D.A.V. Public School (85%)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2016</h4><h4>Secondary (10th)</h4><p>D.A.V. Public School (9.2 CGPA)</p></div></div></div></div><div class="grid-column"><h3>Experience</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">Feb 2025 - July 2025</h4><h4>Data Analyst Trainee</h4><p>Naresh i Technologies, Hyderabad</p></div></div></div></div>
+            <div class="about-container">
+                <div class="about-left reveal" style="--delay: 100ms;"><div class="about-image-wrapper"><img src="images/Instagram post - 165.png" alt="Niranjan Kumar Headshot"></div><h2 class="about-name">Niranjan Kumar</h2><p class="about-title">Data Analyst</p><div class="contact-info"><ul><li><i class="fas fa-map-marker-alt"></i><div>Hyderabad, India</div></li><li><i class="fas fa-phone-alt"></i><div><a href="tel:+919641143646">+91 9641143646</a></div></li><li><i class="fas fa-envelope"></i><div><a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></div></li><li><i class="fab fa-linkedin"></i><div><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">LinkedIn</a></div></li><li><i class="fab fa-github"></i><div><a href="https://github.com/niranjan910" target="_blank">GitHub</a></div></li></ul></div></div>
+                <div class="about-right reveal" style="--delay: 200ms;"><p class="bio">I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p><div class="about-details-grid"><div class="grid-column"><h3>Education</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2019 - 2023</h4><h4>B.Tech, Computer Science</h4><p>Institute of Professional Studies, Gwalior (8.9 CGPA)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2018</h4><h4>Higher Secondary (12th)</h4><p>D.A.V. Public School (85%)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2016</h4><h4>Secondary (10th)</h4><p>D.A.V. Public School (9.2 CGPA)</p></div></div></div></div><div class="grid-column"><h3>Experience</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">Feb 2025 - July 2025</h4><h4>Data Analyst Trainee</h4><p>Naresh i Technologies, Hyderabad</p></div></div></div></div>
                         <div class="grid-column"><h3>Core Skills</h3><ul class="core-skills-list"><li>Data Analysis & Visualization</li><li>Statistical Analysis</li><li>SQL & Database Management</li><li>ETL Processes</li><li>Python (Pandas, NumPy, Folium)</li><li>Dashboard Design</li><li>Critical Thinking</li><li>Problem Solving</li><li>Stakeholder Communication</li></ul>
                             <h3 style="margin-top: 2.5rem;">Software Skills</h3>
                             <ul class="software-skills-list">
@@ -225,13 +333,13 @@
                             </ul>
                         </div>
                     </div>
-             </div>
+                </div>
+            </div>
         </section>
 
         <section id="projects" class="reveal">
             <h2 class="section-heading">Featured Projects</h2>
-             <!-- Content unchanged... -->
-             <div class="project-filters">
+            <div class="project-filters">
                 <button type="button" class="active" data-filter="all">All</button>
                 <button type="button" data-filter="Python">Python</button>
                 <button type="button" data-filter="Power BI">Power BI</button>
@@ -239,14 +347,14 @@
                 <button type="button" data-filter="Excel">Excel</button>
             </div>
             <ul class="projects-grid">
-                 <li class="spotlight-card" data-tags="Python, MySQL"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card" data-tags="Python, JSON"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" target="_blank" class="special-link">COVID-19 Hospitalization</a></h3><div class="project-description"><p>Complete COVID-19 hospitalization trends (2019–2025) with real-time insights using Python & JSON.</p></div><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card" data-tags="Python, CSV, Seaborn"><div class="card-content"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" class="special-link">AI Job Market Analysis</a></h3><div class="project-description"><p>Analyzed real 2025 AI job market data with Python and CSV — actionable insights in real time.</p></div><ul class="project-tech-list"><li>Python</li><li>CSV</li><li>Seaborn</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card" data-tags="MySQL, Power BI"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" class="special-link">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card" data-tags="Python, NLTK"><div class="card-content"><img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sentiment Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Social Media Sentiment</a></h3><div class="project-description"><p>Used NLP to classify social media mentions by sentiment, providing insights for brand strategy.</p></div><ul class="project-tech-list"><li>Python</li><li>NLTK</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card" data-tags="Power BI, SQL, Excel"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card" data-tags="Tableau, SQL"><div class="card-content"><img src="https://images.unsplash.com/photo-1629903673322-257b5f5d3513?auto=format&fit=crop&w=1470&q=80" alt="Sales Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Regional Sales Dashboard</a></h3><div class="project-description"><p>Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p></div><ul class="project-tech-list"><li>Tableau</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                 <li class="spotlight-card" data-tags="Excel, VBA"><div class="card-content"><img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80" alt="Excel Automation" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Inventory Management System</a></h3><div class="project-description"><p>Developed an automated inventory tracking system in Excel using VBA macros to streamline data entry and reporting.</p></div><ul class="project-tech-list"><li>Excel</li><li>VBA</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                 <li class="spotlight-card reveal" data-tags="Python, MySQL"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="Python, JSON" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" target="_blank" class="special-link">COVID-19 Hospitalization</a></h3><div class="project-description"><p>Complete COVID-19 hospitalization trends (2019–2025) with real-time insights using Python & JSON.</p></div><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="Python, CSV, Seaborn" style="--delay: 200ms;"><div class="card-content"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" class="special-link">AI Job Market Analysis</a></h3><div class="project-description"><p>Analyzed real 2025 AI job market data with Python and CSV — actionable insights in real time.</p></div><ul class="project-tech-list"><li>Python</li><li>CSV</li><li>Seaborn</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="MySQL, Power BI"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" class="special-link">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="Python, NLTK" style="--delay: 100ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sentiment Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Social Media Sentiment</a></h3><div class="project-description"><p>Used NLP to classify social media mentions by sentiment, providing insights for brand strategy.</p></div><ul class="project-tech-list"><li>Python</li><li>NLTK</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="Power BI, SQL, Excel" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="Tableau, SQL" style="--delay: 300ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1629903673322-257b5f5d3513?auto=format&fit=crop&w=1470&q=80" alt="Sales Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Regional Sales Dashboard</a></h3><div class="project-description"><p>Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p></div><ul class="project-tech-list"><li>Tableau</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                 <li class="spotlight-card reveal" data-tags="Excel, VBA" style="--delay: 400ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80" alt="Excel Automation" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Inventory Management System</a></h3><div class="project-description"><p>Developed an automated inventory tracking system in Excel using VBA macros to streamline data entry and reporting.</p></div><ul class="project-tech-list"><li>Excel</li><li>VBA</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
             </ul>
              <div class="projects-footer reveal">
                 <a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large" target="_blank"><span class="special-link">View All on GitHub</span></a>
@@ -255,12 +363,11 @@
         
         <section id="certs" class="reveal">
             <h2 class="section-heading">Credentials</h2>
-            <!-- Content unchanged... -->
-             <ul class="certs-grid">
-                <li class="spotlight-card"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Statistics Foundations Professional Certificate</h3><p class="cert-issuer">Issued by Wolfram Research and LinkedIn</p><a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Career Essentials in Data Analysis</h3><p class="cert-issuer">Issued by Microsoft and LinkedIn</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Public Speaking Skills Professional Certificate</h3><p class="cert-issuer">Issued by Toastmasters International</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">TCS iON Career Edge - Young Professional</h3><p class="cert-issuer">Issued by TCS</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
+            <ul class="certs-grid">
+                <li class="spotlight-card reveal"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Statistics Foundations Professional Certificate</h3><p class="cert-issuer">Issued by Wolfram Research and LinkedIn</p><a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
+                <li class="spotlight-card reveal" style="--delay: 100ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Career Essentials in Data Analysis</h3><p class="cert-issuer">Issued by Microsoft and LinkedIn</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
+                <li class="spotlight-card reveal" style="--delay: 200ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">Public Speaking Skills Professional Certificate</h3><p class="cert-issuer">Issued by Toastmasters International</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
+                <li class="spotlight-card reveal" style="--delay: 300ms;"><div class="card-content"><div class="card-inner cert-inner"><h3 class="cert-title">TCS iON Career Edge - Young Professional</h3><p class="cert-issuer">Issued by TCS</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
             </ul>
         </section>
 
@@ -274,7 +381,6 @@
     </main>
     
     <footer class="footer">
-        <!-- Content unchanged... -->
         <ul class="social-links">
             <li><a href="https://github.com/niranjan910" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
             <li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
@@ -285,97 +391,82 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Dynamic Star Fall ---
+        // --- IMPROVEMENT 3: Updated "Star Fall" function ---
         function createStarfield() {
             const container = document.getElementById('stars-container');
             if (!container) return;
-            const starCount = 200;
+            const starCount = 200; // Increased star count for a fuller look
             const frag = document.createDocumentFragment();
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                const size = Math.random() * 2 + 1;
-                star.style.cssText = `width:${size}px; height:${size}px; top:${Math.random()*100}%; left:${Math.random()*100}%; opacity:${Math.random()*0.5+0.5};`;
-                const duration = Math.random() * 2 + 1;
+                const size = Math.random() * 2 + 1; // Stars are between 1px and 3px
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.opacity = Math.random() * 0.5 + 0.5; // Brighter stars overall
+                
+                // Drastically faster animation duration
+                const duration = Math.random() * 2 + 1; // Fall takes between 1-3 seconds
+                // Randomized horizontal drift for each star
                 const drift = (Math.random() - 0.5) * 200; 
+
                 star.style.setProperty('--drift-x', `${drift}px`);
-                star.style.animation = `move-stars ${duration}s linear ${Math.random()*duration}s infinite`;
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${Math.random() * duration}s`; // Staggered start
                 frag.appendChild(star);
             }
             container.appendChild(frag);
         }
+        createStarfield();
         
-        // --- General setup ---
-        const nav = document.getElementById('mainNav');
-        const hamburger = document.getElementById('hamburgerMenu');
-        const mobileNavLinks = document.getElementById('navLinks');
+        // --- Reveal on Scroll ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -100px 0px' });
+        const revealElements = document.querySelectorAll('.reveal');
+        revealElements.forEach(el => observer.observe(el));
 
         // --- Scrolled Nav ---
-        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 50));
-        
-        // --- Hamburger Menu Logic ---
-        hamburger.addEventListener('click', (e) => { e.stopPropagation(); hamburger.classList.toggle('active'); mobileNavLinks.classList.toggle('active'); });
-        mobileNavLinks.addEventListener('click', () => { hamburger.classList.remove('active'); mobileNavLinks.classList.remove('active'); });
-        
-        // --- IMPROVEMENT: Advanced Navigation Highlight Logic ---
-        const navList = document.querySelector('#navLinks ol');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const highlight = document.querySelector('.nav-highlight');
-        let currentActiveLink = null;
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
-        function moveHighlight(targetLink) {
-            if (!targetLink) return;
-            const linkCoords = targetLink.getBoundingClientRect();
-            const navListCoords = navList.getBoundingClientRect();
-            
-            highlight.style.width = `${linkCoords.width}px`;
-            highlight.style.transform = `translateX(${linkCoords.left - navListCoords.left}px)`;
-        }
-        
-        // Handle hover events
-        navLinks.forEach(link => {
-            link.addEventListener('mouseenter', () => moveHighlight(link));
+        // --- Spotlight Card Effect ---
+        const cards = document.querySelectorAll('.spotlight-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+            });
         });
         
-        // When mouse leaves the nav, move highlight back to the active link
-        navList.addEventListener('mouseleave', () => moveHighlight(currentActiveLink));
-
-        // --- IMPROVEMENT: BUG FIX for scroll tracking ---
-        const sections = document.querySelectorAll('main section');
-        const scrollOffset = nav.offsetHeight;
-        
-        function activateNavLink() {
-            const pageBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 50; // Check if at bottom
-            let newActiveLink = null;
-
-            if (pageBottom) {
-                newActiveLink = document.querySelector('.nav-link[href="#contact"]');
-            } else {
-                sections.forEach(section => {
-                    if (window.pageYOffset >= section.offsetTop - scrollOffset) {
-                        newActiveLink = document.querySelector(`.nav-link[href="#${section.id}"]`);
-                    }
+        // --- Hamburger Menu Logic ---
+        const hamburger = document.getElementById('hamburgerMenu');
+        const navLinks = document.getElementById('navLinks');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation(); hamburger.classList.toggle('active'); navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active'); navLinks.classList.remove('active');
                 });
-            }
-
-            // If the active link has changed, update everything
-            if (newActiveLink && newActiveLink !== currentActiveLink) {
-                // Remove previous active state
-                if (currentActiveLink) currentActiveLink.classList.remove('active');
-                
-                // Set new active state
-                currentActiveLink = newActiveLink;
-                currentActiveLink.classList.add('active');
-                
-                // Move the highlight bar
-                moveHighlight(currentActiveLink);
-            }
+            });
         }
-
-        // --- Project Filtering (Unchanged) ---
+        
+        // --- Project Filtering Logic ---
         const filtersContainer = document.querySelector('.project-filters');
         const projectCards = document.querySelectorAll('.projects-grid .spotlight-card');
-        if(filtersContainer) {
+        if(filtersContainer && projectCards.length > 0) {
             filtersContainer.addEventListener('click', (e) => {
                 if(e.target.tagName !== 'BUTTON') return;
                 filtersContainer.querySelector('.active').classList.remove('active');
@@ -384,16 +475,37 @@
                 projectCards.forEach(card => {
                     const tags = card.dataset.tags || '';
                     const isMatch = filter === 'all' || tags.toLowerCase().includes(filter.toLowerCase());
-                    card.classList.toggle('hidden', !isMatch);
+                    if(isMatch) {
+                        card.style.display = 'flex';
+                        setTimeout(() => card.classList.remove('hidden'), 10);
+                    } else {
+                        card.classList.add('hidden');
+                        setTimeout(() => { card.style.display = 'none'; }, 400);
+                    }
                 });
             });
         }
         
-        // --- Initial Calls on Load ---
-        createStarfield();
-        activateNavLink(); // Set the initial active link and highlight
+        // --- Active Nav Link on Scroll ---
+        const sections = document.querySelectorAll('main section');
+        const navAnchors = document.querySelectorAll('#navLinks ol li a');
+        const activateNavLink = () => {
+            let currentSectionId = '';
+            sections.forEach(section => {
+                if (window.pageYOffset >= section.offsetTop - nav.offsetHeight) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+            navAnchors.forEach(a => {
+                a.classList.remove('active');
+                const linkHref = a.getAttribute('href');
+                if (linkHref && linkHref.includes(currentSectionId)) {
+                    a.classList.add('active');
+                }
+            });
+        };
         window.addEventListener('scroll', activateNavLink);
-        window.addEventListener('resize', () => moveHighlight(currentActiveLink)); // Keep highlight in place on resize
+        activateNavLink(); // Run on page load
     });
     </script>
 </body>
