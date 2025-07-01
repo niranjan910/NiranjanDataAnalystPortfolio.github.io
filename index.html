@@ -145,12 +145,13 @@
             color: var(--light-slate); margin-bottom: 0.5rem;
         }
         ul.core-skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
-
-        /* EDITED: Adjusted Software Skills icon size and spacing */
-        .software-skills-list { display: flex; flex-wrap: wrap; gap: 1.8rem; list-style: none; margin-top: 1.5rem; padding: 0; }
-        .software-skills-list i { font-size: 2.2rem; color: var(--light-slate); transition: var(--transition-fast); }
-        .software-skills-list i:hover { color: var(--accent); transform: scale(1.1); }
         
+        /* IMPROVEMENT 1: Colorful Software Skills Icons */
+        .software-skills-list { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; list-style: none; margin-top: 1.5rem; padding: 0; }
+        .software-skills-list li { transition: var(--transition-fast); }
+        .software-skills-list li:hover { transform: scale(1.1); }
+        .software-skills-list img { width: 40px; height: 40px; object-fit: contain; }
+
         .timeline { position: relative; }
         .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--lightest-navy); top: 0.5rem; bottom: 0; left: 7px; z-index: 1; }
         .timeline-item { padding: 0 0 2.5rem 30px; position: relative; z-index: 2; }
@@ -160,10 +161,36 @@
         .timeline-content p { color: var(--light-slate); margin: 0; }
         .timeline-date { font-family: var(--font-mono); color: var(--slate); font-size: 0.8rem; margin-bottom: 0.5rem; }
 
-        .projects-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
-        .spotlight-card { background: linear-gradient(135deg, var(--mid-navy) 0%, var(--dark-navy) 100%); border-radius: var(--border-radius); transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; border: 1px solid var(--lightest-navy); }
-        .spotlight-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7); border-color: var(--accent); }
-        .spotlight-card::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 0; height: 0; background: radial-gradient(circle closest-side, var(--accent), transparent); opacity: 0; transition: width 0.3s ease, height 0.3s ease, opacity: 0.3s ease; }
+        /* IMPROVEMENT 2: 4-Card Grid & Masonry Layout */
+        .projects-grid {
+            list-style: none;
+            display: grid;
+            gap: 1.5rem;
+            /* On screens > 1200px, create 4 columns. It will auto-adjust for smaller screens */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+        /* IMPROVEMENT 3: Glassmorphism effect for cards */
+        .spotlight-card {
+            background: linear-gradient(135deg, rgba(23, 37, 64, 0.5), rgba(10, 25, 47, 0.5));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border-radius: var(--border-radius);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--lightest-navy);
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7);
+            border-color: var(--accent);
+        }
+        /* Spotlight hover effect is now more subtle on the glass background */
+        .spotlight-card::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 0; height: 0; background: radial-gradient(circle closest-side, var(--accent-tint), transparent); opacity: 0; transition: width 0.3s ease, height 0.3s ease, opacity: 0.3s ease; }
+        .spotlight-card:hover::before { width: 300px; height: 300px; opacity: 1; }
+
         .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
         .project-image { width: 100%; height: 180px; object-fit: cover; }
         .card-inner { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; }
@@ -216,10 +243,43 @@
                 grid-column: auto;
             }
 
-            .nav-links { display: none; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--mid-navy); flex-direction: column; justify-content: center; align-items: center; transition: transform 0.3s ease-out; transform: translateX(100%); }
-            .nav-links.active { transform: translateX(0); }
+            /* IMPROVEMENT 4: Fixed Hamburger Menu Logic */
+            .nav-links {
+                /* Changed display: none to display: flex so the element is always in the DOM for transitions. */
+                display: flex;
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100vh;
+                width: min(75vw, 350px);
+                background-color: var(--mid-navy);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: transform 0.3s ease-out;
+                /* Start off-screen */
+                transform: translateX(100%);
+                z-index: 11;
+            }
+
+            .nav-links.active {
+                /* Slide into view when active */
+                transform: translateX(0);
+            }
             .nav-links ol { flex-direction: column; gap: 2rem; }
-            .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; z-index: 12; }
+
+            .hamburger-menu {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 30px;
+                height: 25px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                /* Increased z-index to ensure it's on top of the sliding nav panel */
+                z-index: 12;
+            }
             .hamburger-menu .bar { width: 30px; height: 3px; background-color: var(--accent); border-radius: 5px; transition: var(--transition-fast); transform-origin: center; }
             .hamburger-menu.active .bar:nth-child(1){ transform: translateY(11px) rotate(45deg); }
             .hamburger-menu.active .bar:nth-child(2){ opacity: 0; }
@@ -238,6 +298,7 @@
         <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </button>
+        <!-- This div now starts hidden off-screen on mobile and slides in with the 'active' class -->
         <div class="nav-links reveal reveal-child" style="--delay: 100ms;" id="navLinks">
             <ol>
                 <li><a href="#about">About</a></li>
@@ -315,13 +376,14 @@
                                 <li>Stakeholder Communication</li>
                             </ul>
                             <h3 style="margin-top: 2.5rem;">Software Skills</h3>
+                             <!-- IMPROVEMENT 1: Replaced Font Awesome icons with colorful SVGs -->
                             <ul class="software-skills-list">
-                                <li><i class="fas fa-database" title="MySQL"></i></li>
-                                <li><i class="fab fa-python" title="Python"></i></li>
-                                <li><i class="fas fa-chart-bar" title="Power BI"></i></li>
-                                <li><i class="fas fa-chart-pie" title="Tableau"></i></li>
-                                <li><i class="fas fa-file-excel" title="Excel"></i></li>
-                                <li><i class="fas fa-file-powerpoint" title="PowerPoint"></i></li>
+                                <li title="MySQL"><img src="https://www.svgrepo.com/show/303251/mysql-logo.svg" alt="MySQL Icon"></li>
+                                <li title="Python"><img src="https://www.svgrepo.com/show/452091/python.svg" alt="Python Icon"></li>
+                                <li title="Power BI"><img src="https://www.svgrepo.com/show/354200/power-bi.svg" alt="Power BI Icon"></li>
+                                <li title="Tableau"><img src="https://www.svgrepo.com/show/330322/tableau-software.svg" alt="Tableau Icon"></li>
+                                <li title="Excel"><img src="https://www.svgrepo.com/show/353731/excel.svg" alt="Excel Icon"></li>
+                                <li title="PowerPoint"><img src="https://www.svgrepo.com/show/354199/powerpoint.svg" alt="PowerPoint Icon"></li>
                             </ul>
                         </div>
                     </div>
@@ -330,6 +392,7 @@
         </section>
 
         <section id="projects" class="reveal">
+            <!-- IMPROVEMENT 2 & 3 APPLIED HERE (4-card layout & Glassmorphism) -->
             <h2 class="section-heading">Featured Projects</h2>
             <ul class="projects-grid">
                  <li class="spotlight-card reveal reveal-child"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
@@ -423,12 +486,15 @@
             });
         });
 
+        // Hamburger Menu click functionality
         const hamburger = document.getElementById('hamburgerMenu');
         const navLinks = document.getElementById('navLinks');
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
+        
+        // Close the mobile menu when a link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburger.classList.remove('active');
