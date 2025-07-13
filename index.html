@@ -3,411 +3,427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niranjan Kumar | Data Analyst Portfolio</title>
+    <title>Niranjan Kumar | Professional Data Analyst</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
-            --space-black-blue: #020c1b;
             --dark-navy: #0a192f;
-            --mid-navy: #112240;
-            --lightest-navy: #233554;
+            --navy: #112240;
+            --light-navy: #233554;
             --slate: #8892b0;
             --light-slate: #a8b2d1;
             --lightest-slate: #ccd6f6;
             --white: #e6f1ff;
             --accent: #64ffda;
-            --accent-tint: rgba(100, 255, 218, 0.1);
+            --accent-light: rgba(100, 255, 218, 0.1);
             --font-sans: 'Inter', sans-serif;
-            --font-mono: 'SF Mono', 'Fira Code', monospace;
+            --font-mono: 'SF Mono', 'Fira Code', 'monospace';
             --border-radius: 4px;
-            --nav-height: 100px;
-            --transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-            --transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         
-        html { 
-            scroll-behavior: smooth; 
-            scrollbar-width: thin;
-            scrollbar-color: var(--slate) transparent;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: var(--font-sans);
-            color: var(--light-slate); /* IMPROVEMENT: Slightly lighter default text color for readability */
+            color: var(--slate);
+            background-color: var(--dark-navy);
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            background-color: var(--space-black-blue);
-            line-height: 1.6; /* IMPROVEMENT: Increased line-height for better text spacing */
             overflow-x: hidden;
         }
-        
-        /* IMPROVEMENT: Added a subtle, slow animation to the background for a dynamic feel */
-        @keyframes subtle-gradient-animation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
 
-        .background-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
-        }
-        .aurora-background {
-            background-image: radial-gradient(at 47% 33%, hsl(209.79, 89%, 15%) 0, transparent 59%), 
-                              radial-gradient(at 82% 65%, hsl(211.33, 93%, 20%) 0, transparent 55%);
-            width: 100%; height: 100%;
-            background-size: 200% 200%; /* Needed for animation */
-            animation: subtle-gradient-animation 30s ease infinite; /* The animation itself */
-        }
-
-
-        .skip-to-content {
-            position: absolute; top: auto; left: -999px; width: 1px; height: 1px; overflow: hidden; z-index: -999;
-            padding: 1rem; background-color: var(--accent); color: var(--dark-navy); border-radius: var(--border-radius); font-weight: 700;
-        }
-        .skip-to-content:focus { top: 1rem; left: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; }
-
-        main { padding: 0 150px; position: relative; }
-        section { padding: 120px 0; }
-        
-        section[id]::after {
-            content: ''; display: block; width: 60%; max-width: 400px; height: 1px;
-            background: linear-gradient(to right, transparent, var(--lightest-navy), transparent); margin: 100px auto 0 auto;
-        }
-        #contact::after { display: none; }
-
-        h1, h2, h3, h4 { color: var(--lightest-slate); font-weight: 700; line-height: 1.2; }
-        p { margin-bottom: 1rem; max-width: 65ch; }
-        a { text-decoration: none; color: var(--light-slate); transition: var(--transition-fast); }
-        a:hover, button:hover { color: var(--accent); filter: brightness(1.1); /* IMPROVEMENT: Slightly toned down brightness */ }
-
-        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, transform; }
-        .reveal.is-visible { opacity: 1; transform: translateY(0); }
-        
-        .main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: transparent; z-index: 11; transition: var(--transition-slow); }
-        .main-nav.scrolled { background-color: rgba(2, 12, 27, 0.85); backdrop-filter: blur(10px); height: 70px; box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7); }
-        .nav-logo a { color: var(--accent); font-weight: 800; font-size: 1.8rem; font-family: var(--font-mono); }
-        .nav-links ol { list-style: none; display: flex; align-items: center; }
-        .nav-links li { margin: 0 1.25rem; }
-        .nav-links li a:not(.btn) { color: var(--lightest-slate); padding: 0.75rem 0; font-size: 0.9rem; position: relative;}
-        .hamburger-menu { display: none; }
-
-        #hero { display: flex; justify-content: center; flex-direction: column; min-height: 100vh; text-align: left; position: relative; }
-        #hero::after { display: none; }
-        #stars-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; z-index: -1; }
-        .star { position: absolute; background-color: var(--white); border-radius: 50%; animation: move-stars linear infinite; }
-        
-        @keyframes move-stars { from { transform: translateY(-50px); opacity: 1; } to { transform: translate(var(--drift-x, 0), 100vh); opacity: 0.5; } }
-        #hero h1, #hero h2, #hero h3, #hero p, .hero-cta-container { opacity: 0; animation: fadeInSlideUp 0.8s forwards; }
-        #hero h1 { animation-delay: 100ms; }
-        #hero .big-heading { animation-delay: 200ms; }
-        #hero .sub-heading { animation-delay: 300ms; }
-        #hero p { animation-delay: 400ms; }
-        .hero-cta-container { animation-delay: 500ms; }
-
-        @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        #hero h1 { margin: 0 0 1.5rem 0.25rem; color: var(--accent); font-family: var(--font-mono); font-size: clamp(1rem, 2vw, 1.1rem); font-weight: 400; }
-        #hero .big-heading { font-size: clamp(40px, 8vw, 80px); font-weight: 800; color: var(--white); text-shadow: 0 0 30px rgba(100, 255, 218, 0.4); }
-        #hero .sub-heading { font-size: clamp(35px, 7vw, 70px); color: var(--slate); font-weight: 700; }
-        #hero p { max-width: 580px; margin-top: 1.5rem; }
-        .hero-cta-container { margin-top: 3rem; }
-
-        .btn { color: var(--accent); background-color: transparent; border: 1px solid var(--accent); border-radius: var(--border-radius); padding: 0.75rem 1.75rem; font-size: 0.9rem; font-family: var(--font-mono); cursor: pointer; transition: var(--transition-fast); line-height: 1; }
-        .btn:hover { background-color: var(--accent-tint); transform: translateY(-3px); box-shadow: 0 5px 15px -5px var(--accent-tint); }
-        .btn a.special-link { color: var(--accent) !important; }
-        a.special-link:hover { color: var(--accent) !important; }
-        .btn-large { padding: 1.25rem 2rem; }
-        
-        h2.section-heading { display: flex; align-items: center; margin-bottom: 3rem; font-size: clamp(26px, 5vw, 32px); color: var(--white); width: 100%; }
-        h2.section-heading::after { content: ''; display: block; position: relative; flex-grow: 1; height: 1px; margin-left: 1.5rem; background-color: var(--lightest-navy); transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-out; }
-        h2.section-heading.is-visible::after { transform: scaleX(1); }
-
-        .about-container { display: flex; gap: 50px; align-items: flex-start; }
-        .about-left { flex: 0 0 250px; text-align: left; }
-        .about-image-wrapper { max-width: 250px; margin-bottom: 1.5rem; position: relative; border-radius: var(--border-radius); }
-        .about-image-wrapper img { width: 100%; height: auto; object-fit: cover; border-radius: var(--border-radius); border: 2px solid var(--lightest-navy); }
-        .about-name { font-size: 1.8rem; color: var(--white); margin-bottom: 0.5rem; }
-        .about-title { font-family: var(--font-mono); font-size: 1rem; color: var(--accent); margin-bottom: 0; }
-        .contact-info { margin-top: 2rem; }
-        .contact-info ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
-        .contact-info li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.75rem; color: var(--slate); }
-        .contact-info i { color: var(--accent); margin-top: 3px; }
-
-        .about-right { flex: 1; }
-        .about-right .bio { margin-bottom: 2.5rem; }
-        .about-details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .about-details-grid h3 { color: var(--lightest-slate); font-size: 1.4rem; margin-bottom: 1.5rem; }
-        .about-details-grid .grid-column h3:first-child { margin-top: 0; }
-        ul.core-skills-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
-        ul.core-skills-list li { position: relative; padding-left: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem; color: var(--light-slate); margin-bottom: 0.5rem; }
-        ul.core-skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
-        .software-skills-list { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; list-style: none; margin-top: 1.5rem; padding: 0; }
-        .software-skills-list li { transition: var(--transition-fast); }
-        .software-skills-list li:hover { transform: translateY(-3px); }
-        .software-skills-list img { width: 40px; height: 40px; }
-        .timeline { position: relative; }
-        .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--lightest-navy); top: 0.5rem; bottom: 0; left: 7px; z-index: 1; }
-        .timeline-item { padding: 0 0 2.5rem 30px; position: relative; z-index: 2; }
-        .timeline-item:last-child { padding-bottom: 0; }
-        .timeline-item::before { content: ''; height: 15px; width: 15px; position: absolute; top: 0.5rem; left: 7px; transform: translateX(-50%); background-color: var(--accent); border-radius: 50%; z-index: 2;}
-        .timeline-content h4 { font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 600; }
-        .timeline-content p { color: var(--light-slate); margin: 0; }
-        .timeline-date { font-family: var(--font-mono); color: var(--slate); font-size: 0.8rem; margin-bottom: 0.5rem; }
-        
-        .project-filters { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
-        .project-filters button { font-family: var(--font-mono); font-size: 0.85rem; background-color: transparent; color: var(--light-slate); border: 1px solid var(--lightest-navy); border-radius: 20px; padding: 0.5rem 1rem; cursor: pointer; transition: var(--transition-fast); }
-        .project-filters button:hover { background-color: var(--accent-tint); color: var(--accent); border-color: var(--accent);}
-        .project-filters button.active { background-color: var(--accent); color: var(--dark-navy); border-color: var(--accent); }
-        .projects-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-        
-        .spotlight-card {
-            background: linear-gradient(135deg, rgba(23, 37, 64, 0.5), rgba(10, 25, 47, 0.5));
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--border-radius);
-            transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.4s ease; /* IMPROVEMENT: Added border-color to transition */
-            position: relative; overflow: hidden; border: 1px solid var(--lightest-navy);
-        }
-        
-        .spotlight-card.hidden { transform: scale(0.95); opacity: 0; pointer-events: none; }
-        .spotlight-card:not(.hidden) { transform: scale(1); opacity: 1; }
-        /* IMPROVEMENT: Made the hover effect more pronounced */
-        .spotlight-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7); 
-            border-color: var(--accent);
-            border-width: 2px; /* Adds a bit more emphasis */
-        }
-        .spotlight-card::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 0; height: 0; background: radial-gradient(circle closest-side, var(--accent-tint), transparent); opacity: 0; transition: width 0.3s ease, height 0.3s ease, opacity: 0.3s ease; }
-        .spotlight-card:hover::before { width: 300px; height: 300px; opacity: 1; }
-        .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
-        .project-image { width: 100%; height: 180px; object-fit: cover; }
-        .card-inner { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; }
-        .project-title, .cert-title { font-size: 1.3rem; margin-bottom: 0.75rem; }
-        .project-title a:hover { color: var(--accent); }
-        .project-description { color: var(--light-slate); flex-grow: 1; font-size: 1rem; }
-        .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; font-family: var(--font-mono); font-size: 0.8rem; margin-top: 1.5rem; color: var(--slate); }
-        
-        .project-link-wrapper { margin-top: 1.5rem; }
-        .project-view-link { color: var(--lightest-slate); font-family: var(--font-mono); font-size: 0.9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; }
-        .project-view-link .arrow-icon { display: inline-block; transition: transform 0.2s cubic-bezier(0.645, 0.045, 0.355, 1); }
-        .project-view-link:hover { color: var(--accent); }
-        .project-view-link:hover .arrow-icon { transform: translateX(5px); }
-        
-        .projects-footer { text-align: center; margin-top: 4rem; }
-        .certs-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-        .cert-inner { text-align: center; justify-content: space-between; }
-        .cert-issuer { font-size: 0.8rem; color: var(--slate); margin: 5px 0 15px; }
-        .cert-link { display: inline-block; font-family: var(--font-mono); font-size: 0.8rem; }
-        .cert-link i { margin-left: 5px; }
-        
-        #contact { text-align: center; max-width: 650px; margin: 0 auto; }
-        #contact .title { font-size: clamp(40px, 5vw, 60px); color: var(--white); }
-        #contact p { margin-left: auto; margin-right: auto; }
-        .contact-cta-container { margin-top: 3rem; }
-
-        .footer { text-align: center; padding: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--slate); }
-        .social-links { list-style: none; display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
-        /* IMPROVEMENT: Added hover effect to social links */
-        .social-links a { transition: var(--transition-fast); display: inline-block; }
-        .social-links a:hover { transform: translateY(-3px); color: var(--accent); }
-        
-        /* IMPROVEMENT: Added a scroll-to-top button */
-        .scroll-to-top {
+        /* --- New: Interactive Gradient Background --- */
+        #cursor-gradient {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background-color: var(--lightest-navy);
-            color: var(--accent);
-            border: none;
+            top: 0; left: 0;
+            width: 800px; height: 800px;
+            background: radial-gradient(circle, hsla(167, 100%, 71%, 0.2), transparent 60%);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 100;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease-out;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            font-size: 1.5rem;
         }
-        .scroll-to-top.visible {
-            opacity: 1;
-            transform: translateY(0);
+        body.gradient-active #cursor-gradient { opacity: 1; }
+
+        main {
+            padding: 0 150px;
+            position: relative;
+            z-index: 2;
+        }
+        section {
+            padding: 100px 0;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        @media (min-width: 769px) {
-            .nav-links li a:not(.btn)::after {
-                content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
-                background-color: var(--accent); transform: scaleX(0); transform-origin: bottom right; transition: transform 0.25s ease-out;
-            }
-            .nav-links li a:not(.btn):hover::after,
-            .nav-links li a:not(.btn).active::after { transform: scaleX(1); transform-origin: bottom left; }
+        h1, h2, h3, h4 {
+            color: var(--lightest-slate);
+            font-weight: 600;
+        }
+
+        /* --- New: Fixed Side Elements for Desktop --- */
+        .fixed-sidebar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+        }
+        .fixed-sidebar::after {
+            content: ''; display: block; width: 1px; height: 90px;
+            margin: 0 auto; background-color: var(--light-slate);
         }
         
-        @media (max-width: 1080px) { 
-            main { padding: 0 100px; } 
-            .about-details-grid { grid-template-columns: 1fr 1fr; }
-            .about-details-grid .grid-column:nth-child(3) { grid-column: 1 / span 2; }
+        .left-sidebar { left: 40px; }
+        .right-sidebar { right: 40px; writing-mode: vertical-rl; }
+        
+        .social-links-list { list-style: none; display: flex; flex-direction: column; gap: 20px; padding: 20px 0;}
+        .social-links-list a { font-size: 1.25rem; color: var(--light-slate); transition: var(--transition); }
+        .social-links-list a:hover { transform: translateY(-3px); color: var(--accent); }
+        
+        .email-link a {
+            font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em;
+            color: var(--light-slate); transition: var(--transition);
+        }
+        .email-link a:hover { transform: translateY(-3px); color: var(--accent); }
+        
+        @media(min-width: 1080px) { .fixed-sidebar { display: block; } }
+
+        /* --- Header / Nav --- */
+        .main-nav {
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: 100px;
+            z-index: 11; transition: all 0.3s ease-out;
+        }
+        .main-nav.scrolled {
+            height: 70px;
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+        }
+        .nav-logo a { color: var(--accent); font-weight: 700; font-size: 1.75rem; font-family: var(--font-mono); }
+        
+        .nav-links-list { list-style: none; display: flex; align-items: center; gap: 30px; font-family: var(--font-mono); font-size: 0.9rem;}
+        .nav-links-list a:not(.btn) { color: var(--lightest-slate); }
+        .nav-links-list a:hover:not(.btn) { color: var(--accent); }
+
+        .btn {
+            color: var(--accent); background-color: transparent; border: 1px solid var(--accent);
+            border-radius: var(--border-radius); padding: 0.75rem 1rem; cursor: pointer; transition: var(--transition);
+        }
+        .btn:hover { background-color: var(--accent-light); transform: translateY(-3px); }
+
+        /* --- Hamburger Menu for Mobile --- */
+        .hamburger-menu { display: none; z-index: 12; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger-menu { display: flex; /* Styles in responsive section */ }
         }
 
+        /* --- Hero Section --- */
+        #hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            text-align: left;
+        }
+        #hero .pre-title {
+            color: var(--accent); font-family: var(--font-mono);
+            font-size: clamp(0.9rem, 2vw, 1rem); margin-bottom: 20px;
+        }
+        #hero .title {
+            font-size: clamp(40px, 8vw, 80px); line-height: 1.1;
+        }
+        #hero .subtitle {
+            font-size: clamp(35px, 7vw, 70px); color: var(--slate); line-height: 1; margin-top: 10px;
+        }
+        #hero p { max-width: 550px; margin: 25px 0 0; }
+        #hero .cta-btn { margin-top: 50px; font-size: 1.1rem; padding: 1.25rem 1.75rem; }
+
+        /* --- Section Heading --- */
+        .section-heading {
+            display: flex; align-items: center; gap: 20px; margin-bottom: 40px;
+            font-size: clamp(26px, 5vw, 32px); color: var(--white); width: 100%;
+        }
+        .section-heading::after {
+            content: ''; display: block; flex-grow: 1; height: 1px;
+            background-color: var(--light-navy);
+        }
+        
+        /* --- About Me Section --- */
+        #about .inner {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+        }
+        .about-image { position: relative; max-width: 300px; }
+        .about-image img { width: 100%; border-radius: var(--border-radius); border: 2px solid var(--accent); }
+        
+        .skills-list {
+            list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+        }
+        .skills-list li {
+            background-color: var(--light-navy); color: var(--lightest-slate);
+            padding: 5px 12px; border-radius: var(--border-radius);
+            font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
+        }
+
+        /* --- Featured Projects Section --- */
+        .projects-grid { list-style: none; display: grid; gap: 15px; }
+        .project-card {
+            display: grid; grid-template-columns: repeat(12, 1fr); gap: 10px; align-items: center;
+            margin-bottom: 70px; transition: var(--transition);
+        }
+        .project-card:hover .project-image { border-color: var(--accent); }
+        .project-card:nth-child(odd) .project-content { grid-column: 7 / -1; text-align: right; }
+        .project-card:nth-child(odd) .project-image { grid-column: 1 / 8; }
+        .project-card:nth-child(even) .project-content { grid-column: 1 / 7; text-align: left; }
+        .project-card:nth-child(even) .project-image { grid-column: 6 / -1; }
+        
+        .project-content { grid-row: 1 / -1; z-index: 5; }
+        .project-pre-title { font-family: var(--font-mono); color: var(--accent); font-size: 0.8rem; }
+        .project-title { font-size: 1.6rem; margin: 5px 0 20px; }
+        .project-description {
+            background-color: var(--navy); padding: 25px; border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+            color: var(--light-slate); font-size: 0.95rem;
+        }
+        
+        .project-tech-list {
+            list-style: none; display: flex; justify-content: inherit;
+            flex-wrap: wrap; gap: 15px; font-family: var(--font-mono);
+            font-size: 0.8rem; margin: 25px 0 15px;
+        }
+        .project-links { display: flex; justify-content: inherit; gap: 15px; }
+        .project-links a { color: var(--lightest-slate); font-size: 1.25rem; }
+        .project-links a:hover { color: var(--accent); }
+        
+        .project-image {
+            grid-column: 1 / -1; grid-row: 1 / -1; z-index: 1; position: relative;
+            background-color: var(--accent); border-radius: var(--border-radius); border: 2px solid transparent; transition: var(--transition);
+        }
+        .project-image img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: var(--border-radius);
+            filter: grayscale(100%) contrast(1) brightness(90%); mix-blend-mode: multiply;
+        }
+        .project-card:hover .project-image img { filter: none; mix-blend-mode: normal; }
+
+
+        /* --- Contact Section --- */
+        #contact { text-align: center; }
+        #contact .section-heading { justify-content: center; }
+        #contact .section-heading::after { display: none; }
+        #contact p { max-width: 600px; margin: 0 auto 30px; }
+
+        /* --- Footer --- */
+        footer {
+            padding: 20px; text-align: center; font-family: var(--font-mono);
+            font-size: 0.8rem; color: var(--slate);
+        }
+        .footer-social-links { display: none; }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 1080px) {
+            main { padding: 0 100px; }
+        }
         @media (max-width: 768px) {
             main { padding: 0 50px; }
-            section { padding: 100px 0; }
-            h2.section-heading::after { display: none; }
-            .about-container { flex-direction: column; align-items: center; }
-            .about-left { flex: 0 0 auto; width: 100%; max-width: 250px; margin-bottom: 2rem; text-align: center; }
-            .about-details-grid { grid-template-columns: 1fr; }
-            .about-details-grid .grid-column:nth-child(3) { grid-column: auto; }
-            
-            .nav-links {
-                display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px);
-                background-color: var(--mid-navy); flex-direction: column; justify-content: center; align-items: center;
-                transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1); z-index: 10;
-            }
-            .nav-links.active { transform: translateX(0); }
-            .nav-links ol { flex-direction: column; gap: 2rem; text-align: center;}
-            .nav-links li a.active { color: var(--accent); }
+            section { padding: 80px 0; }
+            #about .inner { grid-template-columns: 1fr; }
+            .about-image { margin: 0 auto 30px; }
 
+            /* Project Card Mobile Layout */
+            .project-card, .project-card:nth-child(odd), .project-card:nth-child(even) {
+                display: flex; flex-direction: column; background: var(--navy); border-radius: var(--border-radius);
+                padding: 20px; box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+            }
+            .project-content { order: 2; width: 100%; text-align: left !important; }
+            .project-description { background-color: transparent; padding: 20px 0; box-shadow: none; }
+            .project-tech-list, .project-links { justify-content: flex-start; }
+            .project-image { order: 1; width: 100%; height: 250px; background-color: transparent;}
+            .project-image img { filter: none; mix-blend-mode: normal; }
+
+            .nav-links {
+                display: flex; position: fixed; top: 0; right: 0;
+                height: 100vh; width: min(75vw, 300px);
+                background-color: var(--navy); flex-direction: column;
+                justify-content: center; align-items: center; gap: 2rem;
+                transform: translateX(100%); transition: transform 0.3s ease-out;
+            }
+            .nav-links.active { transform: translateX(0); box-shadow: -10px 0 30px -15px rgba(2,12,27,0.7); }
             .hamburger-menu {
                 display: flex; flex-direction: column; justify-content: space-around;
-                width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 12;
+                width: 25px; height: 21px; background: transparent; border: none;
+                cursor: pointer; padding: 0; z-index: 12;
             }
-            .bar { width: 100%; height: 2px; background-color: var(--lightest-slate); border-radius: 5px; transition: all 0.3s ease-in-out; }
-            .hamburger-menu.active .bar:nth-child(1){ transform: translateY(8.5px) rotate(45deg); }
-            .hamburger-menu.active .bar:nth-child(2){ opacity: 0; }
-            .hamburger-menu.active .bar:nth-child(3){ transform: translateY(-8.5px) rotate(-45deg); }
+            .bar { width: 100%; height: 2px; background-color: var(--accent); border-radius: 5px; transition: all 0.2s ease-in-out;}
+            .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+            .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+            .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+            .footer-social-links { display: flex; justify-content: center; list-style: none; gap: 2rem; margin-bottom: 20px; font-size: 1.5rem; }
+            .footer-social-links a { color: var(--light-slate); }
         }
-        @media (max-width: 600px) { main { padding: 0 25px; } }
+        @media (max-width: 480px) { main { padding: 0 25px; } }
     </style>
 </head>
 <body>
-    <div class="background-container"><div class="aurora-background"></div></div>
-    <a href="#main-content" class="skip-to-content">Skip to Content</a>
-    
-    <nav class="main-nav" id="mainNav">
-        <div class="nav-logo reveal"><a href="#">Niranjan</a></div>
+    <div id="cursor-gradient"></div>
+
+    <!-- Fixed sidebars for desktop -->
+    <aside class="fixed-sidebar left-sidebar">
+        <ul class="social-links-list">
+            <li><a href="https://github.com/niranjan910" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+    </aside>
+    <aside class="fixed-sidebar right-sidebar">
+        <div class="email-link">
+            <a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a>
+        </div>
+    </aside>
+
+    <header class="main-nav" id="mainNav">
+        <div class="nav-logo"><a href="#">N</a></div>
+        <div class="nav-links">
+             <ol class="nav-links-list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="YOUR_RESUME_LINK.pdf" class="btn resume-btn" target="_blank">Resume</a></li>
+            </ol>
+        </div>
         <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu" aria-expanded="false">
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </button>
-        <div class="nav-links" id="navLinks">
-            <ol>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certs">Certificates</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="YOUR_RESUME_LINK.pdf" class="btn resume-btn" target="_blank"><span class="special-link">Resume</span></a></li>
-            </ol>
-        </div>
-    </nav>
-    
-    <!-- IMPROVEMENT: Added a scroll-to-top button element -->
-    <button id="scrollToTopBtn" class="scroll-to-top" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    </header>
 
     <main id="main-content">
+
         <section id="hero">
-            <div id="stars-container"></div>
-            <h1>Hi, my name is</h1>
-            <h2 class="big-heading">Niranjan Kumar.</h2>
-            <h3 class="sub-heading">I build insights from data.</h3>
-            <p>I’m a data analyst specializing in transforming complex datasets into clear, actionable stories. I blend analytical skills with an aesthetic mindset to create solutions that are both powerful and elegant.</p>
-            <div class="hero-cta-container">
-                <a href="#projects" class="btn btn-large"><span class="special-link">Explore My Work</span></a>
+            <p class="pre-title">Hi, my name is</p>
+            <h2 class="title">Niranjan Kumar.</h2>
+            <h3 class="subtitle">I build insights from data.</h3>
+            <p>I’m a professional data analyst specializing in transforming complex datasets into clear, actionable stories. My goal is to leverage data to drive business growth and strategic decisions with elegant, high-impact solutions.</p>
+            <a href="#projects" class="btn cta-btn">Explore My Work</a>
+        </section>
+
+        <section id="about">
+            <h2 class="section-heading">About Me</h2>
+            <div class="inner">
+                <div class="about-text">
+                    <p>I'm a meticulous and results-driven Data Analyst with a deep-seated curiosity for the narratives hidden within numbers. My expertise lies in the full data analysis lifecycle: from cleaning and processing raw data using ETL methodologies to performing statistical analysis and creating insightful, interactive visualizations.</p>
+                    <p>My technical toolkit is centered around Python for data manipulation (Pandas, NumPy) and SQL for database querying. I am highly proficient in building compelling dashboards with Power BI and Tableau that empower stakeholders to make informed, data-driven decisions.</p>
+                    
+                    <p>Here are a few of the key technologies I work with:</p>
+                    <ul class="skills-list">
+                      <li>Python</li>
+                      <li>SQL</li>
+                      <li>Power BI</li>
+                      <li>Tableau</li>
+                      <li>Pandas</li>
+                      <li>NumPy</li>
+                      <li>ETL</li>
+                      <li>Excel</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="images/Profile pic.png" alt="Niranjan Kumar Headshot" loading="lazy">
+                </div>
             </div>
         </section>
 
-        <section id="about" class="reveal">
-            <h2 class="section-heading">About Me</h2>
-            <div class="about-container">
-                <div class="about-left reveal" style="--delay: 100ms;">
-                    <div class="about-image-wrapper">
-                        <!-- IMPROVEMENT: Added loading="lazy" for better performance -->
-                        <img src="images/Profile pic.png" alt="Niranjan Kumar Headshot" loading="lazy">
-                    </div>
-                    <h2 class="about-name">Niranjan Kumar</h2><p class="about-title">Data Analyst</p>
-                    <div class="contact-info"><ul><li><i class="fas fa-map-marker-alt"></i><div>Hyderabad, India</div></li><li><i class="fas fa-phone-alt"></i><div><a href="tel:+919641143646">+91 9641143646</a></div></li><li><i class="fas fa-envelope"></i><div><a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></div></li><li><i class="fab fa-linkedin"></i><div><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">LinkedIn</a></div></li><li><i class="fab fa-github"></i><div><a href="https://github.com/niranjan910" target="_blank">GitHub</a></div></li></ul></div>
-                </div>
-                <div class="about-right reveal" style="--delay: 200ms;"><p class="bio">I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p><div class="about-details-grid"><div class="grid-column"><h3>Education</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2019 - 2023</h4><h4>B.Tech, Computer Science</h4><p>Institute of Professional Studies, Gwalior (8.9 CGPA)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2018</h4><h4>Higher Secondary (12th)</h4><p>D.A.V. Public School (85%)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2016</h4><h4>Secondary (10th)</h4><p>D.A.V. Public School (9.2 CGPA)</p></div></div></div></div><div class="grid-column"><h3>Experience</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">Feb 2025 - July 2025</h4><h4>Data Analyst Trainee</h4><p>Naresh i Technologies, Hyderabad</p></div></div></div></div>
-                        <div class="grid-column"><h3>Core Skills</h3><ul class="core-skills-list"><li>Data Analysis & Visualization</li><li>Statistical Analysis</li><li>SQL & Database Management</li><li>ETL Processes</li><li>Python (Pandas, NumPy, Folium)</li><li>Dashboard Design</li><li>Critical Thinking</li><li>Problem Solving</li><li>Stakeholder Communication</li></ul>
-                            <h3 style="margin-top: 2.5rem;">Software Skills</h3>
-                            <ul class="software-skills-list">
-                                <li title="Jupyter Notebook"><img src="Icon/Jupiter.svg" alt="Jupyter Notebook Icon" loading="lazy"></li>
-                                <li title="MySQL"><img src="Icon/My SQl.svg" alt="MySQL Icon" loading="lazy"></li>
-                                <li title="Numpy"><img src="Icon/Numpy.svg" alt="Numpy Icon" loading="lazy"></li>
-                                <li title="Pandas"><img src="Icon/Pandas.svg" alt="Pandas Icon" loading="lazy"></li>
-                                <li title="Power BI"><img src="Icon/Powerbi.svg" alt="Power BI Icon" loading="lazy"></li>
-                                <li title="PowerPoint"><img src="Icon/PowerPoint.svg" alt="PowerPoint Icon" loading="lazy"></li>
-                                <li title="Python"><img src="Icon/Python.svg" alt="Python Icon" loading="lazy"></li>
-                                <li title="Microsoft Word"><img src="Icon/Word.svg" alt="MS Word Icon" loading="lazy"></li>
-                                <li title="Microsoft Excel"><img src="Icon/Excel.svg" alt="MS Excel Icon" loading="lazy"></li>
-                                <li title="Tableau"><img src="Icon/Tableau.svg" alt="Tableau Icon" loading="lazy"></li>
-                            </ul>
+        <section id="projects">
+            <h2 class="section-heading">Featured Projects</h2>
+            <ul class="projects-grid">
+                
+                <li class="project-card">
+                    <div class="project-content">
+                        <p class="project-pre-title">Python / MySQL</p>
+                        <h3 class="project-title">U.S. EV Adoption Analysis</h3>
+                        <div class="project-description">
+                           <p>An in-depth analysis of electric vehicle adoption trends across the United States. Employed a robust ETL process with Python to clean, transform, and load data into a MySQL database for advanced querying and insight generation.</p>
+                        </div>
+                        <ul class="project-tech-list">
+                            <li>Python</li><li>MySQL</li><li>ETL</li><li>Data Cleaning</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
-                </div>
-            </div>
+                    <div class="project-image">
+                        <a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank">
+                            <img src="images/EV Project image.png" alt="EV Adoption map" loading="lazy">
+                        </a>
+                    </div>
+                </li>
+
+                <li class="project-card">
+                    <div class="project-content">
+                        <p class="project-pre-title">Power BI / SQL</p>
+                        <h3 class="project-title">AI Lung Cancer Diagnostics</h3>
+                        <div class="project-description">
+                           <p>Developed a powerful diagnostics tool by mining lung cancer data with SQL. The project culminated in an interactive Power BI dashboard designed to help medical professionals identify key trends and correlations in patient data.</p>
+                        </div>
+                        <ul class="project-tech-list">
+                            <li>Power BI</li><li>SQL</li><li>Dashboarding</li><li>Healthcare Analytics</li>
+                        </ul>
+                        <div class="project-links">
+                            <a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-image">
+                         <a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank">
+                           <img src="images/Lungs cancer.png" alt="AI Lung Diagnostics Dashboard" loading="lazy">
+                         </a>
+                    </div>
+                </li>
+
+                <li class="project-card">
+                    <div class="project-content">
+                        <p class="project-pre-title">Python / Data Visualization</p>
+                        <h3 class="project-title">AI Job Market Analysis</h3>
+                        <div class="project-description">
+                           <p>Analyzed the 2025 AI job market by processing real job posting data with Python. Used libraries like Pandas for manipulation and Seaborn/Matplotlib for visualization to uncover key trends in required skills and salary expectations.</p>
+                        </div>
+                        <ul class="project-tech-list">
+                            <li>Python</li><li>Pandas</li><li>Seaborn</li><li>CSV</li>
+                        </ul>
+                        <div class="project-links">
+                           <a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-image">
+                        <a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank">
+                            <img src="images/AI Job image.png" alt="AI Job Market analysis graph" loading="lazy">
+                        </a>
+                    </div>
+                </li>
+
+            </ul>
         </section>
 
-        <section id="projects" class="reveal">
-            <h2 class="section-heading">Featured Projects</h2>
-            <div class="project-filters">
-                <button type="button" class="active" data-filter="all">All</button>
-                <button type="button" data-filter="Python">Python</button>
-                <button type="button" data-filter="Power BI">Power BI</button>
-                <button type="button" data-filter="Tableau">Tableau</button>
-                <button type="button" data-filter="Excel">Excel</button>
-            </div>
-            <ul class="projects-grid">
-                 <li class="spotlight-card reveal" data-tags="Python, MySQL"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image" loading="lazy"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal" data-tags="Python, JSON" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" loading="lazy"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" target="_blank" class="special-link">COVID-19 Hospitalization</a></h3><div class="project-description"><p>Complete COVID-19 hospitalization trends (2019–2025) with real-time insights using Python & JSON.</p></div><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal" data-tags="Python, CSV, Seaborn" style="--delay: 200ms;"><div class="card-content"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" loading="lazy"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" class="special-link">AI Job Market Analysis</a></h3><div class="project-description"><p>Analyzed real 2025 AI job market data with Python and CSV — actionable insights in real time.</p></div><ul class="project-tech-list"><li>Python</li><li>CSV</li><li>Seaborn</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal" data-tags="MySQL, Power BI"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" loading="lazy"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" class="special-link">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal" data-tags="CSV, Power BI" style="--delay: 100ms;"><div class="card-content"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" loading="lazy"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/UK_Retail_Analytics" target="_blank" class="special-link">UK Retail Analytics</a></h3><div class="project-description"><p>Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal" data-tags="Power BI, SQL, Excel" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image" loading="lazy"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                <li class="spotlight-card reveal" data-tags="PowerBI, CSV" style="--delay: 300ms;"><div class="card-content"><img src="images/Salary Trend.png" alt="Salary Trends Dashboard" class="project-image" loading="lazy"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/Salary-Trend-Analysis" target="_blank" class="special-link">Salary Trend Analysis</a></h3><div class="project-description"><p>Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p></div><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-                 <li class="spotlight-card reveal" data-tags="Excel, VBA" style="--delay: 400ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80" alt="Excel Automation" class="project-image" loading="lazy"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Inventory Management System</a></h3><div class="project-description"><p>Developed an automated inventory tracking system in Excel using VBA macros to streamline data entry and reporting.</p></div><ul class="project-tech-list"><li>Excel</li><li>VBA</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
-            </ul>
-             <div class="projects-footer reveal">
-                <a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large" target="_blank"><span class="special-link">View All on GitHub</span></a>
-            </div>
-        </section>
-        
-        <section id="certs" class="reveal">
-            <h2 class="section-heading">Credentials</h2>
-            <ul class="certs-grid">
-                <li class="spotlight-card reveal"><div class="card-content"><img src="Certificates/Wolfram.png" alt="Statistics Foundations Certificate" class="project-image" loading="lazy"><div class="card-inner cert-inner"><h3 class="cert-title">Statistics Foundations Professional Certificate</h3><p class="cert-issuer">Issued by Wolfram Research</p><a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal" style="--delay: 100ms;"><div class="card-content"><img src="Certificates/Microsoft certificates.png" alt="Career Essentials in Data Analysis Certificate" class="project-image" loading="lazy"><div class="card-inner cert-inner"><h3 class="cert-title">Career Essentials in Data Analysis</h3><p class="cert-issuer">Issued by Microsoft</p><a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal" style="--delay: 200ms;"><div class="card-content"><img src="Certificates/Public speaking.png" alt="Public Speaking Skills Professional Certificate" class="project-image" loading="lazy"><div class="card-inner cert-inner"><h3 class="cert-title">Public Speaking Skills Professional Certificate</h3><p class="cert-issuer">Issued by Toastmasters International</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <!-- IMPROVEMENT: Replaced placeholder images with better ones -->
-                <li class="spotlight-card reveal" style="--delay: 300ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1599950755346-a8416f1642a4?auto=format&fit=crop&w=800&q=80" alt="TCS iON Career Edge Certificate" class="project-image" loading="lazy"><div class="card-inner cert-inner"><h3 class="cert-title">TCS iON Career Edge - Young Professional</h3><p class="cert-issuer">Issued by TCS</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal" style="--delay: 400ms;"><div class="card-content"><img src="Certificates/Cisco.png" alt="Data Analytics Essentials Certificate" class="project-image" loading="lazy"><div class="card-inner cert-inner"><h3 class="cert-title">Data Analytics Essentials</h3><p class="cert-issuer">Issued by Cisco</p><a href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal" style="--delay: 500ms;"><div class="card-content"><img src="Certificates/Business Analyst certificate.png" alt="Career Essentials in Business Analysis" class="project-image" loading="lazy"><div class="card-inner cert-inner"><h3 class="cert-title">Career Essentials in Business Analysis 1</h3><p class="cert-issuer">Issued by Microsoft</p><a href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal" style="--delay: 600ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&w=800&q=80" alt="Certificate of Cloud Data" class="project-image" loading="lazy"><div class="card-inner cert-inner"><h3 class="cert-title">Cloud Data Foundations</h3><p class="cert-issuer">Issued by Oracle</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-                <li class="spotlight-card reveal" style="--delay: 700ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1627806543666-3532d5257004?auto=format&fit=crop&w=800&q=80" alt="Machine Learning Certificate" class="project-image" loading="lazy"><div class="card-inner cert-inner"><h3 class="cert-title">Intro to Machine Learning</h3><p class="cert-issuer">Issued by Kaggle</p><a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a></div></div></li>
-            </ul>
+        <section id="contact">
+            <h2 class="section-heading">Get In Touch</h2>
+            <p>I'm currently seeking new opportunities and am open to collaboration. My inbox is always open, whether you have a question or just want to connect. I look forward to hearing from you!</p>
+            <a href="mailto:niranjan991100@gmail.com" class="btn cta-btn">Say Hello</a>
         </section>
 
-        <section id="contact" class="reveal">
-            <h2 class="title">Get In Touch</h2>
-            <p>I'm actively seeking new opportunities and I'm excited to collaborate on new projects. My inbox is always open, so please feel free to reach out — I'd love to chat.</p>
-            <div class="contact-cta-container">
-                <a href="mailto:niranjan991100@gmail.com" class="btn btn-large"><span class="special-link">Say Hello</span></a>
-            </div>
-        </section>
     </main>
     
-    <footer class="footer">
-        <ul class="social-links">
+    <footer>
+         <ul class="footer-social-links">
             <li><a href="https://github.com/niranjan910" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
             <li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
-            <li><a href="https://www.instagram.com/_aethyra_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
         </ul>
         <a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a>
     </footer>
@@ -416,149 +432,78 @@
     document.addEventListener('DOMContentLoaded', () => {
         const nav = document.getElementById('mainNav');
         const hamburger = document.getElementById('hamburgerMenu');
-        const navLinks = document.getElementById('navLinks');
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn'); // IMPROVEMENT: Get scroll to top button
-        
-        // --- Static elements ---
-        function createStarfield() {
-            const container = document.getElementById('stars-container');
-            if (!container) return;
-            const starCount = 200;
-            const frag = document.createDocumentFragment();
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                const size = Math.random() * 2 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.top = `${Math.random() * 100}%`;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.opacity = Math.random() * 0.5 + 0.5;
-                const duration = Math.random() * 2 + 1;
-                const drift = (Math.random() - 0.5) * 200;
-                star.style.setProperty('--drift-x', `${drift}px`);
-                star.style.animationDuration = `${duration}s`;
-                star.style.animationDelay = `${Math.random() * duration}s`;
-                frag.appendChild(star);
-            }
-            container.appendChild(frag);
-        }
-        createStarfield();
+        const mobileNavLinks = document.querySelector('.nav-links'); // Get the mobile nav container
 
-        // --- Reveal on Scroll (for content) ---
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    revealObserver.unobserve(entry.target);
-                }
+        // --- Interactive Gradient Cursor ---
+        const cursorGradient = document.getElementById('cursor-gradient');
+        if (cursorGradient) {
+            window.addEventListener('mousemove', (e) => {
+                cursorGradient.style.left = `${e.clientX}px`;
+                cursorGradient.style.top = `${e.clientY}px`;
             });
-        }, { rootMargin: '0px 0px -100px 0px' });
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        // --- Scrolled Nav & Scroll to Top Button ---
+            document.body.addEventListener('mouseenter', () => document.body.classList.add('gradient-active'));
+            document.body.addEventListener('mouseleave', () => document.body.classList.remove('gradient-active'));
+        }
+        
+        // --- Nav Scroll Effect ---
+        let lastScrollTop = 0;
         window.addEventListener('scroll', () => {
-            // Nav bar styling
-            if (nav) {
-                nav.classList.toggle('scrolled', window.scrollY > 50);
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 50) {
+                nav?.classList.add('scrolled');
+            } else {
+                nav?.classList.remove('scrolled');
             }
-            // IMPROVEMENT: Show/hide scroll to top button
-            if (scrollToTopBtn) {
-                if (window.scrollY > 400) {
-                    scrollToTopBtn.classList.add('visible');
-                } else {
-                    scrollToTopBtn.classList.remove('visible');
-                }
+            
+            // Hides nav on scroll down, shows on scroll up
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav?.style.transform = 'translateY(-100px)';
+            } else {
+                nav?.style.transform = 'translateY(0)';
             }
-        });
-        
-        // IMPROVEMENT: Scroll to Top functionality
-        if (scrollToTopBtn) {
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        }, { passive: true });
 
-
-        // --- Spotlight Card Effect ---
-        document.querySelectorAll('.spotlight-card').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                card.style.setProperty('--x', `${e.clientX - rect.left}px`);
-                card.style.setProperty('--y', `${e.clientY - rect.top}px`);
-            });
-        });
 
         // --- Hamburger Menu Logic ---
-        if (hamburger && navLinks) {
+        if (hamburger && mobileNavLinks) {
             hamburger.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const isOpened = hamburger.classList.toggle('active');
-                hamburger.setAttribute('aria-expanded', isOpened);
-                navLinks.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', String(isOpened));
+                mobileNavLinks.classList.toggle('active');
+                // Prevent scrolling when mobile nav is open
+                document.body.style.overflow = isOpened ? 'hidden' : '';
             });
-            navLinks.querySelectorAll('a').forEach(link => {
+
+            mobileNavLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     hamburger.classList.remove('active');
                     hamburger.setAttribute('aria-expanded', 'false');
-                    navLinks.classList.remove('active');
-                });
-            });
-        }
-
-        // --- Project Filtering Logic ---
-        const filtersContainer = document.querySelector('.project-filters');
-        if (filtersContainer) {
-            const projectCards = document.querySelectorAll('.projects-grid .spotlight-card');
-            filtersContainer.addEventListener('click', (e) => {
-                if (e.target.tagName !== 'BUTTON') return;
-                
-                const currentActive = filtersContainer.querySelector('.active');
-                if (currentActive) currentActive.classList.remove('active');
-                e.target.classList.add('active');
-                
-                const filter = e.target.dataset.filter;
-                
-                projectCards.forEach(card => {
-                    const tags = card.dataset.tags || '';
-                    const isMatch = filter === 'all' || tags.toLowerCase().split(', ').includes(filter.toLowerCase());
-                    
-                    if (isMatch) {
-                        card.classList.remove('hidden');
-                        card.style.display = '';
-                    } else {
-                        card.classList.add('hidden');
-                        // Use transitionend event to set display to none after fade out
-                        card.addEventListener('transitionend', () => {
-                            if (card.classList.contains('hidden')) {
-                                card.style.display = 'none';
-                            }
-                        }, { once: true });
-                    }
+                    mobileNavLinks.classList.remove('active');
+                    document.body.style.overflow = '';
                 });
             });
         }
         
-        // --- Active Nav Link on Scroll ---
-        const sections = document.querySelectorAll('main section[id]');
-        const navLinkMap = {};
-        document.querySelectorAll('#navLinks ol li a[href^="#"]').forEach(a => {
-            const id = a.getAttribute('href').substring(1);
-            if(id) navLinkMap[id] = a;
-        });
-
-        const sectionObserver = new IntersectionObserver((entries) => {
+        // --- Reveal on Scroll Animation ---
+        const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                const id = entry.target.getAttribute('id');
                 if (entry.isIntersecting) {
-                    Object.values(navLinkMap).forEach(link => link.classList.remove('active'));
-                    if(navLinkMap[id]) {
-                       navLinkMap[id].classList.add('active');
-                    }
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { rootMargin: '-40% 0px -40% 0px' });
-        sections.forEach(section => sectionObserver.observe(section));
+        }, { rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('section > *, .project-card').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `opacity 0.6s ${index * 0.1}s, transform 0.6s ${index * 0.1}s`;
+            revealObserver.observe(el);
+        });
+
     });
     </script>
 </body>
