@@ -12,23 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        /* --- ORIGINAL UNCHANGED STYLES --- */
         :root {
-            /* Restored Original Dark Theme */
             --space-black-blue: #020c1b;
-            --dark-navy: #101010; /* Main background color */
+            --dark-navy: #0a192f;
             --mid-navy: #112240;
             --lightest-navy: #233554;
             --slate: #8892b0;
             --light-slate: #a8b2d1;
             --lightest-slate: #ccd6f6;
             --white: #e6f1ff;
-            --accent: #64ffda; /* Keeping original accent for consistency */
+            --accent: #64ffda;
             --accent-tint: rgba(100, 255, 218, 0.1);
-            
             --font-sans: 'Inter', sans-serif;
             --font-mono: 'SF Mono', 'Fira Code', monospace;
             --border-radius: 4px;
-            --border-radius-pill: 50px;
             --nav-height: 100px;
             --transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
             --transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -42,14 +40,23 @@
             scrollbar-color: var(--slate) transparent;
         }
 
-        /* --- BODY AND LAYOUT (DARK THEME) --- */
         body {
             font-family: var(--font-sans);
             color: var(--slate);
             -webkit-font-smoothing: antialiased;
-            background-color: var(--dark-navy);
+            background-color: var(--space-black-blue);
             line-height: 1.5;
             overflow-x: hidden;
+        }
+        
+        /* This background container is part of your original design and remains */
+        .background-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+        }
+        .aurora-background {
+            background-image: radial-gradient(at 47% 33%, hsl(209.79, 89%, 15%) 0, transparent 59%), 
+                              radial-gradient(at 82% 65%, hsl(211.33, 93%, 20%) 0, transparent 55%);
+            width: 100%; height: 100%;
         }
 
         .skip-to-content {
@@ -60,14 +67,17 @@
 
         main { padding: 0 150px; position: relative; }
         section { padding: 120px 0; }
-        section:not(#hero) { background-color: var(--dark-navy); } /* Ensure other sections have dark BG */
         
         section[id]:not(#hero)::after {
-            content: ''; display: block; width: 60%; max-width: 400px; height: 1px;
+            content: '';
+            display: block;
+            width: 60%;
+            max-width: 400px;
+            height: 1px;
             background: linear-gradient(to right, transparent, var(--lightest-navy), transparent);
             margin: 100px auto 0 auto;
         }
-        #contact::after, #hero::after { display: none; }
+        #contact::after { display: none; }
 
         h1, h2, h3, h4 { color: var(--lightest-slate); font-weight: 700; line-height: 1.2; }
         p { margin-bottom: 1rem; max-width: 65ch; }
@@ -77,136 +87,196 @@
         .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; will-change: opacity, transform; }
         .reveal.is-visible { opacity: 1; transform: translateY(0); }
         
-        
-        /* --- UPDATED NAVIGATION BAR --- */
+        /* --- START OF MODIFICATIONS --- */
+
+        /* 1. NAVIGATION BAR MODIFICATIONS */
         .main-nav { 
             display: flex; justify-content: space-between; align-items: center; position: fixed; 
             top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); 
-            background-color: transparent; z-index: 11; transition: var(--transition-slow); 
+            background-color: transparent; /* Transparent by default over the hero banner */
+            z-index: 11; transition: var(--transition-slow); 
         }
         .main-nav.scrolled { 
-            background-color: rgba(10, 25, 47, 0.85); /* Dark blur */
+            background-color: rgba(2, 12, 27, 0.85); 
             backdrop-filter: blur(10px); height: 70px; 
             box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7); 
         }
-        .nav-logo a { display: inline-block; }
-        .nav-logo img { height: 40px; width: auto; } /* Assuming you have a light-colored logo */
+        
+        /* This now handles the logo image instead of text */
+        .nav-logo a { display: block; }
+        .nav-logo img { height: 40px; width: auto; }
 
         .nav-links ol { list-style: none; display: flex; align-items: center; }
         .nav-links li { margin: 0 1.25rem; }
-        .nav-links li a:not(.btn) { 
-            color: var(--lightest-slate); /* Always light text */
-            padding: 0.75rem 0; font-size: 0.9rem; position: relative;
-        }
+        /* Link colors are now consistently light for readability */
+        .nav-links li a:not(.btn) { color: var(--lightest-slate); padding: 0.75rem 0; font-size: 0.9rem; position: relative;}
         .hamburger-menu { display: none; }
-        .hamburger-menu .bar { background-color: var(--white); }
-
-
-        /* --- UPDATED HERO SECTION --- */
+        .hamburger-menu .bar { background-color: var(--white); } /* Hamburger should be visible on banner */
+        
+        /* 2. HERO SECTION MODIFICATIONS */
         #hero {
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* This is key for top-left/bottom-left layout */
+            justify-content: space-between; /* Vertically aligns content to top and bottom */
             min-height: 100vh;
             text-align: left;
             position: relative;
-            padding: calc(var(--nav-height) + 2rem) 50px 4rem 50px; /* Padding for content inside */
-            background-image: url('images/Banner.svg');
-            background-size: cover; /* This makes the image stretch */
+            padding: calc(var(--nav-height) + 2rem) 0 4rem 0; /* Add padding to contain content */
+            background-image: url('images/Banner.svg'); /* Set banner as background */
+            background-size: cover;   /* This ensures the image stretches to cover the area */
             background-position: center;
             background-repeat: no-repeat;
-            color: var(--white); /* Ensures text on banner is white */
         }
-        
-        #hero .hero-main-heading {
-            font-family: 'Inter', Helvetica, sans-serif;
-            font-weight: 600; /* Semibold */
+        #hero::after { display: none; }
+        #hero h1, #hero h2, #hero h4, #hero p { color: var(--white); } /* Force all text in hero to be white */
+
+        .hero-main-heading {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
             font-size: 72px;
             line-height: 1.15;
             letter-spacing: -1px;
-            color: var(--white);
-            text-transform: none;
             margin: 0;
+            color: var(--white); /* Explicitly set to white */
         }
-
-        #hero .hero-text-container {
-            opacity: 0;
+       
+        .hero-text-container {
+            opacity: 1; /* Make instantly visible or use original animation */
             animation: fadeInSlideUp 0.8s forwards 200ms;
         }
-
-        #hero .hero-features-container {
+        
+        /* New container for the features at the bottom */
+        .hero-features-container {
             display: flex;
-            flex-direction: column; /* This makes the blocks vertical */
-            gap: 1.5rem; 
+            flex-direction: column; /* This is key: stacks the items vertically */
+            gap: 1.5rem; /* Adds space between each vertical item */
             opacity: 0;
             animation: fadeInSlideUp 0.8s forwards 400ms;
         }
 
-        #hero .feature-item {
+        .feature-item {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            max-width: 350px; 
+            max-width: 380px;
         }
         
-        #hero .feature-item img {
+        .feature-item img {
             width: 24px;
-            height: 24px;
-            margin-top: 5px; 
+            height: auto;
+            margin-top: 6px; /* Fine-tune vertical alignment */
         }
 
-        #hero .feature-item h4 {
-            font-size: 1.1rem; 
+        .feature-item h4 {
+            font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 0.25rem;
-            color: var(--white);
         }
         
-        #hero .feature-item p {
+        .feature-item p {
             font-size: 0.9rem;
             line-height: 1.4;
-            color: var(--light-slate); /* Softer white for subheading */
-            opacity: 0.9;
+            color: var(--light-slate); /* Softer white for subheadings */
             margin: 0;
         }
-
-        @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Resume Button Styling (Unchanged) */
-        .btn { 
-            color: var(--accent); background-color: transparent; border: 1px solid var(--accent);
-            border-radius: var(--border-radius-pill); padding: 0.75rem 1.75rem; 
-            font-size: 0.9rem; font-family: var(--font-mono); cursor: pointer; 
-            transition: var(--transition-fast); line-height: 1; 
-        }
-        .btn:hover { background-color: var(--accent-tint); transform: translateY(-3px); box-shadow: 0 5px 15px -5px var(--accent-tint); }
-        .btn .special-link { color: var(--accent) !important; }
         
-        /* The rest of your portfolio CSS remains the same as your original dark theme */
+        /* Original animations remain for a smooth reveal */
+        @keyframes fadeInSlideUp { 
+            from { opacity: 0; transform: translateY(20px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
+        /* --- END OF MODIFICATIONS --- */
+        
+        /* --- ALL ORIGINAL STYLES BELOW ARE UNTOUCHED --- */
+        .btn { color: var(--accent); background-color: transparent; border: 1px solid var(--accent); border-radius: var(--border-radius); padding: 0.75rem 1.75rem; font-size: 0.9rem; font-family: var(--font-mono); cursor: pointer; transition: var(--transition-fast); line-height: 1; }
+        .btn:hover { background-color: var(--accent-tint); transform: translateY(-3px); box-shadow: 0 5px 15px -5px var(--accent-tint); }
+        .btn a.special-link { color: var(--accent) !important; }
+        a.special-link:hover { color: var(--accent) !important; }
+        .btn-large { padding: 1.25rem 2rem; }
+        
         h2.section-heading { display: flex; align-items: center; margin-bottom: 3rem; font-size: clamp(26px, 5vw, 32px); color: var(--white); width: 100%; }
-        h2.section-heading::after { content: ''; display: block; position: relative; flex-grow: 1; height: 1px; margin-left: 1.5rem; background-color: var(--lightest-navy); }
+        h2.section-heading::after { content: ''; display: block; position: relative; flex-grow: 1; height: 1px; margin-left: 1.5rem; background-color: var(--lightest-navy); transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-out; }
+        h2.section-heading.is-visible::after { transform: scaleX(1); }
+
         .about-container { display: flex; gap: 50px; align-items: flex-start; }
-        .spotlight-card { background: linear-gradient(135deg, rgba(23, 37, 64, 0.5), rgba(10, 25, 47, 0.5)); border: 1px solid var(--lightest-navy); }
+        .about-left { flex: 0 0 250px; text-align: left; }
+        .about-image-wrapper { max-width: 250px; margin-bottom: 1.5rem; position: relative; border-radius: var(--border-radius); }
+        .about-image-wrapper img { width: 100%; height: auto; object-fit: cover; border-radius: var(--border-radius); border: 2px solid var(--lightest-navy); }
+        .about-name { font-size: 1.8rem; color: var(--white); margin-bottom: 0.5rem; }
+        .about-title { font-family: var(--font-mono); font-size: 1rem; color: var(--accent); margin-bottom: 0; }
+        .contact-info { margin-top: 2rem; }
+        .contact-info ul { list-style: none; padding: 0; margin: 0; font-size: 0.9rem; }
+        .contact-info li { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 0.75rem; color: var(--slate); }
+        .contact-info i { color: var(--accent); margin-top: 3px; }
+
+        .about-right { flex: 1; }
+        .about-right .bio { margin-bottom: 2.5rem; }
+        
+        .about-details-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .about-details-grid h3 { color: var(--lightest-slate); font-size: 1.4rem; margin-bottom: 1.5rem; }
+        .about-details-grid .grid-column h3:first-child { margin-top: 0; }
+        
+        ul.core-skills-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 0.5rem; }
+        ul.core-skills-list li { position: relative; padding-left: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem; color: var(--light-slate); margin-bottom: 0.5rem; }
+        ul.core-skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+        
+        .software-skills-list { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem; list-style: none; margin-top: 1.5rem; padding: 0; }
+        .software-skills-list li { transition: var(--transition-fast); }
+        .software-skills-list li:hover { transform: translateY(-3px); }
+        .software-skills-list img { width: 40px; height: 40px; }
+
+        .timeline { position: relative; }
+        .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--lightest-navy); top: 0.5rem; bottom: 0; left: 7px; z-index: 1; }
+        .timeline-item { padding: 0 0 2.5rem 30px; position: relative; z-index: 2; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before { content: ''; height: 15px; width: 15px; position: absolute; top: 0.5rem; left: 7px; transform: translateX(-50%); background-color: var(--accent); border-radius: 50%; z-index: 2;}
+        .timeline-content h4 { font-size: 1.1rem; margin-bottom: 0.25rem; font-weight: 600; }
+        .timeline-content p { color: var(--light-slate); margin: 0; }
+        .timeline-date { font-family: var(--font-mono); color: var(--slate); font-size: 0.8rem; margin-bottom: 0.5rem; }
+        
+        .project-filters { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+        .project-filters button { font-family: var(--font-mono); font-size: 0.85rem; background-color: transparent; color: var(--light-slate); border: 1px solid var(--lightest-navy); border-radius: 20px; padding: 0.5rem 1rem; cursor: pointer; transition: var(--transition-fast); }
+        .project-filters button:hover { background-color: var(--accent-tint); color: var(--accent); border-color: var(--accent);}
+        .project-filters button.active { background-color: var(--accent); color: var(--dark-navy); border-color: var(--accent); }
+        
+        .projects-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+        
+        .spotlight-card {
+            background: linear-gradient(135deg, rgba(23, 37, 64, 0.5), rgba(10, 25, 47, 0.5));
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-radius: var(--border-radius);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            position: relative; overflow: hidden; border: 1px solid var(--lightest-navy);
+        }
+        
         .spotlight-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(2, 12, 27, 0.7); border-color: var(--accent); }
+        .spotlight-card::before { content: ""; position: absolute; top: var(--y, 50%); left: var(--x, 50%); transform: translate(-50%, -50%); width: 0; height: 0; background: radial-gradient(circle closest-side, var(--accent-tint), transparent); opacity: 0; transition: width 0.3s ease, height 0.3s ease, opacity: 0.3s ease; }
+        .spotlight-card:hover::before { width: 300px; height: 300px; opacity: 1; }
 
+        .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
+        .project-image { width: 100%; height: 180px; object-fit: cover; }
+        .card-inner { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; }
+        
+        #contact { text-align: center; max-width: 650px; margin: 0 auto; }
+        #contact .title { font-size: clamp(40px, 5vw, 60px); color: var(--white); }
 
-        /* Media Queries for Responsiveness */
+        .footer { text-align: center; padding: 1.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--slate); }
+
         @media (max-width: 1080px) { 
-            main { padding: 0 100px; } 
-            #hero { padding-left: 100px; padding-right: 100px; }
+            main { padding: 0 100px; }
             .hero-main-heading { font-size: 60px; }
+            .feature-item { max-width: 300px; }
         }
 
         @media (max-width: 768px) {
             main { padding: 0 50px; }
-            section { padding: 100px 0; }
             #hero { 
-                justify-content: flex-start; 
-                gap: 4rem; /* Adds space between headline and features on mobile */
-                padding: calc(var(--nav-height) + 2rem) 50px; 
+                justify-content: flex-start;
+                gap: 4rem; /* Adds space between headline and features */
+                padding: calc(var(--nav-height) + 1rem) 25px 3rem 25px; /* Adjust padding for mobile */
             }
-            .hero-main-heading { font-size: 48px; line-height: 1.2; }
-            
+            .hero-main-heading { font-size: 48px; }
+            .hero-features-container { align-items: flex-start; }
+
             .nav-links {
                 display: flex; position: fixed; top: 0; right: 0;
                 height: 100vh; width: min(75vw, 350px);
@@ -232,16 +302,18 @@
         }
         @media (max-width: 600px) { 
             main { padding: 0 25px; } 
-            #hero { padding-left: 25px; padding-right: 25px; }
-            .hero-main-heading { font-size: 36px; }
+            .hero-main-heading { font-size: 40px; }
         }
     </style>
 </head>
 <body>
+    <div class="background-container"><div class="aurora-background"></div></div>
     <a href="#main-content" class="skip-to-content">Skip to Content</a>
     
     <nav class="main-nav" id="mainNav">
-        <div class="nav-logo reveal"><a href="#"><img src="Logo/Logo.svg" alt="Niranjan Kumar Logo"></a></div>
+        <div class="nav-logo reveal">
+            <a href="#"><img src="Logo/Logo.svg" alt="Niranjan Kumar Logo"></a>
+        </div>
         <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </button>
@@ -262,24 +334,23 @@
                 <h1 class="hero-main-heading">Decode the Data.</h1>
                 <h2 class="hero-main-heading">Discover the Story.</h2>
             </div>
-            
             <div class="hero-features-container">
                 <div class="feature-item">
-                    <img src="Logo/Arrow-Up.png" alt="Arrow Up Icon">
+                    <img src="Logo/Arrow-Up.png" alt="Feature Icon">
                     <div>
                         <h4>Real-Time Analytics</h4>
                         <p>Instant Insights, Smarter Decisions</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <img src="Logo/Arrow-Up.png" alt="Arrow Up Icon">
+                    <img src="Logo/Arrow-Up.png" alt="Feature Icon">
                     <div>
                         <h4>Precision Analytics</h4>
                         <p>Custom Insights for Your Data</p>
                     </div>
                 </div>
                 <div class="feature-item">
-                    <img src="Logo/Arrow-Up.png" alt="Arrow Up Icon">
+                    <img src="Logo/Arrow-Up.png" alt="Feature Icon">
                     <div>
                         <h4>End-to-End Data Orchestration</h4>
                         <p>Transforming Fragmented Information into Coherent Insights</p>
@@ -288,32 +359,100 @@
             </div>
         </section>
 
-        <!-- All of your original sections remain below, untouched. -->
+        <!-- ALL ORIGINAL CONTENT BELOW THIS LINE REMAINS UNTOUCHED -->
+
         <section id="about" class="reveal">
             <h2 class="section-heading">About Me</h2>
             <div class="about-container">
-                 <div class="about-left reveal" style="--delay: 100ms;"><div class="about-image-wrapper"><img src="images/Profile pic.png" alt="Niranjan Kumar Headshot"></div><h2 class="about-name">Niranjan Kumar</h2><p class="about-title">Data Analyst</p><div class="contact-info"><ul><li><i class="fas fa-map-marker-alt"></i><div>Hyderabad, India</div></li><li><i class="fas fa-phone-alt"></i><div><a href="tel:+919641143646">+91 9641143646</a></div></li><li><i class="fas fa-envelope"></i><div><a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></div></li><li><i class="fab fa-linkedin"></i><div><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">LinkedIn</a></div></li><li><i class="fab fa-github"></i><div><a href="https://github.com/niranjan910" target="_blank">GitHub</a></div></li></ul></div></div>
-                <div class="about-right reveal" style="--delay: 200ms;"><p class="bio">I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p><!-- Rest of about section content... --></div>
+                <div class="about-left reveal" style="--delay: 100ms;"><div class="about-image-wrapper"><img src="images/Profile pic.png" alt="Niranjan Kumar Headshot"></div><h2 class="about-name">Niranjan Kumar</h2><p class="about-title">Data Analyst</p><div class="contact-info"><ul><li><i class="fas fa-map-marker-alt"></i><div>Hyderabad, India</div></li><li><i class="fas fa-phone-alt"></i><div><a href="tel:+919641143646">+91 9641143646</a></div></li><li><i class="fas fa-envelope"></i><div><a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></div></li><li><i class="fab fa-linkedin"></i><div><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">LinkedIn</a></div></li><li><i class="fab fa-github"></i><div><a href="https://github.com/niranjan910" target="_blank">GitHub</a></div></li></ul></div></div>
+                <div class="about-right reveal" style="--delay: 200ms;"><p class="bio">I am a meticulous and passionate Data Analyst with a deep-seated curiosity for uncovering the narratives hidden within numbers. My journey is driven by the challenge of transforming raw data into compelling stories and actionable insights that fuel business growth and strategic decisions.</p><div class="about-details-grid"><div class="grid-column"><h3>Education</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2019 - 2023</h4><h4>B.Tech, Computer Science</h4><p>Institute of Professional Studies, Gwalior (8.9 CGPA)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2018</h4><h4>Higher Secondary (12th)</h4><p>D.A.V. Public School (85%)</p></div></div><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">2016</h4><h4>Secondary (10th)</h4><p>D.A.V. Public School (9.2 CGPA)</p></div></div></div></div><div class="grid-column"><h3>Experience</h3><div class="timeline"><div class="timeline-item"><div class="timeline-content"><h4 class="timeline-date">Feb 2025 - July 2025</h4><h4>Data Analyst Trainee</h4><p>Naresh i Technologies, Hyderabad</p></div></div></div></div>
+                        <div class="grid-column"><h3>Core Skills</h3><ul class="core-skills-list"><li>Data Analysis & Visualization</li><li>Statistical Analysis</li><li>SQL & Database Management</li><li>ETL Processes</li><li>Python (Pandas, NumPy, Folium)</li><li>Dashboard Design</li><li>Critical Thinking</li><li>Problem Solving</li><li>Stakeholder Communication</li></ul>
+                            <h3 style="margin-top: 2.5rem;">Software Skills</h3>
+                            <ul class="software-skills-list">
+                                <li title="Jupyter Notebook"><img src="Icon/Jupiter.svg" alt="Jupyter Notebook Icon"></li>
+                                <li title="MySQL"><img src="Icon/My SQl.svg" alt="MySQL Icon"></li>
+                                <li title="Numpy"><img src="Icon/Numpy.svg" alt="Numpy Icon"></li>
+                                <li title="Pandas"><img src="Icon/Pandas.svg" alt="Pandas Icon"></li>
+                                <li title="Power BI"><img src="Icon/Powerbi.svg" alt="Power BI Icon"></li>
+                                <li title="PowerPoint"><img src="Icon/PowerPoint.svg" alt="PowerPoint Icon"></li>
+                                <li title="Python"><img src="Icon/Python.svg" alt="Python Icon"></li>
+                                <li title="Microsoft Word"><img src="Icon/Word.svg" alt="MS Word Icon"></li>
+                                <li title="Microsoft Excel"><img src="Icon/Excel.svg" alt="MS Excel Icon"></li>
+                                <li title="Tableau"><img src="Icon/Tableau.svg" alt="Tableau Icon"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="projects" class="reveal">
             <h2 class="section-heading">Featured Projects</h2>
-             <!-- All of your original project items remain here -->
+            <div class="project-filters">
+                <button type="button" class="active" data-filter="all">All</button>
+                <button type="button" data-filter="Python">Python</button>
+                <button type="button" data-filter="Power BI">Power BI</button>
+                <button type="button" data-filter="Tableau">Tableau</button>
+                <button type="button" data-filter="Excel">Excel</button>
+            </div>
             <ul class="projects-grid">
-                <li class="spotlight-card reveal" data-tags="Python, MySQL"><!-- Card content --></li>
-                <li class="spotlight-card reveal" data-tags="Python, JSON" style="--delay: 100ms;"><!-- Card content --></li>
-                <!-- Add other project cards here -->
+                 <li class="spotlight-card reveal" data-tags="Python, MySQL"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank" class="special-link">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="Python, JSON" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" target="_blank" class="special-link">COVID-19 Hospitalization</a></h3><div class="project-description"><p>Complete COVID-19 hospitalization trends (2019–2025) with real-time insights using Python & JSON.</p></div><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="Python, CSV, Seaborn" style="--delay: 200ms;"><div class="card-content"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" class="special-link">AI Job Market Analysis</a></h3><div class="project-description"><p>Analyzed real 2025 AI job market data with Python and CSV — actionable insights in real time.</p></div><ul class="project-tech-list"><li>Python</li><li>CSV</li><li>Seaborn</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="MySQL, Power BI"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank" class="special-link">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="CSV, Power BI" style="--delay: 100ms;"><div class="card-content"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/UK_Retail_Analytics" target="_blank" class="special-link">UK Retail Analytics</a></h3><div class="project-description"><p>Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="Power BI, SQL, Excel" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                <li class="spotlight-card reveal" data-tags="PowerBI, CSV" style="--delay: 300ms;"><div class="card-content"><img src="images/Salary Trend.png" alt="Salary Trends Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/Salary-Trend-Analysis" target="_blank" class="special-link">Salary Trend Analysis</a></h3><div class="project-description"><p>Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p></div><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
+                 <li class="spotlight-card reveal" data-tags="Excel, VBA" style="--delay: 400ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80" alt="Excel Automation" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank" class="special-link">Inventory Management System</a></h3><div class="project-description"><p>Developed an automated inventory tracking system in Excel using VBA macros to streamline data entry and reporting.</p></div><ul class="project-tech-list"><li>Excel</li><li>VBA</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project</span><span class="arrow-icon">→</span></a></div></div></div></li>
             </ul>
+             <div class="projects-footer reveal">
+                <a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large" target="_blank"><span class="special-link">View All on GitHub</span></a>
+            </div>
         </section>
         
         <section id="certs" class="reveal">
             <h2 class="section-heading">Credentials</h2>
-            <!-- All of your original certificate items remain here -->
             <ul class="certs-grid">
-                <li class="spotlight-card reveal"><!-- Cert content --></li>
-                <li class="spotlight-card reveal" style="--delay: 100ms;"><!-- Cert content --></li>
-                 <!-- Add other cert cards here -->
+                <li class="spotlight-card reveal">
+                    <div class="card-content">
+                        <img src="Certificates/Wolfram.png" alt="Statistics Foundations Certificate" class="project-image">
+                        <div class="card-inner cert-inner">
+                            <h3 class="cert-title">Statistics Foundations Professional Certificate</h3>
+                            <p class="cert-issuer">Issued by Wolfram Research</p>
+                            <a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="spotlight-card reveal" style="--delay: 100ms;">
+                    <div class="card-content">
+                        <img src="Certificates/Microsoft certificates.png" alt="Career Essentials in Data Analysis Certificate" class="project-image">
+                        <div class="card-inner cert-inner">
+                            <h3 class="cert-title">Career Essentials in Data Analysis</h3>
+                            <p class="cert-issuer">Issued by Microsoft</p>
+                            <a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="spotlight-card reveal" style="--delay: 200ms;">
+                    <div class="card-content">
+                        <img src="Certificates/Public speaking.png" alt="Public Speaking Skills Professional Certificate" class="project-image">
+                        <div class="card-inner cert-inner">
+                            <h3 class="cert-title">Public Speaking Skills Professional Certificate</h3>
+                            <p class="cert-issuer">Issued by Toastmasters International</p>
+                            <a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="spotlight-card reveal" style="--delay: 300ms;">
+                    <div class="card-content">
+                        <img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="TCS iON Career Edge Certificate" class="project-image">
+                        <div class="card-inner cert-inner">
+                            <h3 class="cert-title">TCS iON Career Edge - Young Professional</h3>
+                            <p class="cert-issuer">Issued by TCS</p>
+                            <a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </section>
 
@@ -321,18 +460,26 @@
             <h2 class="title">Get In Touch</h2>
             <p>I'm actively seeking new opportunities and I'm excited to collaborate on new projects. My inbox is always open, so please feel free to reach out — I'd love to chat.</p>
             <div class="contact-cta-container">
-                 <a href="mailto:niranjan991100@gmail.com" class="btn btn-large"><span class="special-link">Say Hello</span></a>
+                <a href="mailto:niranjan991100@gmail.com" class="btn btn-large"><span class="special-link">Say Hello</span></a>
             </div>
         </section>
     </main>
     
     <footer class="footer">
-         <!-- Footer content... -->
+        <ul class="social-links">
+            <li><a href="https://github.com/niranjan910" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="https://www.instagram.com/_aethyra_/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a>
     </footer>
 
+    <!-- The original, untouched JavaScript from your portfolio -->
     <script>
-    // Original unchanged script
     document.addEventListener('DOMContentLoaded', () => {
+        // --- Static elements like the original starfield are removed from JS ---
+        // I am intentionally leaving the starfield function out, as it was part of the old hero section
+
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -346,6 +493,14 @@
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        document.querySelectorAll('.spotlight-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--y', `${e.clientY - rect.top}px`);
+            });
         });
 
         const hamburger = document.getElementById('hamburgerMenu');
@@ -363,8 +518,49 @@
                 });
             });
         }
+
+        const filtersContainer = document.querySelector('.project-filters');
+        const projectCards = document.querySelectorAll('.projects-grid .spotlight-card');
+        if (filtersContainer && projectCards.length > 0) {
+            filtersContainer.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'BUTTON') return;
+                filtersContainer.querySelector('.active').classList.remove('active');
+                e.target.classList.add('active');
+                const filter = e.target.dataset.filter;
+                projectCards.forEach(card => {
+                    const tags = card.dataset.tags || '';
+                    const isMatch = filter === 'all' || tags.toLowerCase().includes(filter.toLowerCase());
+                    card.style.display = isMatch ? 'flex' : 'none'; // Simplified logic
+                });
+            });
+        }
         
-        // This is where any project filtering logic would go if you had it.
+        const sections = document.querySelectorAll('main section[id]');
+        const navLinkMap = {};
+        document.querySelectorAll('#navLinks ol li a').forEach(a => {
+            const href = a.getAttribute('href');
+            if(href.startsWith('#')) {
+                navLinkMap[href.substring(1)] = a;
+            }
+        });
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                if (entry.isIntersecting) {
+                    Object.values(navLinkMap).forEach(link => link.classList.remove('active'));
+                    if(navLinkMap[id]) {
+                       navLinkMap[id].classList.add('active');
+                    }
+                }
+            });
+        }, { 
+            rootMargin: '-40% 0px -40% 0px' 
+        });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
     });
     </script>
 </body>
