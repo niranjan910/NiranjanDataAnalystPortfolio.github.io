@@ -49,7 +49,32 @@
             overflow-x: hidden;
         }
         
-        .skip-to-content:focus { top: 1rem; left: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; }
+        /* --- ACCESSIBILITY FIX --- */
+        /* Hides the "Skip to Content" link visually by default */
+        .skip-to-content {
+            position: absolute;
+            top: auto;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            z-index: -999;
+        }
+        
+        /* Brings the link into view when a user tabs to it */
+        .skip-to-content:focus {
+            left: 1rem;
+            top: 1rem;
+            width: auto;
+            height: auto;
+            overflow: auto;
+            z-index: 10000;
+            padding: 0.5rem 1rem;
+            background-color: var(--accent);
+            color: var(--card-bg);
+            border-radius: var(--border-radius);
+            font-weight: 700;
+        }
 
         main { padding: 0 80px; position: relative; }
         section { padding: 120px 0; }
@@ -99,7 +124,7 @@
         #hero h1, #hero h2, #hero h4, #hero p { color: var(--text-on-image); }
         .hero-main-heading { font-weight: 600; font-size: 72px; line-height: 1.15; letter-spacing: -1px; margin: 0; }
        
-        /* --- BUTTON STYLES (MODIFIED) --- */
+        /* --- BUTTON STYLES --- */
         .btn { 
             color: var(--accent); background-color: transparent; border: 1px solid var(--accent); 
             border-radius: var(--border-radius); padding: 0.75rem 1.75rem; font-size: 0.9rem; 
@@ -107,56 +132,44 @@
         }
         .btn:hover { background-color: var(--accent-tint); transform: translateY(-3px); box-shadow: 0 5px 15px -5px var(--accent-tint); }
         
-        /* --- RESUME BUTTON MODIFICATION --- */
         .btn.resume-btn {
-            background-color: var(--card-bg); /* White background */
-            color: var(--text-primary); /* Black text */
+            background-color: var(--card-bg);
+            color: var(--text-primary);
             border: 1px solid var(--border-color);
-            border-radius: 50px; /* Curved "pill" shape */
+            border-radius: 50px; /* Curved shape */
             padding: 0.6rem 1.25rem;
             box-shadow: 0 2px 8px var(--shadow-color);
         }
         .btn.resume-btn:hover {
-            background-color: var(--bg-main); /* Slight grey on hover */
+            background-color: var(--bg-main);
             border-color: #bbb;
             box-shadow: 0 4px 12px var(--shadow-color);
             transform: translateY(-2px);
         }
         .resume-btn .special-link {
-            display: inline-flex; /* Align text and icon */
-            align-items: center;
-            gap: 8px; /* Space between text and icon */
+            display: inline-flex; align-items: center; gap: 8px;
             color: var(--text-primary) !important;
         }
-        .resume-btn .download-icon {
-            height: 14px; /* Icon size */
-            width: auto;
-        }
+        .resume-btn .download-icon { height: 14px; width: auto; }
 
-        /* --- PROJECT CARD STYLES (MODIFIED) --- */
+        /* --- PROJECT CARD STYLES --- */
         .spotlight-card {
-            background-color: var(--card-bg); /* REMOVED: No more gradient */
+            background-color: var(--card-bg);
             border-radius: var(--border-radius);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             position: relative; overflow: hidden; border: 1px solid var(--border-color);
             box-shadow: 0 4px 10px -2px var(--shadow-color);
         }
-        
-        /* --- CARD INTERACTION MODIFICATION --- */
         .spotlight-card:hover { 
             transform: translateY(-8px); 
             border-color: var(--accent);
-            /* Softer, more professional shadow for light theme */
             box-shadow: 0 12px 24px -4px var(--shadow-color), 0 8px 16px -4px var(--shadow-color); 
         }
-
         .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
         .project-image { width: 100%; height: 180px; object-fit: cover; }
         .card-inner { padding: 1.75rem; display: flex; flex-direction: column; flex-grow: 1; }
         
-        /* All other original styles below remain unchanged and are omitted for brevity */
-        /* ... (rest of your original CSS) ... */
-
+        /* All other original styles below remain unchanged and are included for completeness */
         .hero-text-container { animation: fadeInSlideUp 0.8s forwards 200ms; }
         .hero-features-container { display: flex; flex-direction: column; gap: 1.5rem; animation: fadeInSlideUp 0.8s forwards 400ms; }
         .feature-item { display: flex; align-items: flex-start; gap: 1rem; max-width: 380px; }
@@ -231,7 +244,6 @@
                 <li><a href="#certs">Certificates</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
-                    <!-- --- RESUME BUTTON HTML MODIFICATION --- -->
                     <a href="YOUR_RESUME_LINK.pdf" class="btn resume-btn" target="_blank">
                         <span class="special-link">
                             Resume
@@ -244,8 +256,7 @@
     </nav>
 
     <main id="main-content">
-        <!-- The rest of your portfolio's HTML content goes here -->
-        <!-- It remains unchanged from your original version. -->
+        <!-- The rest of your HTML content is identical to the previous version -->
         <section id="hero">
             <div class="hero-text-container">
                 <h1 class="hero-main-heading">Decode the Data.</h1>
@@ -389,7 +400,6 @@
         <a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a>
     </footer>
 
-    <!-- --- JAVASCRIPT (MODIFIED) --- -->
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         const revealObserver = new IntersectionObserver((entries) => {
@@ -406,10 +416,6 @@
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 50);
         });
-
-        /* --- JAVASCRIPT MODIFICATION --- */
-        /* The mousemove event listener for the "spotlight" effect has been removed. */
-        /* It is no longer needed for the light theme and this simplifies the code. */
 
         const hamburger = document.getElementById('hamburgerMenu');
         const navLinks = document.getElementById('navLinks');
