@@ -3,301 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your Name] - Junior Data Analyst</title>
+    <title>[Your Name] - Data Analyst Portfolio</title>
     <style>
+        :root {
+            --bg-color: #010101;
+            --text-color: #f1f1f1;
+            --subtle-text: #888;
+        }
+
         /* General Body Styles */
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
-            background-color: #000;
-            color: #fff;
             overflow-x: hidden;
         }
 
-        /* Video Background Hero Section */
-        header {
+        /* Custom Font Import (Optional but recommended) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+        /* --- Header & Navigation --- */
+        .main-header {
             position: relative;
             height: 100vh;
+            padding: 2% 5%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #222; /* Subtle line under nav */
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-menu {
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 12px;
         }
 
-        #bg-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2;
-            transform: translateX(-50%) translateY(-50%);
-            object-fit: cover;
+        .nav-menu li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            color: var(--subtle-text);
         }
         
-        /* Overlay to darken the video */
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: -1;
-        }
-
-        .header-content h1 {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
-            font-weight: 700;
-        }
-
-        .header-content p {
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin-bottom: 2rem;
+        /* Separator Dot */
+        .nav-menu li:not(:last-child)::after {
+            content: '•';
+            color: var(--subtle-text);
+            margin-left: 12px;
         }
         
-        .cta-button {
-            background-color: #fff;
-            color: #000;
-            padding: 15px 30px;
+        .nav-cta a {
+            display: flex;
+            align-items: center;
+            background: transparent;
+            color: var(--text-color);
+            padding: 10px 20px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
+            border-radius: 50px;
+            border: 1px solid var(--text-color);
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        .cta-button:hover {
-            background-color: #ccc;
+        .nav-cta a:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
         }
         
-        /* Shared Section Styling */
-        section {
-            padding: 80px 15%;
-            text-align: center;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-             font-size: 1.2rem;
-             color: #aaa;
-             max-width: 600px;
-             margin: 0 auto 60px auto;
-        }
-
-        /* Skills Section Styling */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            text-align: left;
-        }
-
-        .skill-item {
-            background-color: #111;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid #333;
+        .arrow-icon {
+            margin-left: 10px;
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--text-color);
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease;
         }
         
-        .skill-item h3 {
-             font-size: 1.5rem;
-             margin-bottom: 10px;
+        /* The actual arrow shape */
+        .arrow-icon::before {
+            content: '→';
+            display: block;
+            transform: rotate(-45deg);
+            transition: color 0.3s ease;
+            font-size: 1.2rem;
+            line-height: 1;
         }
         
-        .skill-item p {
-             font-size: 1rem;
-             color: #aaa;
-             line-height: 1.6;
+        .nav-cta a:hover .arrow-icon {
+            border-color: var(--bg-color); /* Change border color on hover */
+            transform: translate(3px, -3px); /* Move on 45-degree axis */
         }
 
-        /* Projects Section Styling */
-        #projects {
-            background-color: #111;
+        .nav-cta a:hover .arrow-icon::before {
+             color: var(--bg-color); /* Change arrow color on hover */
         }
 
-        .project-card {
-            background-color: #000;
-            padding: 40px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            border: 1px solid #333;
-            text-align: left;
-             transition: transform 0.3s ease;
+
+        /* --- Hero Section Content --- */
+        .hero-content {
+            flex-grow: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hero-main-text {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            font-size: clamp(3rem, 10vw, 7rem); /* Responsive font size */
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            position: absolute;
+            bottom: 5%;
+            right: 0;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--subtle-text);
+            font-weight: 400;
         }
         
-        .project-card:hover {
-            transform: translateY(-5px);
+        .hero-features {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
-        .project-card h3 {
-            font-size: 2rem;
-            margin-bottom: 15px;
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
-        .project-card p {
-            font-size: 1.1rem;
-            color: #aaa;
-            line-height: 1.7;
-            margin-bottom: 20px;
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
         }
 
-        /* Footer Section Styling */
-        footer {
-            text-align: center;
-            padding: 50px 15%;
-            background-color: #111;
-        }
-
-        footer h2 {
-             margin-bottom: 20px;
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--text-color);
         }
         
-        footer p {
-            color: #aaa;
-            margin-bottom: 30px;
+        .feature-text h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
         }
 
-        .footer-links a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-             transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-             color: #ccc;
+        .feature-text p {
+            margin: 0;
+            color: var(--subtle-text);
+            font-size: 1rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            section {
-                padding: 60px 5%;
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
             }
-            .header-content h1 {
-                font-size: 2.5rem;
+            .hero-main-text {
+                position: static; /* Stack text in flow on small screens */
+                text-align: center;
+                margin-top: 10vh;
             }
-            .header-content p {
-                font-size: 1.2rem;
+            .hero-features, .hero-tagline {
+                 position: static;
+                 text-align: center;
+                 align-items: center;
+                 margin: 5vh auto;
             }
-            h2 {
-                 font-size: 2rem;
+            .feature-item {
+                 flex-direction: column;
+                 text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Hero Section -->
-    <header>
-        <!-- 
-            REPLACE THIS VIDEO: 
-            Go to pexels.com, search for a suitable background video, 
-            and replace the src link below with the new video link. 
-        -->
-        <video autoplay muted loop id="bg-video">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-data-center-room-4198-large.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="header-content">
-            <h1>[Your Name]</h1>
-            <p>Junior Data Analyst | Turning Data into Actionable Insights</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Data-Driven Problem Solving</h2>
-             <p class="section-subtitle">
-                I help businesses make smarter decisions by leveraging data. My expertise lies in cleaning, analyzing, interpreting, and visualizing complex datasets to uncover hidden patterns and opportunities.
-             </p>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h3>Data Cleaning & Preprocessing</h3>
-                    <p>Utilizing Python libraries like Pandas and NumPy to handle missing values, correct inconsistencies, and transform raw data into a pristine format ready for analysis.</p>
-                </div>
-                <div class="skill-item">
-                    <h3>Database Querying</h3>
-                    <p>Expert in writing complex SQL queries to extract, manipulate, and aggregate data from relational databases like PostgreSQL and MySQL to answer critical business questions.</p>
-                </div>
-                <div class="skill-item">
-                    <h3>Statistical Analysis</h3>
-                    <p>Applying statistical methods to identify significant trends, test hypotheses, and provide a solid quantitative basis for strategic recommendations.</p>
-                </div>
-                <div class="skill-item">
-                    <h3>Data Visualization</h3>
-                    <p>Creating clear and compelling visualizations using tools like Tableau and Python libraries (Matplotlib, Seaborn) to communicate complex findings to both technical and non-technical stakeholders.</p>
-                </div>
-                 <div class="skill-item">
-                    <h3>Machine Learning Fundamentals</h3>
-                    <p>Familiar with fundamental algorithms for classification and regression, using Scikit-learn to build predictive models that drive business outcomes.</p>
-                </div>
-                 <div class="skill-item">
-                    <h3>Reporting & Dashboards</h3>
-                    <p>Developing interactive dashboards and comprehensive reports that provide stakeholders with real-time insights into key performance indicators (KPIs).</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2>My Projects</h2>
-            <p class="section-subtitle">Here are some of the projects that showcase my skills and my approach to solving problems with data. </p>
-
-            <div class="project-card">
-                <h3>Project One: Customer Churn Prediction</h3>
-                <p>
-                    Developed a predictive model to identify customers at high risk of churning for a subscription-based service. The project involved cleaning customer data, engineering new features, and using a logistic regression model. The model achieved 85% accuracy in predicting churn, allowing the business to proactively retain customers.
-                </p>
-                <a href="#" class="cta-button">View on GitHub</a>
-            </div>
-
-            <div class="project-card">
-                <h3>Project Two: Sales Trend Analysis Dashboard</h3>
-                <p>
-                    Designed and built an interactive sales dashboard in Tableau for a retail company. The dashboard visualizes sales performance across different regions, product categories, and time periods. It helped the management team to quickly identify top-performing products and underperforming regions, leading to a more focused marketing strategy.
-                </p>
-                <a href="#" class="cta-button">Live Dashboard</a>
+    <!-- Header Section -->
+    <header class="main-header">
+        
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="nav-logo">
+                <!-- IMPORTANT: Assumes you have a Logo/Logo.svg file -->
+                <a href="#"><img src="Logo/Logo.svg" alt="Logo"></a>
             </div>
             
-             <div class="project-card">
-                <h3>Project Three: Web Scraping for Competitive Analysis</h3>
-                <p>
-                    Wrote a Python script using BeautifulSoup and Scrapy to collect product pricing data from competitor websites. The collected data was stored in a SQL database and used to perform competitive pricing analysis, enabling the business to adjust its pricing strategy and increase market share.
-                </p>
-                <a href="#" class="cta-button">View on GitHub</a>
+            <ul class="nav-menu">
+                <li><a href="#projects">Project</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#certifications">Certification</a></li>
+                <li><a href="#connect">Let's Connect</a></li>
+            </ul>
+
+            <div class="nav-cta">
+                <a href="#contact">
+                    Contact Me
+                    <span class="arrow-icon"></span>
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Hero Content Area -->
+        <div class="hero-content">
+            
+            <div class="hero-main-text">
+                Decode the Data.<br>Discover the Story.
             </div>
 
-        </section>
-    </main>
+            <div class="hero-features">
+                <!-- Feature 1: Real-Time Analytics -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <!-- Placeholder Pie Chart SVG Icon -->
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm-1-8c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm8-2h-5.08c-.83-2.14-2.6-3.8-4.92-4.59v5.09h7zM11 4.07C8.6 4.86 6.83 6.51 6.08 8.65L11 11V4.07z"/></svg>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Real-Time Analytics</h3>
+                        <p>Instant Insights, Smarter Decisions</p>
+                    </div>
+                </div>
 
-    <!-- Footer -->
-    <footer>
-        <h2>Get In Touch</h2>
-        <p>I'm currently seeking new opportunities. Feel free to reach out if you have a role that could be a good fit.</p>
-        <div class="footer-links">
-             <!-- Replace the '#' with your actual links! -->
-            <a href="mailto:youremail@example.com" class="cta-button">Email Me</a>
-            <a href="#" class="cta-button">My Resume</a>
-            <a href="#" class="cta-button">LinkedIn</a>
+                <!-- Feature 2: Precision Analytics -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                         <!-- Placeholder Target/Precision SVG Icon -->
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l1.5-1.5c1.45 1.45 3.55 1.45 5 0l1.5 1.5c-2.09 2.09-5.91 2.09-8 0zM12 7c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1V8c0-.55-.45-1-1-1z"/></svg>
+                    </div>
+                    <div class="feature-text">
+                        <h3>Precision Analytics</h3>
+                        <p>Custom Insights for Your Data</p>
+                    </div>
+                </div>
+                
+                <!-- Feature 3: 360° Data Intelligence -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                         <!-- Placeholder Data Streams SVG Icon -->
+                        <svg viewBox="0 0 24 24"><path d="M4 11h16v2H4zM4 6h16v2H4zM4 16h16v2H4z"/></svg>
+                    </div>
+                    <div class="feature-text">
+                        <h3>360° Data Intelligence</h3>
+                        <p>Integrating Multiple Streams for Comprehensive Insights</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-tagline">
+                The Data Holds the Answers—I Reveal Them.
+            </div>
+
         </div>
-        <p style="margin-top: 50px; font-size: 0.9rem; color: #555;">
-            © 2025 by [Your Name]. All Rights Reserved.
-        </p>
-    </footer>
+
+    </header>
+
+    <!-- You can add the rest of your sections (Projects, About, etc.) below -->
+    <!-- <section id="projects"> ... Your projects here ... </section> -->
+    <!-- <section id="about"> ... Your about section here ... </section> -->
 
 </body>
 </html>
