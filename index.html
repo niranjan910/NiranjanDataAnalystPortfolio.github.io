@@ -13,18 +13,18 @@
 
     <style>
         :root {
-            /* Adjusted color palette */
             --background-dark: #101010;
             --font-light: #f1f1f1;
             --font-dark: #101010;
-            --accent: #f1f1f1; /* Using the light font color as the primary accent */
+            --white: #ffffff;
+            --accent: #f1f1f1; 
             --accent-tint: rgba(241, 241, 241, 0.1);
-            --lightest-navy-replacement: #333333; /* For borders and dividers */
+            --lightest-navy-replacement: #333333; 
             
-            --font-sans: 'Inter', sans-serif;
+            --font-sans: 'Inter', Helvetica, sans-serif;
             --font-mono: 'SF Mono', 'Fira Code', monospace;
             --border-radius: 4px;
-            --border-radius-pill: 50px; /* For the new button style */
+            --border-radius-pill: 50px;
             --nav-height: 100px;
             --transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
             --transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -45,6 +45,8 @@
             background-color: var(--background-dark);
             line-height: 1.5;
             overflow-x: hidden;
+            font-size: 16px; /* Default font size for readability */
+            text-rendering: optimizeLegibility;
         }
 
         .skip-to-content {
@@ -53,7 +55,6 @@
         }
         .skip-to-content:focus { top: 1rem; left: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; }
 
-        /* Reduced padding from left and right */
         main { padding: 0 50px; position: relative; }
         section { padding: 120px 0; }
         
@@ -87,34 +88,68 @@
         .nav-links li a:not(.btn) { color: var(--font-light); padding: 0.75rem 0; font-size: 0.9rem; position: relative;}
         .hamburger-menu { display: none; }
 
-        #hero { display: flex; justify-content: center; flex-direction: column; min-height: 100vh; text-align: left; position: relative; background-color: var(--background-dark); }
+        /* Updated Hero Section styles */
+        #hero {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            text-align: left;
+            position: relative;
+            background-image: url('images/Banner.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Hero text styling based on your table */
+        .hero-main-heading {
+            font-family: 'Inter', Helvetica, sans-serif;
+            font-weight: 800;
+            font-size: 72px;
+            line-height: 82px;
+            letter-spacing: -1px;
+            color: var(--white);
+            text-transform: none; /* Sentence case */
+            margin: 0; /* Reset margins for h1/h2 */
+        }
        
-        #hero h1, #hero h2, #hero h3, #hero p, .hero-cta-container { opacity: 0; animation: fadeInSlideUp 0.8s forwards; }
-        #hero h1 { animation-delay: 100ms; }
-        #hero .big-heading { animation-delay: 200ms; }
-        #hero .sub-heading { animation-delay: 300ms; }
-        #hero p { animation-delay: 400ms; }
-        .hero-cta-container { animation-delay: 500ms; }
+        #hero .hero-text-container {
+            opacity: 0;
+            animation: fadeInSlideUp 0.8s forwards;
+            animation-delay: 200ms;
+        }
+        #hero .hero-cta-container {
+             opacity: 0;
+             animation: fadeInSlideUp 0.8s forwards;
+             animation-delay: 400ms;
+             margin-top: 3rem; 
+        }
 
         @keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        #hero h1 { margin: 0 0 1.5rem 0.25rem; color: var(--font-light); opacity: 0.8; font-family: var(--font-mono); font-size: clamp(1rem, 2vw, 1.1rem); font-weight: 400; }
-        #hero .big-heading { font-size: clamp(40px, 8vw, 80px); font-weight: 800; color: var(--font-light); }
-        #hero .sub-heading { font-size: clamp(35px, 7vw, 70px); color: var(--font-light); opacity: 0.7; font-weight: 700; }
-        #hero p { max-width: 580px; margin-top: 1.5rem; }
-        .hero-cta-container { margin-top: 3rem; }
-        
-        /* Updated Button Styles */
+        /* Remove old hero typography styles */
+        #hero h1, #hero .big-heading, #hero .sub-heading, #hero p {
+             font-size: inherit; /* Reset styles to avoid conflicts */
+             color: inherit;
+             text-shadow: none;
+             margin: 0;
+        }
+
         .btn { 
             background-color: var(--font-light); 
             color: var(--font-dark);
             border: 1px solid var(--font-light);
-            border-radius: var(--border-radius-pill); /* Curved edges */
-            padding: 0.75rem 1.75rem; font-size: 0.9rem; font-family: var(--font-mono); 
-            cursor: pointer; transition: var(--transition-fast); line-height: 1; 
+            border-radius: var(--border-radius-pill);
+            padding: 0.75rem 1.75rem; 
+            font-size: 0.9rem; 
+            font-family: var(--font-mono); 
+            cursor: pointer; 
+            transition: var(--transition-fast); 
+            line-height: 1; 
         }
         .btn:hover { background-color: var(--font-light); opacity: 0.9; transform: translateY(-3px); }
-        .btn.resume-btn .special-link { color: var(--font-dark) !important; font-weight: bold; }
+        .btn .special-link { color: var(--font-dark) !important; font-weight: bold; }
         .btn-large { padding: 1.25rem 2rem; }
         a.special-link { color: var(--font-light); }
         
@@ -175,7 +210,7 @@
         .spotlight-card.hidden { transform: scale(0.95); opacity: 0; pointer-events: none; }
         .spotlight-card:not(.hidden) { transform: scale(1); opacity: 1; }
         .spotlight-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7); border-color: var(--accent); }
-        .spotlight-card::before { display: none; /* Removing spotlight effect */ }
+        .spotlight-card::before { display: none; }
 
         .card-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
         .project-image { width: 100%; height: 180px; object-fit: cover; opacity: 0.85; }
@@ -229,11 +264,13 @@
             main { padding: 0 40px; } 
             .about-details-grid { grid-template-columns: 1fr 1fr; }
             .about-details-grid .grid-column:nth-child(3) { grid-column: 1 / span 2; }
+            .hero-main-heading { font-size: 60px; line-height: 70px; }
         }
 
         @media (max-width: 768px) {
             main { padding: 0 25px; }
             section { padding: 100px 0; }
+            .hero-main-heading { font-size: 48px; line-height: 58px; }
             h2.section-heading::after { display: none; }
             .about-container { flex-direction: column; align-items: center; }
             .about-left { flex: 0 0 auto; width: 100%; max-width: 250px; margin-bottom: 2rem; text-align: center; }
@@ -263,7 +300,10 @@
             .hamburger-menu.active .bar:nth-child(2){ opacity: 0; }
             .hamburger-menu.active .bar:nth-child(3){ transform: translateY(-8.5px) rotate(-45deg); }
         }
-        @media (max-width: 600px) { main { padding: 0 20px; } }
+        @media (max-width: 600px) { 
+            main { padding: 0 20px; } 
+            .hero-main-heading { font-size: 36px; line-height: 46px; }
+        }
     </style>
 </head>
 <body>
@@ -287,10 +327,10 @@
 
     <main id="main-content">
         <section id="hero">
-            <h1>Hi, my name is</h1>
-            <h2 class="big-heading">Niranjan Kumar.</h2>
-            <h3 class="sub-heading">I build insights from data.</h3>
-            <p>I’m a data analyst specializing in transforming complex datasets into clear, actionable stories. I blend analytical skills with an aesthetic mindset to create solutions that are both powerful and elegant.</p>
+            <div class="hero-text-container">
+                <h1 class="hero-main-heading">Decode the Data.</h1>
+                <h2 class="hero-main-heading">Discover the Story.</h2>
+            </div>
             <div class="hero-cta-container">
                  <a href="#projects" class="btn btn-large"><span class="special-link">Explore My Work</span></a>
             </div>
@@ -432,7 +472,6 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- Reveal on Scroll (for content) ---
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -443,13 +482,11 @@
         }, { rootMargin: '0px 0px -100px 0px' });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // --- Scrolled Nav ---
         const nav = document.getElementById('mainNav');
         window.addEventListener('scroll', () => {
             nav.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // --- Hamburger Menu Logic ---
         const hamburger = document.getElementById('hamburgerMenu');
         const navLinks = document.getElementById('navLinks');
         if (hamburger && navLinks) {
@@ -466,7 +503,6 @@
             });
         }
 
-        // --- Project Filtering Logic ---
         const filtersContainer = document.querySelector('.project-filters');
         const projectCards = document.querySelectorAll('.projects-grid .spotlight-card');
         if (filtersContainer && projectCards.length > 0) {
@@ -483,15 +519,12 @@
                         setTimeout(() => card.classList.remove('hidden'), 10);
                     } else {
                         card.classList.add('hidden');
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 400);
+                        setTimeout(() => { card.style.display = 'none'; }, 400);
                     }
                 });
             });
         }
         
-        // --- Active Nav Link on Scroll ---
         const sections = document.querySelectorAll('main section[id]');
         const navLinkMap = {};
         document.querySelectorAll('#navLinks ol li a').forEach(a => {
