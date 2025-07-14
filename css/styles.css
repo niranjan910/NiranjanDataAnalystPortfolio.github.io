@@ -35,7 +35,7 @@ ul {
 
 /* Header */
 .header {
-    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 2);
+    padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 1.5); /* Decreased side padding */
     position: fixed;
     top: 0;
     width: 100%;
@@ -52,9 +52,9 @@ ul {
     margin: 0 auto;
 }
 
-.logo {
-    font-weight: 800;
-    font-size: 24px;
+.logo img {
+    height: 40px; /* Control logo size */
+    width: auto;
 }
 
 .nav-links {
@@ -123,8 +123,8 @@ ul {
     display: flex;
     align-items: center;
     padding-top: 80px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: calc(var(--spacing-unit) * 1.5);  /* Decreased side padding */
+    padding-right: calc(var(--spacing-unit) * 1.5); /* Decreased side padding */
 }
 
 .hero-content {
@@ -141,7 +141,7 @@ ul {
 }
 
 .headline {
-    font-size: clamp(48px, 8vw, 72px);
+    font-size: clamp(40px, 6vw, 60px); /* Reduced font size */
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: calc(var(--spacing-unit) * 3);
@@ -167,7 +167,8 @@ ul {
 }
 
 .feature-icon {
-    font-size: 36px;
+    width: 36px;  /* Set width for image icon */
+    height: 36px; /* Set height for image icon */
 }
 
 .feature-title {
@@ -180,11 +181,13 @@ ul {
     color: var(--secondary-text-color);
     margin: 0;
 }
+
 .repo-stats{
   display: flex;
   gap: 1rem;
   align-items: center;
 }
+
 /* Right Column */
 .hero-right {
     flex: 1;
@@ -217,6 +220,7 @@ ul {
 
     .hero-right {
         align-items: center;
+        padding-left: 0; /* Remove side padding on mobile */
     }
 
     .nav-links {
@@ -226,7 +230,7 @@ ul {
 
 @media (max-width: 480px) {
     .headline {
-        font-size: 48px;
+        font-size: 38px;
     }
 
     .tagline {
