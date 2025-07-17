@@ -221,11 +221,29 @@
 				position: relative;
 				margin: 0 -60px;
 				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
-				background-image: url("images/Banner.svg");
-				background-size: cover;
-				background-position: center;
-				background-repeat: no-repeat;
+				/* --- Removed static image, will be replaced by canvas --- */
+                background-color: #111; /* Fallback color */
+				overflow: hidden; /* Important for canvas positioning */
 			}
+            
+            /* --- New styles for the animation canvas --- */
+            #hero-canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1; /* Sit behind the content */
+            }
+
+            /* --- Ensure hero content sits on top of the canvas --- */
+            #hero .hero-text-container,
+            #hero .hero-features-container,
+            #hero .hero-cta-container {
+                position: relative;
+                z-index: 2;
+            }
+
 			#hero h1,
 			#hero h2,
 			#hero h4,
@@ -1056,7 +1074,11 @@
 			</div>
 		</nav>
 		<main id="main-content">
+            <!-- --- MODIFIED HERO SECTION with Canvas --- -->
 			<section id="hero">
+                <!-- This canvas will hold the p5.js animation -->
+                <div id="hero-canvas"></div>
+
 				<div class="hero-text-container">
 					<h1 class="hero-main-heading">Decode the Data.</h1>
 					<h1 class="hero-main-heading">Discover the Story.</h1>
@@ -1277,6 +1299,7 @@
 									</li>
 									<li title="Microsoft Excel">
 										<img src="Icon/Excel.svg" alt="MS Excel Icon" />
+									/>
 									</li>
 									<li title="Tableau">
 										<img src="Icon/Tableau.svg" alt="Tableau Icon" />
@@ -1510,7 +1533,77 @@
 			>
 		</footer>
 
+        <!-- --- NEW: ADD P5.JS SCRIPT --- -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+
 		<script>
+            /* --- NEW: P5.JS SCRIPT FOR HERO ANIMATION --- */
+            const sketch = (p) => {
+                let particles = [];
+                const numParticles = 150;
+                let canvas;
+
+                class Particle {
+                    constructor() {
+                        this.pos = p.createVector(p.random(p.width), p.random(p.height));
+                        this.vel = p.createVector(p.random(-0.5, 0.5), p.random(-0.5, 0.5));
+                        this.size = p.random(2, 4);
+                    }
+
+                    update() {
+                        this.pos.add(this.vel);
+                        this.edges();
+                    }
+
+                    draw() {
+                        p.noStroke();
+                        p.fill('rgba(255, 255, 255, 0.5)');
+                        p.circle(this.pos.x, this.pos.y, this.size);
+                    }
+
+                    edges() {
+                        if (this.pos.x < 0 || this.pos.x > p.width) this.vel.x *= -1;
+                        if (this.pos.y < 0 || this.pos.y > p.height) this.vel.y *= -1;
+                    }
+
+                    checkParticles(particles) {
+                        particles.forEach(particle => {
+                            const d = p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+                            if (d < 120) {
+                                const alpha = p.map(d, 0, 120, 0.5, 0);
+                                p.stroke(`rgba(255, 255, 255, ${alpha})`);
+                                p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+                            }
+                        });
+                    }
+                }
+                
+                p.setup = () => {
+                    const heroSection = document.getElementById('hero');
+                    canvas = p.createCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
+                    canvas.parent('hero-canvas');
+                    for(let i = 0; i < numParticles; i++) {
+                        particles.push(new Particle());
+                    }
+                };
+
+                p.draw = () => {
+                    p.background('#111');
+                    particles.forEach((particle, index) => {
+                        particle.update();
+                        particle.draw();
+                        particle.checkParticles(particles.slice(index));
+                    });
+                };
+                
+                p.windowResized = () => {
+                    const heroSection = document.getElementById('hero');
+                    p.resizeCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
+                };
+            };
+            new p5(sketch);
+            
+            /* --- MAIN PORTFOLIO SCRIPT --- */
 			document.addEventListener("DOMContentLoaded", () => {
 				const revealObserver = new IntersectionObserver(
 					(entries) => {
@@ -1602,7 +1695,7 @@
 					sectionObserver.observe(section);
 				});
 
-                /* --- NEW: Magnetic Elements Effect --- */
+                /* --- Magnetic Elements Effect --- */
                 const magneticItems = document.querySelectorAll('.magnetic-item');
                 const strength = 50; 
 
