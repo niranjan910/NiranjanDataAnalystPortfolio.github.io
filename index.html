@@ -323,6 +323,21 @@
 				opacity: 1;
 				background-color: #333;
 			}
+			
+			/* --- MODIFICATION: Inverted Hero Button --- */
+			.hero-cta-button {
+				background-color: var(--bg-main);
+				color: var(--text-primary) !important;
+			}
+			.hero-cta-button .icon-container {
+				background-color: var(--text-primary);
+				color: var(--bg-main);
+			}
+			.hero-cta-button:hover {
+				background-color: #e0e0e0;
+				color: var(--text-primary) !important;
+			}
+
             .hero-text-container { animation: fadeInSlideUp 0.8s forwards 200ms; opacity:0; }
 			.hero-features-container {
 				display: flex;
@@ -342,15 +357,14 @@
 				height: auto;
 				margin-top: 6px;
 			}
-            /* --- FONT SIZE REDUCED HERE --- */
 			.feature-item h4 {
 				font-family: var(--font-sans);
-				font-size: 1rem; /* Was 1.125rem */
+				font-size: 1rem;
 				font-weight: 600;
 				margin-bottom: 0.25rem;
 			}
 			.feature-item p {
-				font-size: 0.9rem; /* Was 1rem */
+				font-size: 0.9rem;
 				line-height: 1.6;
 				color: var(--text-on-image);
 				opacity: 0.9;
@@ -412,6 +426,9 @@
 				font-size: clamp(26px, 5vw, 32px);
 				width: 100%;
 			}
+			
+			/* --- MODIFICATION: Removed section heading line --- */
+			/* 
 			h2.section-heading::after {
 				content: "";
 				display: block;
@@ -426,7 +443,8 @@
 			}
 			h2.section-heading.is-visible::after {
 				transform: scaleX(1);
-			}
+			} 
+			*/
 
 			/* --- ABOUT SECTION --- */
 			.about-subheader {
@@ -1113,7 +1131,7 @@
                         </p>
                         <a
                             href="mailto:niranjan991100@gmail.com"
-                            class="modern-pill-button magnetic-item"
+                            class="modern-pill-button hero-cta-button magnetic-item"
                         >
                             <span>Lets connect</span>
                             <span class="icon-container">
@@ -1390,6 +1408,34 @@
 								<ul class="project-tech-list">
 									<li>Python</li>
 									<li>ETL</li>
+								</ul>
+								<a href="#" class="project-view-button" target="_blank">View</a>
+							</div>
+						</div>
+					</li>
+                    <li class="project-card reveal" style="--delay: 900ms;">
+						<img src="images/placeholder.png" alt="Project 7 placeholder" class="project-image">
+						<div class="card-body">
+							<h3 class="project-title">Customer Sentiment Analysis</h3>
+							<p class="project-description">Analyzed customer reviews using NLP techniques in Python to categorize feedback and identify key satisfaction drivers.</p>
+							<div class="card-footer">
+								<ul class="project-tech-list">
+									<li>NLP</li>
+                                    <li>Pandas</li>
+								</ul>
+								<a href="#" class="project-view-button" target="_blank">View</a>
+							</div>
+						</div>
+					</li>
+                    <li class="project-card reveal" style="--delay: 1050ms;">
+						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image">
+						<div class="card-body">
+							<h3 class="project-title">Excel Financial Modeling</h3>
+							<p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation, featuring scenario analysis.</p>
+							<div class="card-footer">
+								<ul class="project-tech-list">
+									<li>Excel</li>
+									<li>Finance</li>
 								</ul>
 								<a href="#" class="project-view-button" target="_blank">View</a>
 							</div>
@@ -1717,4 +1763,4 @@
 			});
 		</script>
 	</body>
-</html>
+</html>```
