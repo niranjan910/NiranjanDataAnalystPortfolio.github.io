@@ -374,10 +374,36 @@
 				background: var(--accent-tint);
 			}
 
+			a.special-link {
+				position: relative;
+				color: var(--accent);
+			}
+
 			a.special-link:hover {
 				color: var(--accent) !important;
-				text-decoration: underline;
+				text-decoration: none;
+				opacity: 1;
 			}
+
+			a.special-link::after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 1px;
+				bottom: -4px;
+				left: 0;
+				background-color: var(--accent);
+				transform: scaleX(0);
+				transform-origin: bottom right;
+				transition: transform 0.25s ease-out;
+			}
+
+			a.special-link:hover::after {
+				transform: scaleX(1);
+				transform-origin: bottom left;
+			}
+
+
 			h2.section-heading {
 				display: flex;
 				align-items: center;
@@ -687,6 +713,8 @@
 				justify-content: space-between;
 				align-items: center;
 				margin-top: 1.5rem;
+				padding-top: 1.5rem;
+    			border-top: 1px solid var(--border-color);
 			}
 
 			.project-card .project-tech-list {
@@ -728,6 +756,92 @@
 			}
 			/* --- End of Project Section --- */
 			
+			/* --- CERTIFICATIONS (Spotlight Theme) --- */
+			.certs-grid {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+				gap: 2rem;
+			}
+
+			.spotlight-card {
+				position: relative;
+				background: #1d1d1f; /* Dark background for contrast */
+				border-radius: 16px;
+				overflow: hidden;
+				padding: 1px; /* The border trick */
+			}
+			
+			.spotlight-card::before {
+				content: '';
+				position: absolute;
+				top: var(--y, 50%);
+				left: var(--x, 50%);
+				transform: translate(-50%, -50%);
+				width: 600px;
+				height: 600px;
+				background: radial-gradient(circle at center, rgba(97, 106, 255, 0.2), transparent 40%);
+				opacity: 0;
+				transition: opacity 0.4s ease-out;
+			}
+			
+			.spotlight-card:hover::before {
+				opacity: 1;
+			}
+
+			.spotlight-card .card-content {
+				position: relative;
+				z-index: 2;
+				background: #1d1d1f; /* Same as the card background */
+				border-radius: 15px; /* Slightly smaller than card to show the "border" */
+				overflow: hidden;
+			}
+
+			.spotlight-card .cert-inner {
+				padding: 1.5rem;
+			}
+			
+			.spotlight-card .project-image {
+				border-bottom: 1px solid #333; /* Darker border for dark theme */
+				width: 100%;
+				height: auto;
+				aspect-ratio: 16 / 9;
+    			object-fit: cover;
+			}
+
+			.spotlight-card .cert-title {
+				color: #f5f5f7;
+				font-size: 1.2rem;
+				font-weight: 600;
+				font-family: var(--font-sans);
+			}
+
+			.spotlight-card .cert-issuer {
+				color: #9e9e9e;
+				margin-top: 0.25rem;
+				font-size: 1rem;
+			}
+
+			.spotlight-card .cert-link {
+				display: inline-block;
+				margin-top: 1rem;
+				color: #4a90e2 !important; /* Standout blue */
+				font-weight: 500;
+			}
+
+			.spotlight-card .cert-link:hover {
+				text-decoration: underline !important;
+				opacity: 1;
+			}
+			
+			.spotlight-card .cert-link i {
+				font-size: 0.8rem;
+    			margin-left: 0.4rem;
+			}
+			/* --- End of Certifications --- */
+
 			#contact {
 				text-align: center;
 				max-width: 650px;
@@ -1262,14 +1376,96 @@
 					</li>
 				</ul>
 				 <div class="projects-footer reveal">
-					<a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large" target="_blank"><span class="special-link">View All on GitHub</span></a>
+					<a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large special-link" target="_blank">View All on GitHub</a>
 				</div>
 			</section>
 
 			<section id="certs" class="reveal">
 				<h2 class="section-heading">Credentials</h2>
-				<!-- The rest of your sections remain unchanged -->
+				<ul class="certs-grid">
+					<li class="spotlight-card reveal">
+						<div class="card-content">
+							<img src="Certificates/Wolfram.png" alt="Statistics Foundations Certificate" class="project-image">
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">Statistics Foundations Professional Certificate</h3>
+								<p class="cert-issuer">Issued by Wolfram Research</p>
+								<a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 100ms;">
+						<div class="card-content">
+							<img src="Certificates/Microsoft certificates.png" alt="Career Essentials in Data Analysis Certificate" class="project-image">
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">Career Essentials in Data Analysis</h3>
+								<p class="cert-issuer">Issued by Microsoft</p>
+								<a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 200ms;">
+						<div class="card-content">
+							<img src="Certificates/Public speaking.png" alt="Public Speaking Skills Professional Certificate" class="project-image">
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">Public Speaking Skills Professional Certificate</h3>
+								<p class="cert-issuer">Issued by Toastmasters International</p>
+								<a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 300ms;">
+						<div class="card-content">
+							<img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="TCS iON Career Edge Certificate" class="project-image">
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">TCS iON Career Edge - Young Professional</h3>
+								<p class="cert-issuer">Issued by TCS</p>
+								<a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 400ms;">
+						<div class="card-content">
+							<img src="Certificates/Cisco.png" alt="Data Analytics Essentials Certificate" class="project-image">
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">Data Analytics Essentials</h3>
+								<p class="cert-issuer">Issued by Cisco</p>
+								<a href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 500ms;">
+						<div class="card-content">
+							<img src="Certificates/Business Analyst certificate.png" alt="Career Essentials in Business Analysis" class="project-image">
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">Career Essentials in Business Analysis 1</h3>
+								<p class="cert-issuer">Issued by Microsoft</p>
+								<a href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 600ms;">
+						<div class="card-content">
+							<img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="Dummy Certificate" class="project-image">
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">Dummy Certificate Title 2</h3>
+								<p class="cert-issuer">Issued by Placeholder</p>
+								<a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 700ms;">
+						<div class="card-content">
+							<img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="Dummy Certificate" class="project-image">
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">Dummy Certificate Title 3</h3>
+								<p class="cert-issuer">Issued by Placeholder</p>
+								<a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+							</div>
+						</div>
+					</li>
+				</ul>
 			</section>
+
 
 			<section id="contact" class="reveal">
 				<h2 class="title">Get In Touch</h2>
@@ -1281,9 +1477,8 @@
 				<div class="contact-cta-container">
 					<a
 						href="mailto:niranjan991100@gmail.com"
-						class="btn btn-large"
-						><span class="special-link">Say Hello</span></a
-					>
+						class="btn btn-large special-link"
+						>Say Hello</a>
 				</div>
 			</section>
 		</main>
@@ -1326,19 +1521,6 @@
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add("is-visible");
-								// Stagger animations for about section
-								if (entry.target.id === "about") {
-									const aboutElements = entry.target.querySelectorAll(
-										".about-left, .about-right > *, .about-details-grid > *"
-									);
-									aboutElements.forEach((el, index) => {
-										el.style.transitionDelay = `${
-											index * 150
-										}ms`;
-										el.classList.add("reveal");
-										revealObserver.observe(el);
-									});
-								}
 								revealObserver.unobserve(entry.target);
 							}
 						});
@@ -1362,6 +1544,7 @@
 						logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
 					}
 				});
+
 				const hamburger = document.getElementById("hamburgerMenu");
 				const navLinks = document.getElementById("navLinks");
 				if (hamburger && navLinks) {
@@ -1379,8 +1562,6 @@
 						}
 					});
 				}
-
-				// NOTE: The project filter script has been removed as per the new design.
 				
 				const sections = document.querySelectorAll("main section[id]");
 				const navLinkMap = {};
@@ -1443,7 +1624,23 @@
 							"perspective(1000px) rotateX(0) rotateY(0) scale(1)";
 					});
 				}
+				
+				// Spotlight effect for certification cards
+				const spotlightCards = document.querySelectorAll('.spotlight-card');
+				spotlightCards.forEach(card => {
+					card.addEventListener('mousemove', e => {
+						const rect = card.getBoundingClientRect();
+						const x = e.clientX - rect.left;
+						const y = e.clientY - rect.top;
+						card.style.setProperty('--x', `${x}px`);
+						card.style.setProperty('--y', `${y}px`);
+					});
+					card.addEventListener('mouseleave', () => {
+						card.style.removeProperty('--x');
+						card.style.removeProperty('--y');
+					})
+				});
 			});
 		</script>
 	</body>
-</html>
+</html>```
