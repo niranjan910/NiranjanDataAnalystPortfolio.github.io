@@ -102,11 +102,9 @@
 			}
 
 			section {
-                /* --- Modified Section Spacing --- */
 				padding: 100px 0; 
 			}
 
-            /* --- Removed old separator lines for a cleaner look --- */
 			section[id]:not(#hero)::after {
 				display: none;
 			}
@@ -213,33 +211,41 @@
 
 			/* --- HERO SECTION --- */
 			#hero {
+                /* --- CORRECTED LAYOUT --- */
 				display: flex;
 				flex-direction: column;
-				justify-content: space-between;
+				justify-content: space-between; /* This pushes elements apart */
 				min-height: 100vh;
 				text-align: left;
 				position: relative;
 				margin: 0 -60px;
 				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
-				/* --- Removed static image, will be replaced by canvas --- */
-                background-color: #111; /* Fallback color */
-				overflow: hidden; /* Important for canvas positioning */
+                background-color: #111;
+				overflow: hidden;
 			}
             
-            /* --- New styles for the animation canvas --- */
             #hero-canvas {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100%;
-                z-index: 1; /* Sit behind the content */
+                z-index: 1;
             }
 
-            /* --- Ensure hero content sits on top of the canvas --- */
+            #hero .hero-content-wrapper {
+                 /* This new wrapper ensures correct flex behavior */
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end; /* Align items to the bottom */
+                width: 100%;
+                position: relative;
+                z-index: 2;
+                flex-grow: 1; /* Allow wrapper to fill space */
+            }
+            
             #hero .hero-text-container,
-            #hero .hero-features-container,
-            #hero .hero-cta-container {
+            #hero .hero-content-wrapper {
                 position: relative;
                 z-index: 2;
             }
@@ -263,9 +269,7 @@
 			}
 
 			.hero-cta-container {
-				position: absolute;
-				bottom: 4rem;
-				right: 60px;
+                /* Use relative positioning now */
 				text-align: right;
 				animation: fadeInSlideUp 0.8s forwards 600ms;
 				opacity: 0;
@@ -299,7 +303,7 @@
 				transition: transform 0.2s ease, box-shadow 0.2s ease,
 					background-color 0.2s ease;
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                will-change: transform; /* Performance optimization for animations */
+                will-change: transform;
 			}
 
 			.modern-pill-button .icon-container {
@@ -651,7 +655,7 @@
 				list-style: none;
 				padding: 0;
 				margin: 0;
-				display: grid; /* Switched to grid for better control */
+				display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 				gap: 2rem; 
 			}
@@ -731,7 +735,7 @@
 				font-size: 0.8rem;
 				font-weight: 500;
 				padding: 5px 12px;
-				border-radius: 99px; /* Pill shape */
+				border-radius: 99px;
 				font-family: var(--font-sans);
 			}
 
@@ -803,7 +807,6 @@
 				margin-bottom: 2rem;
 			}
 			
-            /* --- New Credential Button Style --- */
 			.credential-card .credential-button {
                 background: var(--accent);
 				color: var(--bg-main) !important;
@@ -901,7 +904,7 @@
 			}
 			.hamburger-menu {
 				display: none;
-                z-index: 1001; /* Ensure hamburger is above other content */
+                z-index: 1001;
 			}
 			.hamburger-menu .bar {
 				background-color: var(--text-on-image);
@@ -930,9 +933,7 @@
 				.feature-item {
 					max-width: 300px;
 				}
-				.hero-cta-container {
-					right: 50px;
-				}
+                /* No change needed for hero-cta-container position here */
 			}
 			@media (max-width: 768px) {
 				main {
@@ -941,27 +942,28 @@
 				section {
 					padding: 80px 0;
 				}
+                /* --- CORRECTED Mobile Hero Layout --- */
 				#hero {
-					justify-content: center;
-					text-align: center;
+					justify-content: center; /* Center vertically */
 					align-items: center;
 					gap: 3rem;
 					padding: calc(var(--nav-height) + 1rem) 25px 3rem 25px;
 					margin: 0 -25px;
+                    text-align: center;
 				}
+                #hero .hero-content-wrapper {
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 3rem;
+                }
+                .hero-features-container, .hero-cta-container {
+                    text-align: center;
+                    align-items: center;
+                }
 				.hero-main-heading {
 					font-size: 40px;
-				}
-				.hero-cta-container,
-				.hero-features-container {
-					position: static;
-					animation: none;
-					opacity: 1;
-					transform: none;
-					text-align: center;
-					display: flex;
-					flex-direction: column;
-					align-items: center;
+                    text-align: center;
 				}
 				.hero-cta-text {
 					font-size: 1.5rem;
@@ -979,7 +981,7 @@
 					align-items: center;
 					transform: translateX(100%);
 					transition: transform 0.3s ease-out;
-					z-index: 1000; /* Ensure nav is above other content */
+					z-index: 1000;
 					box-shadow: -10px 0 30px -15px var(--shadow-color);
 				}
 				.nav-links.active {
@@ -998,14 +1000,14 @@
 					font-weight: 700;
 				}
 				.hamburger-menu {
-                    display: block; /* Use block instead of flex */
+                    display: block;
 					width: 30px;
 					height: 25px;
 					background: transparent;
 					border: none;
 					cursor: pointer;
 					padding: 0;
-					z-index: 1001; /* Above nav links background */
+					z-index: 1001;
 				}
                 .hamburger-menu.active .bar {
                     background-color: var(--text-primary);
@@ -1074,56 +1076,57 @@
 			</div>
 		</nav>
 		<main id="main-content">
-            <!-- --- MODIFIED HERO SECTION with Canvas --- -->
 			<section id="hero">
-                <!-- This canvas will hold the p5.js animation -->
                 <div id="hero-canvas"></div>
 
 				<div class="hero-text-container">
 					<h1 class="hero-main-heading">Decode the Data.</h1>
 					<h1 class="hero-main-heading">Discover the Story.</h1>
 				</div>
-				<div class="hero-features-container">
-					<div class="feature-item">
-						<img src="Logo/timer-01.svg" alt="Feature Icon" />
-						<div>
-							<h4>Real-Time Analytics</h4>
-							<p>Instant Insights, Smarter Decisions</p>
-						</div>
-					</div>
-					<div class="feature-item">
-						<img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
-						<div>
-							<h4>Precision Analytics</h4>
-							<p>Custom Insights for Your Data</p>
-						</div>
-					</div>
-					<div class="feature-item">
-						<img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
-						<div>
-							<h4>End-to-End Data Orchestration</h4>
-							<p>
-								Transforming Fragmented Information into Coherent
-								Insights
-							</p>
-						</div>
-					</div>
-				</div>
 
-				<div class="hero-cta-container">
-					<p class="hero-cta-text">
-						Your Data Holds the Answers<br />I Reveal Them
-					</p>
-					<a
-						href="mailto:niranjan991100@gmail.com"
-						class="modern-pill-button magnetic-item"
-					>
-						<span>Lets connect</span>
-						<span class="icon-container">
-							<span>↗</span>
-						</span>
-					</a>
-				</div>
+                <div class="hero-content-wrapper">
+                    <div class="hero-features-container">
+                        <div class="feature-item">
+                            <img src="Logo/timer-01.svg" alt="Feature Icon" />
+                            <div>
+                                <h4>Real-Time Analytics</h4>
+                                <p>Instant Insights, Smarter Decisions</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
+                            <div>
+                                <h4>Precision Analytics</h4>
+                                <p>Custom Insights for Your Data</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
+                            <div>
+                                <h4>End-to-End Data Orchestration</h4>
+                                <p>
+                                    Transforming Fragmented Information into Coherent
+                                    Insights
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta-container">
+                        <p class="hero-cta-text">
+                            Your Data Holds the Answers<br />I Reveal Them
+                        </p>
+                        <a
+                            href="mailto:niranjan991100@gmail.com"
+                            class="modern-pill-button magnetic-item"
+                        >
+                            <span>Lets connect</span>
+                            <span class="icon-container">
+                                <span>↗</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
 			</section>
 
 			<section id="about" class="reveal">
@@ -1298,8 +1301,8 @@
 										<img src="Icon/Word.svg" alt="MS Word Icon" />
 									</li>
 									<li title="Microsoft Excel">
+                                        <!-- --- CORRECTED this line --- -->
 										<img src="Icon/Excel.svg" alt="MS Excel Icon" />
-									/>
 									</li>
 									<li title="Tableau">
 										<img src="Icon/Tableau.svg" alt="Tableau Icon" />
@@ -1374,7 +1377,7 @@
 							</div>
 						</div>
 					</li>
-                    <!-- --- NEW CARD 5 --- -->
+                    <!-- Card 5 -->
                     <li class="project-card reveal" style="--delay: 400ms;">
 						<img src="images/placeholder.png" alt="Project 5 placeholder" class="project-image">
 						<div class="card-body">
@@ -1389,7 +1392,7 @@
 							</div>
 						</div>
 					</li>
-                    <!-- --- NEW CARD 6 --- -->
+                    <!-- Card 6 -->
                     <li class="project-card reveal" style="--delay: 500ms;">
 						<img src="images/placeholder.png" alt="Project 6 placeholder" class="project-image">
 						<div class="card-body">
@@ -1404,7 +1407,7 @@
 							</div>
 						</div>
 					</li>
-                    <!-- --- NEW CARD 7 --- -->
+                    <!-- Card 7 -->
                     <li class="project-card reveal" style="--delay: 600ms;">
 						<img src="images/placeholder.png" alt="Project 7 placeholder" class="project-image">
 						<div class="card-body">
@@ -1419,7 +1422,7 @@
 							</div>
 						</div>
 					</li>
-                    <!-- --- NEW CARD 8 --- -->
+                    <!-- Card 8 -->
                     <li class="project-card reveal" style="--delay: 700ms;">
 						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image">
 						<div class="card-body">
@@ -1443,7 +1446,7 @@
 			<section id="certs" class="reveal">
 				<h2 class="section-heading">Credentials</h2>
 				<ul class="certs-grid">
-					<!-- --- Card 1 (Revised) --- -->
+					<!-- Card 1 (Revised) -->
 					<li class="credential-card reveal">
 						<div class="card-content">
                             <div>
@@ -1456,7 +1459,7 @@
 							</a>
 						</div>
 					</li>
-					<!-- --- Card 2 (Revised) --- -->
+					<!-- Card 2 (Revised) -->
 					<li class="credential-card reveal" style="--delay: 100ms;">
 						<div class="card-content">
                             <div>
@@ -1469,7 +1472,7 @@
 							</a>
 						</div>
 					</li>
-					<!-- --- Card 3 (Revised) --- -->
+					<!-- Card 3 (Revised) -->
 					<li class="credential-card reveal" style="--delay: 200ms;">
 						<div class="card-content">
                             <div>
@@ -1482,7 +1485,7 @@
 							</a>
 						</div>
 					</li>
-					<!-- --- Card 4 (Revised) --- -->
+					<!-- Card 4 (Revised) -->
 					<li class="credential-card reveal" style="--delay: 300ms;">
 						<div class="card-content">
                             <div>
@@ -1498,7 +1501,7 @@
 				</ul>
 			</section>
 
-			<!-- --- GET IN TOUCH (Revised Section) --- -->
+			<!-- GET IN TOUCH (Revised Section) -->
 			<section id="contact" class="reveal">
                 <div class="contact-container">
                     <div class="contact-text">
@@ -1533,11 +1536,11 @@
 			>
 		</footer>
 
-        <!-- --- NEW: ADD P5.JS SCRIPT --- -->
+        <!-- P5.JS SCRIPT -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 
 		<script>
-            /* --- NEW: P5.JS SCRIPT FOR HERO ANIMATION --- */
+            /* P5.JS SCRIPT FOR HERO ANIMATION */
             const sketch = (p) => {
                 let particles = [];
                 const numParticles = 150;
@@ -1603,7 +1606,7 @@
             };
             new p5(sketch);
             
-            /* --- MAIN PORTFOLIO SCRIPT --- */
+            /* MAIN PORTFOLIO SCRIPT */
 			document.addEventListener("DOMContentLoaded", () => {
 				const revealObserver = new IntersectionObserver(
 					(entries) => {
@@ -1644,7 +1647,6 @@
                         document.body.classList.toggle('nav-open');
 					});
 
-                    // Close menu when clicking a link inside
 					navLinks.querySelectorAll("a").forEach((link) => {
 						if (link.getAttribute("href").startsWith("#")) {
 							link.addEventListener("click", () => {
@@ -1695,7 +1697,7 @@
 					sectionObserver.observe(section);
 				});
 
-                /* --- Magnetic Elements Effect --- */
+                /* Magnetic Elements Effect */
                 const magneticItems = document.querySelectorAll('.magnetic-item');
                 const strength = 50; 
 
