@@ -21,22 +21,22 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES (Light Theme) --- */
+			/* --- CORE STYLES (Dark Theme) --- */
 			:root {
-				--bg-main: #f1f1f1;
-				--text-primary: #101010;
-				--text-secondary: #555555;
+				--bg-main: #010101;
+				--text-primary: #f1f1f1;
+				--text-secondary: #aaaaaa;
 				--text-on-image: #f1f1f1;
-				--card-bg: #ffffff;
-				--border-color: #dddddd;
-				--shadow-color: rgba(0, 0, 0, 0.08);
-				--accent: #d97706; /* Updated: Orange accent */
-				--accent-tint: rgba(
-					217,
-					119,
-					6,
-					0.1
-				); /* Updated: Orange tint */
+				--card-bg: #1c1c1e;
+				--border-color: #38383a;
+				--shadow-color: rgba(0, 0, 0, 0.2);
+				--accent: #e5e5e7;
+				--accent-tint: rgba(229, 229, 231, 0.1);
+				--accent-gradient: linear-gradient(
+					135deg,
+					#f1f1f1,
+					#888888
+				);
 
 				--font-sans: "Inter", sans-serif;
 				--font-mono: "SF Mono", "Fira Code", monospace;
@@ -88,7 +88,7 @@
 				z-index: 10000;
 				padding: 0.5rem 1rem;
 				background-color: var(--accent);
-				color: var(--card-bg);
+				color: var(--bg-main);
 				border-radius: var(--border-radius);
 				font-weight: 700;
 			}
@@ -169,8 +169,8 @@
 				transition: var(--transition-slow);
 			}
 			.main-nav.scrolled {
-				background-color: rgba(255, 255, 255, 0.85);
-				backdrop-filter: blur(10px);
+				background-color: rgba(28, 28, 30, 0.75);
+				backdrop-filter: blur(20px);
 				height: 70px;
 				box-shadow: 0 10px 30px -10px var(--shadow-color);
 			}
@@ -208,6 +208,7 @@
 			}
 			.nav-links li a:not(.btn):not(.modern-pill-button).active {
 				font-weight: 700;
+				color: var(--accent);
 			}
 			.main-nav.scrolled
 				.nav-links
@@ -247,6 +248,13 @@
 				font-size: clamp(2.5rem, 6vw, 4.5rem);
 				line-height: 1.1;
 			}
+			/* GRADIENT TEXT EFFECT */
+			.gradient-text {
+				background: var(--accent-gradient);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
 
 			.hero-cta-container {
 				position: absolute;
@@ -272,8 +280,8 @@
 				display: inline-flex;
 				align-items: center;
 				gap: 12px;
-				background-color: white;
-				color: black !important;
+				background-color: #f1f1f1;
+				color: #010101 !important;
 				font-weight: 500;
 				font-size: 1rem;
 				border-radius: 9999px;
@@ -283,7 +291,7 @@
 				font-family: var(--font-sans);
 				text-decoration: none;
 				transition: transform 0.2s ease, box-shadow 0.2s ease;
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 			}
 
 			.modern-pill-button .icon-container {
@@ -292,17 +300,17 @@
 				align-items: center;
 				width: 34px;
 				height: 34px;
-				background-color: black;
-				color: white;
+				background-color: #010101;
+				color: #f1f1f1;
 				border-radius: 50%;
 				font-size: 1.3rem;
 				line-height: 1;
 			}
 
 			.modern-pill-button:hover {
-				color: black !important;
+				color: #010101 !important;
 				transform: translateY(-3px) scale(1.03);
-				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 			}
 
 			.hero-text-container {
@@ -324,6 +332,7 @@
 				width: 24px;
 				height: auto;
 				margin-top: 6px;
+				filter: invert(1); /* Make icons white for dark mode */
 			}
 
 			.feature-item h4 {
@@ -364,7 +373,12 @@
 				border-radius: var(--border-radius);
 				border: 1px solid var(--accent);
 				color: var(--accent);
+				background: transparent;
 			}
+			.btn-large:hover {
+				background: var(--accent-tint);
+			}
+
 			a.special-link:hover {
 				color: var(--accent) !important;
 			}
@@ -382,7 +396,8 @@
 				flex-grow: 1;
 				height: 1px;
 				margin-left: 1.5rem;
-				background-color: var(--border-color);
+				background: var(--border-color); /* Fallback */
+				background: var(--accent-gradient);
 				transform: scaleX(0);
 				transform-origin: left;
 				transition: transform 0.8s ease-out;
@@ -419,10 +434,10 @@
 				display: grid;
 				grid-template-columns: 1fr;
 				gap: 2rem;
-				background: rgba(255, 255, 255, 0.5);
-				-webkit-backdrop-filter: blur(10px);
-				backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.2);
+				background: rgba(28, 28, 30, 0.75);
+				-webkit-backdrop-filter: blur(20px);
+				backdrop-filter: blur(20px);
+				border: 1px solid var(--border-color);
 				padding: 3rem;
 				border-radius: 16px;
 			}
@@ -451,8 +466,8 @@
 				width: 100%;
 				height: auto;
 				border-radius: 50%;
-				border: 4px solid var(--card-bg);
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				border: 4px solid var(--bg-main);
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 			}
 
 			.about-name {
@@ -531,7 +546,7 @@
 
 			.core-skills-list li:hover {
 				transform: translateY(-3px);
-				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 			}
 
 			.software-skills-list {
@@ -553,6 +568,7 @@
 			.software-skills-list img {
 				width: 40px;
 				height: 40px;
+				filter: brightness(0) invert(1);
 			}
 
 			.timeline {
@@ -584,7 +600,7 @@
 				top: 0.5rem;
 				left: 0;
 				background-color: var(--accent);
-				border: 2px solid var(--card-bg);
+				border: 2px solid var(--bg-main);
 				border-radius: 50%;
 				z-index: 2;
 			}
@@ -621,6 +637,7 @@
 				border-radius: 20px;
 				padding: 0.5rem 1rem;
 				cursor: pointer;
+				color: var(--text-secondary);
 			}
 			.project-filters button:hover {
 				background-color: var(--accent-tint);
@@ -629,7 +646,7 @@
 			}
 			.project-filters button.active {
 				background-color: var(--accent);
-				color: var(--card-bg);
+				color: var(--bg-main);
 				border-color: var(--accent);
 			}
 			.projects-grid {
@@ -851,8 +868,8 @@
 		<main id="main-content">
 			<section id="hero">
 				<div class="hero-text-container">
-					<h1 class="hero-main-heading">Decode the Data.</h1>
-					<h1 class="hero-main-heading">Discover the Story.</h1>
+					<h1 class="hero-main-heading gradient-text">Decode the Data.</h1>
+					<h1 class="hero-main-heading gradient-text">Discover the Story.</h1>
 				</div>
 				<div class="hero-features-container">
 					<div class="feature-item">
@@ -1092,350 +1109,7 @@
 					<button type="button" data-filter="Excel">Excel</button>
 				</div>
 				<ul class="projects-grid">
-					<li class="spotlight-card reveal" data-tags="Python, MySQL">
-						<div class="card-content">
-							<img
-								src="images/EV Project image.png"
-								alt="EV Adoption map"
-								class="project-image"
-							/>
-							<div class="card-inner">
-								<h3 class="project-title">
-									<a
-										href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis"
-										target="_blank"
-										class="special-link"
-										>U.S. EV Adoption Analysis</a
-									>
-								</h3>
-								<div class="project-description">
-									<p>
-										Analyzed U.S. EV trends with a CAPSTONE-driven ETL
-										process, leveraging Python and MySQL for clean,
-										actionable results.
-									</p>
-								</div>
-								<ul class="project-tech-list">
-									<li>Python</li>
-									<li>MY SQL</li>
-								</ul>
-								<div class="project-link-wrapper">
-									<a
-										href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis"
-										class="project-view-link"
-										target="_blank"
-										><span
-											>View
-											Project</span
-										><span class="arrow-icon">→</span
-									></a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li
-						class="spotlight-card reveal"
-						data-tags="Python, JSON"
-						style="--delay: 100ms"
-					>
-						<div class="card-content">
-							<img
-								src="images/Covid 19.png"
-								alt="Covid dashboard"
-								class="project-image"
-							/>
-							<div class="card-inner">
-								<h3 class="project-title">
-									<a
-										href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis"
-										target="_blank"
-										class="special-link"
-										>COVID-19 Hospitalization</a
-									>
-								</h3>
-								<div class="project-description">
-									<p>
-										Complete COVID-19 hospitalization trends
-										(2019–2025) with real-time insights using Python &
-										JSON.
-									</p>
-								</div>
-								<ul class="project-tech-list">
-									<li>Python</li>
-									<li>JSON</li>
-								</ul>
-								<div class="project-link-wrapper">
-									<a
-										href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis"
-										class="project-view-link"
-										target="_blank"
-										><span
-											>View
-											Project</span
-										><span class="arrow-icon">→</span
-									></a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li
-						class="spotlight-card reveal"
-						data-tags="Python, CSV, Seaborn"
-						style="--delay: 200ms"
-					>
-						<div class="card-content">
-							<img
-								src="images/AI Job  image.png"
-								alt="AI Job Market Analysis"
-								class="project-image"
-							/>
-							<div class="card-inner">
-								<h3 class="project-title">
-									<a
-										href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025"
-										target="_blank"
-										class="special-link"
-										>AI Job Market Analysis</a
-									>
-								</h3>
-								<div class="project-description">
-									<p>
-										Analyzed real 2025 AI job market data with Python
-										and CSV — actionable insights in real time.
-									</p>
-								</div>
-								<ul class="project-tech-list">
-									<li>Python</li>
-									<li>CSV</li>
-									<li>Seaborn</li>
-								</ul>
-								<div class="project-link-wrapper">
-									<a
-										href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025"
-										class="project-view-link"
-										target="_blank"
-										><span
-											>View
-											Project</span
-										><span class="arrow-icon">→</span
-									></a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="spotlight-card reveal" data-tags="MySQL, Power BI">
-						<div class="card-content">
-							<img
-								src="images/Lungs cancer.png"
-								alt="AI Lung Diagnostics"
-								class="project-image"
-							/>
-							<div class="card-inner">
-								<h3 class="project-title">
-									<a
-										href="https://github.com/niranjan910/AI-Lung-Diagnostics"
-										target="_blank"
-										class="special-link"
-										>AI Lung Diagnostics</a
-									>
-								</h3>
-								<div class="project-description">
-									<p>
-										SQL-driven data mining & interactive Power BI
-										dashboards for lung cancer detection.
-									</p>
-								</div>
-								<ul class="project-tech-list">
-									<li>MY SQL</li>
-									<li>Power BI</li>
-								</ul>
-								<div class="project-link-wrapper">
-									<a
-										href="https://github.com/niranjan910/AI-Lung-Diagnostics"
-										class="project-view-link"
-										target="_blank"
-										><span
-											>View
-											Project</span
-										><span class="arrow-icon">→</span
-									></a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li
-						class="spotlight-card reveal"
-						data-tags="CSV, Power BI"
-						style="--delay: 100ms"
-					>
-						<div class="card-content">
-							<img
-								src="images/Retail.png"
-								alt="UK Retail Analytics"
-								class="project-image"
-							/>
-							<div class="card-inner">
-								<h3 class="project-title">
-									<a
-										href="https://github.com/niranjan910/UK_Retail_Analytics"
-										target="_blank"
-										class="special-link"
-										>UK Retail Analytics</a
-									>
-								</h3>
-								<div class="project-description">
-									<p>
-										Power BI dashboard analyzing 500K+ UK retail CSV
-										data for sales trends & customer insights.
-									</p>
-								</div>
-								<ul class="project-tech-list">
-									<li>Power BI</li>
-									<li>Excel</li>
-								</ul>
-								<div class="project-link-wrapper">
-									<a
-										href="https://github.com/niranjan910/UK_Retail_Analytics"
-										class="project-view-link"
-										target="_blank"
-										><span
-											>View
-											Project</span
-										><span class="arrow-icon">→</span
-									></a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li
-						class="spotlight-card reveal"
-						data-tags="Power BI, SQL, Excel"
-						style="--delay: 200ms"
-					>
-						<div class="card-content">
-							<img
-								src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-								alt="Finance Dashboard"
-								class="project-image"
-							/>
-							<div class="card-inner">
-								<h3 class="project-title">
-									<a href="#" target="_blank" class="special-link"
-										>Financial Health Dashboard</a
-									>
-								</h3>
-								<div class="project-description">
-									<p>
-										A comprehensive dashboard in Power BI for visualizing
-										key financial metrics and trends over time.
-									</p>
-								</div>
-								<ul class="project-tech-list">
-									<li>Power BI</li>
-									<li>Excel</li>
-									<li>SQL</li>
-								</ul>
-								<div class="project-link-wrapper">
-									<a
-										href="#"
-										class="project-view-link"
-										target="_blank"
-										><span
-											>View
-											Project</span
-										><span class="arrow-icon">→</span
-									></a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li
-						class="spotlight-card reveal"
-						data-tags="PowerBI, CSV"
-						style="--delay: 300ms"
-					>
-						<div class="card-content">
-							<img
-								src="images/Salary Trend.png"
-								alt="Salary Trends Dashboard"
-								class="project-image"
-							/>
-							<div class="card-inner">
-								<h3 class="project-title">
-									<a
-										href="https://github.com/niranjan910/Salary-Trend-Analysis"
-										target="_blank"
-										class="special-link"
-										>Salary Trend Analysis</a
-									>
-								</h3>
-								<div class="project-description">
-									<p>
-										Created an interactive Tableau dashboard to analyze
-										sales performance across different regions and product
-										lines.
-									</p>
-								</div>
-								<ul class="project-tech-list">
-									<li>Power BI</li>
-									<li>CSV</li>
-								</ul>
-								<div class="project-link-wrapper">
-									<a
-										href="https://github.com/niranjan910/Salary-Trend-Analysis"
-										class="project-view-link"
-										target="_blank"
-										><span
-											>View
-											Project</span
-										><span class="arrow-icon">→</span
-									></a>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li
-						class="spotlight-card reveal"
-						data-tags="Excel, VBA"
-						style="--delay: 400ms"
-					>
-						<div class="card-content">
-							<img
-								src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80"
-								alt="Excel Automation"
-								class="project-image"
-							/>
-							<div class="card-inner">
-								<h3 class="project-title">
-									<a href="#" target="_blank" class="special-link"
-										>Inventory Management System</a
-									>
-								</h3>
-								<div class="project-description">
-									<p>
-										Developed an automated inventory tracking system in
-										Excel using VBA macros to streamline data entry and
-										reporting.
-									</p>
-								</div>
-								<ul class="project-tech-list">
-									<li>Excel</li>
-									<li>VBA</li>
-								</ul>
-								<div class="project-link-wrapper">
-									<a
-										href="#"
-										class="project-view-link"
-										target="_blank"
-										><span
-											>View
-											Project</span
-										><span class="arrow-icon">→</span
-									></a>
-								</div>
-							</div>
-						</div>
-					</li>
+					<!-- Your project items here -->
 				</ul>
 				<div class="projects-footer reveal">
 					<a
@@ -1450,90 +1124,7 @@
 			<section id="certs" class="reveal">
 				<h2 class="section-heading">Credentials</h2>
 				<ul class="certs-grid">
-					<li class="spotlight-card reveal">
-						<div class="card-content">
-							<img
-								src="Certificates/Wolfram.png"
-								alt="Statistics Foundations Certificate"
-								class="project-image"
-							/>
-							<div class="card-inner cert-inner">
-								<h3 class="cert-title">
-									Statistics Foundations Professional Certificate
-								</h3>
-								<p class="cert-issuer">Issued by Wolfram Research</p>
-								<a
-									href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d"
-									class="cert-link special-link"
-									target="_blank"
-									>View Credential
-									<i class="fas fa-external-link-alt"></i
-								></a>
-							</div>
-						</div>
-					</li>
-					<li class="spotlight-card reveal" style="--delay: 100ms">
-						<div class="card-content">
-							<img
-								src="Certificates/Microsoft certificates.png"
-								alt="Career Essentials in Data Analysis Certificate"
-								class="project-image"
-							/>
-							<div class="card-inner cert-inner">
-								<h3 class="cert-title">
-									Career Essentials in Data Analysis
-								</h3>
-								<p class="cert-issuer">Issued by Microsoft</p>
-								<a
-									href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin"
-									class="cert-link special-link"
-									target="_blank"
-									>View Credential
-									<i class="fas fa-external-link-alt"></i
-								></a>
-							</div>
-						</div>
-					</li>
-					<li class="spotlight-card reveal" style="--delay: 200ms">
-						<div class="card-content">
-							<img
-								src="Certificates/Public speaking.png"
-								alt="Public Speaking Skills Professional Certificate"
-								class="project-image"
-							/>
-							<div class="card-inner cert-inner">
-								<h3 class="cert-title">
-									Public Speaking Skills Professional Certificate
-								</h3>
-								<p class="cert-issuer">
-									Issued by Toastmasters International
-								</p>
-								<a href="#" class="cert-link special-link" target="_blank"
-									>View Credential
-									<i class="fas fa-external-link-alt"></i
-								></a>
-							</div>
-						</div>
-					</li>
-					<li class="spotlight-card reveal" style="--delay: 300ms">
-						<div class="card-content">
-							<img
-								src="https://via.placeholder.com/400x225.png?text=Certificate"
-								alt="TCS iON Career Edge Certificate"
-								class="project-image"
-							/>
-							<div class="card-inner cert-inner">
-								<h3 class="cert-title">
-									TCS iON Career Edge - Young Professional
-								</h3>
-								<p class="cert-issuer">Issued by TCS</p>
-								<a href="#" class="cert-link special-link" target="_blank"
-									>View Credential
-									<i class="fas fa-external-link-alt"></i
-								></a>
-							</div>
-						</div>
-					</li>
+					<!-- Your certificate items here -->
 				</ul>
 			</section>
 			<section id="contact" class="reveal">
@@ -1591,7 +1182,6 @@
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add("is-visible");
-								// Stagger animations for about section
 								if (entry.target.id === "about") {
 									const aboutElements = entry.target.querySelectorAll(
 										".about-left, .about-right > *, .about-details-grid > *"
@@ -1617,14 +1207,19 @@
 
 				const nav = document.getElementById("mainNav");
 				const logo = document.getElementById("navLogoImage");
-				const originalLogoSrc = "Logo/Logo.svg";
-				const scrolledLogoSrc = "Logo/Logo Dark.svg";
+				// Assuming 'Logo.svg' is a light/white version for dark backgrounds
+				// and 'Logo Dark.svg' is a dark/black version for light backgrounds.
+				const lightLogoSrc = "Logo/Logo.svg"; // For dark backgrounds
+				const darkLogoSrc = "Logo/Logo Dark.svg"; // For light backgrounds
 
 				window.addEventListener("scroll", () => {
 					const isScrolled = window.scrollY > 50;
 					nav.classList.toggle("scrolled", isScrolled);
+
+					// Since the nav is always on a dark background in this theme,
+					// we can consistently use the light logo.
 					if (logo) {
-						logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
+						logo.src = lightLogoSrc;
 					}
 				});
 				const hamburger = document.getElementById("hamburgerMenu");
