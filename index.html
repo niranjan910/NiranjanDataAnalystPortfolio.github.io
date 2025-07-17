@@ -14,18 +14,22 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES (Light Theme) --- */
+			/* --- CORE STYLES (New Theme) --- */
 			:root {
-				--bg-main: #f8f9fa;
-				--text-primary: #212529;
-				--text-secondary: #6c757d;
-				--text-on-image: #212529;
+				--bg-main: #f1f1f1;
+				--text-primary: #010101;
+				--text-secondary: rgba(1, 1, 1, 0.7);
+				--text-on-image: #f1f1f1;
 				--card-bg: #ffffff;
-				--border-color: #dee2e6;
-				--shadow-color: rgba(0, 0, 0, 0.1);
-				--accent: #007bff;
-				--accent-tint: rgba(0, 123, 255, 0.1);
-				--accent-gradient: linear-gradient(135deg, #007bff, #0056b3);
+				--border-color: #dddddd;
+				--shadow-color: rgba(0, 0, 0, 0.08);
+				--accent: #010101;
+				--accent-tint: rgba(1, 1, 1, 0.07);
+				--accent-gradient: linear-gradient(
+					90deg,
+					#010101 0%,
+					#444444 100%
+				);
 
 				--font-sans: "Helvetica Neue", sans-serif;
 				--font-serif: "Georgia", serif;
@@ -76,8 +80,8 @@
 				overflow: auto;
 				z-index: 10000;
 				padding: 0.5rem 1rem;
-				background-color: var(--accent);
-				color: var(--card-bg);
+				background: var(--accent);
+				color: var(--bg-main);
 				border-radius: var(--border-radius);
 				font-weight: 700;
 			}
@@ -112,10 +116,10 @@
 			h2,
 			h3,
 			h4 {
+				font-family: var(--font-serif);
 				color: var(--text-primary);
 				font-weight: 700;
 				line-height: 1.2;
-				font-family: var(--font-sans);
 			}
 			p {
 				margin-bottom: 1rem;
@@ -131,6 +135,7 @@
 			a:hover,
 			button:hover {
 				color: var(--accent);
+				opacity: 0.8;
 			}
 
 			.reveal {
@@ -160,7 +165,7 @@
 			}
 			.main-nav.scrolled {
 				background-color: rgba(255, 255, 255, 0.85);
-				backdrop-filter: blur(20px);
+				backdrop-filter: blur(10px);
 				height: 70px;
 				box-shadow: 0 10px 30px -10px var(--shadow-color);
 			}
@@ -181,7 +186,7 @@
 				margin: 0 1.5rem;
 			}
 			.nav-links li a:not(.btn):not(.modern-pill-button) {
-				color: var(--text-primary);
+				color: var(--text-on-image);
 				padding: 0.75rem 0;
 				font-size: 0.95rem;
 				position: relative;
@@ -218,7 +223,6 @@
 				margin: 0 -60px;
 				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
 				background-image: url("images/Banner.svg");
-				background-color: var(--bg-main);
 				background-size: cover;
 				background-position: center;
 				background-repeat: no-repeat;
@@ -233,18 +237,15 @@
 				color: var(--text-on-image);
 			}
 			.hero-main-heading {
-				font-weight: 600;
+				font-family: var(--font-serif);
+				font-weight: 700;
 				letter-spacing: -1px;
 				margin: 0;
 				font-size: clamp(2.5rem, 6vw, 4.5rem);
 				line-height: 1.1;
-			}
-			/* GRADIENT TEXT EFFECT */
-			.gradient-text {
-				background: var(--accent-gradient);
+				background: linear-gradient(45deg, #f1f1f1, #c1c1c1);
 				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
+				-webkit-text-fill-color: transparent;
 			}
 
 			.hero-cta-container {
@@ -281,7 +282,8 @@
 				line-height: 1;
 				font-family: var(--font-sans);
 				text-decoration: none;
-				transition: transform 0.2s ease, box-shadow 0.2s ease;
+				transition: transform 0.2s ease, box-shadow 0.2s ease,
+					background-color 0.2s ease;
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 			}
 
@@ -302,6 +304,8 @@
 				color: var(--bg-main) !important;
 				transform: translateY(-3px) scale(1.03);
 				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+				opacity: 1;
+				background-color: #333;
 			}
 
 			.hero-text-container {
@@ -323,10 +327,10 @@
 				width: 24px;
 				height: auto;
 				margin-top: 6px;
-				/* filter: invert(1); removed to show original icon color */
 			}
 
 			.feature-item h4 {
+				font-family: var(--font-sans);
 				font-size: 1.125rem;
 				font-weight: 600;
 				margin-bottom: 0.25rem;
@@ -334,7 +338,8 @@
 			.feature-item p {
 				font-size: 1rem;
 				line-height: 1.6;
-				color: var(--text-secondary);
+				color: var(--text-on-image);
+				opacity: 0.9;
 				margin: 0;
 			}
 
@@ -371,6 +376,7 @@
 
 			a.special-link:hover {
 				color: var(--accent) !important;
+				text-decoration: underline;
 			}
 			h2.section-heading {
 				display: flex;
@@ -386,8 +392,7 @@
 				flex-grow: 1;
 				height: 1px;
 				margin-left: 1.5rem;
-				background: var(--border-color); /* Fallback */
-				background: var(--accent-gradient);
+				background-image: var(--accent-gradient);
 				transform: scaleX(0);
 				transform-origin: left;
 				transition: transform 0.8s ease-out;
@@ -424,10 +429,10 @@
 				display: grid;
 				grid-template-columns: 1fr;
 				gap: 2rem;
-				background: rgba(255, 255, 255, 0.75);
-				-webkit-backdrop-filter: blur(20px);
-				backdrop-filter: blur(20px);
-				border: 1px solid var(--border-color);
+				background: rgba(255, 255, 255, 0.5);
+				-webkit-backdrop-filter: blur(10px);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
 				padding: 3rem;
 				border-radius: 16px;
 			}
@@ -467,7 +472,7 @@
 			}
 
 			.about-title {
-				font-family: var(--font-serif);
+				font-family: var(--font-sans);
 				font-size: 1rem;
 				color: var(--accent);
 				margin-bottom: 1.5rem;
@@ -512,9 +517,11 @@
 
 			.about-details-grid h3 {
 				font-size: clamp(1.2rem, 1.8vw, 1.4rem);
-				border-bottom: 2px solid var(--accent);
 				padding-bottom: 0.5rem;
 				margin-bottom: 1.5rem;
+				border-bottom: 2px solid;
+				border-image-slice: 1;
+				border-image-source: var(--accent-gradient);
 			}
 
 			.core-skills-list {
@@ -538,6 +545,7 @@
 			.core-skills-list li:hover {
 				transform: translateY(-3px);
 				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+				color: var(--accent);
 			}
 
 			.software-skills-list {
@@ -559,7 +567,6 @@
 			.software-skills-list img {
 				width: 40px;
 				height: 40px;
-				/* filter: brightness(0) invert(1); removed */
 			}
 
 			.timeline {
@@ -597,6 +604,7 @@
 			}
 
 			.timeline-content h4 {
+				font-family: var(--font-sans);
 				font-size: 1.1rem;
 				margin-bottom: 0.25rem;
 				font-weight: 600;
@@ -606,13 +614,14 @@
 				font-size: 1rem;
 			}
 			.timeline-date {
-				font-family: var(--font-serif);
+				font-family: var(--font-sans);
 				font-size: 0.8rem;
 				margin-bottom: 0.5rem;
 				color: var(--accent);
 			}
 
-			/* --- PROJECTS & CERTS SECTION STYLES --- */
+			/* --- END OF ABOUT SECTION STYLES --- */
+
 			.project-filters {
 				display: flex;
 				flex-wrap: wrap;
@@ -633,18 +642,42 @@
 				background-color: var(--accent-tint);
 				color: var(--accent);
 				border-color: var(--accent);
+				opacity: 1;
 			}
 			.project-filters button.active {
 				background-color: var(--accent);
-				color: var(--card-bg);
+				color: var(--bg-main);
 				border-color: var(--accent);
 			}
-
-			.projects-grid, .certs-grid {
+			.projects-grid {
 				list-style: none;
 				display: grid;
 				gap: 1.5rem;
-				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			}
+			#contact {
+				text-align: center;
+				max-width: 650px;
+				margin: 0 auto;
+			}
+			#contact .title {
+				font-size: clamp(40px, 5vw, 60px);
+			}
+			.footer {
+				text-align: center;
+				padding: 1.5rem;
+				font-family: var(--font-sans);
+				font-size: 0.8rem;
+			}
+			.hamburger-menu {
+				display: none;
+			}
+			.hamburger-menu .bar {
+				background-color: var(--text-on-image);
+				transition: var(--transition-fast);
+			}
+			.main-nav.scrolled .hamburger-menu .bar {
+				background-color: var(--text-primary);
 			}
 			.spotlight-card {
 				background-color: var(--card-bg);
@@ -655,8 +688,6 @@
 				overflow: hidden;
 				border: 1px solid var(--border-color);
 				box-shadow: 0 4px 10px -2px var(--shadow-color);
-				display: flex;
-				flex-direction: column;
 			}
 			.spotlight-card:hover {
 				transform: translateY(-8px);
@@ -670,101 +701,19 @@
 				height: 100%;
 				display: flex;
 				flex-direction: column;
-				padding: 1.5rem;
 			}
 			.project-image {
 				width: 100%;
 				height: 180px;
 				object-fit: cover;
-				border-bottom: 1px solid var(--border-color);
 			}
-
-			.project-title {
-				font-family: var(--font-sans);
-				font-size: 1.25rem;
-				margin-bottom: 0.5rem;
-			}
-			
-			.project-desc {
-				font-size: 1rem;
+			.card-inner {
+				padding: 1.75rem;
+				display: flex;
+				flex-direction: column;
 				flex-grow: 1;
-				margin-bottom: 1.5rem;
 			}
 
-			.project-tags {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.5rem;
-				margin-bottom: 1.5rem;
-				padding: 0;
-				list-style: none;
-			}
-
-			.project-tags li {
-				font-size: 0.75rem;
-				background-color: var(--bg-main);
-				border: 1px solid var(--border-color);
-				color: var(--text-secondary);
-				padding: 0.25rem 0.75rem;
-				border-radius: 99px;
-			}
-
-			.project-links a {
-				color: var(--accent);
-				font-weight: 600;
-				margin-right: 1.5rem;
-			}
-			.project-links a:hover {
-				text-decoration: underline;
-			}
-			.projects-footer {
-				text-align: center;
-				margin-top: 3rem;
-			}
-			/* --- CONTACT & FOOTER --- */
-			#contact {
-				text-align: center;
-				max-width: 650px;
-				margin: 0 auto;
-			}
-			#contact .title {
-				font-size: clamp(40px, 5vw, 60px);
-			}
-			.contact-cta-container {
-				margin-top: 2rem;
-			}
-
-			.footer {
-				text-align: center;
-				padding: 2.5rem 1.5rem;
-				font-family: var(--font-serif);
-				font-size: 0.8rem;
-				background-color: var(--card-bg);
-				margin-top: 50px;
-				border-top: 1px solid var(--border-color);
-			}
-			.social-links {
-				list-style: none;
-				padding: 0;
-				display: flex;
-				justify-content: center;
-				gap: 1.5rem;
-				margin-bottom: 1rem;
-			}
-			.social-links a {
-				font-size: 1.5rem;
-			}
-
-			/* --- MOBILE & RESPONSIVE STYLES --- */
-
-			.hamburger-menu {
-				display: none;
-			}
-			.hamburger-menu .bar {
-				background-color: var(--text-primary);
-				transition: var(--transition-fast);
-			}
-			
 			@media (max-width: 1080px) {
 				main {
 					padding: 0 50px;
@@ -886,7 +835,7 @@
 				<a href="#"
 					><img
 						id="navLogoImage"
-						src="Logo/Logo Dark.svg"
+						src="Logo/Logo.svg"
 						alt="Niranjan Kumar Logo"
 				/></a>
 			</div>
@@ -919,8 +868,8 @@
 		<main id="main-content">
 			<section id="hero">
 				<div class="hero-text-container">
-					<h1 class="hero-main-heading gradient-text">Decode the Data.</h1>
-					<h1 class="hero-main-heading gradient-text">Discover the Story.</h1>
+					<h1 class="hero-main-heading">Decode the Data.</h1>
+					<h1 class="hero-main-heading">Discover the Story.</h1>
 				</div>
 				<div class="hero-features-container">
 					<div class="feature-item">
@@ -1160,53 +1109,347 @@
 					<button type="button" data-filter="Excel">Excel</button>
 				</div>
 				<ul class="projects-grid">
-					<!-- Example Project 1 -->
-					<li class="spotlight-card" data-tags="Power BI, SQL">
-						<img src="https://via.placeholder.com/400x225.png?text=Project+Image" alt="Project 1 Image" class="project-image">
+					<li class="spotlight-card reveal" data-tags="Python, MySQL">
 						<div class="card-content">
-							<h3 class="project-title">Sales Dashboard</h3>
-							<p class="project-desc">An interactive dashboard to visualize sales data across different regions, helping to identify top-performing products and sales representatives.</p>
-							<ul class="project-tags">
-								<li>Power BI</li>
-								<li>SQL</li>
-								<li>Data Visualization</li>
-							</ul>
-							<div class="project-links">
-								<a href="#" target="_blank">View Project ↗</a>
-								<a href="#" target="_blank">GitHub ↗</a>
+							<img
+								src="images/EV Project image.png"
+								alt="EV Adoption map"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis"
+										target="_blank"
+										class="special-link"
+										>U.S. EV Adoption Analysis</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Analyzed U.S. EV trends with a CAPSTONE-driven ETL
+										process, leveraging Python and MySQL for clean,
+										actionable results.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Python</li>
+									<li>MY SQL</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
 							</div>
 						</div>
 					</li>
-					<!-- Example Project 2 -->
-					<li class="spotlight-card" data-tags="Python, Pandas">
-						<img src="https://via.placeholder.com/400x225.png?text=Project+Image" alt="Project 2 Image" class="project-image">
+					<li
+						class="spotlight-card reveal"
+						data-tags="Python, JSON"
+						style="--delay: 100ms"
+					>
 						<div class="card-content">
-							<h3 class="project-title">Customer Churn Prediction</h3>
-							<p class="project-desc">A machine learning model built with Python to predict customer churn based on usage data and demographics, enabling proactive retention strategies.</p>
-							<ul class="project-tags">
-								<li>Python</li>
-								<li>Pandas</li>
-								<li>Scikit-learn</li>
-							</ul>
-							<div class="project-links">
-								<a href="#" target="_blank">View Project ↗</a>
-								<a href="#" target="_blank">GitHub ↗</a>
+							<img
+								src="images/Covid 19.png"
+								alt="Covid dashboard"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis"
+										target="_blank"
+										class="special-link"
+										>COVID-19 Hospitalization</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Complete COVID-19 hospitalization trends
+										(2019–2025) with real-time insights using Python &
+										JSON.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Python</li>
+									<li>JSON</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
 							</div>
 						</div>
 					</li>
-					<!-- Example Project 3 -->
-					<li class="spotlight-card" data-tags="Tableau">
-						<img src="https://via.placeholder.com/400x225.png?text=Project+Image" alt="Project 3 Image" class="project-image">
+					<li
+						class="spotlight-card reveal"
+						data-tags="Python, CSV, Seaborn"
+						style="--delay: 200ms"
+					>
 						<div class="card-content">
-							<h3 class="project-title">Marketing Campaign Analysis</h3>
-							<p class="project-desc">A deep-dive analysis of marketing campaign performance, presented in Tableau, to measure ROI and optimize future marketing spend.</p>
-							<ul class="project-tags">
-								<li>Tableau</li>
-								<li>Marketing Analytics</li>
-							</ul>
-							<div class="project-links">
-								<a href="#" target="_blank">View Project ↗</a>
-								<a href="#" target="_blank">GitHub ↗</a>
+							<img
+								src="images/AI Job  image.png"
+								alt="AI Job Market Analysis"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025"
+										target="_blank"
+										class="special-link"
+										>AI Job Market Analysis</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Analyzed real 2025 AI job market data with Python
+										and CSV — actionable insights in real time.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Python</li>
+									<li>CSV</li>
+									<li>Seaborn</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" data-tags="MySQL, Power BI">
+						<div class="card-content">
+							<img
+								src="images/Lungs cancer.png"
+								alt="AI Lung Diagnostics"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/AI-Lung-Diagnostics"
+										target="_blank"
+										class="special-link"
+										>AI Lung Diagnostics</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										SQL-driven data mining & interactive Power BI
+										dashboards for lung cancer detection.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>MY SQL</li>
+									<li>Power BI</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/AI-Lung-Diagnostics"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="CSV, Power BI"
+						style="--delay: 100ms"
+					>
+						<div class="card-content">
+							<img
+								src="images/Retail.png"
+								alt="UK Retail Analytics"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/UK_Retail_Analytics"
+										target="_blank"
+										class="special-link"
+										>UK Retail Analytics</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Power BI dashboard analyzing 500K+ UK retail CSV
+										data for sales trends & customer insights.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Power BI</li>
+									<li>Excel</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/UK_Retail_Analytics"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="Power BI, SQL, Excel"
+						style="--delay: 200ms"
+					>
+						<div class="card-content">
+							<img
+								src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+								alt="Finance Dashboard"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a href="#" target="_blank" class="special-link"
+										>Financial Health Dashboard</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										A comprehensive dashboard in Power BI for visualizing
+										key financial metrics and trends over time.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Power BI</li>
+									<li>Excel</li>
+									<li>SQL</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="#"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="PowerBI, CSV"
+						style="--delay: 300ms"
+					>
+						<div class="card-content">
+							<img
+								src="images/Salary Trend.png"
+								alt="Salary Trends Dashboard"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/Salary-Trend-Analysis"
+										target="_blank"
+										class="special-link"
+										>Salary Trend Analysis</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Created an interactive Tableau dashboard to analyze
+										sales performance across different regions and product
+										lines.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Power BI</li>
+									<li>CSV</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/Salary-Trend-Analysis"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="Excel, VBA"
+						style="--delay: 400ms"
+					>
+						<div class="card-content">
+							<img
+								src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80"
+								alt="Excel Automation"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a href="#" target="_blank" class="special-link"
+										>Inventory Management System</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Developed an automated inventory tracking system in
+										Excel using VBA macros to streamline data entry and
+										reporting.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Excel</li>
+									<li>VBA</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="#"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
 							</div>
 						</div>
 					</li>
@@ -1224,25 +1467,87 @@
 			<section id="certs" class="reveal">
 				<h2 class="section-heading">Credentials</h2>
 				<ul class="certs-grid">
-					<!-- Example Certificate 1 -->
-					<li class="spotlight-card" data-tags="Data Science">
-						<img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="Certificate Image" class="project-image">
+					<li class="spotlight-card reveal">
 						<div class="card-content">
-							<h3 class="project-title">Google Data Analytics</h3>
-							<p class="project-desc">Professional certificate covering the entire data analysis process, from data collection to visualization.</p>
-							<div class="project-links">
-								<a href="#" target="_blank">View Credential ↗</a>
+							<img
+								src="Certificates/Wolfram.png"
+								alt="Statistics Foundations Certificate"
+								class="project-image"
+							/>
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">
+									Statistics Foundations Professional Certificate
+								</h3>
+								<p class="cert-issuer">Issued by Wolfram Research</p>
+								<a
+									href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d"
+									class="cert-link special-link"
+									target="_blank"
+									>View Credential
+									<i class="fas fa-external-link-alt"></i
+								></a>
 							</div>
 						</div>
 					</li>
-					<!-- Example Certificate 2 -->
-					<li class="spotlight-card" data-tags="Python">
-						<img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="Certificate Image" class="project-image">
+					<li class="spotlight-card reveal" style="--delay: 100ms">
 						<div class="card-content">
-							<h3 class="project-title">Python for Everybody Specialization</h3>
-							<p class="project-desc">A comprehensive course series on Python programming from the University of Michigan.</p>
-							<div class="project-links">
-								<a href="#" target="_blank">View Credential ↗</a>
+							<img
+								src="Certificates/Microsoft certificates.png"
+								alt="Career Essentials in Data Analysis Certificate"
+								class="project-image"
+							/>
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">
+									Career Essentials in Data Analysis
+								</h3>
+								<p class="cert-issuer">Issued by Microsoft</p>
+								<a
+									href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin"
+									class="cert-link special-link"
+									target="_blank"
+									>View Credential
+									<i class="fas fa-external-link-alt"></i
+								></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 200ms">
+						<div class="card-content">
+							<img
+								src="Certificates/Public speaking.png"
+								alt="Public Speaking Skills Professional Certificate"
+								class="project-image"
+							/>
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">
+									Public Speaking Skills Professional Certificate
+								</h3>
+								<p class="cert-issuer">
+									Issued by Toastmasters International
+								</p>
+								<a href="#" class="cert-link special-link" target="_blank"
+									>View Credential
+									<i class="fas fa-external-link-alt"></i
+								></a>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" style="--delay: 300ms">
+						<div class="card-content">
+							<img
+								src="https://via.placeholder.com/400x225.png?text=Certificate"
+								alt="TCS iON Career Edge Certificate"
+								class="project-image"
+							/>
+							<div class="card-inner cert-inner">
+								<h3 class="cert-title">
+									TCS iON Career Edge - Young Professional
+								</h3>
+								<p class="cert-issuer">Issued by TCS</p>
+								<a href="#" class="cert-link special-link" target="_blank"
+									>View Credential
+									<i class="fas fa-external-link-alt"></i
+								></a>
 							</div>
 						</div>
 					</li>
@@ -1303,6 +1608,7 @@
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add("is-visible");
+								// Stagger animations for about section
 								if (entry.target.id === "about") {
 									const aboutElements = entry.target.querySelectorAll(
 										".about-left, .about-right > *, .about-details-grid > *"
@@ -1328,18 +1634,16 @@
 
 				const nav = document.getElementById("mainNav");
 				const logo = document.getElementById("navLogoImage");
-				const darkLogoSrc = "Logo/Logo Dark.svg";
+				const originalLogoSrc = "Logo/Logo.svg";
+				const scrolledLogoSrc = "Logo/Logo Dark.svg";
 
 				window.addEventListener("scroll", () => {
 					const isScrolled = window.scrollY > 50;
 					nav.classList.toggle("scrolled", isScrolled);
-
-					// In a light theme, the dark logo should always be visible.
 					if (logo) {
-						logo.src = darkLogoSrc;
+						logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
 					}
 				});
-
 				const hamburger = document.getElementById("hamburgerMenu");
 				const navLinks = document.getElementById("navLinks");
 				if (hamburger && navLinks) {
@@ -1360,7 +1664,7 @@
 				const filtersContainer =
 					document.querySelector(".project-filters");
 				const projectCards = document.querySelectorAll(
-					".projects-grid > li" // Adjusted selector to target li elements
+					".projects-grid .spotlight-card"
 				);
 				if (filtersContainer && projectCards.length > 0) {
 					filtersContainer.addEventListener("click", (e) => {
@@ -1375,7 +1679,7 @@
 							const isMatch =
 								filter === "all" ||
 								tags.toLowerCase().includes(filter.toLowerCase());
-							card.style.display = isMatch ? "block" : "none"; // show/hide list item
+							card.style.display = isMatch ? "flex" : "none";
 						});
 					});
 				}
