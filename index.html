@@ -5,13 +5,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Niranjan Kumar | Data Analyst Portfolio</title>
 
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -21,25 +14,25 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES (Dark Theme) --- */
+			/* --- CORE STYLES (Light Theme) --- */
 			:root {
-				--bg-main: #010101;
-				--text-primary: #f1f1f1;
-				--text-secondary: #aaaaaa;
-				--text-on-image: #f1f1f1;
-				--card-bg: #1c1c1e;
-				--border-color: #38383a;
-				--shadow-color: rgba(0, 0, 0, 0.2);
-				--accent: #e5e5e7;
-				--accent-tint: rgba(229, 229, 231, 0.1);
+				--bg-main: #f8f9fa;
+				--text-primary: #212529;
+				--text-secondary: #5a6169;
+				--text-on-image: #212529;
+				--card-bg: #ffffff;
+				--border-color: #dee2e6;
+				--shadow-color: rgba(0, 0, 0, 0.1);
+				--accent: #007bff; /* A nice, professional blue */
+				--accent-tint: rgba(0, 123, 255, 0.1);
 				--accent-gradient: linear-gradient(
 					135deg,
-					#f1f1f1,
-					#888888
+					#007bff,
+					#0056b3
 				);
 
-				--font-sans: "Inter", sans-serif;
-				--font-mono: "SF Mono", "Fira Code", monospace;
+				--font-sans: "Helvetica Neue", sans-serif;
+				--font-serif: "Georgia", serif;
 				--border-radius: 4px;
 				--nav-height: 100px;
 				--transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -88,7 +81,7 @@
 				z-index: 10000;
 				padding: 0.5rem 1rem;
 				background-color: var(--accent);
-				color: var(--bg-main);
+				color: var(--card-bg);
 				border-radius: var(--border-radius);
 				font-weight: 700;
 			}
@@ -169,7 +162,7 @@
 				transition: var(--transition-slow);
 			}
 			.main-nav.scrolled {
-				background-color: rgba(28, 28, 30, 0.75);
+				background-color: rgba(255, 255, 255, 0.85);
 				backdrop-filter: blur(20px);
 				height: 70px;
 				box-shadow: 0 10px 30px -10px var(--shadow-color);
@@ -227,10 +220,8 @@
 				position: relative;
 				margin: 0 -60px;
 				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
-				background-image: url("images/Banner.svg");
-				background-size: cover;
-				background-position: center;
-				background-repeat: no-repeat;
+				/* Swapped background to a light, subtle pattern. Or use var(--bg-main) for solid. */
+				background-color: var(--bg-main); 
 			}
 			#hero::after {
 				display: none;
@@ -280,8 +271,8 @@
 				display: inline-flex;
 				align-items: center;
 				gap: 12px;
-				background-color: #f1f1f1;
-				color: #010101 !important;
+				background-color: var(--text-primary);
+				color: var(--bg-main) !important;
 				font-weight: 500;
 				font-size: 1rem;
 				border-radius: 9999px;
@@ -291,7 +282,7 @@
 				font-family: var(--font-sans);
 				text-decoration: none;
 				transition: transform 0.2s ease, box-shadow 0.2s ease;
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 			}
 
 			.modern-pill-button .icon-container {
@@ -300,17 +291,17 @@
 				align-items: center;
 				width: 34px;
 				height: 34px;
-				background-color: #010101;
-				color: #f1f1f1;
+				background-color: var(--bg-main);
+				color: var(--text-primary);
 				border-radius: 50%;
 				font-size: 1.3rem;
 				line-height: 1;
 			}
 
 			.modern-pill-button:hover {
-				color: #010101 !important;
+				color: var(--bg-main) !important;
 				transform: translateY(-3px) scale(1.03);
-				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 			}
 
 			.hero-text-container {
@@ -332,7 +323,7 @@
 				width: 24px;
 				height: auto;
 				margin-top: 6px;
-				filter: invert(1); /* Make icons white for dark mode */
+				/* filter: invert(1); removed, icons should be dark now */
 			}
 
 			.feature-item h4 {
@@ -343,8 +334,7 @@
 			.feature-item p {
 				font-size: 1rem;
 				line-height: 1.6;
-				color: var(--text-on-image);
-				opacity: 0.9;
+				color: var(--text-secondary);
 				margin: 0;
 			}
 
@@ -434,7 +424,7 @@
 				display: grid;
 				grid-template-columns: 1fr;
 				gap: 2rem;
-				background: rgba(28, 28, 30, 0.75);
+				background: rgba(255, 255, 255, 0.75);
 				-webkit-backdrop-filter: blur(20px);
 				backdrop-filter: blur(20px);
 				border: 1px solid var(--border-color);
@@ -466,8 +456,8 @@
 				width: 100%;
 				height: auto;
 				border-radius: 50%;
-				border: 4px solid var(--bg-main);
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+				border: 4px solid var(--card-bg);
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 			}
 
 			.about-name {
@@ -477,7 +467,7 @@
 			}
 
 			.about-title {
-				font-family: var(--font-mono);
+				font-family: var(--font-serif);
 				font-size: 1rem;
 				color: var(--accent);
 				margin-bottom: 1.5rem;
@@ -535,7 +525,7 @@
 			}
 
 			.core-skills-list li {
-				font-family: var(--font-mono);
+				font-family: var(--font-serif);
 				background: var(--accent-tint);
 				color: var(--accent);
 				padding: 0.5rem 1rem;
@@ -546,7 +536,7 @@
 
 			.core-skills-list li:hover {
 				transform: translateY(-3px);
-				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 			}
 
 			.software-skills-list {
@@ -568,7 +558,7 @@
 			.software-skills-list img {
 				width: 40px;
 				height: 40px;
-				filter: brightness(0) invert(1);
+				/* filter: brightness(0) invert(1); removed */
 			}
 
 			.timeline {
@@ -600,7 +590,7 @@
 				top: 0.5rem;
 				left: 0;
 				background-color: var(--accent);
-				border: 2px solid var(--bg-main);
+				border: 2px solid var(--card-bg);
 				border-radius: 50%;
 				z-index: 2;
 			}
@@ -615,7 +605,7 @@
 				font-size: 1rem;
 			}
 			.timeline-date {
-				font-family: var(--font-mono);
+				font-family: var(--font-serif);
 				font-size: 0.8rem;
 				margin-bottom: 0.5rem;
 				color: var(--accent);
@@ -630,7 +620,7 @@
 				margin-bottom: 2rem;
 			}
 			.project-filters button {
-				font-family: var(--font-mono);
+				font-family: var(--font-serif);
 				font-size: 0.85rem;
 				background-color: transparent;
 				border: 1px solid var(--border-color);
@@ -646,7 +636,7 @@
 			}
 			.project-filters button.active {
 				background-color: var(--accent);
-				color: var(--bg-main);
+				color: var(--card-bg);
 				border-color: var(--accent);
 			}
 			.projects-grid {
@@ -666,7 +656,7 @@
 			.footer {
 				text-align: center;
 				padding: 1.5rem;
-				font-family: var(--font-mono);
+				font-family: var(--font-serif);
 				font-size: 0.8rem;
 			}
 			.hamburger-menu {
@@ -835,7 +825,7 @@
 				<a href="#"
 					><img
 						id="navLogoImage"
-						src="Logo/Logo.svg"
+						src="Logo/Logo Dark.svg" 
 						alt="Niranjan Kumar Logo"
 				/></a>
 			</div>
@@ -1207,19 +1197,16 @@
 
 				const nav = document.getElementById("mainNav");
 				const logo = document.getElementById("navLogoImage");
-				// Assuming 'Logo.svg' is a light/white version for dark backgrounds
-				// and 'Logo Dark.svg' is a dark/black version for light backgrounds.
-				const lightLogoSrc = "Logo/Logo.svg"; // For dark backgrounds
-				const darkLogoSrc = "Logo/Logo Dark.svg"; // For light backgrounds
+				const lightLogoSrc = "Logo/Logo.svg"; 
+				const darkLogoSrc = "Logo/Logo Dark.svg";
 
 				window.addEventListener("scroll", () => {
 					const isScrolled = window.scrollY > 50;
 					nav.classList.toggle("scrolled", isScrolled);
 
-					// Since the nav is always on a dark background in this theme,
-					// we can consistently use the light logo.
+					// Since the nav is light on light, we always use the dark logo.
 					if (logo) {
-						logo.src = lightLogoSrc;
+						logo.src = darkLogoSrc;
 					}
 				});
 				const hamburger = document.getElementById("hamburgerMenu");
