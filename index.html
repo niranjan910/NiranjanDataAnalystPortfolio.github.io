@@ -623,11 +623,11 @@
 			/* --- PROJECTS Section (New Minimalist Design) --- */
 			.projects-grid {
 				list-style: none;
-				display: flex;
-				flex-direction: column;
-				align-items: center; /* Center cards horizontally */
-				gap: 2.5rem; /* Vertical distance between cards */
 				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 2.5rem;
 			}
 			
 			.projects-footer {
@@ -644,6 +644,14 @@
 				color: #f1f1f1;
 				display: flex;
 				flex-direction: column;
+				box-.projects-grid {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem; /* This creates space between cards */
+}
 				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 				transition: transform 0.3s ease, box-shadow 0.3s ease;
 			}
@@ -1188,6 +1196,66 @@
 						</div>
 					</li>
 					<!-- Card 4 -->
+					<li class="minimalist-project-card reveal" style="--delay: 300ms;">
+						<img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image">
+						 <div class="card-body">
+							<h3 class="project-title">AI Lung Diagnostics</h3>
+							<p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by comprehensive SQL data mining.</p>
+						</div>
+						<div class="card-footer">
+							<ul class="project-tech-list">
+								<li>Power BI</li>
+								<li>SQL</li>
+							</ul>
+							<a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View Project</a>
+						</div>
+					</li>
+					<!-- Card 5 -->
+					<li class="minimalist-project-card reveal">
+						<img src="images/EV Project image.png" alt="EV Adoption map" class="project-image">
+						<div class="card-body">
+							<h3 class="project-title">U.S. EV Adoption Analysis</h3>
+							<p class="project-description">An analysis of U.S. electric vehicle adoption trends, using Python and MySQL for data processing and to uncover key insights.</p>
+						</div>
+						<div class="card-footer">
+							<ul class="project-tech-list">
+								<li>Python</li>
+								<li>MySQL</li>
+							</ul>
+							<a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View Project</a>
+						</div>
+					</li>
+					<!-- Card 6 -->
+					<li class="minimalist-project-card reveal" style="--delay: 100ms;">
+						 <img src="images/Covid 19.png" alt="Covid dashboard" class="project-image">
+						 <div class="card-body">
+							<h3 class="project-title">COVID-19 Hospitalization</h3>
+							<p class="project-description">Visualized COVID-19 hospitalization rates from 2019-2025 by processing real-time JSON data with Python.</p>
+						</div>
+						<div class="card-footer">
+							 <ul class="project-tech-list">
+								<li>Python</li>
+								<li>JSON</li>
+							</ul>
+							<a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View Project</a>
+						</div>
+					</li>
+					<!-- Card 7 -->
+					<li class="minimalist-project-card reveal" style="--delay: 200ms;">
+						<img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image">
+						 <div class="card-body">
+							<h3 class="project-title">AI Job Market Analysis</h3>
+							<p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends from large CSV datasets.</p>
+						</div>
+						 <div class="card-footer">
+							 <ul class="project-tech-list">
+								<li>Python</li>
+								<li>Seaborn</li>
+							</ul>
+							<a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View Project</a>
+						</div>
+					</li>
+					<!-- Card 8 -->
 					<li class="minimalist-project-card reveal" style="--delay: 300ms;">
 						<img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image">
 						 <div class="card-body">
