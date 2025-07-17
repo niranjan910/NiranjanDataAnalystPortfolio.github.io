@@ -74,7 +74,6 @@
             font-weight: 700;
         }
         
-        /* MODIFIED: Reduced left/right padding */
         main { padding: 0 60px; position: relative; }
         section { padding: 120px 0; }
         
@@ -117,7 +116,6 @@
         #hero {
             display: flex; flex-direction: column; justify-content: space-between;
             min-height: 100vh; text-align: left; position: relative;
-            /* MODIFIED: Reduced left/right padding and margin */
             margin: 0 -60px; padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
             background-image: url('images/Banner.svg'); background-size: cover;
             background-position: center; background-repeat: no-repeat;
@@ -126,24 +124,62 @@
         #hero h1, #hero h2, #hero h4, #hero p { color: var(--text-on-image); }
         .hero-main-heading { font-weight: 600; font-size: 72px; line-height: 1.15; letter-spacing: -1px; margin: 0; }
        
-        /* --- NEW STYLES: For bottom-right call to action --- */
         .hero-cta-container {
             position: absolute;
             bottom: 4rem;
-            right: 60px; /* Match the hero section's new padding */
+            right: 60px;
             text-align: right;
             animation: fadeInSlideUp 0.8s forwards 600ms;
-            opacity: 0; /* Initially hide for animation */
+            opacity: 0;
+            display: flex; /* MODIFIED: Better alignment */
+            flex-direction: column; /* MODIFIED: Better alignment */
+            align-items: flex-end; /* MODIFIED: Better alignment */
         }
         .hero-cta-text {
-            font-size: 1.5rem; /* Smaller than main hero heading */
+            font-size: 1.5rem;
             font-weight: 500;
             line-height: 1.4;
             margin-bottom: 1.5rem;
-            max-width: none; /* Override default paragraph width limit */
+            max-width: none;
         }
 
-        /* --- BUTTON STYLES --- */
+        /* --- NEW BUTTON STYLE: For modern "Lets connect" button --- */
+        .hero-cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: white;
+            color: black;
+            font-weight: 500; /* Medium weight */
+            font-size: 0.95rem;
+            border-radius: 9999px; /* Pill shape */
+            padding: 4px 6px 4px 18px; /* py-2 px-4, adjusted */
+            height: 44px;
+            font-family: var(--font-sans);
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-cta-button .icon-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 34px; /* Slightly larger icon container */
+            height: 34px;
+            background-color: black;
+            color: white;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        .hero-cta-button:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- General Button Styles (kept for other buttons) --- */
         .btn { 
             color: var(--accent); background-color: transparent; border: 1px solid var(--accent); 
             border-radius: var(--border-radius); padding: 0.75rem 1.75rem; font-size: 0.9rem; 
@@ -245,7 +281,7 @@
             #hero { margin: 0 -50px; padding-left: 50px; padding-right: 50px; } 
             .hero-main-heading { font-size: 60px; } 
             .feature-item { max-width: 300px; }
-            .hero-cta-container { right: 50px; } /* Adjust CTA for this breakpoint */
+            .hero-cta-container { right: 50px; }
         }
         @media (max-width: 768px) { 
             main { padding: 0 25px; } 
@@ -334,10 +370,15 @@
                 </div>
             </div>
 
-            <!-- MODIFIED: Added new container for the CTA -->
             <div class="hero-cta-container">
                 <p class="hero-cta-text">Your Data Holds the Answers<br>I Reveal Them</p>
-                <a href="mailto:niranjan991100@gmail.com" class="btn btn-large"><span class="special-link">Let's Connect</span></a>
+                <!-- MODIFIED: Replaced old button with the new modern button -->
+                <a href="mailto:niranjan991100@gmail.com" class="hero-cta-button">
+                    <span>Lets connect</span>
+                    <span class="icon-container">
+                        <span>↗</span> <!-- Up-right arrow -->
+                    </span>
+                </a>
             </div>
 
         </section>
