@@ -60,7 +60,6 @@
 				background-color: var(--bg-main);
 				line-height: 1.5;
 				overflow-x: hidden;
-                /* --- New Animated Background --- */
                 background: linear-gradient(-45deg, #f1f1f1, #e0e0e0, #f1f1f1, #f9f9f9);
                 background-size: 400% 400%;
                 animation: gradientBG 15s ease infinite;
@@ -211,10 +210,9 @@
 
 			/* --- HERO SECTION --- */
 			#hero {
-                /* --- CORRECTED LAYOUT --- */
 				display: flex;
 				flex-direction: column;
-				justify-content: space-between; /* This pushes elements apart */
+				justify-content: space-between;
 				min-height: 100vh;
 				text-align: left;
 				position: relative;
@@ -234,14 +232,13 @@
             }
 
             #hero .hero-content-wrapper {
-                 /* This new wrapper ensures correct flex behavior */
                 display: flex;
                 justify-content: space-between;
-                align-items: flex-end; /* Align items to the bottom */
+                align-items: flex-end;
                 width: 100%;
                 position: relative;
                 z-index: 2;
-                flex-grow: 1; /* Allow wrapper to fill space */
+                flex-grow: 1;
             }
             
             #hero .hero-text-container,
@@ -269,7 +266,6 @@
 			}
 
 			.hero-cta-container {
-                /* Use relative positioning now */
 				text-align: right;
 				animation: fadeInSlideUp 0.8s forwards 600ms;
 				opacity: 0;
@@ -285,7 +281,6 @@
 				max-width: none;
 			}
 
-			/* --- SHARED MODERN BUTTON STYLE --- */
 			.modern-pill-button {
 				display: inline-flex;
 				align-items: center;
@@ -345,15 +340,15 @@
 				height: auto;
 				margin-top: 6px;
 			}
-
+            /* --- FONT SIZE REDUCED HERE --- */
 			.feature-item h4 {
 				font-family: var(--font-sans);
-				font-size: 1.125rem;
+				font-size: 1rem; /* Was 1.125rem */
 				font-weight: 600;
 				margin-bottom: 0.25rem;
 			}
 			.feature-item p {
-				font-size: 1rem;
+				font-size: 0.9rem; /* Was 1rem */
 				line-height: 1.6;
 				color: var(--text-on-image);
 				opacity: 0.9;
@@ -650,7 +645,6 @@
 				color: var(--accent);
 			}
 			
-			/* --- PROJECTS Section --- */
 			.projects-grid {
 				list-style: none;
 				padding: 0;
@@ -758,7 +752,6 @@
 				opacity: 1; 
 			}
 
-			/* --- CERTIFICATIONS (Revised Theme) --- */
 			.certs-grid {
 				list-style: none;
 				padding: 0;
@@ -832,7 +825,6 @@
 				opacity: 1; 
 			}
 
-			/* --- GET IN TOUCH (Revised Section) --- */
             #contact {
                 max-width: 900px;
                 margin: 0 auto;
@@ -933,7 +925,6 @@
 				.feature-item {
 					max-width: 300px;
 				}
-                /* No change needed for hero-cta-container position here */
 			}
 			@media (max-width: 768px) {
 				main {
@@ -942,9 +933,8 @@
 				section {
 					padding: 80px 0;
 				}
-                /* --- CORRECTED Mobile Hero Layout --- */
 				#hero {
-					justify-content: center; /* Center vertically */
+					justify-content: center;
 					align-items: center;
 					gap: 3rem;
 					padding: calc(var(--nav-height) + 1rem) 25px 3rem 25px;
@@ -1301,7 +1291,6 @@
 										<img src="Icon/Word.svg" alt="MS Word Icon" />
 									</li>
 									<li title="Microsoft Excel">
-                                        <!-- --- CORRECTED this line --- -->
 										<img src="Icon/Excel.svg" alt="MS Excel Icon" />
 									</li>
 									<li title="Tableau">
@@ -1317,7 +1306,6 @@
 			<section id="projects" class="reveal">
 				<h2 class="section-heading">Featured Projects</h2>
 				<ul class="projects-grid">
-					<!-- Card 1 -->
 					<li class="project-card reveal">
 						<img src="images/EV Project image.png" alt="EV Adoption map" class="project-image">
 						<div class="card-body">
@@ -1332,7 +1320,6 @@
 							</div>
 						</div>
 					</li>
-					<!-- Card 2 -->
 					<li class="project-card reveal" style="--delay: 100ms;">
 						 <img src="images/Covid 19.png" alt="Covid dashboard" class="project-image">
 						 <div class="card-body">
@@ -1347,7 +1334,6 @@
 							</div>
 						</div>
 					</li>
-					<!-- Card 3 -->
 					<li class="project-card reveal" style="--delay: 200ms;">
 						<img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image">
 						 <div class="card-body">
@@ -1362,7 +1348,6 @@
 							</div>
 						</div>
 					</li>
-					<!-- Card 4 -->
 					<li class="project-card reveal" style="--delay: 300ms;">
 						<img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image">
 						 <div class="card-body">
@@ -1377,7 +1362,6 @@
 							</div>
 						</div>
 					</li>
-                    <!-- Card 5 -->
                     <li class="project-card reveal" style="--delay: 400ms;">
 						<img src="images/placeholder.png" alt="Project 5 placeholder" class="project-image">
 						<div class="card-body">
@@ -1392,7 +1376,6 @@
 							</div>
 						</div>
 					</li>
-                    <!-- Card 6 -->
                     <li class="project-card reveal" style="--delay: 500ms;">
 						<img src="images/placeholder.png" alt="Project 6 placeholder" class="project-image">
 						<div class="card-body">
@@ -1407,7 +1390,6 @@
 							</div>
 						</div>
 					</li>
-                    <!-- Card 7 -->
                     <li class="project-card reveal" style="--delay: 600ms;">
 						<img src="images/placeholder.png" alt="Project 7 placeholder" class="project-image">
 						<div class="card-body">
@@ -1422,7 +1404,6 @@
 							</div>
 						</div>
 					</li>
-                    <!-- Card 8 -->
                     <li class="project-card reveal" style="--delay: 700ms;">
 						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image">
 						<div class="card-body">
@@ -1446,7 +1427,6 @@
 			<section id="certs" class="reveal">
 				<h2 class="section-heading">Credentials</h2>
 				<ul class="certs-grid">
-					<!-- Card 1 (Revised) -->
 					<li class="credential-card reveal">
 						<div class="card-content">
                             <div>
@@ -1459,7 +1439,6 @@
 							</a>
 						</div>
 					</li>
-					<!-- Card 2 (Revised) -->
 					<li class="credential-card reveal" style="--delay: 100ms;">
 						<div class="card-content">
                             <div>
@@ -1472,7 +1451,6 @@
 							</a>
 						</div>
 					</li>
-					<!-- Card 3 (Revised) -->
 					<li class="credential-card reveal" style="--delay: 200ms;">
 						<div class="card-content">
                             <div>
@@ -1485,7 +1463,6 @@
 							</a>
 						</div>
 					</li>
-					<!-- Card 4 (Revised) -->
 					<li class="credential-card reveal" style="--delay: 300ms;">
 						<div class="card-content">
                             <div>
@@ -1501,7 +1478,6 @@
 				</ul>
 			</section>
 
-			<!-- GET IN TOUCH (Revised Section) -->
 			<section id="contact" class="reveal">
                 <div class="contact-container">
                     <div class="contact-text">
@@ -1536,11 +1512,9 @@
 			>
 		</footer>
 
-        <!-- P5.JS SCRIPT -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 
 		<script>
-            /* P5.JS SCRIPT FOR HERO ANIMATION */
             const sketch = (p) => {
                 let particles = [];
                 const numParticles = 150;
@@ -1606,7 +1580,6 @@
             };
             new p5(sketch);
             
-            /* MAIN PORTFOLIO SCRIPT */
 			document.addEventListener("DOMContentLoaded", () => {
 				const revealObserver = new IntersectionObserver(
 					(entries) => {
@@ -1697,7 +1670,6 @@
 					sectionObserver.observe(section);
 				});
 
-                /* Magnetic Elements Effect */
                 const magneticItems = document.querySelectorAll('.magnetic-item');
                 const strength = 50; 
 
