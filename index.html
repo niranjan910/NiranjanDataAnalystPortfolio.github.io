@@ -136,8 +136,9 @@
 
 			.reveal {
 				opacity: 0;
-				transform: translateY(20px);
-				transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+				transform: translateY(30px);
+				transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+				transition-delay: var(--delay, 0s);
 			}
 			.reveal.is-visible {
 				opacity: 1;
@@ -162,6 +163,7 @@
 			.main-nav.scrolled {
 				background-color: rgba(255, 255, 255, 0.85);
 				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
 				height: 70px;
 				box-shadow: 0 10px 30px -10px var(--shadow-color);
 			}
@@ -479,7 +481,8 @@
 				border-radius: 50%;
 				position: relative;
 				transform-style: preserve-3d;
-				transition: transform 0.5s;
+				transition: transform 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+				will-change: transform;
 			}
 
 			.about-image-wrapper img {
@@ -665,12 +668,14 @@
 				flex-direction: column;
 				border-radius: 12px;
 				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
+				transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
 				overflow: hidden;
+				transform-style: preserve-3d;
+				will-change: transform;
 			}
 
 			.project-card:hover {
-				transform: translateY(-8px);
+				transform: translateY(-8px) perspective(1000px);
 				box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 			}
 
@@ -1119,9 +1124,9 @@
                 </div>
 			</section>
 
-			<section id="about" class="reveal">
-				<h2 class="section-heading">About Me</h2>
-				<div class="about-subheader">
+			<section id="about" >
+				<h2 class="section-heading reveal">About Me</h2>
+				<div class="about-subheader reveal">
 					<svg
 						class="icon"
 						xmlns="http://www.w3.org/2000/svg"
@@ -1134,7 +1139,7 @@
 					</svg>
 					<p>Your data is talking — are you ready to listen?</p>
 				</div>
-				<div class="about-container">
+				<div class="about-container reveal">
 					<div class="about-left">
 						<div class="about-image-wrapper">
 							<img
@@ -1303,8 +1308,8 @@
 				</div>
 			</section>
 
-			<section id="projects" class="reveal">
-				<h2 class="section-heading">Featured Projects</h2>
+			<section id="projects" >
+				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="projects-grid">
 					<li class="project-card reveal">
 						<img src="images/EV Project image.png" alt="EV Adoption map" class="project-image">
@@ -1320,7 +1325,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="project-card reveal" style="--delay: 100ms;">
+					<li class="project-card reveal" style="--delay: 150ms;">
 						 <img src="images/Covid 19.png" alt="Covid dashboard" class="project-image">
 						 <div class="card-body">
 							<h3 class="project-title">COVID-19 Hospitalization</h3>
@@ -1334,7 +1339,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="project-card reveal" style="--delay: 200ms;">
+					<li class="project-card reveal" style="--delay: 300ms;">
 						<img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image">
 						 <div class="card-body">
 							<h3 class="project-title">AI Job Market Analysis</h3>
@@ -1348,7 +1353,7 @@
 							</div>
 						</div>
 					</li>
-					<li class="project-card reveal" style="--delay: 300ms;">
+					<li class="project-card reveal" style="--delay: 450ms;">
 						<img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image">
 						 <div class="card-body">
 							<h3 class="project-title">AI Lung Diagnostics</h3>
@@ -1362,7 +1367,7 @@
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 400ms;">
+                    <li class="project-card reveal" style="--delay: 600ms;">
 						<img src="images/placeholder.png" alt="Project 5 placeholder" class="project-image">
 						<div class="card-body">
 							<h3 class="project-title">Sales Forecast Dashboard</h3>
@@ -1376,7 +1381,7 @@
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 500ms;">
+                    <li class="project-card reveal" style="--delay: 750ms;">
 						<img src="images/placeholder.png" alt="Project 6 placeholder" class="project-image">
 						<div class="card-body">
 							<h3 class="project-title">Data Pipeline Automation</h3>
@@ -1390,42 +1395,14 @@
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 600ms;">
-						<img src="images/placeholder.png" alt="Project 7 placeholder" class="project-image">
-						<div class="card-body">
-							<h3 class="project-title">Customer Sentiment Analysis</h3>
-							<p class="project-description">Analyzed customer reviews using NLP techniques in Python to categorize feedback and identify key satisfaction drivers.</p>
-							<div class="card-footer">
-								<ul class="project-tech-list">
-									<li>NLP</li>
-                                    <li>Pandas</li>
-								</ul>
-								<a href="#" class="project-view-button" target="_blank">View</a>
-							</div>
-						</div>
-					</li>
-                    <li class="project-card reveal" style="--delay: 700ms;">
-						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image">
-						<div class="card-body">
-							<h3 class="project-title">Excel Financial Modeling</h3>
-							<p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation, featuring scenario analysis.</p>
-							<div class="card-footer">
-								<ul class="project-tech-list">
-									<li>Excel</li>
-									<li>Finance</li>
-								</ul>
-								<a href="#" class="project-view-button" target="_blank">View</a>
-							</div>
-						</div>
-					</li>
 				</ul>
 				 <div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large special-link" target="_blank">View All on GitHub</a>
 				</div>
 			</section>
 
-			<section id="certs" class="reveal">
-				<h2 class="section-heading">Credentials</h2>
+			<section id="certs" >
+				<h2 class="section-heading reveal">Credentials</h2>
 				<ul class="certs-grid">
 					<li class="credential-card reveal">
 						<div class="card-content">
@@ -1439,7 +1416,7 @@
 							</a>
 						</div>
 					</li>
-					<li class="credential-card reveal" style="--delay: 100ms;">
+					<li class="credential-card reveal" style="--delay: 150ms;">
 						<div class="card-content">
                             <div>
                                 <h3 class="cert-title">Career Essentials in Data Analysis</h3>
@@ -1451,7 +1428,7 @@
 							</a>
 						</div>
 					</li>
-					<li class="credential-card reveal" style="--delay: 200ms;">
+					<li class="credential-card reveal" style="--delay: 300ms;">
 						<div class="card-content">
                             <div>
                                 <h3 class="cert-title">Data Analytics Essentials</h3>
@@ -1463,7 +1440,7 @@
 							</a>
 						</div>
 					</li>
-					<li class="credential-card reveal" style="--delay: 300ms;">
+					<li class="credential-card reveal" style="--delay: 450ms;">
 						<div class="card-content">
                             <div>
                                 <h3 class="cert-title">Career Essentials in Business Analysis</h3>
@@ -1478,8 +1455,8 @@
 				</ul>
 			</section>
 
-			<section id="contact" class="reveal">
-                <div class="contact-container">
+			<section id="contact" >
+                <div class="contact-container reveal">
                     <div class="contact-text">
                         <h2 class="title">Get In Touch</h2>
                         <p>
@@ -1515,92 +1492,114 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 
 		<script>
-            const sketch = (p) => {
-                let particles = [];
-                const numParticles = 150;
-                let canvas;
-
-                class Particle {
-                    constructor() {
-                        this.pos = p.createVector(p.random(p.width), p.random(p.height));
-                        this.vel = p.createVector(p.random(-0.5, 0.5), p.random(-0.5, 0.5));
-                        this.size = p.random(2, 4);
-                    }
-
-                    update() {
-                        this.pos.add(this.vel);
-                        this.edges();
-                    }
-
-                    draw() {
-                        p.noStroke();
-                        p.fill('rgba(255, 255, 255, 0.5)');
-                        p.circle(this.pos.x, this.pos.y, this.size);
-                    }
-
-                    edges() {
-                        if (this.pos.x < 0 || this.pos.x > p.width) this.vel.x *= -1;
-                        if (this.pos.y < 0 || this.pos.y > p.height) this.vel.y *= -1;
-                    }
-
-                    checkParticles(particles) {
-                        particles.forEach(particle => {
-                            const d = p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
-                            if (d < 120) {
-                                const alpha = p.map(d, 0, 120, 0.5, 0);
-                                p.stroke(`rgba(255, 255, 255, ${alpha})`);
-                                p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
-                            }
-                        });
-                    }
-                }
-                
-                p.setup = () => {
-                    const heroSection = document.getElementById('hero');
-                    canvas = p.createCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
-                    canvas.parent('hero-canvas');
-                    for(let i = 0; i < numParticles; i++) {
-                        particles.push(new Particle());
-                    }
-                };
-
-                p.draw = () => {
-                    p.background('#111');
-                    particles.forEach((particle, index) => {
-                        particle.update();
-                        particle.draw();
-                        particle.checkParticles(particles.slice(index));
-                    });
-                };
-                
-                p.windowResized = () => {
-                    const heroSection = document.getElementById('hero');
-                    p.resizeCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
-                };
-            };
-            new p5(sketch);
-            
 			document.addEventListener("DOMContentLoaded", () => {
+				
+				// --- CHECK FOR TOUCH DEVICE ---
+				const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+				// --- HERO SECTION P5.JS SKETCH ---
+				const sketch = (p) => {
+					let particles = [];
+					const numParticles = window.innerWidth < 768 ? 80 : 150;
+					let canvas;
+					let mouseVec;
+
+					class Particle {
+						constructor() {
+							this.pos = p.createVector(p.random(p.width), p.random(p.height));
+							this.vel = p.createVector(p.random(-0.5, 0.5), p.random(-0.5, 0.5));
+							this.size = p.random(2, 4);
+							this.originalVel = this.vel.copy();
+						}
+
+						update() {
+							this.pos.add(this.vel);
+							this.edges();
+
+							// Interaction with mouse
+							if (!isTouchDevice && mouseVec) {
+								let d = this.pos.dist(mouseVec);
+								if (d < 100) {
+									let force = p.createVector(this.pos.x - mouseVec.x, this.pos.y - mouseVec.y);
+									force.setMag(1.5);
+									this.pos.add(force);
+								}
+							}
+						}
+
+						draw() {
+							p.noStroke();
+							p.fill('rgba(255, 255, 255, 0.5)');
+							p.circle(this.pos.x, this.pos.y, this.size);
+						}
+
+						edges() {
+							if (this.pos.x < 0 || this.pos.x > p.width) this.vel.x *= -1;
+							if (this.pos.y < 0 || this.pos.y > p.height) this.vel.y *= -1;
+						}
+
+						checkParticles(particles) {
+							particles.forEach(particle => {
+								const d = p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+								if (d < 120) {
+									const alpha = p.map(d, 0, 120, 0.5, 0);
+									p.stroke(`rgba(255, 255, 255, ${alpha})`);
+									p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+								}
+							});
+						}
+					}
+					
+					p.setup = () => {
+						const heroSection = document.getElementById('hero');
+						canvas = p.createCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
+						canvas.parent('hero-canvas');
+						mouseVec = p.createVector(p.width / 2, p.height / 2);
+
+						for(let i = 0; i < numParticles; i++) {
+							particles.push(new Particle());
+						}
+					};
+
+					p.draw = () => {
+						p.background('#111');
+						if (!isTouchDevice) {
+							mouseVec.set(p.mouseX, p.mouseY);
+						}
+						particles.forEach((particle, index) => {
+							particle.update();
+							particle.draw();
+							particle.checkParticles(particles.slice(index));
+						});
+					};
+					
+					p.windowResized = () => {
+						const heroSection = document.getElementById('hero');
+						p.resizeCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
+					};
+				};
+				new p5(sketch);
+				
+				// --- SCROLL-BASED ANIMATIONS ---
 				const revealObserver = new IntersectionObserver(
-					(entries) => {
+					(entries, observer) => {
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add("is-visible");
-								revealObserver.unobserve(entry.target);
+								observer.unobserve(entry.target);
 							}
 						});
 					},
 					{ rootMargin: "0px 0px -100px 0px" }
 				);
 
-				document
-					.querySelectorAll(".reveal")
-					.forEach((el) => revealObserver.observe(el));
+				document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
+				// --- NAVIGATION BAR STYLING ON SCROLL ---
 				const nav = document.getElementById("mainNav");
 				const logo = document.getElementById("navLogoImage");
 				const originalLogoSrc = "Logo/Logo.svg";
-				const scrolledLogoSrc = "Logo/Logo Dark.svg";
+				const scrolledLogoSrc = "Logo/Logo Dark.svg"; 
 
 				window.addEventListener("scroll", () => {
 					const isScrolled = window.scrollY > 50;
@@ -1610,6 +1609,7 @@
 					}
 				});
 
+				// --- HAMBURGER MENU LOGIC ---
 				const hamburger = document.getElementById("hamburgerMenu");
 				const navLinks = document.getElementById("navLinks");
 				if (hamburger && navLinks) {
@@ -1631,6 +1631,7 @@
 					});
 				}
 				
+				// --- ACTIVE NAVIGATION LINK ON SCROLL ---
 				const sections = document.querySelectorAll("main section[id]");
 				const navLinkMap = {};
 				document
@@ -1666,28 +1667,53 @@
 					}
 				);
 
-				sections.forEach((section) => {
-					sectionObserver.observe(section);
-				});
+				sections.forEach((section) => sectionObserver.observe(section));
 
-                const magneticItems = document.querySelectorAll('.magnetic-item');
-                const strength = 50; 
+				// --- MOUSE-BASED INTERACTIONS (DESKTOP ONLY) ---
+				if (!isTouchDevice) {
+					// 1. Magnetic Items Effect
+					const magneticItems = document.querySelectorAll('.magnetic-item');
+					const strength = 50; 
 
-                magneticItems.forEach(item => {
-                    item.addEventListener('mousemove', (e) => {
-                        const pos = item.getBoundingClientRect();
-                        const x = e.clientX - pos.left - pos.width / 2;
-                        const y = e.clientY - pos.top - pos.height / 2;
+					magneticItems.forEach(item => {
+						item.addEventListener('mousemove', (e) => {
+							const pos = item.getBoundingClientRect();
+							const x = e.clientX - pos.left - pos.width / 2;
+							const y = e.clientY - pos.top - pos.height / 2;
 
-                        item.style.transition = 'transform 0.1s ease';
-                        item.style.transform = `translateX(${x / (pos.width / strength)}px) translateY(${y / (pos.height / strength)}px)`;
-                    });
+							item.style.transition = 'transform 0.1s ease';
+							item.style.transform = `translateX(${x * 0.3}px) translateY(${y * 0.4}px)`;
+						});
 
-                    item.addEventListener('mouseleave', () => {
-                        item.style.transition = 'transform 0.3s ease';
-                        item.style.transform = 'translateX(0) translateY(0)';
-                    });
-                });
+						item.addEventListener('mouseleave', () => {
+							item.style.transition = 'transform 0.3s ease';
+							item.style.transform = 'translateX(0) translateY(0)';
+						});
+					});
+
+					// 2. 3D Tilt Effect for Cards
+					const tiltItems = document.querySelectorAll('.project-card, .about-image-wrapper');
+					const tiltStrength = 8;
+
+					tiltItems.forEach(item => {
+						item.addEventListener('mousemove', (e) => {
+							const pos = item.getBoundingClientRect();
+							const x = e.clientX - pos.left;
+							const y = e.clientY - pos.top;
+							const middleX = pos.width / 2;
+							const middleY = pos.height / 2;
+
+							const rotateY = ((x - middleX) / middleX) * tiltStrength;
+							const rotateX = -((y - middleY) / middleY) * tiltStrength;
+							
+							item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+						});
+
+						item.addEventListener('mouseleave', () => {
+							item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+						});
+					});
+				}
 			});
 		</script>
 	</body>
