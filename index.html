@@ -7,7 +7,6 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -24,8 +23,11 @@
             --accent: #0056b3;
             --accent-tint: rgba(0, 86, 179, 0.1);
 
-            --font-sans: 'Inter', sans-serif;
+            /* --- MODIFIED FONT DECLARATIONS --- */
+            --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-body: Georgia, serif;
             --font-mono: 'SF Mono', 'Fira Code', monospace;
+            
             --border-radius: 4px;
             --nav-height: 100px;
             --transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -41,7 +43,8 @@
         }
 
         body {
-            font-family: var(--font-sans);
+            /* MODIFIED: Changed to --font-body */
+            font-family: var(--font-body);
             color: var(--text-secondary);
             -webkit-font-smoothing: antialiased;
             background-color: var(--bg-main);
@@ -50,7 +53,6 @@
         }
         
         /* --- ACCESSIBILITY FIX --- */
-        /* Hides the "Skip to Content" link visually by default */
         .skip-to-content {
             position: absolute;
             top: auto;
@@ -61,7 +63,6 @@
             z-index: -999;
         }
         
-        /* Brings the link into view when a user tabs to it */
         .skip-to-content:focus {
             left: 1rem;
             top: 1rem;
@@ -86,7 +87,8 @@
         }
         #contact::after { display: none; }
 
-        h1, h2, h3, h4 { color: var(--text-primary); font-weight: 700; line-height: 1.2; }
+        /* MODIFIED: Added --font-heading to headings */
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-primary); font-weight: 700; line-height: 1.2; }
         p { margin-bottom: 1rem; max-width: 65ch; }
         a { text-decoration: none; color: var(--text-secondary); transition: var(--transition-fast); }
         a:hover, button:hover { color: var(--accent); }
