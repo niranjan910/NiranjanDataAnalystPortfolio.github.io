@@ -21,22 +21,22 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES (Dark Theme) --- */
+			/* --- CORE STYLES (New Light Theme) --- */
 			:root {
-				--bg-main: #010101;
-				--text-primary: #f1f1f1;
-				--text-secondary: #aaaaaa;
-				--text-on-image: #f1f1f1;
-				--card-bg: #1c1c1e;
-				--border-color: #38383a;
-				--shadow-color: rgba(0, 0, 0, 0.2);
-				--accent: #e5e5e7;
-				--accent-tint: rgba(229, 229, 231, 0.1);
+				--bg-main: #f1f1f1;
+				--text-primary: #010101;
+				--text-secondary: #555555;
+				--text-on-image: #f1f1f1; /* For text on dark hero banner */
+				--card-bg: #ffffff;
+				--border-color: #dddddd;
+				--shadow-color: rgba(0, 0, 0, 0.08);
 				--accent-gradient: linear-gradient(
 					135deg,
-					#f1f1f1,
-					#888888
+					#444444,
+					#010101
 				);
+				--accent-color-for-hover: #333333; /* For solid hover effects */
+				--accent-tint: rgba(0, 0, 0, 0.05);
 
 				--font-sans: "Inter", sans-serif;
 				--font-mono: "SF Mono", "Fira Code", monospace;
@@ -87,7 +87,7 @@
 				overflow: auto;
 				z-index: 10000;
 				padding: 0.5rem 1rem;
-				background-color: var(--accent);
+				background-color: var(--text-primary);
 				color: var(--bg-main);
 				border-radius: var(--border-radius);
 				font-weight: 700;
@@ -140,7 +140,7 @@
 			}
 			a:hover,
 			button:hover {
-				color: var(--accent);
+				color: var(--accent-color-for-hover);
 			}
 
 			.reveal {
@@ -169,8 +169,8 @@
 				transition: var(--transition-slow);
 			}
 			.main-nav.scrolled {
-				background-color: rgba(28, 28, 30, 0.75);
-				backdrop-filter: blur(20px);
+				background-color: rgba(255, 255, 255, 0.85);
+				backdrop-filter: blur(10px);
 				height: 70px;
 				box-shadow: 0 10px 30px -10px var(--shadow-color);
 			}
@@ -204,17 +204,20 @@
 				.nav-links
 				li
 				a:not(.btn):not(.modern-pill-button):hover {
-				color: var(--accent);
+				color: var(--accent-color-for-hover);
 			}
 			.nav-links li a:not(.btn):not(.modern-pill-button).active {
 				font-weight: 700;
-				color: var(--accent);
+				color: #f1f1f1; /* White on hero */
 			}
 			.main-nav.scrolled
 				.nav-links
 				li
 				a:not(.btn):not(.modern-pill-button).active {
-				color: var(--accent);
+				background: var(--accent-gradient);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
 			}
 
 			/* --- HERO SECTION --- */
@@ -250,7 +253,11 @@
 			}
 			/* GRADIENT TEXT EFFECT */
 			.gradient-text {
-				background: var(--accent-gradient);
+				background: -webkit-linear-gradient(
+					135deg,
+					#ffffff,
+					#bebebe
+				);
 				-webkit-background-clip: text;
 				background-clip: text;
 				color: transparent;
@@ -280,7 +287,7 @@
 				display: inline-flex;
 				align-items: center;
 				gap: 12px;
-				background-color: #f1f1f1;
+				background-color: white;
 				color: #010101 !important;
 				font-weight: 500;
 				font-size: 1rem;
@@ -291,7 +298,7 @@
 				font-family: var(--font-sans);
 				text-decoration: none;
 				transition: transform 0.2s ease, box-shadow 0.2s ease;
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 			}
 
 			.modern-pill-button .icon-container {
@@ -301,7 +308,7 @@
 				width: 34px;
 				height: 34px;
 				background-color: #010101;
-				color: #f1f1f1;
+				color: white;
 				border-radius: 50%;
 				font-size: 1.3rem;
 				line-height: 1;
@@ -310,7 +317,7 @@
 			.modern-pill-button:hover {
 				color: #010101 !important;
 				transform: translateY(-3px) scale(1.03);
-				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 			}
 
 			.hero-text-container {
@@ -332,7 +339,6 @@
 				width: 24px;
 				height: auto;
 				margin-top: 6px;
-				filter: invert(1); /* Make icons white for dark mode */
 			}
 
 			.feature-item h4 {
@@ -371,16 +377,21 @@
 			.btn-large {
 				padding: 1.25rem 2rem;
 				border-radius: var(--border-radius);
-				border: 1px solid var(--accent);
-				color: var(--accent);
-				background: transparent;
-			}
-			.btn-large:hover {
-				background: var(--accent-tint);
+				border: 1px solid var(--text-primary);
+				color: var(--text-primary);
+				font-weight: 500;
 			}
 
-			a.special-link:hover {
-				color: var(--accent) !important;
+			.btn-large:hover {
+				background: var(--text-primary);
+				color: var(--bg-main);
+			}
+			.special-link-in-btn {
+				color: var(--text-primary);
+				transition: color 0.25s ease;
+			}
+			.btn-large:hover .special-link-in-btn {
+				color: var(--bg-main);
 			}
 			h2.section-heading {
 				display: flex;
@@ -396,7 +407,6 @@
 				flex-grow: 1;
 				height: 1px;
 				margin-left: 1.5rem;
-				background: var(--border-color); /* Fallback */
 				background: var(--accent-gradient);
 				transform: scaleX(0);
 				transform-origin: left;
@@ -413,11 +423,13 @@
 				gap: 1rem;
 				margin-bottom: 3rem;
 			}
-
 			.about-subheader .icon {
 				width: 24px;
 				height: 24px;
-				color: var(--accent);
+				color: transparent;
+				background: var(--accent-gradient);
+				-webkit-background-clip: text;
+				background-clip: text;
 				animation: spin 6s linear infinite;
 			}
 
@@ -434,10 +446,10 @@
 				display: grid;
 				grid-template-columns: 1fr;
 				gap: 2rem;
-				background: rgba(28, 28, 30, 0.75);
-				-webkit-backdrop-filter: blur(20px);
-				backdrop-filter: blur(20px);
-				border: 1px solid var(--border-color);
+				background: rgba(255, 255, 255, 0.5);
+				-webkit-backdrop-filter: blur(10px);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
 				padding: 3rem;
 				border-radius: 16px;
 			}
@@ -466,8 +478,8 @@
 				width: 100%;
 				height: auto;
 				border-radius: 50%;
-				border: 4px solid var(--bg-main);
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+				border: 4px solid var(--card-bg);
+				box-shadow: 0 10px 30px var(--shadow-color);
 			}
 
 			.about-name {
@@ -479,8 +491,13 @@
 			.about-title {
 				font-family: var(--font-mono);
 				font-size: 1rem;
-				color: var(--accent);
+				color: var(--text-primary);
+				font-weight: 600;
 				margin-bottom: 1.5rem;
+				background: var(--accent-gradient);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
 			}
 
 			.contact-info {
@@ -502,7 +519,10 @@
 			}
 
 			.contact-info i {
-				color: var(--accent);
+				color: transparent;
+				background: var(--accent-gradient);
+				-webkit-background-clip: text;
+				background-clip: text;
 				font-size: 1.2rem;
 			}
 
@@ -521,7 +541,8 @@
 
 			.about-details-grid h3 {
 				font-size: clamp(1.2rem, 1.8vw, 1.4rem);
-				border-bottom: 2px solid var(--accent);
+				border-image: var(--accent-gradient) 1;
+				border-bottom: 2px solid;
 				padding-bottom: 0.5rem;
 				margin-bottom: 1.5rem;
 			}
@@ -537,7 +558,8 @@
 			.core-skills-list li {
 				font-family: var(--font-mono);
 				background: var(--accent-tint);
-				color: var(--accent);
+				color: var(--accent-color-for-hover);
+				font-weight: 500;
 				padding: 0.5rem 1rem;
 				border-radius: 20px;
 				font-size: 0.9rem;
@@ -546,7 +568,9 @@
 
 			.core-skills-list li:hover {
 				transform: translateY(-3px);
-				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+				background: var(--text-primary);
+				color: var(--bg-main);
 			}
 
 			.software-skills-list {
@@ -568,7 +592,6 @@
 			.software-skills-list img {
 				width: 40px;
 				height: 40px;
-				filter: brightness(0) invert(1);
 			}
 
 			.timeline {
@@ -599,8 +622,8 @@
 				position: absolute;
 				top: 0.5rem;
 				left: 0;
-				background-color: var(--accent);
-				border: 2px solid var(--bg-main);
+				background: var(--accent-gradient);
+				border: 2px solid var(--card-bg);
 				border-radius: 50%;
 				z-index: 2;
 			}
@@ -618,10 +641,24 @@
 				font-family: var(--font-mono);
 				font-size: 0.8rem;
 				margin-bottom: 0.5rem;
-				color: var(--accent);
+				color: var(--text-secondary);
+				font-weight: 500;
 			}
 
 			/* --- END OF ABOUT SECTION STYLES --- */
+			.special-link,
+			a.special-link,
+			.special-link-in-btn {
+				background-image: var(--accent-gradient);
+				background-size: 100% 2px;
+				background-repeat: no-repeat;
+				background-position: 0 100%;
+				transition: background-size 0.3s ease;
+			}
+			.special-link:hover {
+				background-size: 100% 100%;
+				color: var(--bg-main) !important;
+			}
 
 			.project-filters {
 				display: flex;
@@ -641,13 +678,13 @@
 			}
 			.project-filters button:hover {
 				background-color: var(--accent-tint);
-				color: var(--accent);
-				border-color: var(--accent);
+				color: var(--accent-color-for-hover);
+				border-color: var(--accent-color-for-hover);
 			}
 			.project-filters button.active {
-				background-color: var(--accent);
+				background: var(--text-primary);
 				color: var(--bg-main);
-				border-color: var(--accent);
+				border-color: var(--text-primary);
 			}
 			.projects-grid {
 				list-style: none;
@@ -691,7 +728,7 @@
 			}
 			.spotlight-card:hover {
 				transform: translateY(-8px);
-				border-color: var(--accent);
+				border-color: #bbbbbb;
 				box-shadow: 0 12px 24px -4px var(--shadow-color),
 					0 8px 16px -4px var(--shadow-color);
 			}
@@ -790,7 +827,10 @@
 					color: var(--text-primary);
 				}
 				.nav-links li a:not(.btn):not(.modern-pill-button).active {
-					color: var(--accent);
+					background: var(--accent-gradient);
+					-webkit-background-clip: text;
+					background-clip: text;
+					color: transparent;
 					font-weight: 700;
 				}
 				.hamburger-menu {
@@ -1116,7 +1156,9 @@
 						href="https://github.com/niranjan910?tab=repositories"
 						class="btn btn-large"
 						target="_blank"
-						><span class="special-link">View All on GitHub</span></a
+						><span class="special-link-in-btn"
+							>View All on GitHub</span
+						></a
 					>
 				</div>
 			</section>
@@ -1138,7 +1180,7 @@
 					<a
 						href="mailto:niranjan991100@gmail.com"
 						class="btn btn-large"
-						><span class="special-link">Say Hello</span></a
+						><span class="special-link-in-btn">Say Hello</span></a
 					>
 				</div>
 			</section>
@@ -1207,19 +1249,18 @@
 
 				const nav = document.getElementById("mainNav");
 				const logo = document.getElementById("navLogoImage");
-				// Assuming 'Logo.svg' is a light/white version for dark backgrounds
-				// and 'Logo Dark.svg' is a dark/black version for light backgrounds.
-				const lightLogoSrc = "Logo/Logo.svg"; // For dark backgrounds
-				const darkLogoSrc = "Logo/Logo Dark.svg"; // For light backgrounds
+				const lightLogoSrc =
+					"Logo/Logo.svg"; /* Assuming this is your white/light logo */
+				const darkLogoSrc =
+					"Logo/Logo Dark.svg"; /* Assuming this is your black/dark logo */
 
 				window.addEventListener("scroll", () => {
 					const isScrolled = window.scrollY > 50;
 					nav.classList.toggle("scrolled", isScrolled);
-
-					// Since the nav is always on a dark background in this theme,
-					// we can consistently use the light logo.
 					if (logo) {
-						logo.src = lightLogoSrc;
+						/* When scrolled, the background is white, so use dark logo.
+               When at top, background is dark banner, use light logo */
+						logo.src = isScrolled ? darkLogoSrc : lightLogoSrc;
 					}
 				});
 				const hamburger = document.getElementById("hamburgerMenu");
