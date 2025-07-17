@@ -18,18 +18,14 @@
 			:root {
 				--bg-main: #f8f9fa;
 				--text-primary: #212529;
-				--text-secondary: #5a6169;
+				--text-secondary: #6c757d;
 				--text-on-image: #212529;
 				--card-bg: #ffffff;
 				--border-color: #dee2e6;
 				--shadow-color: rgba(0, 0, 0, 0.1);
-				--accent: #007bff; /* A nice, professional blue */
+				--accent: #007bff;
 				--accent-tint: rgba(0, 123, 255, 0.1);
-				--accent-gradient: linear-gradient(
-					135deg,
-					#007bff,
-					#0056b3
-				);
+				--accent-gradient: linear-gradient(135deg, #007bff, #0056b3);
 
 				--font-sans: "Helvetica Neue", sans-serif;
 				--font-serif: "Georgia", serif;
@@ -119,6 +115,7 @@
 				color: var(--text-primary);
 				font-weight: 700;
 				line-height: 1.2;
+				font-family: var(--font-sans);
 			}
 			p {
 				margin-bottom: 1rem;
@@ -184,7 +181,7 @@
 				margin: 0 1.5rem;
 			}
 			.nav-links li a:not(.btn):not(.modern-pill-button) {
-				color: var(--text-on-image);
+				color: var(--text-primary);
 				padding: 0.75rem 0;
 				font-size: 0.95rem;
 				position: relative;
@@ -220,8 +217,11 @@
 				position: relative;
 				margin: 0 -60px;
 				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
-				/* Swapped background to a light, subtle pattern. Or use var(--bg-main) for solid. */
-				background-color: var(--bg-main); 
+				background-image: url("images/Banner.svg");
+				background-color: var(--bg-main);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
 			}
 			#hero::after {
 				display: none;
@@ -323,7 +323,7 @@
 				width: 24px;
 				height: auto;
 				margin-top: 6px;
-				/* filter: invert(1); removed, icons should be dark now */
+				/* filter: invert(1); removed to show original icon color */
 			}
 
 			.feature-item h4 {
@@ -497,6 +497,7 @@
 			}
 
 			.about-right .bio {
+				font-family: var(--font-serif);
 				font-size: clamp(1.1rem, 1.5vw, 1.25rem);
 				margin-bottom: 3rem;
 				line-height: 1.7;
@@ -525,7 +526,7 @@
 			}
 
 			.core-skills-list li {
-				font-family: var(--font-serif);
+				font-family: var(--font-sans);
 				background: var(--accent-tint);
 				color: var(--accent);
 				padding: 0.5rem 1rem;
@@ -611,8 +612,7 @@
 				color: var(--accent);
 			}
 
-			/* --- END OF ABOUT SECTION STYLES --- */
-
+			/* --- PROJECTS & CERTS SECTION STYLES --- */
 			.project-filters {
 				display: flex;
 				flex-wrap: wrap;
@@ -620,7 +620,7 @@
 				margin-bottom: 2rem;
 			}
 			.project-filters button {
-				font-family: var(--font-serif);
+				font-family: var(--font-sans);
 				font-size: 0.85rem;
 				background-color: transparent;
 				border: 1px solid var(--border-color);
@@ -639,35 +639,12 @@
 				color: var(--card-bg);
 				border-color: var(--accent);
 			}
-			.projects-grid {
+
+			.projects-grid, .certs-grid {
 				list-style: none;
 				display: grid;
 				gap: 1.5rem;
-				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-			}
-			#contact {
-				text-align: center;
-				max-width: 650px;
-				margin: 0 auto;
-			}
-			#contact .title {
-				font-size: clamp(40px, 5vw, 60px);
-			}
-			.footer {
-				text-align: center;
-				padding: 1.5rem;
-				font-family: var(--font-serif);
-				font-size: 0.8rem;
-			}
-			.hamburger-menu {
-				display: none;
-			}
-			.hamburger-menu .bar {
-				background-color: var(--text-on-image);
-				transition: var(--transition-fast);
-			}
-			.main-nav.scrolled .hamburger-menu .bar {
-				background-color: var(--text-primary);
+				grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 			}
 			.spotlight-card {
 				background-color: var(--card-bg);
@@ -678,6 +655,8 @@
 				overflow: hidden;
 				border: 1px solid var(--border-color);
 				box-shadow: 0 4px 10px -2px var(--shadow-color);
+				display: flex;
+				flex-direction: column;
 			}
 			.spotlight-card:hover {
 				transform: translateY(-8px);
@@ -691,19 +670,101 @@
 				height: 100%;
 				display: flex;
 				flex-direction: column;
+				padding: 1.5rem;
 			}
 			.project-image {
 				width: 100%;
 				height: 180px;
 				object-fit: cover;
-			}
-			.card-inner {
-				padding: 1.75rem;
-				display: flex;
-				flex-direction: column;
-				flex-grow: 1;
+				border-bottom: 1px solid var(--border-color);
 			}
 
+			.project-title {
+				font-family: var(--font-sans);
+				font-size: 1.25rem;
+				margin-bottom: 0.5rem;
+			}
+			
+			.project-desc {
+				font-size: 1rem;
+				flex-grow: 1;
+				margin-bottom: 1.5rem;
+			}
+
+			.project-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5rem;
+				margin-bottom: 1.5rem;
+				padding: 0;
+				list-style: none;
+			}
+
+			.project-tags li {
+				font-size: 0.75rem;
+				background-color: var(--bg-main);
+				border: 1px solid var(--border-color);
+				color: var(--text-secondary);
+				padding: 0.25rem 0.75rem;
+				border-radius: 99px;
+			}
+
+			.project-links a {
+				color: var(--accent);
+				font-weight: 600;
+				margin-right: 1.5rem;
+			}
+			.project-links a:hover {
+				text-decoration: underline;
+			}
+			.projects-footer {
+				text-align: center;
+				margin-top: 3rem;
+			}
+			/* --- CONTACT & FOOTER --- */
+			#contact {
+				text-align: center;
+				max-width: 650px;
+				margin: 0 auto;
+			}
+			#contact .title {
+				font-size: clamp(40px, 5vw, 60px);
+			}
+			.contact-cta-container {
+				margin-top: 2rem;
+			}
+
+			.footer {
+				text-align: center;
+				padding: 2.5rem 1.5rem;
+				font-family: var(--font-serif);
+				font-size: 0.8rem;
+				background-color: var(--card-bg);
+				margin-top: 50px;
+				border-top: 1px solid var(--border-color);
+			}
+			.social-links {
+				list-style: none;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				gap: 1.5rem;
+				margin-bottom: 1rem;
+			}
+			.social-links a {
+				font-size: 1.5rem;
+			}
+
+			/* --- MOBILE & RESPONSIVE STYLES --- */
+
+			.hamburger-menu {
+				display: none;
+			}
+			.hamburger-menu .bar {
+				background-color: var(--text-primary);
+				transition: var(--transition-fast);
+			}
+			
 			@media (max-width: 1080px) {
 				main {
 					padding: 0 50px;
@@ -825,7 +886,7 @@
 				<a href="#"
 					><img
 						id="navLogoImage"
-						src="Logo/Logo Dark.svg" 
+						src="Logo/Logo Dark.svg"
 						alt="Niranjan Kumar Logo"
 				/></a>
 			</div>
@@ -1099,7 +1160,56 @@
 					<button type="button" data-filter="Excel">Excel</button>
 				</div>
 				<ul class="projects-grid">
-					<!-- Your project items here -->
+					<!-- Example Project 1 -->
+					<li class="spotlight-card" data-tags="Power BI, SQL">
+						<img src="https://via.placeholder.com/400x225.png?text=Project+Image" alt="Project 1 Image" class="project-image">
+						<div class="card-content">
+							<h3 class="project-title">Sales Dashboard</h3>
+							<p class="project-desc">An interactive dashboard to visualize sales data across different regions, helping to identify top-performing products and sales representatives.</p>
+							<ul class="project-tags">
+								<li>Power BI</li>
+								<li>SQL</li>
+								<li>Data Visualization</li>
+							</ul>
+							<div class="project-links">
+								<a href="#" target="_blank">View Project ↗</a>
+								<a href="#" target="_blank">GitHub ↗</a>
+							</div>
+						</div>
+					</li>
+					<!-- Example Project 2 -->
+					<li class="spotlight-card" data-tags="Python, Pandas">
+						<img src="https://via.placeholder.com/400x225.png?text=Project+Image" alt="Project 2 Image" class="project-image">
+						<div class="card-content">
+							<h3 class="project-title">Customer Churn Prediction</h3>
+							<p class="project-desc">A machine learning model built with Python to predict customer churn based on usage data and demographics, enabling proactive retention strategies.</p>
+							<ul class="project-tags">
+								<li>Python</li>
+								<li>Pandas</li>
+								<li>Scikit-learn</li>
+							</ul>
+							<div class="project-links">
+								<a href="#" target="_blank">View Project ↗</a>
+								<a href="#" target="_blank">GitHub ↗</a>
+							</div>
+						</div>
+					</li>
+					<!-- Example Project 3 -->
+					<li class="spotlight-card" data-tags="Tableau">
+						<img src="https://via.placeholder.com/400x225.png?text=Project+Image" alt="Project 3 Image" class="project-image">
+						<div class="card-content">
+							<h3 class="project-title">Marketing Campaign Analysis</h3>
+							<p class="project-desc">A deep-dive analysis of marketing campaign performance, presented in Tableau, to measure ROI and optimize future marketing spend.</p>
+							<ul class="project-tags">
+								<li>Tableau</li>
+								<li>Marketing Analytics</li>
+							</ul>
+							<div class="project-links">
+								<a href="#" target="_blank">View Project ↗</a>
+								<a href="#" target="_blank">GitHub ↗</a>
+							</div>
+						</div>
+					</li>
 				</ul>
 				<div class="projects-footer reveal">
 					<a
@@ -1114,7 +1224,28 @@
 			<section id="certs" class="reveal">
 				<h2 class="section-heading">Credentials</h2>
 				<ul class="certs-grid">
-					<!-- Your certificate items here -->
+					<!-- Example Certificate 1 -->
+					<li class="spotlight-card" data-tags="Data Science">
+						<img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="Certificate Image" class="project-image">
+						<div class="card-content">
+							<h3 class="project-title">Google Data Analytics</h3>
+							<p class="project-desc">Professional certificate covering the entire data analysis process, from data collection to visualization.</p>
+							<div class="project-links">
+								<a href="#" target="_blank">View Credential ↗</a>
+							</div>
+						</div>
+					</li>
+					<!-- Example Certificate 2 -->
+					<li class="spotlight-card" data-tags="Python">
+						<img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="Certificate Image" class="project-image">
+						<div class="card-content">
+							<h3 class="project-title">Python for Everybody Specialization</h3>
+							<p class="project-desc">A comprehensive course series on Python programming from the University of Michigan.</p>
+							<div class="project-links">
+								<a href="#" target="_blank">View Credential ↗</a>
+							</div>
+						</div>
+					</li>
 				</ul>
 			</section>
 			<section id="contact" class="reveal">
@@ -1197,18 +1328,18 @@
 
 				const nav = document.getElementById("mainNav");
 				const logo = document.getElementById("navLogoImage");
-				const lightLogoSrc = "Logo/Logo.svg"; 
 				const darkLogoSrc = "Logo/Logo Dark.svg";
 
 				window.addEventListener("scroll", () => {
 					const isScrolled = window.scrollY > 50;
 					nav.classList.toggle("scrolled", isScrolled);
 
-					// Since the nav is light on light, we always use the dark logo.
+					// In a light theme, the dark logo should always be visible.
 					if (logo) {
 						logo.src = darkLogoSrc;
 					}
 				});
+
 				const hamburger = document.getElementById("hamburgerMenu");
 				const navLinks = document.getElementById("navLinks");
 				if (hamburger && navLinks) {
@@ -1229,7 +1360,7 @@
 				const filtersContainer =
 					document.querySelector(".project-filters");
 				const projectCards = document.querySelectorAll(
-					".projects-grid .spotlight-card"
+					".projects-grid > li" // Adjusted selector to target li elements
 				);
 				if (filtersContainer && projectCards.length > 0) {
 					filtersContainer.addEventListener("click", (e) => {
@@ -1244,7 +1375,7 @@
 							const isMatch =
 								filter === "all" ||
 								tags.toLowerCase().includes(filter.toLowerCase());
-							card.style.display = isMatch ? "flex" : "none";
+							card.style.display = isMatch ? "block" : "none"; // show/hide list item
 						});
 					});
 				}
