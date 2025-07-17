@@ -60,7 +60,17 @@
 				background-color: var(--bg-main);
 				line-height: 1.5;
 				overflow-x: hidden;
+                /* --- New Animated Background --- */
+                background: linear-gradient(-45deg, #f1f1f1, #e0e0e0, #f1f1f1, #f9f9f9);
+                background-size: 400% 400%;
+                animation: gradientBG 15s ease infinite;
 			}
+            
+            @keyframes gradientBG {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
 
 			.skip-to-content {
 				position: absolute;
@@ -90,25 +100,14 @@
 				padding: 0 60px;
 				position: relative;
 			}
+
 			section {
-				padding: 120px 0;
+                /* --- Modified Section Spacing --- */
+				padding: 100px 0; 
 			}
 
+            /* --- Removed old separator lines for a cleaner look --- */
 			section[id]:not(#hero)::after {
-				content: "";
-				display: block;
-				width: 60%;
-				max-width: 400px;
-				height: 1px;
-				background: linear-gradient(
-					to right,
-					transparent,
-					var(--border-color),
-					transparent
-				);
-				margin: 100px auto 0 auto;
-			}
-			#contact::after, #projects::after, #certs::after {
 				display: none;
 			}
 
@@ -227,9 +226,6 @@
 				background-position: center;
 				background-repeat: no-repeat;
 			}
-			#hero::after {
-				display: none;
-			}
 			#hero h1,
 			#hero h2,
 			#hero h4,
@@ -285,6 +281,7 @@
 				transition: transform 0.2s ease, box-shadow 0.2s ease,
 					background-color 0.2s ease;
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                will-change: transform; /* Performance optimization for animations */
 			}
 
 			.modern-pill-button .icon-container {
@@ -307,15 +304,13 @@
 				opacity: 1;
 				background-color: #333;
 			}
-
-			.hero-text-container {
-				animation: fadeInSlideUp 0.8s forwards 200ms;
-			}
+            .hero-text-container { animation: fadeInSlideUp 0.8s forwards 200ms; opacity:0; }
 			.hero-features-container {
 				display: flex;
 				flex-direction: column;
 				gap: 1.5rem;
 				animation: fadeInSlideUp 0.8s forwards 400ms;
+                opacity: 0;
 			}
 			.feature-item {
 				display: flex;
@@ -361,17 +356,6 @@
 				to {
 					transform: rotate(360deg);
 				}
-			}
-
-			.btn-large {
-				padding: 1.25rem 2rem;
-				border-radius: var(--border-radius);
-				border: 1px solid var(--accent);
-				color: var(--accent);
-				background: transparent;
-			}
-			.btn-large:hover {
-				background: var(--accent-tint);
 			}
 			
 			a.special-link {
@@ -649,9 +633,8 @@
 				list-style: none;
 				padding: 0;
 				margin: 0;
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: center;
+				display: grid; /* Switched to grid for better control */
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 				gap: 2rem; 
 			}
 			
@@ -662,8 +645,6 @@
 			
 			.project-card {
 				background-color: var(--card-bg);
-				flex: 1 1 320px;
-				max-width: 380px;
 				display: flex;
 				flex-direction: column;
 				border-radius: 12px;
@@ -705,6 +686,7 @@
 				line-height: 1.6;
 				color: var(--text-secondary);
 				flex-grow: 1;
+                margin-bottom: 1rem;
 			}
 			
 			.project-card .card-footer {
@@ -754,7 +736,7 @@
 				opacity: 1; 
 			}
 
-			/* --- CERTIFICATIONS (New Interactive Theme) --- */
+			/* --- CERTIFICATIONS (Revised Theme) --- */
 			.certs-grid {
 				list-style: none;
 				padding: 0;
@@ -762,7 +744,6 @@
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 				gap: 2rem;
-				perspective: 1000px;
 			}
 
 			.credential-card {
@@ -770,84 +751,147 @@
 				border-radius: 12px;
 				border: 1px solid var(--border-color);
 				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-				transform-style: preserve-3d;
-				transition: transform 0.4s ease, box-shadow 0.4s ease;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
 			}
 			
 			.credential-card:hover {
-				box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+                transform: translateY(-8px);
+				box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 			}
 
 			.credential-card .card-content {
-				padding: 1.5rem;
+				padding: 2rem;
 				text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 100%;
 			}
 			
-			.credential-card .cert-issuer-logo {
-				max-height: 40px;
-				width: auto;
-				margin-bottom: 1.5rem;
-				filter: grayscale(100%);
-				opacity: 0.7;
-				transition: var(--transition-fast);
-			}
-			
-			.credential-card:hover .cert-issuer-logo {
-				filter: grayscale(0%);
-				opacity: 1;
-			}
-
 			.credential-card .cert-title {
 				font-family: var(--font-serif);
-				font-size: 1.15rem;
+				font-size: 1.25rem;
 				line-height: 1.4;
 				font-weight: 600;
 				color: var(--text-primary);
+                flex-grow: 1;
 			}
 			
 			.credential-card .cert-issuer {
 				font-family: var(--font-sans);
 				font-size: 0.9rem;
 				color: var(--text-secondary);
-				margin-top: 0.25rem;
-				margin-bottom: 1.5rem;
+				margin-top: 0.5rem;
+				margin-bottom: 2rem;
 			}
 			
-			.credential-card .cert-link {
+            /* --- New Credential Button Style --- */
+			.credential-card .credential-button {
+                background: var(--accent);
+				color: var(--bg-main) !important;
+                border: none;
+				padding: 12px 24px;
+				border-radius: 8px;
 				font-size: 0.9rem;
-				display: inline-flex;
-				align-items: center;
-				gap: 8px;
+				font-weight: 500;
+				font-family: var(--font-sans);
+				text-decoration: none;
+				transition: background-color 0.2s ease, transform 0.2s ease;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                width: 100%;
 			}
 
-			.credential-card .cert-link .fas {
-				transition: transform 0.2s ease;
+			.credential-card .credential-button:hover {
+                background: #333;
+				transform: translateY(-2px) scale(1.02);
+				color: var(--bg-main) !important;
+				opacity: 1; 
 			}
 
-			.credential-card .cert-link:hover .fas {
-				transform: translateX(4px);
-			}
-			
-			#contact {
-				text-align: center;
-				max-width: 650px;
-				margin: 0 auto;
-			}
-			#contact .title {
-				font-size: clamp(40px, 5vw, 60px);
-			}
+			/* --- GET IN TOUCH (Revised Section) --- */
+            #contact {
+                max-width: 900px;
+                margin: 0 auto;
+            }
+            .contact-container {
+                background-color: var(--card-bg);
+                padding: 3rem;
+                border-radius: 16px;
+                box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: left;
+            }
+
+            @media(min-width: 768px) {
+                .contact-container {
+                    padding: 4rem;
+                    grid-template-columns: 2fr 1fr;
+                    align-items: center;
+                }
+            }
+
+            #contact .title {
+                font-size: clamp(2rem, 5vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+            
+            #contact p {
+                max-width: 50ch;
+                margin-bottom: 2rem;
+            }
+
+            .contact-details {
+                text-align: left;
+            }
+
+            .contact-details h3 {
+                font-family: var(--font-sans);
+                font-size: 1rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .contact-social-links {
+                list-style: none;
+                display: flex;
+                gap: 1.5rem;
+            }
+            .contact-social-links a {
+                font-size: 1.5rem;
+                color: var(--text-secondary);
+                will-change: transform;
+            }
+             .contact-social-links a:hover {
+                color: var(--accent);
+                opacity: 1;
+             }
+
+
 			.footer {
 				text-align: center;
 				padding: 1.5rem;
 				font-family: var(--font-sans);
 				font-size: 0.8rem;
+                margin-top: 60px;
 			}
 			.hamburger-menu {
 				display: none;
+                z-index: 1001; /* Ensure hamburger is above other content */
 			}
 			.hamburger-menu .bar {
 				background-color: var(--text-on-image);
 				transition: var(--transition-fast);
+                width: 30px;
+                height: 3px;
+                border-radius: 3px;
+                margin: 5px auto;
 			}
 			.main-nav.scrolled .hamburger-menu .bar {
 				background-color: var(--text-primary);
@@ -875,6 +919,9 @@
 			@media (max-width: 768px) {
 				main {
 					padding: 0 25px;
+				}
+				section {
+					padding: 80px 0;
 				}
 				#hero {
 					justify-content: center;
@@ -914,7 +961,7 @@
 					align-items: center;
 					transform: translateX(100%);
 					transition: transform 0.3s ease-out;
-					z-index: 10;
+					z-index: 1000; /* Ensure nav is above other content */
 					box-shadow: -10px 0 30px -15px var(--shadow-color);
 				}
 				.nav-links.active {
@@ -933,25 +980,26 @@
 					font-weight: 700;
 				}
 				.hamburger-menu {
-					display: flex;
-					flex-direction: column;
-					justify-content: space-around;
+                    display: block; /* Use block instead of flex */
 					width: 30px;
 					height: 25px;
 					background: transparent;
 					border: none;
 					cursor: pointer;
 					padding: 0;
-					z-index: 12;
+					z-index: 1001; /* Above nav links background */
 				}
+                .hamburger-menu.active .bar {
+                    background-color: var(--text-primary);
+                }
 				.hamburger-menu.active .bar:nth-child(1) {
-					transform: translateY(11px) rotate(45deg);
+					transform: translateY(8px) rotate(45deg);
 				}
 				.hamburger-menu.active .bar:nth-child(2) {
 					opacity: 0;
 				}
 				.hamburger-menu.active .bar:nth-child(3) {
-					transform: translateY(-11px) rotate(-45deg);
+					transform: translateY(-8px) rotate(-45deg);
 				}
 			}
 			@media (max-width: 600px) {
@@ -963,6 +1011,9 @@
 					padding-left: 20px;
 					padding-right: 20px;
 				}
+                .projects-grid {
+                     grid-template-columns: 1fr;
+                }
 			}
 		</style>
 	</head>
@@ -992,7 +1043,7 @@
 					<li>
 						<a
 							href="YOUR_RESUME_LINK.pdf"
-							class="modern-pill-button"
+							class="modern-pill-button magnetic-item"
 							target="_blank"
 						>
 							<span>Resume</span>
@@ -1043,7 +1094,7 @@
 					</p>
 					<a
 						href="mailto:niranjan991100@gmail.com"
-						class="modern-pill-button"
+						class="modern-pill-button magnetic-item"
 					>
 						<span>Lets connect</span>
 						<span class="icon-container">
@@ -1300,6 +1351,66 @@
 							</div>
 						</div>
 					</li>
+                    <!-- --- NEW CARD 5 --- -->
+                    <li class="project-card reveal" style="--delay: 400ms;">
+						<img src="images/placeholder.png" alt="Project 5 placeholder" class="project-image">
+						<div class="card-body">
+							<h3 class="project-title">Sales Forecast Dashboard</h3>
+							<p class="project-description">Built a predictive sales forecasting model and an interactive Tableau dashboard to track performance and targets.</p>
+							<div class="card-footer">
+								<ul class="project-tech-list">
+									<li>Tableau</li>
+									<li>Python</li>
+								</ul>
+								<a href="#" class="project-view-button" target="_blank">View</a>
+							</div>
+						</div>
+					</li>
+                    <!-- --- NEW CARD 6 --- -->
+                    <li class="project-card reveal" style="--delay: 500ms;">
+						<img src="images/placeholder.png" alt="Project 6 placeholder" class="project-image">
+						<div class="card-body">
+							<h3 class="project-title">Data Pipeline Automation</h3>
+							<p class="project-description">Engineered a robust ETL pipeline using Python to automate data extraction, transformation, and loading for reporting.</p>
+							<div class="card-footer">
+								<ul class="project-tech-list">
+									<li>Python</li>
+									<li>ETL</li>
+								</ul>
+								<a href="#" class="project-view-button" target="_blank">View</a>
+							</div>
+						</div>
+					</li>
+                    <!-- --- NEW CARD 7 --- -->
+                    <li class="project-card reveal" style="--delay: 600ms;">
+						<img src="images/placeholder.png" alt="Project 7 placeholder" class="project-image">
+						<div class="card-body">
+							<h3 class="project-title">Customer Sentiment Analysis</h3>
+							<p class="project-description">Analyzed customer reviews using NLP techniques in Python to categorize feedback and identify key satisfaction drivers.</p>
+							<div class="card-footer">
+								<ul class="project-tech-list">
+									<li>NLP</li>
+                                    <li>Pandas</li>
+								</ul>
+								<a href="#" class="project-view-button" target="_blank">View</a>
+							</div>
+						</div>
+					</li>
+                    <!-- --- NEW CARD 8 --- -->
+                    <li class="project-card reveal" style="--delay: 700ms;">
+						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image">
+						<div class="card-body">
+							<h3 class="project-title">Excel Financial Modeling</h3>
+							<p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation, featuring scenario analysis.</p>
+							<div class="card-footer">
+								<ul class="project-tech-list">
+									<li>Excel</li>
+									<li>Finance</li>
+								</ul>
+								<a href="#" class="project-view-button" target="_blank">View</a>
+							</div>
+						</div>
+					</li>
 				</ul>
 				 <div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large special-link" target="_blank">View All on GitHub</a>
@@ -1309,45 +1420,53 @@
 			<section id="certs" class="reveal">
 				<h2 class="section-heading">Credentials</h2>
 				<ul class="certs-grid">
+					<!-- --- Card 1 (Revised) --- -->
 					<li class="credential-card reveal">
 						<div class="card-content">
-							<img src="Certificates/Wolfram.png" alt="Wolfram Research Logo" class="cert-issuer-logo">
-							<h3 class="cert-title">Statistics Foundations Professional Certificate</h3>
-							<p class="cert-issuer">Issued by Wolfram Research</p>
-							<a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="special-link cert-link" target="_blank">
+                            <div>
+                                <h3 class="cert-title">Statistics Foundations Professional Certificate</h3>
+                                <p class="cert-issuer">Issued by Wolfram Research</p>
+                            </div>
+							<a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="credential-button" target="_blank">
 								<span>View Credential</span>
 								<i class="fas fa-arrow-right"></i>
 							</a>
 						</div>
 					</li>
+					<!-- --- Card 2 (Revised) --- -->
 					<li class="credential-card reveal" style="--delay: 100ms;">
 						<div class="card-content">
-							<img src="Certificates/Microsoft certificates.png" alt="Microsoft Logo" class="cert-issuer-logo">
-							<h3 class="cert-title">Career Essentials in Data Analysis</h3>
-							<p class="cert-issuer">Issued by Microsoft</p>
-							<a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="special-link cert-link" target="_blank">
+                            <div>
+                                <h3 class="cert-title">Career Essentials in Data Analysis</h3>
+                                <p class="cert-issuer">Issued by Microsoft</p>
+                            </div>
+							<a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank">
 								<span>View Credential</span>
 								<i class="fas fa-arrow-right"></i>
 							</a>
 						</div>
 					</li>
+					<!-- --- Card 3 (Revised) --- -->
 					<li class="credential-card reveal" style="--delay: 200ms;">
 						<div class="card-content">
-							<img src="Certificates/Cisco.png" alt="Cisco Logo" class="cert-issuer-logo">
-							<h3 class="cert-title">Data Analytics Essentials</h3>
-							<p class="cert-issuer">Issued by Cisco</p>
-							<a href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile" class="special-link cert-link" target="_blank">
+                            <div>
+                                <h3 class="cert-title">Data Analytics Essentials</h3>
+                                <p class="cert-issuer">Issued by Cisco</p>
+                            </div>
+							<a href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile" class="credential-button" target="_blank">
 								<span>View Credential</span>
 								<i class="fas fa-arrow-right"></i>
 							</a>
 						</div>
 					</li>
+					<!-- --- Card 4 (Revised) --- -->
 					<li class="credential-card reveal" style="--delay: 300ms;">
 						<div class="card-content">
-							<img src="Certificates/Business Analyst certificate.png" alt="Microsoft Logo" class="cert-issuer-logo">
-							<h3 class="cert-title">Career Essentials in Business Analysis</h3>
-							<p class="cert-issuer">Issued by Microsoft</p>
-							<a href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin" class="special-link cert-link" target="_blank">
+                            <div>
+                                <h3 class="cert-title">Career Essentials in Business Analysis</h3>
+                                <p class="cert-issuer">Issued by Microsoft</p>
+                            </div>
+							<a href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank">
 								<span>View Credential</span>
 								<i class="fas fa-arrow-right"></i>
 							</a>
@@ -1356,20 +1475,32 @@
 				</ul>
 			</section>
 
+			<!-- --- GET IN TOUCH (Revised Section) --- -->
 			<section id="contact" class="reveal">
-				<h2 class="title">Get In Touch</h2>
-				<p>
-					I'm actively seeking new opportunities and I'm excited to
-					collaborate on new projects. My inbox is always open, so please
-					feel free to reach out — I'd love to chat.
-				</p>
-				<div class="contact-cta-container">
-					<a
-						href="mailto:niranjan991100@gmail.com"
-						class="btn btn-large special-link"
-						>Say Hello</a
-					>
-				</div>
+                <div class="contact-container">
+                    <div class="contact-text">
+                        <h2 class="title">Get In Touch</h2>
+                        <p>
+                            I'm actively seeking new opportunities and I'm excited to
+                            collaborate on challenging projects. My inbox is always open, so please
+                            feel free to reach out — let's build something great together.
+                        </p>
+                        <a href="mailto:niranjan991100@gmail.com" class="modern-pill-button magnetic-item">
+                            <span>Say Hello</span>
+                            <span class="icon-container">
+                                <span>↗</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="contact-details">
+                         <h3>Connect With Me</h3>
+                         <ul class="contact-social-links">
+                             <li><a href="https://github.com/niranjan910" target="_blank" class="magnetic-item" aria-label="Github"><i class="fab fa-github"></i></a></li>
+                             <li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="magnetic-item" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+                             <li><a href="mailto:niranjan991100@gmail.com" class="magnetic-item" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+                         </ul>
+                    </div>
+                </div>
 			</section>
 		</main>
 
@@ -1378,6 +1509,7 @@
 				>Designed & Built by Niranjan Kumar</a
 			>
 		</footer>
+
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
 				const revealObserver = new IntersectionObserver(
@@ -1416,12 +1548,16 @@
 						e.stopPropagation();
 						hamburger.classList.toggle("active");
 						navLinks.classList.toggle("active");
+                        document.body.classList.toggle('nav-open');
 					});
+
+                    // Close menu when clicking a link inside
 					navLinks.querySelectorAll("a").forEach((link) => {
 						if (link.getAttribute("href").startsWith("#")) {
 							link.addEventListener("click", () => {
 								hamburger.classList.remove("active");
 								navLinks.classList.remove("active");
+                                document.body.classList.remove('nav-open');
 							});
 						}
 					});
@@ -1466,34 +1602,25 @@
 					sectionObserver.observe(section);
 				});
 
-				// 3D Tilt Effect for Wrapper
-				function apply3DTilt(wrapper) {
-					if (wrapper) {
-						wrapper.addEventListener("mousemove", (e) => {
-							const { left, top, width, height } =
-								wrapper.getBoundingClientRect();
-							const x = e.clientX - left;
-							const y = e.clientY - top;
-							const rotateX = ((y - height / 2) / (height / 2)) * -8;
-							const rotateY = ((x - width / 2) / (width / 2)) * 8;
-							wrapper.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-						});
+                /* --- NEW: Magnetic Elements Effect --- */
+                const magneticItems = document.querySelectorAll('.magnetic-item');
+                const strength = 50; 
 
-						wrapper.addEventListener("mouseleave", () => {
-							wrapper.style.transform =
-								"perspective(1000px) rotateX(0) rotateY(0) scale(1)";
-						});
-					}
-				}
-				
-				// Apply to profile image
-				apply3DTilt(document.querySelector(".about-image-wrapper"));
+                magneticItems.forEach(item => {
+                    item.addEventListener('mousemove', (e) => {
+                        const pos = item.getBoundingClientRect();
+                        const x = e.clientX - pos.left - pos.width / 2;
+                        const y = e.clientY - pos.top - pos.height / 2;
 
-				// Apply to all credential cards
-				document.querySelectorAll(".credential-card").forEach(card => {
-					apply3DTilt(card);
-				});
+                        item.style.transition = 'transform 0.1s ease';
+                        item.style.transform = `translateX(${x / (pos.width / strength)}px) translateY(${y / (pos.height / strength)}px)`;
+                    });
 
+                    item.addEventListener('mouseleave', () => {
+                        item.style.transition = 'transform 0.3s ease';
+                        item.style.transform = 'translateX(0) translateY(0)';
+                    });
+                });
 			});
 		</script>
 	</body>
