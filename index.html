@@ -7,6 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -23,11 +24,8 @@
             --accent: #0056b3;
             --accent-tint: rgba(0, 86, 179, 0.1);
 
-            /* --- MODIFIED FONT DECLARATIONS --- */
-            --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            --font-body: Georgia, serif;
+            --font-sans: 'Inter', sans-serif;
             --font-mono: 'SF Mono', 'Fira Code', monospace;
-            
             --border-radius: 4px;
             --nav-height: 100px;
             --transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -43,8 +41,7 @@
         }
 
         body {
-            /* MODIFIED: Changed to --font-body */
-            font-family: var(--font-body);
+            font-family: var(--font-sans);
             color: var(--text-secondary);
             -webkit-font-smoothing: antialiased;
             background-color: var(--bg-main);
@@ -53,6 +50,7 @@
         }
         
         /* --- ACCESSIBILITY FIX --- */
+        /* Hides the "Skip to Content" link visually by default */
         .skip-to-content {
             position: absolute;
             top: auto;
@@ -63,6 +61,7 @@
             z-index: -999;
         }
         
+        /* Brings the link into view when a user tabs to it */
         .skip-to-content:focus {
             left: 1rem;
             top: 1rem;
@@ -87,8 +86,7 @@
         }
         #contact::after { display: none; }
 
-        /* MODIFIED: Added --font-heading to headings */
-        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--text-primary); font-weight: 700; line-height: 1.2; }
+        h1, h2, h3, h4 { color: var(--text-primary); font-weight: 700; line-height: 1.2; }
         p { margin-bottom: 1rem; max-width: 65ch; }
         a { text-decoration: none; color: var(--text-secondary); transition: var(--transition-fast); }
         a:hover, button:hover { color: var(--accent); }
@@ -107,12 +105,20 @@
             height: 70px; box-shadow: 0 10px 30px -10px var(--shadow-color);
         }
         .nav-logo a { display: block; }
-        .nav-logo img { height: 40px; width: auto; }
+        .nav-logo img { height: 40px; width: auto; transition: var(--transition-fast); } /* Added transition */
         .nav-links ol { list-style: none; display: flex; align-items: center; }
         .nav-links li { margin: 0 1.25rem; }
         .nav-links li a:not(.btn) { color: var(--text-on-image); padding: 0.75rem 0; font-size: 0.9rem; position: relative; transition: var(--transition-fast); }
         .main-nav.scrolled .nav-links li a:not(.btn) { color: var(--text-primary); }
         .main-nav.scrolled .nav-links li a:not(.btn):hover { color: var(--accent); }
+
+        /* MODIFIED: Added style for active navigation links */
+        .nav-links li a:not(.btn).active {
+            font-weight: 700;
+        }
+        .main-nav.scrolled .nav-links li a:not(.btn).active {
+            color: var(--accent);
+        }
 
         /* --- HERO SECTION --- */
         #hero {
@@ -224,7 +230,22 @@
         .main-nav.scrolled .hamburger-menu .bar { background-color: var(--text-primary); }
 
         @media (max-width: 1080px) { main { padding: 0 50px; } #hero { margin: 0 -50px; padding-left: 50px; padding-right: 50px; } .hero-main-heading { font-size: 60px; } .feature-item { max-width: 300px; } }
-        @media (max-width: 768px) { main { padding: 0 25px; } #hero { justify-content: flex-start; gap: 4rem; padding: calc(var(--nav-height) + 1rem) 25px 3rem 25px; margin: 0 -25px; } .hero-main-heading { font-size: 48px; } .hero-features-container { align-items: flex-start; } .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 10; box-shadow: -10px 0 30px -15px var(--shadow-color); } .nav-links.active { transform: translateX(0); } .nav-links ol { flex-direction: column; gap: 2rem; text-align: center;} .nav-links li a:not(.btn) { color: var(--text-primary); } .nav-links li a.active { color: var(--accent); } .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 12; } .hamburger-menu.active .bar:nth-child(1){ transform: translateY(11px) rotate(45deg); } .hamburger-menu.active .bar:nth-child(2){ opacity: 0; } .hamburger-menu.active .bar:nth-child(3){ transform: translateY(-11px) rotate(-45deg); } }
+        @media (max-width: 768px) { 
+            main { padding: 0 25px; } 
+            #hero { justify-content: flex-start; gap: 4rem; padding: calc(var(--nav-height) + 1rem) 25px 3rem 25px; margin: 0 -25px; } 
+            .hero-main-heading { font-size: 48px; } 
+            .hero-features-container { align-items: flex-start; } 
+            .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 10; box-shadow: -10px 0 30px -15px var(--shadow-color); } 
+            .nav-links.active { transform: translateX(0); } 
+            .nav-links ol { flex-direction: column; gap: 2rem; text-align: center;} 
+            .nav-links li a:not(.btn) { color: var(--text-primary); } 
+            /* MODIFIED: Added font-weight to active link in mobile view */
+            .nav-links li a.active { color: var(--accent); font-weight: 700; } 
+            .hamburger-menu { display: flex; flex-direction: column; justify-content: space-around; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 12; } 
+            .hamburger-menu.active .bar:nth-child(1){ transform: translateY(11px) rotate(45deg); } 
+            .hamburger-menu.active .bar:nth-child(2){ opacity: 0; } 
+            .hamburger-menu.active .bar:nth-child(3){ transform: translateY(-11px) rotate(-45deg); } 
+        }
         @media (max-width: 600px) { main { padding: 0 20px; } #hero { margin: 0 -20px; padding-left: 20px; padding-right: 20px; } .hero-main-heading { font-size: 40px; } }
 
     </style>
@@ -234,7 +255,8 @@
     
     <nav class="main-nav" id="mainNav">
         <div class="nav-logo reveal">
-            <a href="#"><img src="Logo/Logo.svg" alt="Niranjan Kumar Logo"></a>
+             <!-- MODIFIED: Added an ID to the logo image -->
+            <a href="#"><img id="navLogoImage" src="Logo/Logo.svg" alt="Niranjan Kumar Logo"></a>
         </div>
         <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
@@ -366,8 +388,7 @@
                         <img src="Certificates/Public speaking.png" alt="Public Speaking Skills Professional Certificate" class="project-image">
                         <div class="card-inner cert-inner">
                             <h3 class="cert-title">Public Speaking Skills Professional Certificate</h3>
-                            <p class="cert-issuer">Issued by Toastmasters International</p>
-                            <a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+                            <p class="cert-issuer">Issued by Toastmasters International</p>                            <a href="#" class="cert-link special-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
                         </div>
                     </div>
                 </li>
@@ -414,10 +435,20 @@
         }, { rootMargin: '0px 0px -100px 0px' });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+        // --- MODIFIED: Upgraded scroll listener for logo change ---
         const nav = document.getElementById('mainNav');
+        const logo = document.getElementById('navLogoImage');
+        const originalLogoSrc = 'Logo/Logo.svg';
+        const scrolledLogoSrc = 'Logo/Logo Dark.svg';
+
         window.addEventListener('scroll', () => {
-            nav.classList.toggle('scrolled', window.scrollY > 50);
+            const isScrolled = window.scrollY > 50;
+            nav.classList.toggle('scrolled', isScrolled);
+            if (logo) {
+                logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
+            }
         });
+        // --- End of modification ---
 
         const hamburger = document.getElementById('hamburgerMenu');
         const navLinks = document.getElementById('navLinks');
@@ -463,10 +494,12 @@
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const id = entry.target.getAttribute('id');
-                if (entry.isIntersecting) {
-                    Object.values(navLinkMap).forEach(link => link.classList.remove('active'));
-                    if(navLinkMap[id]) {
-                       navLinkMap[id].classList.add('active');
+                if (navLinkMap[id]) {
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+                        Object.values(navLinkMap).forEach(link => link.classList.remove('active'));
+                        navLinkMap[id].classList.add('active');
+                    } else {
+                        navLinkMap[id].classList.remove('active');
                     }
                 }
             });
