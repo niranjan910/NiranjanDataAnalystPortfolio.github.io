@@ -21,22 +21,22 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES (Fixed Light Theme) --- */
+			/* --- CORE STYLES (Light Theme) --- */
 			:root {
 				--bg-main: #f1f1f1;
-				--text-primary: #010101;
+				--text-primary: #101010;
 				--text-secondary: #555555;
-				--text-on-image: #f1f1f1; /* For text on dark hero banner */
+				--text-on-image: #f1f1f1;
 				--card-bg: #ffffff;
 				--border-color: #dddddd;
 				--shadow-color: rgba(0, 0, 0, 0.08);
-				--accent-gradient: linear-gradient(
-					135deg,
-					#444444,
-					#010101
-				);
-				--accent-color-for-hover: #333333; /* For solid hover effects */
-				--accent-tint: rgba(0, 0, 0, 0.05);
+				--accent: #d97706; /* Updated: Orange accent */
+				--accent-tint: rgba(
+					217,
+					119,
+					6,
+					0.1
+				); /* Updated: Orange tint */
 
 				--font-sans: "Inter", sans-serif;
 				--font-mono: "SF Mono", "Fira Code", monospace;
@@ -69,6 +69,30 @@
 				overflow-x: hidden;
 			}
 
+			.skip-to-content {
+				position: absolute;
+				top: auto;
+				left: -9999px;
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
+				z-index: -999;
+			}
+
+			.skip-to-content:focus {
+				left: 1rem;
+				top: 1rem;
+				width: auto;
+				height: auto;
+				overflow: auto;
+				z-index: 10000;
+				padding: 0.5rem 1rem;
+				background-color: var(--accent);
+				color: var(--card-bg);
+				border-radius: var(--border-radius);
+				font-weight: 700;
+			}
+
 			main {
 				padding: 0 60px;
 				position: relative;
@@ -91,7 +115,7 @@
 				);
 				margin: 100px auto 0 auto;
 			}
-			#contact::after, #certs::after {
+			#contact::after {
 				display: none;
 			}
 
@@ -116,7 +140,7 @@
 			}
 			a:hover,
 			button:hover {
-				color: var(--accent-color-for-hover);
+				color: var(--accent);
 			}
 
 			.reveal {
@@ -180,18 +204,16 @@
 				.nav-links
 				li
 				a:not(.btn):not(.modern-pill-button):hover {
-				color: var(--accent-color-for-hover);
+				color: var(--accent);
 			}
 			.nav-links li a:not(.btn):not(.modern-pill-button).active {
 				font-weight: 700;
-				color: #f1f1f1;
 			}
 			.main-nav.scrolled
 				.nav-links
 				li
 				a:not(.btn):not(.modern-pill-button).active {
-				font-weight: 700;
-                color: var(--text-primary);
+				color: var(--accent);
 			}
 
 			/* --- HERO SECTION --- */
@@ -200,6 +222,7 @@
 				flex-direction: column;
 				justify-content: space-between;
 				min-height: 100vh;
+				text-align: left;
 				position: relative;
 				margin: 0 -60px;
 				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
@@ -208,7 +231,6 @@
 				background-position: center;
 				background-repeat: no-repeat;
 			}
-			
 			#hero::after {
 				display: none;
 			}
@@ -219,21 +241,11 @@
 				color: var(--text-on-image);
 			}
 			.hero-main-heading {
-				font-weight: 700;
+				font-weight: 600;
 				letter-spacing: -1px;
 				margin: 0;
 				font-size: clamp(2.5rem, 6vw, 4.5rem);
 				line-height: 1.1;
-			}
-			.gradient-text {
-				background: -webkit-linear-gradient(
-					135deg,
-					#ffffff,
-					#bebebe
-				);
-				-webkit-background-clip: text;
-				background-clip: text;
-				color: transparent;
 			}
 
 			.hero-cta-container {
@@ -257,48 +269,123 @@
 
 			/* --- SHARED MODERN BUTTON STYLE --- */
 			.modern-pill-button {
-				display: inline-flex; align-items: center; gap: 12px; background-color: white; color: #010101 !important; font-weight: 500; font-size: 1rem; border-radius: 9999px; padding: 4px 6px 4px 18px; height: 44px; line-height: 1; font-family: var(--font-sans); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
+				background-color: white;
+				color: black !important;
+				font-weight: 500;
+				font-size: 1rem;
+				border-radius: 9999px;
+				padding: 4px 6px 4px 18px;
+				height: 44px;
+				line-height: 1;
+				font-family: var(--font-sans);
+				text-decoration: none;
+				transition: transform 0.2s ease, box-shadow 0.2s ease;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 			}
+
 			.modern-pill-button .icon-container {
-				display: flex; justify-content: center; align-items: center; width: 34px; height: 34px; background-color: #010101; color: white; border-radius: 50%; font-size: 1.3rem; line-height: 1;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 34px;
+				height: 34px;
+				background-color: black;
+				color: white;
+				border-radius: 50%;
+				font-size: 1.3rem;
+				line-height: 1;
 			}
+
 			.modern-pill-button:hover {
-				color: #010101 !important; transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+				color: black !important;
+				transform: translateY(-3px) scale(1.03);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 			}
-			.hero-text-container, .hero-features-container, .hero-cta-container { animation-delay: 200ms; }
-			
+
+			.hero-text-container {
+				animation: fadeInSlideUp 0.8s forwards 200ms;
+			}
+			.hero-features-container {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+				animation: fadeInSlideUp 0.8s forwards 400ms;
+			}
 			.feature-item {
-				display: flex; align-items: flex-start; gap: 1rem; max-width: 380px;
+				display: flex;
+				align-items: flex-start;
+				gap: 1rem;
+				max-width: 380px;
 			}
 			.feature-item img {
-				width: 24px; height: auto; margin-top: 6px;
+				width: 24px;
+				height: auto;
+				margin-top: 6px;
 			}
+
 			.feature-item h4 {
-				font-size: 1.125rem; font-weight: 600; margin-bottom: 0.25rem; 
+				font-size: 1.125rem;
+				font-weight: 600;
+				margin-bottom: 0.25rem;
 			}
-			.feature-item p { 
-				font-size: 1rem; line-height: 1.6; color: var(--text-on-image); opacity: 0.9; margin: 0;
+			.feature-item p {
+				font-size: 1rem;
+				line-height: 1.6;
+				color: var(--text-on-image);
+				opacity: 0.9;
+				margin: 0;
 			}
 
 			@keyframes fadeInSlideUp {
-				from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } 
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
 			}
+
 			@keyframes spin {
-				from { transform: rotate(0deg); } to { transform: rotate(360deg); }
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
 			}
 
 			.btn-large {
-				padding: 1.25rem 2rem; border-radius: var(--border-radius); border: 1px solid var(--text-primary); color: var(--text-primary); font-weight: 500; transition: all 0.25s ease;
+				padding: 1.25rem 2rem;
+				border-radius: var(--border-radius);
+				border: 1px solid var(--accent);
+				color: var(--accent);
 			}
-			.btn-large:hover, a.btn-large:hover span {
-				background: var(--text-primary); color: var(--bg-main);
+			a.special-link:hover {
+				color: var(--accent) !important;
 			}
-			
 			h2.section-heading {
-				display: flex; align-items: center; margin-bottom: 4rem; font-size: clamp(26px, 5vw, 32px); width: 100%;
+				display: flex;
+				align-items: center;
+				margin-bottom: 1.5rem;
+				font-size: clamp(26px, 5vw, 32px);
+				width: 100%;
 			}
 			h2.section-heading::after {
-				content: ""; display: block; position: relative; flex-grow: 1; height: 1px; margin-left: 1.5rem; background: var(--accent-gradient); transform: scaleX(0); transform-origin: left; transition: transform 0.8s ease-out;
+				content: "";
+				display: block;
+				position: relative;
+				flex-grow: 1;
+				height: 1px;
+				margin-left: 1.5rem;
+				background-color: var(--border-color);
+				transform: scaleX(0);
+				transform-origin: left;
+				transition: transform 0.8s ease-out;
 			}
 			h2.section-heading.is-visible::after {
 				transform: scaleX(1);
@@ -306,81 +393,420 @@
 
 			/* --- ABOUT SECTION --- */
 			.about-subheader {
-				display: flex; align-items: center; gap: 1rem; margin-bottom: 3rem;
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				margin-bottom: 3rem;
 			}
+
 			.about-subheader .icon {
-				width: 24px; height: 24px; color: var(--text-primary); animation: spin 8s linear infinite;
+				width: 24px;
+				height: 24px;
+				color: var(--accent);
+				animation: spin 6s linear infinite;
 			}
 
 			.about-subheader p {
-				font-size: 0.95rem; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-primary); margin: 0;
+				font-size: 0.95rem;
+				font-weight: 500;
+				letter-spacing: 0.5px;
+				text-transform: uppercase;
+				color: var(--text-primary);
+				margin: 0;
 			}
 
 			#about .about-container {
-				display: grid; grid-template-columns: 1fr; gap: 2rem; background: rgba(255, 255, 255, 0.5); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 3rem; border-radius: 16px;
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 2rem;
+				background: rgba(255, 255, 255, 0.5);
+				-webkit-backdrop-filter: blur(10px);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				padding: 3rem;
+				border-radius: 16px;
 			}
+
 			@media (min-width: 992px) {
 				#about .about-container {
-					grid-template-columns: 300px 1fr; gap: 3rem;
+					grid-template-columns: 300px 1fr;
+					gap: 3rem;
 				}
 			}
-			
+
+			.about-left {
+				text-align: center;
+			}
+
 			.about-image-wrapper {
-				max-width: 250px; margin: 0 auto 1.5rem; border-radius: 50%; position: relative; transform-style: preserve-3d; transition: transform 0.5s;
+				max-width: 250px;
+				margin: 0 auto 1.5rem;
+				border-radius: 50%;
+				position: relative;
+				transform-style: preserve-3d;
+				transition: transform 0.5s;
 			}
+
 			.about-image-wrapper img {
-				width: 100%; height: auto; border-radius: 50%; border: 4px solid var(--card-bg); box-shadow: 0 10px 30px var(--shadow-color);
+				width: 100%;
+				height: auto;
+				border-radius: 50%;
+				border: 4px solid var(--card-bg);
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 			}
+
 			.about-name {
-				font-size: clamp(1.8rem, 2.5vw, 2.2rem); margin-bottom: 0.5rem;
+				font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+				margin-bottom: 0.5rem;
+				color: var(--text-primary);
 			}
+
 			.about-title {
-				font-family: var(--font-mono); font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem;
+				font-family: var(--font-mono);
+				font-size: 1rem;
+				color: var(--accent);
+				margin-bottom: 1.5rem;
 			}
+
+			.contact-info {
+				text-align: left;
+				font-size: 0.9rem;
+			}
+
+			.contact-info ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+
+			.contact-info li {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin-bottom: 0.8rem;
+			}
+
 			.contact-info i {
-				color: var(--text-primary); font-size: 1.2rem;
+				color: var(--accent);
+				font-size: 1.2rem;
 			}
+
+			.about-right .bio {
+				font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+				margin-bottom: 3rem;
+				line-height: 1.7;
+				max-width: 70ch;
+			}
+
+			.about-details-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 2.5rem;
+			}
+
 			.about-details-grid h3 {
-				font-size: clamp(1.2rem, 1.8vw, 1.4rem); border-image: var(--accent-gradient) 1; border-bottom: 2px solid; padding-bottom: 0.5rem; margin-bottom: 1.5rem;
+				font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+				border-bottom: 2px solid var(--accent);
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.5rem;
 			}
+
+			.core-skills-list {
+				list-style: none;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+			}
+
 			.core-skills-list li {
-				font-family: var(--font-mono); background: var(--accent-tint); color: var(--accent-color-for-hover); font-weight: 500; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; transition: all 0.3s ease;
+				font-family: var(--font-mono);
+				background: var(--accent-tint);
+				color: var(--accent);
+				padding: 0.5rem 1rem;
+				border-radius: 20px;
+				font-size: 0.9rem;
+				transition: all 0.3s ease;
 			}
+
 			.core-skills-list li:hover {
-				transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); background: var(--text-primary); color: var(--bg-main);
+				transform: translateY(-3px);
+				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.software-skills-list {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 1.5rem;
+				list-style: none;
+				padding: 0;
+				margin-top: 1rem;
+			}
+
+			.software-skills-list li {
+				transition: transform 0.3s ease;
 			}
 			.software-skills-list li:hover {
 				transform: translateY(-5px);
 			}
 			.software-skills-list img {
-				width: 40px; height: 40px;
+				width: 40px;
+				height: 40px;
+			}
+
+			.timeline {
+				position: relative;
+			}
+
+			.timeline::after {
+				content: "";
+				position: absolute;
+				width: 2px;
+				background-color: var(--border-color);
+				top: 0.5rem;
+				bottom: 0;
+				left: 7px;
+				z-index: 1;
+			}
+
+			.timeline-item {
+				padding: 0 0 2.5rem 30px;
+				position: relative;
+				z-index: 2;
 			}
 
 			.timeline-item::before {
-				background: var(--accent-gradient); border: 2px solid var(--card-bg);
+				content: "";
+				height: 15px;
+				width: 15px;
+				position: absolute;
+				top: 0.5rem;
+				left: 0;
+				background-color: var(--accent);
+				border: 2px solid var(--card-bg);
+				border-radius: 50%;
+				z-index: 2;
 			}
 
-			/* --- PROJECTS & CERTS --- */
-            .spotlight-card a { color: var(--text-primary); text-decoration: none; }
-			.project-title a:hover { text-decoration: underline; }
-            .project-tech-list { margin: 1rem 0; padding:0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
-            .project-tech-list li { font-family: var(--font-mono); font-size: 0.8rem; background-color: var(--accent-tint); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: 20px;}
-            .project-link-wrapper { margin-top: auto; }
-            .project-view-link { font-weight: 500; font-size: 0.9rem;}
-            .project-view-link:hover .arrow-icon { transform: translateX(5px); }
-            .arrow-icon { transition: transform 0.2s ease-out; display: inline-block; }
-			.projects-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-			.projects-footer { margin-top: 4rem; text-align: center; }
+			.timeline-content h4 {
+				font-size: 1.1rem;
+				margin-bottom: 0.25rem;
+				font-weight: 600;
+			}
+			.timeline-content p {
+				margin: 0;
+				font-size: 1rem;
+			}
+			.timeline-date {
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+				margin-bottom: 0.5rem;
+				color: var(--accent);
+			}
 
-            .certs-grid { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
-            .cert-inner { gap: 0.5rem; }
-            .cert-title { font-size: 1.25rem; }
-            .cert-issuer { font-size: 0.9rem; margin-bottom: auto; }
-            .cert-link { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500; color: var(--text-primary); }
-            .cert-link:hover { text-decoration: underline; }
+			/* --- END OF ABOUT SECTION STYLES --- */
 
+			.project-filters {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+				margin-bottom: 2rem;
+			}
+			.project-filters button {
+				font-family: var(--font-mono);
+				font-size: 0.85rem;
+				background-color: transparent;
+				border: 1px solid var(--border-color);
+				border-radius: 20px;
+				padding: 0.5rem 1rem;
+				cursor: pointer;
+			}
+			.project-filters button:hover {
+				background-color: var(--accent-tint);
+				color: var(--accent);
+				border-color: var(--accent);
+			}
+			.project-filters button.active {
+				background-color: var(--accent);
+				color: var(--card-bg);
+				border-color: var(--accent);
+			}
+			.projects-grid {
+				list-style: none;
+				display: grid;
+				gap: 1.5rem;
+				grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+			}
+			#contact {
+				text-align: center;
+				max-width: 650px;
+				margin: 0 auto;
+			}
+			#contact .title {
+				font-size: clamp(40px, 5vw, 60px);
+			}
+			.footer {
+				text-align: center;
+				padding: 1.5rem;
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+			}
+			.hamburger-menu {
+				display: none;
+			}
+			.hamburger-menu .bar {
+				background-color: var(--text-on-image);
+				transition: var(--transition-fast);
+			}
+			.main-nav.scrolled .hamburger-menu .bar {
+				background-color: var(--text-primary);
+			}
+			.spotlight-card {
+				background-color: var(--card-bg);
+				border-radius: var(--border-radius);
+				transition: transform 0.3s ease, box-shadow 0.3s ease,
+					border-color 0.3s ease;
+				position: relative;
+				overflow: hidden;
+				border: 1px solid var(--border-color);
+				box-shadow: 0 4px 10px -2px var(--shadow-color);
+			}
 			.spotlight-card:hover {
-				transform: translateY(-8px); border-color: #bbbbbb; box-shadow: 0 12px 24px -4px var(--shadow-color), 0 8px 16px -4px var(--shadow-color);
+				transform: translateY(-8px);
+				border-color: var(--accent);
+				box-shadow: 0 12px 24px -4px var(--shadow-color),
+					0 8px 16px -4px var(--shadow-color);
+			}
+			.card-content {
+				position: relative;
+				z-index: 2;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+			.project-image {
+				width: 100%;
+				height: 180px;
+				object-fit: cover;
+			}
+			.card-inner {
+				padding: 1.75rem;
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+			}
+
+			@media (max-width: 1080px) {
+				main {
+					padding: 0 50px;
+				}
+				#hero {
+					margin: 0 -50px;
+					padding-left: 50px;
+					padding-right: 50px;
+				}
+				.hero-main-heading {
+					font-size: 60px;
+				}
+				.feature-item {
+					max-width: 300px;
+				}
+				.hero-cta-container {
+					right: 50px;
+				}
+			}
+			@media (max-width: 768px) {
+				main {
+					padding: 0 25px;
+				}
+				#hero {
+					justify-content: center;
+					text-align: center;
+					align-items: center;
+					gap: 3rem;
+					padding: calc(var(--nav-height) + 1rem) 25px 3rem 25px;
+					margin: 0 -25px;
+				}
+				.hero-main-heading {
+					font-size: 40px;
+				}
+				.hero-cta-container,
+				.hero-features-container {
+					position: static;
+					animation: none;
+					opacity: 1;
+					transform: none;
+					text-align: center;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+				.hero-cta-text {
+					font-size: 1.5rem;
+				}
+				.nav-links {
+					display: flex;
+					position: fixed;
+					top: 0;
+					right: 0;
+					height: 100vh;
+					width: min(75vw, 350px);
+					background-color: var(--card-bg);
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					transform: translateX(100%);
+					transition: transform 0.3s ease-out;
+					z-index: 10;
+					box-shadow: -10px 0 30px -15px var(--shadow-color);
+				}
+				.nav-links.active {
+					transform: translateX(0);
+				}
+				.nav-links ol {
+					flex-direction: column;
+					gap: 2rem;
+					text-align: center;
+				}
+				.nav-links li a:not(.btn):not(.modern-pill-button) {
+					color: var(--text-primary);
+				}
+				.nav-links li a:not(.btn):not(.modern-pill-button).active {
+					color: var(--accent);
+					font-weight: 700;
+				}
+				.hamburger-menu {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					width: 30px;
+					height: 25px;
+					background: transparent;
+					border: none;
+					cursor: pointer;
+					padding: 0;
+					z-index: 12;
+				}
+				.hamburger-menu.active .bar:nth-child(1) {
+					transform: translateY(11px) rotate(45deg);
+				}
+				.hamburger-menu.active .bar:nth-child(2) {
+					opacity: 0;
+				}
+				.hamburger-menu.active .bar:nth-child(3) {
+					transform: translateY(-11px) rotate(-45deg);
+				}
+			}
+			@media (max-width: 600px) {
+				main {
+					padding: 0 20px;
+				}
+				#hero {
+					margin: 0 -20px;
+					padding-left: 20px;
+					padding-right: 20px;
+				}
 			}
 		</style>
 	</head>
@@ -388,93 +814,921 @@
 		<a href="#main-content" class="skip-to-content">Skip to Content</a>
 
 		<nav class="main-nav" id="mainNav">
-			<!-- Nav content is the same -->
+			<div class="nav-logo reveal">
+				<a href="#"
+					><img
+						id="navLogoImage"
+						src="Logo/Logo.svg"
+						alt="Niranjan Kumar Logo"
+				/></a>
+			</div>
+			<button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</button>
+			<div class="nav-links" id="navLinks">
+				<ol>
+					<li><a href="#about">About</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#certs">Certificates</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li>
+						<a
+							href="YOUR_RESUME_LINK.pdf"
+							class="modern-pill-button"
+							target="_blank"
+						>
+							<span>Resume</span>
+							<span class="icon-container">
+								<span>↗</span>
+							</span>
+						</a>
+					</li>
+				</ol>
+			</div>
 		</nav>
 		<main id="main-content">
-			<!-- Hero section is the same -->
+			<section id="hero">
+				<div class="hero-text-container">
+					<h1 class="hero-main-heading">Decode the Data.</h1>
+					<h1 class="hero-main-heading">Discover the Story.</h1>
+				</div>
+				<div class="hero-features-container">
+					<div class="feature-item">
+						<img src="Logo/timer-01.svg" alt="Feature Icon" />
+						<div>
+							<h4>Real-Time Analytics</h4>
+							<p>Instant Insights, Smarter Decisions</p>
+						</div>
+					</div>
+					<div class="feature-item">
+						<img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
+						<div>
+							<h4>Precision Analytics</h4>
+							<p>Custom Insights for Your Data</p>
+						</div>
+					</div>
+					<div class="feature-item">
+						<img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
+						<div>
+							<h4>End-to-End Data Orchestration</h4>
+							<p>
+								Transforming Fragmented Information into Coherent
+								Insights
+							</p>
+						</div>
+					</div>
+				</div>
 
-			<section id="about" class="reveal">
-				<!-- About section is the same -->
+				<div class="hero-cta-container">
+					<p class="hero-cta-text">
+						Your Data Holds the Answers<br />I Reveal Them
+					</p>
+					<a
+						href="mailto:niranjan991100@gmail.com"
+						class="modern-pill-button"
+					>
+						<span>Lets connect</span>
+						<span class="icon-container">
+							<span>↗</span>
+						</span>
+					</a>
+				</div>
 			</section>
 
+			<section id="about" class="reveal">
+				<h2 class="section-heading">About Me</h2>
+				<div class="about-subheader">
+					<svg
+						class="icon"
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+					>
+						<path
+							d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"
+						/>
+					</svg>
+					<p>Your data is talking — are you ready to listen?</p>
+				</div>
+				<div class="about-container">
+					<div class="about-left">
+						<div class="about-image-wrapper">
+							<img
+								src="images/Profile pic.png"
+								alt="Niranjan Kumar Headshot"
+							/>
+						</div>
+						<h2 class="about-name">Niranjan Kumar</h2>
+						<p class="about-title">Data Analyst</p>
+						<div class="contact-info">
+							<ul>
+								<li>
+									<i class="fas fa-map-marker-alt"></i
+									><div>Hyderabad, India</div>
+								</li>
+								<li>
+									<i class="fas fa-phone-alt"></i
+									><div>
+										<a href="tel:+919641143646"
+											>+91 9641143646</a
+										>
+									</div>
+								</li>
+								<li>
+									<i class="fas fa-envelope"></i
+									><div>
+										<a href="mailto:niranjan991100@gmail.com"
+											>niranjan991100@gmail.com</a
+										>
+									</div>
+								</li>
+								<li>
+									<i class="fab fa-linkedin"></i
+									><div>
+										<a
+											href="https://www.linkedin.com/in/niranjan-k-a83517229/"
+											target="_blank"
+											>LinkedIn</a
+										>
+									</div>
+								</li>
+								<li>
+									<i class="fab fa-github"></i
+									><div>
+										<a
+											href="https://github.com/niranjan910"
+											target="_blank"
+											>GitHub</a
+										>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="about-right">
+						<p class="bio">
+							I am a meticulous and passionate Data Analyst with a
+							deep-seated curiosity for uncovering the narratives hidden
+							within numbers. My journey is driven by the challenge of
+							transforming raw data into compelling stories and
+							actionable insights that fuel business growth and strategic
+							decisions.
+						</p>
+						<div class="about-details-grid">
+							<div class="grid-column">
+								<h3>Education</h3>
+								<div class="timeline">
+									<div class="timeline-item">
+										<div class="timeline-content">
+											<h4 class="timeline-date">2019 - 2023</h4>
+											<h4>B.Tech, Computer Science</h4>
+											<p>
+												Institute of Professional Studies, Gwalior
+												(8.9 CGPA)
+											</p>
+										</div>
+									</div>
+									<div class="timeline-item">
+										<div class="timeline-content">
+											<h4 class="timeline-date">2018</h4>
+											<h4>Higher Secondary (12th)</h4>
+											<p>D.A.V. Public School (85%)</p>
+										</div>
+									</div>
+									<div class="timeline-item">
+										<div class="timeline-content">
+											<h4 class="timeline-date">2016</h4>
+											<h4>Secondary (10th)</h4>
+											<p>D.A.V. Public School (9.2 CGPA)</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="grid-column">
+								<h3>Experience</h3>
+								<div class="timeline">
+									<div class="timeline-item">
+										<div class="timeline-content">
+											<h4 class="timeline-date">
+												Feb 2025 - July 2025
+											</h4>
+											<h4>Data Analyst Trainee</h4>
+											<p>Naresh i Technologies, Hyderabad</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="grid-column">
+								<h3>Core Skills</h3>
+								<ul class="core-skills-list">
+									<li>Data Analysis & Visualization</li>
+									<li>Statistical Analysis</li>
+									<li>SQL & Database Management</li>
+									<li>ETL Processes</li>
+									<li>Python</li>
+									<li>Pandas</li>
+									<li>NumPy</li>
+									<li>Dashboard Design</li>
+									<li>Critical Thinking</li>
+								</ul>
+								<h3 style="margin-top: 2.5rem">Software Skills</h3>
+								<ul class="software-skills-list">
+									<li title="Jupyter Notebook">
+										<img
+											src="Icon/Jupiter.svg"
+											alt="Jupyter Notebook Icon"
+										/>
+									</li>
+									<li title="MySQL">
+										<img src="Icon/My SQl.svg" alt="MySQL Icon" />
+									</li>
+									<li title="Numpy">
+										<img src="Icon/Numpy.svg" alt="Numpy Icon" />
+									</li>
+									<li title="Pandas">
+										<img src="Icon/Pandas.svg" alt="Pandas Icon" />
+									</li>
+									<li title="Power BI">
+										<img
+											src="Icon/Powerbi.svg"
+											alt="Power BI Icon"
+										/>
+									</li>
+									<li title="PowerPoint">
+										<img
+											src="Icon/PowerPoint.svg"
+											alt="PowerPoint Icon"
+										/>
+									</li>
+									<li title="Python">
+										<img src="Icon/Python.svg" alt="Python Icon" />
+									</li>
+									<li title="Microsoft Word">
+										<img src="Icon/Word.svg" alt="MS Word Icon" />
+									</li>
+									<li title="Microsoft Excel">
+										<img src="Icon/Excel.svg" alt="MS Excel Icon" />
+									</li>
+									<li title="Tableau">
+										<img src="Icon/Tableau.svg" alt="Tableau Icon" />
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 			<section id="projects" class="reveal">
 				<h2 class="section-heading">Featured Projects</h2>
 				<div class="project-filters">
-					<button type="button" class="active" data-filter="all">All</button>
+					<button type="button" class="active" data-filter="all">
+						All
+					</button>
 					<button type="button" data-filter="Python">Python</button>
 					<button type="button" data-filter="Power BI">Power BI</button>
 					<button type="button" data-filter="Tableau">Tableau</button>
 					<button type="button" data-filter="Excel">Excel</button>
 				</div>
 				<ul class="projects-grid">
-					 <li class="spotlight-card reveal" data-tags="Python, MySQL"><div class="card-content"><img src="images/EV Project image.png" alt="EV Adoption map" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" target="_blank">U.S. EV Adoption Analysis</a></h3><div class="project-description"><p>Analyzed U.S. EV trends with a CAPSTONE-driven ETL process, leveraging Python and MySQL for clean, actionable results.</p></div><ul class="project-tech-list"><li>Python</li><li>MY SQL</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-link" target="_blank"><span>View Project </span><span class="arrow-icon">→</span></a></div></div></div></li>
-					<li class="spotlight-card reveal" data-tags="Python, JSON" style="--delay: 100ms;"><div class="card-content"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" target="_blank">COVID-19 Hospitalization</a></h3><div class="project-description"><p>Complete COVID-19 hospitalization trends (2019–2025) with real-time insights using Python & JSON.</p></div><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-link" target="_blank"><span>View Project </span><span class="arrow-icon">→</span></a></div></div></div></li>
-					<li class="spotlight-card reveal" data-tags="Python, CSV, Seaborn" style="--delay: 200ms;"><div class="card-content"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank">AI Job Market Analysis</a></h3><div class="project-description"><p>Analyzed real 2025 AI job market data with Python and CSV — actionable insights in real time.</p></div><ul class="project-tech-list"><li>Python</li><li>CSV</li><li>Seaborn</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-link" target="_blank"><span>View Project </span><span class="arrow-icon">→</span></a></div></div></div></li>
-					<li class="spotlight-card reveal" data-tags="MySQL, Power BI"><div class="card-content"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" target="_blank">AI Lung Diagnostics</a></h3><div class="project-description"><p>SQL-driven data mining & interactive Power BI dashboards for lung cancer detection.</p></div><ul class="project-tech-list"><li>MY SQL</li><li>Power BI</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-link" target="_blank"><span>View Project </span><span class="arrow-icon">→</span></a></div></div></div></li>
-					<li class="spotlight-card reveal" data-tags="CSV, Power BI" style="--delay: 100ms;"><div class="card-content"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/UK_Retail_Analytics" target="_blank">UK Retail Analytics</a></h3><div class="project-description"><p>Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-link" target="_blank"><span>View Project </span><span class="arrow-icon">→</span></a></div></div></div></li>
-					<li class="spotlight-card reveal" data-tags="Power BI, SQL, Excel" style="--delay: 200ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Finance Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">Financial Health Dashboard</a></h3><div class="project-description"><p>A comprehensive dashboard in Power BI for visualizing key financial metrics and trends over time.</p></div><ul class="project-tech-list"><li>Power BI</li><li>Excel</li><li>SQL</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project </span><span class="arrow-icon">→</span></a></div></div></div></li>
-					<li class="spotlight-card reveal" data-tags="PowerBI, CSV" style="--delay: 300ms;"><div class="card-content"><img src="images/Salary Trend.png" alt="Salary Trends Dashboard" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="https://github.com/niranjan910/Salary-Trend-Analysis" target="_blank">Salary Trend Analysis</a></h3><div class="project-description"><p>Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p></div><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><div class="project-link-wrapper"><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-link" target="_blank"><span>View Project </span><span class="arrow-icon">→</span></a></div></div></div></li>
-					 <li class="spotlight-card reveal" data-tags="Excel, VBA" style="--delay: 400ms;"><div class="card-content"><img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80" alt="Excel Automation" class="project-image"><div class="card-inner"><h3 class="project-title"><a href="#" target="_blank">Inventory Management System</a></h3><div class="project-description"><p>Developed an automated inventory tracking system in Excel using VBA macros to streamline data entry and reporting.</p></div><ul class="project-tech-list"><li>Excel</li><li>VBA</li></ul><div class="project-link-wrapper"><a href="#" class="project-view-link" target="_blank"><span>View Project </span><span class="arrow-icon">→</span></a></div></div></div></li>
+					<li class="spotlight-card reveal" data-tags="Python, MySQL">
+						<div class="card-content">
+							<img
+								src="images/EV Project image.png"
+								alt="EV Adoption map"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis"
+										target="_blank"
+										class="special-link"
+										>U.S. EV Adoption Analysis</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Analyzed U.S. EV trends with a CAPSTONE-driven ETL
+										process, leveraging Python and MySQL for clean,
+										actionable results.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Python</li>
+									<li>MY SQL</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="Python, JSON"
+						style="--delay: 100ms"
+					>
+						<div class="card-content">
+							<img
+								src="images/Covid 19.png"
+								alt="Covid dashboard"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis"
+										target="_blank"
+										class="special-link"
+										>COVID-19 Hospitalization</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Complete COVID-19 hospitalization trends
+										(2019–2025) with real-time insights using Python &
+										JSON.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Python</li>
+									<li>JSON</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="Python, CSV, Seaborn"
+						style="--delay: 200ms"
+					>
+						<div class="card-content">
+							<img
+								src="images/AI Job  image.png"
+								alt="AI Job Market Analysis"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025"
+										target="_blank"
+										class="special-link"
+										>AI Job Market Analysis</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Analyzed real 2025 AI job market data with Python
+										and CSV — actionable insights in real time.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Python</li>
+									<li>CSV</li>
+									<li>Seaborn</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="spotlight-card reveal" data-tags="MySQL, Power BI">
+						<div class="card-content">
+							<img
+								src="images/Lungs cancer.png"
+								alt="AI Lung Diagnostics"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/AI-Lung-Diagnostics"
+										target="_blank"
+										class="special-link"
+										>AI Lung Diagnostics</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										SQL-driven data mining & interactive Power BI
+										dashboards for lung cancer detection.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>MY SQL</li>
+									<li>Power BI</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/AI-Lung-Diagnostics"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="CSV, Power BI"
+						style="--delay: 100ms"
+					>
+						<div class="card-content">
+							<img
+								src="images/Retail.png"
+								alt="UK Retail Analytics"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/UK_Retail_Analytics"
+										target="_blank"
+										class="special-link"
+										>UK Retail Analytics</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Power BI dashboard analyzing 500K+ UK retail CSV
+										data for sales trends & customer insights.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Power BI</li>
+									<li>Excel</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/UK_Retail_Analytics"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="Power BI, SQL, Excel"
+						style="--delay: 200ms"
+					>
+						<div class="card-content">
+							<img
+								src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+								alt="Finance Dashboard"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a href="#" target="_blank" class="special-link"
+										>Financial Health Dashboard</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										A comprehensive dashboard in Power BI for visualizing
+										key financial metrics and trends over time.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Power BI</li>
+									<li>Excel</li>
+									<li>SQL</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="#"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="PowerBI, CSV"
+						style="--delay: 300ms"
+					>
+						<div class="card-content">
+							<img
+								src="images/Salary Trend.png"
+								alt="Salary Trends Dashboard"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a
+										href="https://github.com/niranjan910/Salary-Trend-Analysis"
+										target="_blank"
+										class="special-link"
+										>Salary Trend Analysis</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Created an interactive Tableau dashboard to analyze
+										sales performance across different regions and product
+										lines.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Power BI</li>
+									<li>CSV</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="https://github.com/niranjan910/Salary-Trend-Analysis"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li
+						class="spotlight-card reveal"
+						data-tags="Excel, VBA"
+						style="--delay: 400ms"
+					>
+						<div class="card-content">
+							<img
+								src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=1470&q=80"
+								alt="Excel Automation"
+								class="project-image"
+							/>
+							<div class="card-inner">
+								<h3 class="project-title">
+									<a href="#" target="_blank" class="special-link"
+										>Inventory Management System</a
+									>
+								</h3>
+								<div class="project-description">
+									<p>
+										Developed an automated inventory tracking system in
+										Excel using VBA macros to streamline data entry and
+										reporting.
+									</p>
+								</div>
+								<ul class="project-tech-list">
+									<li>Excel</li>
+									<li>VBA</li>
+								</ul>
+								<div class="project-link-wrapper">
+									<a
+										href="#"
+										class="project-view-link"
+										target="_blank"
+										><span
+											>View
+											Project</span
+										><span class="arrow-icon">→</span
+									></a>
+								</div>
+							</div>
+						</div>
+					</li>
 				</ul>
-				 <div class="projects-footer reveal">
-					<a href="https://github.com/niranjan910?tab=repositories" class="btn btn-large" target="_blank"><span>View All on GitHub</span></a>
+				<div class="projects-footer reveal">
+					<a
+						href="https://github.com/niranjan910?tab=repositories"
+						class="btn btn-large"
+						target="_blank"
+						><span class="special-link">View All on GitHub</span></a
+					>
 				</div>
 			</section>
-			
+
 			<section id="certs" class="reveal">
 				<h2 class="section-heading">Credentials</h2>
 				<ul class="certs-grid">
 					<li class="spotlight-card reveal">
 						<div class="card-content">
-							<img src="Certificates/Wolfram.png" alt="Statistics Foundations Certificate" class="project-image">
+							<img
+								src="Certificates/Wolfram.png"
+								alt="Statistics Foundations Certificate"
+								class="project-image"
+							/>
 							<div class="card-inner cert-inner">
-								<h3 class="cert-title">Statistics Foundations Professional Certificate</h3>
+								<h3 class="cert-title">
+									Statistics Foundations Professional Certificate
+								</h3>
 								<p class="cert-issuer">Issued by Wolfram Research</p>
-								<a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+								<a
+									href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d"
+									class="cert-link special-link"
+									target="_blank"
+									>View Credential
+									<i class="fas fa-external-link-alt"></i
+								></a>
 							</div>
 						</div>
 					</li>
-					<li class="spotlight-card reveal" style="--delay: 100ms;">
+					<li class="spotlight-card reveal" style="--delay: 100ms">
 						<div class="card-content">
-							<img src="Certificates/Microsoft certificates.png" alt="Career Essentials in Data Analysis Certificate" class="project-image">
+							<img
+								src="Certificates/Microsoft certificates.png"
+								alt="Career Essentials in Data Analysis Certificate"
+								class="project-image"
+							/>
 							<div class="card-inner cert-inner">
-								<h3 class="cert-title">Career Essentials in Data Analysis</h3>
+								<h3 class="cert-title">
+									Career Essentials in Data Analysis
+								</h3>
 								<p class="cert-issuer">Issued by Microsoft</p>
-								<a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+								<a
+									href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin"
+									class="cert-link special-link"
+									target="_blank"
+									>View Credential
+									<i class="fas fa-external-link-alt"></i
+								></a>
 							</div>
 						</div>
 					</li>
-					<li class="spotlight-card reveal" style="--delay: 200ms;">
+					<li class="spotlight-card reveal" style="--delay: 200ms">
 						<div class="card-content">
-							<img src="Certificates/Public speaking.png" alt="Public Speaking Skills Professional Certificate" class="project-image">
+							<img
+								src="Certificates/Public speaking.png"
+								alt="Public Speaking Skills Professional Certificate"
+								class="project-image"
+							/>
 							<div class="card-inner cert-inner">
-								<h3 class="cert-title">Public Speaking Skills Professional Certificate</h3>
-								<p class="cert-issuer">Issued by Toastmasters International</p>                            <a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+								<h3 class="cert-title">
+									Public Speaking Skills Professional Certificate
+								</h3>
+								<p class="cert-issuer">
+									Issued by Toastmasters International
+								</p>
+								<a href="#" class="cert-link special-link" target="_blank"
+									>View Credential
+									<i class="fas fa-external-link-alt"></i
+								></a>
 							</div>
 						</div>
 					</li>
-					<li class="spotlight-card reveal" style="--delay: 300ms;">
+					<li class="spotlight-card reveal" style="--delay: 300ms">
 						<div class="card-content">
-							<img src="https://via.placeholder.com/400x225.png?text=Certificate" alt="TCS iON Career Edge Certificate" class="project-image">
+							<img
+								src="https://via.placeholder.com/400x225.png?text=Certificate"
+								alt="TCS iON Career Edge Certificate"
+								class="project-image"
+							/>
 							<div class="card-inner cert-inner">
-								<h3 class="cert-title">TCS iON Career Edge - Young Professional</h3>
+								<h3 class="cert-title">
+									TCS iON Career Edge - Young Professional
+								</h3>
 								<p class="cert-issuer">Issued by TCS</p>
-								<a href="#" class="cert-link" target="_blank">View Credential <i class="fas fa-external-link-alt"></i></a>
+								<a href="#" class="cert-link special-link" target="_blank"
+									>View Credential
+									<i class="fas fa-external-link-alt"></i
+								></a>
 							</div>
 						</div>
 					</li>
 				</ul>
 			</section>
 			<section id="contact" class="reveal">
-                <!-- Contact section is the same -->
+				<h2 class="title">Get In Touch</h2>
+				<p>
+					I'm actively seeking new opportunities and I'm excited to
+					collaborate on new projects. My inbox is always open, so please
+					feel free to reach out — I'd love to chat.
+				</p>
+				<div class="contact-cta-container">
+					<a
+						href="mailto:niranjan991100@gmail.com"
+						class="btn btn-large"
+						><span class="special-link">Say Hello</span></a
+					>
+				</div>
 			</section>
 		</main>
-		
+
 		<footer class="footer">
-            <!-- Footer is the same -->
+			<ul class="social-links">
+				<li>
+					<a
+						href="https://github.com/niranjan910"
+						target="_blank"
+						aria-label="GitHub"
+						><i class="fab fa-github"></i
+					></a>
+				</li>
+				<li>
+					<a
+						href="https://www.linkedin.com/in/niranjan-k-a83517229/"
+						target="_blank"
+						aria-label="LinkedIn"
+						><i class="fab fa-linkedin-in"></i
+					></a>
+				</li>
+				<li>
+					<a
+						href="https://www.instagram.com/_aethyra_/"
+						target="_blank"
+						aria-label="Instagram"
+						><i class="fab fa-instagram"></i
+					></a>
+				</li>
+			</ul>
+			<a href="https://github.com/niranjan910" target="_blank"
+				>Designed & Built by Niranjan Kumar</a
+			>
 		</footer>
 		<script>
-			// Javascript is the same as the previous light-theme response
+			document.addEventListener("DOMContentLoaded", () => {
+				const revealObserver = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("is-visible");
+								// Stagger animations for about section
+								if (entry.target.id === "about") {
+									const aboutElements = entry.target.querySelectorAll(
+										".about-left, .about-right > *, .about-details-grid > *"
+									);
+									aboutElements.forEach((el, index) => {
+										el.style.transitionDelay = `${
+											index * 150
+										}ms`;
+										el.classList.add("reveal");
+										revealObserver.observe(el);
+									});
+								}
+								revealObserver.unobserve(entry.target);
+							}
+						});
+					},
+					{ rootMargin: "0px 0px -100px 0px" }
+				);
+
+				document
+					.querySelectorAll(".reveal")
+					.forEach((el) => revealObserver.observe(el));
+
+				const nav = document.getElementById("mainNav");
+				const logo = document.getElementById("navLogoImage");
+				const originalLogoSrc = "Logo/Logo.svg";
+				const scrolledLogoSrc = "Logo/Logo Dark.svg";
+
+				window.addEventListener("scroll", () => {
+					const isScrolled = window.scrollY > 50;
+					nav.classList.toggle("scrolled", isScrolled);
+					if (logo) {
+						logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
+					}
+				});
+				const hamburger = document.getElementById("hamburgerMenu");
+				const navLinks = document.getElementById("navLinks");
+				if (hamburger && navLinks) {
+					hamburger.addEventListener("click", (e) => {
+						e.stopPropagation();
+						hamburger.classList.toggle("active");
+						navLinks.classList.toggle("active");
+					});
+					navLinks.querySelectorAll("a").forEach((link) => {
+						if (link.getAttribute("href").startsWith("#")) {
+							link.addEventListener("click", () => {
+								hamburger.classList.remove("active");
+								navLinks.classList.remove("active");
+							});
+						}
+					});
+				}
+				const filtersContainer =
+					document.querySelector(".project-filters");
+				const projectCards = document.querySelectorAll(
+					".projects-grid .spotlight-card"
+				);
+				if (filtersContainer && projectCards.length > 0) {
+					filtersContainer.addEventListener("click", (e) => {
+						if (e.target.tagName !== "BUTTON") return;
+						filtersContainer
+							.querySelector(".active")
+							.classList.remove("active");
+						e.target.classList.add("active");
+						const filter = e.target.dataset.filter;
+						projectCards.forEach((card) => {
+							const tags = card.dataset.tags || "";
+							const isMatch =
+								filter === "all" ||
+								tags.toLowerCase().includes(filter.toLowerCase());
+							card.style.display = isMatch ? "flex" : "none";
+						});
+					});
+				}
+
+				const sections = document.querySelectorAll("main section[id]");
+				const navLinkMap = {};
+				document
+					.querySelectorAll("#navLinks ol li a")
+					.forEach((a) => {
+						const href = a.getAttribute("href");
+						if (href && href.startsWith("#")) {
+							navLinkMap[href.substring(1)] = a;
+						}
+					});
+
+				const sectionObserver = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							const id = entry.target.getAttribute("id");
+							if (navLinkMap[id]) {
+								if (
+									entry.isIntersecting &&
+									entry.intersectionRatio > 0.4
+								) {
+									Object.values(navLinkMap).forEach((link) =>
+										link.classList.remove("active")
+									);
+									navLinkMap[id].classList.add("active");
+								} else {
+									navLinkMap[id].classList.remove("active");
+								}
+							}
+						});
+					},
+					{
+						rootMargin: "-40% 0px -40% 0px",
+					}
+				);
+
+				sections.forEach((section) => {
+					sectionObserver.observe(section);
+				});
+
+				// 3D Tilt Effect for About Image
+				const aboutImageWrapper = document.querySelector(
+					".about-image-wrapper"
+				);
+				if (aboutImageWrapper) {
+					aboutImageWrapper.addEventListener("mousemove", (e) => {
+						const { left, top, width, height } =
+							aboutImageWrapper.getBoundingClientRect();
+						const x = e.clientX - left;
+						const y = e.clientY - top;
+						const rotateX = (y - height / 2) / 20;
+						const rotateY = (x - width / 2) / 20;
+						aboutImageWrapper.style.transform = `perspective(1000px) rotateX(${
+							-rotateX
+						}deg) rotateY(${rotateY}deg) scale(1.05)`;
+					});
+
+					aboutImageWrapper.addEventListener("mouseleave", () => {
+						aboutImageWrapper.style.transform =
+							"perspective(1000px) rotateX(0) rotateY(0) scale(1)";
+					});
+				}
+			});
 		</script>
 	</body>
 </html>
