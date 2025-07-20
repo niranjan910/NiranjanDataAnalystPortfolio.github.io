@@ -645,23 +645,6 @@
 				margin-bottom: 0.5rem;
 				color: var(--accent);
 			}
-
-			/* --- PROJECTS SECTION (New Styling) --- */
-			#projects {
-				background-color: var(--text-primary);
-				margin: 0 -60px;
-				padding: 100px 60px;
-				position: relative;
-				overflow: hidden; /* Ensures the background color extends fully */
-			}
-			#projects .section-heading {
-				color: var(--text-on-image);
-			}
-			#projects .projects-footer .modern-pill-button:hover {
-				transform: none; /* Disables hover transform */
-				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Resets to default shadow */
-				background-color: var(--bg-main); /* Keeps original background color */
-			}
 			
 			.projects-grid {
 				list-style: none;
@@ -770,6 +753,16 @@
 				transform: translateY(-2px);
 				color: var(--bg-main) !important;
 				opacity: 1; 
+			}
+
+			/* --- CREDENTIALS SECTION (New Styling) --- */
+			#certs {
+				background-color: var(--text-primary);
+				margin: 0 -60px;
+				padding: 100px 60px;
+			}
+			#certs .section-heading {
+				color: var(--text-on-image);
 			}
 
 			.certs-grid {
@@ -934,12 +927,12 @@
 				main {
 					padding: 0 50px;
 				}
-				#hero, #projects {
+				#hero, #certs {
 					margin: 0 -50px;
 					padding-left: 50px;
 					padding-right: 50px;
 				}
-                #projects {
+                #certs {
                     padding-top: 100px;
                     padding-bottom: 100px;
                 }
@@ -957,23 +950,21 @@
 				section {
 					padding: 80px 0;
 				}
-				#hero, #projects {
-					margin: 0 -25px;
-					padding-left: 25px;
-					padding-right: 25px;
-				}
-                 #projects {
-                    padding-top: 80px;
-                    padding-bottom: 80px;
-                }
 				#hero {
 					justify-content: center;
 					align-items: center;
 					gap: 3rem;
-					padding-top: calc(var(--nav-height) + 1rem);
-                    padding-bottom: 3rem;
+					padding: calc(var(--nav-height) + 1rem) 25px 3rem 25px;
+					margin: 0 -25px;
                     text-align: center;
 				}
+                #certs {
+                    margin: 0 -25px;
+                    padding-left: 25px;
+                    padding-right: 25px;
+                    padding-top: 80px;
+                    padding-bottom: 80px;
+                }
                 #hero .hero-content-wrapper {
                     flex-direction: column;
                     align-items: center;
@@ -1049,7 +1040,7 @@
 				main {
 					padding: 0 20px;
 				}
-				#hero, #projects {
+				#hero, #certs {
 					margin: 0 -20px;
 					padding-left: 20px;
 					padding-right: 20px;
@@ -1453,12 +1444,12 @@
 					</li>
 				</ul>
 				 <div class="projects-footer reveal">
-					<a href="https://github.com/niranjan910?tab=repositories" class="modern-pill-button hero-cta-button" target="_blank">
-						<span>View All on GitHub</span>
-						<span class="icon-container">
-							<span>↗</span>
-						</span>
-					</a>
+					<a href="https://github.com/niranjan910?tab=repositories" class="modern-pill-button" target="_blank">
+                        <span>View All on GitHub</span>
+                        <span class="icon-container">
+                            <span>↗</span>
+                        </span>
+                    </a>
 				</div>
 			</section>
 
