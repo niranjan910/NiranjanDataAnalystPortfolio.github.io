@@ -336,6 +336,16 @@
 				background-color: #e0e0e0;
 				color: var(--text-primary) !important;
 			}
+			
+			.projects-footer .modern-pill-button {
+				background-color: var(--bg-main);
+				color: var(--text-primary) !important;
+			}
+			
+			.projects-footer .modern-pill-button .icon-container {
+				background-color: var(--text-primary);
+				color: var(--bg-main);
+			}
 
             .hero-text-container { animation: fadeInSlideUp 0.8s forwards 200ms; opacity:0; }
 			.hero-features-container {
@@ -760,11 +770,25 @@
 				background-color: var(--text-primary);
 				margin: 0 -60px;
 				padding: 100px 60px;
+				position: relative;
+				overflow: hidden;
 			}
 			#certs .section-heading {
 				color: var(--text-on-image);
 			}
-
+			#certs-canvas {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+			}
+			.certs-content-wrapper {
+				position: relative;
+				z-index: 1;
+			}
+			
 			.certs-grid {
 				list-style: none;
 				padding: 0;
@@ -775,11 +799,12 @@
 			}
 
 			.credential-card {
-				background-color: var(--card-bg);
+				background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent */
 				border-radius: 12px;
 				border: 1px solid var(--border-color);
 				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
                 transition: transform 0.3s ease, box-shadow 0.3s ease;
+				backdrop-filter: blur(3px);
 			}
 			
 			.credential-card:hover {
@@ -950,18 +975,20 @@
 				section {
 					padding: 80px 0;
 				}
+				#hero, #certs {
+					margin: 0 -25px;
+					padding-left: 25px;
+					padding-right: 25px;
+				}
 				#hero {
 					justify-content: center;
 					align-items: center;
 					gap: 3rem;
-					padding: calc(var(--nav-height) + 1rem) 25px 3rem 25px;
-					margin: 0 -25px;
+					padding-top: calc(var(--nav-height) + 1rem);
+                    padding-bottom: 3rem;
                     text-align: center;
 				}
-                #certs {
-                    margin: 0 -25px;
-                    padding-left: 25px;
-                    padding-right: 25px;
+                 #certs {
                     padding-top: 80px;
                     padding-bottom: 80px;
                 }
@@ -1445,66 +1472,69 @@
 				</ul>
 				 <div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="modern-pill-button" target="_blank">
-                        <span>View All on GitHub</span>
-                        <span class="icon-container">
-                            <span>↗</span>
-                        </span>
-                    </a>
+						<span>View All on GitHub</span>
+						<span class="icon-container">
+							<span>↗</span>
+						</span>
+					</a>
 				</div>
 			</section>
 
-			<section id="certs" >
-				<h2 class="section-heading reveal">Credentials</h2>
-				<ul class="certs-grid">
-					<li class="credential-card reveal">
-						<div class="card-content">
-                            <div>
-                                <h3 class="cert-title">Statistics Foundations Professional Certificate</h3>
-                                <p class="cert-issuer">Issued by Wolfram Research</p>
-                            </div>
-							<a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="credential-button" target="_blank">
-								<span>View Credential</span>
-								<i class="fas fa-arrow-right"></i>
-							</a>
-						</div>
-					</li>
-					<li class="credential-card reveal" style="--delay: 150ms;">
-						<div class="card-content">
-                            <div>
-                                <h3 class="cert-title">Career Essentials in Data Analysis</h3>
-                                <p class="cert-issuer">Issued by Microsoft</p>
-                            </div>
-							<a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank">
-								<span>View Credential</span>
-								<i class="fas fa-arrow-right"></i>
-							</a>
-						</div>
-					</li>
-					<li class="credential-card reveal" style="--delay: 300ms;">
-						<div class="card-content">
-                            <div>
-                                <h3 class="cert-title">Data Analytics Essentials</h3>
-                                <p class="cert-issuer">Issued by Cisco</p>
-                            </div>
-							<a href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile" class="credential-button" target="_blank">
-								<span>View Credential</span>
-								<i class="fas fa-arrow-right"></i>
-							</a>
-						</div>
-					</li>
-					<li class="credential-card reveal" style="--delay: 450ms;">
-						<div class="card-content">
-                            <div>
-                                <h3 class="cert-title">Career Essentials in Business Analysis</h3>
-                                <p class="cert-issuer">Issued by Microsoft</p>
-                            </div>
-							<a href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank">
-								<span>View Credential</span>
-								<i class="fas fa-arrow-right"></i>
-							</a>
-						</div>
-					</li>
-				</ul>
+			<section id="certs">
+				<div id="certs-canvas"></div>
+				<div class="certs-content-wrapper">
+					<h2 class="section-heading reveal">Credentials</h2>
+					<ul class="certs-grid">
+						<li class="credential-card reveal">
+							<div class="card-content">
+								<div>
+									<h3 class="cert-title">Statistics Foundations Professional Certificate</h3>
+									<p class="cert-issuer">Issued by Wolfram Research</p>
+								</div>
+								<a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="credential-button" target="_blank">
+									<span>View Credential</span>
+									<i class="fas fa-arrow-right"></i>
+								</a>
+							</div>
+						</li>
+						<li class="credential-card reveal" style="--delay: 150ms;">
+							<div class="card-content">
+								<div>
+									<h3 class="cert-title">Career Essentials in Data Analysis</h3>
+									<p class="cert-issuer">Issued by Microsoft</p>
+								</div>
+								<a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank">
+									<span>View Credential</span>
+									<i class="fas fa-arrow-right"></i>
+								</a>
+							</div>
+						</li>
+						<li class="credential-card reveal" style="--delay: 300ms;">
+							<div class="card-content">
+								<div>
+									<h3 class="cert-title">Data Analytics Essentials</h3>
+									<p class="cert-issuer">Issued by Cisco</p>
+								</div>
+								<a href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile" class="credential-button" target="_blank">
+									<span>View Credential</span>
+									<i class="fas fa-arrow-right"></i>
+								</a>
+							</div>
+						</li>
+						<li class="credential-card reveal" style="--delay: 450ms;">
+							<div class="card-content">
+								<div>
+									<h3 class="cert-title">Career Essentials in Business Analysis</h3>
+									<p class="cert-issuer">Issued by Microsoft</p>
+								</div>
+								<a href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank">
+									<span>View Credential</span>
+									<i class="fas fa-arrow-right"></i>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</section>
 
 			<section id="contact" >
@@ -1550,7 +1580,7 @@
 				const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 				// --- HERO SECTION P5.JS SKETCH ---
-				const sketch = (p) => {
+				const heroSketch = (p) => {
 					let particles = [];
 					const numParticles = window.innerWidth < 768 ? 80 : 150;
 					let canvas;
@@ -1568,7 +1598,6 @@
 							this.pos.add(this.vel);
 							this.edges();
 
-							// Interaction with mouse
 							if (!isTouchDevice && mouseVec) {
 								let d = this.pos.dist(mouseVec);
 								if (d < 100) {
@@ -1630,7 +1659,57 @@
 						p.resizeCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
 					};
 				};
-				new p5(sketch);
+				new p5(heroSketch);
+
+				// --- CERTS SECTION P5.JS SKETCH ---
+				const certsSketch = (p) => {
+					let stars = [];
+					const numStars = window.innerWidth < 768 ? 200 : 400;
+					let canvas;
+
+					class Star {
+						constructor() {
+							this.x = p.random(p.width);
+							this.y = p.random(p.height);
+							this.size = p.random(0.5, 2);
+							this.twinkleSpeed = p.random(0.01, 0.04);
+						}
+
+						draw() {
+							let twinkle = p.noise(this.x * 0.01, this.y * 0.01, p.frameCount * this.twinkleSpeed);
+							let alpha = p.map(twinkle, 0, 1, 50, 255);
+							p.fill(255, alpha);
+							p.noStroke();
+							p.circle(this.x, this.y, this.size);
+						}
+					}
+					
+					p.setup = () => {
+						const certsSection = document.getElementById('certs');
+						canvas = p.createCanvas(certsSection.offsetWidth, certsSection.offsetHeight);
+						canvas.parent('certs-canvas');
+						for (let i = 0; i < numStars; i++) {
+							stars.push(new Star());
+						}
+					};
+
+					p.draw = () => {
+						p.background('#010101');
+						stars.forEach(star => {
+							star.draw();
+						});
+					};
+					
+					p.windowResized = () => {
+						const certsSection = document.getElementById('certs');
+						p.resizeCanvas(certsSection.offsetWidth, certsSection.offsetHeight);
+						stars = [];
+						for (let i = 0; i < numStars; i++) {
+							stars.push(new Star());
+						}
+					};
+				};
+				new p5(certsSketch);
 				
 				// --- SCROLL-BASED ANIMATIONS ---
 				const revealObserver = new IntersectionObserver(
