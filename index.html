@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Niranjan Kumar | Data Analyst Portfolio</title>
+		<title>Niranjan Kumar | AI & Data Analyst Portfolio</title>
 
 		<link
 			rel="stylesheet"
@@ -681,6 +681,16 @@
 				transform-style: preserve-3d;
 				will-change: transform;
 			}
+            
+            .project-card.placeholder {
+                opacity: 0.8;
+                border: 2px dashed var(--border-color);
+            }
+             .project-card.placeholder .project-view-button {
+                 background-color: var(--border-color);
+                 color: var(--text-secondary) !important;
+                 cursor: not-allowed;
+             }
 
 			.project-card:hover {
 				transform: translateY(-8px) perspective(1000px);
@@ -764,6 +774,12 @@
 				color: var(--bg-main) !important;
 				opacity: 1; 
 			}
+            
+            .project-card.placeholder .project-view-button:hover {
+                background: var(--border-color);
+                transform: none;
+                color: var(--text-secondary) !important;
+            }
 
 			/* --- CREDENTIALS SECTION (New Styling) --- */
 			#certs {
@@ -1117,12 +1133,13 @@
 			</div>
 		</nav>
 		<main id="main-content">
+			<!-- ======================= EDITED HERO SECTION ======================= -->
 			<section id="hero">
                 <div id="hero-canvas"></div>
 
 				<div class="hero-text-container">
-					<h1 class="hero-main-heading">Decode the Data.</h1>
 					<h1 class="hero-main-heading">Discover the Story.</h1>
+					<h1 class="hero-main-heading">Predict the Outcome.</h1>
 				</div>
 
                 <div class="hero-content-wrapper">
@@ -1130,24 +1147,23 @@
                         <div class="feature-item">
                             <img src="Logo/timer-01.svg" alt="Feature Icon" />
                             <div>
-                                <h4>Real-Time Analytics</h4>
-                                <p>Instant Insights, Smarter Decisions</p>
+                                <h4>Predictive Modeling</h4>
+                                <p>Leveraging machine learning to forecast trends and identify opportunities.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
                             <div>
-                                <h4>Precision Analytics</h4>
-                                <p>Custom Insights for Your Data</p>
+                                <h4>Deep Insight Generation</h4>
+                                <p>Using advanced algorithms to uncover hidden signals in complex data.</p>
                             </div>
                         </div>
                         <div class="feature-item">
                             <img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
                             <div>
-                                <h4>End-to-End Data Orchestration</h4>
+                                <h4>End-to-End AI Solutions</h4>
                                 <p>
-                                    Transforming Fragmented Information into Coherent
-                                    Insights
+                                    From raw data pipelines to deploying actionable, AI-powered insights.
                                 </p>
                             </div>
                         </div>
@@ -1155,7 +1171,7 @@
 
                     <div class="hero-cta-container">
                         <p class="hero-cta-text">
-                            Your Data Holds the Answers<br />I Reveal Them
+                            Go beyond historical analysis.<br />Let's forecast your success.
                         </p>
                         <a
                             href="mailto:niranjan991100@gmail.com"
@@ -1170,6 +1186,7 @@
                 </div>
 			</section>
 
+			<!-- ======================= EDITED ABOUT SECTION ======================= -->
 			<section id="about" >
 				<h2 class="section-heading reveal">About Me</h2>
 				<div class="about-subheader reveal">
@@ -1183,7 +1200,7 @@
 							d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"
 						/>
 					</svg>
-					<p>Your data is talking — are you ready to listen?</p>
+					<p>From data exploration to predictive modeling</p>
 				</div>
 				<div class="about-container reveal">
 					<div class="about-left">
@@ -1194,7 +1211,7 @@
 							/>
 						</div>
 						<h2 class="about-name">Niranjan Kumar</h2>
-						<p class="about-title">Data Analyst</p>
+						<p class="about-title">AI & Data Analyst</p>
 						<div class="contact-info">
 							<ul>
 								<li>
@@ -1242,11 +1259,9 @@
 					</div>
 					<div class="about-right">
 						<p class="bio">
-							I am a Data Analyst who builds end-to-end data solutions. 
-							Leveraging a robust stack including Python, SQL, and Power BI, 
-							I architect data pipelines, perform rigorous analysis, and build dynamic visualizations 
-							that solve critical business problems. My passion lies not just in finding patterns, 
-							but in translating them into data-driven strategies that drive measurable growth and efficiency.
+							I build end-to-end data solutions that bridge the gap between historical analysis and future-casting. 
+							Leveraging a robust stack including Python, SQL, and Power BI, I architect data pipelines and develop predictive models
+							to solve critical business problems. My passion lies not just in finding patterns, but in translating them into AI-driven strategies that forecast measurable growth and efficiency.
 						</p>
 						<div class="about-details-grid">
 							<div class="grid-column">
@@ -1295,17 +1310,18 @@
 							<div class="grid-column">
 								<h3>Core Skills</h3>
 								<ul class="core-skills-list">
+                                    <li>Predictive Modeling</li>
+                                    <li>Machine Learning</li>
 									<li>Data Analysis & Visualization</li>
 									<li>Statistical Analysis</li>
 									<li>SQL & Database Management</li>
-									<li>ETL Processes</li>
 									<li>Python</li>
-									<li>Pandas</li>
-									<li>NumPy</li>
+									<li>Scikit-learn</li>
+									<li>Pandas & NumPy</li>
+									<li>ETL Processes</li>
 									<li>Dashboard Design</li>
-									<li>Critical Thinking</li>
 								</ul>
-								<h3 style="margin-top: 2.5rem">Software Skills</h3>
+								<h3 style="margin-top: 2.5rem">Software & Libraries</h3>
 								<ul class="software-skills-list">
 									<li title="Jupyter Notebook">
 										<img
@@ -1313,8 +1329,8 @@
 											alt="Jupyter Notebook Icon"
 										/>
 									</li>
-									<li title="MySQL">
-										<img src="Icon/My SQl.svg" alt="MySQL Icon" />
+									<li title="Python">
+										<img src="Icon/Python.svg" alt="Python Icon" />
 									</li>
 									<li title="Numpy">
 										<img src="Icon/Numpy.svg" alt="Numpy Icon" />
@@ -1322,30 +1338,22 @@
 									<li title="Pandas">
 										<img src="Icon/Pandas.svg" alt="Pandas Icon" />
 									</li>
+									<li title="MySQL">
+										<img src="Icon/My SQl.svg" alt="MySQL Icon" />
+									</li>
 									<li title="Power BI">
 										<img
 											src="Icon/Powerbi.svg"
 											alt="Power BI Icon"
 										/>
 									</li>
-									<li title="PowerPoint">
-										<img
-											src="Icon/PowerPoint.svg"
-											alt="PowerPoint Icon"
-										/>
-									</li>
-									<li title="Python">
-										<img src="Icon/Python.svg" alt="Python Icon" />
-									</li>
-									<li title="Microsoft Word">
-										<img src="Icon/Word.svg" alt="MS Word Icon" />
+									<li title="Tableau">
+										<img src="Icon/Tableau.svg" alt="Tableau Icon" />
 									</li>
 									<li title="Microsoft Excel">
 										<img src="Icon/Excel.svg" alt="MS Excel Icon" />
 									</li>
-									<li title="Tableau">
-										<img src="Icon/Tableau.svg" alt="Tableau Icon" />
-									</li>
+                                    <!-- Note: Add icons for Scikit-learn, etc. when you find them -->
 								</ul>
 							</div>
 						</div>
@@ -1353,70 +1361,81 @@
 				</div>
 			</section>
 
+			<!-- ======================= EDITED PROJECTS SECTION ======================= -->
 			<section id="projects" >
 				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="projects-grid">
-					<li class="project-card reveal">
-						<img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image">
-						<div class="card-body">
-							<h3 class="project-title">New-York City Air Quality Analysis</h3>
-							<p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p>
-							<div class="card-footer">
-								<ul class="project-tech-list">
-									<li>Python</li>
-									<li>Excel</li>
-								</ul>
-								<a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a>
-							</div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 150ms;">
-						 <img src="images/Covid 19.png" alt="Covid dashboard" class="project-image">
+					<!-- NEW "IN PROGRESS" ML PROJECT -->
+                    <li class="project-card reveal placeholder" style="--delay: 150ms;">
+						<img src="images/placeholder.png" alt="Customer Churn Prediction" class="project-image">
 						 <div class="card-body">
-							<h3 class="project-title">COVID-19 Hospitalization</h3>
-							<p class="project-description">Visualized COVID-19 hospitalization rates from 2019-2025 by processing real-time JSON data with Python.</p>
+							<h3 class="project-title">Customer Churn Prediction [In Progress]</h3>
+							<p class="project-description">Building a classification model using Scikit-learn to predict customer churn, enabling proactive retention strategies. Currently in the feature engineering phase.</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Python</li>
-									<li>JSON</li>
+									<li>Scikit-learn</li>
+                                    <li>ML</li>
 								</ul>
-								<a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a>
+								<a href="#" class="project-view-button" target="_blank">View</a>
 							</div>
 						</div>
 					</li>
+
+					<!-- EDITED: Accurate Title and Description -->
 					<li class="project-card reveal" style="--delay: 300ms;">
-						<img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image">
+						<img src="images/Lungs cancer.png" alt="Lung Cancer Dashboard" class="project-image">
 						 <div class="card-body">
-							<h3 class="project-title">AI Job Market Analysis</h3>
-							<p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends from large CSV datasets.</p>
-							<div class="card-footer">
-								<ul class="project-tech-list">
-									<li>Python</li>
-									<li>Seaborn</li>
-								</ul>
-								<a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a>
-							</div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 450ms;">
-						<img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image">
-						 <div class="card-body">
-							<h3 class="project-title">AI Lung Diagnostics</h3>
-							<p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by comprehensive SQL data mining.</p>
+							<h3 class="project-title">Lung Cancer Diagnostics Dashboard</h3>
+							<p class="project-description">Developed an interactive Power BI dashboard to analyze clinical data, helping visualize trends in lung cancer cases across different patient demographics.</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Power BI</li>
 									<li>SQL</li>
+                                    <li>BI Dashboard</li>
 								</ul>
 								<a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a>
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 600ms;">
-						<img src="images/Retail.png" alt="Project 5 placeholder" class="project-image">
+
+					<!-- EDITED: Accurate Title -->
+					<li class="project-card reveal" style="--delay: 450ms;">
+						<img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image">
+						 <div class="card-body">
+							<h3 class="project-title">Exploratory Analysis of the AI Job Market</h3>
+							<p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends and required skills from large CSV datasets.</p>
+							<div class="card-footer">
+								<ul class="project-tech-list">
+									<li>Python</li>
+									<li>Seaborn</li>
+                                    <li>EDA</li>
+								</ul>
+								<a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a>
+							</div>
+						</div>
+					</li>
+
+					<li class="project-card reveal" style="--delay: 600ms;">
+						<img src="images/U.S._Electric_Vehicle_Adoption_Analysis" alt="EV Adoption Analysis" class="project-image">
 						<div class="card-body">
-							<h3 class="project-title">UK Retail Analytics</h3>
-							<p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p>
+							<h3 class="project-title">U.S. EV Adoption Analysis</h3>
+							<p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline, analyze 175k+ records, and deliver insights on market strategy.</p>
+							<div class="card-footer">
+								<ul class="project-tech-list">
+									<li>Python</li>
+                                    <li>SQL</li>
+								</ul>
+								<a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a>
+							</div>
+						</div>
+					</li>
+					
+                    <li class="project-card reveal" style="--delay: 750ms;">
+						<img src="images/Retail.png" alt="UK Retail Analytics" class="project-image">
+						<div class="card-body">
+							<h3 class="project-title">UK Retail Analytics Dashboard</h3>
+							<p class="project-description">Designed a Power BI dashboard analyzing over 500,000 transaction records to identify key sales trends and customer purchasing behavior.</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Power BI</li>
@@ -1426,48 +1445,37 @@
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 750ms;">
-						<img src="images/Salary Trend.png" alt="Project 6 placeholder" class="project-image">
+
+					<li class="project-card reveal" style="--delay: 900ms;">
+						<img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image">
 						<div class="card-body">
-							<h3 class="project-title">Salary Trend Analysis</h3>
-							<p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p>
+							<h3 class="project-title">NYC Air Quality Analysis</h3>
+							<p class="project-description">A comprehensive data-driven study of NYC air quality, analyzing its health implications based on real-time monitoring data using Python.</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
-									<li>Power BI</li>
-									<li>CSV</li>
-								</ul>
-								<a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a>
-							</div>
-						</div>
-					</li>
-                    <li class="project-card reveal" style="--delay: 900ms;">
-						<img src="images/EV Project image.png" alt="Project 7 placeholder" class="project-image">
-						<div class="card-body">
-							<h3 class="project-title">U.S. EV Adoption Analysis</h3>
-							<p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline, analyze 175k+ records, and deliver actionable insights on market strategy and policy effectiveness.</p>
-							<div class="card-footer">
-								<ul class="project-tech-list">
+									<li>Python</li>
 									<li>Excel</li>
-                                    <li>Data Analysis</li>
 								</ul>
-								<a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a>
+								<a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a>
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 1050ms;">
-						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image">
-						<div class="card-body">
-							<h3 class="project-title">Excel Financial Modeling</h3>
-							<p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation, featuring scenario analysis.</p>
+
+					<li class="project-card reveal" style="--delay: 1050ms;">
+						 <img src="images/Covid 19.png" alt="Covid dashboard" class="project-image">
+						 <div class="card-body">
+							<h3 class="project-title">COVID-19 Hospitalization Analysis</h3>
+							<p class="project-description">Analyzed COVID-19 hospitalization rates by processing and visualizing real-time JSON data streams with Python.</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
-									<li>Excel</li>
-									<li>Finance</li>
+									<li>Python</li>
+									<li>JSON</li>
 								</ul>
-								<a href="#" class="project-view-button" target="_blank">View</a>
+								<a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a>
 							</div>
 						</div>
 					</li>
+
 				</ul>
 				 <div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="modern-pill-button" target="_blank">
@@ -1482,8 +1490,9 @@
 			<section id="certs">
 				<div id="certs-canvas"></div>
 				<div class="certs-content-wrapper">
-					<h2 class="section-heading reveal">Credentials</h2>
+					<h2 class="section-heading reveal">Credentials & Learning</h2>
 					<ul class="certs-grid">
+                        <!-- It would be beneficial to add a Machine Learning certification here in the future -->
 						<li class="credential-card reveal">
 							<div class="card-content">
 								<div>
@@ -1541,9 +1550,8 @@
                     <div class="contact-text">
                         <h2 class="title">Get In Touch</h2>
                         <p>
-                            I'm actively seeking new opportunities and I'm excited to
-                            collaborate on challenging projects. My inbox is always open, so please
-                            feel free to reach out — let's build something great together.
+                            I'm actively seeking new opportunities to apply my analytical and machine learning skills to solve challenging problems.
+                            My inbox is always open, so please feel free to reach out — let's build something great together.
                         </p>
                         <a href="mailto:niranjan991100@gmail.com" class="modern-pill-button magnetic-item">
                             <span>Say Hello</span>
