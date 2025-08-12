@@ -60,7 +60,7 @@
 				color: var(--text-secondary);
 				-webkit-font-smoothing: antialiased;
 				background-color: var(--bg-main);
-				line-height: 1.6; /* Increased for better readability */
+				line-height: 1.5;
 				overflow-x: hidden;
                 background: linear-gradient(-45deg, #f1f1f1, #e0e0e0, #f1f1f1, #f9f9f9);
                 background-size: 400% 400%;
@@ -120,10 +120,10 @@
 				line-height: 1.2;
 			}
 			p {
-				margin-bottom: 1.25rem; /* Increased margin */
+				margin-bottom: 1rem;
 				max-width: 65ch;
-				font-size: 1.2rem; /* INCREASED FONT SIZE */
-				line-height: 1.7; /* Increased line height */
+				font-size: 1.125rem;
+				line-height: 1.6;
 			}
 			a {
 				text-decoration: none;
@@ -539,7 +539,7 @@
             }
             .about-right .about-subtitle {
                 font-family: var(--font-sans);
-                font-size: clamp(1.1rem, 2vw, 1.2rem); /* Increased size */
+                font-size: clamp(1rem, 2vw, 1.1rem);
                 color: var(--text-secondary);
                 margin-bottom: 2.5rem;
                 font-style: italic;
@@ -547,10 +547,13 @@
 
             .about-right .narrative-story p {
                 font-family: var(--font-sans);
-                font-size: 1.15rem; /* INCREASED FONT SIZE */
-                line-height: 1.75; /* Increased for better readability */
+                font-size: 1.05rem;
+                line-height: 1.7;
                 margin-bottom: 1.5rem;
             }
+             .about-right .narrative-story p:last-of-type {
+                margin-bottom: 0;
+             }
 
             .about-section-divider {
                 border: 0;
@@ -587,7 +590,7 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                width: 18%; /* Approx 100/5 */
+                width: 20%;
             }
             .milestone-icon {
                 width: 40px;
@@ -602,9 +605,11 @@
                 margin-bottom: 1rem;
                 position: relative;
                 transition: transform 0.3s ease;
+                 border: 3px solid var(--bg-main);
+                box-shadow: 0 0 0 2px var(--accent);
             }
             .timeline-milestone:hover .milestone-icon {
-                transform: scale(1.15);
+                transform: scale(1.15) rotate(10deg);
             }
             .milestone-year {
                 font-weight: 700;
@@ -613,14 +618,19 @@
             }
              .milestone-event {
                 font-weight: 600;
-                font-size: 0.95rem; /* Increased size */
+                font-size: 0.9rem;
                 margin-top: 0.5rem;
                 margin-bottom: 0.25rem;
+                color: var(--text-primary);
              }
             .milestone-description {
-                font-size: 0.9rem; /* INCREASED FONT SIZE */
+                font-size: 0.8rem;
                 color: var(--text-secondary);
-                line-height: 1.5; /* Increased for better readability */
+                line-height: 1.4;
+            }
+            @media (max-width: 992px) {
+                .timeline-milestones { flex-wrap: wrap; justify-content: flex-start; gap: 2rem 0; }
+                .timeline-milestone { width: 33.33%; }
             }
             @media (max-width: 768px) {
                 .visual-timeline::before { display: none; }
@@ -644,14 +654,14 @@
                     display: flex;
                     flex-direction: column;
                  }
-                 .milestone-year, .milestone-event { display: inline; margin: 0 0.5rem 0 0;}
+                 .milestone-year { display: block; font-size: 0.8rem; }
+                 .milestone-event { margin-top: 0.1rem; }
+                 .milestone-description { display: none; } /* Hide for mobile clarity */
             }
 
             .career-chart-container {
                 margin-top: 2rem;
-                padding: 1.5rem;
-                background-color: var(--accent-tint);
-                border-radius: 12px;
+                height: 400px;
             }
 			
 			.projects-grid {
@@ -1249,35 +1259,40 @@
                                     <div class="milestone-icon"><i class="fas fa-seedling"></i></div>
                                     <div class="milestone-details">
                                         <span class="milestone-year">2016</span>
-                                        <p class="milestone-description">First hands-on experience with data in school projects.</p>
+                                        <h4 class="milestone-event">First Spark</h4>
+                                        <p class="milestone-description">Handling data in school projects ignited my initial curiosity.</p>
                                     </div>
                                 </div>
                                 <div class="timeline-milestone">
-                                    <div class="milestone-icon"><i class="fas fa-lightbulb"></i></div>
+                                    <div class="milestone-icon"><i class="fas fa-chart-bar"></i></div>
                                      <div class="milestone-details">
                                         <span class="milestone-year">2018</span>
-                                         <p class="milestone-description">Discovered a passion for analytics through Excel & statistics.</p>
+                                        <h4 class="milestone-event">Foundational Tools</h4>
+                                        <p class="milestone-description">Excel & statistics opened my eyes to the power of analytics.</p>
                                     </div>
                                 </div>
                                 <div class="timeline-milestone">
                                     <div class="milestone-icon"><i class="fas fa-laptop-code"></i></div>
                                      <div class="milestone-details">
                                         <span class="milestone-year">2019-2023</span>
-                                         <p class="milestone-description">Built a technical foundation in Python, SQL, & Power BI during B.Tech.</p>
+                                         <h4 class="milestone-event">Academic Mastery</h4>
+                                         <p class="milestone-description">Mastered Python, SQL & Power BI during my B.Tech degree.</p>
                                     </div>
                                 </div>
                                 <div class="timeline-milestone">
-                                    <div class="milestone-icon"><i class="fas fa-chart-line"></i></div>
+                                    <div class="milestone-icon"><i class="fas fa-briefcase"></i></div>
                                      <div class="milestone-details">
                                         <span class="milestone-year">2025</span>
-                                         <p class="milestone-description">Applying skills as a Data Analyst Trainee to build scalable solutions.</p>
+                                        <h4 class="milestone-event">Professional Start</h4>
+                                        <p class="milestone-description">Began building scalable analytics solutions as a Data Analyst Trainee.</p>
                                     </div>
                                 </div>
                                 <div class="timeline-milestone">
-                                    <div class="milestone-icon"><i class="fas fa-bullseye"></i></div>
+                                    <div class="milestone-icon"><i class="fas fa-brain"></i></div>
                                     <div class="milestone-details">
-                                        <span class="milestone-year">Aspiration</span>
-                                        <p class="milestone-description">To specialize in Machine Learning and drive predictive business impact.</p>
+                                        <span class="milestone-year">Next Steps</span>
+                                        <h4 class="milestone-event">Future Ambition</h4>
+                                        <p class="milestone-description">Aiming to specialize in Advanced Analytics and Machine Learning.</p>
                                     </div>
                                 </div>
                             </div>
@@ -1657,28 +1672,13 @@
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add("is-visible");
-								
-                                // Special handling for the chart canvas
-                                const chartContainer = entry.target.querySelector('.career-chart-container');
-                                const canvas = document.getElementById('skillGrowthChart');
-                                if (chartContainer && canvas && !canvas.classList.contains('chartjs-render-monitor')) {
-                                    renderSkillChart();
-                                }
-
-								// No unobserve here, to re-trigger if needed, or unobserve specific items
+								observer.unobserve(entry.target);
 							}
 						});
 					},
 					{ rootMargin: "0px 0px -100px 0px" }
 				);
-
-				revealElements.forEach((el) => {
-                    // We only want to unobserve non-chart elements
-                    if(!el.querySelector('.career-chart-container')) {
-                       // The observer for the chart will be handled separately if needed
-                    }
-                    revealObserver.observe(el)
-                });
+				revealElements.forEach((el) => revealObserver.observe(el));
 
 
 				// --- NAVIGATION BAR STYLING ON SCROLL ---
@@ -1756,112 +1756,137 @@
 				sections.forEach((section) => sectionObserver.observe(section));
 
 
-                // --- SKILL GROWTH CHART LOGIC ---
-                let skillChart = null; // Variable to hold the chart instance
+                // --- SKILL GROWTH CHART LOGIC (MODERN REDESIGN) ---
+                let skillChart = null; 
                 function renderSkillChart() {
-                    const ctx = document.getElementById('skillGrowthChart');
-                    if (!ctx || skillChart) return; // Exit if no canvas or chart already exists
+                    const ctx = document.getElementById('skillGrowthChart').getContext('2d');
+                    if (!ctx || skillChart) return; 
 
-                    const chartData = {
-                        labels: ['2016', '2018', '2020', '2022', '2024', '2025'],
-                        datasets: [
-                            {
-                                label: 'Python',
-                                data: [5, 10, 30, 60, 80, 85],
-                                borderColor: 'rgba(59, 130, 246, 0.8)', // Muted Blue
-                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            },
-                            {
-                                label: 'SQL',
-                                data: [5, 15, 35, 65, 85, 90],
-                                borderColor: 'rgba(22, 163, 74, 0.8)', // Muted Green
-                                backgroundColor: 'rgba(22, 163, 74, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            },
-                            {
-                                label: 'Visualization',
-                                data: [10, 20, 40, 70, 90, 95],
-                                borderColor: 'rgba(249, 115, 22, 0.8)', // Muted Orange
-                                backgroundColor: 'rgba(249, 115, 22, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            },
-                             {
-                                label: 'ETL',
-                                data: [0, 5, 25, 50, 75, 80],
-                                borderColor: 'rgba(107, 114, 128, 0.8)', // Muted Gray
-                                backgroundColor: 'rgba(107, 114, 128, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            },
-                            {
-                                label: 'Statistical Analysis',
-                                data: [15, 25, 45, 60, 70, 75],
-                                borderColor: 'rgba(139, 92, 246, 0.8)', // Muted Purple
-                                backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            }
-                        ]
+                    // --- Define colors and create gradients ---
+                    const colors = {
+                        python: '#3B82F6',     // Blue
+                        sql: '#16A34A',        // Green
+                        visualization: '#F97316', // Orange
+                        etl: '#6B7280',        // Gray
+                        stats: '#8B5CF6'       // Purple
                     };
+
+                    const createGradient = (color) => {
+                        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                        gradient.addColorStop(0, `${color}60`);
+                        gradient.addColorStop(0.8, `${color}00`);
+                        return gradient;
+                    };
+
+                    const datasets = [
+                        {
+                            label: 'Python',
+                            data: [5, 10, 30, 60, 80, 85],
+                            borderColor: colors.python,
+                            backgroundColor: createGradient(colors.python),
+                        },
+                        {
+                            label: 'SQL',
+                            data: [5, 15, 35, 65, 85, 90],
+                            borderColor: colors.sql,
+                            backgroundColor: createGradient(colors.sql),
+                        },
+                        {
+                            label: 'Visualization (Power BI)',
+                            data: [10, 20, 40, 70, 90, 95],
+                            borderColor: colors.visualization,
+                            backgroundColor: createGradient(colors.visualization),
+                        },
+                         {
+                            label: 'ETL Processes',
+                            data: [0, 5, 25, 50, 75, 80],
+                            borderColor: colors.etl,
+                            backgroundColor: createGradient(colors.etl),
+                        },
+                        {
+                            label: 'Statistical Analysis',
+                            data: [15, 25, 45, 60, 70, 75],
+                            borderColor: colors.stats,
+                            backgroundColor: createGradient(colors.stats),
+                        }
+                    ];
+                    
+                    // Add modern styling to each dataset
+                    datasets.forEach(ds => {
+                        ds.borderWidth = 3;
+                        ds.tension = 0.4;
+                        ds.fill = true;
+                        ds.pointRadius = 0;
+                        ds.pointHitRadius = 20;
+                        ds.pointHoverRadius = 8;
+                        ds.pointHoverBackgroundColor = '#fff';
+                        ds.pointHoverBorderColor = ds.borderColor;
+                        ds.pointBorderWidth = 2;
+                    });
+
 
                     skillChart = new Chart(ctx, {
                         type: 'line',
-                        data: chartData,
+                        data: {
+                            labels: ['2016', '2018', '2020', '2022', '2024', '2025'],
+                            datasets: datasets
+                        },
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
                             plugins: {
                                 legend: {
                                     position: 'bottom',
+                                    align: 'start',
                                     labels: {
-                                        font: {
-                                            family: "'Helvetica Neue', sans-serif",
-                                        },
-                                         padding: 20
+                                        font: { family: "'Helvetica Neue', sans-serif" },
+                                        usePointStyle: true,
+                                        boxWidth: 8,
+                                        padding: 25
                                     }
                                 },
                                 title: {
                                     display: true,
-                                    text: 'Skill Proficiency Growth',
+                                    text: 'My Career Growth Journey',
                                     color: '#010101',
-                                    font: {
-                                        size: 18,
-                                        family: "'Georgia', serif",
-                                        weight: 'bold'
-                                    },
-                                    padding: {
-                                        bottom: 20
-                                    }
+                                    align: 'start',
+                                    font: { size: 24, family: "'Georgia', serif", weight: 'bold'},
+                                    padding: { bottom: 20 }
+                                },
+                                tooltip: {
+                                    enabled: true,
+                                    mode: 'index',
+                                    intersect: false,
+                                    backgroundColor: 'rgba(1, 1, 1, 0.85)',
+                                    titleFont: { family: "'Georgia', serif" },
+                                    bodyFont: { family: "'Helvetica Neue', sans-serif" },
+                                    cornerRadius: 8,
+                                    padding: 12,
+                                    displayColors: true,
+                                    boxPadding: 4,
+                                    borderColor: 'rgba(255,255,255,0.1)',
+                                    borderWidth: 1,
                                 }
                             },
                             scales: {
                                 y: {
                                     beginAtZero: true,
                                     max: 100,
-                                    ticks: {
-                                        callback: function(value) {
-                                            return value + '%'
-                                        }
-                                    }
+                                    grid: { display: false, drawBorder: false },
+                                    ticks: { display: false }
                                 },
                                 x: {
-                                    grid: {
-                                        display: false
+                                    grid: { display: false, drawBorder: false },
+                                    ticks: { 
+                                        color: 'rgba(1, 1, 1, 0.6)',
+                                        font: { family: "'Helvetica Neue', sans-serif", size: 12 } 
                                     }
                                 }
                             },
                             animation: {
-                                duration: 1500,
-                                easing: 'easeOutQuart',
+                                duration: 1000,
+                                easing: 'easeOutCubic',
+                                delay: (context) => context.datasetIndex * 150, // Staggered animation
                             }
                         }
                     });
@@ -1874,7 +1899,7 @@
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
+                }, { threshold: 0.5 }); 
 
                 const chartContainer = document.querySelector('.career-chart-container');
                 if (chartContainer) {
