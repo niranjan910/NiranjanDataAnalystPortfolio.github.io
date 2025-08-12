@@ -12,6 +12,8 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 		<style>
 			/* --- CORE STYLES (New Theme) --- */
@@ -436,38 +438,14 @@
 				width: 100%;
 			}
 
-			/* --- ABOUT SECTION --- */
-			.about-subheader {
-				display: flex;
-				align-items: center;
-				gap: 1rem;
-				margin-bottom: 3rem;
-			}
-
-			.about-subheader .icon {
-				width: 24px;
-				height: 24px;
-				color: var(--accent);
-				animation: spin 6s linear infinite;
-			}
-
-			.about-subheader p {
-				font-size: 0.95rem;
-				font-weight: 500;
-				letter-spacing: 0.5px;
-				text-transform: uppercase;
-				color: var(--text-primary);
-				margin: 0;
-			}
+            /* --- NEW ABOUT SECTION STYLES --- */
 
 			#about .about-container {
 				display: grid;
 				grid-template-columns: 1fr;
 				gap: 2rem;
-				background: rgba(255, 255, 255, 0.5);
-				-webkit-backdrop-filter: blur(10px);
-				backdrop-filter: blur(10px);
-				border: 1px solid rgba(255, 255, 255, 0.2);
+				background: var(--card-bg);
+                box-shadow: 0 10px 40px -10px var(--shadow-color);
 				padding: 3rem;
 				border-radius: 16px;
 			}
@@ -481,24 +459,29 @@
 
 			.about-left {
 				text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
 			}
+            
+            .about-left .sticky-content {
+                position: sticky;
+                top: 120px; /* Adjust based on nav height */
+            }
 
 			.about-image-wrapper {
 				max-width: 250px;
 				margin: 0 auto 1.5rem;
 				border-radius: 50%;
 				position: relative;
-				transform-style: preserve-3d;
-				transition: transform 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
-				will-change: transform;
 			}
 
 			.about-image-wrapper img {
 				width: 100%;
 				height: auto;
 				border-radius: 50%;
-				border: 4px solid var(--card-bg);
-				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				border: 4px solid var(--bg-main);
+				box-shadow: 0 10px 30px var(--shadow-color);
 			}
 
 			.about-name {
@@ -517,6 +500,9 @@
 			.contact-info {
 				text-align: left;
 				font-size: 0.9rem;
+                background-color: var(--accent-tint);
+                padding: 1rem;
+                border-radius: 12px;
 			}
 
 			.contact-info ul {
@@ -531,130 +517,142 @@
 				gap: 12px;
 				margin-bottom: 0.8rem;
 			}
+             .contact-info li:last-child {
+                margin-bottom: 0;
+             }
+             
 
 			.contact-info i {
 				color: var(--accent);
 				font-size: 1.2rem;
+                width: 20px;
+                text-align: center;
 			}
+            
+            .about-right .about-headline {
+                font-family: var(--font-serif);
+                font-size: clamp(2rem, 5vw, 2.8rem);
+                line-height: 1.2;
+                margin-bottom: 0.75rem;
+                color: var(--text-primary);
+                font-weight: 700;
+            }
+            .about-right .about-subtitle {
+                font-family: var(--font-sans);
+                font-size: clamp(1rem, 2vw, 1.1rem);
+                color: var(--text-secondary);
+                margin-bottom: 2.5rem;
+                font-style: italic;
+            }
 
-			.about-right .bio {
-				font-family: var(--font-serif);
-				font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-				margin-bottom: 3rem;
-				line-height: 1.7;
-				max-width: 70ch;
-			}
+            .about-right .narrative-story p {
+                font-family: var(--font-sans);
+                font-size: 1.05rem;
+                line-height: 1.7;
+                margin-bottom: 1.5rem;
+            }
 
-			.about-details-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 2.5rem;
-			}
+            .about-section-divider {
+                border: 0;
+                height: 1px;
+                background-color: var(--border-color);
+                margin: 3rem 0;
+            }
+            
+            /* Visual Timeline */
+            .visual-timeline {
+                position: relative;
+                width: 100%;
+                padding: 1rem 0;
+                margin-bottom: 1rem;
+            }
+            .visual-timeline::before {
+                content: '';
+                position: absolute;
+                top: 20px;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background-color: var(--border-color);
+                z-index: 1;
+            }
+            .timeline-milestones {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                z-index: 2;
+            }
+            .timeline-milestone {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 18%; /* Approx 100/5 */
+            }
+            .milestone-icon {
+                width: 40px;
+                height: 40px;
+                background: var(--accent);
+                color: var(--bg-main);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                position: relative;
+                transition: transform 0.3s ease;
+            }
+            .timeline-milestone:hover .milestone-icon {
+                transform: scale(1.15);
+            }
+            .milestone-year {
+                font-weight: 700;
+                font-size: 1rem;
+                color: var(--text-primary);
+            }
+             .milestone-event {
+                font-weight: 600;
+                font-size: 0.9rem;
+                margin-top: 0.5rem;
+                margin-bottom: 0.25rem;
+             }
+            .milestone-description {
+                font-size: 0.8rem;
+                color: var(--text-secondary);
+                line-height: 1.4;
+            }
+            @media (max-width: 768px) {
+                .visual-timeline::before { display: none; }
+                .timeline-milestones {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 1.5rem;
+                }
+                .timeline-milestone {
+                    flex-direction: row;
+                    align-items: center;
+                    text-align: left;
+                    width: 100%;
+                }
+                 .milestone-icon {
+                    margin-bottom: 0;
+                    margin-right: 1rem;
+                    flex-shrink: 0;
+                 }
+                 .milestone-details {
+                    display: flex;
+                    flex-direction: column;
+                 }
+                 .milestone-year, .milestone-event { display: inline; margin: 0 0.5rem 0 0;}
+            }
 
-			.about-details-grid h3 {
-				font-size: clamp(1.2rem, 1.8vw, 1.4rem);
-				padding-bottom: 0.5rem;
-				margin-bottom: 1.5rem;
-				border-bottom: 2px solid;
-				border-image-slice: 1;
-				border-image-source: var(--accent-gradient);
-			}
-
-			.core-skills-list {
-				list-style: none;
-				padding: 0;
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.75rem;
-			}
-
-			.core-skills-list li {
-				font-family: var(--font-sans);
-				background: var(--accent-tint);
-				color: var(--accent);
-				padding: 0.5rem 1rem;
-				border-radius: 20px;
-				font-size: 0.9rem;
-				transition: all 0.3s ease;
-			}
-
-			.core-skills-list li:hover {
-				transform: translateY(-3px);
-				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-				color: var(--accent);
-			}
-
-			.software-skills-list {
-				display: flex;
-				flex-wrap: wrap;
-				align-items: center;
-				gap: 1.5rem;
-				list-style: none;
-				padding: 0;
-				margin-top: 1rem;
-			}
-
-			.software-skills-list li {
-				transition: transform 0.3s ease;
-			}
-			.software-skills-list li:hover {
-				transform: translateY(-5px);
-			}
-			.software-skills-list img {
-				width: 40px;
-				height: 40px;
-			}
-
-			.timeline {
-				position: relative;
-			}
-
-			.timeline::after {
-				content: "";
-				position: absolute;
-				width: 2px;
-				background-color: var(--border-color);
-				top: 0.5rem;
-				bottom: 0;
-				left: 7px;
-				z-index: 1;
-			}
-
-			.timeline-item {
-				padding: 0 0 2.5rem 30px;
-				position: relative;
-				z-index: 2;
-			}
-
-			.timeline-item::before {
-				content: "";
-				height: 15px;
-				width: 15px;
-				position: absolute;
-				top: 0.5rem;
-				left: 0;
-				background-color: var(--accent);
-				border: 2px solid var(--card-bg);
-				border-radius: 50%;
-				z-index: 2;
-			}
-
-			.timeline-content h4 {
-				font-family: var(--font-sans);
-				font-size: 1.1rem;
-				margin-bottom: 0.25rem;
-				font-weight: 600;
-			}
-			.timeline-content p {
-				margin: 0;
-				font-size: 1rem;
-			}
-			.timeline-date {
-				font-family: var(--font-sans);
-				font-size: 0.8rem;
-				margin-bottom: 0.5rem;
-				color: var(--accent);
-			}
+            .career-chart-container {
+                margin-top: 2rem;
+                padding: 1.5rem;
+                background-color: var(--accent-tint);
+                border-radius: 12px;
+            }
 			
 			.projects-grid {
 				list-style: none;
@@ -1170,185 +1168,130 @@
                 </div>
 			</section>
 
-			<section id="about" >
-				<h2 class="section-heading reveal">About Me</h2>
-				<div class="about-subheader reveal">
-					<svg
-						class="icon"
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
-						fill="currentColor"
-					>
-						<path
-							d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"
-						/>
-					</svg>
-					<p>Your data is talking — are you ready to listen?</p>
-				</div>
+			<section id="about">
 				<div class="about-container reveal">
 					<div class="about-left">
-						<div class="about-image-wrapper">
-							<img
-								src="images/Profile pic.png"
-								alt="Niranjan Kumar Headshot"
-							/>
-						</div>
-						<h2 class="about-name">Niranjan Kumar</h2>
-						<p class="about-title">Data Analyst</p>
-						<div class="contact-info">
-							<ul>
-								<li>
-									<i class="fas fa-map-marker-alt"></i
-									><div>Hyderabad, India</div>
-								</li>
-								<li>
-									<i class="fas fa-phone-alt"></i
-									><div>
-										<a href="tel:+919641143646"
-											>+91 9641143646</a
-										>
-									</div>
-								</li>
-								<li>
-									<i class="fas fa-envelope"></i
-									><div>
-										<a href="mailto:niranjan991100@gmail.com"
-											>niranjan991100@gmail.com</a
-										>
-									</div>
-								</li>
-								<li>
-									<i class="fab fa-linkedin"></i
-									><div>
-										<a
-											href="https://www.linkedin.com/in/niranjan-k-a83517229/"
-											target="_blank"
-											>LinkedIn</a
-										>
-									</div>
-								</li>
-								<li>
-									<i class="fab fa-github"></i
-									><div>
-										<a
-											href="https://github.com/niranjan910"
-											target="_blank"
-											>GitHub</a
-										>
-									</div>
-								</li>
-							</ul>
-						</div>
+						<div class="sticky-content">
+                            <div class="about-image-wrapper">
+                                <img
+                                    src="images/Profile pic.png"
+                                    alt="Niranjan Kumar Headshot"
+                                />
+                            </div>
+                            <h2 class="about-name">Niranjan Kumar</h2>
+                            <p class="about-title">Data Analyst</p>
+                            <div class="contact-info">
+                                <ul>
+                                    <li>
+                                        <i class="fas fa-map-marker-alt"></i
+                                        ><div>Hyderabad, India</div>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-phone-alt"></i
+                                        ><div>
+                                            <a href="tel:+919641143646"
+                                                >+91 9641143646</a
+                                            >
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-envelope"></i
+                                        ><div>
+                                            <a href="mailto:niranjan991100@gmail.com"
+                                                >niranjan991100@gmail.com</a
+                                            >
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-linkedin"></i
+                                        ><div>
+                                            <a
+                                                href="https://www.linkedin.com/in/niranjan-k-a83517229/"
+                                                target="_blank"
+                                                >LinkedIn</a
+                                            >
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-github"></i
+                                        ><div>
+                                            <a
+                                                href="https://github.com/niranjan910"
+                                                target="_blank"
+                                                >GitHub</a
+                                            >
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
 					</div>
 					<div class="about-right">
-						<p class="bio">
-							I am a Data Analyst who builds end-to-end data solutions. 
-							Leveraging a robust stack including Python, SQL, and Power BI, 
-							I architect data pipelines, perform rigorous analysis, and build dynamic visualizations 
-							that solve critical business problems. My passion lies not just in finding patterns, 
-							but in translating them into data-driven strategies that drive measurable growth and efficiency.
-						</p>
-						<div class="about-details-grid">
-							<div class="grid-column">
-								<h3>Education</h3>
-								<div class="timeline">
-									<div class="timeline-item">
-										<div class="timeline-content">
-											<h4 class="timeline-date">2019 - 2023</h4>
-											<h4>B.Tech, Computer Science</h4>
-											<p>
-												Institute of Professional Studies, Gwalior
-												(8.9 CGPA)
-											</p>
-										</div>
-									</div>
-									<div class="timeline-item">
-										<div class="timeline-content">
-											<h4 class="timeline-date">2018</h4>
-											<h4>Higher Secondary (12th)</h4>
-											<p>D.A.V. Public School (85%)</p>
-										</div>
-									</div>
-									<div class="timeline-item">
-										<div class="timeline-content">
-											<h4 class="timeline-date">2016</h4>
-											<h4>Secondary (10th)</h4>
-											<p>D.A.V. Public School (9.2 CGPA)</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="grid-column">
-								<h3>Experience</h3>
-								<div class="timeline">
-									<div class="timeline-item">
-										<div class="timeline-content">
-											<h4 class="timeline-date">
-												Feb 2025 - July 2025
-											</h4>
-											<h4>Data Analyst Trainee</h4>
-											<p>Naresh i Technologies, Hyderabad</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="grid-column">
-								<h3>Core Skills</h3>
-								<ul class="core-skills-list">
-									<li>Data Analysis & Visualization</li>
-									<li>Statistical Analysis</li>
-									<li>SQL & Database Management</li>
-									<li>ETL Processes</li>
-									<li>Python</li>
-									<li>Pandas</li>
-									<li>NumPy</li>
-									<li>Dashboard Design</li>
-									<li>Critical Thinking</li>
-								</ul>
-								<h3 style="margin-top: 2.5rem">Software Skills</h3>
-								<ul class="software-skills-list">
-									<li title="Jupyter Notebook">
-										<img
-											src="Icon/Jupiter.svg"
-											alt="Jupyter Notebook Icon"
-										/>
-									</li>
-									<li title="MySQL">
-										<img src="Icon/My SQl.svg" alt="MySQL Icon" />
-									</li>
-									<li title="Numpy">
-										<img src="Icon/Numpy.svg" alt="Numpy Icon" />
-									</li>
-									<li title="Pandas">
-										<img src="Icon/Pandas.svg" alt="Pandas Icon" />
-									</li>
-									<li title="Power BI">
-										<img
-											src="Icon/Powerbi.svg"
-											alt="Power BI Icon"
-										/>
-									</li>
-									<li title="PowerPoint">
-										<img
-											src="Icon/PowerPoint.svg"
-											alt="PowerPoint Icon"
-										/>
-									</li>
-									<li title="Python">
-										<img src="Icon/Python.svg" alt="Python Icon" />
-									</li>
-									<li title="Microsoft Word">
-										<img src="Icon/Word.svg" alt="MS Word Icon" />
-									</li>
-									<li title="Microsoft Excel">
-										<img src="Icon/Excel.svg" alt="MS Excel Icon" />
-									</li>
-									<li title="Tableau">
-										<img src="Icon/Tableau.svg" alt="Tableau Icon" />
-									</li>
-								</ul>
-							</div>
+						<h1 class="about-headline">Every Dataset Tells a Story — Here’s Mine.</h1>
+                        <p class="about-subtitle">
+                            <em>From my first dataset in 2018 to designing impactful analytics solutions in 2025, this is my journey as a Data Analyst.</em>
+                        </p>
+
+						<div class="narrative-story">
+							<p>
+                                My journey into data analytics began in high school when I first explored spreadsheets to make sense of student performance data. That curiosity deepened during my B.Tech in Computer Science (2019–2023), where I learned Python, SQL, and data visualization. I realized data wasn’t just numbers — it was a way to uncover hidden patterns and drive real-world decisions.
+                            </p>
+                            <p>
+                                Today, as a Data Analyst Trainee at Naresh i Technologies, I work on building data pipelines, optimizing SQL queries, and designing dashboards that turn raw datasets into clear business insights. My focus is on precision, speed, and storytelling — whether it’s analyzing 500K+ retail records in Power BI or developing predictive models for healthcare data.
+                            </p>
+                            <p>
+                                In the next 3–5 years, I see myself specializing in advanced analytics and machine learning, helping organizations make predictive, automated, and intelligent business decisions. I’m committed to continuous learning, tackling complex datasets, and shaping strategies that create measurable impact.
+                            </p>
 						</div>
+
+                        <hr class="about-section-divider" />
+
+                        <div class="visual-timeline">
+                            <div class="timeline-milestones">
+                                <div class="timeline-milestone">
+                                    <div class="milestone-icon"><i class="fas fa-graduation-cap"></i></div>
+                                    <div class="milestone-details">
+                                        <span class="milestone-year">2016</span>
+                                        <p class="milestone-description">First exposure to data handling during school projects</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-milestone">
+                                    <div class="milestone-icon"><i class="fas fa-chart-bar"></i></div>
+                                     <div class="milestone-details">
+                                        <span class="milestone-year">2018</span>
+                                         <p class="milestone-description">Excel & statistics ignite interest in analytics</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-milestone">
+                                    <div class="milestone-icon"><i class="fas fa-laptop-code"></i></div>
+                                     <div class="milestone-details">
+                                        <span class="milestone-year">2019-2023</span>
+                                         <p class="milestone-description">B.Tech in Computer Science – mastered Python, SQL, Power BI</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-milestone">
+                                    <div class="milestone-icon"><i class="fas fa-chart-line"></i></div>
+                                     <div class="milestone-details">
+                                        <span class="milestone-year">2025</span>
+                                         <p class="milestone-description">Data Analyst Trainee – building scalable analytics solutions</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-milestone">
+                                    <div class="milestone-icon"><i class="fas fa-rocket"></i></div>
+                                    <div class="milestone-details">
+                                        <span class="milestone-year">Future</span>
+                                        <p class="milestone-description">Machine learning specialist driving business impact</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="about-section-divider" />
+
+                        <div class="career-chart-container">
+                            <canvas id="skillGrowthChart"></canvas>
+                        </div>
+
 					</div>
 				</div>
 			</section>
@@ -1710,20 +1653,36 @@
 				};
 				new p5(certsSketch);
 				
-				// --- SCROLL-BASED ANIMATIONS ---
-				const revealObserver = new IntersectionObserver(
+                // --- SCROLL-BASED ANIMATIONS ---
+				const revealElements = document.querySelectorAll(".reveal");
+                const revealObserver = new IntersectionObserver(
 					(entries, observer) => {
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add("is-visible");
-								observer.unobserve(entry.target);
+								
+                                // Special handling for the chart canvas
+                                const chartContainer = entry.target.querySelector('.career-chart-container');
+                                const canvas = document.getElementById('skillGrowthChart');
+                                if (chartContainer && canvas && !canvas.classList.contains('chartjs-render-monitor')) {
+                                    renderSkillChart();
+                                }
+
+								// No unobserve here, to re-trigger if needed, or unobserve specific items
 							}
 						});
 					},
 					{ rootMargin: "0px 0px -100px 0px" }
 				);
 
-				document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+				revealElements.forEach((el) => {
+                    // We only want to unobserve non-chart elements
+                    if(!el.querySelector('.career-chart-container')) {
+                       // The observer for the chart will be handled separately if needed
+                    }
+                    revealObserver.observe(el)
+                });
+
 
 				// --- NAVIGATION BAR STYLING ON SCROLL ---
 				const nav = document.getElementById("mainNav");
@@ -1799,12 +1758,138 @@
 
 				sections.forEach((section) => sectionObserver.observe(section));
 
-				// --- MOUSE-BASED INTERACTIONS (DESKTOP ONLY) ---
+
+                // --- SKILL GROWTH CHART LOGIC ---
+                let skillChart = null; // Variable to hold the chart instance
+                function renderSkillChart() {
+                    const ctx = document.getElementById('skillGrowthChart');
+                    if (!ctx || skillChart) return; // Exit if no canvas or chart already exists
+
+                    const chartData = {
+                        labels: ['2016', '2018', '2020', '2022', '2024', '2025'],
+                        datasets: [
+                            {
+                                label: 'Python',
+                                data: [5, 10, 30, 60, 80, 85],
+                                borderColor: 'rgba(59, 130, 246, 0.8)', // Muted Blue
+                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                                borderWidth: 2.5,
+                                tension: 0.4,
+                                fill: true,
+                            },
+                            {
+                                label: 'SQL',
+                                data: [5, 15, 35, 65, 85, 90],
+                                borderColor: 'rgba(22, 163, 74, 0.8)', // Muted Green
+                                backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                                borderWidth: 2.5,
+                                tension: 0.4,
+                                fill: true,
+                            },
+                            {
+                                label: 'Visualization',
+                                data: [10, 20, 40, 70, 90, 95],
+                                borderColor: 'rgba(249, 115, 22, 0.8)', // Muted Orange
+                                backgroundColor: 'rgba(249, 115, 22, 0.1)',
+                                borderWidth: 2.5,
+                                tension: 0.4,
+                                fill: true,
+                            },
+                             {
+                                label: 'ETL',
+                                data: [0, 5, 25, 50, 75, 80],
+                                borderColor: 'rgba(107, 114, 128, 0.8)', // Muted Gray
+                                backgroundColor: 'rgba(107, 114, 128, 0.1)',
+                                borderWidth: 2.5,
+                                tension: 0.4,
+                                fill: true,
+                            },
+                            {
+                                label: 'Statistical Analysis',
+                                data: [15, 25, 45, 60, 70, 75],
+                                borderColor: 'rgba(139, 92, 246, 0.8)', // Muted Purple
+                                backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                                borderWidth: 2.5,
+                                tension: 0.4,
+                                fill: true,
+                            }
+                        ]
+                    };
+
+                    skillChart = new Chart(ctx, {
+                        type: 'line',
+                        data: chartData,
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'bottom',
+                                    labels: {
+                                        font: {
+                                            family: "'Helvetica Neue', sans-serif",
+                                        },
+                                         padding: 20
+                                    }
+                                },
+                                title: {
+                                    display: true,
+                                    text: 'Skill Proficiency Growth',
+                                    color: '#010101',
+                                    font: {
+                                        size: 18,
+                                        family: "'Georgia', serif",
+                                        weight: 'bold'
+                                    },
+                                    padding: {
+                                        bottom: 20
+                                    }
+                                }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    ticks: {
+                                        callback: function(value) {
+                                            return value + '%'
+                                        }
+                                    }
+                                },
+                                x: {
+                                    grid: {
+                                        display: false
+                                    }
+                                }
+                            },
+                            animation: {
+                                duration: 1500,
+                                easing: 'easeOutQuart',
+                            }
+                        }
+                    });
+                }
+                
+                const chartObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            renderSkillChart();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
+
+                const chartContainer = document.querySelector('.career-chart-container');
+                if (chartContainer) {
+                    chartObserver.observe(chartContainer);
+                }
+
+				
+                // --- MOUSE-BASED INTERACTIONS (DESKTOP ONLY) ---
 				if (!isTouchDevice) {
 					// 1. Magnetic Items Effect
 					const magneticItems = document.querySelectorAll('.magnetic-item');
-					const strength = 50; 
-
+					
 					magneticItems.forEach(item => {
 						item.addEventListener('mousemove', (e) => {
 							const pos = item.getBoundingClientRect();
@@ -1844,6 +1929,7 @@
 						});
 					});
 				}
+
 			});
 		</script>
 	</body>
