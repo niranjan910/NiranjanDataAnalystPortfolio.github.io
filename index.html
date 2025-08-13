@@ -25,8 +25,11 @@
 				--shadow-color: rgba(0, 0, 0, 0.08);
 				--accent: #010101;
 				--accent-tint: rgba(1, 1, 1, 0.07);
-                --primary-gradient: linear-gradient(90deg, #00F5A0, #00D9F5);
-
+				--accent-gradient: linear-gradient(
+					90deg,
+					#010101 0%,
+					#444444 100%
+				);
 
 				--font-sans: "Helvetica Neue", sans-serif;
 				--font-serif: "Georgia", serif;
@@ -214,175 +217,188 @@
 				color: var(--accent);
 			}
 
-/* --- HERO SECTION (REDESIGNED) --- */
-#hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 100vh;
-    text-align: left;
-    position: relative;
-    margin: 0 -60px;
-    padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
-    background-color: #111; /* Dark network background */
-    overflow: hidden;
-}
+			/* --- HERO SECTION --- */
+			#hero {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				min-height: 100vh;
+				text-align: left;
+				position: relative;
+				margin: 0 -60px;
+				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
+				background-color: #111;
+				overflow: hidden;
+			}
 
-#hero::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 25%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(0, 245, 160, 0.1), transparent 60%);
-    z-index: 0;
-    pointer-events: none;
-}
+			#hero-canvas {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
 
-#hero-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
+			#hero .hero-content-wrapper {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				width: 100%;
+				position: relative;
+				z-index: 2;
+				flex-grow: 1;
+			}
 
-.hero-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 4rem;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-}
+			#hero .hero-text-container,
+			#hero .hero-content-wrapper {
+				position: relative;
+				z-index: 2;
+			}
 
-@media (min-width: 992px) {
-    .hero-layout {
-        grid-template-columns: 1fr 1fr;
-    }
-}
+			#hero h1,
+			#hero h2,
+			#hero h4,
+			#hero p {
+				color: var(--text-on-image);
+			}
+			.hero-main-heading {
+				font-family: var(--font-serif);
+				font-weight: 700;
+				letter-spacing: -1px;
+				margin: 0;
+				font-size: clamp(2.5rem, 6vw, 4.5rem);
+				line-height: 1.1;
+				background: linear-gradient(45deg, #f1f1f1, #c1c1c1);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			/* --- NEW HERO HOOK STYLE --- */
+			.hero-hook {
+				font-family: var(--font-sans);
+				font-size: clamp(1rem, 2vw, 1.25rem);
+				max-width: 60ch;
+				color: var(--text-on-image);
+				opacity: 0.8;
+				margin-top: 1.5rem;
+				line-height: 1.6;
+			}
 
-.hero-left {
-    animation: fadeInSlideUp 0.8s forwards 200ms;
-    opacity: 0;
-}
+			.hero-cta-container {
+				text-align: right;
+				animation: fadeInSlideUp 0.8s forwards 600ms;
+				opacity: 0;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+			}
+			.hero-cta-text {
+				font-size: 2rem;
+				line-height: 1.3;
+				font-weight: 500;
+				margin-bottom: 1.5rem;
+				max-width: none;
+			}
 
-.hero-headline {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
-    line-height: 1.15;
-    color: white;
-    margin-bottom: 1.5rem;
-}
-.headline-gradient {
-    background-image: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-}
+			.modern-pill-button {
+				display: inline-flex;
+				align-items: center;
+				gap: 12px;
+				background-color: var(--text-primary);
+				color: var(--bg-main) !important;
+				font-weight: 500;
+				font-size: 1rem;
+				border-radius: 9999px;
+				padding: 4px 6px 4px 18px;
+				height: 44px;
+				line-height: 1;
+				font-family: var(--font-sans);
+				text-decoration: none;
+				transition: transform 0.2s ease, box-shadow 0.2s ease,
+					background-color 0.2s ease;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				will-change: transform;
+			}
 
-.hero-subheadline {
-    font-family: var(--font-sans);
-    font-size: clamp(1.1rem, 1.5vw, 1.25rem);
-    color: #C9D1D9;
-    max-width: 60ch;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
-}
+			.modern-pill-button .icon-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 34px;
+				height: 34px;
+				background-color: var(--bg-main);
+				color: var(--text-primary);
+				border-radius: 50%;
+				font-size: 1.3rem;
+				line-height: 1;
+			}
 
-.hero-bullet-points {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 2.5rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-}
+			.modern-pill-button:hover {
+				color: var(--bg-main) !important;
+				transform: translateY(-3px) scale(1.03);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+				opacity: 1;
+				background-color: #333;
+			}
 
-.hero-bullet-points li {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 1rem;
-    color: var(--text-on-image);
-}
+			.hero-cta-button {
+				background-color: var(--bg-main);
+				color: var(--text-primary) !important;
+			}
+			.hero-cta-button .icon-container {
+				background-color: var(--text-primary);
+				color: var(--bg-main);
+			}
+			.hero-cta-button:hover {
+				background-color: #e0e0e0;
+				color: var(--text-primary) !important;
+			}
 
-.hero-bullet-points i {
-    color: #00F5A0; /* Match start of gradient */
-    font-size: 1.5rem;
-}
+			.projects-footer .modern-pill-button {
+				background-color: var(--bg-main);
+				color: var(--text-primary) !important;
+			}
 
-.hero-right {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+			.projects-footer .modern-pill-button .icon-container {
+				background-color: var(--text-primary);
+				color: var(--bg-main);
+			}
 
-.hero-portrait-wrapper {
-    position: relative;
-    animation: fadeInSlideUp 0.8s forwards 400ms;
-    opacity: 0;
-}
-
-.hero-portrait {
-    width: clamp(250px, 100%, 380px);
-    height: auto;
-    border-radius: 50%;
-    border: 3px solid rgba(255, 255, 255, 0.5);
-    box-shadow: 0 0 15px 5px rgba(0, 245, 160, 0.3), 0 0 35px 12px rgba(0, 217, 245, 0.2);
-    /* Neon glow effect */
-    -webkit-filter: drop-shadow(0 0 10px #00F5A0) drop-shadow(0 0 25px #00D9F5);
-    filter: drop-shadow(0 0 10px #00F5A0) drop-shadow(0 0 25px #00D9F5);
-}
-
-.cta-area {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.btn {
-    padding: 14px 28px;
-    border-radius: 50px;
-    font-size: 1rem;
-    font-weight: 600;
-    text-align: center;
-    transition: var(--transition-fast);
-    cursor: pointer;
-    display: inline-block;
-    border: 2px solid transparent;
-}
-.btn-primary-gradient {
-    background-image: var(--primary-gradient);
-    background-size: 200% auto;
-    color: black;
-
-}
-.btn-primary-gradient:hover {
-    background-position: right center;
-    color: black;
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-.btn-secondary-outline {
-    background-color: transparent;
-    color: white;
-    border-color: #00F5A0;
-}
-.btn-secondary-outline:hover {
-    background-color: #00F5A0;
-    color: black;
-    opacity: 1;
-    transform: scale(1.05);
-}
-
+			.hero-text-container {
+				animation: fadeInSlideUp 0.8s forwards 200ms;
+				opacity: 0;
+			}
+			.hero-features-container {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+				animation: fadeInSlideUp 0.8s forwards 400ms;
+				opacity: 0;
+			}
+			.feature-item {
+				display: flex;
+				align-items: flex-start;
+				gap: 1rem;
+				max-width: 380px;
+			}
+			.feature-item img {
+				width: 24px;
+				height: auto;
+				margin-top: 6px;
+			}
+			.feature-item h4 {
+				font-family: var(--font-sans);
+				font-size: 1rem;
+				font-weight: 600;
+				margin-bottom: 0.25rem;
+			}
+			.feature-item p {
+				font-size: 0.9rem;
+				line-height: 1.6;
+				color: var(--text-on-image);
+				opacity: 0.9;
+				margin: 0;
+			}
 
 			@keyframes fadeInSlideUp {
 				from {
@@ -934,28 +950,13 @@
 					padding-top: 100px;
 					padding-bottom: 100px;
 				}
+				.hero-main-heading {
+					font-size: 60px;
+				}
+				.feature-item {
+					max-width: 300px;
+				}
 			}
-			@media (max-width: 991px) {
-				.hero-layout {
-					text-align: center;
-				}
-				.hero-right {
-					order: -1;
-				}
-                .hero-subheadline {
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-				.hero-bullet-points {
-					align-items: center;
-                    justify-content: center;
-				}
-				.cta-area {
-					justify-content: center;
-				}
-
-			}
-
 			@media (max-width: 768px) {
 				main {
 					padding: 0 25px;
@@ -981,7 +982,31 @@
 					padding-top: 80px;
 					padding-bottom: 80px;
 				}
-
+				#hero .hero-content-wrapper {
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					gap: 3rem;
+				}
+				.hero-text-container {
+					text-align: center; /* Center align hook on mobile */
+				}
+				.hero-hook {
+					margin-left: auto;
+					margin-right: auto;
+				}
+				.hero-features-container,
+				.hero-cta-container {
+					text-align: center;
+					align-items: center;
+				}
+				.hero-main-heading {
+					font-size: 40px;
+					text-align: center;
+				}
+				.hero-cta-text {
+					font-size: 1.5rem;
+				}
 				.nav-links {
 					display: flex;
 					position: fixed;
@@ -1092,39 +1117,66 @@
 		</nav>
 		<main id="main-content">
 			<!-- ============================================= -->
-			<!-- ========= START OF REDESIGNED HERO SECTION ========= -->
+			<!-- ========= START OF UPDATED HERO SECTION ========= -->
 			<!-- ============================================= -->
-            <section id="hero">
-                <div id="hero-canvas"></div>
-                <div class="hero-layout">
-                    <div class="hero-left">
-                        <h1 class="hero-headline">
-                            I Don’t Just Analyze Data — I <span class="headline-gradient">Weaponize</span> It for Business <span class="headline-gradient">Growth.</span>
-                        </h1>
-                        <p class="hero-subheadline">
-                            From chaotic spreadsheets to crystal-clear strategies, I turn complex datasets into actionable insights that shape the future — not just explain the past.
-                        </p>
-                        <ul class="hero-bullet-points">
-                            <li><i class="fas fa-chart-line"></i><span><strong>Data-Driven Storytelling</strong> — Insights that inspire action</span></li>
-                            <li><i class="fas fa-brain"></i><span><strong>Predictive Analytics</strong> — See the future, today</span></li>
-                            <li><i class="fas fa-cogs"></i><span><strong>Business Intelligence Solutions</strong> — From raw data to real impact</span></li>
-                        </ul>
-                        <div class="cta-area">
-                            <a href="#projects" class="btn btn-primary-gradient">Explore My Work</a>
-                            <a href="YOUR_RESUME_LINK.pdf" target="_blank" class="btn btn-secondary-outline">Download Resume</a>
-                        </div>
-                    </div>
-                    <div class="hero-right">
-                        <div class="hero-portrait-wrapper">
-                            <img src="images/Profile pic.png" alt="Portrait of Niranjan Kumar" class="hero-portrait">
-                            <!-- Floating particles will be handled by the p5.js canvas if needed -->
-                        </div>
-                    </div>
-                </div>
-            </section>
+			<section id="hero">
+				<div id="hero-canvas"></div>
+
+				<div class="hero-text-container">
+					<h1 class="hero-main-heading">From Raw Data to</h1>
+					<h1 class="hero-main-heading">Strategic Impact.</h1>
+					<h2 class="hero-hook">
+						A data analyst transforming complex datasets into the clear, actionable insights that drive business growth.
+					</h2>
+				</div>
+
+				<div class="hero-content-wrapper">
+					<div class="hero-features-container">
+						<div class="feature-item">
+							<img src="Logo/timer-01.svg" alt="Feature Icon" />
+							<div>
+								<h4>Data-Driven Storytelling</h4>
+								<p>Translating numbers into compelling narratives.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
+							<div>
+								<h4>Precision Analytics</h4>
+								<p>Delivering custom insights tailored to business goals.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
+							<div>
+								<h4>End-to-End Data Solutions</h4>
+								<p>
+									Orchestrating the flow from raw data to BI dashboards.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="hero-cta-container">
+						<p class="hero-cta-text">
+							Your Data Holds the Answers<br />I Reveal Them
+						</p>
+						<a
+							href="mailto:niranjan991100@gmail.com"
+							class="modern-pill-button hero-cta-button magnetic-item"
+						>
+							<span>Lets connect</span>
+							<span class="icon-container">
+								<span>↗</span>
+							</span>
+						</a>
+					</div>
+				</div>
+			</section>
 			<!-- =========================================== -->
-			<!-- ========= END OF REDESIGNED HERO SECTION ========= -->
+			<!-- ========= END OF UPDATED HERO SECTION ========= -->
 			<!-- =========================================== -->
+
 			<section id="about">
 				<div class="about-container reveal">
 					<div class="about-left">
