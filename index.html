@@ -13,8 +13,6 @@
 			referrerpolicy="no-referrer"
 		/>
 
-		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 		<style>
 			/* --- CORE STYLES (New Theme) --- */
 			:root {
@@ -275,6 +273,16 @@
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 			}
+			/* --- NEW HERO HOOK STYLE --- */
+			.hero-hook {
+				font-family: var(--font-sans);
+				font-size: clamp(1rem, 2vw, 1.25rem);
+				max-width: 60ch;
+				color: var(--text-on-image);
+				opacity: 0.8;
+				margin-top: 1.5rem;
+				line-height: 1.6;
+			}
 
 			.hero-cta-container {
 				text-align: right;
@@ -440,12 +448,20 @@
 				transform-origin: bottom left;
 			}
 
-			h2.section-heading {
+			h2.section-heading,
+			h3.section-subheading {
 				display: flex;
 				align-items: center;
 				margin-bottom: 3rem;
 				font-size: clamp(26px, 5vw, 32px);
 				width: 100%;
+			}
+
+			h3.section-subheading {
+				font-size: clamp(22px, 4vw, 28px);
+				margin-top: 3rem;
+				margin-bottom: 2rem;
+				color: var(--text-primary);
 			}
 
 			/* --- NEW ABOUT SECTION STYLES (MODERNIZED) --- */
@@ -550,7 +566,7 @@
 				color: var(--text-primary);
 				font-weight: 700;
 			}
-			
+
 			/* Modernized Subtitle */
 			.about-right .about-subtitle {
 				font-family: var(--font-serif);
@@ -563,12 +579,12 @@
 				padding-left: 1.5rem;
 				max-width: none; /* Override global paragraph styles */
 			}
-			
+
 			/* Override paragraph max-width within the right column to fix spacing issue */
 			.about-right p {
 				max-width: none;
 			}
-			
+
 			.about-right .narrative-story p {
 				font-family: var(--font-sans);
 				font-size: 1.05rem; /* Balanced font size */
@@ -582,108 +598,47 @@
 				background-color: var(--border-color);
 				margin: 3rem 0;
 			}
-
-			/* Visual Timeline (no changes needed, it's good) */
-			.visual-timeline {
-				position: relative;
-				width: 100%;
-				padding: 1rem 0;
-				margin-bottom: 1rem;
+			
+			/* --- NEW CORE COMPETENCIES / TOOLKIT SECTION --- */
+			.toolkit-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 1.5rem;
 			}
-			.visual-timeline::before {
-				content: "";
-				position: absolute;
-				top: 20px;
-				left: 0;
-				right: 0;
-				height: 2px;
-				background-color: var(--border-color);
-				z-index: 1;
-			}
-			.timeline-milestones {
-				display: flex;
-				justify-content: space-between;
-				position: relative;
-				z-index: 2;
-			}
-			.timeline-milestone {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				text-align: center;
-				width: 18%; /* Approx 100/5 */
-			}
-			.milestone-icon {
-				width: 40px;
-				height: 40px;
-				background: var(--accent);
-				color: var(--bg-main);
-				border-radius: 50%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-size: 1.2rem;
-				margin-bottom: 1rem;
-				position: relative;
-				transition: transform 0.3s ease;
-			}
-			.timeline-milestone:hover .milestone-icon {
-				transform: scale(1.15);
-			}
-			.milestone-year {
-				font-weight: 700;
-				font-size: 1rem;
-				color: var(--text-primary);
-			}
-			.milestone-event {
-				font-weight: 600;
-				font-size: 0.9rem;
-				margin-top: 0.5rem;
-				margin-bottom: 0.25rem;
-			}
-			.milestone-description {
-				font-size: 0.8rem;
-				color: var(--text-secondary);
-				line-height: 1.4;
-			}
-			@media (max-width: 768px) {
-				.visual-timeline::before {
-					display: none;
-				}
-				.timeline-milestones {
-					flex-direction: column;
-					align-items: flex-start;
-					gap: 1.5rem;
-				}
-				.timeline-milestone {
-					flex-direction: row;
-					align-items: center;
-					text-align: left;
-					width: 100%;
-				}
-				.milestone-icon {
-					margin-bottom: 0;
-					margin-right: 1rem;
-					flex-shrink: 0;
-				}
-				.milestone-details {
-					display: flex;
-					flex-direction: column;
-				}
-				.milestone-year,
-				.milestone-event {
-					display: inline;
-					margin: 0 0.5rem 0 0;
-				}
-			}
-
-			.career-chart-container {
-				margin-top: 2rem;
-				padding: 1.5rem;
+			.toolkit-item {
 				background-color: var(--accent-tint);
 				border-radius: 12px;
+				padding: 2rem 1.5rem;
+				display: flex;
+				align-items: flex-start; /* Align icon and text at the top */
+				gap: 1.5rem;
+				border: 1px solid transparent;
+				transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+			}
+			.toolkit-item:hover {
+				background-color: #fff;
+				border-color: var(--border-color);
+				transform: translateY(-5px);
 			}
 
+			.toolkit-item .icon {
+				font-size: 2.2rem;
+				color: var(--accent);
+				margin-top: -2px; /* Slight visual adjustment */
+			}
+			.toolkit-item h4 {
+				font-family: var(--font-sans);
+				font-size: 1.1rem;
+				font-weight: 600;
+				margin-bottom: 0.5rem;
+			}
+			.toolkit-item p {
+				font-size: 0.95rem;
+				line-height: 1.6;
+				margin-bottom: 0;
+			}
+
+			/* Projects Section */
 			.projects-grid {
 				list-style: none;
 				padding: 0;
@@ -1033,6 +988,13 @@
 					justify-content: center;
 					gap: 3rem;
 				}
+				.hero-text-container {
+					text-align: center; /* Center align hook on mobile */
+				}
+				.hero-hook {
+					margin-left: auto;
+					margin-right: auto;
+				}
 				.hero-features-container,
 				.hero-cta-container {
 					text-align: center;
@@ -1109,7 +1071,7 @@
 					padding-left: 20px;
 					padding-right: 20px;
 				}
-				.projects-grid {
+				.projects-grid, .toolkit-grid {
 					grid-template-columns: 1fr;
 				}
 			}
@@ -1154,12 +1116,18 @@
 			</div>
 		</nav>
 		<main id="main-content">
+			<!-- ============================================= -->
+			<!-- ========= START OF UPDATED HERO SECTION ========= -->
+			<!-- ============================================= -->
 			<section id="hero">
 				<div id="hero-canvas"></div>
 
 				<div class="hero-text-container">
-					<h1 class="hero-main-heading">Decode the Data.</h1>
-					<h1 class="hero-main-heading">Discover the Story.</h1>
+					<h1 class="hero-main-heading">From Raw Data to</h1>
+					<h1 class="hero-main-heading">Strategic Impact.</h1>
+					<h2 class="hero-hook">
+						A data analyst transforming complex datasets into the clear, actionable insights that drive business growth.
+					</h2>
 				</div>
 
 				<div class="hero-content-wrapper">
@@ -1167,24 +1135,23 @@
 						<div class="feature-item">
 							<img src="Logo/timer-01.svg" alt="Feature Icon" />
 							<div>
-								<h4>Real-Time Analytics</h4>
-								<p>Instant Insights, Smarter Decisions</p>
+								<h4>Data-Driven Storytelling</h4>
+								<p>Translating numbers into compelling narratives.</p>
 							</div>
 						</div>
 						<div class="feature-item">
 							<img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
 							<div>
 								<h4>Precision Analytics</h4>
-								<p>Custom Insights for Your Data</p>
+								<p>Delivering custom insights tailored to business goals.</p>
 							</div>
 						</div>
 						<div class="feature-item">
 							<img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
 							<div>
-								<h4>End-to-End Data Orchestration</h4>
+								<h4>End-to-End Data Solutions</h4>
 								<p>
-									Transforming Fragmented Information into Coherent
-									Insights
+									Orchestrating the flow from raw data to BI dashboards.
 								</p>
 							</div>
 						</div>
@@ -1206,10 +1173,10 @@
 					</div>
 				</div>
 			</section>
+			<!-- =========================================== -->
+			<!-- ========= END OF UPDATED HERO SECTION ========= -->
+			<!-- =========================================== -->
 
-			<!-- ====================================================== -->
-			<!-- ========= START OF UPDATED ABOUT ME SECTION ========== -->
-			<!-- ====================================================== -->
 			<section id="about">
 				<div class="about-container reveal">
 					<div class="about-left">
@@ -1306,84 +1273,61 @@
 						</div>
 
 						<hr class="about-section-divider" />
-
-						<div class="visual-timeline">
-							<div class="timeline-milestones">
-								<div class="timeline-milestone">
-									<div class="milestone-icon">
-										<i class="fas fa-graduation-cap"></i>
-									</div>
-									<div class="milestone-details">
-										<span class="milestone-year">2016</span>
-										<p class="milestone-description">
-											First exposure to data handling during
-											school projects
-										</p>
-									</div>
+						
+						<!-- ============================================= -->
+						<!-- ===== START OF REPLACEMENT COMPETENCIES SECTION ===== -->
+						<!-- ============================================= -->
+						<h3 class="section-subheading">Core Competencies</h3>
+						<div class="toolkit-grid">
+							<div class="toolkit-item">
+								<div class="icon"><i class="fas fa-database"></i></div>
+								<div class="text">
+									<h4>SQL & Database Management</h4>
+									<p>Designing complex queries, optimizing performance, and managing relational databases to extract critical data.</p>
 								</div>
-								<div class="timeline-milestone">
-									<div class="milestone-icon">
-										<i class="fas fa-chart-bar"></i>
-									</div>
-									<div class="milestone-details">
-										<span class="milestone-year">2018</span>
-										<p class="milestone-description">
-											Excel & statistics ignite interest in
-											analytics
-										</p>
-									</div>
+							</div>
+							<div class="toolkit-item">
+								<div class="icon"><i class="fab fa-python"></i></div>
+								<div class="text">
+									<h4>Python for Data Analysis</h4>
+									<p>Leveraging Pandas, NumPy, and Scikit-learn for data cleaning, transformation, and statistical modeling.</p>
 								</div>
-								<div class="timeline-milestone">
-									<div class="milestone-icon">
-										<i class="fas fa-laptop-code"></i>
-									</div>
-									<div class="milestone-details">
-										<span class="milestone-year">2019-2023</span>
-										<p class="milestone-description">
-											B.Tech in Computer Science – mastered Python,
-											SQL, Power BI
-										</p>
-									</div>
+							</div>
+							<div class="toolkit-item">
+								<div class="icon"><i class="fas fa-chart-pie"></i></div>
+								<div class="text">
+									<h4>Business Intelligence & Visualization</h4>
+									<p>Creating interactive dashboards in Power BI and Tableau to make data accessible and understandable.</p>
 								</div>
-								<div class="timeline-milestone">
-									<div class="milestone-icon">
-										<i class="fas fa-chart-line"></i>
-									</div>
-									<div class="milestone-details">
-										<span class="milestone-year">2025</span>
-										<p class="milestone-description">
-											Data Analyst Trainee – building scalable
-											analytics solutions
-										</p>
-									</div>
+							</div>
+							<div class="toolkit-item">
+								<div class="icon"><i class="fas fa-cogs"></i></div>
+								<div class="text">
+									<h4>ETL & Data Pipelines</h4>
+									<p>Building automated workflows to extract, transform, and load data efficiently from diverse sources.</p>
 								</div>
-								<div class="timeline-milestone">
-									<div class="milestone-icon">
-										<i class="fas fa-rocket"></i>
-									</div>
-									<div class="milestone-details">
-										<span class="milestone-year">Future</span>
-										<p class="milestone-description">
-											Machine learning specialist driving business
-											impact
-										</p>
-									</div>
+							</div>
+							<div class="toolkit-item">
+								<div class="icon"><i class="fas fa-search-dollar"></i></div>
+								<div class="text">
+									<h4>Statistical Analysis</h4>
+									<p>Applying statistical methods to identify trends, test hypotheses, and provide predictive insights.</p>
+								</div>
+							</div>
+							<div class="toolkit-item">
+								<div class="icon"><i class="fas fa-file-excel"></i></div>
+								<div class="text">
+									<h4>Advanced Excel</h4>
+									<p>Utilizing PivotTables, Power Query, and financial modeling for in-depth business analysis and reporting.</p>
 								</div>
 							</div>
 						</div>
-
-						<hr class="about-section-divider" />
-
-						<div class="career-chart-container">
-							<canvas id="skillGrowthChart"></canvas>
-						</div>
+						<!-- ============================================= -->
+						<!-- ====== END OF REPLACEMENT COMPETENCIES SECTION ====== -->
+						<!-- ============================================= -->
 					</div>
 				</div>
 			</section>
-
-			<!-- ====================================================== -->
-			<!-- ========== END OF UPDATED ABOUT ME SECTION =========== -->
-			<!-- ====================================================== -->
 
 			<section id="projects">
 				<h2 class="section-heading reveal">Featured Projects</h2>
@@ -1882,7 +1826,10 @@
 						);
 					};
 				};
-				new p5(heroSketch);
+				if(document.getElementById('hero-canvas')){
+					new p5(heroSketch);
+				}
+
 
 				// --- CERTS SECTION P5.JS SKETCH ---
 				const certsSketch = (p) => {
@@ -1942,7 +1889,10 @@
 						}
 					};
 				};
-				new p5(certsSketch);
+				if(document.getElementById('certs-canvas')){
+					new p5(certsSketch);
+				}
+
 
 				// --- SCROLL-BASED ANIMATIONS ---
 				const revealElements = document.querySelectorAll(".reveal");
@@ -1951,24 +1901,7 @@
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add("is-visible");
-
-								// Special handling for the chart canvas
-								const chartContainer = entry.target.querySelector(
-									".career-chart-container"
-								);
-								const canvas =
-									document.getElementById("skillGrowthChart");
-								if (
-									chartContainer &&
-									canvas &&
-									!canvas.classList.contains(
-										"chartjs-render-monitor"
-									)
-								) {
-									renderSkillChart();
-								}
-
-								// No unobserve here, to re-trigger if needed, or unobserve specific items
+								observer.unobserve(entry.target); // Unobserve after revealing
 							}
 						});
 					},
@@ -1976,10 +1909,6 @@
 				);
 
 				revealElements.forEach((el) => {
-					// We only want to unobserve non-chart elements
-					if (!el.querySelector(".career-chart-container")) {
-						// The observer for the chart will be handled separately if needed
-					}
 					revealObserver.observe(el);
 				});
 
@@ -2059,135 +1988,6 @@
 
 				sections.forEach((section) => sectionObserver.observe(section));
 
-				// --- SKILL GROWTH CHART LOGIC ---
-				let skillChart = null; // Variable to hold the chart instance
-				function renderSkillChart() {
-					const ctx = document.getElementById("skillGrowthChart");
-					if (!ctx || skillChart) return; // Exit if no canvas or chart already exists
-
-					const chartData = {
-						labels: ["2016", "2018", "2020", "2022", "2024", "2025"],
-						datasets: [
-							{
-								label: "Python",
-								data: [5, 10, 30, 60, 80, 85],
-								borderColor: "rgba(59, 130, 246, 0.8)", // Muted Blue
-								backgroundColor: "rgba(59, 130, 246, 0.1)",
-								borderWidth: 2.5,
-								tension: 0.4,
-								fill: true,
-							},
-							{
-								label: "SQL",
-								data: [5, 15, 35, 65, 85, 90],
-								borderColor: "rgba(22, 163, 74, 0.8)", // Muted Green
-								backgroundColor: "rgba(22, 163, 74, 0.1)",
-								borderWidth: 2.5,
-								tension: 0.4,
-								fill: true,
-							},
-							{
-								label: "Visualization",
-								data: [10, 20, 40, 70, 90, 95],
-								borderColor: "rgba(249, 115, 22, 0.8)", // Muted Orange
-								backgroundColor: "rgba(249, 115, 22, 0.1)",
-								borderWidth: 2.5,
-								tension: 0.4,
-								fill: true,
-							},
-							{
-								label: "ETL",
-								data: [0, 5, 25, 50, 75, 80],
-								borderColor: "rgba(107, 114, 128, 0.8)", // Muted Gray
-								backgroundColor: "rgba(107, 114, 128, 0.1)",
-								borderWidth: 2.5,
-								tension: 0.4,
-								fill: true,
-							},
-							{
-								label: "Statistical Analysis",
-								data: [15, 25, 45, 60, 70, 75],
-								borderColor: "rgba(139, 92, 246, 0.8)", // Muted Purple
-								backgroundColor: "rgba(139, 92, 246, 0.1)",
-								borderWidth: 2.5,
-								tension: 0.4,
-								fill: true,
-							},
-						],
-					};
-
-					skillChart = new Chart(ctx, {
-						type: "line",
-						data: chartData,
-						options: {
-							responsive: true,
-							maintainAspectRatio: false,
-							plugins: {
-								legend: {
-									position: "bottom",
-									labels: {
-										font: {
-											family: "'Helvetica Neue', sans-serif",
-										},
-										padding: 20,
-									},
-								},
-								title: {
-									display: true,
-									text: "Skill Proficiency Growth",
-									color: "#010101",
-									font: {
-										size: 18,
-										family: "'Georgia', serif",
-										weight: "bold",
-									},
-									padding: {
-										bottom: 20,
-									},
-								},
-							},
-							scales: {
-								y: {
-									beginAtZero: true,
-									max: 100,
-									ticks: {
-										callback: function (value) {
-											return value + "%";
-										},
-									},
-								},
-								x: {
-									grid: {
-										display: false,
-									},
-								},
-							},
-							animation: {
-								duration: 1500,
-								easing: "easeOutQuart",
-							},
-						},
-					});
-				}
-
-				const chartObserver = new IntersectionObserver(
-					(entries, observer) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								renderSkillChart();
-								observer.unobserve(entry.target);
-							}
-						});
-					},
-					{ threshold: 0.5 }
-				); // Trigger when 50% of the element is visible
-
-				const chartContainer = document.querySelector(
-					".career-chart-container"
-				);
-				if (chartContainer) {
-					chartObserver.observe(chartContainer);
-				}
 
 				// --- MOUSE-BASED INTERACTIONS (DESKTOP ONLY) ---
 				if (!isTouchDevice) {
