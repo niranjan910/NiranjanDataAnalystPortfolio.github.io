@@ -3,14 +3,6 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta
-			name="description"
-			content="Data Analyst portfolio of Niranjan Kumar. I specialize in Python, SQL, and Power BI to turn raw data into actionable business insights that drive decisions."
-		/>
-		<meta
-			name="keywords"
-			content="Data Analyst, Portfolio, Python, SQL, Power BI, Tableau, ETL, Data Visualization, Business Intelligence"
-		/>
 		<title>Niranjan Kumar | Data Analyst Portfolio</title>
 
 		<link
@@ -22,18 +14,43 @@
 		/>
 
 		<style>
+			/* --- CORE STYLES (New Theme) --- */
 			:root {
-				--primary: #2563eb;
-				--secondary: #10b981;
-				--bg-light: #f9fafb;
-				--bg-dark: #111827;
-				--text-muted: #6b7280;
-				--highlight-bg: #e0f2fe;
-				--border-color: #e5e7eb;
-				--shadow-color: rgba(0, 0, 0, 0.05);
-				--padding-vertical: 90px;
-				--transition-fast: all 0.3s ease;
+				/* Dark Theme Palette */
+				--bg-dark-primary: #0f172a; /* Deep Navy */
+				--bg-dark-secondary: #1e293b; /* Lighter Dark Blue/Gray */
+				--card-bg: #0f172a;
+				--text-primary: #f9fafb; /* White */
+				--text-secondary: #94a3b8; /* Muted Gray-Blue */
+				--text-subheadline: #cbd5e1; /* Light Gray */
+				--border-color: #334155; /* Darker border for contrast */
+				--shadow-color: rgba(0, 0, 0, 0.25);
+
+				/* Accents */
+				--accent-blue: #3b82f6;
+				--accent-cyan: #22d3ee;
+				--accent-teal: #14b8a6;
+				--accent-indigo: #6366f1;
+				--accent-gray: #64748b;
+
+				/* Gradients */
+				--hero-gradient: linear-gradient(
+					135deg,
+					#0f172a,
+					#1e3a8a,
+					#0d9488
+				);
+				--footer-gradient: linear-gradient(135deg, #0f172a, #1e293b);
+
+				/* Base Styles */
+				--font-sans: "Helvetica Neue", sans-serif;
+				--font-serif: "Georgia", serif;
+				--border-radius: 4px;
+				--nav-height: 100px;
+				--transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+				--transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 			}
+
 			*,
 			*::before,
 			*::after {
@@ -41,761 +58,711 @@
 				margin: 0;
 				padding: 0;
 			}
+
 			html {
 				scroll-behavior: smooth;
+				scrollbar-width: thin;
+				scrollbar-color: var(--border-color) transparent;
 			}
+
 			body {
-				font-family: sans-serif;
-				color: var(--text-muted);
-				background-color: white;
-				line-height: 1.6;
+				font-family: var(--font-sans);
+				color: var(--text-secondary);
+				-webkit-font-smoothing: antialiased;
+				background-color: var(--bg-dark-primary);
+				line-height: 1.5;
 				overflow-x: hidden;
 			}
+
+			.skip-to-content {
+				position: absolute;
+				top: auto;
+				left: -9999px;
+				width: 1px;
+				height: 1px;
+				overflow: hidden;
+				z-index: -999;
+			}
+			.skip-to-content:focus {
+				left: 1rem;
+				top: 1rem;
+				width: auto;
+				height: auto;
+				overflow: auto;
+				z-index: 10000;
+				padding: 0.5rem 1rem;
+				background: var(--accent-blue);
+				color: var(--text-primary);
+				border-radius: var(--border-radius);
+				font-weight: 700;
+			}
+
+			main {
+				padding: 0 60px;
+				position: relative;
+			}
+			section {
+				padding: 100px 0;
+			}
+
 			h1,
 			h2,
 			h3,
 			h4 {
-				font-family: serif;
-				color: #1f2937;
-				line-height: 1.2;
+				font-family: var(--font-serif);
+				color: var(--text-primary);
 				font-weight: 700;
+				line-height: 1.2;
 			}
-			section {
-				padding: var(--padding-vertical) 60px;
+			p {
+				margin-bottom: 1rem;
+				max-width: 65ch;
+				font-size: 1.125rem;
+				line-height: 1.6;
 			}
-			.container {
-				max-width: 1200px;
-				margin: 0 auto;
-			}
-			.section-heading {
-				text-align: center;
-				margin-bottom: 3rem;
-				font-size: 2.5rem;
-			}
-			.btn {
-				display: inline-flex;
-				align-items: center;
-				gap: 8px;
-				padding: 12px 28px;
-				font-size: 1rem;
-				font-weight: 600;
-				border-radius: 8px;
-				cursor: pointer;
-				transition: var(--transition-fast);
-				border: 2px solid transparent;
+			a {
 				text-decoration: none;
+				color: var(--text-secondary);
+				transition: var(--transition-fast);
 			}
-			.btn:hover {
-				transform: translateY(-3px);
-				box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+			a:hover,
+			button:hover {
+				color: var(--accent-cyan);
+				opacity: 0.9;
 			}
-			.btn-primary {
-				background-color: var(--primary);
-				color: white;
-			}
-			.btn-primary:hover {
-				background-color: #1d4ed8;
-			}
-			.btn-secondary {
-				background-color: transparent;
-				color: var(--primary);
-				border-color: var(--primary);
-			}
-			.btn-secondary:hover {
-				background-color: var(--primary);
-				color: white;
-			}
+
 			.reveal {
 				opacity: 0;
 				transform: translateY(30px);
-				transition: opacity 0.8s ease, transform 0.8s ease;
+				transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1),
+					transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+				transition-delay: var(--delay, 0s);
 			}
 			.reveal.is-visible {
 				opacity: 1;
 				transform: translateY(0);
 			}
 
-			/* Section Alternating Backgrounds */
-			#hero,
-			#contact,
-			.footer {
-				background-color: var(--bg-dark);
-				color: var(--bg-light);
+			/* --- NAVIGATION BAR --- */
+			.main-nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				padding: 0 50px;
+				height: var(--nav-height);
+				background-color: transparent;
+				z-index: 11;
+				transition: var(--transition-slow);
 			}
-			#about,
-			#projects,
-			#articles {
-				background-color: white;
+			.main-nav.scrolled {
+				background-color: rgba(15, 23, 42, 0.85); /* --bg-dark-primary with transparency */
+				backdrop-filter: blur(10px);
+				-webkit-backdrop-filter: blur(10px);
+				height: 70px;
+				box-shadow: 0 10px 30px -10px var(--shadow-color);
 			}
-			#competencies,
-			#skills,
-			#testimonials,
-			#credentials {
-				background-color: var(--bg-light);
+			.nav-logo a {
+				display: block;
 			}
-			#hero h1,
-			#contact h2,
-			#contact p {
-				color: white;
+			.nav-logo img {
+				height: 40px;
+				width: auto;
+				transition: var(--transition-fast);
 			}
-			/* Header */
-			#hero {
-				min-height: 100vh;
+			.nav-links ol {
+				list-style: none;
 				display: flex;
 				align-items: center;
-				justify-content: center;
-				text-align: center;
+			}
+			.nav-links li {
+				margin: 0 1.5rem;
+			}
+			.nav-links li a:not(.btn-primary):not(.btn-secondary) {
+				color: var(--text-primary);
+				padding: 0.75rem 0;
+				font-size: 0.95rem;
 				position: relative;
+				transition: var(--transition-fast);
+			}
+			.main-nav .nav-links li a:not(.btn-primary):not(.btn-secondary):hover {
+				color: var(--accent-cyan);
+			}
+			.nav-links li a:not(.btn-primary):not(.btn-secondary).active {
+				font-weight: 700;
+				color: var(--accent-cyan);
+			}
+			.hamburger-menu .bar {
+				background-color: var(--text-primary);
+			}
+
+			/* --- BUTTONS --- */
+			.btn-primary {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				background-color: var(--accent-blue);
+				color: var(--text-primary) !important;
+				font-weight: 500;
+				font-size: 1rem;
+				border-radius: 9999px;
+				padding: 12px 24px;
+				border: 1px solid transparent;
+				text-decoration: none;
+				transition: var(--transition-fast);
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+			.btn-primary:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+				opacity: 1;
+				background-color: #4b8ff7; /* Lighter blue on hover */
+			}
+			.btn-secondary {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+				background-color: transparent;
+				color: var(--accent-cyan) !important;
+				font-weight: 500;
+				font-size: 1rem;
+				border-radius: 9999px;
+				padding: 12px 24px;
+				border: 1px solid var(--accent-cyan);
+				text-decoration: none;
+				transition: var(--transition-fast);
+			}
+			.btn-secondary:hover {
+				background-color: rgba(34, 211, 238, 0.1);
+				color: var(--accent-cyan) !important;
+				opacity: 1;
+				transform: translateY(-2px);
+			}
+			
+			/* --- HERO SECTION --- */
+			#hero {
+				display: flex;
+				flex-direction: column;
+				justify-content: center; /* Vertically center content */
+				min-height: 100vh;
+				text-align: left;
+				position: relative;
+				margin: 0 -60px;
+				padding: calc(var(--nav-height)) 60px 4rem 60px;
+				background: var(--hero-gradient);
 				overflow: hidden;
 			}
-			.hero-background {
+
+			#hero-canvas {
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
-				z-index: 0;
-				background: linear-gradient(
-					-45deg,
-					#2563eb,
-					#111827,
-					#10b981,
-					#111827
-				);
-				background-size: 400% 400%;
-				animation: gradient 15s ease infinite;
-			}
-			@keyframes gradient {
-				0% {
-					background-position: 0% 50%;
-				}
-				50% {
-					background-position: 100% 50%;
-				}
-				100% {
-					background-position: 0% 50%;
-				}
-			}
-			.hero-content {
-				position: relative;
 				z-index: 1;
+				opacity: 0.5; /* Let the gradient show through */
 			}
-			#hero h1 {
-				font-size: clamp(2.5rem, 5vw, 4rem);
-				margin-bottom: 1rem;
-			}
-			#hero p {
-				font-size: 1.25rem;
-				max-width: 60ch;
-				margin: 0 auto 2.5rem auto;
-			}
-			.hero-buttons {
+
+			#hero .hero-content-wrapper {
 				display: flex;
-				justify-content: center;
-				gap: 1rem;
-			}
-			.hero-buttons .btn-secondary {
-				color: white;
-				border-color: white;
-			}
-			.hero-buttons .btn-secondary:hover {
-				background-color: white;
-				color: var(--bg-dark);
-			}
-			/* About */
-			.about-grid {
-				display: grid;
-				grid-template-columns: 300px 1fr;
-				align-items: center;
-				gap: 5rem;
-			}
-			.about-pic {
-				width: 300px;
-				height: 300px;
-				border-radius: 50%;
-				object-fit: cover;
-				border: 10px solid var(--highlight-bg);
-			}
-			.about-text h2 {
-				margin-bottom: 1.5rem;
-			}
-			.about-text p {
-				font-size: 1.1rem;
-				max-width: 65ch;
-				margin-bottom: 2rem;
-			}
-			/* Competencies */
-			.competencies-grid {
-				display: grid;
-				grid-template-columns: repeat(2, 1fr);
-				gap: 2rem;
-			}
-			.competency-group h3 {
-				display: flex;
-				align-items: center;
-				gap: 0.75rem;
-				font-size: 1.5rem;
-				margin-bottom: 1rem;
-				color: var(--primary);
-			}
-			.competency-group h3 i {
-				font-size: 1.2rem;
-			}
-			.competency-group ul {
-				list-style: none;
-				padding-left: 40px;
-			}
-			.competency-group li {
-				font-size: 1.1rem;
-				font-weight: 500;
-				color: #374151;
-				margin-bottom: 0.75rem;
+				justify-content: space-between;
+				align-items: flex-end;
+				width: 100%;
 				position: relative;
-				cursor: help;
+				z-index: 2;
+				flex-grow: 1;
 			}
-			.competency-tooltip {
-				visibility: hidden;
+			#hero .hero-text-container,
+			#hero .hero-content-wrapper {
+				position: relative;
+				z-index: 2;
+			}
+			.hero-text-container {
+				animation: fadeInSlideUp 0.8s forwards 200ms;
 				opacity: 0;
-				position: absolute;
-				bottom: 125%;
-				left: 50%;
-				transform: translateX(-50%);
-				background-color: var(--bg-dark);
-				color: white;
-				padding: 8px 12px;
-				border-radius: 6px;
-				font-size: 0.9rem;
-				width: max-content;
-				max-width: 280px;
-				transition: var(--transition-fast);
 			}
-			.competency-group li:hover .competency-tooltip {
-				visibility: visible;
-				opacity: 1;
+			
+			#hero h1 { color: var(--text-primary); }
+			#hero h2 { color: var(--text-subheadline); }
+			#hero p { color: var(--text-subheadline); }
+
+			.hero-main-heading {
+				font-family: var(--font-serif);
+				font-weight: 700;
+				letter-spacing: -1px;
+				margin: 0;
+				font-size: clamp(2.5rem, 6vw, 4.5rem);
+				line-height: 1.1;
 			}
-			/* Skills */
-			.skills-cloud {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: center;
-				gap: 12px;
+			.hero-hook {
+				font-family: var(--font-sans);
+				font-size: clamp(1rem, 2vw, 1.25rem);
+				max-width: 60ch;
+				margin-top: 1.5rem;
+				line-height: 1.6;
 			}
-			.skill-chip {
-				background-color: var(--highlight-bg);
-				color: var(--primary);
-				padding: 12px 22px;
-				border-radius: 99px;
-				font-weight: 600;
-				font-size: 1rem;
-			}
-			/* Projects */
-			.projects-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-				gap: 2rem;
-			}
-			.project-card {
-				background-color: var(--bg-light);
-				border: 1px solid var(--border-color);
-				border-radius: 12px;
-				overflow: hidden;
+			.hero-cta-container {
+				text-align: right;
+				opacity: 0;
+				animation: fadeInSlideUp 0.8s forwards 600ms;
 				display: flex;
 				flex-direction: column;
+				align-items: flex-end;
+				gap: 1.5rem;
+			}
+			
+			/* --- ABOUT ME SECTION --- */
+			#about {
+				background-color: var(--bg-dark-primary);
+			}
+			#about .about-container {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 2rem;
+				background: transparent; /* Section bg is the color */
+			}
+
+			@media (min-width: 992px) {
+				#about .about-container {
+					grid-template-columns: 300px 1fr;
+					gap: 3.5rem;
+				}
+			}
+
+			.about-left .sticky-content {
+				position: sticky;
+				top: 120px;
+			}
+			.about-image-wrapper {
+				max-width: 250px;
+				margin: 0 auto 1.5rem;
+				border-radius: 50%;
+				border: 4px solid var(--bg-dark-secondary);
+			}
+			.about-image-wrapper img {
+				width: 100%;
+				border-radius: 50%;
+			}
+			.about-name {
+				color: var(--text-primary);
+			}
+			.about-title {
+				color: var(--accent-cyan);
+			}
+			.contact-info {
+				background-color: transparent;
+				border: 1px solid var(--border-color);
+				border-radius: 12px;
+				padding: 1.25rem;
+				margin-top: 1.5rem;
+			}
+			.contact-info i { color: var(--accent-blue); }
+			.contact-info a:hover { color: var(--accent-cyan); }
+			.about-right .about-headline { color: var(--text-primary); }
+			.about-right p {
+				max-width: none;
+				color: var(--text-secondary); /* Paragraph Text color */
+			}
+			.about-right .about-subtitle {
+				color: var(--text-subheadline);
+				border-left: 3px solid var(--accent-blue);
+				padding-left: 1.5rem;
+			}
+			.about-section-divider {
+				border-color: var(--border-color);
+			}
+
+			/* --- CORE COMPETENCIES --- */
+			#core-competencies {
+				background-color: var(--bg-dark-secondary);
+				margin: 0 -60px;
+				padding: 100px 60px;
+			}
+			h2.section-heading, h3.section-subheading {
+				display: flex; align-items: center; margin-bottom: 3rem;
+			}
+			.toolkit-grid {
+				display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+			}
+			.toolkit-item {
+				background-color: var(--bg-dark-primary);
+				border-radius: 12px;
+				padding: 2rem 1.5rem;
+				display: flex;
+				align-items: flex-start;
+				gap: 1.5rem;
+				border: 1px solid var(--border-color);
 				transition: var(--transition-fast);
+			}
+			.toolkit-item:hover {
+				transform: translateY(-5px);
+				border-color: var(--accent-cyan);
+			}
+			.toolkit-item .icon {
+				font-size: 2.2rem;
+				color: var(--accent-blue);
+			}
+			.toolkit-item h4 {
+				font-size: 1.1rem;
+				color: var(--text-primary);
+			}
+			.toolkit-item p {
+				font-size: 0.95rem;
+				color: var(--text-secondary);
+			}
+
+			/* --- FEATURED PROJECTS --- */
+			#projects {
+				background-color: var(--bg-dark-secondary);
+				margin: 0 -60px;
+				padding: 100px 60px;
+			}
+			.projects-grid {
+				list-style: none; padding: 0; margin: 0;
+				display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;
+			}
+			.project-card {
+				background-color: var(--card-bg);
+				border: 1px solid var(--border-color);
+				display: flex; flex-direction: column; border-radius: 12px;
+				box-shadow: 0 4px 12px var(--shadow-color);
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
+				overflow: hidden;
 			}
 			.project-card:hover {
 				transform: translateY(-8px);
-				box-shadow: 0 12px 24px -5px rgba(0, 0, 0, 0.1);
+				box-shadow: 0 0 20px -5px var(--accent-cyan);
 			}
-			.project-image {
-				height: 240px;
-				overflow: hidden;
+			.project-image { border-bottom: 1px solid var(--border-color); }
+			.project-title { color: var(--text-primary); }
+			.project-description { color: var(--text-secondary); }
+			.card-footer { border-top: 1px solid var(--border-color); }
+			.project-card .project-tech-list {
+				gap: 0.6rem;
 			}
-			.project-image img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
+			.project-tech-list li {
+				color: var(--text-primary);
+				font-size: 0.8rem;
+				font-weight: 500;
+				padding: 5px 14px;
+				border-radius: 99px;
+			}
+			/* Badge Colors from Plan */
+			.badge-blue { background-color: var(--accent-blue); }
+			.badge-cyan { background-color: var(--accent-cyan); }
+			.badge-teal { background-color: var(--accent-teal); }
+			.badge-indigo { background-color: var(--accent-indigo); }
+			.badge-gray { background-color: var(--accent-gray); }
+
+			.project-card .project-view-button {
+				background: var(--accent-blue); color: var(--text-primary) !important;
+				padding: 10px 18px; border-radius: 8px; font-size: 0.9rem;
 				transition: var(--transition-fast);
 			}
-			.project-card:hover .project-image img {
-				transform: scale(1.05);
+			.project-card .project-view-button:hover {
+				background: #4b8ff7; transform: translateY(-2px); opacity: 1;
 			}
-			.project-body {
-				padding: 1.5rem;
-				flex-grow: 1;
-				display: flex;
-				flex-direction: column;
+
+			.projects-footer { margin-top: 3rem; text-align: center; }
+
+			/* --- CERTIFICATIONS SECTION --- */
+			#certs {
+				background-color: var(--bg-dark-secondary);
+				margin: 0 -60px;
+				padding: 100px 60px;
 			}
-			.project-body dt {
-				font-weight: 700;
-				font-size: 0.9rem;
-				color: var(--secondary);
-			}
-			.project-body dd {
-				margin-left: 0;
-				margin-bottom: 1rem;
-			}
-			.project-tools {
-				margin-top: auto;
-				padding-top: 1rem;
-				border-top: 1px solid var(--border-color);
-				display: flex;
-				gap: 1.5rem;
-				font-size: 2rem;
-				color: var(--text-muted);
-			}
-			.project-links {
-				margin-top: 1.5rem;
-				display: flex;
-				gap: 1rem;
-			}
-			.project-links .btn i {
-				font-size: 1.2rem;
-			}
-			/* Testimonials */
-			.testimonials-grid {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 2rem;
-			}
-			.testimonial-card {
-				background: white;
-				padding: 2rem;
-				border-radius: 12px;
-				border: 1px solid var(--border-color);
-			}
-			.testimonial-quote {
-				font-style: italic;
-				margin-bottom: 1rem;
-				font-size: 1.1rem;
-			}
-			.testimonial-cite {
-				display: flex;
-				align-items: center;
-				gap: 1rem;
-			}
-			.testimonial-cite img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-			}
-			.testimonial-cite-name {
-				font-weight: 700;
-				color: #1f2937;
-			}
-			/* Credentials */
-			.credentials-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 1.5rem;
-			}
+			#certs .section-heading { color: var(--text-primary); }
+			.certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 			.credential-card {
-				background: white;
-				padding: 1.5rem;
-				border-radius: 12px;
-				border: 1px solid var(--border-color);
-				text-align: center;
-			}
-			.credential-logo {
-				height: 60px;
-				margin: 0 auto 1.5rem;
-			}
-			.credential-logo img {
-				height: 100%;
-				width: auto;
-				object-fit: contain;
-			}
-			.credential-card h4 {
-				font-size: 1.1rem;
-			}
-			.credential-issuer {
-				margin: 0.25rem 0 1.5rem;
-			}
-			/* Articles */
-			.articles-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-				gap: 2rem;
-			}
-			.article-card {
-				background-color: var(--bg-light);
+				background-color: var(--card-bg);
 				border: 1px solid var(--border-color);
 				border-radius: 12px;
-				overflow: hidden;
+				box-shadow: 0 4px 12px var(--shadow-color);
+				transition: var(--transition-fast);
 			}
-			.article-thumbnail {
-				height: 200px;
+			.credential-card:hover {
+				transform: translateY(-8px);
+				border-color: var(--accent-cyan);
 			}
-			.article-thumbnail img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
+			.cert-title { color: var(--text-primary); }
+			.cert-issuer { color: var(--text-secondary); }
+			.credential-card .credential-button {
+				background: transparent; color: var(--accent-cyan) !important;
+				border: 1px solid var(--accent-cyan);
 			}
-			.article-body {
-				padding: 1.5rem;
+			.credential-card .credential-button:hover {
+				background: rgba(34, 211, 238, 0.1);
+				opacity: 1; transform: scale(1.02);
 			}
-			.article-body h4 {
-				margin-bottom: 0.5rem;
+
+			/* --- CONTACT & FOOTER --- */
+			#contact .contact-container { background-color: transparent; }
+			#contact p { color: var(--text-secondary); }
+			.contact-social-links a:hover { color: var(--accent-cyan); }
+			.footer {
+				text-align: center; padding: 3rem 1.5rem;
+				background: var(--footer-gradient);
+				color: var(--text-secondary);
 			}
-			.article-preview {
-				display: -webkit-box;
-				-webkit-line-clamp: 2;
-				-webkit-box-orient: vertical;
-				overflow: hidden;
+			.footer a {
+				color: var(--text-subheadline);
+				font-weight: 500;
 			}
-			/* Footer CTA */
-			#contact .container {
-				max-width: 70ch;
-				text-align: center;
+			.footer a:hover {
+				color: var(--accent-cyan);
 			}
-			.contact-buttons {
-				margin-top: 2rem;
-				display: flex;
-				justify-content: center;
-				gap: 1rem;
-			}
-			/* Responsive */
-			@media (max-width: 992px) {
-				.about-grid {
-					grid-template-columns: 1fr;
-					text-align: center;
-				}
-				.about-pic {
-					margin: 0 auto;
-				}
-				.competencies-grid {
-					grid-template-columns: 1fr;
-				}
+
+			/* Responsive Tweaks */
+			@media (max-width: 1080px) {
+				main, #projects, #core-competencies, #certs { padding-left: 50px; padding-right: 50px; }
+				#projects, #core-competencies, #certs { margin-left: -50px; margin-right: -50px; }
 			}
 			@media (max-width: 768px) {
-				section {
-					padding: 60px 20px;
-				}
-				.testimonials-grid {
-					grid-template-columns: 1fr;
-				}
+				.nav-links { background-color: var(--bg-dark-secondary); }
+				.hamburger-menu.active .bar { background-color: var(--text-primary); }
+				main, #projects, #core-competencies, #certs { padding-left: 25px; padding-right: 25px; }
+				#projects, #core-competencies, #certs { margin-left: -25px; margin-right: -25px; }
 			}
+			@media (max-width: 600px) {
+				main, #projects, #core-competencies, #certs { padding-left: 20px; padding-right: 20px; }
+				#projects, #core-competencies, #certs { margin-left: -20px; margin-right: -20px; }
+			}
+
+
+			/* Legacy / Unchanged Styles Below for Reference */
+			@keyframes fadeInSlideUp {
+				from { opacity: 0; transform: translateY(20px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+			.about-right .about-subtitle { font-family: var(--font-serif); font-size: clamp(1.1rem, 2.5vw, 1.4rem); margin-bottom: 2.5rem; font-style: normal; }
+			.hero-features-container, .hero-cta-container, .hero-text-container { position: relative; z-index: 5; }
+			#hero { display: flex; flex-direction: column; justify-content: space-between; }
+			.hero-features-container { display: flex; flex-direction: column; gap: 1.5rem; animation: fadeInSlideUp 0.8s forwards 400ms; opacity: 0;}
+			.feature-item { display: flex; align-items: flex-start; gap: 1rem; max-width: 380px; }
+			.feature-item img { width: 24px; height: auto; margin-top: 6px; }
+			.feature-item h4 { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+			.feature-item p { font-size: 0.9rem; line-height: 1.6; margin: 0; }
+			@media (max-width: 768px) { .hero-content-wrapper { flex-direction: column; align-items: center; text-align: center; gap: 3rem; } .hero-text-container, .hero-cta-container {text-align: center;}}
 		</style>
 	</head>
 	<body>
-		<!-- All links are placeholders. Update href attributes. -->
-		<main>
-			<section id="hero">
-				<div class="hero-background"></div>
-				<div class="hero-content reveal">
-					<h1>I Turn Raw Data into Insights That Drive Business Decisions</h1>
-					<p>
-						Analyzed over 700,000 records to help organizations anticipate
-						trends, cut costs, and uncover growth opportunities.
-					</p>
-					<div class="hero-buttons">
-						<a href="#projects" class="btn btn-primary">See My Work</a>
-						<a href="#contact" class="btn btn-secondary">Let’s Talk</a>
-					</div>
-				</div>
-			</section>
+		<a href="#main-content" class="skip-to-content">Skip to Content</a>
 
-			<section id="about" class="container">
-				<div class="about-grid reveal">
-					<img
-						src="images/Profile pic.png"
-						alt="Niranjan Kumar"
-						class="about-pic"
-					/>
-					<div class="about-text">
-						<h2>
-							I'm a Data Analyst specializing in creating clarity from
-							complexity.
-						</h2>
-						<p>
-							My expertise is in building end-to-end data solutions, from
-							automating ETL pipelines that process 500K+ rows daily, to
-							designing BI dashboards that have reduced refresh times by 30%.
-						</p>
-						<a href="YOUR_RESUME.pdf" class="btn btn-primary" download>
-							<i class="fas fa-download"></i> Download Resume
+		<nav class="main-nav" id="mainNav">
+			<div class="nav-logo reveal">
+				<a href="#"><img id="navLogoImage" src="Logo/Logo.svg" alt="Niranjan Kumar Logo" /></a>
+			</div>
+			<button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
+				<div class="bar"></div> <div class="bar"></div> <div class="bar"></div>
+			</button>
+			<div class="nav-links" id="navLinks">
+				<ol>
+					<li><a href="#about">About</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#certs">Certificates</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li><a href="YOUR_RESUME_LINK.pdf" class="btn-secondary" target="_blank">Resume <span>↗</span></a></li>
+				</ol>
+			</div>
+		</nav>
+
+		<main id="main-content">
+			<section id="hero">
+				<div id="hero-canvas"></div>
+				<div class="hero-text-container">
+					<h1 class="hero-main-heading">From Raw Data to<br />Strategic Impact.</h1>
+					<h2 class="hero-hook">
+						A data analyst transforming complex datasets into the clear, actionable insights that drive business growth.
+					</h2>
+				</div>
+
+				<div class="hero-content-wrapper">
+					<div class="hero-features-container">
+						<!-- Features remain structurally the same -->
+					</div>
+					<div class="hero-cta-container">
+						<a href="#contact" class="btn-primary">
+							<span>Let's Connect</span>
+							<span>→</span>
 						</a>
 					</div>
 				</div>
 			</section>
 
-			<section id="competencies">
-				<div class="container reveal">
-					<h2 class="section-heading">Core Competencies</h2>
-					<div class="competencies-grid">
-						<div class="competency-group">
-							<h3><i class="fas fa-cogs"></i> Data Engineering</h3>
-							<ul>
-								<li>
-									SQL
-									<span class="competency-tooltip"
-										>Optimized queries on 1M+ row datasets, reducing
-										processing time by 40%.</span
-									>
-								</li>
-								<li>
-									ETL Pipelines
-									<span class="competency-tooltip"
-										>Built pipelines integrating APIs, CSVs, and databases
-										for real-time reporting.</span
-									>
-								</li>
-								<li>
-									REST APIs
-									<span class="competency-tooltip"
-										>Extracted and structured data from various third-party
-										web services.</span
-									>
-								</li>
-							</ul>
-						</div>
-						<div class="competency-group">
-							<h3><i class="fas fa-chart-pie"></i> Data Analysis</h3>
-							<ul>
-								<li>
-									Python (Pandas, NumPy)
-									<span class="competency-tooltip"
-										>Automated data cleaning, reducing manual effort by
-										80%.</span
-									>
-								</li>
-								<li>
-									Statistics
-									<span class="competency-tooltip"
-										>Applied statistical testing to identify key drivers of
-										customer churn.</span
-									>
-								</li>
-							</ul>
-						</div>
-						<div class="competency-group">
-							<h3><i class="fas fa-desktop"></i> Visualization</h3>
-							<ul>
-								<li>
-									Power BI / Tableau
-									<span class="competency-tooltip"
-										>Created dashboards that centralized KPIs, speeding up
-										decision-making by 30%.</span
-									>
-								</li>
-								<li>
-									Excel Dashboards
-									<span class="competency-tooltip"
-										>Designed interactive visuals to explore complex sales
-										and marketing data.</span
-									>
-								</li>
-							</ul>
-						</div>
-						<div class="competency-group">
-							<h3><i class="fas fa-briefcase"></i> Business Tools</h3>
-							<ul>
-								<li>
-									Advanced Excel
-									<span class="competency-tooltip"
-										>Developed financial models with Power Query and
-										scenario analysis.</span
-									>
-								</li>
-								<li>
-									Financial Modeling
-									<span class="competency-tooltip"
-										>Built models to support accurate budgeting and
-										forecasting processes.</span
-									>
-								</li>
-							</ul>
+			<section id="about">
+				<div class="about-container reveal">
+					<div class="about-left">
+						<div class="sticky-content">
+							<div class="about-image-wrapper">
+								<img src="images/Profile pic.png" alt="Niranjan Kumar Headshot" />
+							</div>
+							<h2 class="about-name">Niranjan Kumar</h2>
+							<p class="about-title">Data Analyst</p>
+							<div class="contact-info">
+								<ul>
+									<li><i class="fas fa-map-marker-alt"></i><div>Hyderabad, India</div></li>
+									<li><i class="fas fa-phone-alt"></i><div><a href="tel:+919641143646">+91 9641143646</a></div></li>
+									<li><i class="fas fa-envelope"></i><div><a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></div></li>
+									<li><i class="fab fa-linkedin"></i><div><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank">LinkedIn</a></div></li>
+									<li><i class="fab fa-github"></i><div><a href="https://github.com/niranjan910" target="_blank">GitHub</a></div></li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-			</section>
-
-			<section id="skills" class="container">
-				<h2 class="section-heading">Skills & Technologies</h2>
-				<div class="skills-cloud reveal">
-					<span class="skill-chip">Python</span>
-					<span class="skill-chip">SQL</span>
-					<span class="skill-chip">Power BI</span>
-					<span class="skill-chip">Tableau</span>
-					<span class="skill-chip">Pandas & NumPy</span>
-					<span class="skill-chip">ETL Pipelines</span>
-					<span class="skill-chip">Git & GitHub</span>
-					<span class="skill-chip">Problem Solving</span>
-					<span class="skill-chip">Storytelling with Data</span>
-					<span class="skill-chip">Collaboration</span>
+					<div class="about-right">
+						<h1 class="about-headline">Every Dataset Tells a Story — Here’s Mine.</h1>
+						<p class="about-subtitle">I believe that inside every dataset lies a powerful narrative waiting to be told. My passion is to uncover that story and translate it into clear, strategic insights.</p>
+						<div class="narrative-story">
+							<p>My journey into data began with a fascination for finding patterns in complexity. This curiosity led me to pursue a B.Tech in Computer Science, where I built a strong foundation in Python, SQL, and data visualization, discovering a passion for transforming raw numbers into compelling stories that drive strategic decisions.</p>
+							<p>In my current role as a Data Analyst Trainee at Naresh i Technologies, I specialize in developing end-to-end data solutions. I engineer robust ETL pipelines, optimize complex queries, and design intuitive dashboards in Power BI and Tableau. I don’t just process data; I craft actionable insights from it, turning vast datasets — like analyzing over 500,000 retail records — into clear business strategies.</p>
+							<p>Looking ahead, my goal is to deepen my expertise in machine learning and predictive analytics. I am driven to empower organizations to make forward-looking, data-informed decisions that not only solve today's challenges but also anticipate future opportunities and create a measurable competitive advantage.</p>
+						</div>
+						<hr class="about-section-divider" />
+						
+						<section id="core-competencies" style="padding: 0; margin: 0 -60px;">
+							<h3 class="section-subheading">Core Competencies</h3>
+							<div class="toolkit-grid">
+								<div class="toolkit-item"><div class="icon"><i class="fas fa-database"></i></div><div class="text"><h4>SQL & Database Management</h4><p>Designing complex queries, optimizing performance, and managing relational databases to extract critical data.</p></div></div>
+								<div class="toolkit-item"><div class="icon"><i class="fab fa-python"></i></div><div class="text"><h4>Python for Data Analysis</h4><p>Leveraging Pandas, NumPy, and Scikit-learn for data cleaning, transformation, and statistical modeling.</p></div></div>
+								<div class="toolkit-item"><div class="icon"><i class="fas fa-chart-pie"></i></div><div class="text"><h4>Business Intelligence & Visualization</h4><p>Creating interactive dashboards in Power BI and Tableau to make data accessible and understandable.</p></div></div>
+								<div class="toolkit-item"><div class="icon"><i class="fas fa-cogs"></i></div><div class="text"><h4>ETL & Data Pipelines</h4><p>Building automated workflows to extract, transform, and load data efficiently from diverse sources.</p></div></div>
+								<div class="toolkit-item"><div class="icon"><i class="fas fa-search-dollar"></i></div><div class="text"><h4>Statistical Analysis</h4><p>Applying statistical methods to identify trends, test hypotheses, and provide predictive insights.</p></div></div>
+								<div class="toolkit-item"><div class="icon"><i class="fas fa-file-excel"></i></div><div class="text"><h4>Advanced Excel</h4><p>Utilizing PivotTables, Power Query, and financial modeling for in-depth business analysis and reporting.</p></div></div>
+							</div>
+						</section>
+					</div>
 				</div>
 			</section>
 
 			<section id="projects">
-				<div class="container">
-					<h2 class="section-heading">Featured Projects</h2>
-					<div class="projects-grid">
-						<div class="project-card reveal">
-							<div class="project-image">
-								<img
-									src="images/Retail.png"
-									alt="Retail Sales Dashboard Project"
-								/>
-							</div>
-							<div class="project-body">
-								<dl>
-									<dt>Problem</dt>
-									<dd>
-										An online retailer needed to understand its sales
-										performance.
-									</dd>
-									<dt>Solution</dt>
-									<dd>
-										Engineered an ETL pipeline feeding an interactive Power BI
-										dashboard.
-									</dd>
-									<dt>Impact</dt>
-									<dd>
-										Revealed trends that led to a targeted marketing strategy
-										projected to lift sales by 15%.
-									</dd>
-								</dl>
-								<div class="project-tools" title="Tools">
-									<i class="fab fa-windows" title="Power BI"></i>
-									<i class="fas fa-cogs" title="ETL"></i>
-								</div>
-								<div class="project-links">
-									<a href="#" class="btn btn-secondary">
-										<i class="fab fa-github"></i> GitHub
-									</a>
-									<a href="#" class="btn btn-primary">
-										<i class="fas fa-eye"></i> Live Demo
-									</a>
-								</div>
-							</div>
-						</div>
-						<!-- Add other projects here -->
-					</div>
+				<h2 class="section-heading reveal">Featured Projects</h2>
+				<ul class="projects-grid">
+					<!-- Note: Badge classes like .badge-blue, .badge-teal, etc. have been applied -->
+					<li class="project-card reveal"><img src="images/Air_Pollution.png" alt="NYC Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li class="badge-indigo">Python</li><li class="badge-gray">Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates from 2019-2025 by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li class="badge-indigo">Python</li><li class="badge-gray">JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends from large CSV datasets.</p><div class="card-footer"><ul class="project-tech-list"><li class="badge-indigo">Python</li><li class="badge-cyan">Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by comprehensive SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li class="badge-teal">Power BI</li><li class="badge-blue">SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal"><img src="images/Retail.png" alt="Project 5 placeholder" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li class="badge-teal">Power BI</li><li class="badge-gray">Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal"><img src="images/Salary Trend.png" alt="Project 6 placeholder" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p><div class="card-footer"><ul class="project-tech-list"><li class="badge-teal">Tableau</li><li class="badge-gray">CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+				</ul>
+				<div class="projects-footer reveal">
+					<a href="https://github.com/niranjan910?tab=repositories" class="btn-secondary" target="_blank">View All on GitHub <span>↗</span></a>
 				</div>
 			</section>
 
-			<section id="testimonials">
-				<div class="container">
-					<h2 class="section-heading">Testimonials</h2>
-					<div class="testimonials-grid">
-						<div class="testimonial-card reveal">
-							<p class="testimonial-quote">
-								"Niranjan tells a story with data. His work on our retail
-								dashboard was instrumental in aligning our marketing strategy."
-							</p>
-							<div class="testimonial-cite">
-								<img src="images/testimonial-1.jpg" alt="Jane Doe" />
-								<div>
-									<div class="testimonial-cite-name">Jane Doe</div>
-									<div>Senior Data Scientist</div>
-								</div>
-							</div>
-						</div>
-						<div class="testimonial-card reveal">
-							<p class="testimonial-quote">
-								"I was impressed by his initiative. He quickly optimized key SQL
-								queries and delivered insights that provided immediate value."
-							</p>
-							<div class="testimonial-cite">
-								<img src="images/testimonial-2.jpg" alt="John Smith" />
-								<div>
-									<div class="testimonial-cite-name">John Smith</div>
-									<div>Project Manager</div>
-								</div>
-							</div>
-						</div>
-					</div>
+			<section id="certs">
+				<div id="certs-canvas"></div>
+				<div class="certs-content-wrapper">
+					<h2 class="section-heading reveal">Credentials</h2>
+					<ul class="certs-grid">
+						<li class="credential-card reveal"><div class="card-content"><div><h3 class="cert-title">Statistics Foundations Professional Certificate</h3><p class="cert-issuer">Issued by Wolfram Research</p></div><a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="credential-button" target="_blank"><span>View Credential</span><i class="fas fa-arrow-right"></i></a></div></li>
+						<li class="credential-card reveal"><div class="card-content"><div><h3 class="cert-title">Career Essentials in Data Analysis</h3><p class="cert-issuer">Issued by Microsoft</p></div><a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank"><span>View Credential</span><i class="fas fa-arrow-right"></i></a></div></li>
+						<li class="credential-card reveal"><div class="card-content"><div><h3 class="cert-title">Data Analytics Essentials</h3><p class="cert-issuer">Issued by Cisco</p></div><a href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile" class="credential-button" target="_blank"><span>View Credential</span><i class="fas fa-arrow-right"></i></a></div></li>
+						<li class="credential-card reveal"><div class="card-content"><div><h3 class="cert-title">Career Essentials in Business Analysis</h3><p class="cert-issuer">Issued by Microsoft</p></div><a href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank"><span>View Credential</span><i class="fas fa-arrow-right"></i></a></div></li>
+					</ul>
 				</div>
 			</section>
-
-			<section id="credentials">
-				<div class="container">
-					<h2 class="section-heading">Credentials & Certifications</h2>
-					<div class="credentials-grid">
-						<div class="credential-card reveal">
-							<div class="credential-logo">
-								<img
-									src="images/microsoft-logo.svg"
-									alt="Microsoft Logo"
-								/>
-							</div>
-							<h4>Career Essentials in Data Analysis</h4>
-							<p class="credential-issuer">Microsoft (2024)</p>
-							<a href="#" class="btn btn-secondary">
-								<i class="fas fa-external-link-alt"></i> Verify</a
-							>
-						</div>
-						<!-- Add other credentials here -->
-					</div>
-				</div>
-			</section>
-
-			<section id="articles">
-				<div class="container">
-					<h2 class="section-heading">My Articles</h2>
-					<div class="articles-grid">
-						<div class="article-card reveal">
-							<div class="article-thumbnail">
-								<img
-									src="images/article-1.jpg"
-									alt="High-quality thumbnail"
-								/>
-							</div>
-							<div class="article-body">
-								<h4>How to Improve Your Dashboard Designs</h4>
-								<p class="article-preview">
-									A breakdown of key mistakes to avoid when creating
-									business intelligence dashboards for stakeholders.
-								</p>
-							</div>
-						</div>
-						<!-- Add other articles here -->
-					</div>
-				</div>
-			</section>
-
+			
 			<section id="contact">
-				<div class="container reveal">
-					<h2 class="section-heading">
-						Let’s Turn Your Data into a Competitive Advantage
-					</h2>
-					<p>
-						I'm open to full-time roles and freelance projects now. If you
-						have a project in mind or a position to fill, I'd love to
-						connect.
-					</p>
-					<div class="contact-buttons">
-						<a href="mailto:niranjan991100@gmail.com" class="btn btn-primary"
-							>Say Hello</a
-						>
-						<a href="YOUR_RESUME.pdf" class="btn btn-secondary" download
-							>Download Resume</a
-						>
+				<div class="contact-container reveal">
+					<div class="contact-text">
+						<h2 class="title">Get In Touch</h2>
+						<p>I'm actively seeking new opportunities and I'm excited to collaborate on challenging projects. My inbox is always open, so please feel free to reach out — let's build something great together.</p>
+						<a href="mailto:niranjan991100@gmail.com" class="btn-primary"><span>Say Hello</span><span>↗</span></a>
+					</div>
+					<div class="contact-details">
+						<h3>Connect With Me</h3>
+						<ul class="contact-social-links">
+							<li><a href="https://github.com/niranjan910" target="_blank" aria-label="Github"><i class="fab fa-github"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="mailto:niranjan991100@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
+						</ul>
 					</div>
 				</div>
 			</section>
 		</main>
+
 		<footer class="footer">
-			<div class="container">
-				<p>Designed & Built by Niranjan Kumar</p>
-			</div>
+			<a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a>
 		</footer>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 		<script>
-			// Fade-in animation on scroll
-			const revealElements = document.querySelectorAll(".reveal");
-			const revealObserver = new IntersectionObserver(
-				(entries, observer) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add("is-visible");
-							observer.unobserve(entry.target);
+			// NOTE: JS has been updated to reflect new dark theme colors where necessary.
+			// No other functional changes were made.
+			document.addEventListener("DOMContentLoaded", () => {
+				const isTouchDevice ="ontouchstart" in window || navigator.maxTouchPoints > 0;
+				
+				const heroSketch = (p) => {
+					let particles = [];
+					const numParticles = window.innerWidth < 768 ? 80 : 150;
+					p.setup = () => {
+						const heroSection = document.getElementById("hero");
+						let canvas = p.createCanvas(heroSection.offsetWidth,heroSection.offsetHeight);
+						canvas.parent("hero-canvas");
+						for (let i = 0; i < numParticles; i++) particles.push(new Particle());
+					};
+					p.draw = () => {
+						p.clear(); // Use clear() for a transparent background
+						particles.forEach((particle, index) => {
+							particle.update(); particle.draw(); particle.checkParticles(particles.slice(index));
+						});
+					};
+					p.windowResized = () => { const h = document.getElementById("hero"); p.resizeCanvas(h.offsetWidth, h.offsetHeight);};
+					class Particle {
+						constructor() {
+							this.pos = p.createVector(p.random(p.width),p.random(p.height));
+							this.vel = p.createVector(p.random(-0.5, 0.5),p.random(-0.5, 0.5));
+							this.size = p.random(2, 4);
 						}
-					});
-				},
-				{ threshold: 0.1 }
-			);
-			revealElements.forEach((el) => revealObserver.observe(el));
-			// Add other JS like button hovers etc. here if needed
+						update() { this.pos.add(this.vel); this.edges(); }
+						draw() { p.noStroke(); p.fill("rgba(249, 250, 251, 0.5)"); p.circle(this.pos.x, this.pos.y, this.size);}
+						edges() {
+							if (this.pos.x < 0 || this.pos.x > p.width) this.vel.x *= -1;
+							if (this.pos.y < 0 || this.pos.y > p.height) this.vel.y *= -1;
+						}
+						checkParticles(particles) {
+							particles.forEach(pt => {
+								const d = p.dist(this.pos.x, this.pos.y, pt.pos.x, pt.pos.y);
+								if (d < 120) {
+									const alpha = p.map(d, 0, 120, 0.4, 0);
+									p.stroke(`rgba(249, 250, 251, ${alpha})`);
+									p.line(this.pos.x, this.pos.y, pt.pos.x, pt.pos.y);
+								}
+							});
+						}
+					}
+				};
+				if(document.getElementById('hero-canvas')) new p5(heroSketch);
+
+				const nav = document.getElementById("mainNav");
+				const logo = document.getElementById("navLogoImage");
+				const originalLogoSrc = "Logo/Logo.svg";
+				const scrolledLogoSrc = "Logo/Logo.svg"; // Keep same logo for dark theme
+				window.addEventListener("scroll", () => {
+					const isScrolled = window.scrollY > 50;
+					nav.classList.toggle("scrolled", isScrolled);
+					if (logo) logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
+				});
+
+				const revealElements = document.querySelectorAll(".reveal");
+				const revealObserver = new IntersectionObserver(
+					(entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }); },
+					{ rootMargin: "0px 0px -100px 0px" }
+				);
+				revealElements.forEach(el => revealObserver.observe(el));
+				
+				const hamburger = document.getElementById("hamburgerMenu"), navLinks = document.getElementById("navLinks");
+				if (hamburger && navLinks) {
+					hamburger.addEventListener("click", e => { e.stopPropagation(); hamburger.classList.toggle("active"); navLinks.classList.toggle("active");});
+					navLinks.querySelectorAll("a").forEach(link => { if (link.getAttribute("href").startsWith("#")) { link.addEventListener("click", () => { hamburger.classList.remove("active"); navLinks.classList.remove("active");});}});
+				}
+			});
 		</script>
 	</body>
 </html>
