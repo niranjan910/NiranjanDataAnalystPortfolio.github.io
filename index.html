@@ -24,11 +24,11 @@
 				--border-color: #30363d;
 				--shadow-color: rgba(0, 0, 0, 0.5);
 
-				--primary-gradient: linear-gradient(135deg, #484d54, #2a2f35);
-				--secondary-gradient: linear-gradient(135deg, #30363d, #161b22);
+				--primary-gradient: linear-gradient(135deg, #00f5a0, #00d9f5);
+				--secondary-gradient: linear-gradient(135deg, #7928ca, #ff0080);
 				
-				--accent-primary: #58a6ff;
-				--accent-secondary: #c9d1d9;
+				--accent-primary: #00f5a0;
+				--accent-secondary: #7928ca;
 
 				--font-sans: "Helvetica Neue", sans-serif;
 				--font-serif: "Georgia", serif;
@@ -295,7 +295,7 @@
 				align-items: center;
 				gap: 12px;
 				background: var(--primary-gradient);
-				color: var(--text-primary) !important;
+				color: var(--bg-main) !important;
 				font-weight: 700;
 				font-size: 1rem;
 				border-radius: 9999px;
@@ -305,7 +305,7 @@
 				font-family: var(--font-sans);
 				text-decoration: none;
 				transition: transform 0.2s ease, box-shadow 0.2s ease;
-				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+				box-shadow: 0 4px 20px rgba(0, 245, 160, 0.25);
 				will-change: transform;
 			}
 
@@ -323,9 +323,9 @@
 			}
 
 			.modern-pill-button:hover {
-				color: var(--text-primary) !important;
+				color: var(--bg-main) !important;
 				transform: translateY(-3px) scale(1.03);
-				box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+				box-shadow: 0 8px 30px rgba(0, 245, 160, 0.35);
 				opacity: 1;
 			}
 
@@ -466,7 +466,7 @@
 				height: auto;
 				border-radius: 50%;
 				border: 4px solid var(--bg-main);
-				box-shadow: 0 0 30px rgba(88, 166, 255, 0.2);
+				box-shadow: 0 0 30px rgba(0, 128, 128, 0.2);
 			}
 
 			.about-name {
@@ -488,12 +488,11 @@
 			.contact-info {
 				text-align: left;
 				font-size: 0.9rem;
-				background-color: #f0f2f5;
+				background-color: var(--bg-main);
 				border: 1px solid var(--border-color);
 				padding: 1.25rem;
 				border-radius: 12px;
 				margin-top: 1.5rem;
-                color: #333;
 			}
 
 			.contact-info ul { list-style: none; padding: 0; margin: 0; }
@@ -511,9 +510,6 @@
 				width: 20px;
 				text-align: center;
 			}
-            .contact-info a {
-                color: #333;
-            }
 
 			.about-right .about-headline {
 				font-size: clamp(2rem, 5vw, 2.8rem);
@@ -648,8 +644,8 @@
 			}
 
 			.project-card .project-tech-list li {
-				background: var(--secondary-gradient);
-				color: var(--text-primary);
+				background: #30363d;
+				color: var(--text-secondary);
 				font-size: 0.8rem;
 				font-weight: 500;
 				padding: 5px 12px;
@@ -670,7 +666,7 @@
 			.project-card .project-view-button:hover {
 				background: var(--primary-gradient);
 				transform: translateY(-2px);
-				color: var(--text-primary) !important;
+				color: var(--bg-main) !important;
 				opacity: 1;
 			}
 
@@ -726,7 +722,7 @@
 			}
 			.credential-card .credential-button {
 				background: var(--primary-gradient);
-				color: var(--text-primary) !important;
+				color: var(--bg-main) !important;
 				font-weight: 700;
 			}
 
