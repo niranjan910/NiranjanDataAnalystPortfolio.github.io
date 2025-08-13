@@ -12,8 +12,8 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
-        
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 		<style>
 			/* --- CORE STYLES (New Theme) --- */
@@ -62,16 +62,22 @@
 				background-color: var(--bg-main);
 				line-height: 1.5;
 				overflow-x: hidden;
-                background: linear-gradient(-45deg, #f1f1f1, #e0e0e0, #f1f1f1, #f9f9f9);
-                background-size: 400% 400%;
-                animation: gradientBG 15s ease infinite;
+				background: linear-gradient(-45deg, #f1f1f1, #e0e0e0, #f1f1f1, #f9f9f9);
+				background-size: 400% 400%;
+				animation: gradientBG 15s ease infinite;
 			}
-            
-            @keyframes gradientBG {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-            }
+
+			@keyframes gradientBG {
+				0% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+				100% {
+					background-position: 0% 50%;
+				}
+			}
 
 			.skip-to-content {
 				position: absolute;
@@ -103,7 +109,7 @@
 			}
 
 			section {
-				padding: 100px 0; 
+				padding: 100px 0;
 			}
 
 			section[id]:not(#hero)::after {
@@ -139,7 +145,8 @@
 			.reveal {
 				opacity: 0;
 				transform: translateY(30px);
-				transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+				transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1),
+					transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
 				transition-delay: var(--delay, 0s);
 			}
 			.reveal.is-visible {
@@ -222,34 +229,34 @@
 				position: relative;
 				margin: 0 -60px;
 				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
-                background-color: #111;
+				background-color: #111;
 				overflow: hidden;
 			}
-            
-            #hero-canvas {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-            }
 
-            #hero .hero-content-wrapper {
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-end;
-                width: 100%;
-                position: relative;
-                z-index: 2;
-                flex-grow: 1;
-            }
-            
-            #hero .hero-text-container,
-            #hero .hero-content-wrapper {
-                position: relative;
-                z-index: 2;
-            }
+			#hero-canvas {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+			}
+
+			#hero .hero-content-wrapper {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				width: 100%;
+				position: relative;
+				z-index: 2;
+				flex-grow: 1;
+			}
+
+			#hero .hero-text-container,
+			#hero .hero-content-wrapper {
+				position: relative;
+				z-index: 2;
+			}
 
 			#hero h1,
 			#hero h2,
@@ -302,7 +309,7 @@
 				transition: transform 0.2s ease, box-shadow 0.2s ease,
 					background-color 0.2s ease;
 				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                will-change: transform;
+				will-change: transform;
 			}
 
 			.modern-pill-button .icon-container {
@@ -325,7 +332,7 @@
 				opacity: 1;
 				background-color: #333;
 			}
-			
+
 			.hero-cta-button {
 				background-color: var(--bg-main);
 				color: var(--text-primary) !important;
@@ -338,24 +345,27 @@
 				background-color: #e0e0e0;
 				color: var(--text-primary) !important;
 			}
-			
+
 			.projects-footer .modern-pill-button {
 				background-color: var(--bg-main);
 				color: var(--text-primary) !important;
 			}
-			
+
 			.projects-footer .modern-pill-button .icon-container {
 				background-color: var(--text-primary);
 				color: var(--bg-main);
 			}
 
-            .hero-text-container { animation: fadeInSlideUp 0.8s forwards 200ms; opacity:0; }
+			.hero-text-container {
+				animation: fadeInSlideUp 0.8s forwards 200ms;
+				opacity: 0;
+			}
 			.hero-features-container {
 				display: flex;
 				flex-direction: column;
 				gap: 1.5rem;
 				animation: fadeInSlideUp 0.8s forwards 400ms;
-                opacity: 0;
+				opacity: 0;
 			}
 			.feature-item {
 				display: flex;
@@ -401,19 +411,19 @@
 					transform: rotate(360deg);
 				}
 			}
-			
+
 			a.special-link {
 				position: relative;
 				color: var(--accent) !important;
 				font-weight: 500;
 			}
-			
+
 			a.special-link:hover {
 				opacity: 1;
 			}
-			
+
 			a.special-link::after {
-				content: '';
+				content: "";
 				position: absolute;
 				width: 100%;
 				height: 1px;
@@ -438,14 +448,13 @@
 				width: 100%;
 			}
 
-            /* --- NEW ABOUT SECTION STYLES --- */
-
+			/* --- NEW ABOUT SECTION STYLES (MODERNIZED) --- */
 			#about .about-container {
 				display: grid;
 				grid-template-columns: 1fr;
 				gap: 2rem;
 				background: var(--card-bg);
-                box-shadow: 0 10px 40px -10px var(--shadow-color);
+				box-shadow: 0 10px 40px -10px var(--shadow-color);
 				padding: 3rem;
 				border-radius: 16px;
 			}
@@ -453,21 +462,22 @@
 			@media (min-width: 992px) {
 				#about .about-container {
 					grid-template-columns: 300px 1fr;
-					gap: 3rem;
+					gap: 3.5rem; /* Increased gap */
+					padding: 4rem; /* More padding on larger screens */
 				}
 			}
 
 			.about-left {
 				text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 			}
-            
-            .about-left .sticky-content {
-                position: sticky;
-                top: 120px; /* Adjust based on nav height */
-            }
+
+			.about-left .sticky-content {
+				position: sticky;
+				top: 120px;
+			}
 
 			.about-image-wrapper {
 				max-width: 250px;
@@ -497,12 +507,15 @@
 				margin-bottom: 1.5rem;
 			}
 
+			/* Refined Contact Info */
 			.contact-info {
 				text-align: left;
 				font-size: 0.9rem;
-                background-color: var(--accent-tint);
-                padding: 1rem;
-                border-radius: 12px;
+				background-color: transparent; /* Cleaner look */
+				border: 1px solid var(--border-color); /* Subtle border */
+				padding: 1.25rem;
+				border-radius: 12px;
+				margin-top: 1.5rem;
 			}
 
 			.contact-info ul {
@@ -517,164 +530,182 @@
 				gap: 12px;
 				margin-bottom: 0.8rem;
 			}
-             .contact-info li:last-child {
-                margin-bottom: 0;
-             }
-             
+			.contact-info li:last-child {
+				margin-bottom: 0;
+			}
 
 			.contact-info i {
 				color: var(--accent);
 				font-size: 1.2rem;
-                width: 20px;
-                text-align: center;
+				width: 20px;
+				text-align: center;
 			}
-            
-            .about-right .about-headline {
-                font-family: var(--font-serif);
-                font-size: clamp(2rem, 5vw, 2.8rem);
-                line-height: 1.2;
-                margin-bottom: 0.75rem;
-                color: var(--text-primary);
-                font-weight: 700;
-            }
-            .about-right .about-subtitle {
-                font-family: var(--font-sans);
-                font-size: clamp(1rem, 2vw, 1.1rem);
-                color: var(--text-secondary);
-                margin-bottom: 2.5rem;
-                font-style: italic;
-            }
 
-            .about-right .narrative-story p {
-                font-family: var(--font-sans);
-                font-size: 1.05rem;
-                line-height: 1.7;
-                margin-bottom: 1.5rem;
-            }
-
-            .about-section-divider {
-                border: 0;
-                height: 1px;
-                background-color: var(--border-color);
-                margin: 3rem 0;
-            }
-            
-            /* Visual Timeline */
-            .visual-timeline {
-                position: relative;
-                width: 100%;
-                padding: 1rem 0;
-                margin-bottom: 1rem;
-            }
-            .visual-timeline::before {
-                content: '';
-                position: absolute;
-                top: 20px;
-                left: 0;
-                right: 0;
-                height: 2px;
-                background-color: var(--border-color);
-                z-index: 1;
-            }
-            .timeline-milestones {
-                display: flex;
-                justify-content: space-between;
-                position: relative;
-                z-index: 2;
-            }
-            .timeline-milestone {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                width: 18%; /* Approx 100/5 */
-            }
-            .milestone-icon {
-                width: 40px;
-                height: 40px;
-                background: var(--accent);
-                color: var(--bg-main);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.2rem;
-                margin-bottom: 1rem;
-                position: relative;
-                transition: transform 0.3s ease;
-            }
-            .timeline-milestone:hover .milestone-icon {
-                transform: scale(1.15);
-            }
-            .milestone-year {
-                font-weight: 700;
-                font-size: 1rem;
-                color: var(--text-primary);
-            }
-             .milestone-event {
-                font-weight: 600;
-                font-size: 0.9rem;
-                margin-top: 0.5rem;
-                margin-bottom: 0.25rem;
-             }
-            .milestone-description {
-                font-size: 0.8rem;
-                color: var(--text-secondary);
-                line-height: 1.4;
-            }
-            @media (max-width: 768px) {
-                .visual-timeline::before { display: none; }
-                .timeline-milestones {
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 1.5rem;
-                }
-                .timeline-milestone {
-                    flex-direction: row;
-                    align-items: center;
-                    text-align: left;
-                    width: 100%;
-                }
-                 .milestone-icon {
-                    margin-bottom: 0;
-                    margin-right: 1rem;
-                    flex-shrink: 0;
-                 }
-                 .milestone-details {
-                    display: flex;
-                    flex-direction: column;
-                 }
-                 .milestone-year, .milestone-event { display: inline; margin: 0 0.5rem 0 0;}
-            }
-
-            .career-chart-container {
-                margin-top: 2rem;
-                padding: 1.5rem;
-                background-color: var(--accent-tint);
-                border-radius: 12px;
-            }
+			/* Removed text-align right, letting grid handle it */
+			.about-right .about-headline {
+				font-family: var(--font-serif);
+				font-size: clamp(2rem, 5vw, 2.8rem);
+				line-height: 1.2;
+				margin-bottom: 1rem;
+				color: var(--text-primary);
+				font-weight: 700;
+			}
 			
+			/* Modernized Subtitle */
+			.about-right .about-subtitle {
+				font-family: var(--font-serif);
+				font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+				color: var(--text-primary);
+				opacity: 0.8;
+				margin-bottom: 2.5rem;
+				font-style: normal; /* Removed italics for a cleaner look */
+				border-left: 3px solid var(--accent);
+				padding-left: 1.5rem;
+				max-width: none; /* Override global paragraph styles */
+			}
+			
+			/* Override paragraph max-width within the right column to fix spacing issue */
+			.about-right p {
+				max-width: none;
+			}
+			
+			.about-right .narrative-story p {
+				font-family: var(--font-sans);
+				font-size: 1.05rem; /* Balanced font size */
+				line-height: 1.8; /* Better readability for text blocks */
+				margin-bottom: 1.75rem;
+			}
+
+			.about-section-divider {
+				border: 0;
+				height: 1px;
+				background-color: var(--border-color);
+				margin: 3rem 0;
+			}
+
+			/* Visual Timeline (no changes needed, it's good) */
+			.visual-timeline {
+				position: relative;
+				width: 100%;
+				padding: 1rem 0;
+				margin-bottom: 1rem;
+			}
+			.visual-timeline::before {
+				content: "";
+				position: absolute;
+				top: 20px;
+				left: 0;
+				right: 0;
+				height: 2px;
+				background-color: var(--border-color);
+				z-index: 1;
+			}
+			.timeline-milestones {
+				display: flex;
+				justify-content: space-between;
+				position: relative;
+				z-index: 2;
+			}
+			.timeline-milestone {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				width: 18%; /* Approx 100/5 */
+			}
+			.milestone-icon {
+				width: 40px;
+				height: 40px;
+				background: var(--accent);
+				color: var(--bg-main);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.2rem;
+				margin-bottom: 1rem;
+				position: relative;
+				transition: transform 0.3s ease;
+			}
+			.timeline-milestone:hover .milestone-icon {
+				transform: scale(1.15);
+			}
+			.milestone-year {
+				font-weight: 700;
+				font-size: 1rem;
+				color: var(--text-primary);
+			}
+			.milestone-event {
+				font-weight: 600;
+				font-size: 0.9rem;
+				margin-top: 0.5rem;
+				margin-bottom: 0.25rem;
+			}
+			.milestone-description {
+				font-size: 0.8rem;
+				color: var(--text-secondary);
+				line-height: 1.4;
+			}
+			@media (max-width: 768px) {
+				.visual-timeline::before {
+					display: none;
+				}
+				.timeline-milestones {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 1.5rem;
+				}
+				.timeline-milestone {
+					flex-direction: row;
+					align-items: center;
+					text-align: left;
+					width: 100%;
+				}
+				.milestone-icon {
+					margin-bottom: 0;
+					margin-right: 1rem;
+					flex-shrink: 0;
+				}
+				.milestone-details {
+					display: flex;
+					flex-direction: column;
+				}
+				.milestone-year,
+				.milestone-event {
+					display: inline;
+					margin: 0 0.5rem 0 0;
+				}
+			}
+
+			.career-chart-container {
+				margin-top: 2rem;
+				padding: 1.5rem;
+				background-color: var(--accent-tint);
+				border-radius: 12px;
+			}
+
 			.projects-grid {
 				list-style: none;
 				padding: 0;
 				margin: 0;
 				display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-				gap: 2rem; 
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				gap: 2rem;
 			}
-			
+
 			.projects-footer {
 				margin-top: 3rem;
 				text-align: center;
 			}
-			
+
 			.project-card {
 				background-color: var(--card-bg);
 				display: flex;
 				flex-direction: column;
 				border-radius: 12px;
 				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-				transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+				transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1),
+					box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
 				overflow: hidden;
 				transform-style: preserve-3d;
 				will-change: transform;
@@ -713,16 +744,16 @@
 				line-height: 1.6;
 				color: var(--text-secondary);
 				flex-grow: 1;
-                margin-bottom: 1rem;
+				margin-bottom: 1rem;
 			}
-			
+
 			.project-card .card-footer {
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
 				margin-top: 1.5rem;
 				padding-top: 1.5rem;
-    			border-top: 1px solid var(--border-color);
+				border-top: 1px solid var(--border-color);
 			}
 
 			.project-card .project-tech-list {
@@ -733,7 +764,7 @@
 				padding: 0;
 				margin: 0;
 			}
-			
+
 			.project-card .project-tech-list li {
 				background: var(--accent-tint);
 				color: var(--accent);
@@ -755,12 +786,12 @@
 				text-decoration: none;
 				transition: background-color 0.2s ease, transform 0.2s ease;
 			}
-			
+
 			.project-card .project-view-button:hover {
 				background: #333;
 				transform: translateY(-2px);
 				color: var(--bg-main) !important;
-				opacity: 1; 
+				opacity: 1;
 			}
 
 			/* --- CREDENTIALS SECTION (New Styling) --- */
@@ -786,7 +817,7 @@
 				position: relative;
 				z-index: 1;
 			}
-			
+
 			.certs-grid {
 				list-style: none;
 				padding: 0;
@@ -797,37 +828,42 @@
 			}
 
 			.credential-card {
-				background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent */
+				background-color: rgba(
+					255,
+					255,
+					255,
+					0.95
+				); /* Slightly transparent */
 				border-radius: 12px;
 				border: 1px solid var(--border-color);
 				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+				transition: transform 0.3s ease, box-shadow 0.3s ease;
 				backdrop-filter: blur(3px);
 			}
-			
+
 			.credential-card:hover {
-                transform: translateY(-8px);
+				transform: translateY(-8px);
 				box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 			}
 
 			.credential-card .card-content {
 				padding: 2rem;
 				text-align: center;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                height: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				height: 100%;
 			}
-			
+
 			.credential-card .cert-title {
 				font-family: var(--font-serif);
 				font-size: 1.25rem;
 				line-height: 1.4;
 				font-weight: 600;
 				color: var(--text-primary);
-                flex-grow: 1;
+				flex-grow: 1;
 			}
-			
+
 			.credential-card .cert-issuer {
 				font-family: var(--font-sans);
 				font-size: 0.9rem;
@@ -835,11 +871,11 @@
 				margin-top: 0.5rem;
 				margin-bottom: 2rem;
 			}
-			
+
 			.credential-card .credential-button {
-                background: var(--accent);
+				background: var(--accent);
 				color: var(--bg-main) !important;
-                border: none;
+				border: none;
 				padding: 12px 24px;
 				border-radius: 8px;
 				font-size: 0.9rem;
@@ -847,100 +883,99 @@
 				font-family: var(--font-sans);
 				text-decoration: none;
 				transition: background-color 0.2s ease, transform 0.2s ease;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                width: 100%;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+				width: 100%;
 			}
 
 			.credential-card .credential-button:hover {
-                background: #333;
+				background: #333;
 				transform: translateY(-2px) scale(1.02);
 				color: var(--bg-main) !important;
-				opacity: 1; 
+				opacity: 1;
 			}
 
-            #contact {
-                max-width: 900px;
-                margin: 0 auto;
-            }
-            .contact-container {
-                background-color: var(--card-bg);
-                padding: 3rem;
-                border-radius: 16px;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-                text-align: left;
-            }
+			#contact {
+				max-width: 900px;
+				margin: 0 auto;
+			}
+			.contact-container {
+				background-color: var(--card-bg);
+				padding: 3rem;
+				border-radius: 16px;
+				box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 2.5rem;
+				text-align: left;
+			}
 
-            @media(min-width: 768px) {
-                .contact-container {
-                    padding: 4rem;
-                    grid-template-columns: 2fr 1fr;
-                    align-items: center;
-                }
-            }
+			@media (min-width: 768px) {
+				.contact-container {
+					padding: 4rem;
+					grid-template-columns: 2fr 1fr;
+					align-items: center;
+				}
+			}
 
-            #contact .title {
-                font-size: clamp(2rem, 5vw, 2.5rem);
-                margin-bottom: 1rem;
-            }
-            
-            #contact p {
-                max-width: 50ch;
-                margin-bottom: 2rem;
-            }
+			#contact .title {
+				font-size: clamp(2rem, 5vw, 2.5rem);
+				margin-bottom: 1rem;
+			}
 
-            .contact-details {
-                text-align: left;
-            }
+			#contact p {
+				max-width: 50ch;
+				margin-bottom: 2rem;
+			}
 
-            .contact-details h3 {
-                font-family: var(--font-sans);
-                font-size: 1rem;
-                font-weight: 600;
-                margin-bottom: 1rem;
-                text-transform: uppercase;
-                letter-spacing: 0.5px;
-            }
+			.contact-details {
+				text-align: left;
+			}
 
-            .contact-social-links {
-                list-style: none;
-                display: flex;
-                gap: 1.5rem;
-            }
-            .contact-social-links a {
-                font-size: 1.5rem;
-                color: var(--text-secondary);
-                will-change: transform;
-            }
-             .contact-social-links a:hover {
-                color: var(--accent);
-                opacity: 1;
-             }
+			.contact-details h3 {
+				font-family: var(--font-sans);
+				font-size: 1rem;
+				font-weight: 600;
+				margin-bottom: 1rem;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+			}
 
+			.contact-social-links {
+				list-style: none;
+				display: flex;
+				gap: 1.5rem;
+			}
+			.contact-social-links a {
+				font-size: 1.5rem;
+				color: var(--text-secondary);
+				will-change: transform;
+			}
+			.contact-social-links a:hover {
+				color: var(--accent);
+				opacity: 1;
+			}
 
 			.footer {
 				text-align: center;
 				padding: 1.5rem;
 				font-family: var(--font-sans);
 				font-size: 0.8rem;
-                margin-top: 60px;
+				margin-top: 60px;
 			}
 			.hamburger-menu {
 				display: none;
-                z-index: 1001;
+				z-index: 1001;
 			}
 			.hamburger-menu .bar {
 				background-color: var(--text-on-image);
 				transition: var(--transition-fast);
-                width: 30px;
-                height: 3px;
-                border-radius: 3px;
-                margin: 5px auto;
+				width: 30px;
+				height: 3px;
+				border-radius: 3px;
+				margin: 5px auto;
 			}
 			.main-nav.scrolled .hamburger-menu .bar {
 				background-color: var(--text-primary);
@@ -950,15 +985,16 @@
 				main {
 					padding: 0 50px;
 				}
-				#hero, #certs {
+				#hero,
+				#certs {
 					margin: 0 -50px;
 					padding-left: 50px;
 					padding-right: 50px;
 				}
-                #certs {
-                    padding-top: 100px;
-                    padding-bottom: 100px;
-                }
+				#certs {
+					padding-top: 100px;
+					padding-bottom: 100px;
+				}
 				.hero-main-heading {
 					font-size: 60px;
 				}
@@ -973,7 +1009,8 @@
 				section {
 					padding: 80px 0;
 				}
-				#hero, #certs {
+				#hero,
+				#certs {
 					margin: 0 -25px;
 					padding-left: 25px;
 					padding-right: 25px;
@@ -983,26 +1020,27 @@
 					align-items: center;
 					gap: 3rem;
 					padding-top: calc(var(--nav-height) + 1rem);
-                    padding-bottom: 3rem;
-                    text-align: center;
+					padding-bottom: 3rem;
+					text-align: center;
 				}
-                 #certs {
-                    padding-top: 80px;
-                    padding-bottom: 80px;
-                }
-                #hero .hero-content-wrapper {
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 3rem;
-                }
-                .hero-features-container, .hero-cta-container {
-                    text-align: center;
-                    align-items: center;
-                }
+				#certs {
+					padding-top: 80px;
+					padding-bottom: 80px;
+				}
+				#hero .hero-content-wrapper {
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					gap: 3rem;
+				}
+				.hero-features-container,
+				.hero-cta-container {
+					text-align: center;
+					align-items: center;
+				}
 				.hero-main-heading {
 					font-size: 40px;
-                    text-align: center;
+					text-align: center;
 				}
 				.hero-cta-text {
 					font-size: 1.5rem;
@@ -1039,7 +1077,7 @@
 					font-weight: 700;
 				}
 				.hamburger-menu {
-                    display: block;
+					display: block;
 					width: 30px;
 					height: 25px;
 					background: transparent;
@@ -1048,9 +1086,9 @@
 					padding: 0;
 					z-index: 1001;
 				}
-                .hamburger-menu.active .bar {
-                    background-color: var(--text-primary);
-                }
+				.hamburger-menu.active .bar {
+					background-color: var(--text-primary);
+				}
 				.hamburger-menu.active .bar:nth-child(1) {
 					transform: translateY(8px) rotate(45deg);
 				}
@@ -1065,14 +1103,15 @@
 				main {
 					padding: 0 20px;
 				}
-				#hero, #certs {
+				#hero,
+				#certs {
 					margin: 0 -20px;
 					padding-left: 20px;
 					padding-right: 20px;
 				}
-                .projects-grid {
-                     grid-template-columns: 1fr;
-                }
+				.projects-grid {
+					grid-template-columns: 1fr;
+				}
 			}
 		</style>
 	</head>
@@ -1116,304 +1155,466 @@
 		</nav>
 		<main id="main-content">
 			<section id="hero">
-                <div id="hero-canvas"></div>
+				<div id="hero-canvas"></div>
 
 				<div class="hero-text-container">
 					<h1 class="hero-main-heading">Decode the Data.</h1>
 					<h1 class="hero-main-heading">Discover the Story.</h1>
 				</div>
 
-                <div class="hero-content-wrapper">
-                    <div class="hero-features-container">
-                        <div class="feature-item">
-                            <img src="Logo/timer-01.svg" alt="Feature Icon" />
-                            <div>
-                                <h4>Real-Time Analytics</h4>
-                                <p>Instant Insights, Smarter Decisions</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
-                            <div>
-                                <h4>Precision Analytics</h4>
-                                <p>Custom Insights for Your Data</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
-                            <div>
-                                <h4>End-to-End Data Orchestration</h4>
-                                <p>
-                                    Transforming Fragmented Information into Coherent
-                                    Insights
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="hero-cta-container">
-                        <p class="hero-cta-text">
-                            Your Data Holds the Answers<br />I Reveal Them
-                        </p>
-                        <a
-                            href="mailto:niranjan991100@gmail.com"
-                            class="modern-pill-button hero-cta-button magnetic-item"
-                        >
-                            <span>Lets connect</span>
-                            <span class="icon-container">
-                                <span>↗</span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-			</section>
-
-			<section id="about">
-				<div class="about-container reveal">
-					<div class="about-left">
-						<div class="sticky-content">
-                            <div class="about-image-wrapper">
-                                <img
-                                    src="images/Profile pic.png"
-                                    alt="Niranjan Kumar Headshot"
-                                />
-                            </div>
-                            <h2 class="about-name">Niranjan Kumar</h2>
-                            <p class="about-title">Data Analyst</p>
-                            <div class="contact-info">
-                                <ul>
-                                    <li>
-                                        <i class="fas fa-map-marker-alt"></i
-                                        ><div>Hyderabad, India</div>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-phone-alt"></i
-                                        ><div>
-                                            <a href="tel:+919641143646"
-                                                >+91 9641143646</a
-                                            >
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-envelope"></i
-                                        ><div>
-                                            <a href="mailto:niranjan991100@gmail.com"
-                                                >niranjan991100@gmail.com</a
-                                            >
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <i class="fab fa-linkedin"></i
-                                        ><div>
-                                            <a
-                                                href="https://www.linkedin.com/in/niranjan-k-a83517229/"
-                                                target="_blank"
-                                                >LinkedIn</a
-                                            >
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <i class="fab fa-github"></i
-                                        ><div>
-                                            <a
-                                                href="https://github.com/niranjan910"
-                                                target="_blank"
-                                                >GitHub</a
-                                            >
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-					</div>
-					<div class="about-right">
-						<h1 class="about-headline">Every Dataset Tells a Story — Here’s Mine.</h1>
-                        <p class="about-subtitle">
-                            <em>From my first dataset in 2018 to designing impactful analytics solutions in 2025, this is my journey as a Data Analyst.</em>
-                        </p>
-
-						<div class="narrative-story">
-							<p>
-                                My journey into data analytics began in high school when I first explored spreadsheets to make sense of student performance data. That curiosity deepened during my B.Tech in Computer Science (2019–2023), where I learned Python, SQL, and data visualization. I realized data wasn’t just numbers — it was a way to uncover hidden patterns and drive real-world decisions.
-                            </p>
-                            <p>
-                                Today, as a Data Analyst Trainee at Naresh i Technologies, I work on building data pipelines, optimizing SQL queries, and designing dashboards that turn raw datasets into clear business insights. My focus is on precision, speed, and storytelling — whether it’s analyzing 500K+ retail records in Power BI or developing predictive models for healthcare data.
-                            </p>
-                            <p>
-                                In the next 3–5 years, I see myself specializing in advanced analytics and machine learning, helping organizations make predictive, automated, and intelligent business decisions. I’m committed to continuous learning, tackling complex datasets, and shaping strategies that create measurable impact.
-                            </p>
+				<div class="hero-content-wrapper">
+					<div class="hero-features-container">
+						<div class="feature-item">
+							<img src="Logo/timer-01.svg" alt="Feature Icon" />
+							<div>
+								<h4>Real-Time Analytics</h4>
+								<p>Instant Insights, Smarter Decisions</p>
+							</div>
 						</div>
+						<div class="feature-item">
+							<img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
+							<div>
+								<h4>Precision Analytics</h4>
+								<p>Custom Insights for Your Data</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
+							<div>
+								<h4>End-to-End Data Orchestration</h4>
+								<p>
+									Transforming Fragmented Information into Coherent
+									Insights
+								</p>
+							</div>
+						</div>
+					</div>
 
-                        <hr class="about-section-divider" />
-
-                        <div class="visual-timeline">
-                            <div class="timeline-milestones">
-                                <div class="timeline-milestone">
-                                    <div class="milestone-icon"><i class="fas fa-graduation-cap"></i></div>
-                                    <div class="milestone-details">
-                                        <span class="milestone-year">2016</span>
-                                        <p class="milestone-description">First exposure to data handling during school projects</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-milestone">
-                                    <div class="milestone-icon"><i class="fas fa-chart-bar"></i></div>
-                                     <div class="milestone-details">
-                                        <span class="milestone-year">2018</span>
-                                         <p class="milestone-description">Excel & statistics ignite interest in analytics</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-milestone">
-                                    <div class="milestone-icon"><i class="fas fa-laptop-code"></i></div>
-                                     <div class="milestone-details">
-                                        <span class="milestone-year">2019-2023</span>
-                                         <p class="milestone-description">B.Tech in Computer Science – mastered Python, SQL, Power BI</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-milestone">
-                                    <div class="milestone-icon"><i class="fas fa-chart-line"></i></div>
-                                     <div class="milestone-details">
-                                        <span class="milestone-year">2025</span>
-                                         <p class="milestone-description">Data Analyst Trainee – building scalable analytics solutions</p>
-                                    </div>
-                                </div>
-                                <div class="timeline-milestone">
-                                    <div class="milestone-icon"><i class="fas fa-rocket"></i></div>
-                                    <div class="milestone-details">
-                                        <span class="milestone-year">Future</span>
-                                        <p class="milestone-description">Machine learning specialist driving business impact</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="about-section-divider" />
-
-                        <div class="career-chart-container">
-                            <canvas id="skillGrowthChart"></canvas>
-                        </div>
-
+					<div class="hero-cta-container">
+						<p class="hero-cta-text">
+							Your Data Holds the Answers<br />I Reveal Them
+						</p>
+						<a
+							href="mailto:niranjan991100@gmail.com"
+							class="modern-pill-button hero-cta-button magnetic-item"
+						>
+							<span>Lets connect</span>
+							<span class="icon-container">
+								<span>↗</span>
+							</span>
+						</a>
 					</div>
 				</div>
 			</section>
 
-			<section id="projects" >
+			<!-- ====================================================== -->
+			<!-- ========= START OF UPDATED ABOUT ME SECTION ========== -->
+			<!-- ====================================================== -->
+			<section id="about">
+				<div class="about-container reveal">
+					<div class="about-left">
+						<div class="sticky-content">
+							<div class="about-image-wrapper">
+								<img
+									src="images/Profile pic.png"
+									alt="Niranjan Kumar Headshot"
+								/>
+							</div>
+							<h2 class="about-name">Niranjan Kumar</h2>
+							<p class="about-title">Data Analyst</p>
+							<div class="contact-info">
+								<ul>
+									<li>
+										<i class="fas fa-map-marker-alt"></i>
+										<div>Hyderabad, India</div>
+									</li>
+									<li>
+										<i class="fas fa-phone-alt"></i>
+										<div>
+											<a href="tel:+919641143646"
+												>+91 9641143646</a
+											>
+										</div>
+									</li>
+									<li>
+										<i class="fas fa-envelope"></i>
+										<div>
+											<a href="mailto:niranjan991100@gmail.com"
+												>niranjan991100@gmail.com</a
+											>
+										</div>
+									</li>
+									<li>
+										<i class="fab fa-linkedin"></i>
+										<div>
+											<a
+												href="https://www.linkedin.com/in/niranjan-k-a83517229/"
+												target="_blank"
+												>LinkedIn</a
+											>
+										</div>
+									</li>
+									<li>
+										<i class="fab fa-github"></i>
+										<div>
+											<a
+												href="https://github.com/niranjan910"
+												target="_blank"
+												>GitHub</a
+											>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="about-right">
+						<h1 class="about-headline">
+							Every Dataset Tells a Story — Here’s Mine.
+						</h1>
+						<p class="about-subtitle">
+							I believe that inside every dataset lies a powerful
+							narrative waiting to be told. My passion is to uncover that
+							story and translate it into clear, strategic insights.
+						</p>
+
+						<div class="narrative-story">
+							<p>
+								My journey into data began with a fascination for
+								finding patterns in complexity. This curiosity led me
+								to pursue a B.Tech in Computer Science, where I built
+								a strong foundation in Python, SQL, and data
+								visualization, discovering a passion for transforming
+								raw numbers into compelling stories that drive strategic
+								decisions.
+							</p>
+							<p>
+								In my current role as a Data Analyst Trainee at Naresh i
+								Technologies, I specialize in developing end-to-end data
+								solutions. I engineer robust ETL pipelines, optimize
+								complex queries, and design intuitive dashboards in
+								Power BI and Tableau. I don’t just process data; I
+								craft actionable insights from it, turning vast datasets
+								— like analyzing over 500,000 retail records — into clear
+								business strategies.
+							</p>
+							<p>
+								Looking ahead, my goal is to deepen my expertise in
+								machine learning and predictive analytics. I am driven to
+								empower organizations to make forward-looking, data-informed decisions that not only solve today's challenges but also anticipate future opportunities and create a measurable competitive advantage.
+							</p>
+						</div>
+
+						<hr class="about-section-divider" />
+
+						<div class="visual-timeline">
+							<div class="timeline-milestones">
+								<div class="timeline-milestone">
+									<div class="milestone-icon">
+										<i class="fas fa-graduation-cap"></i>
+									</div>
+									<div class="milestone-details">
+										<span class="milestone-year">2016</span>
+										<p class="milestone-description">
+											First exposure to data handling during
+											school projects
+										</p>
+									</div>
+								</div>
+								<div class="timeline-milestone">
+									<div class="milestone-icon">
+										<i class="fas fa-chart-bar"></i>
+									</div>
+									<div class="milestone-details">
+										<span class="milestone-year">2018</span>
+										<p class="milestone-description">
+											Excel & statistics ignite interest in
+											analytics
+										</p>
+									</div>
+								</div>
+								<div class="timeline-milestone">
+									<div class="milestone-icon">
+										<i class="fas fa-laptop-code"></i>
+									</div>
+									<div class="milestone-details">
+										<span class="milestone-year">2019-2023</span>
+										<p class="milestone-description">
+											B.Tech in Computer Science – mastered Python,
+											SQL, Power BI
+										</p>
+									</div>
+								</div>
+								<div class="timeline-milestone">
+									<div class="milestone-icon">
+										<i class="fas fa-chart-line"></i>
+									</div>
+									<div class="milestone-details">
+										<span class="milestone-year">2025</span>
+										<p class="milestone-description">
+											Data Analyst Trainee – building scalable
+											analytics solutions
+										</p>
+									</div>
+								</div>
+								<div class="timeline-milestone">
+									<div class="milestone-icon">
+										<i class="fas fa-rocket"></i>
+									</div>
+									<div class="milestone-details">
+										<span class="milestone-year">Future</span>
+										<p class="milestone-description">
+											Machine learning specialist driving business
+											impact
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<hr class="about-section-divider" />
+
+						<div class="career-chart-container">
+							<canvas id="skillGrowthChart"></canvas>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ====================================================== -->
+			<!-- ========== END OF UPDATED ABOUT ME SECTION =========== -->
+			<!-- ====================================================== -->
+
+			<section id="projects">
 				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="projects-grid">
 					<li class="project-card reveal">
-						<img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image">
+						<img
+							src="images/Air_Pollution.png"
+							alt="New-York City Air Quality"
+							class="project-image"
+						/>
 						<div class="card-body">
-							<h3 class="project-title">New-York City Air Quality Analysis</h3>
-							<p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p>
+							<h3 class="project-title">
+								New-York City Air Quality Analysis
+							</h3>
+							<p class="project-description">
+								A comprehensive data-driven study of NYC air quality
+								and its health implications based on real-time
+								monitoring data.
+							</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Python</li>
 									<li>Excel</li>
 								</ul>
-								<a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a>
+								<a
+									href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis"
+									class="project-view-button"
+									target="_blank"
+									>View</a
+								>
 							</div>
 						</div>
 					</li>
-					<li class="project-card reveal" style="--delay: 150ms;">
-						 <img src="images/Covid 19.png" alt="Covid dashboard" class="project-image">
-						 <div class="card-body">
-							<h3 class="project-title">COVID-19 Hospitalization</h3>
-							<p class="project-description">Visualized COVID-19 hospitalization rates from 2019-2025 by processing real-time JSON data with Python.</p>
+					<li class="project-card reveal" style="--delay: 150ms">
+						<img
+							src="images/Covid 19.png"
+							alt="Covid dashboard"
+							class="project-image"
+						/>
+						<div class="card-body">
+							<h3 class="project-title">
+								COVID-19 Hospitalization
+							</h3>
+							<p class="project-description">
+								Visualized COVID-19 hospitalization rates from
+								2019-2025 by processing real-time JSON data with
+								Python.
+							</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Python</li>
 									<li>JSON</li>
 								</ul>
-								<a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a>
+								<a
+									href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis"
+									class="project-view-button"
+									target="_blank"
+									>View</a
+								>
 							</div>
 						</div>
 					</li>
-					<li class="project-card reveal" style="--delay: 300ms;">
-						<img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image">
-						 <div class="card-body">
+					<li class="project-card reveal" style="--delay: 300ms">
+						<img
+							src="images/AI Job  image.png"
+							alt="AI Job Market Analysis"
+							class="project-image"
+						/>
+						<div class="card-body">
 							<h3 class="project-title">AI Job Market Analysis</h3>
-							<p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends from large CSV datasets.</p>
+							<p class="project-description">
+								A market analysis of 2025 AI jobs, using Python and
+								Seaborn to uncover actionable trends from large CSV
+								datasets.
+							</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Python</li>
 									<li>Seaborn</li>
 								</ul>
-								<a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a>
+								<a
+									href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025"
+									class="project-view-button"
+									target="_blank"
+									>View</a
+								>
 							</div>
 						</div>
 					</li>
-					<li class="project-card reveal" style="--delay: 450ms;">
-						<img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image">
-						 <div class="card-body">
+					<li class="project-card reveal" style="--delay: 450ms">
+						<img
+							src="images/Lungs cancer.png"
+							alt="AI Lung Diagnostics"
+							class="project-image"
+						/>
+						<div class="card-body">
 							<h3 class="project-title">AI Lung Diagnostics</h3>
-							<p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by comprehensive SQL data mining.</p>
+							<p class="project-description">
+								Developed interactive Power BI dashboards for lung
+								cancer diagnostics, powered by comprehensive SQL data
+								mining.
+							</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Power BI</li>
 									<li>SQL</li>
 								</ul>
-								<a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a>
+								<a
+									href="https://github.com/niranjan910/AI-Lung-Diagnostics"
+									class="project-view-button"
+									target="_blank"
+									>View</a
+								>
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 600ms;">
-						<img src="images/Retail.png" alt="Project 5 placeholder" class="project-image">
+					<li class="project-card reveal" style="--delay: 600ms">
+						<img
+							src="images/Retail.png"
+							alt="Project 5 placeholder"
+							class="project-image"
+						/>
 						<div class="card-body">
 							<h3 class="project-title">UK Retail Analytics</h3>
-							<p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p>
+							<p class="project-description">
+								Power BI dashboard analyzing 500K+ UK retail CSV data
+								for sales trends & customer insights.
+							</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Power BI</li>
 									<li>Excel</li>
 								</ul>
-								<a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a>
+								<a
+									href="https://github.com/niranjan910/UK_Retail_Analytics"
+									class="project-view-button"
+									target="_blank"
+									>View</a
+								>
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 750ms;">
-						<img src="images/Salary Trend.png" alt="Project 6 placeholder" class="project-image">
+					<li class="project-card reveal" style="--delay: 750ms">
+						<img
+							src="images/Salary Trend.png"
+							alt="Project 6 placeholder"
+							class="project-image"
+						/>
 						<div class="card-body">
 							<h3 class="project-title">Salary Trend Analysis</h3>
-							<p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p>
+							<p class="project-description">
+								Created an interactive Tableau dashboard to analyze
+								sales performance across different regions and product
+								lines.
+							</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Power BI</li>
 									<li>CSV</li>
 								</ul>
-								<a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a>
+								<a
+									href="https://github.com/niranjan910/Salary-Trend-Analysis"
+									class="project-view-button"
+									target="_blank"
+									>View</a
+								>
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 900ms;">
-						<img src="images/EV Project image.png" alt="Project 7 placeholder" class="project-image">
+					<li class="project-card reveal" style="--delay: 900ms">
+						<img
+							src="images/EV Project image.png"
+							alt="Project 7 placeholder"
+							class="project-image"
+						/>
 						<div class="card-body">
 							<h3 class="project-title">U.S. EV Adoption Analysis</h3>
-							<p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline, analyze 175k+ records, and deliver actionable insights on market strategy and policy effectiveness.</p>
+							<p class="project-description">
+								An end-to-end project leveraging Python and SQL to
+								build a data pipeline, analyze 175k+ records, and
+								deliver actionable insights on market strategy and
+								policy effectiveness.
+							</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Excel</li>
-                                    <li>Data Analysis</li>
+									<li>Data Analysis</li>
 								</ul>
-								<a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a>
+								<a
+									href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis"
+									class="project-view-button"
+									target="_blank"
+									>View</a
+								>
 							</div>
 						</div>
 					</li>
-                    <li class="project-card reveal" style="--delay: 1050ms;">
-						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image">
+					<li class="project-card reveal" style="--delay: 1050ms">
+						<img
+							src="images/placeholder.png"
+							alt="Project 8 placeholder"
+							class="project-image"
+						/>
 						<div class="card-body">
 							<h3 class="project-title">Excel Financial Modeling</h3>
-							<p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation, featuring scenario analysis.</p>
+							<p class="project-description">
+								Developed a comprehensive financial model in Excel for
+								business planning and valuation, featuring scenario
+								analysis.
+							</p>
 							<div class="card-footer">
 								<ul class="project-tech-list">
 									<li>Excel</li>
 									<li>Finance</li>
 								</ul>
-								<a href="#" class="project-view-button" target="_blank">View</a>
+								<a
+									href="#"
+									class="project-view-button"
+									target="_blank"
+									>View</a
+								>
 							</div>
 						</div>
 					</li>
 				</ul>
-				 <div class="projects-footer reveal">
-					<a href="https://github.com/niranjan910?tab=repositories" class="modern-pill-button" target="_blank">
+				<div class="projects-footer reveal">
+					<a
+						href="https://github.com/niranjan910?tab=repositories"
+						class="modern-pill-button"
+						target="_blank"
+					>
 						<span>View All on GitHub</span>
 						<span class="icon-container">
 							<span>↗</span>
@@ -1430,46 +1631,72 @@
 						<li class="credential-card reveal">
 							<div class="card-content">
 								<div>
-									<h3 class="cert-title">Statistics Foundations Professional Certificate</h3>
-									<p class="cert-issuer">Issued by Wolfram Research</p>
+									<h3 class="cert-title">
+										Statistics Foundations Professional Certificate
+									</h3>
+									<p class="cert-issuer">
+										Issued by Wolfram Research
+									</p>
 								</div>
-								<a href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d" class="credential-button" target="_blank">
+								<a
+									href="https://www.linkedin.com/learning/certificates/82e79114d5fa0f6a66d77ad188338bfb331949c19f418dd34ea7bbc9c9ca5b6d"
+									class="credential-button"
+									target="_blank"
+								>
 									<span>View Credential</span>
 									<i class="fas fa-arrow-right"></i>
 								</a>
 							</div>
 						</li>
-						<li class="credential-card reveal" style="--delay: 150ms;">
+						<li class="credential-card reveal" style="--delay: 150ms">
 							<div class="card-content">
 								<div>
-									<h3 class="cert-title">Career Essentials in Data Analysis</h3>
+									<h3 class="cert-title">
+										Career Essentials in Data Analysis
+									</h3>
 									<p class="cert-issuer">Issued by Microsoft</p>
 								</div>
-								<a href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank">
+								<a
+									href="https://www.linkedin.com/learning/paths/career-essentials-in-data-analysis-by-microsoft-and-linkedin"
+									class="credential-button"
+									target="_blank"
+								>
 									<span>View Credential</span>
 									<i class="fas fa-arrow-right"></i>
 								</a>
 							</div>
 						</li>
-						<li class="credential-card reveal" style="--delay: 300ms;">
+						<li class="credential-card reveal" style="--delay: 300ms">
 							<div class="card-content">
 								<div>
-									<h3 class="cert-title">Data Analytics Essentials</h3>
+									<h3 class="cert-title">
+										Data Analytics Essentials
+									</h3>
 									<p class="cert-issuer">Issued by Cisco</p>
 								</div>
-								<a href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile" class="credential-button" target="_blank">
+								<a
+									href="https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile"
+									class="credential-button"
+									target="_blank"
+								>
 									<span>View Credential</span>
 									<i class="fas fa-arrow-right"></i>
 								</a>
 							</div>
 						</li>
-						<li class="credential-card reveal" style="--delay: 450ms;">
+						<li class="credential-card reveal" style="--delay: 450ms">
 							<div class="card-content">
 								<div>
-									<h3 class="cert-title">Career Essentials in Business Analysis</h3>
+									<h3 class="cert-title">
+										Career Essentials in Business Analysis
+									</h3>
 									<p class="cert-issuer">Issued by Microsoft</p>
 								</div>
-								<a href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin" class="credential-button" target="_blank">
+								<a
+									href="https://www.linkedin.com/learning/paths/career-essentials-in-business-analysis-by-microsoft-and-linkedin"
+									class="credential-button"
+									target="_blank"
+								>
 									<span>View Credential</span>
 									<i class="fas fa-arrow-right"></i>
 								</a>
@@ -1479,31 +1706,58 @@
 				</div>
 			</section>
 
-			<section id="contact" >
-                <div class="contact-container reveal">
-                    <div class="contact-text">
-                        <h2 class="title">Get In Touch</h2>
-                        <p>
-                            I'm actively seeking new opportunities and I'm excited to
-                            collaborate on challenging projects. My inbox is always open, so please
-                            feel free to reach out — let's build something great together.
-                        </p>
-                        <a href="mailto:niranjan991100@gmail.com" class="modern-pill-button magnetic-item">
-                            <span>Say Hello</span>
-                            <span class="icon-container">
-                                <span>↗</span>
-                            </span>
-                        </a>
-                    </div>
-                    <div class="contact-details">
-                         <h3>Connect With Me</h3>
-                         <ul class="contact-social-links">
-                             <li><a href="https://github.com/niranjan910" target="_blank" class="magnetic-item" aria-label="Github"><i class="fab fa-github"></i></a></li>
-                             <li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="magnetic-item" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-                             <li><a href="mailto:niranjan991100@gmail.com" class="magnetic-item" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
-                         </ul>
-                    </div>
-                </div>
+			<section id="contact">
+				<div class="contact-container reveal">
+					<div class="contact-text">
+						<h2 class="title">Get In Touch</h2>
+						<p>
+							I'm actively seeking new opportunities and I'm excited to
+							collaborate on challenging projects. My inbox is always
+							open, so please feel free to reach out — let's build
+							something great together.
+						</p>
+						<a
+							href="mailto:niranjan991100@gmail.com"
+							class="modern-pill-button magnetic-item"
+						>
+							<span>Say Hello</span>
+							<span class="icon-container">
+								<span>↗</span>
+							</span>
+						</a>
+					</div>
+					<div class="contact-details">
+						<h3>Connect With Me</h3>
+						<ul class="contact-social-links">
+							<li>
+								<a
+									href="https://github.com/niranjan910"
+									target="_blank"
+									class="magnetic-item"
+									aria-label="Github"
+									><i class="fab fa-github"></i
+								></a>
+							</li>
+							<li>
+								<a
+									href="https://www.linkedin.com/in/niranjan-k-a83517229/"
+									target="_blank"
+									class="magnetic-item"
+									aria-label="LinkedIn"
+									><i class="fab fa-linkedin"></i
+								></a>
+							</li>
+							<li>
+								<a
+									href="mailto:niranjan991100@gmail.com"
+									class="magnetic-item"
+									aria-label="Email"
+									><i class="fas fa-envelope"></i
+								></a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</section>
 		</main>
 
@@ -1513,13 +1767,13 @@
 			>
 		</footer>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
-				
 				// --- CHECK FOR TOUCH DEVICE ---
-				const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+				const isTouchDevice =
+					"ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 				// --- HERO SECTION P5.JS SKETCH ---
 				const heroSketch = (p) => {
@@ -1530,8 +1784,14 @@
 
 					class Particle {
 						constructor() {
-							this.pos = p.createVector(p.random(p.width), p.random(p.height));
-							this.vel = p.createVector(p.random(-0.5, 0.5), p.random(-0.5, 0.5));
+							this.pos = p.createVector(
+								p.random(p.width),
+								p.random(p.height)
+							);
+							this.vel = p.createVector(
+								p.random(-0.5, 0.5),
+								p.random(-0.5, 0.5)
+							);
 							this.size = p.random(2, 4);
 							this.originalVel = this.vel.copy();
 						}
@@ -1543,7 +1803,10 @@
 							if (!isTouchDevice && mouseVec) {
 								let d = this.pos.dist(mouseVec);
 								if (d < 100) {
-									let force = p.createVector(this.pos.x - mouseVec.x, this.pos.y - mouseVec.y);
+									let force = p.createVector(
+										this.pos.x - mouseVec.x,
+										this.pos.y - mouseVec.y
+									);
 									force.setMag(1.5);
 									this.pos.add(force);
 								}
@@ -1552,40 +1815,55 @@
 
 						draw() {
 							p.noStroke();
-							p.fill('rgba(255, 255, 255, 0.5)');
+							p.fill("rgba(255, 255, 255, 0.5)");
 							p.circle(this.pos.x, this.pos.y, this.size);
 						}
 
 						edges() {
-							if (this.pos.x < 0 || this.pos.x > p.width) this.vel.x *= -1;
-							if (this.pos.y < 0 || this.pos.y > p.height) this.vel.y *= -1;
+							if (this.pos.x < 0 || this.pos.x > p.width)
+								this.vel.x *= -1;
+							if (this.pos.y < 0 || this.pos.y > p.height)
+								this.vel.y *= -1;
 						}
 
 						checkParticles(particles) {
-							particles.forEach(particle => {
-								const d = p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+							particles.forEach((particle) => {
+								const d = p.dist(
+									this.pos.x,
+									this.pos.y,
+									particle.pos.x,
+									particle.pos.y
+								);
 								if (d < 120) {
 									const alpha = p.map(d, 0, 120, 0.5, 0);
 									p.stroke(`rgba(255, 255, 255, ${alpha})`);
-									p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+									p.line(
+										this.pos.x,
+										this.pos.y,
+										particle.pos.x,
+										particle.pos.y
+									);
 								}
 							});
 						}
 					}
-					
+
 					p.setup = () => {
-						const heroSection = document.getElementById('hero');
-						canvas = p.createCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
-						canvas.parent('hero-canvas');
+						const heroSection = document.getElementById("hero");
+						canvas = p.createCanvas(
+							heroSection.offsetWidth,
+							heroSection.offsetHeight
+						);
+						canvas.parent("hero-canvas");
 						mouseVec = p.createVector(p.width / 2, p.height / 2);
 
-						for(let i = 0; i < numParticles; i++) {
+						for (let i = 0; i < numParticles; i++) {
 							particles.push(new Particle());
 						}
 					};
 
 					p.draw = () => {
-						p.background('#111');
+						p.background("#111");
 						if (!isTouchDevice) {
 							mouseVec.set(p.mouseX, p.mouseY);
 						}
@@ -1595,10 +1873,13 @@
 							particle.checkParticles(particles.slice(index));
 						});
 					};
-					
+
 					p.windowResized = () => {
-						const heroSection = document.getElementById('hero');
-						p.resizeCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
+						const heroSection = document.getElementById("hero");
+						p.resizeCanvas(
+							heroSection.offsetWidth,
+							heroSection.offsetHeight
+						);
 					};
 				};
 				new p5(heroSketch);
@@ -1618,33 +1899,43 @@
 						}
 
 						draw() {
-							let twinkle = p.noise(this.x * 0.01, this.y * 0.01, p.frameCount * this.twinkleSpeed);
+							let twinkle = p.noise(
+								this.x * 0.01,
+								this.y * 0.01,
+								p.frameCount * this.twinkleSpeed
+							);
 							let alpha = p.map(twinkle, 0, 1, 50, 255);
 							p.fill(255, alpha);
 							p.noStroke();
 							p.circle(this.x, this.y, this.size);
 						}
 					}
-					
+
 					p.setup = () => {
-						const certsSection = document.getElementById('certs');
-						canvas = p.createCanvas(certsSection.offsetWidth, certsSection.offsetHeight);
-						canvas.parent('certs-canvas');
+						const certsSection = document.getElementById("certs");
+						canvas = p.createCanvas(
+							certsSection.offsetWidth,
+							certsSection.offsetHeight
+						);
+						canvas.parent("certs-canvas");
 						for (let i = 0; i < numStars; i++) {
 							stars.push(new Star());
 						}
 					};
 
 					p.draw = () => {
-						p.background('#010101');
-						stars.forEach(star => {
+						p.background("#010101");
+						stars.forEach((star) => {
 							star.draw();
 						});
 					};
-					
+
 					p.windowResized = () => {
-						const certsSection = document.getElementById('certs');
-						p.resizeCanvas(certsSection.offsetWidth, certsSection.offsetHeight);
+						const certsSection = document.getElementById("certs");
+						p.resizeCanvas(
+							certsSection.offsetWidth,
+							certsSection.offsetHeight
+						);
 						stars = [];
 						for (let i = 0; i < numStars; i++) {
 							stars.push(new Star());
@@ -1652,21 +1943,30 @@
 					};
 				};
 				new p5(certsSketch);
-				
-                // --- SCROLL-BASED ANIMATIONS ---
+
+				// --- SCROLL-BASED ANIMATIONS ---
 				const revealElements = document.querySelectorAll(".reveal");
-                const revealObserver = new IntersectionObserver(
+				const revealObserver = new IntersectionObserver(
 					(entries, observer) => {
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
 								entry.target.classList.add("is-visible");
-								
-                                // Special handling for the chart canvas
-                                const chartContainer = entry.target.querySelector('.career-chart-container');
-                                const canvas = document.getElementById('skillGrowthChart');
-                                if (chartContainer && canvas && !canvas.classList.contains('chartjs-render-monitor')) {
-                                    renderSkillChart();
-                                }
+
+								// Special handling for the chart canvas
+								const chartContainer = entry.target.querySelector(
+									".career-chart-container"
+								);
+								const canvas =
+									document.getElementById("skillGrowthChart");
+								if (
+									chartContainer &&
+									canvas &&
+									!canvas.classList.contains(
+										"chartjs-render-monitor"
+									)
+								) {
+									renderSkillChart();
+								}
 
 								// No unobserve here, to re-trigger if needed, or unobserve specific items
 							}
@@ -1676,25 +1976,26 @@
 				);
 
 				revealElements.forEach((el) => {
-                    // We only want to unobserve non-chart elements
-                    if(!el.querySelector('.career-chart-container')) {
-                       // The observer for the chart will be handled separately if needed
-                    }
-                    revealObserver.observe(el)
-                });
-
+					// We only want to unobserve non-chart elements
+					if (!el.querySelector(".career-chart-container")) {
+						// The observer for the chart will be handled separately if needed
+					}
+					revealObserver.observe(el);
+				});
 
 				// --- NAVIGATION BAR STYLING ON SCROLL ---
 				const nav = document.getElementById("mainNav");
 				const logo = document.getElementById("navLogoImage");
 				const originalLogoSrc = "Logo/Logo.svg";
-				const scrolledLogoSrc = "Logo/Logo Dark.svg"; 
+				const scrolledLogoSrc = "Logo/Logo Dark.svg";
 
 				window.addEventListener("scroll", () => {
 					const isScrolled = window.scrollY > 50;
 					nav.classList.toggle("scrolled", isScrolled);
 					if (logo) {
-						logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
+						logo.src = isScrolled
+							? scrolledLogoSrc
+							: originalLogoSrc;
 					}
 				});
 
@@ -1706,7 +2007,7 @@
 						e.stopPropagation();
 						hamburger.classList.toggle("active");
 						navLinks.classList.toggle("active");
-                        document.body.classList.toggle('nav-open');
+						document.body.classList.toggle("nav-open");
 					});
 
 					navLinks.querySelectorAll("a").forEach((link) => {
@@ -1714,12 +2015,12 @@
 							link.addEventListener("click", () => {
 								hamburger.classList.remove("active");
 								navLinks.classList.remove("active");
-                                document.body.classList.remove('nav-open');
+								document.body.classList.remove("nav-open");
 							});
 						}
 					});
 				}
-				
+
 				// --- ACTIVE NAVIGATION LINK ON SCROLL ---
 				const sections = document.querySelectorAll("main section[id]");
 				const navLinkMap = {};
@@ -1758,178 +2059,188 @@
 
 				sections.forEach((section) => sectionObserver.observe(section));
 
+				// --- SKILL GROWTH CHART LOGIC ---
+				let skillChart = null; // Variable to hold the chart instance
+				function renderSkillChart() {
+					const ctx = document.getElementById("skillGrowthChart");
+					if (!ctx || skillChart) return; // Exit if no canvas or chart already exists
 
-                // --- SKILL GROWTH CHART LOGIC ---
-                let skillChart = null; // Variable to hold the chart instance
-                function renderSkillChart() {
-                    const ctx = document.getElementById('skillGrowthChart');
-                    if (!ctx || skillChart) return; // Exit if no canvas or chart already exists
+					const chartData = {
+						labels: ["2016", "2018", "2020", "2022", "2024", "2025"],
+						datasets: [
+							{
+								label: "Python",
+								data: [5, 10, 30, 60, 80, 85],
+								borderColor: "rgba(59, 130, 246, 0.8)", // Muted Blue
+								backgroundColor: "rgba(59, 130, 246, 0.1)",
+								borderWidth: 2.5,
+								tension: 0.4,
+								fill: true,
+							},
+							{
+								label: "SQL",
+								data: [5, 15, 35, 65, 85, 90],
+								borderColor: "rgba(22, 163, 74, 0.8)", // Muted Green
+								backgroundColor: "rgba(22, 163, 74, 0.1)",
+								borderWidth: 2.5,
+								tension: 0.4,
+								fill: true,
+							},
+							{
+								label: "Visualization",
+								data: [10, 20, 40, 70, 90, 95],
+								borderColor: "rgba(249, 115, 22, 0.8)", // Muted Orange
+								backgroundColor: "rgba(249, 115, 22, 0.1)",
+								borderWidth: 2.5,
+								tension: 0.4,
+								fill: true,
+							},
+							{
+								label: "ETL",
+								data: [0, 5, 25, 50, 75, 80],
+								borderColor: "rgba(107, 114, 128, 0.8)", // Muted Gray
+								backgroundColor: "rgba(107, 114, 128, 0.1)",
+								borderWidth: 2.5,
+								tension: 0.4,
+								fill: true,
+							},
+							{
+								label: "Statistical Analysis",
+								data: [15, 25, 45, 60, 70, 75],
+								borderColor: "rgba(139, 92, 246, 0.8)", // Muted Purple
+								backgroundColor: "rgba(139, 92, 246, 0.1)",
+								borderWidth: 2.5,
+								tension: 0.4,
+								fill: true,
+							},
+						],
+					};
 
-                    const chartData = {
-                        labels: ['2016', '2018', '2020', '2022', '2024', '2025'],
-                        datasets: [
-                            {
-                                label: 'Python',
-                                data: [5, 10, 30, 60, 80, 85],
-                                borderColor: 'rgba(59, 130, 246, 0.8)', // Muted Blue
-                                backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            },
-                            {
-                                label: 'SQL',
-                                data: [5, 15, 35, 65, 85, 90],
-                                borderColor: 'rgba(22, 163, 74, 0.8)', // Muted Green
-                                backgroundColor: 'rgba(22, 163, 74, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            },
-                            {
-                                label: 'Visualization',
-                                data: [10, 20, 40, 70, 90, 95],
-                                borderColor: 'rgba(249, 115, 22, 0.8)', // Muted Orange
-                                backgroundColor: 'rgba(249, 115, 22, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            },
-                             {
-                                label: 'ETL',
-                                data: [0, 5, 25, 50, 75, 80],
-                                borderColor: 'rgba(107, 114, 128, 0.8)', // Muted Gray
-                                backgroundColor: 'rgba(107, 114, 128, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            },
-                            {
-                                label: 'Statistical Analysis',
-                                data: [15, 25, 45, 60, 70, 75],
-                                borderColor: 'rgba(139, 92, 246, 0.8)', // Muted Purple
-                                backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                                borderWidth: 2.5,
-                                tension: 0.4,
-                                fill: true,
-                            }
-                        ]
-                    };
+					skillChart = new Chart(ctx, {
+						type: "line",
+						data: chartData,
+						options: {
+							responsive: true,
+							maintainAspectRatio: false,
+							plugins: {
+								legend: {
+									position: "bottom",
+									labels: {
+										font: {
+											family: "'Helvetica Neue', sans-serif",
+										},
+										padding: 20,
+									},
+								},
+								title: {
+									display: true,
+									text: "Skill Proficiency Growth",
+									color: "#010101",
+									font: {
+										size: 18,
+										family: "'Georgia', serif",
+										weight: "bold",
+									},
+									padding: {
+										bottom: 20,
+									},
+								},
+							},
+							scales: {
+								y: {
+									beginAtZero: true,
+									max: 100,
+									ticks: {
+										callback: function (value) {
+											return value + "%";
+										},
+									},
+								},
+								x: {
+									grid: {
+										display: false,
+									},
+								},
+							},
+							animation: {
+								duration: 1500,
+								easing: "easeOutQuart",
+							},
+						},
+					});
+				}
 
-                    skillChart = new Chart(ctx, {
-                        type: 'line',
-                        data: chartData,
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: {
-                                    position: 'bottom',
-                                    labels: {
-                                        font: {
-                                            family: "'Helvetica Neue', sans-serif",
-                                        },
-                                         padding: 20
-                                    }
-                                },
-                                title: {
-                                    display: true,
-                                    text: 'Skill Proficiency Growth',
-                                    color: '#010101',
-                                    font: {
-                                        size: 18,
-                                        family: "'Georgia', serif",
-                                        weight: 'bold'
-                                    },
-                                    padding: {
-                                        bottom: 20
-                                    }
-                                }
-                            },
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                    max: 100,
-                                    ticks: {
-                                        callback: function(value) {
-                                            return value + '%'
-                                        }
-                                    }
-                                },
-                                x: {
-                                    grid: {
-                                        display: false
-                                    }
-                                }
-                            },
-                            animation: {
-                                duration: 1500,
-                                easing: 'easeOutQuart',
-                            }
-                        }
-                    });
-                }
-                
-                const chartObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            renderSkillChart();
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.5 }); // Trigger when 50% of the element is visible
+				const chartObserver = new IntersectionObserver(
+					(entries, observer) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								renderSkillChart();
+								observer.unobserve(entry.target);
+							}
+						});
+					},
+					{ threshold: 0.5 }
+				); // Trigger when 50% of the element is visible
 
-                const chartContainer = document.querySelector('.career-chart-container');
-                if (chartContainer) {
-                    chartObserver.observe(chartContainer);
-                }
+				const chartContainer = document.querySelector(
+					".career-chart-container"
+				);
+				if (chartContainer) {
+					chartObserver.observe(chartContainer);
+				}
 
-				
-                // --- MOUSE-BASED INTERACTIONS (DESKTOP ONLY) ---
+				// --- MOUSE-BASED INTERACTIONS (DESKTOP ONLY) ---
 				if (!isTouchDevice) {
 					// 1. Magnetic Items Effect
-					const magneticItems = document.querySelectorAll('.magnetic-item');
-					
-					magneticItems.forEach(item => {
-						item.addEventListener('mousemove', (e) => {
+					const magneticItems =
+						document.querySelectorAll(".magnetic-item");
+
+					magneticItems.forEach((item) => {
+						item.addEventListener("mousemove", (e) => {
 							const pos = item.getBoundingClientRect();
 							const x = e.clientX - pos.left - pos.width / 2;
 							const y = e.clientY - pos.top - pos.height / 2;
 
-							item.style.transition = 'transform 0.1s ease';
-							item.style.transform = `translateX(${x * 0.3}px) translateY(${y * 0.4}px)`;
+							item.style.transition = "transform 0.1s ease";
+							item.style.transform = `translateX(${
+								x * 0.3
+							}px) translateY(${y * 0.4}px)`;
 						});
 
-						item.addEventListener('mouseleave', () => {
-							item.style.transition = 'transform 0.3s ease';
-							item.style.transform = 'translateX(0) translateY(0)';
+						item.addEventListener("mouseleave", () => {
+							item.style.transition = "transform 0.3s ease";
+							item.style.transform = "translateX(0) translateY(0)";
 						});
 					});
 
 					// 2. 3D Tilt Effect for Cards
-					const tiltItems = document.querySelectorAll('.project-card, .about-image-wrapper');
+					const tiltItems = document.querySelectorAll(
+						".project-card, .about-image-wrapper"
+					);
 					const tiltStrength = 8;
 
-					tiltItems.forEach(item => {
-						item.addEventListener('mousemove', (e) => {
+					tiltItems.forEach((item) => {
+						item.addEventListener("mousemove", (e) => {
 							const pos = item.getBoundingClientRect();
 							const x = e.clientX - pos.left;
 							const y = e.clientY - pos.top;
 							const middleX = pos.width / 2;
 							const middleY = pos.height / 2;
 
-							const rotateY = ((x - middleX) / middleX) * tiltStrength;
-							const rotateX = -((y - middleY) / middleY) * tiltStrength;
-							
+							const rotateY =
+								((x - middleX) / middleX) * tiltStrength;
+							const rotateX =
+								-((y - middleY) / middleY) * tiltStrength;
+
 							item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
 						});
 
-						item.addEventListener('mouseleave', () => {
-							item.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+						item.addEventListener("mouseleave", () => {
+							item.style.transform =
+								"perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
 						});
 					});
 				}
-
 			});
 		</script>
 	</body>
