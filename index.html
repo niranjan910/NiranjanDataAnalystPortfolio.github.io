@@ -14,21 +14,21 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES (Dark Theme) --- */
+			/* --- CORE STYLES (New Modern Theme) --- */
 			:root {
-				--bg-main: #121212;
-				--text-primary: #e0e0e0;
-				--text-secondary: rgba(224, 224, 224, 0.7);
-				--text-on-image: #f1f1f1;
-				--card-bg: #1e1e1e;
-				--border-color: #333333;
+				--bg-main: #101419;
+				--text-primary: #e6f1ff;
+				--text-secondary: rgba(230, 241, 255, 0.65);
+				--text-on-image: #ffffff;
+				--card-bg: #191f26;
+				--border-color: #2c3440;
 				--shadow-color: rgba(0, 0, 0, 0.5);
-				--accent: #3498db;
-				--accent-tint: rgba(52, 152, 219, 0.1);
+				--accent: #00ffc3;
+				--accent-tint: rgba(0, 255, 195, 0.1);
 				--accent-gradient: linear-gradient(
 					90deg,
-					#3498db 0%,
-					#9b59b6 100%
+					#00ffc3 0%,
+					#00aaff 100%
 				);
 
 				--font-sans: "Helvetica Neue", sans-serif;
@@ -60,7 +60,7 @@
 				background-color: var(--bg-main);
 				line-height: 1.5;
 				overflow-x: hidden;
-				background: linear-gradient(-45deg, #121212, #1a1a1a, #121212, #0d0d0d);
+				background: linear-gradient(-45deg, #101419, #141921, #101419, #0c0f12);
 				background-size: 400% 400%;
 				animation: gradientBG 15s ease infinite;
 			}
@@ -168,7 +168,7 @@
 				transition: var(--transition-slow);
 			}
 			.main-nav.scrolled {
-				background-color: rgba(18, 18, 18, 0.85);
+				background-color: rgba(16, 20, 25, 0.85);
 				backdrop-filter: blur(10px);
 				-webkit-backdrop-filter: blur(10px);
 				height: 70px;
@@ -227,7 +227,7 @@
 				position: relative;
 				margin: 0 -60px;
 				padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px;
-				background-color: #111;
+				background-color: var(--bg-main);
 				overflow: hidden;
 			}
 
@@ -269,7 +269,7 @@
 				margin: 0;
 				font-size: clamp(2.5rem, 6vw, 4.5rem);
 				line-height: 1.1;
-				background: linear-gradient(45deg, #f1f1f1, #c1c1c1);
+				background: linear-gradient(45deg, #ffffff, #b3cce6);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 			}
@@ -338,7 +338,7 @@
 				transform: translateY(-3px) scale(1.03);
 				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 				opacity: 1;
-				background-color: #333;
+				background-color: var(--accent);
 			}
 
 			.hero-cta-button {
@@ -743,7 +743,7 @@
 			}
 
 			.project-card .project-view-button:hover {
-				background: #333;
+				background: #2c3440;
 				transform: translateY(-2px);
 				color: var(--bg-main) !important;
 				opacity: 1;
@@ -783,7 +783,7 @@
 			}
 
 			.credential-card {
-				background-color: rgba(30, 30, 30, 0.95); /* Slightly transparent */
+				background-color: rgba(25, 31, 38, 0.95);
 				border-radius: 12px;
 				border: 1px solid var(--border-color);
 				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
@@ -841,7 +841,7 @@
 			}
 
 			.credential-card .credential-button:hover {
-				background: #333;
+				background: #2c3440;
 				transform: translateY(-2px) scale(1.02);
 				color: var(--bg-main) !important;
 				opacity: 1;
@@ -1802,7 +1802,7 @@
 					};
 
 					p.draw = () => {
-						p.background("#111");
+						p.background("#101419");
 						if (!isTouchDevice) {
 							mouseVec.set(p.mouseX, p.mouseY);
 						}
@@ -1866,7 +1866,7 @@
 					};
 
 					p.draw = () => {
-						p.background("#010101");
+						p.background("#101419");
 						stars.forEach((star) => {
 							star.draw();
 						});
