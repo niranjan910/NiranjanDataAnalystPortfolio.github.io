@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Niranjan Kumar | Data Analyst Portfolio</title>
+
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -11,222 +12,397 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
+
 		<style>
-			/* --- CORE STYLES & VARIABLES --- */
+			/* --- CORE STYLES --- */
 			:root {
-				--bg-main: #f4f5f7;
-				--text-primary: #111827;
-				--text-secondary: #6b7280;
+				--bg-main: #f1f1f1;
+				--text-primary: #010101;
+				--text-secondary: rgba(1, 1, 1, 0.7);
 				--card-bg: #ffffff;
-				--border-color: #e5e7eb;
-				--shadow-color: rgba(0, 0, 0, 0.05);
-				--shadow-color-hover: rgba(0, 0, 0, 0.1);
+				--border-color: #dddddd;
+				--shadow-color: rgba(0, 0, 0, 0.08);
+				--accent: #010101;
+				--accent-tint: rgba(1, 1, 1, 0.07);
 				--indigo-500: #6366f1;
 				--purple-600: #9333ea;
-				--nav-height: 80px;
-				--font-sans: "Helvetica Neue", system-ui, sans-serif;
+				--font-sans: "Helvetica Neue", sans-serif;
 				--font-serif: "Georgia", serif;
-				--transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+				--border-radius: 4px;
+				--nav-height: 100px;
+				--transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+				--transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 			}
 
 			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-			html { scroll-behavior: smooth; }
+			html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border-color) transparent; }
 			body {
 				font-family: var(--font-sans);
 				color: var(--text-secondary);
-				background-color: var(--bg-main);
-				line-height: 1.6;
 				-webkit-font-smoothing: antialiased;
+				background-color: var(--bg-main);
+				line-height: 1.5;
 				overflow-x: hidden;
 			}
+
+			/* --- UTILITIES & HELPERS --- */
+			.skip-to-content { position: absolute; top: auto; left: -9999px; width: 1px; height: 1px; overflow: hidden; z-index: -999; }
+			.skip-to-content:focus { left: 1rem; top: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; padding: 0.5rem 1rem; background: var(--accent); color: var(--bg-main); border-radius: var(--border-radius); font-weight: 700; }
 			main { padding: 0 60px; position: relative; }
 			section { padding: 100px 0; }
-			h1, h2, h3, h4 { color: var(--text-primary); line-height: 1.2; }
-			.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 700; line-height: 1.2; }
+			p { margin-bottom: 1rem; max-width: 65ch; font-size: 1.125rem; line-height: 1.6; }
+			a { text-decoration: none; color: var(--text-secondary); transition: var(--transition-fast); }
+			a:hover, button:hover { color: var(--accent); opacity: 0.8; }
+			.reveal {
+				opacity: 0;
+				transform: translateY(30px);
+				transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1),
+					transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+				transition-delay: var(--delay, 0s);
+			}
 			.reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-			/* --- SECTION HEADING --- */
-			h2.section-heading {
-				text-align: center;
-				margin-bottom: 4rem;
-				font-family: var(--font-serif);
-				font-size: clamp(28px, 5vw, 40px);
-				position: relative;
-			}
-			h2.section-heading::after {
-				content: '';
-				position: absolute;
-				width: 70px;
-				height: 4px;
-				background: linear-gradient(90deg, var(--indigo-500), var(--purple-600));
-				bottom: -15px;
-				left: 50%;
-				transform: translateX(-50%);
-				border-radius: 2px;
-			}
-
 			/* --- NAVIGATION BAR --- */
-			.main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: rgba(244, 245, 247, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 100; transition: height 0.3s ease, box-shadow 0.3s ease; }
-			.main-nav.scrolled { height: 70px; box-shadow: 0 4px 15px var(--shadow-color-hover); }
-			.nav-logo img { height: 40px; }
-			.nav-links ol { list-style: none; display: flex; align-items: center; gap: 2rem; }
-			.nav-links a { color: var(--text-primary); font-weight: 500; transition: color 0.2s ease; }
-			.nav-links a:hover, .nav-links a.active { color: var(--indigo-500); }
-			.hamburger-menu { display: none; background: none; border: none; cursor: pointer; z-index: 101; }
-			.hamburger-menu .bar { display: block; width: 25px; height: 3px; margin: 5px 0; background-color: var(--text-primary); border-radius: 3px; transition: all 0.3s ease-in-out; }
+			.main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: rgba(241,241,241,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 11; transition: var(--transition-slow); border-bottom: 1px solid transparent; }
+			.main-nav.scrolled { height: 70px; box-shadow: 0 10px 30px -10px var(--shadow-color); border-bottom: 1px solid var(--border-color); }
+			.nav-logo a { display: block; }
+			.nav-logo img { height: 40px; width: auto; transition: var(--transition-fast); }
+			.nav-links ol { list-style: none; display: flex; align-items: center; }
+			.nav-links li { margin: 0 1.5rem; }
+			.nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-primary); padding: 0.75rem 0; font-size: 0.95rem; position: relative; transition: var(--transition-fast); }
+			.nav-links li a:not(.btn):not(.modern-pill-button):hover { color: var(--accent); }
+			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent); }
+			
+			/* =========================================== */
+			/* =========== NEW HERO SECTION STYLES ========= */
+			/* =========================================== */
+			#hero {
+				display: flex;
+				align-items: center;
+				min-height: 100vh;
+				padding-top: var(--nav-height);
+				padding-bottom: 50px;
+				overflow: hidden;
+			}
+			.hero-container {
+				display: grid;
+				grid-template-columns: 1fr;
+				align-items: center;
+				gap: 3rem;
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			@media (min-width: 992px) {
+				.hero-container {
+					grid-template-columns: repeat(2, 1fr);
+					gap: 4rem;
+				}
+			}
 
-			/* --- HERO SECTION --- */
-			#hero { display: flex; align-items: center; min-height: 100vh; padding-top: var(--nav-height); }
-			.hero-container { display: grid; grid-template-columns: 1fr; align-items: center; gap: 3rem; width: 100%; max-width: 1200px; margin: 0 auto; }
 			.hero-text { text-align: center; }
-			.hero-headline { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-			.hero-subtext { font-size: clamp(1rem, 2vw, 1.15rem); max-width: 50ch; margin: 0 auto 2.5rem; }
-			.hero-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-			.cta-btn { display: inline-block; padding: 0.9rem 1.8rem; font-weight: 600; border-radius: 99px; border: 2px solid transparent; transition: var(--transition-fast); }
-			.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px var(--shadow-color-hover); }
-			.cta-btn-primary { background-image: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); color: white; }
-			.cta-btn-secondary { border-color: var(--text-primary); color: var(--text-primary); }
-			.cta-btn-secondary:hover { background-color: var(--text-primary); color: var(--bg-main); }
-			.hero-graphic { position: relative; width: 100%; max-width: 400px; margin: 2rem auto 0; height: 300px; }
-			.orbiting-icon { position: absolute; top: 50%; left: 50%; display: flex; justify-content: center; align-items: center; width: 60px; height: 60px; background: var(--card-bg); border-radius: 50%; box-shadow: 0 5px 15px var(--shadow-color); font-size: 1.8rem; color: var(--indigo-500); animation: orbit linear infinite; }
+			@media (min-width: 992px) {
+				.hero-text { text-align: left; }
+			}
+
+			.hero-headline {
+				font-family: var(--font-serif);
+				font-size: clamp(2.5rem, 6vw, 4.2rem);
+				font-weight: 800;
+				line-height: 1.15;
+				margin-bottom: 1.5rem;
+				background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				color: transparent;
+			}
+
+			.hero-subtext {
+				font-size: clamp(1rem, 2vw, 1.15rem);
+				color: var(--text-secondary);
+				max-width: 50ch;
+				margin: 0 auto 2.5rem;
+				line-height: 1.7;
+			}
+			@media (min-width: 992px) {
+				.hero-subtext { margin: 0 0 2.5rem; }
+			}
+			
+			.hero-cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+			@media (min-width: 600px) {
+				.hero-cta-buttons { flex-direction: row; justify-content: center; }
+			}
+			@media (min-width: 992px) {
+				.hero-cta-buttons { justify-content: flex-start; }
+			}
+			
+			.cta-btn {
+				display: inline-block;
+				padding: 1rem 2rem;
+				font-weight: 600;
+				font-size: 1rem;
+				border-radius: 99px;
+				border: 2px solid transparent;
+				transition: transform 0.2s ease, box-shadow 0.2s ease;
+				text-align: center;
+				min-width: 200px;
+			}
+			.cta-btn:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+				opacity: 1;
+			}
+
+			.cta-btn-primary {
+				background-image: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%);
+				color: white;
+			}
+
+			.cta-btn-secondary {
+				border: 2px solid var(--text-primary);
+				background-color: transparent;
+				color: var(--text-primary);
+			}
+			.cta-btn-secondary:hover {
+				background-color: var(--text-primary);
+				color: var(--bg-main);
+			}
+			
+			.hero-graphic {
+				position: relative;
+				width: 100%;
+				max-width: 400px;
+				margin: 2rem auto 0;
+				height: 300px;
+			}
+			@media (min-width: 992px) {
+				.hero-graphic { height: 450px; max-width: none; margin: 0; }
+			}
+			
+			.orbiting-icon {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 60px;
+				height: 60px;
+				background: var(--card-bg);
+				border-radius: 50%;
+				box-shadow: 0 5px 15px var(--shadow-color);
+				font-size: 1.8rem;
+				color: var(--indigo-500);
+				animation: orbit linear infinite;
+			}
 			.orbiting-icon.icon-1 { animation-duration: 10s; --radius: 120px; }
 			.orbiting-icon.icon-2 { animation-duration: 12s; animation-direction: reverse; --radius: 180px; }
 			.orbiting-icon.icon-3 { animation-duration: 15s; --radius: 220px; color: var(--purple-600); }
-			@keyframes orbit { from { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg); } }
-			.scroll-down-indicator { display: none; position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); }
-			.scroll-down-indicator a { animation: bounce 2s infinite; }
-			@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+			.orbiting-icon.icon-4 { animation-duration: 9s; animation-direction: reverse; --radius: 80px; font-size: 1.5rem; width: 50px; height: 50px;}
 
-			/* --- ABOUT ME SECTION --- */
-			.about-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; background-color: var(--card-bg); padding: 3rem; border-radius: 1.5rem; box-shadow: 0 10px 40px var(--shadow-color); }
-			.avatar-placeholder { width: 100%; max-width: 300px; aspect-ratio: 1/1; border-radius: 1.5rem; position: relative; overflow: hidden; margin: auto; background-color: #222; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+			@keyframes orbit {
+				0% { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+				100% { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+			}
+			
+			.scroll-down-indicator {
+				position: absolute;
+				bottom: 2rem;
+				left: 50%;
+				transform: translateX(-50%);
+				display: none; /* Hide by default, show on desktop */
+			}
+			@media (min-width: 992px) { .scroll-down-indicator { display: block; } }
+
+			.scroll-down-indicator a {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: var(--text-secondary);
+				animation: bounce 2s infinite;
+			}
+			.scroll-down-indicator i { font-size: 2rem; }
+
+			@keyframes bounce {
+				0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+				40% { transform: translateY(-15px); }
+				60% { transform: translateY(-8px); }
+			}
+
+
+			h2.section-heading {
+				text-align: center;
+				margin-bottom: 4rem;
+				font-size: clamp(28px, 5vw, 40px);
+				position: relative;
+				color: var(--text-primary);
+			}
+			h2.section-heading::after { content: ''; position: absolute; width: 60px; height: 3px; background: var(--accent); bottom: -15px; left: 50%; transform: translateX(-50%); }
+
+			/* MODERN "ABOUT ME" STYLES */
+			.about-redesigned-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; background-color: var(--card-bg); padding: 2rem; border-radius: 1.5rem; box-shadow: 0 10px 40px -10px var(--shadow-color); }
+			@media (min-width: 992px) { .about-redesigned-container { grid-template-columns: 1fr 2fr; padding: 4rem; } }
+			.avatar-column { display: flex; justify-content: center; align-items: center; }
+			.avatar-placeholder { width: 100%; max-width: 300px; aspect-ratio: 1 / 1; border-radius: 1.5rem; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; color: rgba(255, 255, 255, 0.8); background-color: #222; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 			.avatar-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: conic-gradient(#6366f1, #a855f7, #ec4899, #f59e0b, #3b82f6, #10b981, #6366f1); animation: spin 8s linear infinite; }
 			@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-			.about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2rem, 5vw, 2.5rem); }
-			.about-heading::after { display: block; content:''; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); }
-			.about-container p { font-size: 1rem; margin-bottom: 1.5rem; }
-			.toolkit-heading { font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
+			.avatar-placeholder .avatar-icon { position: relative; z-index: 2; font-size: 6rem; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+			.content-column .about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 3.5rem); }
+			.content-column .about-heading::after { display: block; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); }
+			.content-column p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; max-width: 70ch; color: var(--text-secondary); }
+			.toolkit-heading { font-family: var(--font-sans); font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
 			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
-			.skill-badge { display: inline-flex; align-items: center; gap: 0.75rem; background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: 99px; font-weight: 500; color: var(--text-primary); transition: var(--transition-fast); }
-			.skill-badge:hover { transform: translateY(-4px); box-shadow: 0 8px 15px var(--shadow-color-hover); }
+			.skill-badge { display: inline-flex; align-items: center; gap: 0.75rem; background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: 99px; font-weight: 500; color: var(--text-primary); transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: 0 2px 5px var(--shadow-color); }
+			.skill-badge:hover { transform: translateY(-4px); box-shadow: 0 8px 15px var(--shadow-color); }
 			.skill-badge i { color: var(--indigo-500); font-size: 1.25rem; }
 
-			/* --- "MY JOURNEY" TIMELINE SECTION --- */
+			/* TIMELINE STYLES */
+			#journey { position: relative; }
 			.timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
-			.timeline-container::after { content: ''; position: absolute; width: 4px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+			.timeline-container::after { content: ''; position: absolute; width: 4px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -2px; z-index: 0; }
 			.timeline-item { padding: 10px 40px; position: relative; width: 50%; }
-			.timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--bg-main); border: 4px solid var(--indigo-500); top: 25px; border-radius: 50%; z-index: 1; }
+			.timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--bg-main); border: 4px solid var(--accent); top: 25px; border-radius: 50%; z-index: 1; }
 			.timeline-item.left { left: 0; }
 			.timeline-item.right { left: 50%; }
 			.timeline-item.right::after { left: -10px; }
-			.timeline-card { padding: 1.5rem; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: var(--transition-fast); }
-			.timeline-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px var(--shadow-color-hover); }
+			.timeline-card { padding: 1.5rem; background: var(--card-bg); position: relative; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+			.timeline-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12); }
+			.timeline-card .card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+			.timeline-card .icon { font-size: 1.8rem; color: var(--accent); background-color: var(--accent-tint); border-radius: 50%; width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+			.timeline-card h3 { font-family: var(--font-serif); font-size: 1.25rem; margin: 0; }
+			.timeline-card .org { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; color: var(--text-secondary); }
+			.timeline-card .meta { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 1rem; }
+			.timeline-card .meta span { margin-right: 1rem; }
+			.timeline-card .meta i { margin-right: 0.5rem; }
+			.timeline-card ul { list-style-type: none; padding-left: 0; }
+			.timeline-card ul li { position: relative; padding-left: 1.5rem; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; }
+			.timeline-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: bold; font-size: 1.2rem; line-height: 1; }
+			@media screen and (max-width: 900px) { .timeline-container::after { left: 25px; } .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; } .timeline-item.left, .timeline-item.right { left: 0; } .timeline-item::after { left: 15px; } }
 
-			/* --- PROJECTS SECTION --- */
-			.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
-			.project-card { background-color: var(--card-bg); border-radius: 1rem; box-shadow: 0 4px 15px var(--shadow-color); overflow: hidden; transition: var(--transition-fast); }
-			.project-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px var(--shadow-color-hover); }
-			.project-card img { width: 100%; height: 200px; object-fit: cover; }
-			.project-card .card-body { padding: 1.5rem; }
+			/* PROJECTS & CERTS STYLES (NO CHANGES) */
+			.projects-grid, .certs-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; }
+			.projects-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+			.certs-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+			.projects-footer { margin-top: 3rem; text-align: center; }
+			.project-card { background-color: var(--card-bg); display: flex; flex-direction: column; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); overflow: hidden; }
+			.project-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+			.project-card .project-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
+			.project-card .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+			.project-card .project-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
+			.project-card .project-description { font-size: 1rem; line-height: 1.6; flex-grow: 1; margin-bottom: 1rem; }
+			.project-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
+			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
+			.project-card .project-view-button, .credential-card .credential-button { background: var(--accent); color: white !important; padding: 10px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background-color 0.2s ease, transform 0.2s ease; }
+			.project-card .project-view-button:hover, .credential-card .credential-button:hover { background: #333; transform: translateY(-2px); opacity: 1; }
+			#certs { background-color: var(--text-primary); margin: 0 -60px; padding: 100px 60px; position: relative; overflow: hidden; }
+			#certs .section-heading { color: white; }
+			#certs-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+			.certs-content-wrapper { position: relative; z-index: 1; }
+			.credential-card { background-color: rgba(255,255,255,0.95); backdrop-filter: blur(3px); border: 1px solid var(--border-color); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+			.credential-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
+			.credential-card .card-content { padding: 2rem; text-align: center; }
+
+			/* CONTACT & FOOTER (NO CHANGES) */
+			#contact { max-width: 900px; margin: 0 auto; }
+			.contact-container { background-color: var(--card-bg); padding: 3rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: left; }
+			@media (min-width: 768px) { .contact-container { grid-template-columns: 2fr 1fr; } }
+			.footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; margin-top: 60px; }
 			
-			/* --- CERTIFICATES SECTION --- */
-			.certs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-			.cert-card { background-color: var(--card-bg); border-radius: 1rem; border: 1px solid var(--border-color); padding: 1.5rem; text-align: center; position: relative; overflow: hidden; transition: var(--transition-fast); cursor: pointer; }
-			.cert-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px var(--shadow-color-hover); }
-			.cert-card .issuer-logo { height: 50px; margin-bottom: 1rem; object-fit: contain; }
-			.cert-card .cert-title { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; }
-			.verified-badge { position: absolute; top: 1rem; right: 1rem; background-image: linear-gradient(to right, #10b981, #14b8a6); color: white; font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.6rem; border-radius: 99px; }
-			.cert-card .view-button { position: absolute; bottom: 0; left: 0; right: 0; background-image: linear-gradient(to right, var(--indigo-500), var(--purple-600)); color: white; padding: 0.75rem; transform: translateY(100%); opacity: 0; transition: var(--transition-fast); }
-			.cert-card:hover .view-button { transform: translateY(0); opacity: 1; }
-
-			/* --- CERTIFICATE MODAL --- */
-			.cert-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(17, 24, 39, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
-			.cert-modal.active { opacity: 1; visibility: visible; }
-			.modal-content { background-color: var(--card-bg); border-radius: 1.5rem; padding: 2rem; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
-			.cert-modal.active .modal-content { transform: scale(1); }
-			.modal-close-btn { position: absolute; top: 1rem; right: 1rem; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 1.2rem; }
-			#modalCertImage { width: 100%; border-radius: 0.75rem; margin-bottom: 1.5rem; }
-
-			/* --- RESPONSIVE STYLES --- */
-			@media (min-width: 992px) {
-				.hero-container { grid-template-columns: repeat(2, 1fr); gap: 4rem; }
-				.hero-text { text-align: left; }
-				.hero-cta-buttons { justify-content: flex-start; }
-				.hero-graphic { height: 450px; max-width: none; margin: 0; }
-				.scroll-down-indicator { display: block; }
-				.about-container { grid-template-columns: 1fr 2fr; padding: 4rem; }
-			}
-
-			@media (max-width: 1200px) {
-				.certs-grid { grid-template-columns: repeat(2, 1fr); }
-			}
-
+			/* HAMBURGER & RESPONSIVE NAV */
+			.hamburger-menu { display: none; z-index: 1001; }
 			@media (max-width: 768px) {
 				main { padding: 0 25px; }
 				section { padding: 80px 0; }
 				.main-nav { padding: 0 25px; }
-				.nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 300px); background-color: var(--bg-main); flex-direction: column; justify-content: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 99; box-shadow: -10px 0 30px var(--shadow-color); }
+				#certs { margin: 0 -25px; padding-left: 25px; padding-right: 25px; }
+				.nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); }
 				.nav-links.active { transform: translateX(0); }
-				.nav-links ol { flex-direction: column; }
-				.hamburger-menu { display: block; }
-				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+				.nav-links ol { flex-direction: column; gap: 2rem; text-align: center; }
+				.hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
+				.hamburger-menu .bar { background-color: var(--text-primary); transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; }
 				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
 				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-				.timeline-container::after { left: 20px; }
-				.timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; }
-				.timeline-item.left, .timeline-item.right { left: 0; }
-				.timeline-item::after { left: 10px; }
-				.certs-grid { grid-template-columns: 1fr; }
 			}
 		</style>
 	</head>
 	<body>
+		<a href="#main-content" class="skip-to-content">Skip to Content</a>
+
 		<nav class="main-nav" id="mainNav">
-			<a href="#" class="nav-logo"><img id="navLogoImage" src="Logo/Logo Dark.svg" alt="Niranjan Kumar Logo" /></a>
-			<div class="nav-links" id="navLinks">
-				<ol>
-					<li><a href="#hero">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#journey">Journey</a></li>
-					<li><a href="#projects">Projects</a></li>
-					<li><a href="#certs">Certificates</a></li>
-				</ol>
+			<div class="nav-logo">
+				<a href="#"
+					><img
+						id="navLogoImage"
+						src="Logo/Logo Dark.svg"
+						alt="Niranjan Kumar Logo"
+				/></a>
 			</div>
 			<button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
-				<span class="bar"></span><span class="bar"></span><span class="bar"></span>
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
 			</button>
+			<div class="nav-links" id="navLinks">
+				<ol>
+					<li><a href="#about">About</a></li>
+					<li><a href="#journey">My Journey</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#certs">Certificates</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ol>
+			</div>
 		</nav>
-
 		<main id="main-content">
-			<!-- HERO SECTION -->
+			<!-- ============================================= -->
+			<!-- ========  NEW REDESIGNED HERO SECTION ======== -->
+			<!-- ============================================= -->
 			<section id="hero">
 				<div class="hero-container">
+					<!-- Left Column: Text and CTAs -->
 					<div class="hero-text reveal">
-						<h1 class="hero-headline">Turning Data into Decisions. One Insight at a Time.</h1>
-						<p class="hero-subtext">I’m Niranjan, a Data Analyst who transforms messy datasets into clear strategies. Let me show you how data can predict, guide, and inspire.</p>
+						<h1 class="hero-headline">
+							Turning Data into Decisions. One Insight at a Time.
+						</h1>
+						<p class="hero-subtext">
+							I’m Niru, a Data Analyst who transforms messy datasets into clear strategies. Let me show you how data can predict, guide, and inspire.
+						</p>
 						<div class="hero-cta-buttons">
 							<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
-							<a href="#" class="cta-btn cta-btn-secondary">Download Resume</a>
+							<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
 						</div>
 					</div>
+
+					<!-- Right Column: Animated Graphic -->
 					<div class="hero-graphic">
 						<div class="orbiting-icon icon-1"><i class="fas fa-database"></i></div>
 						<div class="orbiting-icon icon-2"><i class="fab fa-python"></i></div>
 						<div class="orbiting-icon icon-3"><i class="fas fa-chart-pie"></i></div>
+						<div class="orbiting-icon icon-4"><i class="fas fa-file-excel"></i></div>
 					</div>
 				</div>
-				<div class="scroll-down-indicator"><a href="#about" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a></div>
+
+				<!-- Scroll Down Indicator -->
+				<div class="scroll-down-indicator">
+					<a href="#about" aria-label="Scroll down">
+						<i class="fas fa-chevron-down"></i>
+					</a>
+				</div>
 			</section>
 
-			<!-- ABOUT ME SECTION -->
+			<!-- UPDATED "ABOUT ME" SECTION -->
 			<section id="about">
-				<div class="about-container reveal">
-					<div class="avatar-column"><div class="avatar-placeholder"></div></div>
+				<div class="about-redesigned-container reveal">
+					<div class="avatar-column"><div class="avatar-placeholder"><i class="fas fa-user-tie avatar-icon"></i></div></div>
 					<div class="content-column">
 						<h2 class="section-heading about-heading">About Me</h2>
 						<p>I’m a Data Analyst with a strong foundation in SQL, Python, and Business Intelligence tools. I specialize in transforming raw datasets into insights and strategies that organizations can act on.</p>
-						<p>My background includes building ETL pipelines, creating interactive dashboards in Power BI & Tableau, and applying statistical analysis to uncover hidden patterns.</p>
-						<p>I hold a B.Tech in Computer Software Engineering, where I developed the problem-solving mindset to approach data challenges creatively.</p>
+						<p>My background includes building ETL pipelines, creating interactive dashboards in Power BI & Tableau, and applying statistical analysis to uncover hidden patterns. During my internships and projects, I worked on real-world datasets — from analyzing city air quality to forecasting retail sales — always with the goal of turning data into clear business outcomes.</p>
+						<p>I hold a B.Tech in Computer Software Engineering, where I developed not just technical expertise but also the problem-solving mindset to approach data challenges creatively.</p>
+						<p>Looking ahead, I’m driven to help organizations make forward-looking, data-informed decisions — empowering them to not only solve today’s problems but also anticipate future opportunities.</p>
 						<h3 class="toolkit-heading">My Toolkit</h3>
 						<div class="skills-grid">
 							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL</span></div>
@@ -238,133 +414,116 @@
 				</div>
 			</section>
 
-			<!-- MY JOURNEY SECTION -->
+			<!-- "MY JOURNEY" SECTION -->
 			<section id="journey">
 				<h2 class="section-heading reveal">My Journey</h2>
 				<div class="timeline-container">
-					<div class="timeline-item left reveal"><div class="timeline-card"><h3>Data Analyst (Trainee)</h3><p>Naresh i Technologies</p></div></div>
-					<div class="timeline-item right reveal"><div class="timeline-card"><h3>UX Designer</h3><p>DevRiser</p></div></div>
-					<div class="timeline-item left reveal"><div class="timeline-card"><h3>B.Tech, CSE</h3><p>IPS College</p></div></div>
-				</div>
-			</section>
-			
-			<!-- PROJECTS SECTION (Placeholder) -->
-			<section id="projects">
-				<h2 class="section-heading reveal">Featured Projects</h2>
-				<div class="projects-grid">
-					<div class="project-card reveal"><img src="images/placeholder.png" alt=""><div class="card-body"><h3>Project Title 1</h3><p>A brief description of the project.</p></div></div>
-					<div class="project-card reveal"><img src="images/placeholder.png" alt=""><div class="card-body"><h3>Project Title 2</h3><p>A brief description of the project.</p></div></div>
-					<div class="project-card reveal"><img src="images/placeholder.png" alt=""><div class="card-body"><h3>Project Title 3</h3><p>A brief description of the project.</p></div></div>
-					<div class="project-card reveal"><img src="images/placeholder.png" alt=""><div class="card-body"><h3>Project Title 4</h3><p>A brief description of the project.</p></div></div>
+					<div class="timeline-item right reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Analyst (Trainee)</h3><span class="org">Naresh i Technologies</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> Feb 2025 – Jul 2025</span><span><i class="fas fa-map-marker-alt"></i> Hyderabad</span></div><ul><li>Leveraged SQL and Python for comprehensive data cleaning, wrangling, and reporting.</li><li>Engineered and automated ETL pipelines, enhancing data flow and processing efficiency.</li><li>Designed and developed insightful dashboards in Power BI to track key business metrics.</li></ul></div></div>
+					<div class="timeline-item left reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>UX Designer</h3><span class="org">DevRiser</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> Jun 2023 – Dec 2024</span><span><i class="fas fa-map-marker-alt"></i> Remote, UK</span></div><ul><li>Specialized in designing intuitive, data-driven dashboards and user interfaces.</li><li>Translated complex data requirements into clean, user-friendly visualization workflows.</li><li>Collaborated with data teams to ensure design feasibility and analytical integrity.</li></ul></div></div>
+					<div class="timeline-item right reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Science Intern</h3><span class="org">TechieNest</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> Jul 2022 – Aug 2022</span><span><i class="fas fa-map-marker-alt"></i> Jaipur</span></div><ul><li>Developed and trained machine learning models using Python and Scikit-learn.</li><li>Conducted exploratory data analysis (EDA) to identify patterns and insights.</li></ul></div></div>
+					<div class="timeline-item left reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>B.Tech, Computer Software Engineering</h3><span class="org">IPS College, Gwalior</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> 2019 – 2023</span><span><i class="fas fa-award"></i> Grade: 8.9</span></div><ul><li>Focused on data structures, algorithms, and database management systems.</li><li>Developed a strong foundation in software engineering principles and data science concepts.</li></ul></div></div>
+					<div class="timeline-item right reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Senior Secondary (Science)</h3><span class="org">DAV School</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> 2017 – 2018</span><span><i class="fas fa-award"></i> Grade: 8.7</span></div><ul><li>Excelled in mathematics, physics, and chemistry, building a strong analytical foundation.</li></ul></div></div>
+					<div class="timeline-item left reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Secondary Education (X)</h3><span class="org">DAV School</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> 2015 – 2016</span><span><i class="fas fa-award"></i> Grade: 9.2</span></div><ul><li>Established a record of academic excellence from an early stage.</li></ul></div></div>
 				</div>
 			</section>
 
-			<!-- CERTIFICATES SECTION -->
+			<!-- PROJECTS SECTION -->
+			<section id="projects">
+				<h2 class="section-heading reveal">Featured Projects</h2>
+				<ul class="projects-grid">
+					<!-- Project cards -->
+				</ul>
+			</section>
+			
+			<!-- CERTIFICATIONS SECTION -->
 			<section id="certs">
-				<h2 class="section-heading reveal">Credentials & Certificates</h2>
-				<div class="certs-grid">
-					<!-- Card 1 -->
-					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Google Data Analytics Professional Certificate" data-date="Nov 2024" data-credential-id="XYZ123" data-verify-link="#">
-						<span class="verified-badge">Verified</span>
-						<img src="images/certs/logo/google.svg" alt="Google Logo" class="issuer-logo">
-						<h3 class="cert-title">Google Data Analytics</h3><p class="issuer-name">Coursera</p>
-						<div class="view-button">View Certificate</div>
-					</div>
-					<!-- Card 2 -->
-					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="IBM Data Science Professional Certificate" data-date="Oct 2024" data-credential-id="ABC456" data-verify-link="#">
-						<span class="verified-badge">Verified</span>
-						<img src="images/certs/logo/ibm.svg" alt="IBM Logo" class="issuer-logo">
-						<h3 class="cert-title">IBM Data Science</h3><p class="issuer-name">Coursera</p>
-						<div class="view-button">View Certificate</div>
-					</div>
-					<!-- ... Add 6 more cards following this pattern ... -->
-					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Microsoft Power BI Analyst" data-date="Sep 2024" data-credential-id="PL300" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/microsoft.svg" class="issuer-logo" alt="Microsoft Logo"><h3 class="cert-title">Power BI Data Analyst</h3><p class="issuer-name">Microsoft</p><div class="view-button">View</div></div>
-					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Python for Everybody" data-date="Aug 2024" data-credential-id="PY4E" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/udemy.svg" class="issuer-logo" alt="Udemy Logo"><h3 class="cert-title">Python for Everybody</h3><p class="issuer-name">Udemy</p><div class="view-button">View</div></div>
-					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="SQL for Data Science" data-date="Jul 2024" data-credential-id="SQL1" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/coursera.svg" class="issuer-logo" alt="Coursera Logo"><h3 class="cert-title">SQL for Data Science</h3><p class="issuer-name">Coursera</p><div class="view-button">View</div></div>
-					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Tableau Specialist" data-date="Jun 2024" data-credential-id="TAB2" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/tableau.svg" class="issuer-logo" alt="Tableau Logo"><h3 class="cert-title">Tableau Specialist</h3><p class="issuer-name">Tableau</p><div class="view-button">View</div></div>
-					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Advanced Excel Skills" data-date="May 2024" data-credential-id="XL3" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/linkedin.svg" class="issuer-logo" alt="LinkedIn Logo"><h3 class="cert-title">Advanced Excel Skills</h3><p class="issuer-name">LinkedIn</p><div class="view-button">View</div></div>
-					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="AWS Cloud Practitioner" data-date="Apr 2024" data-credential-id="AWS4" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/aws.svg" class="issuer-logo" alt="AWS Logo"><h3 class="cert-title">AWS Cloud Practitioner</h3><p class="issuer-name">Amazon Web Services</p><div class="view-button">View</div></div>
+				<div id="certs-canvas"></div>
+				<div class="certs-content-wrapper">
+					<h2 class="section-heading reveal">Credentials</h2>
+					<ul class="certs-grid">
+						<!-- Certification cards -->
+					</ul>
 				</div>
+			</section>
+
+			<!-- CONTACT SECTION -->
+			<section id="contact">
+				<!-- Contact form and details -->
 			</section>
 		</main>
 
-		<!-- CERTIFICATE MODAL POPUP -->
-		<div id="certModal" class="cert-modal">
-			<div class="modal-content">
-				<button id="modalCloseBtn" class="modal-close-btn">&times;</button>
-				<img id="modalCertImage" src="" alt="Certificate Image">
-				<h3 id="modalCertTitle"></h3>
-				<p><strong>Issued:</strong> <span id="modalDate"></span></p>
-				<p><strong>Credential ID:</strong> <span id="modalCredentialId"></span></p>
-				<a id="modalVerifyLink" href="#" target="_blank" rel="noopener noreferrer">Verify Certificate</a>
-			</div>
-		</div>
+		<footer class="footer">
+			<a href="https://github.com/niranjan910" target="_blank"
+				>Designed & Built by Niranjan Kumar</a
+			>
+		</footer>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
-				// --- INTERSECTION OBSERVER FOR SCROLL ANIMATIONS ---
+				const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+				// --- SCROLL-BASED ANIMATIONS ---
+				const revealElements = document.querySelectorAll(".reveal");
 				const revealObserver = new IntersectionObserver((entries, observer) => {
-					entries.forEach(entry => {
+					entries.forEach((entry) => {
 						if (entry.isIntersecting) {
 							entry.target.classList.add("is-visible");
 							observer.unobserve(entry.target);
 						}
 					});
 				}, { rootMargin: "0px 0px -100px 0px" });
-				document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+				revealElements.forEach((el) => revealObserver.observe(el));
 
-				// --- NAVBAR SCROLL & ACTIVE LINK ---
-				const nav = document.getElementById('mainNav');
-				const navLinks = document.querySelectorAll('#navLinks a');
-				const sections = document.querySelectorAll('section[id]');
-				window.addEventListener('scroll', () => {
-					nav.classList.toggle('scrolled', window.scrollY > 50);
-					let current = '';
-					sections.forEach(section => {
-						const sectionTop = section.offsetTop;
-						if (pageYOffset >= sectionTop - nav.offsetHeight) {
-							current = section.getAttribute('id');
-						}
-					});
-					navLinks.forEach(link => {
-						link.classList.remove('active');
-						if (link.getAttribute('href').includes(current)) {
-							link.classList.add('active');
-						}
-					});
+				// --- NAVIGATION BAR STYLING ON SCROLL ---
+				const nav = document.getElementById("mainNav");
+				const logo = document.getElementById("navLogoImage");
+				const originalLogoSrc = "Logo/Logo Dark.svg"; 
+				const scrolledLogoSrc = "Logo/Logo Dark.svg"; // Keeping it the same as requested.
+
+				window.addEventListener("scroll", () => {
+					const isScrolled = window.scrollY > 20;
+					nav.classList.toggle("scrolled", isScrolled);
+					if (logo) logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
 				});
 
-				// --- HAMBURGER MENU ---
-				const hamburger = document.getElementById('hamburgerMenu');
-				const navMenu = document.getElementById('navLinks');
-				hamburger.addEventListener('click', () => {
-					hamburger.classList.toggle('active');
-					navMenu.classList.toggle('active');
-				});
-				navLinks.forEach(link => link.addEventListener('click', () => {
-					hamburger.classList.remove('active');
-					navMenu.classList.remove('active');
-				}));
-
-				// --- CERTIFICATE MODAL LOGIC ---
-				const modal = document.getElementById('certModal');
-				if (modal) {
-					const closeBtn = document.getElementById('modalCloseBtn');
-					const openModal = (card) => {
-						document.getElementById('modalCertImage').src = card.dataset.certImg;
-						document.getElementById('modalCertTitle').textContent = card.dataset.title;
-						document.getElementById('modalDate').textContent = card.dataset.date;
-						document.getElementById('modalCredentialId').textContent = card.dataset.credentialId;
-						document.getElementById('modalVerifyLink').href = card.dataset.verifyLink;
-						modal.classList.add('active');
-					};
-					const closeModal = () => modal.classList.remove('active');
-
-					document.querySelectorAll('.cert-card').forEach(card => card.addEventListener('click', () => openModal(card)));
-					closeBtn.addEventListener('click', closeModal);
-					modal.addEventListener('click', (e) => e.target === modal && closeModal());
-					document.addEventListener('keydown', (e) => e.key === 'Escape' && closeModal());
+				// --- HAMBURGER MENU LOGIC ---
+				const hamburger = document.getElementById("hamburgerMenu");
+				const navLinks = document.getElementById("navLinks");
+				if (hamburger && navLinks) {
+					hamburger.addEventListener("click", () => {
+						hamburger.classList.toggle("active");
+						navLinks.classList.toggle("active");
+					});
+					navLinks.querySelectorAll("a[href^='#']").forEach(link => {
+						link.addEventListener("click", () => {
+							hamburger.classList.remove("active");
+							navLinks.classList.remove("active");
+						});
+					});
 				}
+
+				// --- P5.JS for Certs Section (optional, can be kept) ---
+				const certsSketch = (p) => {
+					let stars = [];
+					p.setup = () => {
+						const canvas = p.createCanvas(p.windowWidth, p.select('#certs').height);
+						canvas.parent('certs-canvas');
+						for (let i = 0; i < 400; i++) stars.push({ x: p.random(p.width), y: p.random(p.height), size: p.random(0.5, 2), speed: p.random(0.01, 0.04) });
+					};
+					p.draw = () => {
+						p.background(getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim());
+						p.noStroke();
+						stars.forEach(s => {
+							const alpha = p.map(p.noise(s.x * 0.01, s.y * 0.01, p.frameCount * s.speed), 0, 1, 50, 255);
+							p.fill(255, alpha);
+							p.circle(s.x, s.y, s.size);
+						});
+					};
+					p.windowResized = () => p.resizeCanvas(p.windowWidth, p.select('#certs').height);
+				};
+				if(document.getElementById('certs-canvas')) new p5(certsSketch);
 			});
 		</script>
 	</body>
