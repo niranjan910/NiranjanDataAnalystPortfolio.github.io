@@ -32,6 +32,15 @@
 				--nav-height: 100px;
 				--transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 				--transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+				/* Brand Colors for Contact Section */
+				--color-github: #333333;
+				--color-behance: #053eff;
+				--color-dribbble: #ea4c89;
+				--color-linkedin: #0a66c2;
+				--color-gmail: #ea4335;
+				--color-phone: #10b981; /* Teal */
+				--color-location: #f59e0b; /* Amber */
 			}
 
 			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -257,14 +266,180 @@
 			.modal-verify-link { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 10px 20px; background: var(--accent); color: var(--bg-main) !important; border-radius: 8px; font-weight: 600; transition: var(--transition-fast); }
 			.modal-verify-link:hover { opacity: 0.8; transform: translateY(-2px); }
 			
-			#contact { max-width: 900px; margin: 0 auto; }
-			.contact-container { background-color: var(--card-bg); padding: 3rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: left; }
-			@media (min-width: 768px) { .contact-container { grid-template-columns: 2fr 1fr; } }
-			.footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; margin-top: 60px; }
+            /* =========================================== */
+			/* =========== CONTACT SECTION STYLES ========== */
+			/* =========================================== */
+
+			#contact .section-heading::after { background: linear-gradient(90deg, var(--indigo-500), var(--purple-600)); }
 			
+			.contact-subtext {
+				text-align: center;
+				font-size: 1.1rem;
+				max-width: 60ch;
+				margin: -2rem auto 3rem;
+				color: var(--text-secondary);
+			}
+
+			.icon-grid-hub {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 1.5rem;
+				max-width: 900px;
+				margin: 0 auto;
+			}
+			
+			/* This allows the 7th item to center itself on a new row */
+			.icon-grid-hub-container {
+				display: flex;
+				justify-content: center;
+			}
+			.contact-card-wrapper:last-child {
+				grid-column: span 4;
+				display: flex;
+				justify-content: center;
+			}
+			.contact-card {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 0.75rem;
+				background-color: var(--card-bg);
+				padding: 1.5rem;
+				border-radius: 12px;
+				box-shadow: 0 4px 15px var(--shadow-color);
+				text-align: center;
+				transition: var(--transition-fast);
+				color: var(--text-primary);
+				font-weight: 500;
+				font-size: 0.9rem;
+				border: 1px solid var(--border-color);
+			}
+
+			.contact-card i {
+				font-size: 3rem;
+				transition: var(--transition-fast);
+			}
+
+			/* Individual Card Colors */
+			.contact-card.github i { color: var(--color-github); }
+			.contact-card.behance i { color: var(--color-behance); }
+			.contact-card.dribbble i { color: var(--color-dribbble); }
+			.contact-card.linkedin i { color: var(--color-linkedin); }
+			.contact-card.gmail i { color: var(--color-gmail); }
+			.contact-card.phone i { color: var(--color-phone); }
+			.contact-card.location i { color: var(--color-location); }
+			
+			/* Hover Effects */
+			.contact-card:hover {
+				transform: translateY(-8px);
+				opacity: 1; /* Reset default link hover */
+			}
+			.contact-card:hover i {
+				transform: scale(1.1);
+				filter: brightness(1.1);
+			}
+
+			.contact-card.github:hover { box-shadow: 0 8px 25px -5px rgba(51,51,51,0.3); }
+			.contact-card.behance:hover { box-shadow: 0 8px 25px -5px rgba(5,62,255,0.3); }
+			.contact-card.dribbble:hover { box-shadow: 0 8px 25px -5px rgba(234,76,137,0.3); }
+			.contact-card.linkedin:hover { box-shadow: 0 8px 25px -5px rgba(10,102,194,0.3); }
+			.contact-card.gmail:hover { box-shadow: 0 8px 25px -5px rgba(234,67,53,0.3); }
+			.contact-card.phone:hover { box-shadow: 0 8px 25px -5px rgba(16,185,129,0.3); }
+			.contact-card.location:hover { box-shadow: 0 8px 25px -5px rgba(245,158,11,0.3); }
+
+			.contact-form {
+				max-width: 700px;
+				margin: 4rem auto 0;
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+			}
+			
+			.contact-form input,
+			.contact-form textarea {
+				width: 100%;
+				padding: 1rem;
+				border-radius: 8px;
+				border: 1px solid var(--border-color);
+				background-color: var(--bg-main);
+				font-family: var(--font-sans);
+				font-size: 1rem;
+				color: var(--text-primary);
+				transition: all 0.2s ease-in-out;
+			}
+
+			.contact-form input::placeholder,
+			.contact-form textarea::placeholder {
+				color: var(--text-secondary);
+				opacity: 0.7;
+			}
+			
+			.contact-form input:focus,
+			.contact-form textarea:focus {
+				outline: none;
+				border-color: var(--indigo-500);
+				background-color: var(--card-bg);
+				box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+			}
+			
+			.send-message-btn {
+				padding: 1rem 2rem;
+				font-size: 1rem;
+				font-weight: 600;
+				color: white !important;
+				background-image: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%);
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: var(--transition-fast);
+				background-size: 200% auto;
+			}
+
+			.send-message-btn:hover {
+				opacity: 1;
+				background-position: right center; /* change the direction of the change here */
+				box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+				transform: translateY(-3px);
+			}
+
+			.footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; margin-top: 60px; }
+
 			/* HAMBURGER & RESPONSIVE NAV */
 			.hamburger-menu { display: none; z-index: 1001; }
-			@media (max-width: 768px) { main { padding: 0 25px; } section { padding: 80px 0; } .main-nav { padding: 0 25px; } .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } .nav-links.active { transform: translateX(0); } .nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } .hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } .hamburger-menu .bar { background-color: var(--text-primary); transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; } .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } .hamburger-menu.active .bar:nth-child(2) { opacity: 0; } .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } }
+			
+			@media (max-width: 900px) {
+				.icon-grid-hub { grid-template-columns: repeat(3, 1fr); }
+				.contact-card-wrapper:last-child {
+					grid-column: span 3;
+				}
+			}
+			
+			@media (max-width: 768px) { 
+				main { padding: 0 25px; } 
+				section { padding: 80px 0; } 
+				.main-nav { padding: 0 25px; } 
+				.nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } 
+				.nav-links.active { transform: translateX(0); } 
+				.nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } 
+				.hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } 
+				.hamburger-menu .bar { background-color: var(--text-primary); transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; } 
+				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } 
+				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; } 
+				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+				.icon-grid-hub { grid-template-columns: repeat(2, 1fr); }
+				.contact-card-wrapper:last-child {
+					grid-column: span 2;
+				}
+			 }
+
+			@media (max-width: 480px) {
+				.icon-grid-hub { grid-template-columns: 1fr; }
+				.contact-card-wrapper:last-child {
+					grid-column: span 1;
+				}
+			}
+
 
 		</style>
 	</head>
@@ -368,9 +543,68 @@
 				</ul>
 			</section>
 
-			<!-- CONTACT SECTION -->
+			<!-- ================================== -->
+			<!-- ===== NEW CONTACT SECTION ======== -->
+			<!-- ================================== -->
 			<section id="contact">
-				<!-- ... your contact section ... -->
+				<h2 class="section-heading reveal">Let’s Connect & Collaborate 🚀</h2>
+				<p class="contact-subtext reveal">
+					I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+				</p>
+
+				<div class="icon-grid-hub-container reveal">
+					<div class="icon-grid-hub">
+						<div class="contact-card-wrapper">
+							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github">
+								<i class="fab fa-github"></i>
+								<span>GitHub</span>
+							</a>
+						</div>
+						<div class="contact-card-wrapper">
+							<a href="#" target="_blank" rel="noopener noreferrer" class="contact-card behance">
+								<i class="fab fa-behance"></i>
+								<span>Behance</span>
+							</a>
+						</div>
+						<div class="contact-card-wrapper">
+							<a href="#" target="_blank" rel="noopener noreferrer" class="contact-card dribbble">
+								<i class="fab fa-dribbble"></i>
+								<span>Dribbble</span>
+							</a>
+						</div>
+						<div class="contact-card-wrapper">
+							<a href="https://www.linkedin.com/in/niranjan-kumar-910/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin">
+								<i class="fab fa-linkedin"></i>
+								<span>LinkedIn</span>
+							</a>
+						</div>
+						<div class="contact-card-wrapper">
+							<a href="mailto:example@gmail.com" class="contact-card gmail">
+								<i class="fas fa-envelope"></i>
+								<span>Gmail</span>
+							</a>
+						</div>
+						<div class="contact-card-wrapper">
+							<a href="tel:+910000000000" class="contact-card phone">
+								<i class="fas fa-phone"></i>
+								<span>Phone</span>
+							</a>
+						</div>
+						<div class="contact-card-wrapper">
+							<a href="https://maps.google.com/?q=Hyderabad,Telangana" target="_blank" rel="noopener noreferrer" class="contact-card location">
+								<i class="fas fa-map-marker-alt"></i>
+								<span>Hyderabad, Telangana</span>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<form action="#" method="POST" class="contact-form reveal">
+					<input type="text" name="name" placeholder="Your Name" required />
+					<input type="email" name="email" placeholder="Your Email" required />
+					<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+					<button type="submit" class="send-message-btn">Send Message</button>
+				</form>
 			</section>
 		</main>
 
