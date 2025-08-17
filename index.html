@@ -85,7 +85,7 @@
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent); }
 			
 			/* =========================================== */
-			/* =========== UPDATED HERO SECTION STYLES ========= */
+			/* =========== HERO SECTION STYLES ========= */
 			/* =========================================== */
 			#hero {
 				display: flex;
@@ -119,15 +119,25 @@
 				max-width: 1000px;
 				margin: 0 auto;
 				padding: 2rem;
-				opacity: 0; /* Initially hidden for fade-in */
-				animation: fadeInHero 1s ease 0.5s forwards;
 			}
 
-			@keyframes fadeInHero {
+            /* --- NEW HERO ANIMATION --- */
+			.hero-container > * {
+				opacity: 0;
+				transform: translateY(20px);
+				animation: fadeInUp 0.8s ease forwards;
+			}
+			.hero-headline { animation-delay: 0.5s; }
+			.hero-subtext { animation-delay: 0.7s; }
+			.hero-cta-buttons { animation-delay: 0.9s; }
+			
+			@keyframes fadeInUp {
 				to {
 					opacity: 1;
+					transform: translateY(0);
 				}
 			}
+
 
 			.hero-headline {
 				font-family: var(--font-serif);
@@ -282,9 +292,9 @@
 			.modal-verify-link { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 10px 20px; background: var(--accent); color: var(--bg-main) !important; border-radius: 8px; font-weight: 600; transition: var(--transition-fast); }
 			.modal-verify-link:hover { opacity: 0.8; transform: translateY(-2px); }
 			
-            /* =========================================== */
-			/* =========== CONTACT SECTION STLES ========== */
-			/* =========================================== */
+            /* ================================================= */
+			/* =========== NEW CONTACT SECTION STYLES ========== */
+			/* ================================================= */
 
 			#contact .section-heading::after { background: linear-gradient(90deg, var(--indigo-500), var(--purple-600)); }
 			
@@ -292,28 +302,36 @@
 				text-align: center;
 				font-size: 1.1rem;
 				max-width: 60ch;
-				margin: -2rem auto 3rem;
+				margin: -2rem auto 4rem;
 				color: var(--text-secondary);
 			}
 
-			.icon-grid-hub {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				gap: 1.5rem;
-				max-width: 900px;
+			.contact-layout-grid {
+				display: flex;
+				gap: 3rem;
+				align-items: flex-start;
+				max-width: 1200px;
 				margin: 0 auto;
 			}
+
+			.connect-column, .form-column {
+				flex: 1;
+			}
+            
+            h3.contact-heading {
+                font-family: var(--font-sans);
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+                color: var(--text-primary);
+            }
 			
-			/* This allows the 7th item to center itself on a new row */
-			.icon-grid-hub-container {
-				display: flex;
-				justify-content: center;
+			.icon-grid-hub {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+				gap: 1rem;
 			}
-			.contact-card-wrapper:last-child {
-				grid-column: span 4;
-				display: flex;
-				justify-content: center;
-			}
+
 			.contact-card {
 				display: flex;
 				flex-direction: column;
@@ -333,7 +351,7 @@
 			}
 
 			.contact-card i {
-				font-size: 3rem;
+				font-size: 2.5rem; /* Icon size reduced */
 				transition: var(--transition-fast);
 			}
 
@@ -355,7 +373,6 @@
 				transform: scale(1.1);
 				filter: brightness(1.1);
 			}
-
 			.contact-card.github:hover { box-shadow: 0 8px 25px -5px rgba(51,51,51,0.3); }
 			.contact-card.behance:hover { box-shadow: 0 8px 25px -5px rgba(5,62,255,0.3); }
 			.contact-card.dribbble:hover { box-shadow: 0 8px 25px -5px rgba(234,76,137,0.3); }
@@ -365,8 +382,6 @@
 			.contact-card.instagram:hover { box-shadow: 0 8px 25px -5px rgba(225,48,108,0.3); }
 
 			.contact-form {
-				max-width: 700px;
-				margin: 4rem auto 0;
 				display: flex;
 				flex-direction: column;
 				gap: 1.5rem;
@@ -378,7 +393,7 @@
 				padding: 1rem;
 				border-radius: 8px;
 				border: 1px solid var(--border-color);
-				background-color: var(--bg-main);
+				background-color: var(--card-bg);
 				font-family: var(--font-sans);
 				font-size: 1rem;
 				color: var(--text-primary);
@@ -424,13 +439,13 @@
 			/* HAMBURGER & RESPONSIVE NAV */
 			.hamburger-menu { display: none; z-index: 1001; }
 			
-			@media (max-width: 900px) {
-				.icon-grid-hub { grid-template-columns: repeat(3, 1fr); }
-				.contact-card-wrapper:last-child {
-					grid-column: span 3;
+			@media (max-width: 992px) {
+				.contact-layout-grid {
+					flex-direction: column;
+					gap: 4rem;
 				}
 			}
-			
+
 			@media (max-width: 768px) { 
 				main { padding: 0 25px; } 
 				section { padding: 80px 0; } 
@@ -443,18 +458,7 @@
 				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } 
 				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; } 
 				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-				.icon-grid-hub { grid-template-columns: repeat(2, 1fr); }
-				.contact-card-wrapper:last-child {
-					grid-column: span 2;
-				}
 			 }
-
-			@media (max-width: 480px) {
-				.icon-grid-hub { grid-template-columns: 1fr; }
-				.contact-card-wrapper:last-child {
-					grid-column: span 1;
-				}
-			}
 
 
 		</style>
@@ -481,7 +485,7 @@
 		</nav>
 		<main id="main-content">
 			<!-- ============================ -->
-			<!-- ===== UPDATED HERO SECTION ===== -->
+			<!-- ===== HERO SECTION ===== -->
 			<!-- ============================ -->
 			<section id="hero">
 				<!-- This div is the container for the particle animation -->
@@ -556,68 +560,66 @@
 				</ul>
 			</section>
 
-			<!-- CONTACT SECTION -->
+			<!-- ============================================= -->
+			<!-- ===== UPDATED CONTACT SECTION STRUCTURE ===== -->
+			<!-- ============================================= -->
 			<section id="contact">
 				<h2 class="section-heading reveal">Let’s Connect & Collaborate 🚀</h2>
 				<p class="contact-subtext reveal">
 					I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
 				</p>
-
-				<div class="icon-grid-hub-container reveal">
-					<div class="icon-grid-hub">
-						<div class="contact-card-wrapper">
+			
+				<div class="contact-layout-grid reveal">
+			
+					<!-- Left Column: Connect Icons -->
+					<div class="connect-column">
+						<h3 class="contact-heading">Connect With Me</h3>
+						<div class="icon-grid-hub">
 							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github" aria-label="View my GitHub profile">
 								<i class="fab fa-github"></i>
 								<span>GitHub</span>
 							</a>
-						</div>
-						<div class="contact-card-wrapper">
 							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance" aria-label="View my Behance profile">
 								<i class="fab fa-behance"></i>
 								<span>Behance</span>
 							</a>
-						</div>
-						<div class="contact-card-wrapper">
 							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble" aria-label="View my Dribbble profile">
 								<i class="fab fa-dribbble"></i>
 								<span>Dribbble</span>
 							</a>
-						</div>
-						<div class="contact-card-wrapper">
 							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="View my LinkedIn profile">
 								<i class="fab fa-linkedin"></i>
 								<span>LinkedIn</span>
 							</a>
-						</div>
-						<div class="contact-card-wrapper">
 							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail" aria-label="Send me an email">
 								<i class="fas fa-envelope"></i>
 								<span>Gmail</span>
 							</a>
-						</div>
-						<div class="contact-card-wrapper">
 							<a href="tel:+910000000000" class="contact-card phone" aria-label="Call me">
 								<i class="fas fa-phone"></i>
 								<span>Phone</span>
 							</a>
-						</div>
-						<div class="contact-card-wrapper">
 							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram" aria-label="View my Instagram profile">
 								<i class="fab fa-instagram"></i>
 								<span>Instagram</span>
 							</a>
 						</div>
 					</div>
+			
+					<!-- Right Column: Contact Form -->
+					<div class="form-column">
+						<h3 class="contact-heading">Send a Message</h3>
+						<form action="https://formspree.io/f/xyzpaeop" method="POST" class="contact-form">
+							<input type="text" name="name" placeholder="Your Name" required />
+							<input type="email" name="email" placeholder="Your Email" required />
+							<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+							<button type="submit" class="send-message-btn">Send Message</button>
+						</form>
+					</div>
+			
 				</div>
-
-				<form action="https://formspree.io/f/xyzpaeop" method="POST" class="contact-form reveal">
-					<input type="text" name="name" placeholder="Your Name" required />
-					<input type="email" name="email" placeholder="Your Email" required />
-					<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-					<button type="submit" class="send-message-btn">Send Message</button>
-				</form>
-				
 			</section>
+			
 		</main>
 
 		<footer class="footer"><a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a></footer>
