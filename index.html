@@ -14,7 +14,7 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES --- */
+			/* --- CORE STLES --- */
 			:root {
 				--bg-main: #f1f1f1;
 				--text-primary: #010101;
@@ -40,7 +40,7 @@
 				--color-linkedin: #0a66c2;
 				--color-gmail: #ea4335;
 				--color-phone: #10b981; /* Teal */
-				--color-location: #f59e0b; /* Amber */
+				--color-instagram: #e1306c;
 			}
 
 			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -82,7 +82,7 @@
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent); }
 			
 			/* =========================================== */
-			/* =========== NEW HERO SECTION STYLES ========= */
+			/* =========== NEW HERO SECTION STLES ========= */
 			/* =========================================== */
 			#hero {
 				display: flex;
@@ -231,7 +231,7 @@
 			.project-card .project-view-button { background: var(--accent); color: white !important; padding: 10px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background-color 0.2s ease, transform 0.2s ease; }
 			.project-card .project-view-button:hover { background: #333; transform: translateY(-2px); opacity: 1; }
 			
-			/* --- NEW CERTIFICATES STYLES --- */
+			/* --- NEW CERTIFICATES STLES --- */
 			#certs { background-color: var(--bg-main); margin: 0; padding: 100px 0; }
 			#certs .section-heading::after { background: linear-gradient(90deg, var(--indigo-500), var(--purple-600)); }
 			.certs-grid { display: grid; gap: 2rem; list-style: none; padding: 0; margin: 0; }
@@ -251,7 +251,7 @@
 			@media (max-width: 768px) { .certs-grid { grid-template-columns: 1fr; } }
 
 
-			/* --- MODAL STYLES --- */
+			/* --- MODAL STLES --- */
 			.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; backdrop-filter: blur(5px); }
 			.modal-overlay.active { opacity: 1; visibility: visible; }
 			.modal-content { background: var(--card-bg); border-radius: 16px; padding: 2rem; max-width: 900px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
@@ -267,7 +267,7 @@
 			.modal-verify-link:hover { opacity: 0.8; transform: translateY(-2px); }
 			
             /* =========================================== */
-			/* =========== CONTACT SECTION STYLES ========== */
+			/* =========== CONTACT SECTION STLES ========== */
 			/* =========================================== */
 
 			#contact .section-heading::after { background: linear-gradient(90deg, var(--indigo-500), var(--purple-600)); }
@@ -328,7 +328,7 @@
 			.contact-card.linkedin i { color: var(--color-linkedin); }
 			.contact-card.gmail i { color: var(--color-gmail); }
 			.contact-card.phone i { color: var(--color-phone); }
-			.contact-card.location i { color: var(--color-location); }
+			.contact-card.instagram i { color: var(--color-instagram); }
 			
 			/* Hover Effects */
 			.contact-card:hover {
@@ -346,7 +346,7 @@
 			.contact-card.linkedin:hover { box-shadow: 0 8px 25px -5px rgba(10,102,194,0.3); }
 			.contact-card.gmail:hover { box-shadow: 0 8px 25px -5px rgba(234,67,53,0.3); }
 			.contact-card.phone:hover { box-shadow: 0 8px 25px -5px rgba(16,185,129,0.3); }
-			.contact-card.location:hover { box-shadow: 0 8px 25px -5px rgba(245,158,11,0.3); }
+			.contact-card.instagram:hover { box-shadow: 0 8px 25px -5px rgba(225,48,108,0.3); }
 
 			.contact-form {
 				max-width: 700px;
@@ -544,7 +544,7 @@
 			</section>
 
 			<!-- ================================== -->
-			<!-- ===== NEW CONTACT SECTION ======== -->
+			<!-- ===== UPDATED CONTACT SECTION ======== -->
 			<!-- ================================== -->
 			<section id="contact">
 				<h2 class="section-heading reveal">Let’s Connect & Collaborate 🚀</h2>
@@ -561,25 +561,25 @@
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="#" target="_blank" rel="noopener noreferrer" class="contact-card behance">
+							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance">
 								<i class="fab fa-behance"></i>
 								<span>Behance</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="#" target="_blank" rel="noopener noreferrer" class="contact-card dribbble">
+							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble">
 								<i class="fab fa-dribbble"></i>
 								<span>Dribbble</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="https://www.linkedin.com/in/niranjan-kumar-910/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin">
+							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin">
 								<i class="fab fa-linkedin"></i>
 								<span>LinkedIn</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="mailto:example@gmail.com" class="contact-card gmail">
+							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail">
 								<i class="fas fa-envelope"></i>
 								<span>Gmail</span>
 							</a>
@@ -591,9 +591,9 @@
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="https://maps.google.com/?q=Hyderabad,Telangana" target="_blank" rel="noopener noreferrer" class="contact-card location">
-								<i class="fas fa-map-marker-alt"></i>
-								<span>Hyderabad, Telangana</span>
+							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram">
+								<i class="fab fa-instagram"></i>
+								<span>Instagram</span>
 							</a>
 						</div>
 					</div>
