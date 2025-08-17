@@ -26,7 +26,6 @@
 				--accent-tint: rgba(1, 1, 1, 0.07);
 				--indigo-500: #6366f1;
 				--purple-600: #9333ea;
-				--indigo-500-rgb: 99, 102, 241;
 				--font-sans: "Helvetica Neue", sans-serif;
 				--font-serif: "Georgia", serif;
 				--border-radius: 4px;
@@ -55,7 +54,7 @@
 			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 700; line-height: 1.2; }
 			p { margin-bottom: 1rem; max-width: 65ch; font-size: 1.125rem; line-height: 1.6; }
 			a { text-decoration: none; color: var(--text-secondary); transition: var(--transition-fast); }
-			a:hover, button:hover { opacity: 0.8; }
+			a:hover, button:hover { color: var(--accent); opacity: 0.8; }
 			.reveal {
 				opacity: 0;
 				transform: translateY(30px);
@@ -73,41 +72,108 @@
 			.nav-links li a:not(.btn):not(.modern-pill-button):hover { color: var(--accent); }
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent); }
 			
-			/* HERO SECTION */
-			#hero { display: flex; align-items: center; min-height: 100vh; padding-top: var(--nav-height); padding-bottom: 50px; overflow: hidden; }
-			.hero-container { display: grid; grid-template-columns: 1fr; align-items: center; gap: 3rem; width: 100%; max-width: 1200px; margin: 0 auto; }
-			@media (min-width: 992px) { .hero-container { grid-template-columns: repeat(2, 1fr); gap: 4rem; } }
+			/* =========================================== */
+			/* =========== NEW HERO SECTION STYLES ========= */
+			/* =========================================== */
+			#hero {
+				display: flex;
+				align-items: center;
+				min-height: 100vh;
+				padding-top: var(--nav-height);
+				padding-bottom: 50px;
+				overflow: hidden;
+			}
+			.hero-container {
+				display: grid;
+				grid-template-columns: 1fr;
+				align-items: center;
+				gap: 3rem;
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			@media (min-width: 992px) {
+				.hero-container {
+					grid-template-columns: repeat(2, 1fr);
+					gap: 4rem;
+				}
+			}
+
 			.hero-text { text-align: center; }
 			@media (min-width: 992px) { .hero-text { text-align: left; } }
-			.hero-headline { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
-			.hero-subtext { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-secondary); max-width: 50ch; margin: 0 auto 2.5rem; line-height: 1.7; }
+
+			.hero-headline {
+				font-family: var(--font-serif);
+				font-size: clamp(2.5rem, 6vw, 4.2rem);
+				font-weight: 800;
+				line-height: 1.15;
+				margin-bottom: 1.5rem;
+				background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				color: transparent;
+			}
+
+			.hero-subtext {
+				font-size: clamp(1rem, 2vw, 1.15rem);
+				color: var(--text-secondary);
+				max-width: 50ch;
+				margin: 0 auto 2.5rem;
+				line-height: 1.7;
+			}
 			@media (min-width: 992px) { .hero-subtext { margin: 0 0 2.5rem; } }
+			
 			.hero-cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
 			@media (min-width: 600px) { .hero-cta-buttons { flex-direction: row; justify-content: center; } }
 			@media (min-width: 992px) { .hero-cta-buttons { justify-content: flex-start; } }
-			.cta-btn { display: inline-block; padding: 1rem 2rem; font-weight: 600; font-size: 1rem; border-radius: 99px; border: 2px solid transparent; transition: transform 0.2s ease, box-shadow 0.2s ease; text-align: center; min-width: 200px; }
+			
+			.cta-btn {
+				display: inline-block; padding: 1rem 2rem; font-weight: 600; font-size: 1rem;
+				border-radius: 99px; border: 2px solid transparent;
+				transition: transform 0.2s ease, box-shadow 0.2s ease; text-align: center; min-width: 200px;
+			}
 			.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); opacity: 1; }
-			.cta-btn-primary { background-image: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); color: white !important; }
-			.cta-btn-secondary { border: 2px solid var(--text-primary); background-color: transparent; color: var(--text-primary); }
+
+			.cta-btn-primary {
+				background-image: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%);
+				color: white !important;
+			}
+			.cta-btn-secondary {
+				border: 2px solid var(--text-primary); background-color: transparent; color: var(--text-primary);
+			}
 			.cta-btn-secondary:hover { background-color: var(--text-primary); color: var(--bg-main) !important; }
+			
 			.hero-graphic { position: relative; width: 100%; max-width: 400px; margin: 2rem auto 0; height: 300px; }
 			@media (min-width: 992px) { .hero-graphic { height: 450px; max-width: none; margin: 0; } }
-			.orbiting-icon { position: absolute; top: 50%; left: 50%; display: flex; justify-content: center; align-items: center; width: 60px; height: 60px; background: var(--card-bg); border-radius: 50%; box-shadow: 0 5px 15px var(--shadow-color); font-size: 1.8rem; color: var(--indigo-500); animation: orbit linear infinite; }
+			
+			.orbiting-icon {
+				position: absolute; top: 50%; left: 50%; display: flex; justify-content: center; align-items: center;
+				width: 60px; height: 60px; background: var(--card-bg); border-radius: 50%;
+				box-shadow: 0 5px 15px var(--shadow-color); font-size: 1.8rem; color: var(--indigo-500);
+				animation: orbit linear infinite;
+			}
 			.orbiting-icon.icon-1 { animation-duration: 10s; --radius: 120px; }
 			.orbiting-icon.icon-2 { animation-duration: 12s; animation-direction: reverse; --radius: 180px; }
 			.orbiting-icon.icon-3 { animation-duration: 15s; --radius: 220px; color: var(--purple-600); }
 			.orbiting-icon.icon-4 { animation-duration: 9s; animation-direction: reverse; --radius: 80px; font-size: 1.5rem; width: 50px; height: 50px;}
-			@keyframes orbit { 0% { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg); } 100% { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg); } }
+
+			@keyframes orbit {
+				0% { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+				100% { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+			}
+			
 			.scroll-down-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: none; }
 			@media (min-width: 992px) { .scroll-down-indicator { display: block; } }
+
 			.scroll-down-indicator a { display: flex; flex-direction: column; align-items: center; color: var(--text-secondary); animation: bounce 2s infinite; }
 			.scroll-down-indicator i { font-size: 2rem; }
+
 			@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
 
 			/* --- OTHER SECTIONS --- */
 			h2.section-heading { text-align: center; margin-bottom: 4rem; font-size: clamp(28px, 5vw, 40px); position: relative; color: var(--text-primary); }
 			h2.section-heading::after { content: ''; position: absolute; width: 60px; height: 3px; background: var(--accent); bottom: -15px; left: 50%; transform: translateX(-50%); }
-			#about, #journey, #projects, #certs, #contact { max-width: 1200px; margin-left: auto; margin-right: auto; }
 			.about-redesigned-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; background-color: var(--card-bg); padding: 2rem; border-radius: 1.5rem; box-shadow: 0 10px 40px -10px var(--shadow-color); }
 			@media (min-width: 992px) { .about-redesigned-container { grid-template-columns: 1fr 2fr; padding: 4rem; } }
 			.avatar-column { display: flex; justify-content: center; align-items: center; }
@@ -155,7 +221,9 @@
 			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
 			.project-card .project-view-button { background: var(--accent); color: white !important; padding: 10px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background-color 0.2s ease, transform 0.2s ease; }
 			.project-card .project-view-button:hover { background: #333; transform: translateY(-2px); opacity: 1; }
-			#certs { background-color: var(--bg-main); padding: 100px 0; }
+			
+			/* --- NEW CERTIFICATES STYLES --- */
+			#certs { background-color: var(--bg-main); margin: 0; padding: 100px 0; }
 			#certs .section-heading::after { background: linear-gradient(90deg, var(--indigo-500), var(--purple-600)); }
 			.certs-grid { display: grid; gap: 2rem; list-style: none; padding: 0; margin: 0; }
 			.cert-card { background-color: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); padding: 1.5rem; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
@@ -168,9 +236,13 @@
 			.cert-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
 			.cert-card:hover .view-cert-btn { transform: translate(-50%, -50%); opacity: 1; }
 			.cert-card:hover .cert-card-content { opacity: 0.1; }
+			
 			@media (min-width: 1201px) { .certs-grid { grid-template-columns: repeat(4, 1fr); } }
 			@media (min-width: 769px) and (max-width: 1200px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
 			@media (max-width: 768px) { .certs-grid { grid-template-columns: 1fr; } }
+
+
+			/* --- MODAL STYLES --- */
 			.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; backdrop-filter: blur(5px); }
 			.modal-overlay.active { opacity: 1; visibility: visible; }
 			.modal-content { background: var(--card-bg); border-radius: 16px; padding: 2rem; max-width: 900px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
@@ -185,73 +257,15 @@
 			.modal-verify-link { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 10px 20px; background: var(--accent); color: var(--bg-main) !important; border-radius: 8px; font-weight: 600; transition: var(--transition-fast); }
 			.modal-verify-link:hover { opacity: 0.8; transform: translateY(-2px); }
 			
-			/* =========================================== */
-			/* =========== NEW CONTACT STYLES ============ */
-			/* =========================================== */
-			#contact .section-heading::after { background: linear-gradient(90deg, var(--indigo-500), var(--purple-600)); }
-			#contact .section-subtext { text-align: center; max-width: 60ch; margin: -2rem auto 4rem auto; font-size: 1.1rem; }
-			
-			.contact-grid-hub {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				gap: 1.5rem;
-				margin-bottom: 4rem;
-				--github-color-rgb: 23, 21, 32;   --behance-color-rgb: 5, 71, 255; --dribbble-color-rgb: 234, 76, 137;
-				--linkedin-color-rgb: 10, 102, 194; --gmail-color-rgb: 221, 75, 57; --phone-color-rgb: 29, 161, 242; --location-color-rgb: 67, 181, 129;
-			}
-			
-			.contact-card {
-				background-color: var(--card-bg); border-radius: 12px; padding: 2rem 1rem;
-				display: flex; flex-direction: column; align-items: center; justify-content: center;
-				text-align: center; text-decoration: none; box-shadow: 0 4px 12px var(--shadow-color);
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
-			}
-			.contact-card i { font-size: 3rem; margin-bottom: 1rem; transition: transform 0.3s ease, color 0.3s ease; }
-			.contact-card span { font-size: 1rem; font-weight: 500; color: var(--text-primary); }
-			
-			.contact-card:hover { transform: translateY(-8px); }
-			.contact-card:hover i { transform: scale(1.1); }
-			
-			.contact-card.github:hover { --brand-rgb: var(--github-color-rgb); color: #171520; }
-			.contact-card.behance:hover { --brand-rgb: var(--behance-color-rgb); color: #0547ff; }
-			.contact-card.dribbble:hover { --brand-rgb: var(--dribbble-color-rgb); color: #ea4c89; }
-			.contact-card.linkedin:hover { --brand-rgb: var(--linkedin-color-rgb); color: #0A66C2; }
-			.contact-card.gmail:hover { --brand-rgb: var(--gmail-color-rgb); color: #DD4B39; }
-			.contact-card.phone:hover { --brand-rgb: var(--phone-color-rgb); color: #1DA1F2; }
-			.contact-card.location:hover { --brand-rgb: var(--location-color-rgb); color: #43B581; }
-			.contact-card:hover { box-shadow: 0 10px 30px rgba(var(--brand-rgb), 0.2); }
-			@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
-			.contact-card:hover i { animation: pulse 0.6s ease; }
-			
-			/* Form Styles */
-			.contact-form { max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 40px var(--shadow-color); }
-			.form-group { margin-bottom: 1.5rem; }
-			.form-group input, .form-group textarea {
-				width: 100%; padding: 1rem; font-family: var(--font-sans); font-size: 1rem;
-				border: 1px solid var(--border-color); border-radius: 8px; background-color: var(--bg-main);
-				transition: border-color 0.2s ease, box-shadow 0.2s ease;
-			}
-			.form-group input:focus, .form-group textarea:focus {
-				outline: none; border-color: var(--indigo-500);
-				box-shadow: 0 0 0 3px rgba(var(--indigo-500-rgb), 0.3);
-			}
-			.form-group textarea { min-height: 150px; resize: vertical; }
-			.submit-btn {
-				width: 100%; padding: 1rem; font-size: 1rem; font-weight: 600; color: white !important;
-				background-image: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%);
-				border: none; border-radius: 8px; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease;
-			}
-			.submit-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(var(--indigo-500-rgb), 0.3); opacity: 1; }
-
-			@media (max-width: 992px) { .contact-grid-hub { grid-template-columns: repeat(3, 1fr); } }
-			@media (max-width: 768px) { .contact-grid-hub { grid-template-columns: repeat(2, 1fr); } }
-			@media (max-width: 500px) { .contact-grid-hub { grid-template-columns: 1fr; } }
-
+			#contact { max-width: 900px; margin: 0 auto; }
+			.contact-container { background-color: var(--card-bg); padding: 3rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: left; }
+			@media (min-width: 768px) { .contact-container { grid-template-columns: 2fr 1fr; } }
 			.footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; margin-top: 60px; }
 			
-			/* RESPONSIVE */
+			/* HAMBURGER & RESPONSIVE NAV */
 			.hamburger-menu { display: none; z-index: 1001; }
 			@media (max-width: 768px) { main { padding: 0 25px; } section { padding: 80px 0; } .main-nav { padding: 0 25px; } .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } .nav-links.active { transform: translateX(0); } .nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } .hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } .hamburger-menu .bar { background-color: var(--text-primary); transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; } .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } .hamburger-menu.active .bar:nth-child(2) { opacity: 0; } .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } }
+
 		</style>
 	</head>
 	<body>
@@ -275,6 +289,7 @@
 			</div>
 		</nav>
 		<main id="main-content">
+			<!-- NEW HERO SECTION -->
 			<section id="hero">
 				<div class="hero-container">
 					<div class="hero-text reveal">
@@ -297,6 +312,8 @@
 				</div>
 			</section>
 
+
+			<!-- "ABOUT ME" SECTION -->
 			<section id="about">
 				<div class="about-redesigned-container reveal">
 					<div class="avatar-column"><div class="avatar-placeholder"><i class="fas fa-user-tie avatar-icon"></i></div></div>
@@ -315,6 +332,7 @@
 				</div>
 			</section>
 
+			<!-- "MY JOURNEY" SECTION -->
 			<section id="journey">
 				<h2 class="section-heading reveal">My Journey</h2>
 				<div class="timeline-container">
@@ -324,59 +342,86 @@
 				</div>
 			</section>
 			
+			<!-- PROJECTS SECTION -->
 			<section id="projects">
 				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="projects-grid">
-					<!-- Your 8 project cards here -->
+					<li class="project-card reveal"><img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 150ms"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 300ms"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 450ms"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 600ms"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 750ms"><img src="images/Salary Trend.png" alt="Salary Trend Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 900ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div></div></li>
 				</ul>
 				<div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a>
 				</div>
 			</section>
 
+			<!-- NEW CERTIFICATES SECTION -->
 			<section id="certs">
 				<h2 class="section-heading reveal">Credentials & Certificates</h2>
 				<ul class="certs-grid">
-					<!-- Certificate Cards will be populated by JavaScript -->
+					<!-- Certificate Cards are populated by JavaScript -->
 				</ul>
 			</section>
 
+			<!-- CONTACT SECTION -->
 			<section id="contact">
-				<div class="reveal">
-					<h2 class="section-heading">Let’s Connect & Collaborate 🚀</h2>
-					<p class="section-subtext">I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out through any of the platforms below or by filling out the form.</p>
-				</div>
-				
-				<div class="contact-grid-hub reveal" style="--delay: 200ms;">
-					<a href="https://github.com/niranjan910" target="_blank" class="contact-card github"><i class="fab fa-github"></i><span>GitHub</span></a>
-					<a href="https://www.behance.net/niranjandesign" target="_blank" class="contact-card behance"><i class="fab fa-behance"></i><span>Behance</span></a>
-					<a href="https://dribbble.com/niranjan2000" target="_blank" class="contact-card dribbble"><i class="fab fa-dribbble"></i><span>Dribbble</span></a>
-					<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="contact-card linkedin"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
-					<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail"><i class="fas fa-envelope"></i><span>Gmail</span></a>
-					<a href="tel:+910000000000" class="contact-card phone"><i class="fas fa-phone-alt"></i><span>Phone</span></a>
-					<a href="https://maps.app.goo.gl/34s428v1fLpgt5Cq9" target="_blank" class="contact-card location"><i class="fas fa-map-marker-alt"></i><span>Location</span></a>
-				</div>
-	
-				<form action="#" class="contact-form reveal" style="--delay: 400ms;">
-					<div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
-					<div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
-					<div class="form-group"><textarea name="message" placeholder="Your Message" required></textarea></div>
-					<button type="submit" class="submit-btn">Send Message</button>
-				</form>
+				<!-- ... your contact section ... -->
 			</section>
-
 		</main>
 
-		<footer class="footer">
-			<a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a>
-		</footer>
+		<footer class="footer"><a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a></footer>
 
+		<!-- CERTIFICATE MODAL -->
 		<div id="certModal" class="modal-overlay">
-			<!-- Modal Content -->
+			<div class="modal-content">
+				<button id="modalCloseBtn" class="modal-close-btn">&times;</button>
+				<img id="modalCertImage" src="" alt="Certificate Image" class="modal-cert-image" />
+				<div id="modalCertDetails" class="modal-cert-details">
+					<h2 id="modalCertTitle"></h2>
+					<p><strong>Issued by:</strong> <span id="modalCertIssuer"></span></p>
+					<p><strong>Completion Date:</strong> <span id="modalCertDate"></span></p>
+					<p><strong>Credential ID:</strong> <span id="modalCertId"></span></p>
+					<a id="modalVerifyLink" href="#" target="_blank" class="cta-btn cta-btn-primary"><span>Verify Credential</span></a>
+				</div>
+			</div>
 		</div>
 
 		<script>
-			// All existing and necessary JS goes here
+			document.addEventListener("DOMContentLoaded", () => {
+				// --- CERTIFICATES DATA & LOGIC ---
+				const certificatesData = [
+					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Power BI Data Analyst', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'June 2025', id: 'MNO-345-PQR-678', verifyLink: '#' },
+					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tableau_Software_logo.svg/1280px-Tableau_Software_logo.svg.png', title: 'Tableau Certified Associate', issuer: 'Tableau', fullImage: 'images/placeholder-cert.png', date: 'May 2025', id: 'STU-901-VWX-234', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Python for Data Science', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'April 2025', id: 'YZA-567-BCD-890', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Google Data Analytics', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'March 2025', id: 'EFG-123-HIJ-456', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Data Analysis with Python', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'February 2025', id: 'KLM-789-NOP-012', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Data Visualization in Python', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'January 2025', id: 'QRS-345-TUV-678', verifyLink: '#' }
+				];
+				const certsGrid = document.querySelector('.certs-grid');
+				certificatesData.forEach((cert, i) => { const card = document.createElement('li'); card.className = 'cert-card reveal'; card.style.setProperty('--delay', `${i*100}ms`); card.dataset.index = i; card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`; certsGrid.appendChild(card); });
+				const modal=document.getElementById('certModal'),modalCloseBtn=document.getElementById('modalCloseBtn'),allCertCards=document.querySelectorAll('.cert-card');
+				const openModal=(i)=>{const d=certificatesData[i];document.getElementById('modalCertImage').src=d.fullImage;document.getElementById('modalCertTitle').textContent=d.title;document.getElementById('modalCertIssuer').textContent=d.issuer;document.getElementById('modalCertDate').textContent=d.date;document.getElementById('modalCertId').textContent=d.id;document.getElementById('modalVerifyLink').href=d.verifyLink;modal.classList.add('active');document.body.classList.add('modal-open');};
+				const closeModal=()=>{modal.classList.remove('active');document.body.classList.remove('modal-open');};
+				allCertCards.forEach(c=>{c.addEventListener('click',()=>openModal(c.dataset.index));});
+				modalCloseBtn.addEventListener('click',closeModal);
+				modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+
+				// --- GENERAL SCRIPTING ---
+				const revealElements = document.querySelectorAll(".reveal");
+				const revealObserver = new IntersectionObserver((e,o)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add("is-visible");o.unobserve(en.target);}});},{rootMargin:"0px 0px -100px 0px"});
+				revealElements.forEach(el=>revealObserver.observe(el));
+				const nav = document.getElementById("mainNav"),logo = document.getElementById("navLogoImage"),origSrc="Logo/Logo Dark.svg",scrolledSrc="Logo/Logo Dark.svg";
+				window.addEventListener("scroll",()=>{const s=window.scrollY>20;nav.classList.toggle("scrolled",s);if(logo)logo.src=s?scrolledSrc:origSrc;});
+				const hamburger=document.getElementById("hamburgerMenu"),navLinks=document.getElementById("navLinks");
+				if(hamburger&&navLinks){hamburger.addEventListener("click",()=>{hamburger.classList.toggle("active");navLinks.classList.toggle("active");});navLinks.querySelectorAll("a[href^='#']").forEach(l=>{l.addEventListener("click",()=>{hamburger.classList.remove("active");navLinks.classList.remove("active");});});}
+			});
 		</script>
 	</body>
 </html>
