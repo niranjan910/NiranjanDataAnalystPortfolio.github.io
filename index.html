@@ -8,6 +8,11 @@
 		
 		<link rel="icon" type="image/png" href="Logo/favicon.png" />
 
+		<!-- Google Font: Inter -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -33,8 +38,9 @@
 				--accent-gradient: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-end) 100%);
 				--accent-tint: rgba(20, 184, 166, 0.1);
 
-				--font-sans: "Helvetica Neue", sans-serif;
-				--font-serif: "Georgia", serif;
+				/* Trending Font: Inter */
+				--font-sans: 'Inter', sans-serif;
+				--font-serif: 'Inter', sans-serif; /* Using consistent font for headings */
 				--border-radius: 4px;
 				--nav-height: 100px;
 				--transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -68,7 +74,7 @@
 			.skip-to-content:focus { left: 1rem; top: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; padding: 0.5rem 1rem; background: var(--accent-gradient); color: var(--card-bg); border-radius: var(--border-radius); font-weight: 700; }
 			main { padding: 0 60px; position: relative; }
 			section { padding: 100px 0; }
-			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 700; line-height: 1.2; }
+			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 800; /* Bold headings with Inter */ line-height: 1.2; }
 			p { margin-bottom: 1rem; max-width: 65ch; font-size: 1.125rem; line-height: 1.6; }
 			a { text-decoration: none; color: var(--text-secondary); transition: var(--transition-fast); }
 			a:hover, button:hover { color: var(--accent-start); }
@@ -85,7 +91,7 @@
 			.nav-logo img { height: 40px; width: auto; transition: var(--transition-fast); }
 			.nav-links ol { list-style: none; display: flex; align-items: center; }
 			.nav-links li { margin: 0 1.5rem; }
-			.nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-primary); padding: 0.75rem 0; font-size: 0.95rem; position: relative; transition: var(--transition-fast); }
+			.nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-primary); padding: 0.75rem 0; font-size: 0.95rem; font-weight: 500; position: relative; transition: var(--transition-fast); }
 			.nav-links li a:not(.btn):not(.modern-pill-button):hover { color: var(--accent-start); }
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent-start); }
 			
@@ -99,12 +105,11 @@
 				flex-direction: column;
 				min-height: 100vh;
 				padding-top: var(--nav-height);
-				position: relative; /* Crucial for confining the particles */
+				position: relative;
 				background-color: var(--bg-main);
-				overflow: hidden; /* Ensures nothing spills out */
+				overflow: hidden;
 			}
 
-			/* Particle container is confined to the hero section */
 			#tsparticles {
 				position: absolute;
 				top: 0;
@@ -145,18 +150,14 @@
 			}
 
 			.hero-headline {
-				font-family: var(--font-serif);
 				font-size: clamp(2.8rem, 7vw, 4.5rem);
-				font-weight: 800;
 				line-height: 1.15;
 				color: var(--text-primary); 
 				margin: 0;
 			}
 
 			.hero-sub-headline {
-				font-family: var(--font-serif);
 				font-size: clamp(2.5rem, 6.5vw, 4.2rem);
-				font-weight: 800;
 				line-height: 1.15;
 				color: var(--text-secondary); 
 				margin-bottom: 2rem;
@@ -174,15 +175,14 @@
 			
 			.cta-btn {
 				display: inline-block; padding: 1rem 2rem; font-weight: 600; font-size: 1rem;
-				border-radius: var(--border-radius); border: 2px solid var(--accent-start);
-				transition: all 0.2s ease; text-align: center; min-width: 200px;
+				border-radius: var(--border-radius); transition: all 0.2s ease; text-align: center; min-width: 200px;
 			}
 			
 			.cta-btn-primary { 
 				background-image: var(--accent-gradient);
 				color: var(--card-bg) !important; 
 				border: none;
-				padding: calc(1rem + 2px) calc(2rem + 2px); /* Maintain size after removing border */
+				padding: calc(1rem + 2px) calc(2rem + 2px); 
 			}
 			.cta-btn-primary:hover {
 				opacity: 1;
@@ -190,10 +190,10 @@
 				transform: translateY(-3px);
 			}
 
-			.cta-btn-secondary { background-color: transparent; color: var(--accent-start) !important; border-color: var(--accent-start); }
+			.cta-btn-secondary { background-color: transparent; color: var(--accent-start) !important; border: 2px solid var(--accent-start); }
 			.cta-btn-secondary:hover { background-color: var(--accent-tint); color: var(--accent-start) !important; transform: translateY(-3px); }
 			
-			.scroll-down-indicator { display: none; } /* Removing scroll down for a cleaner look, can be re-enabled */
+			.scroll-down-indicator { display: none; }
 
 
 			/* --- OTHER SECTIONS --- */
@@ -225,8 +225,8 @@
 			.timeline-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); border-color: var(--accent-start); }
 			.timeline-card .card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
 			.timeline-card .icon { font-size: 1.8rem; color: var(--accent-start); background-color: var(--accent-tint); border-radius: 50%; width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
-			.timeline-card h3 { font-family: var(--font-serif); font-size: 1.25rem; margin: 0; }
-			.timeline-card .org { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; color: var(--text-secondary); }
+			.timeline-card h3 { font-size: 1.25rem; margin: 0; }
+			.timeline-card .org { font-size: 1rem; font-weight: 500; color: var(--text-secondary); }
 			.timeline-card .meta { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 1rem; }
 			.timeline-card .meta span { margin-right: 1rem; } .timeline-card .meta i { margin-right: 0.5rem; }
 			.timeline-card ul { list-style-type: none; padding-left: 0; }
@@ -241,7 +241,7 @@
 			.project-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); border-color: var(--accent-start); }
 			.project-card .project-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
 			.project-card .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-			.project-card .project-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
+			.project-card h3.project-title { font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 700; }
 			.project-card .project-description { font-size: 1rem; line-height: 1.6; flex-grow: 1; margin-bottom: 1rem; }
 			.project-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
 			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
@@ -256,6 +256,7 @@
 				font-weight: 600;
 				text-decoration: none;
 				transition: transform 0.2s ease, box-shadow 0.2s ease;
+				border: none;
 			}
 			.project-view-button:hover {
 				opacity: 1;
@@ -270,7 +271,7 @@
 			.cert-card { background-color: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); padding: 1.5rem; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--border-color); }
 			.cert-card-content { transition: opacity 0.3s ease; }
 			.cert-card .cert-logo { max-height: 50px; margin-bottom: 1rem; object-fit: contain; }
-			.cert-card .cert-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+			.cert-card h3.cert-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
 			.cert-card .cert-issuer { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; }
 			.cert-card .verified-badge { display: inline-flex; align-items: center; gap: 0.3rem; background-color: #e0f2fe; color: #0c4a6e; font-size: 0.75rem; font-weight: 500; padding: 3px 8px; border-radius: 99px; }
 			.cert-card .view-cert-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 20px)); opacity: 0; background: var(--accent-gradient); color: white !important; padding: 10px 20px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; border: none; font-size: 0.9rem; white-space: nowrap; }
@@ -325,7 +326,6 @@
 			}
             
             h3.contact-heading {
-                font-family: var(--font-sans);
                 font-size: 1.5rem;
                 font-weight: 600;
                 margin-bottom: 1.5rem;
@@ -527,7 +527,7 @@
 				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="projects-grid">
 					<li class="project-card reveal"><img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 150ms"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p<div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 150ms"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 300ms"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 450ms"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 600ms"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
