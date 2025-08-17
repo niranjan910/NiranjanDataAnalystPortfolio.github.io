@@ -14,12 +14,11 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES (New Theme) --- */
+			/* --- CORE STYLES --- */
 			:root {
 				--bg-main: #f1f1f1;
 				--text-primary: #010101;
 				--text-secondary: rgba(1, 1, 1, 0.7);
-				--text-on-image: #f1f1f1;
 				--card-bg: #ffffff;
 				--border-color: #dddddd;
 				--shadow-color: rgba(0, 0, 0, 0.08);
@@ -45,21 +44,13 @@
 				background-color: var(--bg-main);
 				line-height: 1.5;
 				overflow-x: hidden;
-				background: linear-gradient(-45deg, #f1f1f1, #e0e0e0, #f1f1f1, #f9f9f9);
-				background-size: 400% 400%;
-				animation: gradientBG 15s ease infinite;
 			}
 			body.modal-open { overflow: hidden; }
-
-
-			@keyframes gradientBG {
-				0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
-			}
+			
 			.skip-to-content { position: absolute; top: auto; left: -9999px; width: 1px; height: 1px; overflow: hidden; z-index: -999; }
 			.skip-to-content:focus { left: 1rem; top: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; padding: 0.5rem 1rem; background: var(--accent); color: var(--bg-main); border-radius: var(--border-radius); font-weight: 700; }
 			main { padding: 0 60px; position: relative; }
 			section { padding: 100px 0; }
-			section[id]:not(#hero)::after { display: none; }
 			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 700; line-height: 1.2; }
 			p { margin-bottom: 1rem; max-width: 65ch; font-size: 1.125rem; line-height: 1.6; }
 			a { text-decoration: none; color: var(--text-secondary); transition: var(--transition-fast); }
@@ -71,42 +62,116 @@
 				transition-delay: var(--delay, 0s);
 			}
 			.reveal.is-visible { opacity: 1; transform: translateY(0); }
-			.main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: transparent; z-index: 11; transition: var(--transition-slow); }
-			.main-nav.scrolled { background-color: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); height: 70px; box-shadow: 0 10px 30px -10px var(--shadow-color); }
+			.main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: rgba(241,241,241,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 11; transition: var(--transition-slow); border-bottom: 1px solid transparent; }
+			.main-nav.scrolled { height: 70px; box-shadow: 0 10px 30px -10px var(--shadow-color); border-bottom: 1px solid var(--border-color); }
 			.nav-logo a { display: block; }
 			.nav-logo img { height: 40px; width: auto; transition: var(--transition-fast); }
 			.nav-links ol { list-style: none; display: flex; align-items: center; }
 			.nav-links li { margin: 0 1.5rem; }
-			.nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-on-image); padding: 0.75rem 0; font-size: 0.95rem; position: relative; transition: var(--transition-fast); }
-			.main-nav.scrolled .nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-primary); }
-			.main-nav.scrolled .nav-links li a:not(.btn):not(.modern-pill-button):hover { color: var(--accent); }
+			.nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-primary); padding: 0.75rem 0; font-size: 0.95rem; position: relative; transition: var(--transition-fast); }
+			.nav-links li a:not(.btn):not(.modern-pill-button):hover { color: var(--accent); }
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent); }
-			.main-nav.scrolled .nav-links li a:not(.btn):not(.modern-pill-button).active { color: var(--accent); }
-			#hero { display: flex; flex-direction: column; justify-content: space-between; min-height: 100vh; text-align: left; position: relative; margin: 0 -60px; padding: calc(var(--nav-height) + 2rem) 60px 4rem 60px; background-color: #111; overflow: hidden; }
-			#hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-			#hero .hero-content-wrapper { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; position: relative; z-index: 2; flex-grow: 1; }
-			#hero .hero-text-container, #hero .hero-content-wrapper { position: relative; z-index: 2; }
-			#hero h1, #hero h2, #hero h4, #hero p { color: var(--text-on-image); }
-			.hero-main-heading { font-family: var(--font-serif); font-weight: 700; letter-spacing: -1px; margin: 0; font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; background: linear-gradient(45deg, #f1f1f1, #c1c1c1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-			.hero-hook { font-family: var(--font-sans); font-size: clamp(1rem, 2vw, 1.25rem); max-width: 60ch; color: var(--text-on-image); opacity: 0.8; margin-top: 1.5rem; line-height: 1.6; }
-			.hero-cta-container { text-align: right; animation: fadeInSlideUp 0.8s forwards 600ms; opacity: 0; display: flex; flex-direction: column; align-items: flex-end; }
-			.hero-cta-text { font-size: 2rem; line-height: 1.3; font-weight: 500; margin-bottom: 1.5rem; max-width: none; }
-			.modern-pill-button { display: inline-flex; align-items: center; gap: 12px; background-color: var(--text-primary); color: var(--bg-main) !important; font-weight: 500; font-size: 1rem; border-radius: 9999px; padding: 4px 6px 4px 18px; height: 44px; line-height: 1; font-family: var(--font-sans); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); will-change: transform; }
-			.modern-pill-button .icon-container { display: flex; justify-content: center; align-items: center; width: 34px; height: 34px; background-color: var(--bg-main); color: var(--text-primary); border-radius: 50%; font-size: 1.3rem; line-height: 1; }
-			.modern-pill-button:hover { color: var(--bg-main) !important; transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); opacity: 1; background-color: #333; }
-			.hero-cta-button { background-color: var(--bg-main); color: var(--text-primary) !important; }
-			.hero-cta-button .icon-container { background-color: var(--text-primary); color: var(--bg-main); }
-			.hero-cta-button:hover { background-color: #e0e0e0; color: var(--text-primary) !important; }
-			.projects-footer .modern-pill-button { background-color: var(--bg-main); color: var(--text-primary) !important; }
-			.projects-footer .modern-pill-button .icon-container { background-color: var(--text-primary); color: var(--bg-main); }
-			.hero-text-container { animation: fadeInSlideUp 0.8s forwards 200ms; opacity: 0; }
-			.hero-features-container { display: flex; flex-direction: column; gap: 1.5rem; animation: fadeInSlideUp 0.8s forwards 400ms; opacity: 0; }
-			.feature-item { display: flex; align-items: flex-start; gap: 1rem; max-width: 380px; }
-			.feature-item img { width: 24px; height: auto; margin-top: 6px; }
-			.feature-item h4 { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
-			.feature-item p { font-size: 0.9rem; line-height: 1.6; color: var(--text-on-image); opacity: 0.9; margin: 0; }
-			@keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-			@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+			
+			/* =========================================== */
+			/* =========== NEW HERO SECTION STYLES ========= */
+			/* =========================================== */
+			#hero {
+				display: flex;
+				align-items: center;
+				min-height: 100vh;
+				padding-top: var(--nav-height);
+				padding-bottom: 50px;
+				overflow: hidden;
+			}
+			.hero-container {
+				display: grid;
+				grid-template-columns: 1fr;
+				align-items: center;
+				gap: 3rem;
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			@media (min-width: 992px) {
+				.hero-container {
+					grid-template-columns: repeat(2, 1fr);
+					gap: 4rem;
+				}
+			}
+
+			.hero-text { text-align: center; }
+			@media (min-width: 992px) { .hero-text { text-align: left; } }
+
+			.hero-headline {
+				font-family: var(--font-serif);
+				font-size: clamp(2.5rem, 6vw, 4.2rem);
+				font-weight: 800;
+				line-height: 1.15;
+				margin-bottom: 1.5rem;
+				background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%);
+				-webkit-background-clip: text;
+				background-clip: text;
+				-webkit-text-fill-color: transparent;
+				color: transparent;
+			}
+
+			.hero-subtext {
+				font-size: clamp(1rem, 2vw, 1.15rem);
+				color: var(--text-secondary);
+				max-width: 50ch;
+				margin: 0 auto 2.5rem;
+				line-height: 1.7;
+			}
+			@media (min-width: 992px) { .hero-subtext { margin: 0 0 2.5rem; } }
+			
+			.hero-cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+			@media (min-width: 600px) { .hero-cta-buttons { flex-direction: row; justify-content: center; } }
+			@media (min-width: 992px) { .hero-cta-buttons { justify-content: flex-start; } }
+			
+			.cta-btn {
+				display: inline-block; padding: 1rem 2rem; font-weight: 600; font-size: 1rem;
+				border-radius: 99px; border: 2px solid transparent;
+				transition: transform 0.2s ease, box-shadow 0.2s ease; text-align: center; min-width: 200px;
+			}
+			.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); opacity: 1; }
+
+			.cta-btn-primary {
+				background-image: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%);
+				color: white !important;
+			}
+			.cta-btn-secondary {
+				border: 2px solid var(--text-primary); background-color: transparent; color: var(--text-primary);
+			}
+			.cta-btn-secondary:hover { background-color: var(--text-primary); color: var(--bg-main) !important; }
+			
+			.hero-graphic { position: relative; width: 100%; max-width: 400px; margin: 2rem auto 0; height: 300px; }
+			@media (min-width: 992px) { .hero-graphic { height: 450px; max-width: none; margin: 0; } }
+			
+			.orbiting-icon {
+				position: absolute; top: 50%; left: 50%; display: flex; justify-content: center; align-items: center;
+				width: 60px; height: 60px; background: var(--card-bg); border-radius: 50%;
+				box-shadow: 0 5px 15px var(--shadow-color); font-size: 1.8rem; color: var(--indigo-500);
+				animation: orbit linear infinite;
+			}
+			.orbiting-icon.icon-1 { animation-duration: 10s; --radius: 120px; }
+			.orbiting-icon.icon-2 { animation-duration: 12s; animation-direction: reverse; --radius: 180px; }
+			.orbiting-icon.icon-3 { animation-duration: 15s; --radius: 220px; color: var(--purple-600); }
+			.orbiting-icon.icon-4 { animation-duration: 9s; animation-direction: reverse; --radius: 80px; font-size: 1.5rem; width: 50px; height: 50px;}
+
+			@keyframes orbit {
+				0% { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg); }
+				100% { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+			}
+			
+			.scroll-down-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: none; }
+			@media (min-width: 992px) { .scroll-down-indicator { display: block; } }
+
+			.scroll-down-indicator a { display: flex; flex-direction: column; align-items: center; color: var(--text-secondary); animation: bounce 2s infinite; }
+			.scroll-down-indicator i { font-size: 2rem; }
+
+			@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
+
+			/* --- OTHER SECTIONS --- */
 			h2.section-heading { text-align: center; margin-bottom: 4rem; font-size: clamp(28px, 5vw, 40px); position: relative; color: var(--text-primary); }
 			h2.section-heading::after { content: ''; position: absolute; width: 60px; height: 3px; background: var(--accent); bottom: -15px; left: 50%; transform: translateX(-50%); }
 			.about-redesigned-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; background-color: var(--card-bg); padding: 2rem; border-radius: 1.5rem; box-shadow: 0 10px 40px -10px var(--shadow-color); }
@@ -114,22 +179,22 @@
 			.avatar-column { display: flex; justify-content: center; align-items: center; }
 			.avatar-placeholder { width: 100%; max-width: 300px; aspect-ratio: 1 / 1; border-radius: 1.5rem; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; color: rgba(255, 255, 255, 0.8); background-color: #222; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 			.avatar-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: conic-gradient( #6366f1, #a855f7, #ec4899, #f59e0b, #3b82f6, #10b981, #6366f1 ); animation: spin 8s linear infinite; }
+			@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 			.avatar-placeholder .avatar-icon { position: relative; z-index: 2; font-size: 6rem; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
 			.content-column .about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 3.5rem); }
-			.content-column .about-heading::after { display: block; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%); }
+			.content-column .about-heading::after { display: block; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); }
 			.content-column p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; max-width: 70ch; color: var(--text-secondary); }
 			.toolkit-heading { font-family: var(--font-sans); font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
 			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
 			.skill-badge { display: inline-flex; align-items: center; gap: 0.75rem; background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: 99px; font-weight: 500; color: var(--text-primary); transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: 0 2px 5px var(--shadow-color); }
 			.skill-badge:hover { transform: translateY(-4px); box-shadow: 0 8px 15px var(--shadow-color); }
-			.skill-badge i { color: #4f46e5; font-size: 1.25rem; }
+			.skill-badge i { color: var(--indigo-500); font-size: 1.25rem; }
 			#journey { position: relative; }
 			.timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
 			.timeline-container::after { content: ''; position: absolute; width: 4px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -2px; z-index: 0; }
 			.timeline-item { padding: 10px 40px; position: relative; width: 50%; }
 			.timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--bg-main); border: 4px solid var(--accent); top: 25px; border-radius: 50%; z-index: 1; }
-			.timeline-item.left { left: 0; }
-			.timeline-item.right { left: 50%; }
+			.timeline-item.left { left: 0; } .timeline-item.right { left: 50%; }
 			.timeline-item.right::after { left: -10px; }
 			.timeline-card { padding: 1.5rem; background: var(--card-bg); position: relative; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.3s ease, box-shadow 0.3s ease; }
 			.timeline-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12); }
@@ -138,44 +203,29 @@
 			.timeline-card h3 { font-family: var(--font-serif); font-size: 1.25rem; margin: 0; }
 			.timeline-card .org { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; color: var(--text-secondary); }
 			.timeline-card .meta { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 1rem; }
-			.timeline-card .meta span { margin-right: 1rem; }
-			.timeline-card .meta i { margin-right: 0.5rem; }
+			.timeline-card .meta span { margin-right: 1rem; } .timeline-card .meta i { margin-right: 0.5rem; }
 			.timeline-card ul { list-style-type: none; padding-left: 0; }
 			.timeline-card ul li { position: relative; padding-left: 1.5rem; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; }
 			.timeline-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: bold; font-size: 1.2rem; line-height: 1; }
 			@media screen and (max-width: 900px) { .timeline-container::after { left: 25px; } .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; } .timeline-item.left, .timeline-item.right { left: 0; } .timeline-item::after { left: 15px; } }
-			.projects-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+			.projects-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 			.projects-footer { margin-top: 3rem; text-align: center; }
-			.project-card { background-color: var(--card-bg); display: flex; flex-direction: column; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); overflow: hidden; transform-style: preserve-3d; will-change: transform; }
-			.project-card:hover { transform: translateY(-8px) perspective(1000px); box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12); }
+			.project-card { background-color: var(--card-bg); display: flex; flex-direction: column; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); overflow: hidden; }
+			.project-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
 			.project-card .project-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
 			.project-card .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-			.project-card .project-title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
-			.project-card .project-description { font-family: var(--font-sans); font-size: 1rem; line-height: 1.6; color: var(--text-secondary); flex-grow: 1; margin-bottom: 1rem; }
-			.project-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
-			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; margin: 0; }
-			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; font-family: var(--font-sans); }
-			.project-card .project-view-button { background: var(--accent); color: var(--bg-main) !important; padding: 10px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; font-family: var(--font-sans); text-decoration: none; transition: background-color 0.2s ease, transform 0.2s ease; }
-			.project-card .project-view-button:hover { background: #333; transform: translateY(-2px); color: var(--bg-main) !important; opacity: 1; }
-			#contact { max-width: 900px; margin: 0 auto; }
-			.contact-container { background-color: var(--card-bg); padding: 3rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); display: grid; grid-template-columns: 1fr; gap: 2.5rem; text-align: left; }
-			@media (min-width: 768px) { .contact-container { padding: 4rem; grid-template-columns: 2fr 1fr; align-items: center; } }
-			#contact .title { font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 1rem; }
-			#contact p { max-width: 50ch; margin-bottom: 2rem; }
-			.contact-details { text-align: left; }
-			.contact-details h3 { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
-			.contact-social-links { list-style: none; display: flex; gap: 1.5rem; }
-			.contact-social-links a { font-size: 1.5rem; color: var(--text-secondary); will-change: transform; }
-			.contact-social-links a:hover { color: var(--accent); opacity: 1; }
-			.footer { text-align: center; padding: 1.5rem; font-family: var(--font-sans); font-size: 0.8rem; margin-top: 60px; }
-			.hamburger-menu { display: none; z-index: 1001; }
-			.hamburger-menu .bar { background-color: var(--text-on-image); transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; }
-			.main-nav.scrolled .hamburger-menu .bar { background-color: var(--text-primary); }
-
+			.project-card .project-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
+			.project-card .project-description { font-size: 1rem; line-height: 1.6; flex-grow: 1; margin-bottom: 1rem; }
+			.project-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
+			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
+			.project-card .project-view-button { background: var(--accent); color: white !important; padding: 10px 18px; border-radius: 8px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background-color 0.2s ease, transform 0.2s ease; }
+			.project-card .project-view-button:hover { background: #333; transform: translateY(-2px); opacity: 1; }
+			
 			/* --- NEW CERTIFICATES STYLES --- */
-			#certs { background-color: var(--bg-main); margin: 0 -60px; padding: 100px 60px; }
+			#certs { background-color: var(--bg-main); margin: 0; padding: 100px 0; }
 			#certs .section-heading::after { background: linear-gradient(90deg, var(--indigo-500), var(--purple-600)); }
-			.certs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; list-style: none; padding: 0; margin: 0; }
+			.certs-grid { display: grid; gap: 2rem; list-style: none; padding: 0; margin: 0; }
 			.cert-card { background-color: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); padding: 1.5rem; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 			.cert-card-content { transition: opacity 0.3s ease; }
 			.cert-card .cert-logo { max-height: 50px; margin-bottom: 1rem; object-fit: contain; }
@@ -186,6 +236,11 @@
 			.cert-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 24px rgba(0,0,0,0.12); }
 			.cert-card:hover .view-cert-btn { transform: translate(-50%, -50%); opacity: 1; }
 			.cert-card:hover .cert-card-content { opacity: 0.1; }
+			
+			@media (min-width: 1201px) { .certs-grid { grid-template-columns: repeat(4, 1fr); } }
+			@media (min-width: 769px) and (max-width: 1200px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
+			@media (max-width: 768px) { .certs-grid { grid-template-columns: 1fr; } }
+
 
 			/* --- MODAL STYLES --- */
 			.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; backdrop-filter: blur(5px); }
@@ -201,21 +256,28 @@
 			.modal-cert-details p strong { color: var(--text-primary); }
 			.modal-verify-link { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 10px 20px; background: var(--accent); color: var(--bg-main) !important; border-radius: 8px; font-weight: 600; transition: var(--transition-fast); }
 			.modal-verify-link:hover { opacity: 0.8; transform: translateY(-2px); }
+			
+			#contact { max-width: 900px; margin: 0 auto; }
+			.contact-container { background-color: var(--card-bg); padding: 3rem; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: left; }
+			@media (min-width: 768px) { .contact-container { grid-template-columns: 2fr 1fr; } }
+			.footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; margin-top: 60px; }
+			
+			/* HAMBURGER & RESPONSIVE NAV */
+			.hamburger-menu { display: none; z-index: 1001; }
+			@media (max-width: 768px) { main { padding: 0 25px; } section { padding: 80px 0; } .main-nav { padding: 0 25px; } .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } .nav-links.active { transform: translateX(0); } .nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } .hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } .hamburger-menu .bar { background-color: var(--text-primary); transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; } .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } .hamburger-menu.active .bar:nth-child(2) { opacity: 0; } .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } }
 
-			@media (max-width: 1200px) { .certs-grid { grid-template-columns: repeat(4, 1fr); } } /* 2x4 on desktop */
-			@media (max-width: 992px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } } /* 2x2 on tablet */
-			@media (max-width: 768px) { #certs { margin: 0 -25px; padding: 80px 25px; } .certs-grid { grid-template-columns: 1fr; } } /* 1 column on mobile */
-			@media (max-width: 1080px) { main { padding: 0 50px; } #hero, #certs { margin: 0 -50px; padding-left: 50px; padding-right: 50px; } #certs { padding-top: 100px; padding-bottom: 100px; } .hero-main-heading { font-size: 60px; } .feature-item { max-width: 300px; } }
-			@media (max-width: 768px) { main { padding: 0 25px; } section { padding: 80px 0; } #hero, #certs { margin: 0 -25px; padding-left: 25px; padding-right: 25px; } #hero { justify-content: center; align-items: center; gap: 3rem; padding-top: calc(var(--nav-height) + 1rem); padding-bottom: 3rem; text-align: center; } #certs { padding-top: 80px; padding-bottom: 80px; } #hero .hero-content-wrapper { flex-direction: column; align-items: center; justify-content: center; gap: 3rem; } .hero-text-container { text-align: center; } .hero-hook { margin-left: auto; margin-right: auto; } .hero-features-container, .hero-cta-container { text-align: center; align-items: center; } .hero-main-heading { font-size: 40px; text-align: center; } .hero-cta-text { font-size: 1.5rem; } .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } .nav-links.active { transform: translateX(0); } .nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } .nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-primary); } .nav-links li a:not(.btn):not(.modern-pill-button).active { color: var(--accent); font-weight: 700; } .hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } .hamburger-menu.active .bar { background-color: var(--text-primary); } .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } .hamburger-menu.active .bar:nth-child(2) { opacity: 0; } .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } }
-			@media (max-width: 600px) { main { padding: 0 20px; } #hero, #certs { margin: 0 -20px; padding-left: 20px; padding-right: 20px; } .projects-grid, .toolkit-grid, .certs-grid { grid-template-columns: 1fr; } }
 		</style>
 	</head>
 	<body>
 		<a href="#main-content" class="skip-to-content">Skip to Content</a>
 
 		<nav class="main-nav" id="mainNav">
-			<div class="nav-logo reveal"><a href="#"><img id="navLogoImage" src="Logo/Logo.svg" alt="Niranjan Kumar Logo"/></a></div>
-			<button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu"><div class="bar"></div><div class="bar"></div><div class="bar"></div></button>
+			<div class="nav-logo">
+				<a href="#"><img id="navLogoImage" src="Logo/Logo Dark.svg" alt="Niranjan Kumar Logo"/></a>
+			</div>
+			<button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
+				<div class="bar"></div><div class="bar"></div><div class="bar"></div>
+			</button>
 			<div class="nav-links" id="navLinks">
 				<ol>
 					<li><a href="#about">About</a></li>
@@ -223,31 +285,33 @@
 					<li><a href="#projects">Projects</a></li>
 					<li><a href="#certs">Certificates</a></li>
 					<li><a href="#contact">Contact</a></li>
-					<li><a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="modern-pill-button magnetic-item" target="_blank"><span>Resume</span><span class="icon-container"><span>↗</span></span></a></li>
 				</ol>
 			</div>
 		</nav>
 		<main id="main-content">
-			<!-- HERO SECTION -->
+			<!-- NEW HERO SECTION -->
 			<section id="hero">
-				<div id="hero-canvas"></div>
-				<div class="hero-text-container">
-					<h1 class="hero-main-heading">From Raw Data to</h1>
-					<h1 class="hero-main-heading">Strategic Impact.</h1>
-					<h2 class="hero-hook">A data analyst transforming complex datasets into the clear, actionable insights that drive business growth.</h2>
+				<div class="hero-container">
+					<div class="hero-text reveal">
+						<h1 class="hero-headline">Turning Data into Decisions. One Insight at a Time.</h1>
+						<p class="hero-subtext">I’m Niru, a Data Analyst who transforms messy datasets into clear strategies. Let me show you how data can predict, guide, and inspire.</p>
+						<div class="hero-cta-buttons">
+							<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
+							<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
+						</div>
+					</div>
+					<div class="hero-graphic">
+						<div class="orbiting-icon icon-1"><i class="fas fa-database"></i></div>
+						<div class="orbiting-icon icon-2"><i class="fab fa-python"></i></div>
+						<div class="orbiting-icon icon-3"><i class="fas fa-chart-pie"></i></div>
+						<div class="orbiting-icon icon-4"><i class="fas fa-file-excel"></i></div>
+					</div>
 				</div>
-				<div class="hero-content-wrapper">
-					<div class="hero-features-container">
-						<div class="feature-item"><img src="Logo/timer-01.svg" alt="Feature Icon" /><div><h4>Data-Driven Storytelling</h4><p>Translating numbers into compelling narratives.</p></div></div>
-						<div class="feature-item"><img src="Logo/chart-waterfall.svg" alt="Feature Icon" /><div><h4>Precision Analytics</h4><p>Delivering custom insights tailored to business goals.</p></div></div>
-						<div class="feature-item"><img src="Logo/diagram-sankey.svg" alt="Feature Icon" /><div><h4>End-to-End Data Solutions</h4><p>Orchestrating the flow from raw data to BI dashboards.</p></div></div>
-					</div>
-					<div class="hero-cta-container">
-						<p class="hero-cta-text">Your Data Holds the Answers<br />I Reveal Them</p>
-						<a href="mailto:niranjan991100@gmail.com" class="modern-pill-button hero-cta-button magnetic-item"><span>Lets connect</span><span class="icon-container"><span>↗</span></span></a>
-					</div>
+				<div class="scroll-down-indicator">
+					<a href="#about" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
 				</div>
 			</section>
+
 
 			<!-- "ABOUT ME" SECTION -->
 			<section id="about">
@@ -282,104 +346,31 @@
 			<section id="projects">
 				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="projects-grid">
-					<li class="project-card reveal">
-						<img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" />
-						<div class="card-body">
-							<h3 class="project-title">New-York City Air Quality Analysis</h3>
-							<p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p>
-							<div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 150ms">
-						<img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" />
-						<div class="card-body">
-							<h3 class="project-title">COVID-19 Hospitalization</h3>
-							<p class="project-description">Visualized COVID-19 hospitalization rates from 2019-2025 by processing real-time JSON data with Python.</p>
-							<div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 300ms">
-						<img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" />
-						<div class="card-body">
-							<h3 class="project-title">AI Job Market Analysis</h3>
-							<p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends from large CSV datasets.</p>
-							<div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 450ms">
-						<img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" />
-						<div class="card-body">
-							<h3 class="project-title">AI Lung Diagnostics</h3>
-							<p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by comprehensive SQL data mining.</p>
-							<div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 600ms">
-						<img src="images/Retail.png" alt="Project 5 placeholder" class="project-image" />
-						<div class="card-body">
-							<h3 class="project-title">UK Retail Analytics</h3>
-							<p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p>
-							<div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 750ms">
-						<img src="images/Salary Trend.png" alt="Project 6 placeholder" class="project-image" />
-						<div class="card-body">
-							<h3 class="project-title">Salary Trend Analysis</h3>
-							<p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p>
-							<div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 900ms">
-						<img src="images/EV Project image.png" alt="Project 7 placeholder" class="project-image" />
-						<div class="card-body">
-							<h3 class="project-title">U.S. EV Adoption Analysis</h3>
-							<p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p>
-							<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Data Analysis</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div>
-						</div>
-					</li>
-					<li class="project-card reveal" style="--delay: 1050ms">
-						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image" />
-						<div class="card-body">
-							<h3 class="project-title">Excel Financial Modeling</h3>
-							<p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation, featuring scenario analysis.</p>
-							<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div>
-						</div>
-					</li>
+					<li class="project-card reveal"><img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 150ms"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 300ms"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 450ms"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 600ms"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 750ms"><img src="images/Salary Trend.png" alt="Salary Trend Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 900ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div></div></li>
 				</ul>
 				<div class="projects-footer reveal">
-					<a href="https://github.com/niranjan910?tab=repositories" class="modern-pill-button" target="_blank">
-						<span>View All on GitHub</span><span class="icon-container"><span>↗</span></span>
-					</a>
+					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a>
 				</div>
 			</section>
-
 
 			<!-- NEW CERTIFICATES SECTION -->
 			<section id="certs">
 				<h2 class="section-heading reveal">Credentials & Certificates</h2>
 				<ul class="certs-grid">
-					<!-- Certificate Cards will be populated by JavaScript -->
+					<!-- Certificate Cards are populated by JavaScript -->
 				</ul>
 			</section>
 
 			<!-- CONTACT SECTION -->
 			<section id="contact">
-				<div class="contact-container reveal">
-					<div class="contact-text">
-						<h2 class="title">Get In Touch</h2>
-						<p>I'm actively seeking new opportunities. My inbox is always open, so please feel free to reach out — let's build something great together.</p>
-						<a href="mailto:niranjan991100@gmail.com" class="modern-pill-button magnetic-item"><span>Say Hello</span><span class="icon-container"><span>↗</span></span></a>
-					</div>
-					<div class="contact-details">
-						<h3>Connect With Me</h3>
-						<ul class="contact-social-links">
-							<li><a href="https://github.com/niranjan910" target="_blank" class="magnetic-item" aria-label="Github"><i class="fab fa-github"></i></a></li>
-							<li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="magnetic-item" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="mailto:niranjan991100@gmail.com" class="magnetic-item" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
-						</ul>
-					</div>
-				</div>
+				<!-- ... your contact section ... -->
 			</section>
 		</main>
 
@@ -395,61 +386,41 @@
 					<p><strong>Issued by:</strong> <span id="modalCertIssuer"></span></p>
 					<p><strong>Completion Date:</strong> <span id="modalCertDate"></span></p>
 					<p><strong>Credential ID:</strong> <span id="modalCertId"></span></p>
-					<a id="modalVerifyLink" href="#" target="_blank" class="modal-verify-link">
-						<span>Verify Credential</span>
-						<i class="fas fa-external-link-alt"></i>
-					</a>
+					<a id="modalVerifyLink" href="#" target="_blank" class="cta-btn cta-btn-primary"><span>Verify Credential</span></a>
 				</div>
 			</div>
 		</div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
-
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
-				const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-				
-				// --- CERTIFICATES DATA & POPULATION ---
+				// --- CERTIFICATES DATA & LOGIC ---
 				const certificatesData = [
 					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
 					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
-					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Power BI Data Analyst Associate', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'June 2025', id: 'MNO-345-PQR-678', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Power BI Data Analyst', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'June 2025', id: 'MNO-345-PQR-678', verifyLink: '#' },
 					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tableau_Software_logo.svg/1280px-Tableau_Software_logo.svg.png', title: 'Tableau Certified Associate', issuer: 'Tableau', fullImage: 'images/placeholder-cert.png', date: 'May 2025', id: 'STU-901-VWX-234', verifyLink: '#' },
-					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Python for Data Science A-Z', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'April 2025', id: 'YZA-567-BCD-890', verifyLink: '#' },
-					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Google Data Analytics Certificate', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'March 2025', id: 'EFG-123-HIJ-456', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Python for Data Science', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'April 2025', id: 'YZA-567-BCD-890', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Google Data Analytics', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'March 2025', id: 'EFG-123-HIJ-456', verifyLink: '#' },
 					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Data Analysis with Python', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'February 2025', id: 'KLM-789-NOP-012', verifyLink: '#' },
-					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced Data Visualization', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'January 2025', id: 'QRS-345-TUV-678', verifyLink: '#' }
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Data Visualization in Python', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'January 2025', id: 'QRS-345-TUV-678', verifyLink: '#' }
 				];
-
 				const certsGrid = document.querySelector('.certs-grid');
-				certificatesData.forEach((cert, index) => {
-					const card = document.createElement('li');
-					card.className = 'cert-card reveal';
-					card.style.setProperty('--delay', `${index * 100}ms`);
-					card.dataset.index = index;
-					card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`;
-					certsGrid.appendChild(card);
-				});
+				certificatesData.forEach((cert, i) => { const card = document.createElement('li'); card.className = 'cert-card reveal'; card.style.setProperty('--delay', `${i*100}ms`); card.dataset.index = i; card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`; certsGrid.appendChild(card); });
+				const modal=document.getElementById('certModal'),modalCloseBtn=document.getElementById('modalCloseBtn'),allCertCards=document.querySelectorAll('.cert-card');
+				const openModal=(i)=>{const d=certificatesData[i];document.getElementById('modalCertImage').src=d.fullImage;document.getElementById('modalCertTitle').textContent=d.title;document.getElementById('modalCertIssuer').textContent=d.issuer;document.getElementById('modalCertDate').textContent=d.date;document.getElementById('modalCertId').textContent=d.id;document.getElementById('modalVerifyLink').href=d.verifyLink;modal.classList.add('active');document.body.classList.add('modal-open');};
+				const closeModal=()=>{modal.classList.remove('active');document.body.classList.remove('modal-open');};
+				allCertCards.forEach(c=>{c.addEventListener('click',()=>openModal(c.dataset.index));});
+				modalCloseBtn.addEventListener('click',closeModal);
+				modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 
-				// --- MODAL LOGIC ---
-				const modal = document.getElementById('certModal'), modalCloseBtn = document.getElementById('modalCloseBtn'), allCertCards = document.querySelectorAll('.cert-card');
-				const openModal = (index) => { const certData = certificatesData[index]; document.getElementById('modalCertImage').src = certData.fullImage; document.getElementById('modalCertTitle').textContent = certData.title; document.getElementById('modalCertIssuer').textContent = certData.issuer; document.getElementById('modalCertDate').textContent = certData.date; document.getElementById('modalCertId').textContent = certData.id; document.getElementById('modalVerifyLink').href = certData.verifyLink; modal.classList.add('active'); document.body.classList.add('modal-open'); };
-				const closeModal = () => { modal.classList.remove('active'); document.body.classList.remove('modal-open'); };
-				allCertCards.forEach(card => { card.addEventListener('click', () => openModal(card.dataset.index)); });
-				modalCloseBtn.addEventListener('click', closeModal);
-				modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-				
-				// --- SCROLL-BASED ANIMATIONS ---
+				// --- GENERAL SCRIPTING ---
 				const revealElements = document.querySelectorAll(".reveal");
-				const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }); }, { rootMargin: "0px 0px -100px 0px" });
-				revealElements.forEach((el) => revealObserver.observe(el));
-				
-				// --- P5.JS & OTHER JS ---
-				if(document.getElementById('hero-canvas')) new p5( (p) => { let particles = []; p.setup = () => { p.createCanvas(p.select('#hero').width, p.select('#hero').height).parent("hero-canvas"); for(let i=0; i<150; i++) particles.push({p:p.createVector(p.random(p.width),p.random(p.height)),v:p.createVector(p.random(-.5,.5),p.random(-.5,.5)),s:p.random(2,4)})}; p.draw = () => { p.background('#111'); particles.forEach((pt,i)=>{ pt.p.add(pt.v); if(pt.p.x<0||pt.p.x>p.width) pt.v.x*=-1; if(pt.p.y<0||pt.p.y>p.height) pt.v.y*=-1; p.fill('rgba(255,255,255,0.5)'); p.noStroke(); p.circle(pt.p.x,pt.p.y,pt.s); particles.slice(i+1).forEach(pt2=>{ const d=p.dist(pt.p.x,pt.p.y,pt2.p.x,pt2.p.y); if(d<120){ p.stroke(`rgba(255,255,255,${p.map(d,0,120,0.5,0)})`); p.line(pt.p.x,pt.p.y,pt2.p.x,pt2.p.y); }})})}; p.windowResized = () => p.resizeCanvas(p.select('#hero').width, p.select('#hero').height); });
-				const nav = document.getElementById("mainNav"), logo = document.getElementById("navLogoImage"), originalLogoSrc = "Logo/Logo.svg", scrolledLogoSrc = "Logo/Logo Dark.svg";
-				window.addEventListener("scroll", () => { const isScrolled = window.scrollY > 50; nav.classList.toggle("scrolled", isScrolled); if (logo) logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc; });
-				const hamburger = document.getElementById("hamburgerMenu"), navLinks = document.getElementById("navLinks");
-				if(hamburger&&navLinks){ hamburger.addEventListener("click",()=>{hamburger.classList.toggle("active");navLinks.classList.toggle("active")}); navLinks.querySelectorAll("a[href^='#']").forEach(link=>{link.addEventListener("click",()=>{hamburger.classList.remove("active");navLinks.classList.remove("active")})})}
+				const revealObserver = new IntersectionObserver((e,o)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add("is-visible");o.unobserve(en.target);}});},{rootMargin:"0px 0px -100px 0px"});
+				revealElements.forEach(el=>revealObserver.observe(el));
+				const nav = document.getElementById("mainNav"),logo = document.getElementById("navLogoImage"),origSrc="Logo/Logo Dark.svg",scrolledSrc="Logo/Logo Dark.svg";
+				window.addEventListener("scroll",()=>{const s=window.scrollY>20;nav.classList.toggle("scrolled",s);if(logo)logo.src=s?scrolledSrc:origSrc;});
+				const hamburger=document.getElementById("hamburgerMenu"),navLinks=document.getElementById("navLinks");
+				if(hamburger&&navLinks){hamburger.addEventListener("click",()=>{hamburger.classList.toggle("active");navLinks.classList.toggle("active");});navLinks.querySelectorAll("a[href^='#']").forEach(l=>{l.addEventListener("click",()=>{hamburger.classList.remove("active");navLinks.classList.remove("active");});});}
 			});
 		</script>
 	</body>
