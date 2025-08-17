@@ -2,8 +2,13 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<!-- 1. SEO META DESCRIPTION -->
+		<meta name="description" content="The portfolio of Niranjan Kumar, a professional Data Analyst specializing in SQL, Python, Power BI, and turning data into actionable insights." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Niranjan Kumar | Data Analyst Portfolio</title>
+		
+		<!-- 2. FAVICON LINK (Update href to your file) -->
+		<link rel="icon" type="image/png" href="Logo/favicon.png" />
 
 		<link
 			rel="stylesheet"
@@ -554,44 +559,46 @@
 
 				<div class="icon-grid-hub-container reveal">
 					<div class="icon-grid-hub">
+						<!-- ACCESSIBILITY LABELS ADDED BELOW -->
 						<div class="contact-card-wrapper">
-							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github">
+							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github" aria-label="View my GitHub profile">
 								<i class="fab fa-github"></i>
 								<span>GitHub</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance">
+							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance" aria-label="View my Behance profile">
 								<i class="fab fa-behance"></i>
 								<span>Behance</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble">
+							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble" aria-label="View my Dribbble profile">
 								<i class="fab fa-dribbble"></i>
 								<span>Dribbble</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin">
+							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="View my LinkedIn profile">
 								<i class="fab fa-linkedin"></i>
 								<span>LinkedIn</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail">
+							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail" aria-label="Send me an email">
 								<i class="fas fa-envelope"></i>
 								<span>Gmail</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="tel:+910000000000" class="contact-card phone">
+							<!-- REMEMBER TO UPDATE THIS PHONE NUMBER -->
+							<a href="tel:+910000000000" class="contact-card phone" aria-label="Call me">
 								<i class="fas fa-phone"></i>
 								<span>Phone</span>
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram">
+							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram" aria-label="View my Instagram profile">
 								<i class="fab fa-instagram"></i>
 								<span>Instagram</span>
 							</a>
@@ -599,6 +606,7 @@
 					</div>
 				</div>
 
+				<!-- FORM ACTION IS NOW POINTING TO YOUR FORMSPREE URL -->
 				<form action="https://formspree.io/f/xyzpaeop" method="POST" class="contact-form reveal">
 					<input type="text" name="name" placeholder="Your Name" required />
 					<input type="email" name="email" placeholder="Your Email" required />
@@ -629,6 +637,7 @@
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
 				// --- CERTIFICATES DATA & LOGIC ---
+				// Remember to replace placeholder data for certificates
 				const certificatesData = [
 					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
 					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
