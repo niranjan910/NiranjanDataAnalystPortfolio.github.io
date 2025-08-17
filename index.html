@@ -2,12 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<!-- 1. SEO META DESCRIPTION -->
 		<meta name="description" content="The portfolio of Niranjan Kumar, a professional Data Analyst specializing in SQL, Python, Power BI, and turning data into actionable insights." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Niranjan Kumar | Data Analyst Portfolio</title>
 		
-		<!-- 2. FAVICON LINK (Update href to your file) -->
 		<link rel="icon" type="image/png" href="Logo/favicon.png" />
 
 		<link
@@ -76,7 +74,7 @@
 				transition-delay: var(--delay, 0s);
 			}
 			.reveal.is-visible { opacity: 1; transform: translateY(0); }
-			.main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: rgba(241,241,241,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 11; transition: var(--transition-slow); border-bottom: 1px solid transparent; }
+			.main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: rgba(241,241,241,0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 100; transition: var(--transition-slow); border-bottom: 1px solid transparent; }
 			.main-nav.scrolled { height: 70px; box-shadow: 0 10px 30px -10px var(--shadow-color); border-bottom: 1px solid var(--border-color); }
 			.nav-logo a { display: block; }
 			.nav-logo img { height: 40px; width: auto; transition: var(--transition-fast); }
@@ -87,38 +85,53 @@
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent); }
 			
 			/* =========================================== */
-			/* =========== NEW HERO SECTION STLES ========= */
+			/* =========== UPDATED HERO SECTION STYLES ========= */
 			/* =========================================== */
 			#hero {
 				display: flex;
+				flex-direction: column;
+				justify-content: center;
 				align-items: center;
 				min-height: 100vh;
 				padding-top: var(--nav-height);
-				padding-bottom: 50px;
-				overflow: hidden;
+				position: relative;
+				background-color: #f1f1f1; /* Fallback */
+				background: linear-gradient(135deg, rgba(235, 237, 255, 1) 0%, rgba(245, 235, 255, 1) 100%);
+			}
+
+			#tsparticles {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
 			}
 			.hero-container {
-				display: grid;
-				grid-template-columns: 1fr;
+				position: relative;
+				z-index: 2;
+				display: flex;
+				flex-direction: column;
 				align-items: center;
-				gap: 3rem;
+				justify-content: center;
+				text-align: center;
 				width: 100%;
-				max-width: 1200px;
+				max-width: 1000px;
 				margin: 0 auto;
+				padding: 2rem;
+				opacity: 0; /* Initially hidden for fade-in */
+				animation: fadeInHero 1s ease 0.5s forwards;
 			}
-			@media (min-width: 992px) {
-				.hero-container {
-					grid-template-columns: repeat(2, 1fr);
-					gap: 4rem;
+
+			@keyframes fadeInHero {
+				to {
+					opacity: 1;
 				}
 			}
 
-			.hero-text { text-align: center; }
-			@media (min-width: 992px) { .hero-text { text-align: left; } }
-
 			.hero-headline {
 				font-family: var(--font-serif);
-				font-size: clamp(2.5rem, 6vw, 4.2rem);
+				font-size: clamp(2.8rem, 7vw, 4.5rem);
 				font-weight: 800;
 				line-height: 1.15;
 				margin-bottom: 1.5rem;
@@ -136,11 +149,13 @@
 				margin: 0 auto 2.5rem;
 				line-height: 1.7;
 			}
-			@media (min-width: 992px) { .hero-subtext { margin: 0 0 2.5rem; } }
 			
-			.hero-cta-buttons { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
-			@media (min-width: 600px) { .hero-cta-buttons { flex-direction: row; justify-content: center; } }
-			@media (min-width: 992px) { .hero-cta-buttons { justify-content: flex-start; } }
+			.hero-cta-buttons { 
+				display: flex; 
+				flex-wrap: wrap; /* Added for better mobile experience */
+				justify-content: center;
+				gap: 1rem; 
+			}
 			
 			.cta-btn {
 				display: inline-block; padding: 1rem 2rem; font-weight: 600; font-size: 1rem;
@@ -158,30 +173,26 @@
 			}
 			.cta-btn-secondary:hover { background-color: var(--text-primary); color: var(--bg-main) !important; }
 			
-			.hero-graphic { position: relative; width: 100%; max-width: 400px; margin: 2rem auto 0; height: 300px; }
-			@media (min-width: 992px) { .hero-graphic { height: 450px; max-width: none; margin: 0; } }
-			
-			.orbiting-icon {
-				position: absolute; top: 50%; left: 50%; display: flex; justify-content: center; align-items: center;
-				width: 60px; height: 60px; background: var(--card-bg); border-radius: 50%;
-				box-shadow: 0 5px 15px var(--shadow-color); font-size: 1.8rem; color: var(--indigo-500);
-				animation: orbit linear infinite;
+			.scroll-down-indicator {
+				position: absolute;
+				bottom: 2rem;
+				left: 50%;
+				transform: translateX(-50%);
+				z-index: 2;
 			}
-			.orbiting-icon.icon-1 { animation-duration: 10s; --radius: 120px; }
-			.orbiting-icon.icon-2 { animation-duration: 12s; animation-direction: reverse; --radius: 180px; }
-			.orbiting-icon.icon-3 { animation-duration: 15s; --radius: 220px; color: var(--purple-600); }
-			.orbiting-icon.icon-4 { animation-duration: 9s; animation-direction: reverse; --radius: 80px; font-size: 1.5rem; width: 50px; height: 50px;}
 
-			@keyframes orbit {
-				0% { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg); }
-				100% { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg); }
+			.scroll-down-indicator a {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: var(--text-secondary);
+				animation: bounce 2s infinite;
 			}
-			
-			.scroll-down-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: none; }
-			@media (min-width: 992px) { .scroll-down-indicator { display: block; } }
 
-			.scroll-down-indicator a { display: flex; flex-direction: column; align-items: center; color: var(--text-secondary); animation: bounce 2s infinite; }
-			.scroll-down-indicator i { font-size: 2rem; }
+			.scroll-down-indicator i {
+				font-size: 2rem;
+				text-shadow: 0px 2px 4px rgba(0,0,0,0.1); /* Adds depth */
+			}
 
 			@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-15px); } 60% { transform: translateY(-8px); } }
 
@@ -469,22 +480,19 @@
 			</div>
 		</nav>
 		<main id="main-content">
-			<!-- NEW HERO SECTION -->
+			<!-- ============================ -->
+			<!-- ===== UPDATED HERO SECTION ===== -->
+			<!-- ============================ -->
 			<section id="hero">
+				<!-- This div is the container for the particle animation -->
+				<div id="tsparticles"></div>
+
 				<div class="hero-container">
-					<div class="hero-text reveal">
-						<h1 class="hero-headline">Turning Data into Decisions. One Insight at a Time.</h1>
-						<p class="hero-subtext">I’m Niru, a Data Analyst who transforms messy datasets into clear strategies. Let me show you how data can predict, guide, and inspire.</p>
-						<div class="hero-cta-buttons">
-							<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
-							<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
-						</div>
-					</div>
-					<div class="hero-graphic">
-						<div class="orbiting-icon icon-1"><i class="fas fa-database"></i></div>
-						<div class="orbiting-icon icon-2"><i class="fab fa-python"></i></div>
-						<div class="orbiting-icon icon-3"><i class="fas fa-chart-pie"></i></div>
-						<div class="orbiting-icon icon-4"><i class="fas fa-file-excel"></i></div>
+					<h1 class="hero-headline">Turning Data into Decisions. One Insight at a Time.</h1>
+					<p class="hero-subtext">I’m Niru, a Data Analyst who transforms messy datasets into clear strategies. Let me show you how data can predict, guide, and inspire.</p>
+					<div class="hero-cta-buttons">
+						<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
+						<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
 					</div>
 				</div>
 				<div class="scroll-down-indicator">
@@ -548,9 +556,7 @@
 				</ul>
 			</section>
 
-			<!-- ================================== -->
-			<!-- ===== UPDATED CONTACT SECTION ======== -->
-			<!-- ================================== -->
+			<!-- CONTACT SECTION -->
 			<section id="contact">
 				<h2 class="section-heading reveal">Let’s Connect & Collaborate 🚀</h2>
 				<p class="contact-subtext reveal">
@@ -559,7 +565,6 @@
 
 				<div class="icon-grid-hub-container reveal">
 					<div class="icon-grid-hub">
-						<!-- ACCESSIBILITY LABELS ADDED BELOW -->
 						<div class="contact-card-wrapper">
 							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github" aria-label="View my GitHub profile">
 								<i class="fab fa-github"></i>
@@ -591,7 +596,6 @@
 							</a>
 						</div>
 						<div class="contact-card-wrapper">
-							<!-- REMEMBER TO UPDATE THIS PHONE NUMBER -->
 							<a href="tel:+910000000000" class="contact-card phone" aria-label="Call me">
 								<i class="fas fa-phone"></i>
 								<span>Phone</span>
@@ -606,7 +610,6 @@
 					</div>
 				</div>
 
-				<!-- FORM ACTION IS NOW POINTING TO YOUR FORMSPREE URL -->
 				<form action="https://formspree.io/f/xyzpaeop" method="POST" class="contact-form reveal">
 					<input type="text" name="name" placeholder="Your Name" required />
 					<input type="email" name="email" placeholder="Your Email" required />
@@ -634,10 +637,78 @@
 			</div>
 		</div>
 
+		<!-- tsparticles CDN -->
+		<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+		
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
+				// --- tsParticles CONFIGURATION ---
+				tsParticles.load("tsparticles", {
+					fpsLimit: 60,
+					interactivity: {
+						events: {
+							onHover: {
+								enable: true,
+								mode: "grab",
+							},
+							onClick: {
+								enable: false,
+							},
+							resize: true,
+						},
+						modes: {
+							grab: {
+								distance: 140,
+								links: {
+									opacity: 0.5,
+								},
+							},
+						},
+					},
+					particles: {
+						color: {
+							value: "#6366f1",
+						},
+						links: {
+							color: "#9333ea",
+							distance: 150,
+							enable: true,
+							opacity: 0.2,
+							width: 1,
+						},
+						collisions: {
+							enable: false,
+						},
+						move: {
+							direction: "none",
+							enable: true,
+							outModes: "out",
+							random: false,
+							speed: 1.5,
+							straight: false,
+						},
+						number: {
+							density: {
+								enable: true,
+								area: 800,
+							},
+							value: 80,
+						},
+						opacity: {
+							value: 0.3,
+						},
+						shape: {
+							type: "circle",
+						},
+						size: {
+							value: { min: 1, max: 5 },
+						},
+					},
+					detectRetina: true,
+				});
+
+
 				// --- CERTIFICATES DATA & LOGIC ---
-				// Remember to replace placeholder data for certificates
 				const certificatesData = [
 					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
 					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
