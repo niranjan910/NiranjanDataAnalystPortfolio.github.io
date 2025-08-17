@@ -205,8 +205,8 @@
 			@media (max-width: 1200px) { .certs-grid { grid-template-columns: repeat(4, 1fr); } } /* 2x4 on desktop */
 			@media (max-width: 992px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } } /* 2x2 on tablet */
 			@media (max-width: 768px) { #certs { margin: 0 -25px; padding: 80px 25px; } .certs-grid { grid-template-columns: 1fr; } } /* 1 column on mobile */
-			@media (max-width: 1080px) { main { padding: 0 50px; } #hero { margin: 0 -50px; padding-left: 50px; padding-right: 50px; } .hero-main-heading { font-size: 60px; } .feature-item { max-width: 300px; } }
-			@media (max-width: 768px) { main { padding: 0 25px; } section { padding: 80px 0; } #hero { margin: 0 -25px; padding-left: 25px; padding-right: 25px; } #hero { justify-content: center; align-items: center; gap: 3rem; padding-top: calc(var(--nav-height) + 1rem); padding-bottom: 3rem; text-align: center; } #hero .hero-content-wrapper { flex-direction: column; align-items: center; justify-content: center; gap: 3rem; } .hero-text-container { text-align: center; } .hero-hook { margin-left: auto; margin-right: auto; } .hero-features-container, .hero-cta-container { text-align: center; align-items: center; } .hero-main-heading { font-size: 40px; text-align: center; } .hero-cta-text { font-size: 1.5rem; } .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } .nav-links.active { transform: translateX(0); } .nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } .nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-primary); } .nav-links li a:not(.btn):not(.modern-pill-button).active { color: var(--accent); font-weight: 700; } .hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } .hamburger-menu.active .bar { background-color: var(--text-primary); } .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } .hamburger-menu.active .bar:nth-child(2) { opacity: 0; } .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } }
+			@media (max-width: 1080px) { main { padding: 0 50px; } #hero, #certs { margin: 0 -50px; padding-left: 50px; padding-right: 50px; } #certs { padding-top: 100px; padding-bottom: 100px; } .hero-main-heading { font-size: 60px; } .feature-item { max-width: 300px; } }
+			@media (max-width: 768px) { main { padding: 0 25px; } section { padding: 80px 0; } #hero, #certs { margin: 0 -25px; padding-left: 25px; padding-right: 25px; } #hero { justify-content: center; align-items: center; gap: 3rem; padding-top: calc(var(--nav-height) + 1rem); padding-bottom: 3rem; text-align: center; } #certs { padding-top: 80px; padding-bottom: 80px; } #hero .hero-content-wrapper { flex-direction: column; align-items: center; justify-content: center; gap: 3rem; } .hero-text-container { text-align: center; } .hero-hook { margin-left: auto; margin-right: auto; } .hero-features-container, .hero-cta-container { text-align: center; align-items: center; } .hero-main-heading { font-size: 40px; text-align: center; } .hero-cta-text { font-size: 1.5rem; } .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } .nav-links.active { transform: translateX(0); } .nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } .nav-links li a:not(.btn):not(.modern-pill-button) { color: var(--text-primary); } .nav-links li a:not(.btn):not(.modern-pill-button).active { color: var(--accent); font-weight: 700; } .hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } .hamburger-menu.active .bar { background-color: var(--text-primary); } .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } .hamburger-menu.active .bar:nth-child(2) { opacity: 0; } .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } }
 			@media (max-width: 600px) { main { padding: 0 20px; } #hero, #certs { margin: 0 -20px; padding-left: 20px; padding-right: 20px; } .projects-grid, .toolkit-grid, .certs-grid { grid-template-columns: 1fr; } }
 		</style>
 	</head>
@@ -282,12 +282,78 @@
 			<section id="projects">
 				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="projects-grid">
-					<li class="project-card reveal" style="--delay: 0s"><img src="https://via.placeholder.com/400x200/cccccc/010101?text=Project+1" alt="Project Thumbnail" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 150ms"><img src="https://via.placeholder.com/400x200/cccccc/010101?text=Project+2" alt="Project Thumbnail" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 300ms"><img src="https://via.placeholder.com/400x200/cccccc/010101?text=Project+3" alt="Project Thumbnail" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal">
+						<img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" />
+						<div class="card-body">
+							<h3 class="project-title">New-York City Air Quality Analysis</h3>
+							<p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p>
+							<div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div>
+						</div>
+					</li>
+					<li class="project-card reveal" style="--delay: 150ms">
+						<img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" />
+						<div class="card-body">
+							<h3 class="project-title">COVID-19 Hospitalization</h3>
+							<p class="project-description">Visualized COVID-19 hospitalization rates from 2019-2025 by processing real-time JSON data with Python.</p>
+							<div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div>
+						</div>
+					</li>
+					<li class="project-card reveal" style="--delay: 300ms">
+						<img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" />
+						<div class="card-body">
+							<h3 class="project-title">AI Job Market Analysis</h3>
+							<p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends from large CSV datasets.</p>
+							<div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div>
+						</div>
+					</li>
+					<li class="project-card reveal" style="--delay: 450ms">
+						<img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" />
+						<div class="card-body">
+							<h3 class="project-title">AI Lung Diagnostics</h3>
+							<p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by comprehensive SQL data mining.</p>
+							<div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div>
+						</div>
+					</li>
+					<li class="project-card reveal" style="--delay: 600ms">
+						<img src="images/Retail.png" alt="Project 5 placeholder" class="project-image" />
+						<div class="card-body">
+							<h3 class="project-title">UK Retail Analytics</h3>
+							<p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p>
+							<div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div>
+						</div>
+					</li>
+					<li class="project-card reveal" style="--delay: 750ms">
+						<img src="images/Salary Trend.png" alt="Project 6 placeholder" class="project-image" />
+						<div class="card-body">
+							<h3 class="project-title">Salary Trend Analysis</h3>
+							<p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions and product lines.</p>
+							<div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div>
+						</div>
+					</li>
+					<li class="project-card reveal" style="--delay: 900ms">
+						<img src="images/EV Project image.png" alt="Project 7 placeholder" class="project-image" />
+						<div class="card-body">
+							<h3 class="project-title">U.S. EV Adoption Analysis</h3>
+							<p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p>
+							<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Data Analysis</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div>
+						</div>
+					</li>
+					<li class="project-card reveal" style="--delay: 1050ms">
+						<img src="images/placeholder.png" alt="Project 8 placeholder" class="project-image" />
+						<div class="card-body">
+							<h3 class="project-title">Excel Financial Modeling</h3>
+							<p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation, featuring scenario analysis.</p>
+							<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div>
+						</div>
+					</li>
 				</ul>
-				<div class="projects-footer reveal"><a href="https://github.com/niranjan910?tab=repositories" class="modern-pill-button" target="_blank"><span>View All on GitHub</span><span class="icon-container"><span>↗</span></span></a></div>
+				<div class="projects-footer reveal">
+					<a href="https://github.com/niranjan910?tab=repositories" class="modern-pill-button" target="_blank">
+						<span>View All on GitHub</span><span class="icon-container"><span>↗</span></span>
+					</a>
+				</div>
 			</section>
+
 
 			<!-- NEW CERTIFICATES SECTION -->
 			<section id="certs">
@@ -345,78 +411,14 @@
 				
 				// --- CERTIFICATES DATA & POPULATION ---
 				const certificatesData = [
-					{
-						logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg',
-						title: 'Foundations of Data Science',
-						issuer: 'Google',
-						fullImage: 'https://via.placeholder.com/800x600/eeeeee/333333?text=Google+Data+Science+Cert',
-						date: 'August 2025',
-						id: 'ABC-123-DEF-456',
-						verifyLink: '#'
-					},
-					{
-						logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png',
-						title: 'Advanced SQL Masterclass',
-						issuer: 'Udemy',
-						fullImage: 'https://via.placeholder.com/800x600/eeeeee/333333?text=Udemy+SQL+Cert',
-						date: 'July 2025',
-						id: 'GHI-789-JKL-012',
-						verifyLink: '#'
-					},
-					{
-						logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp',
-						title: 'Power BI Data Analyst Associate',
-						issuer: 'Microsoft',
-						fullImage: 'https://via.placeholder.com/800x600/eeeeee/333333?text=Microsoft+Power+BI+Cert',
-						date: 'June 2025',
-						id: 'MNO-345-PQR-678',
-						verifyLink: '#'
-					},
-					{
-						logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tableau_Software_logo.svg/1280px-Tableau_Software_logo.svg.png',
-						title: 'Tableau Certified Associate',
-						issuer: 'Tableau',
-						fullImage: 'https://via.placeholder.com/800x600/eeeeee/333333?text=Tableau+Cert',
-						date: 'May 2025',
-						id: 'STU-901-VWX-234',
-						verifyLink: '#'
-					},
-					{
-						logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png',
-						title: 'Python for Data Science A-Z',
-						issuer: 'Udemy',
-						fullImage: 'https://via.placeholder.com/800x600/eeeeee/333333?text=Udemy+Python+Cert',
-						date: 'April 2025',
-						id: 'YZA-567-BCD-890',
-						verifyLink: '#'
-					},
-					{
-						logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg',
-						title: 'Google Data Analytics Certificate',
-						issuer: 'Google',
-						fullImage: 'https://via.placeholder.com/800x600/eeeeee/333333?text=Google+Analytics+Cert',
-						date: 'March 2025',
-						id: 'EFG-123-HIJ-456',
-						verifyLink: '#'
-					},
-					{
-						logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp',
-						title: 'Data Analysis with Python',
-						issuer: 'Microsoft',
-						fullImage: 'https://via.placeholder.com/800x600/eeeeee/333333?text=Microsoft+Python+Cert',
-						date: 'February 2025',
-						id: 'KLM-789-NOP-012',
-						verifyLink: '#'
-					},
-					{
-						logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png',
-						title: 'Advanced Data Visualization',
-						issuer: 'Udemy',
-						fullImage: 'https://via.placeholder.com/800x600/eeeeee/333333?text=Udemy+Visualization+Cert',
-						date: 'January 2025',
-						id: 'QRS-345-TUV-678',
-						verifyLink: '#'
-					}
+					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Power BI Data Analyst Associate', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'June 2025', id: 'MNO-345-PQR-678', verifyLink: '#' },
+					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tableau_Software_logo.svg/1280px-Tableau_Software_logo.svg.png', title: 'Tableau Certified Associate', issuer: 'Tableau', fullImage: 'images/placeholder-cert.png', date: 'May 2025', id: 'STU-901-VWX-234', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Python for Data Science A-Z', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'April 2025', id: 'YZA-567-BCD-890', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Google Data Analytics Certificate', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'March 2025', id: 'EFG-123-HIJ-456', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Data Analysis with Python', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'February 2025', id: 'KLM-789-NOP-012', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced Data Visualization', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'January 2025', id: 'QRS-345-TUV-678', verifyLink: '#' }
 				];
 
 				const certsGrid = document.querySelector('.certs-grid');
@@ -425,79 +427,26 @@
 					card.className = 'cert-card reveal';
 					card.style.setProperty('--delay', `${index * 100}ms`);
 					card.dataset.index = index;
-					
-					card.innerHTML = `
-						<div class="cert-card-content">
-							<img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo">
-							<h3 class="cert-title">${cert.title}</h3>
-							<p class="cert-issuer">Issued by ${cert.issuer}</p>
-							<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
-						</div>
-						<button class="view-cert-btn">View Certificate</button>
-					`;
+					card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`;
 					certsGrid.appendChild(card);
 				});
 
 				// --- MODAL LOGIC ---
-				const modal = document.getElementById('certModal');
-				const modalCloseBtn = document.getElementById('modalCloseBtn');
-				const allCertCards = document.querySelectorAll('.cert-card');
-
-				const openModal = (index) => {
-					const certData = certificatesData[index];
-					document.getElementById('modalCertImage').src = certData.fullImage;
-					document.getElementById('modalCertTitle').textContent = certData.title;
-					document.getElementById('modalCertIssuer').textContent = certData.issuer;
-					document.getElementById('modalCertDate').textContent = certData.date;
-					document.getElementById('modalCertId').textContent = certData.id;
-					document.getElementById('modalVerifyLink').href = certData.verifyLink;
-					
-					modal.classList.add('active');
-					document.body.classList.add('modal-open');
-				};
-
-				const closeModal = () => {
-					modal.classList.remove('active');
-					document.body.classList.remove('modal-open');
-				};
-
-				allCertCards.forEach(card => {
-					card.addEventListener('click', () => {
-						openModal(card.dataset.index);
-					});
-				});
-
+				const modal = document.getElementById('certModal'), modalCloseBtn = document.getElementById('modalCloseBtn'), allCertCards = document.querySelectorAll('.cert-card');
+				const openModal = (index) => { const certData = certificatesData[index]; document.getElementById('modalCertImage').src = certData.fullImage; document.getElementById('modalCertTitle').textContent = certData.title; document.getElementById('modalCertIssuer').textContent = certData.issuer; document.getElementById('modalCertDate').textContent = certData.date; document.getElementById('modalCertId').textContent = certData.id; document.getElementById('modalVerifyLink').href = certData.verifyLink; modal.classList.add('active'); document.body.classList.add('modal-open'); };
+				const closeModal = () => { modal.classList.remove('active'); document.body.classList.remove('modal-open'); };
+				allCertCards.forEach(card => { card.addEventListener('click', () => openModal(card.dataset.index)); });
 				modalCloseBtn.addEventListener('click', closeModal);
-				modal.addEventListener('click', (e) => {
-					if (e.target === modal) {
-						closeModal();
-					}
-				});
+				modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 				
 				// --- SCROLL-BASED ANIMATIONS ---
 				const revealElements = document.querySelectorAll(".reveal");
-				const revealObserver = new IntersectionObserver((entries, observer) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add("is-visible");
-							observer.unobserve(entry.target);
-						}
-					});
-				}, { rootMargin: "0px 0px -100px 0px" });
+				const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }); }, { rootMargin: "0px 0px -100px 0px" });
 				revealElements.forEach((el) => revealObserver.observe(el));
 				
-				// Other existing JS...
-				if(document.getElementById('hero-canvas')) new p5( (p) => {
-					let particles = [];
-					p.setup = () => { p.createCanvas(p.windowWidth, p.windowHeight).parent("hero-canvas"); for(let i=0; i<150; i++) particles.push({p:p.createVector(p.random(p.width),p.random(p.height)),v:p.createVector(p.random(-.5,.5),p.random(-.5,.5)),s:p.random(2,4)})};
-					p.draw = () => { p.background('#111'); particles.forEach((pt,i)=>{ pt.p.add(pt.v); if(pt.p.x<0||pt.p.x>p.width) pt.v.x*=-1; if(pt.p.y<0||pt.p.y>p.height) pt.v.y*=-1; p.fill('rgba(255,255,255,0.5)'); p.noStroke(); p.circle(pt.p.x,pt.p.y,pt.s); particles.slice(i+1).forEach(pt2=>{ const d=p.dist(pt.p.x,pt.p.y,pt2.p.x,pt2.p.y); if(d<120){ p.stroke(`rgba(255,255,255,${p.map(d,0,120,0.5,0)})`); p.line(pt.p.x,pt.p.y,pt2.p.x,pt2.p.y); }})})};
-					p.windowResized = () => p.resizeCanvas(p.select('#hero').width, p.select('#hero').height);
-				});
-
-				const nav = document.getElementById("mainNav");
-				const logo = document.getElementById("navLogoImage");
-				const originalLogoSrc = "Logo/Logo.svg";
-				const scrolledLogoSrc = "Logo/Logo Dark.svg";
+				// --- P5.JS & OTHER JS ---
+				if(document.getElementById('hero-canvas')) new p5( (p) => { let particles = []; p.setup = () => { p.createCanvas(p.select('#hero').width, p.select('#hero').height).parent("hero-canvas"); for(let i=0; i<150; i++) particles.push({p:p.createVector(p.random(p.width),p.random(p.height)),v:p.createVector(p.random(-.5,.5),p.random(-.5,.5)),s:p.random(2,4)})}; p.draw = () => { p.background('#111'); particles.forEach((pt,i)=>{ pt.p.add(pt.v); if(pt.p.x<0||pt.p.x>p.width) pt.v.x*=-1; if(pt.p.y<0||pt.p.y>p.height) pt.v.y*=-1; p.fill('rgba(255,255,255,0.5)'); p.noStroke(); p.circle(pt.p.x,pt.p.y,pt.s); particles.slice(i+1).forEach(pt2=>{ const d=p.dist(pt.p.x,pt.p.y,pt2.p.x,pt2.p.y); if(d<120){ p.stroke(`rgba(255,255,255,${p.map(d,0,120,0.5,0)})`); p.line(pt.p.x,pt.p.y,pt2.p.x,pt2.p.y); }})})}; p.windowResized = () => p.resizeCanvas(p.select('#hero').width, p.select('#hero').height); });
+				const nav = document.getElementById("mainNav"), logo = document.getElementById("navLogoImage"), originalLogoSrc = "Logo/Logo.svg", scrolledLogoSrc = "Logo/Logo Dark.svg";
 				window.addEventListener("scroll", () => { const isScrolled = window.scrollY > 50; nav.classList.toggle("scrolled", isScrolled); if (logo) logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc; });
 				const hamburger = document.getElementById("hamburgerMenu"), navLinks = document.getElementById("navLinks");
 				if(hamburger&&navLinks){ hamburger.addEventListener("click",()=>{hamburger.classList.toggle("active");navLinks.classList.toggle("active")}); navLinks.querySelectorAll("a[href^='#']").forEach(link=>{link.addEventListener("click",()=>{hamburger.classList.remove("active");navLinks.classList.remove("active")})})}
