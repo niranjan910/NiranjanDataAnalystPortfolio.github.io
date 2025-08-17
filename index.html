@@ -37,9 +37,12 @@
 
 				/* Brand Colors (Used Across Themes) */
 				--color-github: #333;
+				--color-behance: #053eff;
+				--color-dribbble: #ea4c89;
 				--color-linkedin: #0A66C2;
 				--color-gmail: #EA4335;
 				--color-phone: #10B981;
+				--color-instagram: #e1306c;
 			}
 
 			:root[data-theme="light"] {
@@ -74,7 +77,6 @@
 				--accent-tint: rgba(138, 180, 248, 0.1);
 			}
 			
-
 			/*
 			================================================
 			--- 2. GENERAL & LAYOUT STYLES ---
@@ -134,8 +136,8 @@
 
 			/* --- THEME TOGGLE --- */
 			.theme-toggle { background: none; border: 1px solid var(--border-color); color: var(--text-secondary); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition-fast); }
-			.theme-toggle:hover { background-color: var(--accent-tint); color: var(--accent-primary); border-color: var(--accent-primary); }
-			.theme-toggle .fa-sun { display: none; } .theme-toggle .fa-moon { display: block; }
+			.theme-toggle:hover { background-color: var(--accent-tint); color: var(--accent-primary); border-color: var(--accent-primary); transform: rotate(15deg); }
+			.theme-toggle .fa-sun { display: none; font-size: 1.2rem; } .theme-toggle .fa-moon { display: block; font-size: 1.2rem;}
 			html[data-theme="dark"] .theme-toggle .fa-sun { display: block; } html[data-theme="dark"] .theme-toggle .fa-moon { display: none; }
 			
 			/* --- HERO SECTION --- */
@@ -156,7 +158,7 @@
 
 			/* --- BUTTONS --- */
 			.cta-btn { display: inline-block; padding: 1rem 2rem; font-weight: 600; font-size: 1rem; border-radius: var(--border-radius); transition: transform 0.2s, box-shadow 0.2s; text-align: center; min-width: 200px; }
-			.cta-btn-primary { background-color: var(--accent-primary); color: var(--bg-main) !important; border: none; }
+			.cta-btn-primary { background-color: var(--accent-primary); color: var(--card-bg) !important; border: none; }
 			.cta-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 15px rgba(66, 133, 244, 0.2); filter: brightness(1.1); }
 			.cta-btn-secondary { background-color: transparent; color: var(--accent-primary) !important; border: 2px solid var(--accent-primary); }
 			.cta-btn-secondary:hover { background-color: var(--accent-tint); transform: translateY(-3px); }
@@ -182,8 +184,11 @@
 			.timeline-card { padding: 1.5rem; background: var(--card-bg); border-radius: var(--border-radius); border: 1px solid var(--border-color); transition: var(--transition-fast); }
 			.timeline-item:hover .timeline-card { border-color: var(--accent-primary); transform: translateY(-5px); box-shadow: 0 8px 20px var(--shadow-color); }
 			.timeline-item:hover::after { transform: scale(1.2); }
-			.timeline-card h3 { font-size: 1.25rem; }
+			.card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+			.timeline-card h3 { font-size: 1.25rem; margin-top: 0; }
 			.timeline-card .icon { font-size: 1.5rem; color: var(--accent-primary); background-color: var(--accent-tint); border-radius: 50%; width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+			.timeline-card .meta { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; }
+			.timeline-card .meta span { margin-right: 1rem; } .timeline-card .meta i { margin-right: 0.5rem; }
 			.timeline-card ul { list-style-type: none; padding-left: 0; }
 			.timeline-card ul li { position: relative; padding-left: 1.5rem; margin-bottom: 0.5rem; }
 			.timeline-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent-primary); font-weight: bold; }
@@ -193,18 +198,18 @@
 			.card-item { background-color: var(--card-bg); display: flex; flex-direction: column; border-radius: var(--border-radius); border: 1px solid var(--border-color); box-shadow: 0 4px 10px var(--shadow-color); transition: var(--transition-fast); overflow: hidden; }
 			.card-item:hover { transform: translateY(-8px); box-shadow: 0 12px 24px var(--shadow-color); border-color: var(--accent-primary); }
 			
-			.project-card .project-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
-			.project-card .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+			.project-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
+			.card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
 			.project-card h3 { font-size: 1.25rem; }
-			.project-card p { flex-grow: 1; }
-			.project-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
+			.project-description { flex-grow: 1; }
+			.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
 			.project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
 			.project-tech-list li { background: var(--accent-tint); color: var(--accent-primary); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
 
-			.cert-card { cursor: pointer; position: relative; text-align: center; padding: 1.5rem; }
-			.cert-card .cert-content { transition: opacity 0.3s, transform 0.3s; }
+			.cert-card { cursor: pointer; position: relative; text-align: center; }
+			.cert-content { transition: opacity 0.3s, transform 0.3s; }
 			.cert-card:hover .cert-content { opacity: 0.1; transform: scale(0.95); }
-			.cert-card .view-cert-btn { position: absolute; top: 50%; left: 50%; opacity: 0; transform: translate(-50%, -50%); pointer-events: none; transition: opacity 0.3s; }
+			.view-cert-btn { position: absolute; top: 50%; left: 50%; opacity: 0; transform: translate(-50%, -50%); pointer-events: none; transition: opacity 0.3s; }
 			.cert-card:hover .view-cert-btn { opacity: 1; pointer-events: auto; }
 
 			/* --- CONTACT SECTION --- */
@@ -220,15 +225,16 @@
 			.contact-card.linkedin:hover i { color: var(--color-linkedin); }
 			.contact-card.gmail:hover i { color: var(--color-gmail); }
 			.contact-card.phone:hover i { color: var(--color-phone); }
+			.contact-card.behance:hover i { color: var(--color-behance); }
+			.contact-card.dribbble:hover i { color: var(--color-dribbble); }
+			.contact-card.instagram:hover i { color: var(--color-instagram); }
+
 
 			/* --- FORMS --- */
 			.contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
 			.contact-form input, .contact-form textarea { width: 100%; padding: 1rem; border-radius: var(--border-radius); border: 1px solid var(--border-color); background-color: var(--bg-main); font-family: var(--font-sans); font-size: 1rem; color: var(--text-primary); transition: all 0.2s ease-in-out; }
 			.contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--text-secondary); opacity: 0.7; }
 			.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent-primary); background-color: var(--card-bg); box-shadow: 0 0 0 4px var(--accent-tint); }
-
-			/* --- MODAL --- */
-			.modal-overlay { /* styles from previous code */ }
 			
 			/*
 			================================================
@@ -240,14 +246,12 @@
 				section { padding: 80px 0; }
 				.main-nav { padding: 0 25px; } 
 				
-				/* Mobile Timeline */
-				.timeline-container::after { left: 20px; } .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; } .timeline-item.left, .timeline-item.right { left: 0; } .timeline-item::after { left: 10px; }
+				.nav-links ol { display: none; /* Future-proof for hamburger menu */ }
 				
-				/* Hamburger Menu */
-				.hamburger-menu { display: flex; /* Rest of styles... */ }
-				.nav-links ol { display: none; /* Logic handled by JS */ }
-				.nav-links .theme-toggle { margin-left: auto; margin-right: 1.5rem; }
-				/* etc. */
+				.timeline-container::after { left: 20px; } 
+				.timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; } 
+				.timeline-item.left, .timeline-item.right { left: 0; } 
+				.timeline-item::after { left: 10px; }
 			}
 		</style>
 	</head>
@@ -274,11 +278,10 @@
 					<i class="fas fa-sun"></i>
 				</button>
 			</div>
-			<!-- Hamburger menu could be placed here if needed for mobile -->
+			<!-- A hamburger menu button would go here for mobile -->
 		</nav>
 
 		<main id="main-content">
-
 			<section id="hero">
 				<div class="hero-bg"></div>
 				<div class="hero-container">
@@ -301,6 +304,7 @@
 					<div class="about-content">
 						<h2 class="section-heading">About Me</h2>
 						<p>I’m a Data Analyst with a strong foundation in SQL, Python, and Business Intelligence tools. I specialize in transforming raw datasets into insights and strategies that organizations can act on.</p>
+						<p>My background includes building ETL pipelines, creating interactive dashboards in Power BI & Tableau, and applying statistical analysis to uncover hidden patterns. I'm driven to help organizations make forward-looking, data-informed decisions.</p>
 						<h3 class="toolkit-heading">My Toolkit</h3>
 						<div class="skills-grid">
 							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL</span></div>
@@ -314,41 +318,72 @@
 			
 			<section id="journey">
 				<h2 class="section-heading reveal">My Journey</h2>
-				<!-- Content as before -->
+				<div class="timeline-container">
+					<div class="timeline-item right reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Analyst (Trainee)</h3><span class="org">Naresh i Technologies</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> Feb 2025 – Jul 2025</span></div><ul><li>Leveraged SQL and Python for comprehensive data cleaning and reporting.</li><li>Engineered and automated ETL pipelines.</li></ul></div></div>
+					<div class="timeline-item left reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>UX Designer</h3><span class="org">DevRiser</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> Jun 2023 – Dec 2024</span></div><ul><li>Specialized in designing intuitive, data-driven dashboards.</li><li>Translated complex data requirements into clean visualization workflows.</li></ul></div></div>
+					<div class="timeline-item right reveal"><div class="timeline-card"><div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>B.Tech, Computer Software Engineering</h3><span class="org">IPS College, Gwalior</span></div></div><div class="meta"><span><i class="fas fa-calendar-alt"></i> 2019 – 2023</span></div><ul><li>Focused on data structures, algorithms, and database management systems.</li></ul></div></div>
+				</div>
 			</section>
 			
 			<section id="projects">
 				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="card-grid">
-					<li class="card-item project-card reveal"><!-- Content as before --></li>
-					<!-- ... all other project cards with class "card-item project-card reveal" -->
+					<li class="card-item project-card reveal"><img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="cta-btn cta-btn-secondary" target="_blank">View</a></div></div></li>
+					<li class="card-item project-card reveal" style="--delay: 150ms"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="cta-btn cta-btn-secondary" target="_blank">View</a></div></div></li>
+					<li class="card-item project-card reveal" style="--delay: 300ms"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="cta-btn cta-btn-secondary" target="_blank">View</a></div></div></li>
+					<li class="card-item project-card reveal" style="--delay: 450ms"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="cta-btn cta-btn-secondary" target="_blank">View</a></div></div></li>
 				</ul>
 			</section>
 
 			<section id="certs">
 				<h2 class="section-heading reveal">Credentials & Certificates</h2>
-				<ul class="card-grid">
-					<!-- Certs will be JS-populated here into items like:
-					<li class="card-item cert-card reveal">...</li> 
-					-->
+				<ul class="card-grid" id="certs-grid">
+					<!-- Certs will be JS-populated here -->
 				</ul>
 			</section>
 
 			<section id="contact">
 				<h2 class="section-heading reveal">Let’s Connect & Collaborate 🚀</h2>
-				<!-- Content as before -->
+				<p class="contact-subtext reveal">
+					I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+				</p>
+			
+				<div class="contact-layout-grid reveal">
+					<div class="connect-column">
+						<h3 class="contact-heading">Connect With Me</h3>
+						<div class="icon-grid-hub">
+							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github"><i class="fab fa-github"></i><span>GitHub</span></a>
+							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance"><i class="fab fa-behance"></i><span>Behance</span></a>
+							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble"><i class="fab fa-dribbble"></i><span>Dribbble</span></a>
+							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail"><i class="fas fa-envelope"></i><span>Gmail</span></a>
+							<a href="tel:+910000000000" class="contact-card phone"><i class="fas fa-phone"></i><span>Phone</span></a>
+							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+						</div>
+					</div>
+			
+					<div class="form-column">
+						<h3 class="contact-heading">Send a Message</h3>
+						<form action="https://formspree.io/f/xyzpaeop" method="POST" class="contact-form">
+							<input type="text" name="name" placeholder="Your Name" required />
+							<input type="email" name="email" placeholder="Your Email" required />
+							<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+							<button type="submit" class="cta-btn cta-btn-primary">Send Message</button>
+						</form>
+					</div>
+				</div>
 			</section>
 			
 		</main>
-		<!-- Footer and Modal elements as before -->
 
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
-
 				// --- 1. THEME SWITCHER LOGIC ---
 				function initThemeSwitcher() {
 					const themeToggle = document.getElementById('themeToggle');
-					const currentTheme = localStorage.getItem('theme') || 'light';
+					const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+					// Get theme from local storage or fallback to system preference
+					const currentTheme = localStorage.getItem('theme') || (prefersDark.matches ? 'dark' : 'light');
 					document.documentElement.setAttribute('data-theme', currentTheme);
 
 					themeToggle.addEventListener('click', () => {
@@ -362,24 +397,24 @@
 				function initNavbarLogic() {
 					const nav = document.getElementById("mainNav");
 					const navLinks = document.querySelectorAll(".nav-links ol a");
-					const sections = document.querySelectorAll("section");
+					const sections = document.querySelectorAll("main section[id]"); // Target sections with an ID in main
+
+					if (!nav) return;
 
 					window.addEventListener("scroll", () => {
-						// Navbar scroll effect
 						nav.classList.toggle("scrolled", window.scrollY > 20);
 						
-						// Active link highlighting
 						let current = "";
 						sections.forEach(section => {
 							const sectionTop = section.offsetTop;
-							if (pageYOffset >= sectionTop - nav.offsetHeight) {
+							if (pageYOffset >= sectionTop - nav.offsetHeight - 2) {
 								current = section.getAttribute("id");
 							}
 						});
 
 						navLinks.forEach(link => {
 							link.classList.remove("active");
-							if (link.getAttribute("href").includes(current)) {
+							if (link.getAttribute("href")?.includes(current)) {
 								link.classList.add("active");
 							}
 						});
@@ -389,6 +424,8 @@
 				// --- 3. SCROLL REVEAL ANIMATIONS ---
 				function initScrollAnimations() {
 					const revealElements = document.querySelectorAll(".reveal");
+					if (revealElements.length === 0) return;
+					
 					const revealObserver = new IntersectionObserver((entries, observer) => {
 						entries.forEach(entry => {
 							if (entry.isIntersecting) {
@@ -401,7 +438,7 @@
 				}
 				
 				// --- 4. CERTIFICATES & MODAL LOGIC ---
-				function initCertificateModal() {
+				function initCertificateCards() {
 					const certificatesData = [
 						{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google' },
 						{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy' },
@@ -409,30 +446,25 @@
 						{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tableau_Software_logo.svg/1280px-Tableau_Software_logo.svg.png', title: 'Tableau Certified Associate', issuer: 'Tableau' },
 					];
 
-					const certsGrid = document.querySelector('#certs .card-grid');
+					const certsGrid = document.getElementById('certs-grid');
 					if (!certsGrid) return;
 
 					certificatesData.forEach((cert, i) => {
 						const card = document.createElement('li');
 						card.className = 'card-item cert-card reveal';
 						card.style.setProperty('--delay', `${i*100}ms`);
-						card.dataset.index = i;
+						card.dataset.title = cert.title; // for potential modal use
 						card.innerHTML = `
-							<div class="cert-content">
-								<img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo" style="max-height: 50px; margin-bottom: 1rem;">
-								<h3>${cert.title}</h3>
+							<div class="cert-content card-body">
+								<img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo" style="max-height: 50px; margin-bottom: 1rem; object-fit: contain;">
+								<h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">${cert.title}</h3>
 								<p>Issued by ${cert.issuer}</p>
 							</div>
-							<span class="cta-btn cta-btn-secondary view-cert-btn">View Details</span>
+							<div class="view-cert-btn">
+								<span class="cta-btn cta-btn-secondary">View Details</span>
+							</div>
 						`;
 						certsGrid.appendChild(card);
-						
-						// Add event listener here to open modal
-						card.addEventListener('click', () => {
-							// Replace with your actual modal logic
-							console.log(`Opening modal for: ${cert.title}`);
-							// Example: document.getElementById('certModal').classList.add('active');
-						});
 					});
 				}
 
@@ -440,7 +472,7 @@
 				initThemeSwitcher();
 				initNavbarLogic();
 				initScrollAnimations();
-				initCertificateModal();
+				initCertificateCards();
 			});
 		</script>
 	</body>
