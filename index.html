@@ -4,7 +4,6 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Niranjan Kumar | Data Analyst Portfolio</title>
-
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -12,25 +11,22 @@
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		/>
-
 		<style>
-			/* --- CORE STYLES --- */
+			/* --- CORE STYLES & VARIABLES --- */
 			:root {
-				--bg-main: #f4f5f7; /* Slightly softer white */
-				--text-primary: #111827; /* Darker gray for text */
-				--text-secondary: #6b7280; /* Lighter gray for subtext */
+				--bg-main: #f4f5f7;
+				--text-primary: #111827;
+				--text-secondary: #6b7280;
 				--card-bg: #ffffff;
 				--border-color: #e5e7eb;
 				--shadow-color: rgba(0, 0, 0, 0.05);
 				--shadow-color-hover: rgba(0, 0, 0, 0.1);
 				--indigo-500: #6366f1;
 				--purple-600: #9333ea;
-				--teal-500: #14b8a6;
+				--nav-height: 80px;
 				--font-sans: "Helvetica Neue", system-ui, sans-serif;
 				--font-serif: "Georgia", serif;
-				--nav-height: 100px;
 				--transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-				--transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 			}
 
 			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -38,16 +34,18 @@
 			body {
 				font-family: var(--font-sans);
 				color: var(--text-secondary);
-				-webkit-font-smoothing: antialiased;
 				background-color: var(--bg-main);
 				line-height: 1.6;
+				-webkit-font-smoothing: antialiased;
 				overflow-x: hidden;
 			}
 			main { padding: 0 60px; position: relative; }
 			section { padding: 100px 0; }
-			h1, h2, h3, h4 { color: var(--text-primary); font-weight: 700; line-height: 1.2; }
+			h1, h2, h3, h4 { color: var(--text-primary); line-height: 1.2; }
 			.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
 			.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+			/* --- SECTION HEADING --- */
 			h2.section-heading {
 				text-align: center;
 				margin-bottom: 4rem;
@@ -66,370 +64,245 @@
 				transform: translateX(-50%);
 				border-radius: 2px;
 			}
+
+			/* --- NAVIGATION BAR --- */
+			.main-nav { display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; padding: 0 50px; height: var(--nav-height); background-color: rgba(244, 245, 247, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 100; transition: height 0.3s ease, box-shadow 0.3s ease; }
+			.main-nav.scrolled { height: 70px; box-shadow: 0 4px 15px var(--shadow-color-hover); }
+			.nav-logo img { height: 40px; }
+			.nav-links ol { list-style: none; display: flex; align-items: center; gap: 2rem; }
+			.nav-links a { color: var(--text-primary); font-weight: 500; transition: color 0.2s ease; }
+			.nav-links a:hover, .nav-links a.active { color: var(--indigo-500); }
+			.hamburger-menu { display: none; background: none; border: none; cursor: pointer; z-index: 101; }
+			.hamburger-menu .bar { display: block; width: 25px; height: 3px; margin: 5px 0; background-color: var(--text-primary); border-radius: 3px; transition: all 0.3s ease-in-out; }
+
+			/* --- HERO SECTION --- */
+			#hero { display: flex; align-items: center; min-height: 100vh; padding-top: var(--nav-height); }
+			.hero-container { display: grid; grid-template-columns: 1fr; align-items: center; gap: 3rem; width: 100%; max-width: 1200px; margin: 0 auto; }
+			.hero-text { text-align: center; }
+			.hero-headline { font-family: var(--font-serif); font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; line-height: 1.15; margin-bottom: 1.5rem; background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+			.hero-subtext { font-size: clamp(1rem, 2vw, 1.15rem); max-width: 50ch; margin: 0 auto 2.5rem; }
+			.hero-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+			.cta-btn { display: inline-block; padding: 0.9rem 1.8rem; font-weight: 600; border-radius: 99px; border: 2px solid transparent; transition: var(--transition-fast); }
+			.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 15px var(--shadow-color-hover); }
+			.cta-btn-primary { background-image: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); color: white; }
+			.cta-btn-secondary { border-color: var(--text-primary); color: var(--text-primary); }
+			.cta-btn-secondary:hover { background-color: var(--text-primary); color: var(--bg-main); }
+			.hero-graphic { position: relative; width: 100%; max-width: 400px; margin: 2rem auto 0; height: 300px; }
+			.orbiting-icon { position: absolute; top: 50%; left: 50%; display: flex; justify-content: center; align-items: center; width: 60px; height: 60px; background: var(--card-bg); border-radius: 50%; box-shadow: 0 5px 15px var(--shadow-color); font-size: 1.8rem; color: var(--indigo-500); animation: orbit linear infinite; }
+			.orbiting-icon.icon-1 { animation-duration: 10s; --radius: 120px; }
+			.orbiting-icon.icon-2 { animation-duration: 12s; animation-direction: reverse; --radius: 180px; }
+			.orbiting-icon.icon-3 { animation-duration: 15s; --radius: 220px; color: var(--purple-600); }
+			@keyframes orbit { from { transform: translate(-50%, -50%) rotate(0deg) translateX(var(--radius)) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg) translateX(var(--radius)) rotate(-360deg); } }
+			.scroll-down-indicator { display: none; position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); }
+			.scroll-down-indicator a { animation: bounce 2s infinite; }
+			@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+
+			/* --- ABOUT ME SECTION --- */
+			.about-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; background-color: var(--card-bg); padding: 3rem; border-radius: 1.5rem; box-shadow: 0 10px 40px var(--shadow-color); }
+			.avatar-placeholder { width: 100%; max-width: 300px; aspect-ratio: 1/1; border-radius: 1.5rem; position: relative; overflow: hidden; margin: auto; background-color: #222; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+			.avatar-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: conic-gradient(#6366f1, #a855f7, #ec4899, #f59e0b, #3b82f6, #10b981, #6366f1); animation: spin 8s linear infinite; }
+			@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+			.about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2rem, 5vw, 2.5rem); }
+			.about-heading::after { display: block; content:''; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: linear-gradient(90deg, var(--indigo-500) 0%, var(--purple-600) 100%); }
+			.about-container p { font-size: 1rem; margin-bottom: 1.5rem; }
+			.toolkit-heading { font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
+			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+			.skill-badge { display: inline-flex; align-items: center; gap: 0.75rem; background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: 99px; font-weight: 500; color: var(--text-primary); transition: var(--transition-fast); }
+			.skill-badge:hover { transform: translateY(-4px); box-shadow: 0 8px 15px var(--shadow-color-hover); }
+			.skill-badge i { color: var(--indigo-500); font-size: 1.25rem; }
+
+			/* --- "MY JOURNEY" TIMELINE SECTION --- */
+			.timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
+			.timeline-container::after { content: ''; position: absolute; width: 4px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -2px; }
+			.timeline-item { padding: 10px 40px; position: relative; width: 50%; }
+			.timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--bg-main); border: 4px solid var(--indigo-500); top: 25px; border-radius: 50%; z-index: 1; }
+			.timeline-item.left { left: 0; }
+			.timeline-item.right { left: 50%; }
+			.timeline-item.right::after { left: -10px; }
+			.timeline-card { padding: 1.5rem; background: var(--card-bg); border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: var(--transition-fast); }
+			.timeline-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px var(--shadow-color-hover); }
+
+			/* --- PROJECTS SECTION --- */
+			.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+			.project-card { background-color: var(--card-bg); border-radius: 1rem; box-shadow: 0 4px 15px var(--shadow-color); overflow: hidden; transition: var(--transition-fast); }
+			.project-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px var(--shadow-color-hover); }
+			.project-card img { width: 100%; height: 200px; object-fit: cover; }
+			.project-card .card-body { padding: 1.5rem; }
 			
-			/* =========================================== */
-			/* ===== NEW CERTIFICATES SECTION STYLES ===== */
-			/* =========================================== */
-			
-			#certs {
-				background-color: var(--bg-main);
+			/* --- CERTIFICATES SECTION --- */
+			.certs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+			.cert-card { background-color: var(--card-bg); border-radius: 1rem; border: 1px solid var(--border-color); padding: 1.5rem; text-align: center; position: relative; overflow: hidden; transition: var(--transition-fast); cursor: pointer; }
+			.cert-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px var(--shadow-color-hover); }
+			.cert-card .issuer-logo { height: 50px; margin-bottom: 1rem; object-fit: contain; }
+			.cert-card .cert-title { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; }
+			.verified-badge { position: absolute; top: 1rem; right: 1rem; background-image: linear-gradient(to right, #10b981, #14b8a6); color: white; font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.6rem; border-radius: 99px; }
+			.cert-card .view-button { position: absolute; bottom: 0; left: 0; right: 0; background-image: linear-gradient(to right, var(--indigo-500), var(--purple-600)); color: white; padding: 0.75rem; transform: translateY(100%); opacity: 0; transition: var(--transition-fast); }
+			.cert-card:hover .view-button { transform: translateY(0); opacity: 1; }
+
+			/* --- CERTIFICATE MODAL --- */
+			.cert-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(17, 24, 39, 0.7); backdrop-filter: blur(8px); display: flex; justify-content: center; align-items: center; z-index: 1000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+			.cert-modal.active { opacity: 1; visibility: visible; }
+			.modal-content { background-color: var(--card-bg); border-radius: 1.5rem; padding: 2rem; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.95); transition: transform 0.3s ease; }
+			.cert-modal.active .modal-content { transform: scale(1); }
+			.modal-close-btn { position: absolute; top: 1rem; right: 1rem; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; font-size: 1.2rem; }
+			#modalCertImage { width: 100%; border-radius: 0.75rem; margin-bottom: 1.5rem; }
+
+			/* --- RESPONSIVE STYLES --- */
+			@media (min-width: 992px) {
+				.hero-container { grid-template-columns: repeat(2, 1fr); gap: 4rem; }
+				.hero-text { text-align: left; }
+				.hero-cta-buttons { justify-content: flex-start; }
+				.hero-graphic { height: 450px; max-width: none; margin: 0; }
+				.scroll-down-indicator { display: block; }
+				.about-container { grid-template-columns: 1fr 2fr; padding: 4rem; }
 			}
 
-			.certs-grid {
-				display: grid;
-				grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
-				gap: 2rem;
-			}
-			
-			.cert-card {
-				background-color: var(--card-bg);
-				border-radius: 1rem; /* rounded-lg */
-				border: 1px solid var(--border-color);
-				padding: 1.5rem;
-				text-align: center;
-				position: relative;
-				overflow: hidden;
-				transition: transform 0.3s ease, box-shadow 0.3s ease;
-				cursor: pointer;
-			}
-			
-			.cert-card:hover {
-				transform: translateY(-8px);
-				box-shadow: 0 10px 20px var(--shadow-color-hover);
-			}
-
-			.cert-card .issuer-logo {
-				height: 50px;
-				margin-bottom: 1rem;
-				object-fit: contain;
-			}
-
-			.cert-card .cert-title {
-				font-family: var(--font-sans);
-				font-size: 1.1rem;
-				font-weight: 600;
-				margin-bottom: 0.5rem;
-				color: var(--text-primary);
-			}
-			
-			.cert-card .issuer-name {
-				font-size: 0.9rem;
-				color: var(--text-secondary);
-				margin-bottom: 1rem;
-			}
-
-			.verified-badge {
-				position: absolute;
-				top: 1rem;
-				right: 1rem;
-				background-image: linear-gradient(to right, #10b981, #14b8a6);
-				color: white;
-				font-size: 0.75rem;
-				font-weight: 500;
-				padding: 0.25rem 0.6rem;
-				border-radius: 99px;
-				display: flex;
-				align-items: center;
-				gap: 0.25rem;
-			}
-			.verified-badge .fa-check-circle {
-				font-size: 0.8rem;
-			}
-
-			.cert-card .view-button {
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				background-image: linear-gradient(to right, var(--indigo-500), var(--purple-600));
-				color: white;
-				padding: 0.75rem;
-				text-align: center;
-				font-weight: 600;
-				transform: translateY(100%);
-				opacity: 0;
-				transition: transform 0.3s ease, opacity 0.3s ease;
-			}
-
-			.cert-card:hover .view-button {
-				transform: translateY(0);
-				opacity: 1;
-			}
-			
-			/* Modal Styles */
-			.cert-modal {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0, 0, 0, 0.7);
-				backdrop-filter: blur(8px);
-				-webkit-backdrop-filter: blur(8px);
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				z-index: 1000;
-				opacity: 0;
-				visibility: hidden;
-				transition: opacity 0.3s ease, visibility 0.3s ease;
-			}
-
-			.cert-modal.active {
-				opacity: 1;
-				visibility: visible;
-			}
-			
-			.modal-content {
-				background-color: var(--card-bg);
-				border-radius: 1.5rem;
-				padding: 2rem;
-				max-width: 800px;
-				width: 90%;
-				max-height: 90vh;
-				overflow-y: auto;
-				position: relative;
-				transform: scale(0.95);
-				transition: transform 0.3s ease;
-			}
-			
-			.cert-modal.active .modal-content {
-				transform: scale(1);
-			}
-
-			.modal-close-btn {
-				position: absolute;
-				top: 1.5rem;
-				right: 1.5rem;
-				background: var(--bg-main);
-				border: 1px solid var(--border-color);
-				border-radius: 50%;
-				width: 36px;
-				height: 36px;
-				cursor: pointer;
-				font-size: 1.2rem;
-				color: var(--text-secondary);
-				transition: background-color 0.2s, color 0.2s;
-			}
-			.modal-close-btn:hover {
-				background: var(--text-primary);
-				color: var(--bg-main);
-			}
-
-			#modalCertImage {
-				width: 100%;
-				border-radius: 0.75rem;
-				margin-bottom: 1.5rem;
-				border: 1px solid var(--border-color);
-			}
-			
-			#modalCertTitle {
-				font-size: 1.5rem;
-				margin-bottom: 1.5rem;
-			}
-			
-			.modal-details {
-				display: grid;
-				grid-template-columns: 1fr;
-				gap: 1rem;
-				text-align: left;
-			}
-			
-			.modal-details p {
-				font-size: 1rem;
-				margin: 0;
-			}
-			
-			.modal-details strong {
-				color: var(--text-primary);
-				font-weight: 600;
-				margin-right: 0.5rem;
-			}
-			
-			#modalVerifyLink {
-				display: inline-block;
-				margin-top: 1.5rem;
-				background-image: linear-gradient(to right, var(--indigo-500), var(--purple-600));
-				color: white !important; /* Overwrite default link styles */
-				padding: 0.75rem 1.5rem;
-				border-radius: 99px;
-				font-weight: 600;
-				transition: transform 0.2s, box-shadow 0.2s;
-				text-decoration: none;
-			}
-			#modalVerifyLink:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-				opacity: 1;
-			}
-			
-			/* RESPONSIVE STYLES */
 			@media (max-width: 1200px) {
-				.certs-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columns for tablet */
+				.certs-grid { grid-template-columns: repeat(2, 1fr); }
 			}
 
 			@media (max-width: 768px) {
 				main { padding: 0 25px; }
 				section { padding: 80px 0; }
-				.certs-grid { grid-template-columns: 1fr; } /* 1 column for mobile */
-				.modal-content { padding: 1.5rem; }
-				.modal-close-btn { top: 1rem; right: 1rem; }
+				.main-nav { padding: 0 25px; }
+				.nav-links { position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 300px); background-color: var(--bg-main); flex-direction: column; justify-content: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 99; box-shadow: -10px 0 30px var(--shadow-color); }
+				.nav-links.active { transform: translateX(0); }
+				.nav-links ol { flex-direction: column; }
+				.hamburger-menu { display: block; }
+				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+				.timeline-container::after { left: 20px; }
+				.timeline-item { width: 100%; padding-left: 60px; padding-right: 10px; }
+				.timeline-item.left, .timeline-item.right { left: 0; }
+				.timeline-item::after { left: 10px; }
+				.certs-grid { grid-template-columns: 1fr; }
 			}
-
-
-			/* Legacy Styles to maintain layout of other sections (can be trimmed later) */
-			#hero { min-height: 100vh; }
-			/* (Include other required styles for header, about, etc.) */
-
 		</style>
 	</head>
 	<body>
+		<nav class="main-nav" id="mainNav">
+			<a href="#" class="nav-logo"><img id="navLogoImage" src="Logo/Logo Dark.svg" alt="Niranjan Kumar Logo" /></a>
+			<div class="nav-links" id="navLinks">
+				<ol>
+					<li><a href="#hero">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#journey">Journey</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#certs">Certificates</a></li>
+				</ol>
+			</div>
+			<button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
+				<span class="bar"></span><span class="bar"></span><span class="bar"></span>
+			</button>
+		</nav>
 
 		<main id="main-content">
-			<!-- OTHER SECTIONS LIKE HERO, ABOUT, JOURNEY GO HERE -->
+			<!-- HERO SECTION -->
+			<section id="hero">
+				<div class="hero-container">
+					<div class="hero-text reveal">
+						<h1 class="hero-headline">Turning Data into Decisions. One Insight at a Time.</h1>
+						<p class="hero-subtext">I’m Niranjan, a Data Analyst who transforms messy datasets into clear strategies. Let me show you how data can predict, guide, and inspire.</p>
+						<div class="hero-cta-buttons">
+							<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
+							<a href="#" class="cta-btn cta-btn-secondary">Download Resume</a>
+						</div>
+					</div>
+					<div class="hero-graphic">
+						<div class="orbiting-icon icon-1"><i class="fas fa-database"></i></div>
+						<div class="orbiting-icon icon-2"><i class="fab fa-python"></i></div>
+						<div class="orbiting-icon icon-3"><i class="fas fa-chart-pie"></i></div>
+					</div>
+				</div>
+				<div class="scroll-down-indicator"><a href="#about" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a></div>
+			</section>
 
-			<!-- ============================================= -->
-			<!-- ======== NEW "CERTIFICATES" SECTION ========= -->
-			<!-- ============================================= -->
+			<!-- ABOUT ME SECTION -->
+			<section id="about">
+				<div class="about-container reveal">
+					<div class="avatar-column"><div class="avatar-placeholder"></div></div>
+					<div class="content-column">
+						<h2 class="section-heading about-heading">About Me</h2>
+						<p>I’m a Data Analyst with a strong foundation in SQL, Python, and Business Intelligence tools. I specialize in transforming raw datasets into insights and strategies that organizations can act on.</p>
+						<p>My background includes building ETL pipelines, creating interactive dashboards in Power BI & Tableau, and applying statistical analysis to uncover hidden patterns.</p>
+						<p>I hold a B.Tech in Computer Software Engineering, where I developed the problem-solving mindset to approach data challenges creatively.</p>
+						<h3 class="toolkit-heading">My Toolkit</h3>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL</span></div>
+							<div class="skill-badge"><i class="fab fa-python"></i><span>Python</span></div>
+							<div class="skill-badge"><i class="fas fa-chart-pie"></i><span>Power BI & Tableau</span></div>
+							<div class="skill-badge"><i class="fas fa-robot"></i><span>Machine Learning</span></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- MY JOURNEY SECTION -->
+			<section id="journey">
+				<h2 class="section-heading reveal">My Journey</h2>
+				<div class="timeline-container">
+					<div class="timeline-item left reveal"><div class="timeline-card"><h3>Data Analyst (Trainee)</h3><p>Naresh i Technologies</p></div></div>
+					<div class="timeline-item right reveal"><div class="timeline-card"><h3>UX Designer</h3><p>DevRiser</p></div></div>
+					<div class="timeline-item left reveal"><div class="timeline-card"><h3>B.Tech, CSE</h3><p>IPS College</p></div></div>
+				</div>
+			</section>
+			
+			<!-- PROJECTS SECTION (Placeholder) -->
+			<section id="projects">
+				<h2 class="section-heading reveal">Featured Projects</h2>
+				<div class="projects-grid">
+					<div class="project-card reveal"><img src="images/placeholder.png" alt=""><div class="card-body"><h3>Project Title 1</h3><p>A brief description of the project.</p></div></div>
+					<div class="project-card reveal"><img src="images/placeholder.png" alt=""><div class="card-body"><h3>Project Title 2</h3><p>A brief description of the project.</p></div></div>
+					<div class="project-card reveal"><img src="images/placeholder.png" alt=""><div class="card-body"><h3>Project Title 3</h3><p>A brief description of the project.</p></div></div>
+					<div class="project-card reveal"><img src="images/placeholder.png" alt=""><div class="card-body"><h3>Project Title 4</h3><p>A brief description of the project.</p></div></div>
+				</div>
+			</section>
+
+			<!-- CERTIFICATES SECTION -->
 			<section id="certs">
 				<h2 class="section-heading reveal">Credentials & Certificates</h2>
 				<div class="certs-grid">
-					<!-- Certificate Card 1 -->
-					<div class="cert-card reveal"
-						 data-cert-img="images/certs/full/google_data_analytics.png"
-						 data-title="Google Data Analytics Professional Certificate"
-						 data-date="Issued: Nov 2024"
-						 data-credential-id="XYZ123ABC"
-						 data-verify-link="#">
-						<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
+					<!-- Card 1 -->
+					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Google Data Analytics Professional Certificate" data-date="Nov 2024" data-credential-id="XYZ123" data-verify-link="#">
+						<span class="verified-badge">Verified</span>
 						<img src="images/certs/logo/google.svg" alt="Google Logo" class="issuer-logo">
-						<h3 class="cert-title">Google Data Analytics</h3>
-						<p class="issuer-name">Coursera</p>
+						<h3 class="cert-title">Google Data Analytics</h3><p class="issuer-name">Coursera</p>
 						<div class="view-button">View Certificate</div>
 					</div>
-
-					<!-- Certificate Card 2 -->
-					<div class="cert-card reveal" style="--delay: 100ms"
-						 data-cert-img="images/certs/full/placeholder.png"
-						 data-title="IBM Data Science Professional Certificate"
-						 data-date="Issued: Oct 2024"
-						 data-credential-id="XYZ123ABC"
-						 data-verify-link="#">
-						<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
+					<!-- Card 2 -->
+					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="IBM Data Science Professional Certificate" data-date="Oct 2024" data-credential-id="ABC456" data-verify-link="#">
+						<span class="verified-badge">Verified</span>
 						<img src="images/certs/logo/ibm.svg" alt="IBM Logo" class="issuer-logo">
-						<h3 class="cert-title">IBM Data Science</h3>
-						<p class="issuer-name">Coursera</p>
+						<h3 class="cert-title">IBM Data Science</h3><p class="issuer-name">Coursera</p>
 						<div class="view-button">View Certificate</div>
 					</div>
-					
-					<!-- Certificate Card 3 -->
-					<div class="cert-card reveal" style="--delay: 200ms"
-						 data-cert-img="images/certs/full/placeholder.png"
-						 data-title="Microsoft Power BI Data Analyst Associate (PL-300)"
-						 data-date="Issued: Sep 2024"
-						 data-credential-id="XYZ123ABC"
-						 data-verify-link="#">
-						<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
-						<img src="images/certs/logo/microsoft.svg" alt="Microsoft Logo" class="issuer-logo">
-						<h3 class="cert-title">Power BI Data Analyst</h3>
-						<p class="issuer-name">Microsoft</p>
-						<div class="view-button">View Certificate</div>
-					</div>
-
-					<!-- Certificate Card 4 -->
-					<div class="cert-card reveal" style="--delay: 300ms"
-						 data-cert-img="images/certs/full/placeholder.png"
-						 data-title="Python for Everybody Specialization"
-						 data-date="Issued: Aug 2024"
-						 data-credential-id="XYZ123ABC"
-						 data-verify-link="#">
-						<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
-						<img src="images/certs/logo/udemy.svg" alt="Udemy Logo" class="issuer-logo">
-						<h3 class="cert-title">Python for Everybody</h3>
-						<p class="issuer-name">University of Michigan</p>
-						<div class="view-button">View Certificate</div>
-					</div>
-					
-					<!-- Certificate Card 5 -->
-					<div class="cert-card reveal"
-						 data-cert-img="images/certs/full/placeholder.png"
-						 data-title="SQL for Data Science"
-						 data-date="Issued: Jul 2024"
-						 data-credential-id="XYZ123ABC"
-						 data-verify-link="#">
-						<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
-						<img src="images/certs/logo/coursera.svg" alt="Coursera Logo" class="issuer-logo">
-						<h3 class="cert-title">SQL for Data Science</h3>
-						<p class="issuer-name">University of California, Davis</p>
-						<div class="view-button">View Certificate</div>
-					</div>
-					
-					<!-- Certificate Card 6 -->
-					<div class="cert-card reveal" style="--delay: 100ms"
-						 data-cert-img="images/certs/full/placeholder.png"
-						 data-title="Tableau Specialist"
-						 data-date="Issued: Jun 2024"
-						 data-credential-id="XYZ123ABC"
-						 data-verify-link="#">
-						<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
-						<img src="images/certs/logo/tableau.svg" alt="Tableau Logo" class="issuer-logo">
-						<h3 class="cert-title">Tableau Specialist</h3>
-						<p class="issuer-name">Tableau</p>
-						<div class="view-button">View Certificate</div>
-					</div>
-
-					<!-- Certificate Card 7 -->
-					<div class="cert-card reveal" style="--delay: 200ms"
-						 data-cert-img="images/certs/full/placeholder.png"
-						 data-title="Advanced Excel for Data Analysts"
-						 data-date="Issued: May 2024"
-						 data-credential-id="XYZ123ABC"
-						 data-verify-link="#">
-						<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
-						<img src="images/certs/logo/linkedin.svg" alt="LinkedIn Learning Logo" class="issuer-logo">
-						<h3 class="cert-title">Advanced Excel Skills</h3>
-						<p class="issuer-name">LinkedIn Learning</p>
-						<div class="view-button">View Certificate</div>
-					</div>
-					
-					<!-- Certificate Card 8 -->
-					<div class="cert-card reveal" style="--delay: 300ms"
-						 data-cert-img="images/certs/full/placeholder.png"
-						 data-title="AWS Certified Cloud Practitioner"
-						 data-date="Issued: Apr 2024"
-						 data-credential-id="XYZ123ABC"
-						 data-verify-link="#">
-						<span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span>
-						<img src="images/certs/logo/aws.svg" alt="AWS Logo" class="issuer-logo">
-						<h3 class="cert-title">AWS Cloud Practitioner</h3>
-						<p class="issuer-name">Amazon Web Services</p>
-						<div class="view-button">View Certificate</div>
-					</div>
-
+					<!-- ... Add 6 more cards following this pattern ... -->
+					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Microsoft Power BI Analyst" data-date="Sep 2024" data-credential-id="PL300" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/microsoft.svg" class="issuer-logo" alt="Microsoft Logo"><h3 class="cert-title">Power BI Data Analyst</h3><p class="issuer-name">Microsoft</p><div class="view-button">View</div></div>
+					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Python for Everybody" data-date="Aug 2024" data-credential-id="PY4E" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/udemy.svg" class="issuer-logo" alt="Udemy Logo"><h3 class="cert-title">Python for Everybody</h3><p class="issuer-name">Udemy</p><div class="view-button">View</div></div>
+					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="SQL for Data Science" data-date="Jul 2024" data-credential-id="SQL1" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/coursera.svg" class="issuer-logo" alt="Coursera Logo"><h3 class="cert-title">SQL for Data Science</h3><p class="issuer-name">Coursera</p><div class="view-button">View</div></div>
+					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Tableau Specialist" data-date="Jun 2024" data-credential-id="TAB2" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/tableau.svg" class="issuer-logo" alt="Tableau Logo"><h3 class="cert-title">Tableau Specialist</h3><p class="issuer-name">Tableau</p><div class="view-button">View</div></div>
+					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="Advanced Excel Skills" data-date="May 2024" data-credential-id="XL3" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/linkedin.svg" class="issuer-logo" alt="LinkedIn Logo"><h3 class="cert-title">Advanced Excel Skills</h3><p class="issuer-name">LinkedIn</p><div class="view-button">View</div></div>
+					<div class="cert-card reveal" data-cert-img="images/placeholder.png" data-title="AWS Cloud Practitioner" data-date="Apr 2024" data-credential-id="AWS4" data-verify-link="#"><span class="verified-badge">Verified</span><img src="images/certs/logo/aws.svg" class="issuer-logo" alt="AWS Logo"><h3 class="cert-title">AWS Cloud Practitioner</h3><p class="issuer-name">Amazon Web Services</p><div class="view-button">View</div></div>
 				</div>
 			</section>
 		</main>
-		
-		<!-- =========================================== -->
-		<!-- ======== CERTIFICATE MODAL POPUP ======== -->
-		<!-- =========================================== -->
+
+		<!-- CERTIFICATE MODAL POPUP -->
 		<div id="certModal" class="cert-modal">
 			<div class="modal-content">
 				<button id="modalCloseBtn" class="modal-close-btn">&times;</button>
 				<img id="modalCertImage" src="" alt="Certificate Image">
-				<h2 id="modalCertTitle"></h2>
-				<div class="modal-details">
-					<p><strong>Issued:</strong> <span id="modalDate"></span></p>
-					<p><strong>Credential ID:</strong> <span id="modalCredentialId"></span></p>
-				</div>
-				<a id="modalVerifyLink" href="#" target="_blank" rel="noopener noreferrer">Verify Certificate <i class="fas fa-external-link-alt"></i></a>
+				<h3 id="modalCertTitle"></h3>
+				<p><strong>Issued:</strong> <span id="modalDate"></span></p>
+				<p><strong>Credential ID:</strong> <span id="modalCredentialId"></span></p>
+				<a id="modalVerifyLink" href="#" target="_blank" rel="noopener noreferrer">Verify Certificate</a>
 			</div>
 		</div>
 
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
 				// --- INTERSECTION OBSERVER FOR SCROLL ANIMATIONS ---
-				const revealElements = document.querySelectorAll(".reveal");
 				const revealObserver = new IntersectionObserver((entries, observer) => {
 					entries.forEach(entry => {
 						if (entry.isIntersecting) {
@@ -438,56 +311,59 @@
 						}
 					});
 				}, { rootMargin: "0px 0px -100px 0px" });
+				document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
 
-				revealElements.forEach(el => revealObserver.observe(el));
+				// --- NAVBAR SCROLL & ACTIVE LINK ---
+				const nav = document.getElementById('mainNav');
+				const navLinks = document.querySelectorAll('#navLinks a');
+				const sections = document.querySelectorAll('section[id]');
+				window.addEventListener('scroll', () => {
+					nav.classList.toggle('scrolled', window.scrollY > 50);
+					let current = '';
+					sections.forEach(section => {
+						const sectionTop = section.offsetTop;
+						if (pageYOffset >= sectionTop - nav.offsetHeight) {
+							current = section.getAttribute('id');
+						}
+					});
+					navLinks.forEach(link => {
+						link.classList.remove('active');
+						if (link.getAttribute('href').includes(current)) {
+							link.classList.add('active');
+						}
+					});
+				});
 
-				// --- MODAL FUNCTIONALITY ---
+				// --- HAMBURGER MENU ---
+				const hamburger = document.getElementById('hamburgerMenu');
+				const navMenu = document.getElementById('navLinks');
+				hamburger.addEventListener('click', () => {
+					hamburger.classList.toggle('active');
+					navMenu.classList.toggle('active');
+				});
+				navLinks.forEach(link => link.addEventListener('click', () => {
+					hamburger.classList.remove('active');
+					navMenu.classList.remove('active');
+				}));
+
+				// --- CERTIFICATE MODAL LOGIC ---
 				const modal = document.getElementById('certModal');
 				if (modal) {
-					const certCards = document.querySelectorAll('.cert-card');
 					const closeBtn = document.getElementById('modalCloseBtn');
-					
-					const modalCertImage = document.getElementById('modalCertImage');
-					const modalCertTitle = document.getElementById('modalCertTitle');
-					const modalDate = document.getElementById('modalDate');
-					const modalCredentialId = document.getElementById('modalCredentialId');
-					const modalVerifyLink = document.getElementById('modalVerifyLink');
-
 					const openModal = (card) => {
-						// Populate modal with data from the card's data attributes
-						modalCertImage.src = card.dataset.certImg;
-						modalCertTitle.textContent = card.dataset.title;
-						modalDate.textContent = card.dataset.date;
-						modalCredentialId.textContent = card.dataset.credentialId;
-						modalVerifyLink.href = card.dataset.verifyLink;
-						
-						// Show the modal
+						document.getElementById('modalCertImage').src = card.dataset.certImg;
+						document.getElementById('modalCertTitle').textContent = card.dataset.title;
+						document.getElementById('modalDate').textContent = card.dataset.date;
+						document.getElementById('modalCredentialId').textContent = card.dataset.credentialId;
+						document.getElementById('modalVerifyLink').href = card.dataset.verifyLink;
 						modal.classList.add('active');
 					};
-					
-					const closeModal = () => {
-						modal.classList.remove('active');
-					};
+					const closeModal = () => modal.classList.remove('active');
 
-					certCards.forEach(card => {
-						card.addEventListener('click', () => openModal(card));
-					});
-
+					document.querySelectorAll('.cert-card').forEach(card => card.addEventListener('click', () => openModal(card)));
 					closeBtn.addEventListener('click', closeModal);
-					
-					// Also close modal if the backdrop is clicked
-					modal.addEventListener('click', (event) => {
-						if (event.target === modal) {
-							closeModal();
-						}
-					});
-
-					// Close modal on "Escape" key press
-					document.addEventListener('keydown', (event) => {
-						if (event.key === 'Escape' && modal.classList.contains('active')) {
-							closeModal();
-						}
-					});
+					modal.addEventListener('click', (e) => e.target === modal && closeModal());
+					document.addEventListener('keydown', (e) => e.key === 'Escape' && closeModal());
 				}
 			});
 		</script>
