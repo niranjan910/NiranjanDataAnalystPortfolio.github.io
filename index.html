@@ -273,7 +273,6 @@
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 			}
-			/* --- NEW HERO HOOK STYLE --- */
 			.hero-hook {
 				font-family: var(--font-sans);
 				font-size: clamp(1rem, 2vw, 1.25rem);
@@ -413,43 +412,14 @@
 
 			@keyframes spin {
 				from {
-					transform: rotate(0deg);
+					transform: translate(-50%, -50%) rotate(0deg);
 				}
 				to {
-					transform: rotate(360deg);
+					transform: translate(-50%, -50%) rotate(360deg);
 				}
 			}
-
-			a.special-link {
-				position: relative;
-				color: var(--accent) !important;
-				font-weight: 500;
-			}
-
-			a.special-link:hover {
-				opacity: 1;
-			}
-
-			a.special-link::after {
-				content: "";
-				position: absolute;
-				width: 100%;
-				height: 1px;
-				bottom: -4px;
-				left: 0;
-				background-color: var(--accent);
-				transform: scaleX(0);
-				transform-origin: bottom right;
-				transition: transform 0.25s ease-out;
-			}
-
-			a.special-link:hover::after {
-				transform: scaleX(1);
-				transform-origin: bottom left;
-			}
-
-			h2.section-heading,
-			h3.section-subheading {
+			
+			h2.section-heading {
 				text-align: center;
 				margin-bottom: 4rem;
 				font-size: clamp(28px, 5vw, 40px);
@@ -468,205 +438,131 @@
 				transform: translateX(-50%);
 			}
 
+			/* =========================================== */
+			/* ========= NEW ABOUT SECTION STYLES ======== */
+			/* =========================================== */
 
-			h3.section-subheading {
-				font-size: clamp(22px, 4vw, 28px);
-				margin-top: 3rem;
-				margin-bottom: 2rem;
-				color: var(--text-primary);
-			}
-
-			/* --- NEW ABOUT SECTION STYLES (MODERNIZED) --- */
-			#about .about-container {
+			.about-redesigned-container {
 				display: grid;
 				grid-template-columns: 1fr;
-				gap: 2rem;
-				background: var(--card-bg);
-				box-shadow: 0 10px 40px -10px var(--shadow-color);
-				padding: 3rem;
-				border-radius: 16px;
+				gap: 3rem;
+				align-items: center;
+				background-color: var(--card-bg);
+				padding: 2rem;
+				border-radius: 1.5rem; /* rounded-2xl */
+				box-shadow: 0 10px 40px -10px var(--shadow-color); /* shadow-lg */
 			}
-
 			@media (min-width: 992px) {
-				#about .about-container {
-					grid-template-columns: 300px 1fr;
-					gap: 3.5rem; /* Increased gap */
-					padding: 4rem; /* More padding on larger screens */
+				.about-redesigned-container {
+					grid-template-columns: 1fr 2fr; /* Two columns */
+					padding: 4rem;
 				}
 			}
 
-			.about-left {
-				text-align: center;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-			}
-
-			.about-left .sticky-content {
-				position: sticky;
-				top: 120px;
-			}
-
-			.about-image-wrapper {
-				max-width: 250px;
-				margin: 0 auto 1.5rem;
-				border-radius: 50%;
-				position: relative;
-			}
-
-			.about-image-wrapper img {
-				width: 100%;
-				height: auto;
-				border-radius: 50%;
-				border: 4px solid var(--bg-main);
-				box-shadow: 0 10px 30px var(--shadow-color);
-			}
-
-			.about-name {
-				font-size: clamp(1.8rem, 2.5vw, 2.2rem);
-				margin-bottom: 0.5rem;
-				color: var(--text-primary);
-			}
-
-			.about-title {
-				font-family: var(--font-sans);
-				font-size: 1rem;
-				color: var(--accent);
-				margin-bottom: 1.5rem;
-			}
-			
-			.about-social-links {
-				list-style: none;
+			.avatar-column {
 				display: flex;
 				justify-content: center;
-				gap: 1.5rem;
-				margin-bottom: 1.5rem;
-			}
-			.about-social-links a {
-				font-size: 1.5rem;
-				color: var(--text-secondary);
-				will-change: transform;
-			}
-			.about-social-links a:hover {
-				color: var(--accent);
-				opacity: 1;
-			}
-
-			/* Refined Contact Info */
-			.contact-info {
-				text-align: left;
-				font-size: 0.9rem;
-				background-color: transparent; /* Cleaner look */
-				border: 1px solid var(--border-color); /* Subtle border */
-				padding: 1.25rem;
-				border-radius: 12px;
-				margin-top: 1.5rem;
-			}
-
-			.contact-info ul {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-			}
-
-			.contact-info li {
-				display: flex;
 				align-items: center;
-				gap: 12px;
-				margin-bottom: 0.8rem;
-			}
-			.contact-info li:last-child {
-				margin-bottom: 0;
-			}
-
-			.contact-info i {
-				color: var(--accent);
-				font-size: 1.2rem;
-				width: 20px;
-				text-align: center;
-			}
-
-			/* Removed text-align right, letting grid handle it */
-			.about-right .about-headline {
-				font-family: var(--font-serif);
-				font-size: clamp(2rem, 5vw, 2.8rem);
-				line-height: 1.2;
-				margin-bottom: 1rem;
-				color: var(--text-primary);
-				font-weight: 700;
-			}
-
-			/* Modernized Subtitle */
-			.about-right .about-subtitle {
-				font-family: var(--font-serif);
-				font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-				color: var(--text-primary);
-				opacity: 0.8;
-				margin-bottom: 2.5rem;
-				font-style: normal; /* Removed italics for a cleaner look */
-				border-left: 3px solid var(--accent);
-				padding-left: 1.5rem;
-				max-width: none; /* Override global paragraph styles */
-			}
-
-			/* Override paragraph max-width within the right column to fix spacing issue */
-			.about-right p {
-				max-width: none;
-			}
-
-			.about-right .narrative-story p {
-				font-family: var(--font-sans);
-				font-size: 1.05rem; /* Balanced font size */
-				line-height: 1.8; /* Better readability for text blocks */
-				margin-bottom: 1.75rem;
-			}
-
-			.about-section-divider {
-				border: 0;
-				height: 1px;
-				background-color: var(--border-color);
-				margin: 3rem 0;
 			}
 			
-			/* --- NEW CORE COMPETENCIES / TOOLKIT SECTION --- */
-			.toolkit-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 1.5rem;
-			}
-			.toolkit-item {
-				background-color: var(--accent-tint);
-				border-radius: 12px;
-				padding: 2rem 1.5rem;
+			.avatar-placeholder {
+				width: 100%;
+				max-width: 300px;
+				aspect-ratio: 1 / 1;
+				border-radius: 1.5rem; /* rounded-2xl */
+				position: relative;
+				overflow: hidden;
 				display: flex;
-				align-items: flex-start; /* Align icon and text at the top */
-				gap: 1.5rem;
-				border: 1px solid transparent;
-				transition: border-color 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
-			}
-			.toolkit-item:hover {
-				background-color: #fff;
-				border-color: var(--border-color);
-				transform: translateY(-5px);
+				justify-content: center;
+				align-items: center;
+				color: rgba(255, 255, 255, 0.8);
+				background-color: #222; 
+				box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 			}
 
-			.toolkit-item .icon {
-				font-size: 2.2rem;
-				color: var(--accent);
-				margin-top: -2px; /* Slight visual adjustment */
+			.avatar-placeholder::before {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				width: 200%;
+				height: 200%;
+				background: conic-gradient(
+					#6366f1, #a855f7, #ec4899, #f59e0b, #3b82f6, #10b981, #6366f1
+				);
+				animation: spin 8s linear infinite;
 			}
-			.toolkit-item h4 {
+
+			.avatar-placeholder .avatar-icon {
+				position: relative;
+				z-index: 2;
+				font-size: 6rem;
+				text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+			}
+
+			.content-column .about-heading {
+				text-align: left;
+				margin-bottom: 2rem;
+				font-size: clamp(2.5rem, 5vw, 3.5rem);
+			}
+
+			.content-column .about-heading::after {
+				display: block; 
+				position: relative;
+				left: 0;
+				bottom: -10px;
+				transform: none; 
+				width: 80px;
+				height: 4px;
+				background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
+			}
+
+			.content-column p {
+				font-size: 1.05rem;
+				line-height: 1.8;
+				margin-bottom: 1.5rem;
+				max-width: 70ch;
+				color: var(--text-secondary);
+			}
+
+			.toolkit-heading {
 				font-family: var(--font-sans);
-				font-size: 1.1rem;
+				font-size: 1.25rem;
 				font-weight: 600;
-				margin-bottom: 0.5rem;
-			}
-			.toolkit-item p {
-				font-size: 0.95rem;
-				line-height: 1.6;
-				margin-bottom: 0;
+				margin-top: 2.5rem;
+				margin-bottom: 1.5rem;
+				color: var(--text-primary);
 			}
 
+			.skills-grid {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+			
+			.skill-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.75rem;
+				background-color: var(--bg-main);
+				border: 1px solid var(--border-color);
+				padding: 0.6rem 1.2rem;
+				border-radius: 99px;
+				font-weight: 500;
+				color: var(--text-primary);
+				transition: transform 0.25s ease, box-shadow 0.25s ease;
+				box-shadow: 0 2px 5px var(--shadow-color);
+			}
+			
+			.skill-badge:hover {
+				transform: translateY(-4px);
+				box-shadow: 0 8px 15px var(--shadow-color);
+			}
+			
+			.skill-badge i {
+				color: #4f46e5; /* A nice indigo color */
+				font-size: 1.25rem;
+			}
 			/* --- NEW: JOURNEY / TIMELINE SECTION --- */
 			#journey {
 				position: relative;
@@ -677,8 +573,6 @@
 				max-width: 1000px;
 				margin: 0 auto;
 			}
-
-			/* The central timeline line */
 			.timeline-container::after {
 				content: '';
 				position: absolute;
@@ -690,14 +584,11 @@
 				margin-left: -2px;
 				z-index: 0;
 			}
-
 			.timeline-item {
 				padding: 10px 40px;
 				position: relative;
 				width: 50%;
 			}
-			
-			/* Circle on the timeline */
 			.timeline-item::after {
 				content: '';
 				position: absolute;
@@ -710,22 +601,9 @@
 				border-radius: 50%;
 				z-index: 1;
 			}
-			
-			/* Left-aligned cards */
-			.timeline-item.left {
-				left: 0;
-			}
-
-			/* Right-aligned cards */
-			.timeline-item.right {
-				left: 50%;
-			}
-
-			.timeline-item.right::after {
-				left: -10px;
-			}
-			
-			/* The timeline card */
+			.timeline-item.left { left: 0; }
+			.timeline-item.right { left: 50%; }
+			.timeline-item.right::after { left: -10px; }
 			.timeline-card {
 				padding: 1.5rem;
 				background: var(--card-bg);
@@ -734,19 +612,16 @@
 				box-shadow: 0 4px 12px var(--shadow-color);
 				transition: transform 0.3s ease, box-shadow 0.3s ease;
 			}
-
 			.timeline-card:hover {
 				transform: translateY(-8px);
 				box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 			}
-			
 			.timeline-card .card-header {
 				display: flex;
 				align-items: flex-start;
 				gap: 1rem;
 				margin-bottom: 1rem;
 			}
-
 			.timeline-card .icon {
 				font-size: 1.8rem;
 				color: var(--accent);
@@ -759,77 +634,21 @@
 				justify-content: center;
 				flex-shrink: 0;
 			}
-
-			.timeline-card h3 {
-				font-family: var(--font-serif);
-				font-size: 1.25rem;
-				margin: 0;
-			}
-
-			.timeline-card .org {
-				font-family: var(--font-sans);
-				font-size: 1rem;
-				font-weight: 500;
-				color: var(--text-secondary);
-			}
+			.timeline-card h3 { font-family: var(--font-serif); font-size: 1.25rem; margin: 0; }
+			.timeline-card .org { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; color: var(--text-secondary); }
+			.timeline-card .meta { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 1rem; }
+			.timeline-card .meta span { margin-right: 1rem; }
+			.timeline-card .meta i { margin-right: 0.5rem; }
+			.timeline-card ul { list-style-type: none; padding-left: 0; }
+			.timeline-card ul li { position: relative; padding-left: 1.5rem; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; }
+			.timeline-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent); font-weight: bold; font-size: 1.2rem; line-height: 1; }
 			
-			.timeline-card .meta {
-				font-size: 0.9rem;
-				color: var(--text-secondary);
-				margin-top: 0.5rem;
-				margin-bottom: 1rem;
-			}
-			.timeline-card .meta span {
-				margin-right: 1rem;
-			}
-			.timeline-card .meta i {
-				margin-right: 0.5rem;
-			}
-			
-			.timeline-card ul {
-				list-style-type: none;
-				padding-left: 0;
-			}
-			
-			.timeline-card ul li {
-				position: relative;
-				padding-left: 1.5rem;
-				font-size: 0.95rem;
-				line-height: 1.6;
-				margin-bottom: 0.5rem;
-			}
-
-			.timeline-card ul li::before {
-				content: '•';
-				position: absolute;
-				left: 0;
-				color: var(--accent);
-				font-weight: bold;
-				font-size: 1.2rem;
-				line-height: 1;
-			}
-			
-			/* Responsive adjustments for the timeline */
 			@media screen and (max-width: 900px) {
-				.timeline-container::after {
-					left: 25px;
-				}
-				
-				.timeline-item {
-					width: 100%;
-					padding-left: 70px;
-					padding-right: 25px;
-				}
-				
-				.timeline-item.left, .timeline-item.right {
-					left: 0;
-				}
-				
-				.timeline-item::after {
-					left: 15px;
-				}
+				.timeline-container::after { left: 25px; }
+				.timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+				.timeline-item.left, .timeline-item.right { left: 0; }
+				.timeline-item::after { left: 15px; }
 			}
-
 
 			/* Projects Section */
 			.projects-grid {
@@ -1310,12 +1129,9 @@
 			</div>
 		</nav>
 		<main id="main-content">
-			<!-- ============================================= -->
-			<!-- ========= START OF UPDATED HERO SECTION ========= -->
-			<!-- ============================================= -->
+			<!-- HERO SECTION -->
 			<section id="hero">
 				<div id="hero-canvas"></div>
-
 				<div class="hero-text-container">
 					<h1 class="hero-main-heading">From Raw Data to</h1>
 					<h1 class="hero-main-heading">Strategic Impact.</h1>
@@ -1323,386 +1139,127 @@
 						A data analyst transforming complex datasets into the clear, actionable insights that drive business growth.
 					</h2>
 				</div>
-
 				<div class="hero-content-wrapper">
 					<div class="hero-features-container">
 						<div class="feature-item">
 							<img src="Logo/timer-01.svg" alt="Feature Icon" />
-							<div>
-								<h4>Data-Driven Storytelling</h4>
-								<p>Translating numbers into compelling narratives.</p>
-							</div>
+							<div><h4>Data-Driven Storytelling</h4><p>Translating numbers into compelling narratives.</p></div>
 						</div>
 						<div class="feature-item">
 							<img src="Logo/chart-waterfall.svg" alt="Feature Icon" />
-							<div>
-								<h4>Precision Analytics</h4>
-								<p>Delivering custom insights tailored to business goals.</p>
-							</div>
+							<div><h4>Precision Analytics</h4><p>Delivering custom insights tailored to business goals.</p></div>
 						</div>
 						<div class="feature-item">
 							<img src="Logo/diagram-sankey.svg" alt="Feature Icon" />
-							<div>
-								<h4>End-to-End Data Solutions</h4>
-								<p>
-									Orchestrating the flow from raw data to BI dashboards.
-								</p>
-							</div>
+							<div><h4>End-to-End Data Solutions</h4><p>Orchestrating the flow from raw data to BI dashboards.</p></div>
 						</div>
 					</div>
-
 					<div class="hero-cta-container">
-						<p class="hero-cta-text">
-							Your Data Holds the Answers<br />I Reveal Them
-						</p>
-						<a
-							href="mailto:niranjan991100@gmail.com"
-							class="modern-pill-button hero-cta-button magnetic-item"
-						>
-							<span>Lets connect</span>
-							<span class="icon-container">
-								<span>↗</span>
-							</span>
+						<p class="hero-cta-text">Your Data Holds the Answers<br />I Reveal Them</p>
+						<a href="mailto:niranjan991100@gmail.com" class="modern-pill-button hero-cta-button magnetic-item">
+							<span>Lets connect</span><span class="icon-container"><span>↗</span></span>
 						</a>
 					</div>
 				</div>
 			</section>
-			<!-- =========================================== -->
-			<!-- ========= END OF UPDATED HERO SECTION ========= -->
-			<!-- =========================================== -->
 
+			<!-- ============================================= -->
+			<!-- ======== UPDATED "ABOUT ME" SECTION ========= -->
+			<!-- ============================================= -->
 			<section id="about">
-				<div class="about-container reveal">
-					<div class="about-left">
-						<div class="sticky-content">
-							<div class="about-image-wrapper">
-								<img
-									src="images/Profile pic.png"
-									alt="Niranjan Kumar Headshot"
-								/>
-							</div>
-							<h2 class="about-name">Niranjan Kumar</h2>
-							<p class="about-title">Data Analyst</p>
-							<ul class="about-social-links">
-								<li>
-									<a
-										href="https://www.linkedin.com/in/niranjan-k-a83517229/"
-										target="_blank"
-										class="magnetic-item"
-										aria-label="LinkedIn"
-										><i class="fab fa-linkedin"></i
-									></a>
-								</li>
-								<li>
-									<a
-										href="https://github.com/niranjan910"
-										target="_blank"
-										class="magnetic-item"
-										aria-label="Github"
-										><i class="fab fa-github"></i
-									></a>
-								</li>
-								<li>
-									<a
-										href="https://www.behance.net/niranjandesign"
-										target="_blank"
-										class="magnetic-item"
-										aria-label="Behance"
-										><i class="fab fa-behance"></i
-									></a>
-								</li>
-								<li>
-									<a
-										href="https://dribbble.com/niranjan2000"
-										target="_blank"
-										class="magnetic-item"
-										aria-label="Dribbble"
-										><i class="fab fa-dribbble"></i
-									></a>
-								</li>
-								<li>
-									<a
-										href="https://www.instagram.com/_aethyra_/"
-										target="_blank"
-										class="magnetic-item"
-										aria-label="Instagram"
-										><i class="fab fa-instagram"></i
-									></a>
-								</li>
-							</ul>
-							<div class="contact-info">
-								<ul>
-									<li>
-										<i class="fas fa-map-marker-alt"></i>
-										<div>Hyderabad, India</div>
-									</li>
-									<li>
-										<i class="fas fa-phone-alt"></i>
-										<div>
-											<a href="tel:+919641143646"
-												>+91 9641143646</a
-											>
-										</div>
-									</li>
-									<li>
-										<i class="fas fa-envelope"></i>
-										<div>
-											<a href="mailto:niranjan991100@gmail.com"
-												>niranjan991100@gmail.com</a
-											>
-										</div>
-									</li>
-									<li>
-										<i class="fab fa-linkedin"></i>
-										<div>
-											<a
-												href="https://www.linkedin.com/in/niranjan-k-a83517229/"
-												target="_blank"
-												>LinkedIn</a
-											>
-										</div>
-									</li>
-									<li>
-										<i class="fab fa-github"></i>
-										<div>
-											<a
-												href="https://github.com/niranjan910"
-												target="_blank"
-												>GitHub</a
-											>
-										</div>
-									</li>
-								</ul>
-							</div>
+				<div class="about-redesigned-container reveal">
+					<!-- LEFT COLUMN - AVATAR -->
+					<div class="avatar-column">
+						<div class="avatar-placeholder">
+							<i class="fas fa-user-tie avatar-icon"></i>
 						</div>
 					</div>
-					<div class="about-right">
-						<h1 class="about-headline">
-							Every Dataset Tells a Story — Here’s Mine.
-						</h1>
-						<p class="about-subtitle">
-							I believe that inside every dataset lies a powerful
-							narrative waiting to be told. My passion is to uncover that
-							story and translate it into clear, strategic insights.
+			
+					<!-- RIGHT COLUMN - TEXT CONTENT -->
+					<div class="content-column">
+						<h2 class="section-heading about-heading">About Me</h2>
+						<p>
+							I’m a Data Analyst with a strong foundation in SQL, Python, and Business Intelligence tools. I specialize in transforming raw datasets into insights and strategies that organizations can act on.
 						</p>
-
-						<div class="narrative-story">
-							<p>
-								My journey into data began with a fascination for
-								finding patterns in complexity. This curiosity led me
-								to pursue a B.Tech in Computer Science, where I built
-								a strong foundation in Python, SQL, and data
-								visualization, discovering a passion for transforming
-								raw numbers into compelling stories that drive strategic
-								decisions.
-							</p>
-							<p>
-								In my current role as a Data Analyst Trainee at Naresh i
-								Technologies, I specialize in developing end-to-end data
-								solutions. I engineer robust ETL pipelines, optimize
-								complex queries, and design intuitive dashboards in
-								Power BI and Tableau. I don’t just process data; I
-								craft actionable insights from it, turning vast datasets
-								— like analyzing over 500,000 retail records — into clear
-								business strategies.
-							</p>
-							<p>
-								Looking ahead, my goal is to deepen my expertise in
-								machine learning and predictive analytics. I am driven to
-								empower organizations to make forward-looking, data-informed decisions that not only solve today's challenges but also anticipate future opportunities and create a measurable competitive advantage.
-							</p>
-						</div>
-
-						<hr class="about-section-divider" />
-						
-						<!-- ============================================= -->
-						<!-- ===== START OF REPLACEMENT COMPETENCIES SECTION ===== -->
-						<!-- ============================================= -->
-						<h3 class="section-subheading">Core Competencies</h3>
-						<div class="toolkit-grid">
-							<div class="toolkit-item">
-								<div class="icon"><i class="fas fa-database"></i></div>
-								<div class="text">
-									<h4>SQL & Database Management</h4>
-									<p>Designing complex queries, optimizing performance, and managing relational databases to extract critical data.</p>
-								</div>
+						<p>
+							My background includes building ETL pipelines, creating interactive dashboards in Power BI & Tableau, and applying statistical analysis to uncover hidden patterns. During my internships and projects, I worked on real-world datasets — from analyzing city air quality to forecasting retail sales — always with the goal of turning data into clear business outcomes.
+						</p>
+						<p>
+							I hold a B.Tech in Computer Software Engineering, where I developed not just technical expertise but also the problem-solving mindset to approach data challenges creatively.
+						</p>
+						<p>
+							Looking ahead, I’m driven to help organizations make forward-looking, data-informed decisions — empowering them to not only solve today’s problems but also anticipate future opportunities.
+						</p>
+			
+						<h3 class="toolkit-heading">My Toolkit</h3>
+						<div class="skills-grid">
+							<div class="skill-badge">
+								<i class="fas fa-database"></i>
+								<span>SQL</span>
 							</div>
-							<div class="toolkit-item">
-								<div class="icon"><i class="fab fa-python"></i></div>
-								<div class="text">
-									<h4>Python for Data Analysis</h4>
-									<p>Leveraging Pandas, NumPy, and Scikit-learn for data cleaning, transformation, and statistical modeling.</p>
-								</div>
+							<div class="skill-badge">
+								<i class="fab fa-python"></i>
+								<span>Python</span>
 							</div>
-							<div class="toolkit-item">
-								<div class="icon"><i class="fas fa-chart-pie"></i></div>
-								<div class="text">
-									<h4>Business Intelligence & Visualization</h4>
-									<p>Creating interactive dashboards in Power BI and Tableau to make data accessible and understandable.</p>
-								</div>
+							<div class="skill-badge">
+								<i class="fas fa-chart-pie"></i>
+								<span>Power BI & Tableau</span>
 							</div>
-							<div class="toolkit-item">
-								<div class="icon"><i class="fas fa-cogs"></i></div>
-								<div class="text">
-									<h4>ETL & Data Pipelines</h4>
-									<p>Building automated workflows to extract, transform, and load data efficiently from diverse sources.</p>
-								</div>
-							</div>
-							<div class="toolkit-item">
-								<div class="icon"><i class="fas fa-search-dollar"></i></div>
-								<div class="text">
-									<h4>Statistical Analysis</h4>
-									<p>Applying statistical methods to identify trends, test hypotheses, and provide predictive insights.</p>
-								</div>
-							</div>
-							<div class="toolkit-item">
-								<div class="icon"><i class="fas fa-file-excel"></i></div>
-								<div class="text">
-									<h4>Advanced Excel</h4>
-									<p>Utilizing PivotTables, Power Query, and financial modeling for in-depth business analysis and reporting.</p>
-								</div>
+							<div class="skill-badge">
+								<i class="fas fa-robot"></i>
+								<span>Machine Learning</span>
 							</div>
 						</div>
-						<!-- ============================================= -->
-						<!-- ====== END OF REPLACEMENT COMPETENCIES SECTION ====== -->
-						<!-- ============================================= -->
 					</div>
 				</div>
 			</section>
 
-			<!-- ============================================= -->
-			<!-- ========= NEW "MY JOURNEY" SECTION ========== -->
-			<!-- ============================================= -->
+			<!-- "MY JOURNEY" SECTION -->
 			<section id="journey">
 				<h2 class="section-heading reveal">My Journey</h2>
 				<div class="timeline-container">
-
-					<!-- Timeline Item 1: Data Analyst -->
 					<div class="timeline-item right reveal">
 						<div class="timeline-card">
-							<div class="card-header">
-								<span class="icon"><i class="fas fa-briefcase"></i></span>
-								<div>
-									<h3>Data Analyst (Trainee)</h3>
-									<span class="org">Naresh i Technologies</span>
-								</div>
-							</div>
-							<div class="meta">
-								<span><i class="fas fa-calendar-alt"></i> Feb 2025 – Jul 2025</span>
-								<span><i class="fas fa-map-marker-alt"></i> Hyderabad</span>
-							</div>
-							<ul>
-								<li>Leveraged SQL and Python for comprehensive data cleaning, wrangling, and reporting.</li>
-								<li>Engineered and automated ETL pipelines, enhancing data flow and processing efficiency.</li>
-								<li>Designed and developed insightful dashboards in Power BI to track key business metrics.</li>
-							</ul>
+							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Analyst (Trainee)</h3><span class="org">Naresh i Technologies</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Feb 2025 – Jul 2025</span><span><i class="fas fa-map-marker-alt"></i> Hyderabad</span></div>
+							<ul><li>Leveraged SQL and Python for comprehensive data cleaning, wrangling, and reporting.</li><li>Engineered and automated ETL pipelines, enhancing data flow and processing efficiency.</li><li>Designed and developed insightful dashboards in Power BI to track key business metrics.</li></ul>
 						</div>
 					</div>
-
-					<!-- Timeline Item 2: UX Designer -->
 					<div class="timeline-item left reveal">
 						<div class="timeline-card">
-							<div class="card-header">
-								<span class="icon"><i class="fas fa-briefcase"></i></span>
-								<div>
-									<h3>UX Designer</h3>
-									<span class="org">DevRiser</span>
-								</div>
-							</div>
-							<div class="meta">
-								<span><i class="fas fa-calendar-alt"></i> Jun 2023 – Dec 2024</span>
-								<span><i class="fas fa-map-marker-alt"></i> Remote, UK</span>
-							</div>
-							<ul>
-								<li>Specialized in designing intuitive, data-driven dashboards and user interfaces.</li>
-								<li>Translated complex data requirements into clean, user-friendly visualization workflows.</li>
-								<li>Collaborated with data teams to ensure design feasibility and analytical integrity.</li>
-							</ul>
+							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>UX Designer</h3><span class="org">DevRiser</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Jun 2023 – Dec 2024</span><span><i class="fas fa-map-marker-alt"></i> Remote, UK</span></div>
+							<ul><li>Specialized in designing intuitive, data-driven dashboards and user interfaces.</li><li>Translated complex data requirements into clean, user-friendly visualization workflows.</li><li>Collaborated with data teams to ensure design feasibility and analytical integrity.</li></ul>
 						</div>
 					</div>
-					
-					<!-- Timeline Item 3: Data Science Intern -->
 					<div class="timeline-item right reveal">
 						<div class="timeline-card">
-							<div class="card-header">
-								<span class="icon"><i class="fas fa-briefcase"></i></span>
-								<div>
-									<h3>Data Science Intern</h3>
-									<span class="org">TechieNest</span>
-								</div>
-							</div>
-							<div class="meta">
-								<span><i class="fas fa-calendar-alt"></i> Jul 2022 – Aug 2022</span>
-								<span><i class="fas fa-map-marker-alt"></i> Jaipur</span>
-							</div>
-							<ul>
-								<li>Developed and trained machine learning models using Python and Scikit-learn.</li>
-								<li>Conducted exploratory data analysis (EDA) to identify patterns and insights.</li>
-							</ul>
+							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Science Intern</h3><span class="org">TechieNest</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Jul 2022 – Aug 2022</span><span><i class="fas fa-map-marker-alt"></i> Jaipur</span></div>
+							<ul><li>Developed and trained machine learning models using Python and Scikit-learn.</li><li>Conducted exploratory data analysis (EDA) to identify patterns and insights.</li></ul>
 						</div>
 					</div>
-
-					<!-- Timeline Item 4: B.Tech Degree -->
 					<div class="timeline-item left reveal">
 						<div class="timeline-card">
-							<div class="card-header">
-								<span class="icon"><i class="fas fa-graduation-cap"></i></span>
-								<div>
-									<h3>B.Tech, Computer Software Engineering</h3>
-									<span class="org">IPS College, Gwalior</span>
-								</div>
-							</div>
-							<div class="meta">
-								<span><i class="fas fa-calendar-alt"></i> 2019 – 2023</span>
-								<span><i class="fas fa-award"></i> Grade: 8.9</span>
-							</div>
-							<ul>
-								<li>Focused on data structures, algorithms, and database management systems.</li>
-								<li>Developed a strong foundation in software engineering principles and data science concepts.</li>
-							</ul>
+							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>B.Tech, Computer Software Engineering</h3><span class="org">IPS College, Gwalior</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> 2019 – 2023</span><span><i class="fas fa-award"></i> Grade: 8.9</span></div>
+							<ul><li>Focused on data structures, algorithms, and database management systems.</li><li>Developed a strong foundation in software engineering principles and data science concepts.</li></ul>
 						</div>
 					</div>
-
-					<!-- Timeline Item 5: Senior Secondary -->
 					<div class="timeline-item right reveal">
 						<div class="timeline-card">
-							<div class="card-header">
-								<span class="icon"><i class="fas fa-graduation-cap"></i></span>
-								<div>
-									<h3>Senior Secondary (Science)</h3>
-									<span class="org">DAV School</span>
-								</div>
-							</div>
-							<div class="meta">
-								<span><i class="fas fa-calendar-alt"></i> 2017 – 2018</span>
-								<span><i class="fas fa-award"></i> Grade: 8.7</span>
-							</div>
-							<ul>
-								<li>Excelled in mathematics, physics, and chemistry, building a strong analytical foundation.</li>
-							</ul>
+							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Senior Secondary (Science)</h3><span class="org">DAV School</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> 2017 – 2018</span><span><i class="fas fa-award"></i> Grade: 8.7</span></div>
+							<ul><li>Excelled in mathematics, physics, and chemistry, building a strong analytical foundation.</li></ul>
 						</div>
 					</div>
-
-					<!-- Timeline Item 6: Secondary -->
 					<div class="timeline-item left reveal">
 						<div class="timeline-card">
-							<div class="card-header">
-								<span class="icon"><i class="fas fa-graduation-cap"></i></span>
-								<div>
-									<h3>Secondary Education (X)</h3>
-									<span class="org">DAV School</span>
-								</div>
-							</div>
-							<div class="meta">
-								<span><i class="fas fa-calendar-alt"></i> 2015 – 2016</span>
-								<span><i class="fas fa-award"></i> Grade: 9.2</span>
-							</div>
-							<ul>
-								<li>Established a record of academic excellence from an early stage.</li>
-							</ul>
+							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Secondary Education (X)</h3><span class="org">DAV School</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> 2015 – 2016</span><span><i class="fas fa-award"></i> Grade: 9.2</span></div>
+							<ul><li>Established a record of academic excellence from an early stage.</li></ul>
 						</div>
 					</div>
-
 				</div>
 			</section>
 
@@ -2051,59 +1608,12 @@
 					<div class="contact-details">
 						<h3>Connect With Me</h3>
 						<ul class="contact-social-links">
-							<li>
-								<a
-									href="https://github.com/niranjan910"
-									target="_blank"
-									class="magnetic-item"
-									aria-label="Github"
-									><i class="fab fa-github"></i
-								></a>
-							</li>
-							<li>
-								<a
-									href="https://www.linkedin.com/in/niranjan-k-a83517229/"
-									target="_blank"
-									class="magnetic-item"
-									aria-label="LinkedIn"
-									><i class="fab fa-linkedin"></i
-								></a>
-							</li>
-							<li>
-								<a
-									href="https://www.behance.net/niranjandesign"
-									target="_blank"
-									class="magnetic-item"
-									aria-label="Behance"
-									><i class="fab fa-behance"></i
-								></a>
-							</li>
-							<li>
-								<a
-									href="https://dribbble.com/niranjan2000"
-									target="_blank"
-									class="magnetic-item"
-									aria-label="Dribbble"
-									><i class="fab fa-dribbble"></i
-								></a>
-							</li>
-							<li>
-								<a
-									href="https://www.instagram.com/_aethyra_/"
-									target="_blank"
-									class="magnetic-item"
-									aria-label="Instagram"
-									><i class="fab fa-instagram"></i
-								></a>
-							</li>
-							<li>
-								<a
-									href="mailto:niranjan991100@gmail.com"
-									class="magnetic-item"
-									aria-label="Email"
-									><i class="fas fa-envelope"></i
-								></a>
-							</li>
+							<li><a href="https://github.com/niranjan910" target="_blank" class="magnetic-item" aria-label="Github"><i class="fab fa-github"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" class="magnetic-item" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
+							<li><a href="https://www.behance.net/niranjandesign" target="_blank" class="magnetic-item" aria-label="Behance"><i class="fab fa-behance"></i></a></li>
+							<li><a href="https://dribbble.com/niranjan2000" target="_blank" class="magnetic-item" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a></li>
+							<li><a href="https://www.instagram.com/_aethyra_/" target="_blank" class="magnetic-item" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="mailto:niranjan991100@gmail.com" class="magnetic-item" aria-label="Email"><i class="fas fa-envelope"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -2133,65 +1643,39 @@
 
 					class Particle {
 						constructor() {
-							this.pos = p.createVector(
-								p.random(p.width),
-								p.random(p.height)
-							);
-							this.vel = p.createVector(
-								p.random(-0.5, 0.5),
-								p.random(-0.5, 0.5)
-							);
+							this.pos = p.createVector(p.random(p.width),p.random(p.height));
+							this.vel = p.createVector(p.random(-0.5, 0.5), p.random(-0.5, 0.5));
 							this.size = p.random(2, 4);
 							this.originalVel = this.vel.copy();
 						}
-
 						update() {
 							this.pos.add(this.vel);
 							this.edges();
-
 							if (!isTouchDevice && mouseVec) {
 								let d = this.pos.dist(mouseVec);
 								if (d < 100) {
-									let force = p.createVector(
-										this.pos.x - mouseVec.x,
-										this.pos.y - mouseVec.y
-									);
+									let force = p.createVector(this.pos.x - mouseVec.x, this.pos.y - mouseVec.y);
 									force.setMag(1.5);
 									this.pos.add(force);
 								}
 							}
 						}
-
 						draw() {
 							p.noStroke();
 							p.fill("rgba(255, 255, 255, 0.5)");
 							p.circle(this.pos.x, this.pos.y, this.size);
 						}
-
 						edges() {
-							if (this.pos.x < 0 || this.pos.x > p.width)
-								this.vel.x *= -1;
-							if (this.pos.y < 0 || this.pos.y > p.height)
-								this.vel.y *= -1;
+							if (this.pos.x < 0 || this.pos.x > p.width) this.vel.x *= -1;
+							if (this.pos.y < 0 || this.pos.y > p.height) this.vel.y *= -1;
 						}
-
 						checkParticles(particles) {
 							particles.forEach((particle) => {
-								const d = p.dist(
-									this.pos.x,
-									this.pos.y,
-									particle.pos.x,
-									particle.pos.y
-								);
+								const d = p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
 								if (d < 120) {
 									const alpha = p.map(d, 0, 120, 0.5, 0);
 									p.stroke(`rgba(255, 255, 255, ${alpha})`);
-									p.line(
-										this.pos.x,
-										this.pos.y,
-										particle.pos.x,
-										particle.pos.y
-									);
+									p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
 								}
 							});
 						}
@@ -2199,49 +1683,32 @@
 
 					p.setup = () => {
 						const heroSection = document.getElementById("hero");
-						canvas = p.createCanvas(
-							heroSection.offsetWidth,
-							heroSection.offsetHeight
-						);
+						canvas = p.createCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
 						canvas.parent("hero-canvas");
 						mouseVec = p.createVector(p.width / 2, p.height / 2);
-
-						for (let i = 0; i < numParticles; i++) {
-							particles.push(new Particle());
-						}
+						for (let i = 0; i < numParticles; i++) particles.push(new Particle());
 					};
-
 					p.draw = () => {
 						p.background("#111");
-						if (!isTouchDevice) {
-							mouseVec.set(p.mouseX, p.mouseY);
-						}
+						if (!isTouchDevice) mouseVec.set(p.mouseX, p.mouseY);
 						particles.forEach((particle, index) => {
 							particle.update();
 							particle.draw();
 							particle.checkParticles(particles.slice(index));
 						});
 					};
-
 					p.windowResized = () => {
 						const heroSection = document.getElementById("hero");
-						p.resizeCanvas(
-							heroSection.offsetWidth,
-							heroSection.offsetHeight
-						);
+						p.resizeCanvas(heroSection.offsetWidth, heroSection.offsetHeight);
 					};
 				};
-				if(document.getElementById('hero-canvas')){
-					new p5(heroSketch);
-				}
-
+				if(document.getElementById('hero-canvas')) new p5(heroSketch);
 
 				// --- CERTS SECTION P5.JS SKETCH ---
 				const certsSketch = (p) => {
 					let stars = [];
 					const numStars = window.innerWidth < 768 ? 200 : 400;
 					let canvas;
-
 					class Star {
 						constructor() {
 							this.x = p.random(p.width);
@@ -2249,88 +1716,54 @@
 							this.size = p.random(0.5, 2);
 							this.twinkleSpeed = p.random(0.01, 0.04);
 						}
-
 						draw() {
-							let twinkle = p.noise(
-								this.x * 0.01,
-								this.y * 0.01,
-								p.frameCount * this.twinkleSpeed
-							);
+							let twinkle = p.noise(this.x * 0.01, this.y * 0.01, p.frameCount * this.twinkleSpeed);
 							let alpha = p.map(twinkle, 0, 1, 50, 255);
 							p.fill(255, alpha);
 							p.noStroke();
 							p.circle(this.x, this.y, this.size);
 						}
 					}
-
 					p.setup = () => {
 						const certsSection = document.getElementById("certs");
-						canvas = p.createCanvas(
-							certsSection.offsetWidth,
-							certsSection.offsetHeight
-						);
+						canvas = p.createCanvas(certsSection.offsetWidth, certsSection.offsetHeight);
 						canvas.parent("certs-canvas");
-						for (let i = 0; i < numStars; i++) {
-							stars.push(new Star());
-						}
+						for (let i = 0; i < numStars; i++) stars.push(new Star());
 					};
-
 					p.draw = () => {
 						p.background("#010101");
-						stars.forEach((star) => {
-							star.draw();
-						});
+						stars.forEach((star) => star.draw());
 					};
-
 					p.windowResized = () => {
 						const certsSection = document.getElementById("certs");
-						p.resizeCanvas(
-							certsSection.offsetWidth,
-							certsSection.offsetHeight
-						);
+						p.resizeCanvas(certsSection.offsetWidth, certsSection.offsetHeight);
 						stars = [];
-						for (let i = 0; i < numStars; i++) {
-							stars.push(new Star());
-						}
+						for (let i = 0; i < numStars; i++) stars.push(new Star());
 					};
 				};
-				if(document.getElementById('certs-canvas')){
-					new p5(certsSketch);
-				}
-
+				if(document.getElementById('certs-canvas')) new p5(certsSketch);
 
 				// --- SCROLL-BASED ANIMATIONS ---
 				const revealElements = document.querySelectorAll(".reveal");
-				const revealObserver = new IntersectionObserver(
-					(entries, observer) => {
-						entries.forEach((entry) => {
-							if (entry.isIntersecting) {
-								entry.target.classList.add("is-visible");
-								observer.unobserve(entry.target); // Unobserve after revealing
-							}
-						});
-					},
-					{ rootMargin: "0px 0px -100px 0px" }
-				);
-
-				revealElements.forEach((el) => {
-					revealObserver.observe(el);
-				});
+				const revealObserver = new IntersectionObserver((entries, observer) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("is-visible");
+							observer.unobserve(entry.target);
+						}
+					});
+				}, { rootMargin: "0px 0px -100px 0px" });
+				revealElements.forEach((el) => revealObserver.observe(el));
 
 				// --- NAVIGATION BAR STYLING ON SCROLL ---
 				const nav = document.getElementById("mainNav");
 				const logo = document.getElementById("navLogoImage");
 				const originalLogoSrc = "Logo/Logo.svg";
 				const scrolledLogoSrc = "Logo/Logo Dark.svg";
-
 				window.addEventListener("scroll", () => {
 					const isScrolled = window.scrollY > 50;
 					nav.classList.toggle("scrolled", isScrolled);
-					if (logo) {
-						logo.src = isScrolled
-							? scrolledLogoSrc
-							: originalLogoSrc;
-					}
+					if (logo) logo.src = isScrolled ? scrolledLogoSrc : originalLogoSrc;
 				});
 
 				// --- HAMBURGER MENU LOGIC ---
@@ -2343,7 +1776,6 @@
 						navLinks.classList.toggle("active");
 						document.body.classList.toggle("nav-open");
 					});
-
 					navLinks.querySelectorAll("a").forEach((link) => {
 						if (link.getAttribute("href").startsWith("#")) {
 							link.addEventListener("click", () => {
@@ -2358,72 +1790,43 @@
 				// --- ACTIVE NAVIGATION LINK ON SCROLL ---
 				const sections = document.querySelectorAll("main section[id]");
 				const navLinkMap = {};
-				document
-					.querySelectorAll("#navLinks ol li a")
-					.forEach((a) => {
-						const href = a.getAttribute("href");
-						if (href && href.startsWith("#")) {
-							navLinkMap[href.substring(1)] = a;
+				document.querySelectorAll("#navLinks ol li a").forEach((a) => {
+					const href = a.getAttribute("href");
+					if (href && href.startsWith("#")) navLinkMap[href.substring(1)] = a;
+				});
+				const sectionObserver = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						const id = entry.target.getAttribute("id");
+						if (navLinkMap[id]) {
+							if (entry.isIntersecting && entry.intersectionRatio > 0.4) {
+								Object.values(navLinkMap).forEach((link) => link.classList.remove("active"));
+								navLinkMap[id].classList.add("active");
+							} else {
+								navLinkMap[id].classList.remove("active");
+							}
 						}
 					});
-
-				const sectionObserver = new IntersectionObserver(
-					(entries) => {
-						entries.forEach((entry) => {
-							const id = entry.target.getAttribute("id");
-							if (navLinkMap[id]) {
-								if (
-									entry.isIntersecting &&
-									entry.intersectionRatio > 0.4
-								) {
-									Object.values(navLinkMap).forEach((link) =>
-										link.classList.remove("active")
-									);
-									navLinkMap[id].classList.add("active");
-								} else {
-									navLinkMap[id].classList.remove("active");
-								}
-							}
-						});
-					},
-					{
-						rootMargin: "-40% 0px -40% 0px",
-					}
-				);
-
+				}, { rootMargin: "-40% 0px -40% 0px" });
 				sections.forEach((section) => sectionObserver.observe(section));
-
 
 				// --- MOUSE-BASED INTERACTIONS (DESKTOP ONLY) ---
 				if (!isTouchDevice) {
-					// 1. Magnetic Items Effect
-					const magneticItems =
-						document.querySelectorAll(".magnetic-item");
-
+					const magneticItems = document.querySelectorAll(".magnetic-item");
 					magneticItems.forEach((item) => {
 						item.addEventListener("mousemove", (e) => {
 							const pos = item.getBoundingClientRect();
 							const x = e.clientX - pos.left - pos.width / 2;
 							const y = e.clientY - pos.top - pos.height / 2;
-
 							item.style.transition = "transform 0.1s ease";
-							item.style.transform = `translateX(${
-								x * 0.3
-							}px) translateY(${y * 0.4}px)`;
+							item.style.transform = `translateX(${x * 0.3}px) translateY(${y * 0.4}px)`;
 						});
-
 						item.addEventListener("mouseleave", () => {
 							item.style.transition = "transform 0.3s ease";
 							item.style.transform = "translateX(0) translateY(0)";
 						});
 					});
-
-					// 2. 3D Tilt Effect for Cards
-					const tiltItems = document.querySelectorAll(
-						".project-card, .about-image-wrapper"
-					);
+					const tiltItems = document.querySelectorAll(".project-card, .about-image-wrapper");
 					const tiltStrength = 8;
-
 					tiltItems.forEach((item) => {
 						item.addEventListener("mousemove", (e) => {
 							const pos = item.getBoundingClientRect();
@@ -2431,22 +1834,16 @@
 							const y = e.clientY - pos.top;
 							const middleX = pos.width / 2;
 							const middleY = pos.height / 2;
-
-							const rotateY =
-								((x - middleX) / middleX) * tiltStrength;
-							const rotateX =
-								-((y - middleY) / middleY) * tiltStrength;
-
+							const rotateY = ((x - middleX) / middleX) * tiltStrength;
+							const rotateX = -((y - middleY) / middleY) * tiltStrength;
 							item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
 						});
-
 						item.addEventListener("mouseleave", () => {
-							item.style.transform =
-								"perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
+							item.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)";
 						});
 					});
 				}
 			});
 		</script>
 	</body>
-</html>```
+</html>
