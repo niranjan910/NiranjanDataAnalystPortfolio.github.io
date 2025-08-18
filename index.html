@@ -767,18 +767,9 @@
 						title: 'Career Essentials in Business Analysis', 
 						issuer: 'Microsoft & LinkedIn', 
 						fullImage: 'Certificates/Business Analyst certificate.png', 
-						date: 'July 4', 
+						date: 'Not Specified', 
 						id: 'Not Applicable', 
 						verifyLink: 'https://www.linkedin.com/learning/certificates/586492be7f0a6e80a1631e815a9aef7d817cf1992070dec8d3ec6545d78b9475' 
-					},
-					{ 
-						logo: 'https://1000logos.net/wp-content/uploads/2016/11/Cisco-logo.png', 
-						title: 'Data Analytics Essentials', 
-						issuer: 'Cisco', 
-						fullImage: 'Certificates/Cisco.png', 
-						date: 'June 21', 
-						id: 'Not Applicable', 
-						verifyLink: 'https://www.credly.com/badges/2315bc77-8945-48fb-a6da-262d12a28aca/linked_in_profile' 
 					},
 					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
 					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
@@ -786,6 +777,8 @@
 					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tableau_Software_logo.svg/1280px-Tableau_Software_logo.svg.png', title: 'Tableau Certified Associate', issuer: 'Tableau', fullImage: 'images/placeholder-cert.png', date: 'May 2025', id: 'STU-901-VWX-234', verifyLink: '#' },
 					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Python for Data Science', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'April 2025', id: 'YZA-567-BCD-890', verifyLink: '#' },
 					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Google Data Analytics', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'March 2025', id: 'EFG-123-HIJ-456', verifyLink: '#' },
+					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Data Analysis with Python', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'February 2025', id: 'KLM-789-NOP-012', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Data Visualization in Python', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'January 2025', id: 'QRS-345-TUV-678', verifyLink: '#' }
 				];
 				const certsGrid = document.querySelector('.certs-grid');
 				certificatesData.forEach((cert, i) => { const card = document.createElement('li'); card.className = 'cert-card reveal'; card.style.setProperty('--delay', `${i*100}ms`); card.dataset.index = i; card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`; certsGrid.appendChild(card); });
@@ -798,7 +791,7 @@
 
 				// --- GENERAL SCRIPTING & NAVIGATION ---
 				const revealElements = document.querySelectorAll(".reveal");
-				const revealObserver = new IntersectionObserver((e,o)=>{e.forEach(en=>{if(en.isInteracting){en.target.classList.add("is-visible");o.unobserve(en.target);}});},{rootMargin:"0px 0px -100px 0px"});
+				const revealObserver = new IntersectionObserver((e,o)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add("is-visible");o.unobserve(en.target);}});},{rootMargin:"0px 0px -100px 0px"});
 				revealElements.forEach(el=>revealObserver.observe(el));
 				const nav = document.getElementById("mainNav"),logo = document.getElementById("navLogoImage"),origSrc="Logo/Logo Dark.svg",scrolledSrc="Logo/Logo Dark.svg";
 				window.addEventListener("scroll",()=>{const s=window.scrollY>20;nav.classList.toggle("scrolled",s);if(logo)logo.src=s?scrolledSrc:origSrc;});
