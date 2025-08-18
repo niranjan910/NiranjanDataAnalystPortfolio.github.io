@@ -196,24 +196,29 @@
 			.scroll-down-indicator { display: none; }
 
 
-			/* --- OTHER SECTIONS --- */
+			/* --- ABOUT SECTION --- */
 			h2.section-heading { text-align: center; margin-bottom: 4rem; font-size: clamp(28px, 5vw, 40px); position: relative; color: var(--text-primary); }
 			h2.section-heading::after { content: ''; position: absolute; width: 60px; height: 3px; background: var(--accent-gradient); bottom: -15px; left: 50%; transform: translateX(-50%); }
-			.about-redesigned-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; background-color: var(--card-bg); padding: 2rem; border-radius: 1.5rem; box-shadow: 0 10px 40px -10px var(--shadow-color); border: 1px solid var(--border-color); }
+			.about-redesigned-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: flex-start; background-color: var(--card-bg); padding: 2rem; border-radius: 1.5rem; box-shadow: 0 10px 40px -10px var(--shadow-color); border: 1px solid var(--border-color); }
 			@media (min-width: 992px) { .about-redesigned-container { grid-template-columns: 1fr 2fr; padding: 4rem; } }
-			.avatar-column { display: flex; justify-content: center; align-items: center; }
+			.avatar-column { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; }
 			.avatar-placeholder { width: 100%; max-width: 300px; aspect-ratio: 1 / 1; border-radius: 1.5rem; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; color: rgba(255, 255, 255, 0.8); background-color: #222; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 			.avatar-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: conic-gradient( var(--accent-start), #a855f7, #ec4899, #f59e0b, #06b6d4, #10b981, var(--accent-start) ); animation: spin 8s linear infinite; }
 			@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 			.avatar-placeholder .avatar-icon { position: relative; z-index: 2; font-size: 6rem; text-shadow: 0 2px 10px rgba(0,0,0,0.4); }
+			.about-icon-bar { list-style: none; padding: 0; width: 100%; max-width: 300px; }
+			.about-icon-bar li { display: flex; align-items: center; gap: 1rem; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-secondary); }
+			.about-icon-bar li i { font-size: 1.2rem; color: var(--accent-start); width: 20px; text-align: center; }
 			.content-column .about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 3.5rem); }
 			.content-column .about-heading::after { display: block; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: var(--accent-gradient); }
 			.content-column p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; max-width: 70ch; color: var(--text-secondary); }
-			.toolkit-heading { font-family: var(--font-sans); font-size: 1.25rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
+			.toolkit-heading { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
+			.toolkit-subheading { font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); margin-top: 1.5rem; margin-bottom: 1rem; }
 			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
 			.skill-badge { display: inline-flex; align-items: center; gap: 0.75rem; background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: 99px; font-weight: 500; color: var(--text-primary); transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: 0 2px 5px var(--shadow-color); }
 			.skill-badge:hover { transform: translateY(-4px); box-shadow: 0 8px 15px var(--shadow-color); }
 			.skill-badge i { color: var(--accent-start); font-size: 1.25rem; }
+
 			#journey { position: relative; }
 			.timeline-container { position: relative; max-width: 1000px; margin: 0 auto; }
 			.timeline-container::after { content: ''; position: absolute; width: 4px; background-color: var(--border-color); top: 0; bottom: 0; left: 50%; margin-left: -2px; z-index: 0; }
@@ -496,17 +501,56 @@
 			<!-- "ABOUT ME" SECTION -->
 			<section id="about">
 				<div class="about-redesigned-container reveal">
-					<div class="avatar-column"><div class="avatar-placeholder"><i class="fas fa-user-tie avatar-icon"></i></div></div>
+					<div class="avatar-column">
+						<div class="avatar-placeholder"><i class="fas fa-user-tie avatar-icon"></i></div>
+						<ul class="about-icon-bar">
+							<li><i class="fas fa-briefcase"></i> Data Analyst / Scientist</li>
+							<li><i class="fas fa-map-marker-alt"></i> Gwalior, India</li>
+							<li><i class="fas fa-envelope"></i> <a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></li>
+							<li><i class="fas fa-phone"></i> <a href="tel:+910000000000">+91 000-000-0000</a></li>
+						</ul>
+					</div>
 					<div class="content-column">
 						<h2 class="section-heading about-heading">About Me</h2>
-						<p>I’m a Data Analyst with a strong foundation in SQL, Python, and Business Intelligence tools. I specialize in transforming raw datasets into insights and strategies that organizations can act on.</p>
-						<p>My background includes building ETL pipelines, creating interactive dashboards in Power BI & Tableau, and applying statistical analysis to uncover hidden patterns. I'm driven to help organizations make forward-looking, data-informed decisions.</p>
-						<h3 class="toolkit-heading">My Toolkit</h3>
+						<p>As a detail-oriented Data Professional, I bridge the gap between raw data and strategic decision-making. My expertise spans the full data lifecycle, from building robust ETL pipelines and cleaning complex datasets to deploying predictive machine learning models.</p>
+						<p>I am passionate about exploring data to uncover hidden patterns and trends. I leverage advanced SQL, Python programming, and statistical analysis to extract actionable insights. My goal is to not only analyze data but also to tell a compelling story with it, using powerful visualization tools like Power BI and Tableau to create intuitive dashboards that empower stakeholders to see and understand their data.</p>
+						
+						<h3 class="toolkit-heading">My Professional Toolkit</h3>
+						
+						<h4 class="toolkit-subheading">Data Manipulation & Analysis</h4>
 						<div class="skills-grid">
-							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL</span></div>
-							<div class="skill-badge"><i class="fab fa-python"></i><span>Python</span></div>
-							<div class="skill-badge"><i class="fas fa-chart-pie"></i><span>Power BI & Tableau</span></div>
-							<div class="skill-badge"><i class="fas fa-robot"></i><span>Machine Learning</span></div>
+							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL & T-SQL</span></div>
+							<div class="skill-badge"><i class="fab fa-python"></i><span>Python (Pandas, NumPy)</span></div>
+							<div class="skill-badge"><i class="fas fa-file-excel"></i><span>Advanced Excel</span></div>
+							<div class="skill-badge"><i class="fas fa-cogs"></i><span>ETL Processes</span></div>
+						</div>
+			
+						<h4 class="toolkit-subheading">Data Visualization</h4>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-chart-bar"></i><span>Power BI</span></div>
+							<div class="skill-badge"><i class="fas fa-chart-pie"></i><span>Tableau</span></div>
+							<div class="skill-badge"><i class="fab fa-python"></i><span>Seaborn & Matplotlib</span></div>
+						</div>
+			
+						<h4 class="toolkit-subheading">Databases & Big Data</h4>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-database"></i><span>MySQL</span></div>
+							<div class="skill-badge"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
+							<div class="skill-badge"><i class="fas fa-cloud"></i><span>Microsoft Azure</span></div>
+							<div class="skill-badge"><i class="fas fa-fire"></i><span>Apache Spark</span></div>
+						</div>
+			
+						<h4 class="toolkit-subheading">Machine Learning</h4>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-robot"></i><span>Scikit-learn</span></div>
+							<div class="skill-badge"><i class="fas fa-brain"></i><span>TensorFlow</span></div>
+							<div class="skill-badge"><i class="fas fa-chart-line"></i><span>Regression & Classification</span></div>
+						</div>
+
+						<h4 class="toolkit-subheading">Developer Tools</h4>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fab fa-git-alt"></i><span>Git & GitHub</span></div>
+							<div class="skill-badge"><i class="fab fa-jira"></i><span>Jira</span></div>
 						</div>
 					</div>
 				</div>
