@@ -8,6 +8,7 @@
         :root {
             --primary-color: #3498db;
             --secondary-color: #2ecc71;
+            --highlight-color: #e74c3c;
             --background-color: #f0f2f5;
             --text-color: #333;
             --white-color: #fff;
@@ -38,12 +39,9 @@
             z-index: 1000;
         }
 
-        .navbar .logo {
+        .navbar .logo a {
             font-size: 1.5rem;
             font-weight: bold;
-        }
-
-        .navbar .logo a {
             text-decoration: none;
             color: var(--text-color);
         }
@@ -55,9 +53,7 @@
             padding: 0;
         }
 
-        .navbar .menu li {
-            margin-left: 1.5rem;
-        }
+        .navbar .menu li { margin-left: 1.5rem; }
 
         .navbar .menu a {
             text-decoration: none;
@@ -66,9 +62,7 @@
             transition: color 0.3s;
         }
 
-        .navbar .menu a:hover {
-            color: var(--primary-color);
-        }
+        .navbar .menu a:hover { color: var(--primary-color); }
 
         /* Hero Section */
         .hero {
@@ -80,10 +74,7 @@
 
         .slide {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -95,9 +86,7 @@
             transition: opacity 1.5s ease-in-out;
         }
 
-        .slide.active {
-            opacity: 1;
-        }
+        .slide.active { opacity: 1; }
 
         /* Slide Backgrounds */
         .slide1 { background: linear-gradient(135deg, #a8c0ff, #3f2b96); }
@@ -113,17 +102,9 @@
             font-weight: 500;
         }
 
-        .slide h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            font-weight: 700;
-        }
-
-        .slide p {
-            font-size: 1.25rem;
-            max-width: 600px;
-            margin-top: 1rem;
-        }
+        .slide h1 { font-size: 3.5rem; margin: 0; font-weight: 700; }
+        .slide p { font-size: 1.25rem; max-width: 600px; margin-top: 1rem; }
+        
         .cta-button {
             display: inline-block;
             background-color: var(--white-color);
@@ -133,7 +114,7 @@
             border-radius: 50px;
             font-weight: bold;
             margin-top: 2rem;
-            transition: background-color 0.3s, color 0.3s;
+            transition: all 0.3s ease;
         }
 
         .cta-button:hover {
@@ -144,107 +125,28 @@
         }
         
         /* General Section Styling */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .section-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        h3 {
-            font-size: 1.8rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-        }
+        section { padding: 5rem 2rem; }
+        .section-container { max-width: 1100px; margin: 0 auto; text-align: center; }
+        h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 2rem; }
 
         /* About Section */
-        #about {
-            background-color: var(--white-color);
-        }
-
-        .about-intro .tagline {
-            font-size: 1rem;
-            color: #777;
-            margin-bottom: 1rem;
-        }
-
-        .about-intro h2 {
-            font-size: 2.2rem;
-            line-height: 1.4;
-            margin-bottom: 1.5rem;
-        }
-        .about-intro p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            text-align: left;
-            margin: 3rem 0;
-        }
-        
-        .skill-category {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 10px;
-        }
-
-        .skill-category h4 {
-            font-size: 1.2rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .skill-category span {
-            display: inline-block;
-            background: #e0e0e0;
-            border-radius: 5px;
-            padding: 0.5rem 0.8rem;
-            margin: 0.3rem;
-            font-size: 0.9rem;
-        }
+        #about { background-color: var(--white-color); }
+        .about-intro .tagline { font-size: 1rem; color: #777; margin-bottom: 1rem; }
+        .about-intro h2 { font-size: 2.2rem; line-height: 1.4; margin-bottom: 1.5rem; }
+        .about-intro p { max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.6; }
 
         .journey-timeline {
             display: flex;
             justify-content: space-between;
-            position: relative;
             margin: 3rem 0;
         }
 
-        .journey-step {
-            width: 23%;
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .journey-step p {
-            margin: 0;
-            font-weight: 500;
-        }
+        .journey-step { width: 23%; background: var(--light-gray); padding: 1.5rem; border-radius: 10px; }
+        .journey-step p { margin: 0; font-weight: 500; }
         
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 3rem 0;
-        }
+        .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+        
         .highlight-card {
             background: linear-gradient(135deg, #00c6ff, #0072ff);
             color: var(--white-color);
@@ -254,19 +156,60 @@
             font-weight: bold;
         }
         
-        .highlight-card span {
-            display: block;
-            font-size: 1rem;
-            font-weight: normal;
-            margin-top: 0.5rem;
+        .highlight-card span { display: block; font-size: 1rem; font-weight: normal; margin-top: 0.5rem; }
+        
+        .about-closing-quote { margin-top: 3rem; font-style: italic; font-size: 1.2rem; color: #555; }
+        
+        /* Skills Section */
+        #skills { background-color: var(--light-gray); }
+        .skills-tagline { margin-bottom: 3rem; font-size: 1.1rem; color: #555;}
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: left;
         }
         
-        .about-closing-quote {
-            margin-top: 3rem;
-            font-style: italic;
-            font-size: 1.2rem;
-            color: #555;
+        .skill-card {
+            background-color: var(--white-color);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
+
+        .skill-card.highlight { border-left: 5px solid var(--highlight-color); }
+        
+        .skill-card h4 {
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .skill-item { margin-bottom: 1.2rem; }
+        .skill-item p { margin: 0 0 0.5rem 0; font-weight: 500; }
+        
+        .proficiency-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .proficiency-level {
+            height: 100%;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+        }
+        .skills-closing {
+             margin-top: 3rem;
+             font-size: 1.1rem;
+             font-style: italic;
+             color: #555;
+        }
+
 
         /* Placeholder Sections */
         .placeholder { min-height: 60vh; }
@@ -279,7 +222,7 @@
             .slide p { font-size: 1rem; }
             .slide .tagline { position: static; margin-bottom: 1rem; font-size: 1rem; }
             .journey-timeline { flex-direction: column; gap: 1rem; }
-            .journey-step { width: 100%; box-sizing: border-box;}
+            .journey-step { width: 100%; box-sizing: border-box; }
         }
 
     </style>
@@ -302,27 +245,11 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="slide slide1 active">
-            <div class="tagline">👉 Passionate about making data meaningful.</div>
-            <h1>Niranjan Kumar | Data Analyst</h1>
-            <p>Specializing in transforming raw datasets into clear insights that guide smarter business decisions.</p>
-        </div>
-        <div class="slide slide2">
-            <div class="tagline">👉 Tools that power my analysis.</div>
-            <h1>SQL | Python | Power BI</h1>
-            <p>From querying databases with SQL, cleaning data in Python, to building dashboards in Power BI — I turn numbers into actionable insights.</p>
-        </div>
-        <div class="slide slide3">
-            <div class="tagline">👉 Driven by curiosity and storytelling.</div>
-            <h1>Data → Stories → Decisions</h1>
-            <p>I love uncovering patterns, visualizing trends, and helping businesses make informed, data-driven decisions.</p>
-        </div>
-        <div class="slide slide4">
-            <div class="tagline">👉 Always learning. Always evolving.</div>
-            <h1>From Data Analyst → Data Scientist 🚀</h1>
-            <p>Currently expanding into machine learning and AI to solve more complex, predictive problems.</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </div>
+        <!-- Slides are unchanged -->
+        <div class="slide slide1 active"><div class="tagline">👉 Passionate about making data meaningful.</div><h1>Niranjan Kumar | Data Analyst</h1><p>Specializing in transforming raw datasets into clear insights that guide smarter business decisions.</p></div>
+        <div class="slide slide2"><div class="tagline">👉 Tools that power my analysis.</div><h1>SQL | Python | Power BI</h1><p>From querying databases with SQL, cleaning data in Python, to building dashboards in Power BI — I turn numbers into actionable insights.</p></div>
+        <div class="slide slide3"><div class="tagline">👉 Driven by curiosity and storytelling.</div><h1>Data → Stories → Decisions</h1><p>I love uncovering patterns, visualizing trends, and helping businesses make informed, data-driven decisions.</p></div>
+        <div class="slide slide4"><div class="tagline">👉 Always learning. Always evolving.</div><h1>From Data Analyst → Data Scientist 🚀</h1><p>Currently expanding into machine learning and AI to solve more complex, predictive problems.</p><a href="#projects" class="cta-button">View My Work</a></div>
     </section>
 
     <!-- About Section -->
@@ -331,30 +258,9 @@
             <div class="about-intro">
                 <p class="tagline">👉 Turning numbers into actionable business insights every day.</p>
                 <h2>👉 “I’m Niranjan Kumar — a Data Analyst who transforms raw data into stories, insights, and decisions.”</h2>
-                <p>Skilled in SQL, Python, Excel, and Power BI, I specialize in cleaning, analyzing, and visualizing data to solve real-world business problems. My goal is to bridge the gap between data and decision-making with clarity and precision.</p>
+                <p>My goal is to bridge the gap between complex data and clear, actionable business strategies with precision and creativity.</p>
             </div>
             
-            <br><br>
-            <h3>My Tools & Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h4>Data Analysis & Cleaning</h4>
-                    <span>Excel</span> <span>Pandas</span> <span>NumPy</span>
-                </div>
-                <div class="skill-category">
-                    <h4>Databases</h4>
-                    <span>SQL</span> <span>MySQL</span>
-                </div>
-                <div class="skill-category">
-                    <h4>Visualization</h4>
-                    <span>Power BI</span> <span>Tableau</span> <span>Matplotlib</span> <span>Seaborn</span>
-                </div>
-                <div class="skill-category">
-                    <h4>Advanced / Learning</h4>
-                    <span>Machine Learning</span> <span>Statistics</span>
-                </div>
-            </div>
-
             <h3>My Data Journey</h3>
             <div class="journey-timeline">
                 <div class="journey-step"><p>📚 Learned foundations of Data Analytics (SQL, Excel, Python)</p></div>
@@ -365,15 +271,9 @@
 
             <h3>Highlights</h3>
             <div class="highlights-grid">
-                <div class="highlight-card">
-                    10+ <span>Projects Completed</span>
-                </div>
-                <div class="highlight-card">
-                    5+ <span>Interactive Dashboards</span>
-                </div>
-                <div class="highlight-card">
-                    2+ <span>Certificates Earned</span>
-                </div>
+                <div class="highlight-card">10+ <span>Projects Completed</span></div>
+                <div class="highlight-card">5+ <span>Interactive Dashboards</span></div>
+                <div class="highlight-card">2+ <span>Certificates Earned</span></div>
             </div>
 
             <p class="about-closing-quote">“For me, data is not just numbers — it’s a story waiting to be told.”</p>
@@ -381,8 +281,65 @@
         </div>
     </section>
 
+    <!-- Skills & Tools Section -->
+    <section id="skills">
+        <div class="section-container">
+            <h2>Skills & Tools</h2>
+            <p class="skills-tagline">“The tools and techniques I use to turn data into insights.”</p>
+            <div class="skills-grid">
+                <!-- Data Analysis -->
+                <div class="skill-card">
+                    <h4>Data Analysis & Cleaning</h4>
+                    <div class="skill-item"><p>Excel & Pandas</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
+                    <div class="skill-item"><p>NumPy</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 80%;"></div></div></div>
+                    <div class="skill-item"><p>EDA & Data Cleaning</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                </div>
+
+                <!-- Databases -->
+                <div class="skill-card">
+                    <h4>Databases / Querying</h4>
+                    <div class="skill-item"><p>SQL (MySQL, PostgreSQL)</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <div class="skill-item"><p>Database Management</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%;"></div></div></div>
+                    <div class="skill-item"><p>Data Extraction</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
+                </div>
+
+                <!-- Visualization -->
+                <div class="skill-card">
+                    <h4>Data Visualization</h4>
+                    <div class="skill-item"><p>Power BI & Tableau</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
+                    <div class="skill-item"><p>Matplotlib & Seaborn</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 80%;"></div></div></div>
+                    <div class="skill-item"><p>Interactive Dashboards</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                </div>
+                
+                 <!-- Machine Learning -->
+                <div class="skill-card highlight">
+                    <h4>Machine Learning & Advanced Analytics</h4>
+                    <div class="skill-item"><p>Scikit-learn (Regression, Classification)</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 75%; background-color: var(--highlight-color);"></div></div></div>
+                    <div class="skill-item"><p>Predictive Modeling</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 70%; background-color: var(--highlight-color);"></div></div></div>
+                    <div class="skill-item"><p>Basic Statistics & Probability</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%; background-color: var(--highlight-color);"></div></div></div>
+                </div>
+                
+                <!-- Programming -->
+                <div class="skill-card">
+                    <h4>Programming & Tools</h4>
+                     <div class="skill-item"><p>Python</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%;"></div></div></div>
+                    <div class="skill-item"><p>Jupyter Notebook</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <div class="skill-item"><p>GitHub / Version Control</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 80%;"></div></div></div>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="skill-card">
+                    <h4>Business & Soft Skills</h4>
+                    <div class="skill-item"><p>Data Storytelling</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <div class="skill-item"><p>Business Insights</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
+                    <div class="skill-item"><p>Problem Solving</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                </div>
+            </div>
+             <p class="skills-closing">"These are the tools I use daily to uncover insights, build dashboards, and predict outcomes."</p>
+        </div>
+    </section>
+
     <!-- Placeholder Sections -->
-    <section id="skills" class="placeholder"><h2>Skills</h2></section>
     <section id="projects" class="placeholder"><h2>Projects</h2></section>
     <section id="dashboards" class="placeholder"><h2>Dashboards</h2></section>
     <section id="certificates" class="placeholder"><h2>Certificates</h2></section>
