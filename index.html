@@ -5,321 +5,369 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niranjan Kumar | Data Analyst</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap');
-
         :root {
-            --primary-dark: #121212;
-            --primary-medium: #1f1f1f;
-            --accent-gold: #c5a47e;
-            --neutral-light-gray: #f5f5f5;
+            --primary-dark: #0d1b2a;
+            --primary-medium: #1b263b;
+            --accent-cyan: #00aeff;
+            --neutral-light: #f0f2f5;
             --neutral-white: #ffffff;
-            --text-primary-dark: #2c2c2c;
-            --text-secondary-dark: #5a5a5a;
-            --text-light: #e0e0e0;
+            --text-primary: #e0e1dd;
+            --text-secondary: #415a77;
         }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
 
         body {
-            font-family: 'Lato', 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            background-color: var(--neutral-white);
-            color: var(--text-secondary-dark);
+            padding: 0;
+            background-color: var(--neutral-light);
+            color: var(--text-secondary);
             scroll-behavior: smooth;
-            -webkit-font-smoothing: antialiased;
         }
-        
+
         /* --- Navigation Bar --- */
         .navbar {
-            position: fixed; /* Changed to fixed */
-            top: 0; left: 0; width: 100%;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 2.5rem;
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2.5rem;
+            background-color: var(--neutral-white);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             z-index: 1000;
-            box-sizing: border-box;
+            border-bottom: 1px solid #e0e0e0;
         }
+
         .navbar .logo a {
-            font-family: 'Playfair Display', serif; font-size: 1.8rem;
-            text-decoration: none; color: var(--primary-dark);
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--primary-dark);
         }
-        .navbar .desktop-menu { display: none; }
-        
-        .menu-toggle { display: block; cursor: pointer; }
-        .menu-toggle .bar { width: 25px; height: 2px; margin: 6px 0; background-color: var(--primary-dark); transition: all 0.3s; }
 
-        /* Mobile Nav (Fullscreen Overlay) */
-        .mobile-nav {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background-color: var(--primary-dark); display: flex;
-            justify-content: center; align-items: center; z-index: 2000;
-            opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s ease;
+        .navbar .menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
         }
-        .mobile-nav.active { opacity: 1; visibility: visible; }
-        .mobile-nav ul { list-style: none; padding: 0; text-align: center; }
-        .mobile-nav li { margin: 2rem 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s, transform 0.3s; }
-        .mobile-nav.active li { opacity: 1; transform: translateY(0); transition-delay: calc(0.2s + 0.1s * var(--i)); }
-        .mobile-nav a { text-decoration: none; color: var(--neutral-white); font-size: 2rem; font-weight: 300; }
 
-        /* Menu toggle animation when active */
-        .menu-toggle.active { z-index: 2001; }
-        .menu-toggle.active .bar { background-color: white; }
-        .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-        .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
-        .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        .navbar .menu li { margin-left: 2rem; }
+
+        .navbar .menu a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar .menu a:hover { color: var(--accent-cyan); }
 
         /* --- Hero Section --- */
         .hero {
-            position: relative; height: 100vh;
-            overflow: hidden; color: var(--text-light);
-            display: flex; align-items: center; justify-content: center; text-align: center;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            color: var(--neutral-white);
         }
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; z-index: 2;
-            background: linear-gradient(to top, rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.2));
-        }
-        .hero-background {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; background-color: var(--primary-dark);
-            z-index: 1;
-            background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'); /* Aesthetic data background */
-            background-size: cover; background-position: center;
-            animation: kenBurns 20s infinite alternate;
-        }
-        @keyframes kenBurns {
-            from { transform: scale(1); } to { transform: scale(1.1); }
-        }
-        
-        .slide-content { position: relative; width: 90%; z-index: 3; max-width: 1200px; height: 80vh; }
-        .slide.active .slide-content > * {
+
+        .slide {
             position: absolute;
-            opacity: 0; animation: fadeInSlide 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2.5rem;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
         }
 
-        .slide .tagline { top: 0; left: 0; font-size: 1.1rem; letter-spacing: 1px; animation-delay: 0.5s; }
+        .slide.active { opacity: 1; transform: scale(1); }
+
+        .slide1 { background: linear-gradient(135deg, #1b263b, #0d1b2a); }
+        .slide2 { background: linear-gradient(135deg, #1b263b, #415a77); }
+        .slide3 { background: linear-gradient(135deg, #0d1b2a, #2a3a5b); }
+        .slide4 { background: linear-gradient(135deg, #0d1b2a, var(--accent-cyan)); }
+
+        .slide .tagline {
+            position: absolute;
+            top: 5rem;
+            left: 5rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
         .slide h1 {
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 100%; font-family: 'Playfair Display', serif; font-size: 3rem;
-            font-weight: 700; animation-delay: 0.2s;
-        }
-        .slide p {
-            bottom: 0; left: 50%; transform: translateX(-50%); width: 100%;
-            max-width: 500px; font-size: 1.1rem; line-height: 1.7; font-weight: 300;
-            animation-delay: 0.8s;
+            font-size: 4rem;
+            margin: 0.5rem 0;
+            font-weight: 700;
         }
 
-        @keyframes fadeInSlide { to { opacity: 1; } }
+        .slide p {
+            font-size: 1.25rem;
+            max-width: 650px;
+            margin-top: 1rem;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-cyan);
+            color: var(--neutral-white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            margin-top: 2.5rem;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            transform: translateY(-3px);
+        }
 
         /* --- General Section Styling --- */
-        section { padding: 6rem 2.5rem; box-sizing: border-box; }
-        .section-container { max-width: 1100px; margin: 0 auto; }
+        section { padding: 6rem 2.5rem; }
+        .section-container { max-width: 1200px; margin: 0 auto; text-align: center; }
+        
         h2.section-title {
-            font-family: 'Playfair Display', serif; text-align: center; font-size: 2.8rem;
-            margin-bottom: 4rem; color: var(--text-primary-dark);
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
         }
 
+        h3.section-subtitle {
+            font-size: 1.8rem;
+            color: var(--primary-medium);
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+        
+        .section-tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+        }
+        
         /* --- About Section --- */
-        #about p { text-align: center; font-size: 1.2rem; line-height: 1.8; max-width: 750px; margin: 0 auto 4rem; }
-        .journey-timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: center; }
-        .journey-step p { font-size: 1rem; line-height: 1.6; }
+        #about { background-color: var(--neutral-white); }
+        #about .about-intro h2 { font-size: 2.5rem; line-height: 1.4; margin-bottom: 1.5rem; color: var(--primary-dark);}
+        #about .about-intro p { max-width: 800px; margin: 0 auto 4rem; font-size: 1.15rem; line-height: 1.7; }
+        #about .about-closing-quote { margin-top: 4rem; margin-bottom: 2rem; font-style: italic; font-size: 1.3rem; color: #555; }
 
-        /* --- Interactive Skills Section --- */
-        #skills { background-color: var(--neutral-light-gray); }
-        .skills-container {
+        .journey-timeline {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            min-height: 500px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
         }
-        .skill-categories {
-            list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1rem;
+
+        .journey-step { text-align: center; background: var(--neutral-light); padding: 2rem; border-radius: 10px; border: 1px solid #e0e1dd;}
+        .journey-step p { margin: 0; font-weight: 500; font-size: 1rem; line-height: 1.5;}
+
+        /* --- Skills Section --- */
+        #skills { background-color: var(--neutral-light); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            text-align: left;
         }
-        .skill-category {
-            padding: 1.5rem; font-size: 1.2rem; font-weight: 700;
-            border-radius: 8px; border: 1px solid transparent;
-            cursor: pointer; transition: all 0.3s ease; color: var(--text-secondary-dark);
-        }
-        .skill-category:hover { background-color: #e9e9e9; }
-        .skill-category.active {
-            border-color: var(--accent-gold);
+        
+        .skill-card {
             background-color: var(--neutral-white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); }
+        
+        .skill-card h4 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid var(--accent-cyan);
+            padding-bottom: 0.8rem;
             color: var(--primary-dark);
         }
         
-        .skills-display {
-            position: relative;
-            background: var(--neutral-white);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        .skill-item { margin-bottom: 1.5rem; }
+        .skill-item p { margin: 0 0 0.8rem 0; font-weight: 500; }
+        
+        .proficiency-bar { width: 100%; height: 8px; background-color: #e0e0e0; border-radius: 5px; }
+        .proficiency-level { height: 100%; background: linear-gradient(90deg, #415a77, var(--accent-cyan)); border-radius: 5px; }
+
+        .skills-closing { margin-top: 4rem; font-size: 1.15rem; font-style: italic; color: #555; }
+
+        /* --- Placeholder Sections --- */
+        .placeholder { min-height: 60vh; }
+        .placeholder h2 { color: var(--primary-dark); }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+            .navbar .menu { display: none; }
+            .slide h1 { font-size: 3rem; }
+            .slide .tagline { display: none; }
+            .journey-timeline { grid-template-columns: 1fr 1fr; }
         }
-        .skills-group {
-            position: absolute; top: 2.5rem; left: 2.5rem; right: 2.5rem;
-            display: flex; flex-wrap: wrap; gap: 0.8rem;
-            opacity: 0; visibility: hidden;
-            transform: translateY(10px);
-            transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
-        }
-        .skills-group.active { opacity: 1; visibility: visible; transform: translateY(0); }
-        .skill-pill {
-            background-color: var(--neutral-light-gray);
-            color: var(--text-secondary-dark);
-            padding: 0.7rem 1.2rem;
-            border-radius: 20px;
-            font-weight: 500;
-            font-size: 0.95rem;
+        @media (max-width: 576px) {
+            section { padding: 4rem 1.5rem; }
+            .slide h1 { font-size: 2.5rem; }
+            .slide p { font-size: 1rem; }
+            .journey-timeline { grid-template-columns: 1fr; }
+            h2.section-title { font-size: 2.2rem; }
         }
 
-        /* --- Media Queries for Responsive Design --- */
-        @media (min-width: 768px) {
-            .navbar { padding: 1.5rem 4rem; }
-            .menu-toggle, .mobile-nav { display: none; }
-            .navbar .desktop-menu { display: flex; list-style: none; margin: 0; padding: 0; }
-            .navbar .desktop-menu li { margin-left: 2.5rem; }
-            .navbar .desktop-menu a { font-weight: 400; font-size: 1.1rem; }
-            .slide h1 { font-size: 5.5rem; }
-            .skills-container { grid-template-columns: 300px 1fr; }
-        }
-        @media (min-width: 1024px) {
-            section { padding: 8rem 4rem; }
-            h2.section-title { font-size: 3.5rem; }
-            .slide .tagline { font-size: 1.2rem; }
-            .slide p { font-size: 1.2rem; max-width: 600px; }
-        }
     </style>
 </head>
 <body>
+
     <nav class="navbar">
-        <div class="logo"><a href="#home">NK.</a></div>
-        <ul class="desktop-menu">
-            <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li>
+        <div class="logo"><a href="#home">Niranjan Kumar</a></div>
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#dashboards">Dashboards</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="menu-toggle">
-            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </div>
     </nav>
 
-    <div class="mobile-nav">
-        <ul>
-            <li style="--i:1;"><a href="#about">About</a></li>
-            <li style="--i:2;"><a href="#skills">Skills</a></li>
-            <li style="--i:3;"><a href="#projects">Projects</a></li>
-            <li style="--i:4;"><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-    
-    <main id="home">
-        <section class="hero">
-            <div class="hero-background"></div>
-            <div id="hero-slider" class="slides-container">
-                <div class="slide active">
-                    <div class="slide-content">
-                        <span class="tagline">Niranjan Kumar /// Data Analyst</span>
-                        <h1>Crafting Clarity from Complexity.</h1>
-                        <p>I design data solutions that transform abstract numbers into tangible business insights, empowering organizations to see clearly and act decisively.</p>
-                    </div>
+    <section id="home" class="hero">
+        <div class="slide slide1 active">
+            <div class="tagline">Passionate about making data meaningful.</div>
+            <h1>Niranjan Kumar | Data Analyst</h1>
+            <p>Specializing in transforming raw datasets into clear insights that guide smarter business decisions.</p>
+        </div>
+        <div class="slide slide2">
+            <div class="tagline">Tools that power my analysis.</div>
+            <h1>SQL | Python | Power BI</h1>
+            <p>From querying databases with SQL, cleaning data in Python, to building dashboards in Power BI — I turn numbers into actionable insights.</p>
+        </div>
+        <div class="slide slide3">
+            <div class="tagline">Driven by curiosity and storytelling.</div>
+            <h1>Data to Stories to Decisions</h1>
+            <p>I love uncovering patterns, visualizing trends, and helping businesses make informed, data-driven decisions.</p>
+        </div>
+        <div class="slide slide4">
+            <div class="tagline">Always learning, always evolving.</div>
+            <h1>Aspiring Data Scientist</h1>
+            <p>Currently expanding into machine learning and artificial intelligence to solve more complex, predictive problems.</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-container">
+            <div class="about-intro">
+                <h2 class="section-title">About Me</h2>
+                <p>My goal is to bridge the gap between complex data and clear, actionable business strategies with precision and creativity. I am a Data Analyst who transforms raw numbers into compelling stories, tangible insights, and impactful decisions.</p>
+            </div>
+            
+            <h3 class="section-subtitle">My Data Journey</h3>
+            <div class="journey-timeline">
+                <div class="journey-step"><p>Learned foundational principles of Data Analytics, including SQL, Excel, and Python.</p></div>
+                <div class="journey-step"><p>Developed practical experience by building real-world projects and interactive dashboards.</p></div>
+                <div class="journey-step"><p>Delivered measurable business insights through advanced data visualization techniques.</p></div>
+                <div class="journey-step"><p>Currently exploring Machine Learning and AI to build predictive solutions.</p></div>
+            </div>
+
+            <p class="about-closing-quote">“For me, data is not just numbers — it’s a story waiting to be told.”</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-container">
+            <h2 class="section-title">Skills & Tools</h2>
+            <p class="section-tagline">The tools and techniques I use to turn data into strategic insights.</p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h4>Analysis & Cleaning</h4>
+                    <div class="skill-item"><p>Excel & Pandas</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
+                    <div class="skill-item"><p>NumPy</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%;"></div></div></div>
+                    <div class="skill-item"><p>EDA & Data Munging</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                </div>
+                <div class="skill-card">
+                    <h4>Databases & Querying</h4>
+                    <div class="skill-item"><p>SQL (MySQL, PostgreSQL)</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <div class="skill-item"><p>Database Management</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%;"></div></div></div>
+                    <div class="skill-item"><p>Data Extraction (ETL)</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
+                </div>
+                <div class="skill-card">
+                    <h4>Data Visualization</h4>
+                    <div class="skill-item"><p>Power BI & Tableau</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
+                    <div class="skill-item"><p>Matplotlib & Seaborn</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 80%;"></div></div></div>
+                    <div class="skill-item"><p>Interactive Dashboard Design</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                </div>
+                <div class="skill-card">
+                    <h4>Machine Learning</h4>
+                    <div class="skill-item"><p>Scikit-learn</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 75%;"></div></div></div>
+                    <div class="skill-item"><p>Predictive Modeling</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 70%;"></div></div></div>
+                    <div class="skill-item"><p>Statistics & Probability</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%;"></div></div></div>
+                </div>
+                <div class="skill-card">
+                    <h4>Programming & Tools</h4>
+                     <div class="skill-item"><p>Python</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%;"></div></div></div>
+                    <div class="skill-item"><p>Jupyter Notebook</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <div class="skill-item"><p>Git & Version Control</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 80%;"></div></div></div>
+                </div>
+                <div class="skill-card">
+                    <h4>Professional Skills</h4>
+                    <div class="skill-item"><p>Data Storytelling</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <div class="skill-item"><p>Business Acumen</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
+                    <div class="skill-item"><p>Analytical Problem-Solving</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
                 </div>
             </div>
-        </section>
+             <p class="skills-closing">I use this stack daily to uncover insights, build dashboards, and predict outcomes.</p>
+        </div>
+    </section>
 
-        <section id="about">
-            <div class="section-container">
-                <h2 class="section-title">My Philosophy</h2>
-                <p>I believe data is the raw material of discovery. My role is to act as both a scientist and a storyteller—rigorously analyzing complex datasets to find the truth, and then translating those findings into clear, compelling narratives that drive intelligent action. True insight lies at the intersection of analytical precision and human curiosity.</p>
-            </div>
-        </section>
-
-        <section id="skills">
-            <div class="section-container">
-                <h2 class="section-title">Technical Expertise</h2>
-                <div class="skills-container">
-                    <ul class="skill-categories">
-                        <li class="skill-category active" data-skill="analysis">Data Analysis & Cleaning</li>
-                        <li class="skill-category" data-skill="databases">Databases & Querying</li>
-                        <li class="skill-category" data-skill="visualization">Data Visualization</li>
-                        <li class="skill-category" data-skill="ml">Machine Learning</li>
-                        <li class="skill-category" data-skill="tools">Programming & Tools</li>
-                    </ul>
-                    <div class="skills-display">
-                        <div class="skills-group active" id="analysis">
-                            <span class="skill-pill">Pandas</span> <span class="skill-pill">NumPy</span>
-                            <span class="skill-pill">Excel</span> <span class="skill-pill">Exploratory Data Analysis (EDA)</span>
-                            <span class="skill-pill">Data Cleaning & Wrangling</span> <span class="skill-pill">Statistical Analysis</span>
-                        </div>
-                        <div class="skills-group" id="databases">
-                            <span class="skill-pill">SQL</span> <span class="skill-pill">MySQL</span> <span class="skill-pill">PostgreSQL</span>
-                            <span class="skill-pill">Database Management</span> <span class="skill-pill">ETL Processes</span>
-                        </div>
-                        <div class="skills-group" id="visualization">
-                            <span class="skill-pill">Power BI</span> <span class="skill-pill">Tableau</span>
-                            <span class="skill-pill">Matplotlib</span> <span class="skill-pill">Seaborn</span>
-                            <span class="skill-pill">Interactive Dashboards</span> <span class="skill-pill">Data Storytelling</span>
-                        </div>
-                        <div class="skills-group" id="ml">
-                             <span class="skill-pill">Scikit-learn</span><span class="skill-pill">Regression Models</span>
-                             <span class="skill-pill">Classification Models</span><span class="skill-pill">Predictive Modeling</span>
-                        </div>
-                        <div class="skills-group" id="tools">
-                            <span class="skill-pill">Python</span> <span class="skill-pill">Jupyter Notebooks</span>
-                            <span class="skill-pill">Git & Version Control</span> <span class="skill-pill">GitHub</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="projects" style="background:var(--neutral-light-gray); min-height: 50vh;">
-             <div class="section-container"> <h2 class="section-title">Projects Coming Soon</h2></div>
-        </section>
-        <section id="contact" style="min-height: 50vh;">
-             <div class="section-container"> <h2 class="section-title">Get In Touch</h2></div>
-        </section>
-    </main>
+    <section id="projects" class="placeholder"> <h2 class="section-title">Projects</h2> </section>
+    <section id="dashboards" class="placeholder"> <h2 class="section-title">Dashboards</h2> </section>
+    <section id="certificates" class="placeholder"> <h2 class="section-title">Certificates</h2> </section>
+    <section id="contact" class="placeholder"> <h2 class="section-title">Contact</h2> </section>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Mobile Menu ---
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mobileNav = document.querySelector('.mobile-nav');
-        const navLinks = document.querySelectorAll('.mobile-nav a');
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+            const slideInterval = 5000; 
 
-        menuToggle.addEventListener('click', () => {
-            const isActive = mobileNav.classList.toggle('active');
-            menuToggle.classList.toggle('active', isActive);
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
-        });
-
-        // --- Interactive Skills Section ---
-        const categories = document.querySelectorAll('.skill-category');
-        const skillGroups = document.querySelectorAll('.skills-group');
-
-        categories.forEach(category => {
-            category.addEventListener('click', () => {
-                // Update active category
-                categories.forEach(cat => cat.classList.remove('active'));
-                category.classList.add('active');
-
-                // Get target skill group ID from data attribute
-                const targetSkillId = category.dataset.skill;
-                
-                // Update active skills group
-                skillGroups.forEach(group => {
-                    if (group.id === targetSkillId) {
-                        group.classList.add('active');
-                    } else {
-                        group.classList.remove('active');
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
                     }
                 });
-            });
+            }
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            setInterval(nextSlide, slideInterval);
+            showSlide(currentSlide);
         });
-    });
     </script>
 
 </body>
