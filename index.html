@@ -11,6 +11,7 @@
             --background-color: #f0f2f5;
             --text-color: #333;
             --white-color: #fff;
+            --light-gray: #f9f9f9;
         }
 
         body {
@@ -69,7 +70,6 @@
             color: var(--primary-color);
         }
 
-
         /* Hero Section */
         .hero {
             position: relative;
@@ -100,20 +100,10 @@
         }
 
         /* Slide Backgrounds */
-        .slide1 {
-            background: linear-gradient(135deg, #a8c0ff, #3f2b96);
-        }
-        .slide2 {
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
-        }
-        .slide3 {
-            background: linear-gradient(135deg, #f7b733, #fc4a1a);
-        }
-
-        .slide4 {
-            background: linear-gradient(135deg, #8a2387, #e94057, #f27121);
-        }
-
+        .slide1 { background: linear-gradient(135deg, #a8c0ff, #3f2b96); }
+        .slide2 { background: linear-gradient(135deg, #00c6ff, #0072ff); }
+        .slide3 { background: linear-gradient(135deg, #f7b733, #fc4a1a); }
+        .slide4 { background: linear-gradient(135deg, #8a2387, #e94057, #f27121); }
 
         .slide .tagline {
             position: absolute;
@@ -135,6 +125,7 @@
             margin-top: 1rem;
         }
         .cta-button {
+            display: inline-block;
             background-color: var(--white-color);
             color: var(--primary-color);
             padding: 0.8rem 2rem;
@@ -148,28 +139,156 @@
         .cta-button:hover {
             background-color: var(--primary-color);
             color: var(--white-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-
-        /* Sections */
-
+        
+        /* General Section Styling */
         section {
-            padding: 4rem 2rem;
-            min-height: 100vh;
+            padding: 5rem 2rem;
         }
-        h2 {
+
+        .section-container {
+            max-width: 1100px;
+            margin: 0 auto;
             text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2.5rem;
         }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--white-color);
+        }
+
+        .about-intro .tagline {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 1rem;
+        }
+
+        .about-intro h2 {
+            font-size: 2.2rem;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+        }
+        .about-intro p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
+            margin: 3rem 0;
+        }
+        
+        .skill-category {
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+
+        .skill-category h4 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-category span {
+            display: inline-block;
+            background: #e0e0e0;
+            border-radius: 5px;
+            padding: 0.5rem 0.8rem;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .journey-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .journey-step {
+            width: 23%;
+            background: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .journey-step p {
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        .highlight-card {
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: var(--white-color);
+            padding: 2rem;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .highlight-card span {
+            display: block;
+            font-size: 1rem;
+            font-weight: normal;
+            margin-top: 0.5rem;
+        }
+        
+        .about-closing-quote {
+            margin-top: 3rem;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Placeholder Sections */
+        .placeholder { min-height: 60vh; }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar .menu { display: none; }
+            .slide h1 { font-size: 2.5rem; }
+            .slide p { font-size: 1rem; }
+            .slide .tagline { position: static; margin-bottom: 1rem; font-size: 1rem; }
+            .journey-timeline { flex-direction: column; gap: 1rem; }
+            .journey-step { width: 100%; box-sizing: border-box;}
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">
-            <a href="#home">Niranjan Kumar</a>
-        </div>
+        <div class="logo"><a href="#home">Niranjan Kumar</a></div>
         <ul class="menu">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -206,25 +325,68 @@
         </div>
     </section>
 
-    <!-- Placeholder Sections -->
+    <!-- About Section -->
     <section id="about">
-        <h2>About</h2>
+        <div class="section-container">
+            <div class="about-intro">
+                <p class="tagline">👉 Turning numbers into actionable business insights every day.</p>
+                <h2>👉 “I’m Niranjan Kumar — a Data Analyst who transforms raw data into stories, insights, and decisions.”</h2>
+                <p>Skilled in SQL, Python, Excel, and Power BI, I specialize in cleaning, analyzing, and visualizing data to solve real-world business problems. My goal is to bridge the gap between data and decision-making with clarity and precision.</p>
+            </div>
+            
+            <br><br>
+            <h3>My Tools & Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Data Analysis & Cleaning</h4>
+                    <span>Excel</span> <span>Pandas</span> <span>NumPy</span>
+                </div>
+                <div class="skill-category">
+                    <h4>Databases</h4>
+                    <span>SQL</span> <span>MySQL</span>
+                </div>
+                <div class="skill-category">
+                    <h4>Visualization</h4>
+                    <span>Power BI</span> <span>Tableau</span> <span>Matplotlib</span> <span>Seaborn</span>
+                </div>
+                <div class="skill-category">
+                    <h4>Advanced / Learning</h4>
+                    <span>Machine Learning</span> <span>Statistics</span>
+                </div>
+            </div>
+
+            <h3>My Data Journey</h3>
+            <div class="journey-timeline">
+                <div class="journey-step"><p>📚 Learned foundations of Data Analytics (SQL, Excel, Python)</p></div>
+                <div class="journey-step"><p>🏗️ Built real-world projects and dashboards</p></div>
+                <div class="journey-step"><p>📊 Delivered business insights through data visualization</p></div>
+                <div class="journey-step"><p>🚀 Exploring Machine Learning and AI</p></div>
+            </div>
+
+            <h3>Highlights</h3>
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    10+ <span>Projects Completed</span>
+                </div>
+                <div class="highlight-card">
+                    5+ <span>Interactive Dashboards</span>
+                </div>
+                <div class="highlight-card">
+                    2+ <span>Certificates Earned</span>
+                </div>
+            </div>
+
+            <p class="about-closing-quote">“For me, data is not just numbers — it’s a story waiting to be told.”</p>
+            <a href="#projects" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">View My Work</a>
+        </div>
     </section>
-    <section id="skills">
-        <h2>Skills</h2>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-    </section>
-    <section id="dashboards">
-        <h2>Dashboards</h2>
-    </section>
-    <section id="certificates">
-        <h2>Certificates</h2>
-    </section>
-    <section id="contact">
-        <h2>Contact</h2>
-    </section>
+
+    <!-- Placeholder Sections -->
+    <section id="skills" class="placeholder"><h2>Skills</h2></section>
+    <section id="projects" class="placeholder"><h2>Projects</h2></section>
+    <section id="dashboards" class="placeholder"><h2>Dashboards</h2></section>
+    <section id="certificates" class="placeholder"><h2>Certificates</h2></section>
+    <section id="contact" class="placeholder"><h2>Contact</h2></section>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
