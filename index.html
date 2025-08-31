@@ -377,7 +377,7 @@
             background-color: #2980b9;
         }
 
-        /* --- NEW Certificates Section --- */
+        /* Certificates Section */
         #certificates { background-color: var(--white-color); }
         .certificates-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
 
@@ -460,6 +460,100 @@
         }
 
         .certificates-cta { margin-top: 3rem; }
+        
+        /* --- NEW Contact Section --- */
+        #contact { background: linear-gradient(to right, var(--white-color), var(--light-gray)); }
+        .contact-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p svg {
+            margin-right: 1rem;
+            fill: var(--primary-color);
+        }
+        
+        .social-links { margin-top: 2rem; }
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: #eaf2f8;
+            border-radius: 50%;
+            margin-right: 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .social-links a svg { fill: var(--primary-color); }
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        .social-links a:hover svg { fill: var(--white-color); }
+        
+        .contact-form-container {
+            background-color: var(--white-color);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .contact-form button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #2980b9;
+            transform: scale(1.02);
+        }
+        
+        #form-success-message {
+            display: none;
+            margin-top: 1rem;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 1rem;
+            border-radius: 5px;
+            text-align: center;
+        }
 
 
         /* Placeholder Sections */
@@ -469,6 +563,7 @@
         /* Responsive Design */
         @media (max-width: 992px) {
             .projects-grid, .certificates-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-container { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .navbar .menu { display: none; }
@@ -541,24 +636,10 @@
             <h2>Skills & Tools</h2>
             <p class="skills-tagline">“The complete set of skills and tools I use to turn data into insights.”</p>
             <div class="skills-grid">
-                <div class="skill-card">
-                    <h4>1️⃣ Data Skills / Analysis Workflow</h4>
-                    <ul><li>Data Cleaning</li><li>Data Understanding</li><li>Data Exploration</li><li>Exploratory Data Analysis (EDA)</li><li>Data Visualization</li><li>Data Analysis</li></ul>
-                </div>
-                <div class="skill-card">
-                    <h4>2️⃣ Analytical / Thinking Skills</h4>
-                    <ul><li>Critical Thinking</li><li>Problem Solving</li><li>Data Storytelling</li><li>Decision Making</li></ul>
-                </div>
-                <div class="skill-card">
-                    <h4>3️⃣ Tools & Technologies</h4>
-                    <div class="tools-container">
-                        <span class="tool-badge">SQL / MySQL</span><span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">NumPy</span><span class="tool-badge">Power BI</span><span class="tool-badge">Tableau</span><span class="tool-badge">Excel</span><span class="tool-badge">MS Word</span><span class="tool-badge">MS PowerPoint</span>
-                    </div>
-                </div>
-                <div class="skill-card highlight">
-                    <h4>4️⃣ Machine Learning / Advanced Skills</h4>
-                    <ul><li>Scikit-learn (Regression, Classification, Clustering)</li><li>Predictive Modeling / Feature Engineering</li></ul>
-                </div>
+                <div class="skill-card"><h4>1️⃣ Data Skills / Analysis Workflow</h4><ul><li>Data Cleaning</li><li>Data Understanding</li><li>Data Exploration</li><li>Exploratory Data Analysis (EDA)</li><li>Data Visualization</li><li>Data Analysis</li></ul></div>
+                <div class="skill-card"><h4>2️⃣ Analytical / Thinking Skills</h4><ul><li>Critical Thinking</li><li>Problem Solving</li><li>Data Storytelling</li><li>Decision Making</li></ul></div>
+                <div class="skill-card"><h4>3️⃣ Tools & Technologies</h4><div class="tools-container"><span class="tool-badge">SQL / MySQL</span><span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">NumPy</span><span class="tool-badge">Power BI</span><span class="tool-badge">Tableau</span><span class="tool-badge">Excel</span><span class="tool-badge">MS Word</span><span class="tool-badge">MS PowerPoint</span></div></div>
+                <div class="skill-card highlight"><h4>4️⃣ Machine Learning / Advanced Skills</h4><ul><li>Scikit-learn (Regression, Classification, Clustering)</li><li>Predictive Modeling / Feature Engineering</li></ul></div>
             </div>
             <p class="skills-closing">“These are the tools and skills I use daily to explore, analyze, visualize, and derive insights from data.”</p>
         </div>
@@ -595,92 +676,80 @@
         </div>
     </section>
 
-    <!-- Certificates Section (NEW) -->
+    <!-- Certificates Section (Unchanged) -->
     <section id="certificates">
         <div class="section-container">
             <h2>Certificates</h2>
             <p class="certificates-tagline">“Validated credentials that highlight my skills and continuous learning journey.”</p>
-            
             <div class="certificates-grid">
-                <!-- Certificate 1 -->
-                <div class="certificate-card">
-                    <div class="certificate-thumbnail">
-                        <img src="https://placehold.co/100x100/4285F4/white?text=G" alt="Google Logo">
-                    </div>
-                    <h4>Google Data Analytics Professional Certificate</h4>
-                    <p class="certificate-issuer">Issued by: Google (Coursera)</p>
-                    <p class="certificate-date">Date: June 2023</p>
-                    <a href="#" class="certificate-button">View Certificate</a>
-                </div>
-                
-                <!-- Certificate 2 -->
-                <div class="certificate-card">
-                     <div class="certificate-thumbnail">
-                        <img src="https://placehold.co/100x100/7FBA00/white?text=M" alt="Microsoft Logo">
-                    </div>
-                    <h4>Microsoft Excel Expert Certification</h4>
-                    <p class="certificate-issuer">Issued by: Microsoft</p>
-                    <p class="certificate-date">Date: Sept 2023</p>
-                    <a href="#" class="certificate-button">View Certificate</a>
-                </div>
-
-                <!-- Certificate 3 -->
-                <div class="certificate-card">
-                    <div class="certificate-thumbnail">
-                        <img src="https://placehold.co/100x100/A435F0/white?text=U" alt="Udemy Logo">
-                    </div>
-                    <h4>SQL for Data Analysis</h4>
-                    <p class="certificate-issuer">Issued by: Udemy</p>
-                    <p class="certificate-date">Date: Jan 2024</p>
-                    <a href="#" class="certificate-button">View Certificate</a>
-                </div>
-
-                <!-- Certificate 4 -->
-                <div class="certificate-card">
-                     <div class="certificate-thumbnail">
-                        <img src="https://placehold.co/100x100/0066FF/white?text=I" alt="IBM Logo">
-                    </div>
-                    <h4>Python for Data Science</h4>
-                    <p class="certificate-issuer">Issued by: IBM Skills Network</p>
-                    <p class="certificate-date">Date: March 2024</p>
-                    <a href="#" class="certificate-button">View Certificate</a>
-                </div>
-
-                <!-- Certificate 5 -->
-                <div class="certificate-card">
-                    <div class="certificate-thumbnail">
-                         <img src="https://placehold.co/100x100/7FBA00/white?text=M" alt="Microsoft Logo">
-                    </div>
-                    <h4>Power BI Data Analyst Associate</h4>
-                    <p class="certificate-issuer">Issued by: Microsoft</p>
-                    <p class="certificate-date">Date: May 2024</p>
-                    <a href="#" class="certificate-button">View Certificate</a>
-                </div>
-
-                <!-- Certificate 6 -->
-                <div class="certificate-card">
-                     <div class="certificate-thumbnail">
-                        <img src="https://placehold.co/100x100/E11A31/white?text=T" alt="Tableau Logo">
-                    </div>
-                    <h4>Tableau Desktop Specialist</h4>
-                    <p class="certificate-issuer">Issued by: Tableau (Salesforce)</p>
-                    <p class="certificate-date">Date: Aug 2024</p>
-                    <a href="#" class="certificate-button">View Certificate</a>
-                </div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/4285F4/white?text=G" alt="Google Logo"></div><h4>Google Data Analytics Professional Certificate</h4><p class="certificate-issuer">Issued by: Google (Coursera)</p><p class="certificate-date">Date: June 2023</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/7FBA00/white?text=M" alt="Microsoft Logo"></div><h4>Microsoft Excel Expert Certification</h4><p class="certificate-issuer">Issued by: Microsoft</p><p class="certificate-date">Date: Sept 2023</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/A435F0/white?text=U" alt="Udemy Logo"></div><h4>SQL for Data Analysis</h4><p class="certificate-issuer">Issued by: Udemy</p><p class="certificate-date">Date: Jan 2024</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/0066FF/white?text=I" alt="IBM Logo"></div><h4>Python for Data Science</h4><p class="certificate-issuer">Issued by: IBM Skills Network</p><p class="certificate-date">Date: March 2024</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/7FBA00/white?text=M" alt="Microsoft Logo"></div><h4>Power BI Data Analyst Associate</h4><p class="certificate-issuer">Issued by: Microsoft</p><p class="certificate-date">Date: May 2024</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/E11A31/white?text=T" alt="Tableau Logo"></div><h4>Tableau Desktop Specialist</h4><p class="certificate-issuer">Issued by: Tableau (Salesforce)</p><p class="certificate-date">Date: Aug 2024</p><a href="#" class="certificate-button">View Certificate</a></div>
             </div>
-            
-            <div class="certificates-cta">
-                <a href="#" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">Explore more on LinkedIn</a>
-            </div>
-
+            <div class="certificates-cta"><a href="#" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">Explore more on LinkedIn</a></div>
         </div>
     </section>
 
-    <!-- Placeholder Sections -->
-    <section id="contact" class="placeholder"><h2>Contact</h2></section>
+    <!-- Contact Section (NEW) -->
+    <section id="contact">
+        <div class="section-container">
+            <h2>Contact Me</h2>
+            <p class="contact-tagline">“Let’s connect and collaborate. I’d love to hear from you!”</p>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        niranjan.kumar@email.com
+                    </p>
+                    <p>
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        +91 98765 43210
+                    </p>
+                    <p>
+                        <svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        Bangalore, India
+                    </p>
+
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                        <a href="#" aria-label="Kaggle"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M15.153 13.1l-6.44-8.29-6.537 8.324 6.44 8.289 6.537-8.323zm-3.562 3.435l-3.344 4.301.196.223h6.31l.217-.22-3.379-4.304zm-3.085-1.365l-2.684-3.463 2.768-3.513 2.585 3.332-2.669 3.644zm11.494-8.033l-3.328 4.223h-4.335l5.222-6.666 2.441 2.443zm1-1.39l-2.458-2.459-6.315 8.051v4.717l4.088-5.228 4.685 5.228v-10.31z"/></svg></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>Send a Message</h3>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" required>
+                        </div>
+                         <div class="form-group">
+                            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                    <div id="form-success-message">
+                        Thanks for reaching out! I’ll get back to you soon.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Hero Slider Script
             const slides = document.querySelectorAll('.slide');
             let currentSlide = 0;
 
@@ -698,8 +767,24 @@
                 showSlide(currentSlide);
             }
 
-            setInterval(nextSlide, 4000); // Change slide every 4 seconds
+            setInterval(nextSlide, 4000);
             showSlide(currentSlide);
+            
+            // Contact Form Script
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('form-success-message');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Prevent default page reload
+                
+                successMessage.style.display = 'block'; // Show success message
+                contactForm.reset(); // Clear the form fields
+
+                // Optional: hide the message after a few seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000); // 5000ms = 5 seconds
+            });
         });
     </script>
 </body>
