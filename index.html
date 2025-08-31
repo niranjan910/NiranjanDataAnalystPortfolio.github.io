@@ -295,7 +295,7 @@
         .projects-cta { margin-top: 3rem; }
         
         
-        /* --- NEW Dashboards Section --- */
+        /* Dashboards Section */
         #dashboards { background-color: var(--light-gray); }
         .dashboards-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
 
@@ -377,6 +377,90 @@
             background-color: #2980b9;
         }
 
+        /* --- NEW Certificates Section --- */
+        #certificates { background-color: var(--white-color); }
+        .certificates-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .certificate-card {
+            background-color: var(--white-color);
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+            padding: 1.5rem;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .certificate-thumbnail {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .certificate-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        .certificate-card:hover .certificate-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .certificate-card h4 {
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem 0;
+            flex-grow: 1;
+        }
+
+        .certificate-issuer {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .certificate-date {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .certificate-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 0.6rem 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .certificate-button:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .certificates-cta { margin-top: 3rem; }
+
 
         /* Placeholder Sections */
         .placeholder { min-height: 60vh; }
@@ -384,7 +468,7 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .projects-grid, .certificates-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             .navbar .menu { display: none; }
@@ -393,8 +477,7 @@
             .slide .tagline { position: static; margin-bottom: 1rem; font-size: 1rem; }
             .journey-timeline { flex-direction: column; gap: 1rem; }
             .journey-step { width: 100%; box-sizing: border-box; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .dashboards-grid { grid-template-columns: 1fr; }
+            .projects-grid, .certificates-grid, .dashboards-grid { grid-template-columns: 1fr; }
         }
 
     </style>
@@ -498,78 +581,102 @@
         </div>
     </section>
     
-    <!-- Dashboards Section (NEW) -->
+    <!-- Dashboards Section (Unchanged) -->
     <section id="dashboards">
         <div class="section-container">
             <h2>Dashboards</h2>
             <p class="dashboards-tagline">“Interactive dashboards designed to turn raw data into actionable insights.”</p>
-
             <div class="dashboards-grid">
-                <!-- Card 1 -->
-                <div class="dashboard-card">
-                    <div class="dashboard-thumbnail">
-                        <img src="https://placehold.co/600x400/3498db/white?text=Sales+Performance" alt="Sales Performance Dashboard">
-                        <div class="dashboard-overlay">
-                            <p>Tracks revenue, profit, and key performance indicators across different regions and product lines.</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-content">
-                        <h4>1️⃣ Sales Performance Dashboard</h4>
-                        <span class="tool-badge-dashboard">Power BI</span>
-                        <a href="#" class="dashboard-button">View Dashboard</a>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="dashboard-card">
-                    <div class="dashboard-thumbnail">
-                        <img src="https://placehold.co/600x400/2ecc71/white?text=Customer+Insights" alt="Customer Insights Dashboard">
-                         <div class="dashboard-overlay">
-                            <p>Visualizes customer churn rates, segmentation data, and overall purchase behavior patterns.</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-content">
-                        <h4>2️⃣ Customer Insights Dashboard</h4>
-                        <span class="tool-badge-dashboard">Tableau</span>
-                        <a href="#" class="dashboard-button">View Dashboard</a>
-                    </div>
-                </div>
-                
-                <!-- Card 3 -->
-                 <div class="dashboard-card">
-                    <div class="dashboard-thumbnail">
-                        <img src="https://placehold.co/600x400/e74c3c/white?text=Financial+Reporting" alt="Financial Reporting Dashboard">
-                         <div class="dashboard-overlay">
-                           <p>Automates monthly financial reports with key performance indicators, pivot charts, and trend analysis.</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-content">
-                        <h4>3️⃣ Financial Reporting Dashboard</h4>
-                        <span class="tool-badge-dashboard">Excel</span>
-                        <a href="#" class="dashboard-button">View Dashboard</a>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="dashboard-card">
-                    <div class="dashboard-thumbnail">
-                        <img src="https://placehold.co/600x400/f1c40f/white?text=Marketing+Campaign" alt="Marketing Campaign Dashboard">
-                         <div class="dashboard-overlay">
-                            <p>Compares the effectiveness and return on investment (ROI) across multiple marketing channels.</p>
-                        </div>
-                    </div>
-                    <div class="dashboard-content">
-                        <h4>4️⃣ Marketing Campaign Dashboard</h4>
-                         <span class="tool-badge-dashboard">Power BI</span>
-                        <a href="#" class="dashboard-button">View Dashboard</a>
-                    </div>
-                </div>
+                <div class="dashboard-card"><div class="dashboard-thumbnail"><img src="https://placehold.co/600x400/3498db/white?text=Sales+Performance" alt="Sales Performance Dashboard"><div class="dashboard-overlay"><p>Tracks revenue, profit, and key performance indicators across different regions and product lines.</p></div></div><div class="dashboard-content"><h4>1️⃣ Sales Performance Dashboard</h4><span class="tool-badge-dashboard">Power BI</span><a href="#" class="dashboard-button">View Dashboard</a></div></div>
+                <div class="dashboard-card"><div class="dashboard-thumbnail"><img src="https://placehold.co/600x400/2ecc71/white?text=Customer+Insights" alt="Customer Insights Dashboard"><div class="dashboard-overlay"><p>Visualizes customer churn rates, segmentation data, and overall purchase behavior patterns.</p></div></div><div class="dashboard-content"><h4>2️⃣ Customer Insights Dashboard</h4><span class="tool-badge-dashboard">Tableau</span><a href="#" class="dashboard-button">View Dashboard</a></div></div>
+                <div class="dashboard-card"><div class="dashboard-thumbnail"><img src="https://placehold.co/600x400/e74c3c/white?text=Financial+Reporting" alt="Financial Reporting Dashboard"><div class="dashboard-overlay"><p>Automates monthly financial reports with key performance indicators, pivot charts, and trend analysis.</p></div></div><div class="dashboard-content"><h4>3️⃣ Financial Reporting Dashboard</h4><span class="tool-badge-dashboard">Excel</span><a href="#" class="dashboard-button">View Dashboard</a></div></div>
+                <div class="dashboard-card"><div class="dashboard-thumbnail"><img src="https://placehold.co/600x400/f1c40f/white?text=Marketing+Campaign" alt="Marketing Campaign Dashboard"><div class="dashboard-overlay"><p>Compares the effectiveness and return on investment (ROI) across multiple marketing channels.</p></div></div><div class="dashboard-content"><h4>4️⃣ Marketing Campaign Dashboard</h4><span class="tool-badge-dashboard">Power BI</span><a href="#" class="dashboard-button">View Dashboard</a></div></div>
             </div>
         </div>
     </section>
 
+    <!-- Certificates Section (NEW) -->
+    <section id="certificates">
+        <div class="section-container">
+            <h2>Certificates</h2>
+            <p class="certificates-tagline">“Validated credentials that highlight my skills and continuous learning journey.”</p>
+            
+            <div class="certificates-grid">
+                <!-- Certificate 1 -->
+                <div class="certificate-card">
+                    <div class="certificate-thumbnail">
+                        <img src="https://placehold.co/100x100/4285F4/white?text=G" alt="Google Logo">
+                    </div>
+                    <h4>Google Data Analytics Professional Certificate</h4>
+                    <p class="certificate-issuer">Issued by: Google (Coursera)</p>
+                    <p class="certificate-date">Date: June 2023</p>
+                    <a href="#" class="certificate-button">View Certificate</a>
+                </div>
+                
+                <!-- Certificate 2 -->
+                <div class="certificate-card">
+                     <div class="certificate-thumbnail">
+                        <img src="https://placehold.co/100x100/7FBA00/white?text=M" alt="Microsoft Logo">
+                    </div>
+                    <h4>Microsoft Excel Expert Certification</h4>
+                    <p class="certificate-issuer">Issued by: Microsoft</p>
+                    <p class="certificate-date">Date: Sept 2023</p>
+                    <a href="#" class="certificate-button">View Certificate</a>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="certificate-card">
+                    <div class="certificate-thumbnail">
+                        <img src="https://placehold.co/100x100/A435F0/white?text=U" alt="Udemy Logo">
+                    </div>
+                    <h4>SQL for Data Analysis</h4>
+                    <p class="certificate-issuer">Issued by: Udemy</p>
+                    <p class="certificate-date">Date: Jan 2024</p>
+                    <a href="#" class="certificate-button">View Certificate</a>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="certificate-card">
+                     <div class="certificate-thumbnail">
+                        <img src="https://placehold.co/100x100/0066FF/white?text=I" alt="IBM Logo">
+                    </div>
+                    <h4>Python for Data Science</h4>
+                    <p class="certificate-issuer">Issued by: IBM Skills Network</p>
+                    <p class="certificate-date">Date: March 2024</p>
+                    <a href="#" class="certificate-button">View Certificate</a>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="certificate-card">
+                    <div class="certificate-thumbnail">
+                         <img src="https://placehold.co/100x100/7FBA00/white?text=M" alt="Microsoft Logo">
+                    </div>
+                    <h4>Power BI Data Analyst Associate</h4>
+                    <p class="certificate-issuer">Issued by: Microsoft</p>
+                    <p class="certificate-date">Date: May 2024</p>
+                    <a href="#" class="certificate-button">View Certificate</a>
+                </div>
+
+                <!-- Certificate 6 -->
+                <div class="certificate-card">
+                     <div class="certificate-thumbnail">
+                        <img src="https://placehold.co/100x100/E11A31/white?text=T" alt="Tableau Logo">
+                    </div>
+                    <h4>Tableau Desktop Specialist</h4>
+                    <p class="certificate-issuer">Issued by: Tableau (Salesforce)</p>
+                    <p class="certificate-date">Date: Aug 2024</p>
+                    <a href="#" class="certificate-button">View Certificate</a>
+                </div>
+            </div>
+            
+            <div class="certificates-cta">
+                <a href="#" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">Explore more on LinkedIn</a>
+            </div>
+
+        </div>
+    </section>
+
     <!-- Placeholder Sections -->
-    <section id="certificates" class="placeholder"><h2>Certificates</h2></section>
     <section id="contact" class="placeholder"><h2>Contact</h2></section>
 
     <script>
