@@ -67,18 +67,49 @@
         }
 
         .navbar .menu a:hover { color: var(--primary-color); }
-        
-        /* Hamburger Menu */
-        .hamburger-menu {
+
+        /* Hamburger Menu Icon */
+        .hamburger {
             display: none;
             cursor: pointer;
         }
-        .hamburger-menu .bar {
+        .hamburger .bar {
+            display: block;
             width: 25px;
             height: 3px;
+            margin: 5px auto;
             background-color: var(--text-color);
-            margin: 5px 0;
-            transition: 0.4s;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 100%;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--white-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: left 0.3s ease-in-out;
+            z-index: 999;
+        }
+        .mobile-nav.is-active { left: 0; }
+        .mobile-nav a {
+            font-size: 2rem;
+            margin: 1.5rem 0;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        .mobile-nav .close-icon {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2.5rem;
+            cursor: pointer;
         }
 
         /* Hero Section */
@@ -88,48 +119,28 @@
             overflow: hidden;
             color: var(--white-color);
         }
-
         .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            box-sizing: border-box;
-            opacity: 0;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; padding: 2rem; box-sizing: border-box; opacity: 0;
             transition: opacity 1.5s ease-in-out;
         }
-
         .slide.active { opacity: 1; }
-
         .slide1 { background: linear-gradient(135deg, #a8c0ff, #3f2b96); }
         .slide2 { background: linear-gradient(135deg, #00c6ff, #0072ff); }
         .slide3 { background: linear-gradient(135deg, #f7b733, #fc4a1a); }
         .slide4 { background: linear-gradient(135deg, #8a2387, #e94057, #f27121); }
-
         .slide h1 { font-size: 3.5rem; margin: 0; font-weight: 700; }
         .slide p { font-size: 1.25rem; max-width: 600px; margin-top: 1rem; }
         
         .cta-button {
-            display: inline-block;
-            background-color: var(--white-color);
-            color: var(--primary-color);
-            padding: 0.8rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            margin-top: 2rem;
-            transition: all 0.3s ease;
+            display: inline-block; background-color: var(--white-color); color: var(--primary-color);
+            padding: 0.8rem 2rem; text-decoration: none; border-radius: 50px;
+            font-weight: bold; margin-top: 2rem; transition: all 0.3s ease;
         }
-
         .cta-button:hover {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            background-color: var(--primary-color); color: var(--white-color);
+            transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
         /* General Section Styling */
@@ -138,104 +149,160 @@
         h2 { font-size: 2.5rem; margin-bottom: 1rem; }
         h3 { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 2rem; }
 
-        /* All other sections are unchanged from previous responses, only showing CSS relevant to new features */
+        /* About Section */
+        #about { background-color: var(--white-color); }
+        .about-intro .tagline { font-size: 1rem; color: #777; margin-bottom: 1rem; }
+        .about-intro h2 { font-size: 2.2rem; line-height: 1.4; margin-bottom: 1.5rem; }
+        .about-intro p { max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem; line-height: 1.6; }
+
+        .journey-timeline { display: flex; justify-content: space-between; margin: 3rem 0; }
+        .journey-step { width: 23%; background: var(--light-gray); padding: 1.5rem; border-radius: 10px; }
+        .journey-step p { margin: 0; font-weight: 500; }
         
-        /* Back to Top Arrow */
+        .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+        .highlight-card { background: linear-gradient(135deg, #00c6ff, #0072ff); color: var(--white-color); padding: 2rem; border-radius: 10px; font-size: 1.5rem; font-weight: bold; }
+        .highlight-card span { display: block; font-size: 1rem; font-weight: normal; margin-top: 0.5rem; }
+        .about-closing-quote { margin-top: 3rem; font-style: italic; font-size: 1.2rem; color: #555; }
+        
+        /* Skills & Tools Section */
+        #skills { background-color: var(--light-gray); }
+        .skills-tagline { margin-bottom: 3rem; font-size: 1.2rem; color: #555;}
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left; }
+        .skill-card { background-color: var(--white-color); padding: 2rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; }
+        .skill-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .skill-card.highlight { border-top: 4px solid var(--highlight-color); }
+        .skill-card h4 { font-size: 1.4rem; margin-top: 0; margin-bottom: 1.5rem; display: flex; align-items: center; color: var(--primary-color); }
+        .skill-card ul { list-style: none; padding: 0; margin: 0; }
+        .skill-card li { margin-bottom: 0.8rem; padding-left: 1.4rem; position: relative; }
+        .skill-card li::before { content: '✓'; color: var(--secondary-color); font-weight: bold; position: absolute; left: 0; }
+        .tools-container { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .tool-badge { background-color: #eaf2f8; color: var(--primary-color); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+        .skills-closing { margin-top: 4rem; font-size: 1.1rem; font-weight: 500; color: #333; }
+        
+        /* Projects Section */
+        #projects { background-color: var(--white-color); }
+        .projects-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
+        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .project-card { background-color: var(--white-color); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: left; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s, box-shadow 0.3s; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        .project-card-content { padding: 1.5rem; flex-grow: 1; }
+        .project-card h4 { font-size: 1.4rem; margin: 0 0 0.5rem 0; color: var(--text-color); }
+        .project-card p { font-size: 1rem; line-height: 1.5; color: #555; margin-bottom: 1rem; }
+        .project-card .tools { margin-bottom: 1rem; }
+        .project-card .outcome { background-color: var(--light-gray); padding: 0.75rem; border-radius: 5px; font-weight: 500; font-style: italic; }
+        .project-card-footer { border-top: 1px solid #eee; padding: 1rem 1.5rem; background-color: var(--light-gray); }
+        .project-card-footer a { text-decoration: none; color: var(--primary-color); font-weight: bold; margin-right: 1.5rem; }
+        .project-card-footer a:hover { text-decoration: underline; }
+        .projects-cta { margin-top: 3rem; }
+        
+        /* Dashboards Section */
+        #dashboards { background-color: var(--light-gray); }
+        .dashboards-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
+        .dashboards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+        .dashboard-card { background-color: var(--white-color); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; }
+        .dashboard-thumbnail { position: relative; overflow: hidden; }
+        .dashboard-thumbnail img { width: 100%; display: block; transition: transform 0.4s ease; }
+        .dashboard-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(52, 152, 219, 0.8); color: var(--white-color); display: flex; justify-content: center; align-items: center; text-align: center; padding: 1rem; opacity: 0; transition: opacity 0.4s ease; }
+        .dashboard-card:hover .dashboard-thumbnail img { transform: scale(1.1); }
+        .dashboard-card:hover .dashboard-overlay { opacity: 1; }
+        .dashboard-content { padding: 1.5rem; text-align: left; }
+        .dashboard-content h4 { font-size: 1.5rem; margin: 0 0 0.5rem 0; }
+        .tool-badge-dashboard { display: inline-block; background-color: var(--secondary-color); color: var(--white-color); padding: 0.3rem 0.8rem; border-radius: 5px; font-size: 0.9rem; font-weight: bold; margin-bottom: 1rem; }
+        .dashboard-button { display: inline-block; background-color: var(--primary-color); color: var(--white-color); padding: 0.6rem 1.5rem; text-decoration: none; border-radius: 50px; font-weight: bold; margin-top: 1rem; transition: background-color 0.3s; }
+        .dashboard-button:hover { background-color: #2980b9; }
+
+        /* Certificates Section */
+        #certificates { background-color: var(--white-color); }
+        .certificates-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
+        .certificates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .certificate-card { background-color: var(--white-color); border: 1px solid #e0e0e0; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center; padding: 1.5rem; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; align-items: center; }
+        .certificate-card:hover { transform: translateY(-5px); border-color: var(--primary-color); }
+        .certificate-thumbnail { width: 80px; height: 80px; margin-bottom: 1rem; overflow: hidden; border-radius: 50%; }
+        .certificate-thumbnail img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s; }
+        .certificate-card:hover .certificate-thumbnail img { transform: scale(1.1); }
+        .certificate-card h4 { font-size: 1.2rem; margin: 0 0 0.5rem 0; flex-grow: 1; }
+        .certificate-issuer { color: #777; font-size: 0.9rem; margin-bottom: 0.25rem; }
+        .certificate-date { color: #777; font-size: 0.9rem; margin-bottom: 1.5rem; }
+        .certificate-button { display: inline-block; background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); padding: 0.6rem 1.5rem; text-decoration: none; border-radius: 50px; font-weight: bold; transition: background-color 0.3s, color 0.3s; }
+        .certificate-button:hover { background-color: var(--primary-color); color: var(--white-color); }
+        .certificates-cta { margin-top: 3rem; }
+        
+        /* Contact Section */
+        #contact { background: linear-gradient(to right, var(--white-color), var(--light-gray)); }
+        .contact-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; text-align: left; }
+        .contact-info p { font-size: 1.1rem; margin-bottom: 1.5rem; display: flex; align-items: center; }
+        .contact-info p svg { margin-right: 1rem; fill: var(--primary-color); }
+        .social-links { margin-top: 2rem; }
+        .social-links a { display: inline-flex; justify-content: center; align-items: center; width: 40px; height: 40px; background-color: #eaf2f8; border-radius: 50%; margin-right: 1rem; transition: background-color 0.3s, transform 0.3s; }
+        .social-links a svg { fill: var(--primary-color); transition: fill 0.3s; }
+        .social-links a:hover { background-color: var(--primary-color); transform: translateY(-3px); }
+        .social-links a:hover svg { fill: var(--white-color); }
+        .contact-form-container { background-color: var(--white-color); padding: 2.5rem; border-radius: 10px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; font-family: inherit; box-sizing: border-box; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-color); }
+        .contact-form button { background-color: var(--primary-color); color: var(--white-color); padding: 1rem 2rem; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1rem; width: 100%; transition: background-color 0.3s, transform 0.3s; }
+        .contact-form button:hover { background-color: #2980b9; transform: scale(1.02); }
+        #form-success-message { display: none; margin-top: 1rem; background-color: var(--secondary-color); color: var(--white-color); padding: 1rem; border-radius: 5px; text-align: center; }
+
+        /* Footer Section */
+        footer { background-color: var(--footer-bg); color: #bdc3c7; padding: 2rem; text-align: center; }
+        .footer-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .footer-copyright { font-size: 0.9rem; }
+        .footer-socials a { display: inline-flex; justify-content: center; align-items: center; width: 35px; height: 35px; background-color: #34495e; border-radius: 50%; margin: 0 0.5rem; transition: background-color 0.3s; }
+        .footer-socials a svg { fill: #bdc3c7; width: 18px; height: 18px; transition: fill 0.3s; }
+        .footer-socials a:hover { background-color: var(--primary-color); }
+        .footer-socials a:hover svg { fill: var(--white-color); }
+        .footer-back-to-top a { color: var(--primary-color); text-decoration: none; font-weight: bold; font-size: 1.5rem; transition: color 0.3s; }
+        .footer-back-to-top a:hover { color: var(--white-color); }
+
+        /* Back to Top Button */
         #back-to-top-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            display: none;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 50px;
             height: 50px;
             background-color: var(--primary-color);
             color: var(--white-color);
-            text-align: center;
-            line-height: 50px;
-            font-size: 24px;
             border-radius: 50%;
             text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s, visibility 0.4s, background-color 0.3s;
-            z-index: 100;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            z-index: 1001;
         }
         #back-to-top-btn.show {
-            display: block;
             opacity: 1;
             visibility: visible;
         }
         #back-to-top-btn:hover {
             background-color: #2980b9;
+            transform: translateY(-3px);
         }
-        
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar .menu {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 60px; /* Adjust based on navbar height */
-                left: -100%;
-                width: 100%;
-                background-color: var(--white-color);
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                transition: left 0.5s ease-in-out;
-                text-align: center;
-            }
-            .navbar .menu.nav-active {
-                left: 0;
-            }
-            .navbar .menu li {
-                margin: 1.5rem 0;
-            }
-            .hamburger-menu {
-                display: block;
-            }
-            /* Hamburger to 'X' animation */
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
 
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .projects-grid, .certificates-grid { grid-template-columns: repeat(2, 1fr); }
+            .dashboards-grid { grid-template-columns: 1fr; }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .navbar .menu { display: none; }
+            .hamburger { display: block; }
             .slide h1 { font-size: 2.5rem; }
             .slide p { font-size: 1rem; }
             .journey-timeline { flex-direction: column; gap: 1rem; }
             .journey-step { width: 100%; box-sizing: border-box; }
-            .projects-grid, .certificates-grid, .dashboards-grid, .contact-container { grid-template-columns: 1fr; }
+            .projects-grid, .certificates-grid, .dashboards-grid { grid-template-columns: 1fr; }
             .footer-container { flex-direction: column; gap: 1rem; }
         }
-
-        /* Other styles for About, Skills, Projects, etc., are omitted for brevity */
-        #about { background-color: var(--white-color); }
-        .journey-timeline { display: flex; justify-content: space-between; margin: 3rem 0; }
-        .journey-step { width: 23%; background: var(--light-gray); padding: 1.5rem; border-radius: 10px; }
-        .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
-        .highlight-card { background: linear-gradient(135deg, #00c6ff, #0072ff); color: var(--white-color); padding: 2rem; border-radius: 10px; font-size: 1.5rem; font-weight: bold; }
-        .highlight-card span { display: block; font-size: 1rem; font-weight: normal; margin-top: 0.5rem; }
-        #skills { background-color: var(--light-gray); }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; text-align: left; }
-        .skill-card { background-color: var(--white-color); padding: 2rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        #projects { background-color: var(--white-color); }
-        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .project-card { background-color: var(--white-color); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); text-align: left; }
-        #dashboards { background-color: var(--light-gray); }
-        .dashboards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
-        .dashboard-card { background-color: var(--white-color); border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); overflow: hidden; }
-        #certificates { background-color: var(--white-color); }
-        .certificates-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .certificate-card { background-color: var(--white-color); border: 1px solid #e0e0e0; border-radius: 10px; text-align: center; padding: 1.5rem; }
-        #contact { background: linear-gradient(to right, var(--white-color), var(--light-gray)); }
-        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; text-align: left; }
-        footer { background-color: var(--footer-bg); color: #bdc3c7; padding: 2rem; text-align: center; }
-        .footer-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-
     </style>
 </head>
 <body>
@@ -243,7 +310,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar">
         <div class="logo"><a href="#home">Niranjan Kumar</a></div>
-        <ul class="menu" id="nav-menu">
+        <ul class="menu">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -252,108 +319,220 @@
             <li><a href="#certificates">Certificates</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="hamburger-menu" id="hamburger-menu">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="close-icon">&times;</div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#dashboards">Dashboards</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="slide slide1 active"><h1>Niranjan Kumar | Data Analyst</h1><p>Specializing in transforming raw datasets into clear insights that guide smarter business decisions.</p></div>
-        <div class="slide slide2"><h1>SQL | Python | Power BI</h1><p>From querying databases, cleaning data, to building dashboards — I turn numbers into actionable insights.</p></div>
+        <div class="slide slide2"><h1>SQL | Python | Power BI</h1><p>From querying databases with SQL, cleaning data in Python, to building dashboards in Power BI — I turn numbers into actionable insights.</p></div>
         <div class="slide slide3"><h1>Data → Stories → Decisions</h1><p>I love uncovering patterns, visualizing trends, and helping businesses make informed, data-driven decisions.</p></div>
-        <div class="slide slide4"><h1>Always Learning, Always Evolving</h1><p>Currently expanding into machine learning and AI to solve more complex, predictive problems.</p><a href="#projects" class="cta-button">View My Work</a></div>
+        <div class="slide slide4"><h1>From Data Analyst to Data Scientist</h1><p>Currently expanding into machine learning and AI to solve more complex, predictive problems.</p><a href="#projects" class="cta-button">View My Work</a></div>
     </section>
 
     <!-- About Section -->
     <section id="about">
         <div class="section-container">
-            <h2>About Me</h2>
-            <p>I’m Niranjan Kumar — a Data Analyst who transforms raw data into stories, insights, and decisions. My goal is to bridge the gap between complex data and clear, actionable business strategies.</p>
+            <div class="about-intro">
+                <p class="tagline">Turning numbers into actionable business insights every day.</p>
+                <h2>I’m Niranjan Kumar — a Data Analyst who transforms raw data into stories, insights, and decisions.</h2>
+                <p>My goal is to bridge the gap between complex data and clear, actionable business strategies with precision and creativity.</p>
+            </div>
             <h3>My Data Journey</h3>
             <div class="journey-timeline">
                 <div class="journey-step"><p>Learned foundations of Data Analytics</p></div>
-                <div class="journey-step"><p>Built real-world projects & dashboards</p></div>
-                <div class="journey-step"><p>Delivered insights via data visualization</p></div>
+                <div class="journey-step"><p>Built real-world projects and dashboards</p></div>
+                <div class="journey-step"><p>Delivered business insights through data</p></div>
                 <div class="journey-step"><p>Exploring Machine Learning and AI</p></div>
+            </div>
+            <h3>Highlights</h3>
+            <div class="highlights-grid">
+                <div class="highlight-card">10+ <span>Projects Completed</span></div>
+                <div class="highlight-card">5+ <span>Interactive Dashboards</span></div>
+                <div class="highlight-card">2+ <span>Certificates Earned</span></div>
+            </div>
+            <p class="about-closing-quote">“For me, data is not just numbers — it’s a story waiting to be told.”</p>
+            <a href="#projects" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">View My Work</a>
+        </div>
+    </section>
+
+    <!-- Skills & Tools Section -->
+    <section id="skills">
+        <div class="section-container">
+            <h2>Skills & Tools</h2>
+            <p class="skills-tagline">“The complete set of skills and tools I use to turn data into insights.”</p>
+            <div class="skills-grid">
+                <div class="skill-card"><h4>Data Skills / Analysis Workflow</h4><ul><li>Data Cleaning</li><li>Data Understanding</li><li>Data Exploration</li><li>Exploratory Data Analysis (EDA)</li><li>Data Visualization</li><li>Data Analysis</li></ul></div>
+                <div class="skill-card"><h4>Analytical / Thinking Skills</h4><ul><li>Critical Thinking</li><li>Problem Solving</li><li>Data Storytelling</li><li>Decision Making</li></ul></div>
+                <div class="skill-card"><h4>Tools & Technologies</h4><div class="tools-container"><span class="tool-badge">SQL / MySQL</span><span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">NumPy</span><span class="tool-badge">Power BI</span><span class="tool-badge">Tableau</span><span class="tool-badge">Excel</span><span class="tool-badge">MS Word</span><span class="tool-badge">MS PowerPoint</span></div></div>
+                <div class="skill-card highlight"><h4>Machine Learning / Advanced Skills</h4><ul><li>Scikit-learn (Regression, Classification, Clustering)</li><li>Predictive Modeling / Feature Engineering</li></ul></div>
+            </div>
+            <p class="skills-closing">“These are the tools and skills I use daily to explore, analyze, visualize, and derive insights from data.”</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-container">
+            <h2>Projects</h2>
+            <p class="projects-tagline">“Real-world data problems I’ve solved with analysis, visualization, and insights.”</p>
+            <div class="projects-grid">
+                <div class="project-card"><div class="project-card-content"><h4>Sales Data Analysis</h4><p>Analyzed sales datasets to identify trends and optimize revenue streams.</p><div class="tools"><span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">SQL</span></div><p class="outcome">Improved forecasting accuracy by 12%.</p></div><div class="project-card-footer"><a href="#">GitHub</a><a href="#">Live Demo</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>Customer Segmentation</h4><p>Performed clustering to segment customers based on purchase behavior.</p><div class="tools"><span class="tool-badge">Python</span><span class="tool-badge">Scikit-learn</span><span class="tool-badge">Tableau</span></div><p class="outcome">Helped marketing team target top 20% customers effectively.</p></div><div class="project-card-footer"><a href="#">GitHub</a><a href="#">Live Demo</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>Interactive Dashboard</h4><p>Built a real-time interactive dashboard for sales KPIs.</p><div class="tools"><span class="tool-badge">Power BI</span><span class="tool-badge">Excel</span></div><p class="outcome">Enabled management to monitor performance at a glance.</p></div><div class="project-card-footer"><a href="#">GitHub</a><a href="#">Live Demo</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>Financial Data Cleaning</h4><p>Cleaned and prepared raw financial datasets for analysis.</p><div class="tools"><span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">Excel</span></div><p class="outcome">Reduced data errors by 20%.</p></div><div class="project-card-footer"><a href="#">GitHub</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>Marketing Campaign Analysis</h4><p>Analyzed marketing campaign effectiveness using SQL and Python.</p><div class="tools"><span class="tool-badge">SQL</span><span class="tool-badge">Python</span><span class="tool-badge">Matplotlib</span></div><p class="outcome">Optimized campaigns and improved ROI by 15%.</p></div><div class="project-card-footer"><a href="#">GitHub</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>Predictive Model for Sales</h4><p>Built regression and classification models to predict sales performance.</p><div class="tools"><span class="tool-badge">Python</span><span class="tool-badge">Scikit-learn</span><span class="tool-badge">Excel</span></div><p class="outcome">Forecasts helped management make data-driven decisions.</p></div><div class="project-card-footer"><a href="#">GitHub</a></div></div>
+            </div>
+            <div class="projects-cta"><a href="#" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">See More Projects on GitHub</a></div>
+        </div>
+    </section>
+    
+    <!-- Dashboards Section -->
+    <section id="dashboards">
+        <div class="section-container">
+            <h2>Dashboards</h2>
+            <p class="dashboards-tagline">“Interactive dashboards designed to turn raw data into actionable insights.”</p>
+            <div class="dashboards-grid">
+                <div class="dashboard-card"><div class="dashboard-thumbnail"><img src="https://placehold.co/600x400/3498db/white?text=Sales+Performance" alt="Sales Performance Dashboard"><div class="dashboard-overlay"><p>Tracks revenue, profit, and key performance indicators across different regions and product lines.</p></div></div><div class="dashboard-content"><h4>Sales Performance Dashboard</h4><span class="tool-badge-dashboard">Power BI</span><a href="#" class="dashboard-button">View Dashboard</a></div></div>
+                <div class="dashboard-card"><div class="dashboard-thumbnail"><img src="https://placehold.co/600x400/2ecc71/white?text=Customer+Insights" alt="Customer Insights Dashboard"><div class="dashboard-overlay"><p>Visualizes customer churn rates, segmentation data, and overall purchase behavior patterns.</p></div></div><div class="dashboard-content"><h4>Customer Insights Dashboard</h4><span class="tool-badge-dashboard">Tableau</span><a href="#" class="dashboard-button">View Dashboard</a></div></div>
+                <div class="dashboard-card"><div class="dashboard-thumbnail"><img src="https://placehold.co/600x400/e74c3c/white?text=Financial+Reporting" alt="Financial Reporting Dashboard"><div class="dashboard-overlay"><p>Automates monthly financial reports with key performance indicators, pivot charts, and trend analysis.</p></div></div><div class="dashboard-content"><h4>Financial Reporting Dashboard</h4><span class="tool-badge-dashboard">Excel</span><a href="#" class="dashboard-button">View Dashboard</a></div></div>
+                <div class="dashboard-card"><div class="dashboard-thumbnail"><img src="https://placehold.co/600x400/f1c40f/white?text=Marketing+Campaign" alt="Marketing Campaign Dashboard"><div class="dashboard-overlay"><p>Compares the effectiveness and return on investment (ROI) across multiple marketing channels.</p></div></div><div class="dashboard-content"><h4>Marketing Campaign Dashboard</h4><span class="tool-badge-dashboard">Power BI</span><a href="#" class="dashboard-button">View Dashboard</a></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <div class="section-container">
+            <h2>Certificates</h2>
+            <p class="certificates-tagline">“Validated credentials that highlight my skills and continuous learning journey.”</p>
+            <div class="certificates-grid">
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/4285F4/white?text=G" alt="Google Logo"></div><h4>Google Data Analytics Certificate</h4><p class="certificate-issuer">Issued by: Google (Coursera)</p><p class="certificate-date">Date: June 2023</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/7FBA00/white?text=M" alt="Microsoft Logo"></div><h4>Microsoft Excel Expert Certification</h4><p class="certificate-issuer">Issued by: Microsoft</p><p class="certificate-date">Date: Sept 2023</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/A435F0/white?text=U" alt="Udemy Logo"></div><h4>SQL for Data Analysis</h4><p class="certificate-issuer">Issued by: Udemy</p><p class="certificate-date">Date: Jan 2024</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/0066FF/white?text=I" alt="IBM Logo"></div><h4>Python for Data Science</h4><p class="certificate-issuer">Issued by: IBM Skills Network</p><p class="certificate-date">Date: March 2024</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/7FBA00/white?text=M" alt="Microsoft Logo"></div><h4>Power BI Data Analyst Associate</h4><p class="certificate-issuer">Issued by: Microsoft</p><p class="certificate-date">Date: May 2024</p><a href="#" class="certificate-button">View Certificate</a></div>
+                <div class="certificate-card"><div class="certificate-thumbnail"><img src="https://placehold.co/100x100/E11A31/white?text=T" alt="Tableau Logo"></div><h4>Tableau Desktop Specialist</h4><p class="certificate-issuer">Issued by: Tableau (Salesforce)</p><p class="certificate-date">Date: Aug 2024</p><a href="#" class="certificate-button">View Certificate</a></div>
+            </div>
+            <div class="certificates-cta"><a href="#" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">Explore more on LinkedIn</a></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-container">
+            <h2>Contact Me</h2>
+            <p class="contact-tagline">“Let’s connect and collaborate. I’d love to hear from you!”</p>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p><svg width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> niranjan.kumar@email.com</p>
+                    <p><svg width="24" height="24" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> +91 98765 43210</p>
+                    <p><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Bangalore, India</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                        <a href="#" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                        <a href="#" aria-label="Kaggle"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M15.153 13.1l-6.44-8.29-6.537 8.324 6.44 8.289 6.537-8.323zm-3.562 3.435l-3.344 4.301.196.223h6.31l.217-.22-3.379-4.304zm-3.085-1.365l-2.684-3.463 2.768-3.513 2.585 3.332-2.669 3.644zm11.494-8.033l-3.328 4.223h-4.335l5.222-6.666 2.441 2.443zm1-1.39l-2.458-2.459-6.315 8.051v4.717l4.088-5.228 4.685 5.228v-10.31z"/></svg></a>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <h3>Send a Message</h3>
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><input type="text" name="subject" placeholder="Subject" required></div>
+                        <div class="form-group"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                    <div id="form-success-message">Thanks for reaching out! I’ll get back to you soon.</div>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- All other section HTML is unchanged; removed for brevity but is assumed present -->
-    
-    <!-- This would include Skills, Projects, Dashboards, Certificates, Contact sections as before, just without any emojis -->
-    
-    <!-- Back to Top Button -->
-    <a href="#home" id="back-to-top-btn" aria-label="Back to top">↑</a>
-
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer>
         <div class="footer-container">
             <div class="footer-copyright">
                 &copy; <span id="currentYear"></span> Niranjan Kumar. All Rights Reserved.
             </div>
-            <!-- Social links can be re-added here if desired -->
+            <div class="footer-socials">
+                <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                <a href="#" aria-label="Kaggle"><svg viewBox="0 0 24 24"><path d="M15.153 13.1l-6.44-8.29-6.537 8.324 6.44 8.289 6.537-8.323zm-3.562 3.435l-3.344 4.301.196.223h6.31l.217-.22-3.379-4.304zm-3.085-1.365l-2.684-3.463 2.768-3.513 2.585 3.332-2.669 3.644zm11.494-8.033l-3.328 4.223h-4.335l5.222-6.666 2.441 2.443zm1-1.39l-2.458-2.459-6.315 8.051v4.717l4.088-5.228 4.685 5.228v-10.31z"/></svg></a>
+            </div>
         </div>
     </footer>
     
+    <!-- Back to Top Button -->
+    <a href="#home" id="back-to-top-btn" aria-label="Back to top">↑</a>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Hero Slider Script
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            const closeIcon = document.querySelector('.mobile-nav .close-icon');
+
+            function toggleMenu() {
+                mobileNav.classList.toggle('is-active');
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+            closeIcon.addEventListener('click', toggleMenu);
+            mobileNavLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            // Hero Slider
             const slides = document.querySelectorAll('.slide');
             let currentSlide = 0;
             function showSlide(index) {
                 slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
             }
-            function nextSlide() {
+            setInterval(() => {
                 currentSlide = (currentSlide + 1) % slides.length;
                 showSlide(currentSlide);
-            }
-            setInterval(nextSlide, 4000);
-            showSlide(currentSlide);
-
-            // Hamburger Menu Toggle
-            const hamburger = document.getElementById('hamburger-menu');
-            const navMenu = document.getElementById('nav-menu');
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('nav-active');
-            });
-            // Close menu when a link is clicked
-            document.querySelectorAll('#nav-menu li a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('nav-active');
-                });
+            }, 4000);
+            showSlide(0);
+            
+            // Contact Form
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('form-success-message');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                successMessage.style.display = 'block';
+                contactForm.reset();
+                setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
             });
 
-            // Back to Top Button Visibility
-            const backToTopButton = document.getElementById('back-to-top-btn');
+            // Footer Year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Back to Top Button
+            const backToTopBtn = document.getElementById('back-to-top-btn');
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 300) {
-                    backToTopButton.classList.add('show');
+                if (window.scrollY > 200) {
+                    backToTopBtn.classList.add('show');
                 } else {
-                    backToTopButton.classList.remove('show');
+                    backToTopBtn.classList.remove('show');
                 }
             });
-
-            // Contact Form Script (assuming it's still in the full HTML)
-            const contactForm = document.getElementById('contact-form');
-            if(contactForm) {
-                const successMessage = document.getElementById('form-success-message');
-                contactForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    successMessage.style.display = 'block';
-                    contactForm.reset();
-                    setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
-                });
-            }
-
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
     </script>
 </body>
