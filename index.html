@@ -160,13 +160,13 @@
         
         .about-closing-quote { margin-top: 3rem; font-style: italic; font-size: 1.2rem; color: #555; }
         
-        /* Skills Section */
+        /* --- NEW Skills & Tools Section --- */
         #skills { background-color: var(--light-gray); }
-        .skills-tagline { margin-bottom: 3rem; font-size: 1.1rem; color: #555;}
+        .skills-tagline { margin-bottom: 3rem; font-size: 1.2rem; color: #555;}
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             text-align: left;
         }
@@ -176,38 +176,64 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
-        .skill-card.highlight { border-left: 5px solid var(--highlight-color); }
+        .skill-card.highlight {
+            border-top: 4px solid var(--highlight-color);
+        }
         
         .skill-card h4 {
             font-size: 1.4rem;
             margin-top: 0;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
         }
         
-        .skill-item { margin-bottom: 1.2rem; }
-        .skill-item p { margin: 0 0 0.5rem 0; font-weight: 500; }
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skill-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.4rem;
+            position: relative;
+        }
+        .skill-card li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
         
-        .proficiency-bar {
-            width: 100%;
-            height: 10px;
-            background-color: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
+        .tools-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
         }
-        .proficiency-level {
-            height: 100%;
-            background-color: var(--secondary-color);
-            border-radius: 5px;
+        .tool-badge {
+            background-color: #eaf2f8;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
         }
+
         .skills-closing {
-             margin-top: 3rem;
+             margin-top: 4rem;
              font-size: 1.1rem;
-             font-style: italic;
-             color: #555;
+             font-weight: 500;
+             color: #333;
         }
 
 
@@ -243,16 +269,15 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Unchanged) -->
     <section id="home" class="hero">
-        <!-- Slides are unchanged -->
         <div class="slide slide1 active"><div class="tagline">👉 Passionate about making data meaningful.</div><h1>Niranjan Kumar | Data Analyst</h1><p>Specializing in transforming raw datasets into clear insights that guide smarter business decisions.</p></div>
         <div class="slide slide2"><div class="tagline">👉 Tools that power my analysis.</div><h1>SQL | Python | Power BI</h1><p>From querying databases with SQL, cleaning data in Python, to building dashboards in Power BI — I turn numbers into actionable insights.</p></div>
         <div class="slide slide3"><div class="tagline">👉 Driven by curiosity and storytelling.</div><h1>Data → Stories → Decisions</h1><p>I love uncovering patterns, visualizing trends, and helping businesses make informed, data-driven decisions.</p></div>
         <div class="slide slide4"><div class="tagline">👉 Always learning. Always evolving.</div><h1>From Data Analyst → Data Scientist 🚀</h1><p>Currently expanding into machine learning and AI to solve more complex, predictive problems.</p><a href="#projects" class="cta-button">View My Work</a></div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Section (Cleaned) -->
     <section id="about">
         <div class="section-container">
             <div class="about-intro">
@@ -263,9 +288,9 @@
             
             <h3>My Data Journey</h3>
             <div class="journey-timeline">
-                <div class="journey-step"><p>📚 Learned foundations of Data Analytics (SQL, Excel, Python)</p></div>
+                <div class="journey-step"><p>📚 Learned foundations of Data Analytics</p></div>
                 <div class="journey-step"><p>🏗️ Built real-world projects and dashboards</p></div>
-                <div class="journey-step"><p>📊 Delivered business insights through data visualization</p></div>
+                <div class="journey-step"><p>📊 Delivered business insights through data</p></div>
                 <div class="journey-step"><p>🚀 Exploring Machine Learning and AI</p></div>
             </div>
 
@@ -281,63 +306,65 @@
         </div>
     </section>
 
-    <!-- Skills & Tools Section -->
+    <!-- Skills & Tools Section (Redesigned) -->
     <section id="skills">
         <div class="section-container">
             <h2>Skills & Tools</h2>
-            <p class="skills-tagline">“The tools and techniques I use to turn data into insights.”</p>
+            <p class="skills-tagline">“The complete set of skills and tools I use to turn data into insights.”</p>
             <div class="skills-grid">
-                <!-- Data Analysis -->
+                <!-- Data Skills -->
                 <div class="skill-card">
-                    <h4>Data Analysis & Cleaning</h4>
-                    <div class="skill-item"><p>Excel & Pandas</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
-                    <div class="skill-item"><p>NumPy</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 80%;"></div></div></div>
-                    <div class="skill-item"><p>EDA & Data Cleaning</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <h4>1️⃣ Data Skills / Analysis Workflow</h4>
+                    <ul>
+                        <li>Data Cleaning</li>
+                        <li>Data Understanding</li>
+                        <li>Data Exploration</li>
+                        <li>Exploratory Data Analysis (EDA)</li>
+                        <li>Data Visualization</li>
+                        <li>Data Analysis</li>
+                    </ul>
                 </div>
 
-                <!-- Databases -->
+                <!-- Analytical Skills -->
                 <div class="skill-card">
-                    <h4>Databases / Querying</h4>
-                    <div class="skill-item"><p>SQL (MySQL, PostgreSQL)</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
-                    <div class="skill-item"><p>Database Management</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%;"></div></div></div>
-                    <div class="skill-item"><p>Data Extraction</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
-                </div>
-
-                <!-- Visualization -->
-                <div class="skill-card">
-                    <h4>Data Visualization</h4>
-                    <div class="skill-item"><p>Power BI & Tableau</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
-                    <div class="skill-item"><p>Matplotlib & Seaborn</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 80%;"></div></div></div>
-                    <div class="skill-item"><p>Interactive Dashboards</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <h4>2️⃣ Analytical / Thinking Skills</h4>
+                    <ul>
+                        <li>Critical Thinking</li>
+                        <li>Problem Solving</li>
+                        <li>Data Storytelling</li>
+                        <li>Decision Making</li>
+                    </ul>
                 </div>
                 
-                 <!-- Machine Learning -->
+                <!-- Tools & Technologies -->
+                <div class="skill-card">
+                    <h4>3️⃣ Tools & Technologies</h4>
+                    <div class="tools-container">
+                        <span class="tool-badge">SQL / MySQL</span>
+                        <span class="tool-badge">Python</span>
+                        <span class="tool-badge">Pandas</span>
+                        <span class="tool-badge">NumPy</span>
+                        <span class="tool-badge">Power BI</span>
+                        <span class="tool-badge">Tableau</span>
+                        <span class="tool-badge">Excel</span>
+                        <span class="tool-badge">MS Word</span>
+                        <span class="tool-badge">MS PowerPoint</span>
+                    </div>
+                </div>
+
+                <!-- Machine Learning -->
                 <div class="skill-card highlight">
-                    <h4>Machine Learning & Advanced Analytics</h4>
-                    <div class="skill-item"><p>Scikit-learn (Regression, Classification)</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 75%; background-color: var(--highlight-color);"></div></div></div>
-                    <div class="skill-item"><p>Predictive Modeling</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 70%; background-color: var(--highlight-color);"></div></div></div>
-                    <div class="skill-item"><p>Basic Statistics & Probability</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%; background-color: var(--highlight-color);"></div></div></div>
-                </div>
-                
-                <!-- Programming -->
-                <div class="skill-card">
-                    <h4>Programming & Tools</h4>
-                     <div class="skill-item"><p>Python</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 85%;"></div></div></div>
-                    <div class="skill-item"><p>Jupyter Notebook</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
-                    <div class="skill-item"><p>GitHub / Version Control</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 80%;"></div></div></div>
-                </div>
-
-                <!-- Soft Skills -->
-                <div class="skill-card">
-                    <h4>Business & Soft Skills</h4>
-                    <div class="skill-item"><p>Data Storytelling</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
-                    <div class="skill-item"><p>Business Insights</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 90%;"></div></div></div>
-                    <div class="skill-item"><p>Problem Solving</p><div class="proficiency-bar"><div class="proficiency-level" style="width: 95%;"></div></div></div>
+                    <h4>4️⃣ Machine Learning / Advanced Skills</h4>
+                     <ul>
+                        <li>Scikit-learn (Regression, Classification, Clustering)</li>
+                        <li>Predictive Modeling / Feature Engineering</li>
+                    </ul>
                 </div>
             </div>
-             <p class="skills-closing">"These are the tools I use daily to uncover insights, build dashboards, and predict outcomes."</p>
+             <p class="skills-closing">“These are the tools and skills I use daily to explore, analyze, visualize, and derive insights from data.”</p>
         </div>
     </section>
+
 
     <!-- Placeholder Sections -->
     <section id="projects" class="placeholder"><h2>Projects</h2></section>
