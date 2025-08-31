@@ -160,7 +160,7 @@
         
         .about-closing-quote { margin-top: 3rem; font-style: italic; font-size: 1.2rem; color: #555; }
         
-        /* --- NEW Skills & Tools Section --- */
+        /* Skills & Tools Section */
         #skills { background-color: var(--light-gray); }
         .skills-tagline { margin-bottom: 3rem; font-size: 1.2rem; color: #555;}
 
@@ -235,6 +235,64 @@
              font-weight: 500;
              color: #333;
         }
+        
+        /* --- NEW Projects Section --- */
+        #projects { background-color: var(--white-color); }
+        .projects-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: left;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .project-card-content { padding: 1.5rem; flex-grow: 1; }
+        
+        .project-card h4 { font-size: 1.4rem; margin: 0 0 0.5rem 0; color: var(--text-color); }
+        .project-card p { font-size: 1rem; line-height: 1.5; color: #555; margin-bottom: 1rem; }
+        
+        .project-card .tools { margin-bottom: 1rem; }
+        
+        .project-card .outcome {
+            background-color: var(--light-gray);
+            padding: 0.75rem;
+            border-radius: 5px;
+            font-weight: 500;
+            font-style: italic;
+        }
+        
+        .project-card-footer {
+            border-top: 1px solid #eee;
+            padding: 1rem 1.5rem;
+            background-color: var(--light-gray);
+        }
+
+        .project-card-footer a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 1.5rem;
+        }
+        
+        .project-card-footer a:hover { text-decoration: underline; }
+
+        .projects-cta { margin-top: 3rem; }
 
 
         /* Placeholder Sections */
@@ -242,6 +300,9 @@
 
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
             .navbar .menu { display: none; }
             .slide h1 { font-size: 2.5rem; }
@@ -249,6 +310,7 @@
             .slide .tagline { position: static; margin-bottom: 1rem; font-size: 1rem; }
             .journey-timeline { flex-direction: column; gap: 1rem; }
             .journey-step { width: 100%; box-sizing: border-box; }
+            .projects-grid { grid-template-columns: 1fr; }
         }
 
     </style>
@@ -277,7 +339,7 @@
         <div class="slide slide4"><div class="tagline">👉 Always learning. Always evolving.</div><h1>From Data Analyst → Data Scientist 🚀</h1><p>Currently expanding into machine learning and AI to solve more complex, predictive problems.</p><a href="#projects" class="cta-button">View My Work</a></div>
     </section>
 
-    <!-- About Section (Cleaned) -->
+    <!-- About Section (Unchanged) -->
     <section id="about">
         <div class="section-container">
             <div class="about-intro">
@@ -306,68 +368,140 @@
         </div>
     </section>
 
-    <!-- Skills & Tools Section (Redesigned) -->
+    <!-- Skills & Tools Section (Unchanged) -->
     <section id="skills">
         <div class="section-container">
             <h2>Skills & Tools</h2>
             <p class="skills-tagline">“The complete set of skills and tools I use to turn data into insights.”</p>
             <div class="skills-grid">
-                <!-- Data Skills -->
                 <div class="skill-card">
                     <h4>1️⃣ Data Skills / Analysis Workflow</h4>
-                    <ul>
-                        <li>Data Cleaning</li>
-                        <li>Data Understanding</li>
-                        <li>Data Exploration</li>
-                        <li>Exploratory Data Analysis (EDA)</li>
-                        <li>Data Visualization</li>
-                        <li>Data Analysis</li>
-                    </ul>
+                    <ul><li>Data Cleaning</li><li>Data Understanding</li><li>Data Exploration</li><li>Exploratory Data Analysis (EDA)</li><li>Data Visualization</li><li>Data Analysis</li></ul>
                 </div>
-
-                <!-- Analytical Skills -->
                 <div class="skill-card">
                     <h4>2️⃣ Analytical / Thinking Skills</h4>
-                    <ul>
-                        <li>Critical Thinking</li>
-                        <li>Problem Solving</li>
-                        <li>Data Storytelling</li>
-                        <li>Decision Making</li>
-                    </ul>
+                    <ul><li>Critical Thinking</li><li>Problem Solving</li><li>Data Storytelling</li><li>Decision Making</li></ul>
                 </div>
-                
-                <!-- Tools & Technologies -->
                 <div class="skill-card">
                     <h4>3️⃣ Tools & Technologies</h4>
                     <div class="tools-container">
-                        <span class="tool-badge">SQL / MySQL</span>
-                        <span class="tool-badge">Python</span>
-                        <span class="tool-badge">Pandas</span>
-                        <span class="tool-badge">NumPy</span>
-                        <span class="tool-badge">Power BI</span>
-                        <span class="tool-badge">Tableau</span>
-                        <span class="tool-badge">Excel</span>
-                        <span class="tool-badge">MS Word</span>
-                        <span class="tool-badge">MS PowerPoint</span>
+                        <span class="tool-badge">SQL / MySQL</span><span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">NumPy</span><span class="tool-badge">Power BI</span><span class="tool-badge">Tableau</span><span class="tool-badge">Excel</span><span class="tool-badge">MS Word</span><span class="tool-badge">MS PowerPoint</span>
                     </div>
                 </div>
-
-                <!-- Machine Learning -->
                 <div class="skill-card highlight">
                     <h4>4️⃣ Machine Learning / Advanced Skills</h4>
-                     <ul>
-                        <li>Scikit-learn (Regression, Classification, Clustering)</li>
-                        <li>Predictive Modeling / Feature Engineering</li>
-                    </ul>
+                    <ul><li>Scikit-learn (Regression, Classification, Clustering)</li><li>Predictive Modeling / Feature Engineering</li></ul>
                 </div>
             </div>
-             <p class="skills-closing">“These are the tools and skills I use daily to explore, analyze, visualize, and derive insights from data.”</p>
+            <p class="skills-closing">“These are the tools and skills I use daily to explore, analyze, visualize, and derive insights from data.”</p>
         </div>
     </section>
 
+    <!-- Projects Section (NEW) -->
+    <section id="projects">
+        <div class="section-container">
+            <h2>Projects</h2>
+            <p class="projects-tagline">“Real-world data problems I’ve solved with analysis, visualization, and insights.”</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>1️⃣ Sales Data Analysis</h4>
+                        <p>Analyzed sales datasets to identify trends and optimize revenue streams.</p>
+                        <div class="tools">
+                            <span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">SQL</span>
+                        </div>
+                        <p class="outcome">Improved forecasting accuracy by 12%.</p>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="#">GitHub</a><a href="#">Live Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>2️⃣ Customer Segmentation</h4>
+                        <p>Performed clustering to segment customers based on purchase behavior.</p>
+                        <div class="tools">
+                            <span class="tool-badge">Python</span><span class="tool-badge">Scikit-learn</span><span class="tool-badge">Tableau</span>
+                        </div>
+                        <p class="outcome">Helped marketing team target top 20% customers effectively.</p>
+                    </div>
+                     <div class="project-card-footer">
+                        <a href="#">GitHub</a><a href="#">Live Demo</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>3️⃣ Interactive Dashboard</h4>
+                        <p>Built a real-time interactive dashboard for sales KPIs.</p>
+                        <div class="tools">
+                           <span class="tool-badge">Power BI</span><span class="tool-badge">Excel</span>
+                        </div>
+                        <p class="outcome">Enabled management to monitor performance at a glance.</p>
+                    </div>
+                     <div class="project-card-footer">
+                        <a href="#">GitHub</a><a href="#">Live Demo</a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>4️⃣ Financial Data Cleaning</h4>
+                        <p>Cleaned and prepared raw financial datasets for analysis.</p>
+                        <div class="tools">
+                            <span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">Excel</span>
+                        </div>
+                        <p class="outcome">Reduced data errors by 20%.</p>
+                    </div>
+                     <div class="project-card-footer">
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>5️⃣ Marketing Campaign Analysis</h4>
+                        <p>Analyzed marketing campaign effectiveness using SQL and Python.</p>
+                        <div class="tools">
+                            <span class="tool-badge">SQL</span><span class="tool-badge">Python</span><span class="tool-badge">Matplotlib</span>
+                        </div>
+                        <p class="outcome">Optimized campaigns and improved ROI by 15%.</p>
+                    </div>
+                     <div class="project-card-footer">
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h4>6️⃣ Predictive Model for Sales</h4>
+                        <p>Built regression and classification models to predict sales performance.</p>
+                        <div class="tools">
+                            <span class="tool-badge">Python</span><span class="tool-badge">Scikit-learn</span><span class="tool-badge">Excel</span>
+                        </div>
+                        <p class="outcome">Forecasts helped management make data-driven decisions.</p>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-cta">
+                 <a href="#" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">See More Projects on GitHub</a>
+            </div>
+        </div>
+    </section>
 
     <!-- Placeholder Sections -->
-    <section id="projects" class="placeholder"><h2>Projects</h2></section>
     <section id="dashboards" class="placeholder"><h2>Dashboards</h2></section>
     <section id="certificates" class="placeholder"><h2>Certificates</h2></section>
     <section id="contact" class="placeholder"><h2>Contact</h2></section>
