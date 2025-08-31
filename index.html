@@ -236,7 +236,7 @@
              color: #333;
         }
         
-        /* --- NEW Projects Section --- */
+        /* Projects Section */
         #projects { background-color: var(--white-color); }
         .projects-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
         
@@ -293,6 +293,89 @@
         .project-card-footer a:hover { text-decoration: underline; }
 
         .projects-cta { margin-top: 3rem; }
+        
+        
+        /* --- NEW Dashboards Section --- */
+        #dashboards { background-color: var(--light-gray); }
+        .dashboards-tagline { font-size: 1.2rem; color: #555; margin-bottom: 3rem; }
+
+        .dashboards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .dashboard-card {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .dashboard-thumbnail {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dashboard-thumbnail img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .dashboard-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(52, 152, 219, 0.8);
+            color: var(--white-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .dashboard-card:hover .dashboard-thumbnail img { transform: scale(1.1); }
+        .dashboard-card:hover .dashboard-overlay { opacity: 1; }
+        
+        .dashboard-content {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .dashboard-content h4 {
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .tool-badge-dashboard {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .dashboard-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 0.6rem 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .dashboard-button:hover {
+            background-color: #2980b9;
+        }
 
 
         /* Placeholder Sections */
@@ -311,6 +394,7 @@
             .journey-timeline { flex-direction: column; gap: 1rem; }
             .journey-step { width: 100%; box-sizing: border-box; }
             .projects-grid { grid-template-columns: 1fr; }
+            .dashboards-grid { grid-template-columns: 1fr; }
         }
 
     </style>
@@ -397,112 +481,94 @@
         </div>
     </section>
 
-    <!-- Projects Section (NEW) -->
+    <!-- Projects Section (Unchanged) -->
     <section id="projects">
         <div class="section-container">
             <h2>Projects</h2>
             <p class="projects-tagline">“Real-world data problems I’ve solved with analysis, visualization, and insights.”</p>
-            
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h4>1️⃣ Sales Data Analysis</h4>
-                        <p>Analyzed sales datasets to identify trends and optimize revenue streams.</p>
-                        <div class="tools">
-                            <span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">SQL</span>
+                <div class="project-card"><div class="project-card-content"><h4>1️⃣ Sales Data Analysis</h4><p>Analyzed sales datasets to identify trends and optimize revenue streams.</p><div class="tools"><span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">SQL</span></div><p class="outcome">Improved forecasting accuracy by 12%.</p></div><div class="project-card-footer"><a href="#">GitHub</a><a href="#">Live Demo</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>2️⃣ Customer Segmentation</h4><p>Performed clustering to segment customers based on purchase behavior.</p><div class="tools"><span class="tool-badge">Python</span><span class="tool-badge">Scikit-learn</span><span class="tool-badge">Tableau</span></div><p class="outcome">Helped marketing team target top 20% customers effectively.</p></div><div class="project-card-footer"><a href="#">GitHub</a><a href="#">Live Demo</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>3️⃣ Interactive Dashboard</h4><p>Built a real-time interactive dashboard for sales KPIs.</p><div class="tools"><span class="tool-badge">Power BI</span><span class="tool-badge">Excel</span></div><p class="outcome">Enabled management to monitor performance at a glance.</p></div><div class="project-card-footer"><a href="#">GitHub</a><a href="#">Live Demo</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>4️⃣ Financial Data Cleaning</h4><p>Cleaned and prepared raw financial datasets for analysis.</p><div class="tools"><span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">Excel</span></div><p class="outcome">Reduced data errors by 20%.</p></div><div class="project-card-footer"><a href="#">GitHub</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>5️⃣ Marketing Campaign Analysis</h4><p>Analyzed marketing campaign effectiveness using SQL and Python.</p><div class="tools"><span class="tool-badge">SQL</span><span class="tool-badge">Python</span><span class="tool-badge">Matplotlib</span></div><p class="outcome">Optimized campaigns and improved ROI by 15%.</p></div><div class="project-card-footer"><a href="#">GitHub</a></div></div>
+                <div class="project-card"><div class="project-card-content"><h4>6️⃣ Predictive Model for Sales</h4><p>Built regression and classification models to predict sales performance.</p><div class="tools"><span class="tool-badge">Python</span><span class="tool-badge">Scikit-learn</span><span class="tool-badge">Excel</span></div><p class="outcome">Forecasts helped management make data-driven decisions.</p></div><div class="project-card-footer"><a href="#">GitHub</a></div></div>
+            </div>
+            <div class="projects-cta"><a href="#" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">See More Projects on GitHub</a></div>
+        </div>
+    </section>
+    
+    <!-- Dashboards Section (NEW) -->
+    <section id="dashboards">
+        <div class="section-container">
+            <h2>Dashboards</h2>
+            <p class="dashboards-tagline">“Interactive dashboards designed to turn raw data into actionable insights.”</p>
+
+            <div class="dashboards-grid">
+                <!-- Card 1 -->
+                <div class="dashboard-card">
+                    <div class="dashboard-thumbnail">
+                        <img src="https://placehold.co/600x400/3498db/white?text=Sales+Performance" alt="Sales Performance Dashboard">
+                        <div class="dashboard-overlay">
+                            <p>Tracks revenue, profit, and key performance indicators across different regions and product lines.</p>
                         </div>
-                        <p class="outcome">Improved forecasting accuracy by 12%.</p>
                     </div>
-                    <div class="project-card-footer">
-                        <a href="#">GitHub</a><a href="#">Live Demo</a>
+                    <div class="dashboard-content">
+                        <h4>1️⃣ Sales Performance Dashboard</h4>
+                        <span class="tool-badge-dashboard">Power BI</span>
+                        <a href="#" class="dashboard-button">View Dashboard</a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="dashboard-card">
+                    <div class="dashboard-thumbnail">
+                        <img src="https://placehold.co/600x400/2ecc71/white?text=Customer+Insights" alt="Customer Insights Dashboard">
+                         <div class="dashboard-overlay">
+                            <p>Visualizes customer churn rates, segmentation data, and overall purchase behavior patterns.</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-content">
+                        <h4>2️⃣ Customer Insights Dashboard</h4>
+                        <span class="tool-badge-dashboard">Tableau</span>
+                        <a href="#" class="dashboard-button">View Dashboard</a>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h4>2️⃣ Customer Segmentation</h4>
-                        <p>Performed clustering to segment customers based on purchase behavior.</p>
-                        <div class="tools">
-                            <span class="tool-badge">Python</span><span class="tool-badge">Scikit-learn</span><span class="tool-badge">Tableau</span>
+                <!-- Card 3 -->
+                 <div class="dashboard-card">
+                    <div class="dashboard-thumbnail">
+                        <img src="https://placehold.co/600x400/e74c3c/white?text=Financial+Reporting" alt="Financial Reporting Dashboard">
+                         <div class="dashboard-overlay">
+                           <p>Automates monthly financial reports with key performance indicators, pivot charts, and trend analysis.</p>
                         </div>
-                        <p class="outcome">Helped marketing team target top 20% customers effectively.</p>
                     </div>
-                     <div class="project-card-footer">
-                        <a href="#">GitHub</a><a href="#">Live Demo</a>
+                    <div class="dashboard-content">
+                        <h4>3️⃣ Financial Reporting Dashboard</h4>
+                        <span class="tool-badge-dashboard">Excel</span>
+                        <a href="#" class="dashboard-button">View Dashboard</a>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h4>3️⃣ Interactive Dashboard</h4>
-                        <p>Built a real-time interactive dashboard for sales KPIs.</p>
-                        <div class="tools">
-                           <span class="tool-badge">Power BI</span><span class="tool-badge">Excel</span>
+                <!-- Card 4 -->
+                <div class="dashboard-card">
+                    <div class="dashboard-thumbnail">
+                        <img src="https://placehold.co/600x400/f1c40f/white?text=Marketing+Campaign" alt="Marketing Campaign Dashboard">
+                         <div class="dashboard-overlay">
+                            <p>Compares the effectiveness and return on investment (ROI) across multiple marketing channels.</p>
                         </div>
-                        <p class="outcome">Enabled management to monitor performance at a glance.</p>
                     </div>
-                     <div class="project-card-footer">
-                        <a href="#">GitHub</a><a href="#">Live Demo</a>
+                    <div class="dashboard-content">
+                        <h4>4️⃣ Marketing Campaign Dashboard</h4>
+                         <span class="tool-badge-dashboard">Power BI</span>
+                        <a href="#" class="dashboard-button">View Dashboard</a>
                     </div>
                 </div>
-
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h4>4️⃣ Financial Data Cleaning</h4>
-                        <p>Cleaned and prepared raw financial datasets for analysis.</p>
-                        <div class="tools">
-                            <span class="tool-badge">Python</span><span class="tool-badge">Pandas</span><span class="tool-badge">Excel</span>
-                        </div>
-                        <p class="outcome">Reduced data errors by 20%.</p>
-                    </div>
-                     <div class="project-card-footer">
-                        <a href="#">GitHub</a>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h4>5️⃣ Marketing Campaign Analysis</h4>
-                        <p>Analyzed marketing campaign effectiveness using SQL and Python.</p>
-                        <div class="tools">
-                            <span class="tool-badge">SQL</span><span class="tool-badge">Python</span><span class="tool-badge">Matplotlib</span>
-                        </div>
-                        <p class="outcome">Optimized campaigns and improved ROI by 15%.</p>
-                    </div>
-                     <div class="project-card-footer">
-                        <a href="#">GitHub</a>
-                    </div>
-                </div>
-
-                <!-- Project 6 -->
-                <div class="project-card">
-                    <div class="project-card-content">
-                        <h4>6️⃣ Predictive Model for Sales</h4>
-                        <p>Built regression and classification models to predict sales performance.</p>
-                        <div class="tools">
-                            <span class="tool-badge">Python</span><span class="tool-badge">Scikit-learn</span><span class="tool-badge">Excel</span>
-                        </div>
-                        <p class="outcome">Forecasts helped management make data-driven decisions.</p>
-                    </div>
-                    <div class="project-card-footer">
-                        <a href="#">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="projects-cta">
-                 <a href="#" class="cta-button" style="background-color: var(--primary-color); color: var(--white-color);">See More Projects on GitHub</a>
             </div>
         </div>
     </section>
 
     <!-- Placeholder Sections -->
-    <section id="dashboards" class="placeholder"><h2>Dashboards</h2></section>
     <section id="certificates" class="placeholder"><h2>Certificates</h2></section>
     <section id="contact" class="placeholder"><h2>Contact</h2></section>
 
