@@ -8,10 +8,10 @@
 		
 		<link rel="icon" type="image/png" href="Logo/favicon.png" />
 
-		<!-- Google Fonts: Poppins for Headings, Lato for Body -->
+		<!-- Google Fonts: Syne for Headings, Lato for Body -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
 		<link
 			rel="stylesheet"
@@ -38,9 +38,9 @@
 				--accent-gradient: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-end) 100%);
 				--accent-tint: rgba(20, 184, 166, 0.1);
 
-				/* NEW FONTS: Poppins & Lato */
+				/* NEW FONTS: Syne & Lato */
 				--font-sans: 'Lato', sans-serif;
-				--font-serif: 'Poppins', sans-serif;
+				--font-serif: 'Syne', sans-serif;
 				--border-radius: 4px;
 				--nav-height: 100px;
 				--transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -65,7 +65,7 @@
 				color: var(--text-secondary);
 				-webkit-font-smoothing: antialiased;
 				background-color: var(--bg-main);
-				line-height: 1.6; /* Adjusted for better readability with Lato */
+				line-height: 1.6;
 				overflow-x: hidden;
 			}
 			body.modal-open { overflow: hidden; }
@@ -96,36 +96,65 @@
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent-start); }
 			
 			/* ================================================= */
-			/* =========== NEW CAROUSEL HERO SECTION =========== */
+			/* =========== NEW RESPONSIVE HERO SECTION =========== */
 			/* ================================================= */
+			@keyframes animated-gradient {
+				0% { background-position: 0% 50%; }
+				50% { background-position: 100% 50%; }
+				100% { background-position: 0% 50%; }
+			}
+
 			#hero {
 				display: flex;
+				flex-direction: column;
 				justify-content: center;
 				align-items: center;
 				min-height: 100vh;
-				padding-top: var(--nav-height);
+				padding: var(--nav-height) 25px 0 25px;
 				position: relative;
-				background-color: var(--bg-main);
+				color: white;
+				text-align: center;
 				overflow: hidden;
-			}
 
-			#tsparticles {
+				/* Animated Gradient Background */
+				background: linear-gradient(
+					45deg,
+					#081c24,
+					#0d2e3a,
+					#18556d,
+					#14b8a6,
+					#06b6d4,
+					#18556d,
+					#0d2e3a,
+					#081c24
+				);
+				background-size: 400% 400%;
+				animation: animated-gradient 15s ease infinite;
+			}
+			#hero::before {
+				content: '';
 				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 0;
+				top: 0; left: 0;
+				width: 100%; height: 100%;
+				background: rgba(8, 28, 36, 0.5); /* Dark overlay for text contrast */
+				z-index: 1;
 			}
-
-			.carousel-container {
+			
+			.hero-content-wrapper {
 				position: relative;
 				z-index: 2;
 				width: 100%;
-				max-width: 1100px;
+				max-width: 1000px;
 				margin: 0 auto;
-				padding: 2rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.carousel-container {
+				width: 100%;
 				overflow: hidden;
+				margin-bottom: 2.5rem;
 			}
 
 			.carousel-track {
@@ -136,8 +165,12 @@
 			.carousel-slide {
 				flex: 0 0 100%;
 				width: 100%;
-				padding: 1rem;
-				text-align: left;
+				padding: 1rem 0;
+				min-height: 250px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 			}
 			
 			.slide-content > * {
@@ -148,65 +181,38 @@
 			
 			.carousel-slide.active .slide-content > * { animation-delay: 0.3s; }
 			.carousel-slide.active .slide-content > *:nth-child(2) { animation-delay: 0.5s; }
-			.carousel-slide.active .slide-content > *:nth-child(3) { animation-delay: 0.7s; }
 
-			@keyframes slideUp {
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
+			@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
 			.slide-intro {
 				font-size: clamp(1rem, 3vw, 1.25rem);
-				color: var(--accent-start);
+				color: var(--accent-end);
 				margin-bottom: 1.5rem;
-				font-weight: 500;
-				font-family: var(--font-serif);
+				font-weight: 700;
+				font-family: var(--font-sans);
 			}
 
 			.slide-headline {
-				font-size: clamp(2.5rem, 6vw, 4rem);
+				font-size: clamp(2.5rem, 7vw, 4.5rem);
 				line-height: 1.1;
-				color: var(--text-primary); 
-				margin: 0 0 2.5rem 0;
-			}
-
-			.slide-subtext {
-				font-size: clamp(1rem, 2vw, 1.15rem);
-				color: var(--text-secondary);
-				max-width: 55ch;
-				line-height: 1.7;
+				color: var(--card-bg); 
+				margin: 0;
+				text-transform: uppercase;
+				font-weight: 800;
 			}
 			
-			.carousel-dots {
-				position: absolute;
-				bottom: 20px;
-				left: 50%;
-				transform: translateX(-50%);
-				display: flex;
-				gap: 12px;
+			/* Static Buttons */
+			.hero-cta-buttons { 
+				display: flex; 
+				flex-wrap: wrap; 
+				justify-content: center; 
+				gap: 1rem; 
+				width: 100%;
+				margin-bottom: 2.5rem;
 			}
-
-			.dot {
-				cursor: pointer;
-				height: 12px;
-				width: 12px;
-				background-color: var(--border-color);
-				border-radius: 50%;
-				display: inline-block;
-				transition: background-color 0.3s ease, transform 0.3s ease;
-			}
-
-			.dot.active {
-				background-color: var(--accent-start);
-				transform: scale(1.2);
-			}
-
-			.hero-cta-buttons { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 1rem; margin-top: 2.5rem; }
 			
 			.cta-btn {
-				display: inline-block; padding: 1rem 2rem; font-weight: 600; font-size: 1rem;
+				display: inline-block; padding: 1rem 2rem; font-weight: 700; font-size: 1rem;
 				border-radius: var(--border-radius); transition: all 0.2s ease; text-align: center; min-width: 200px;
 				font-family: var(--font-serif);
 			}
@@ -215,17 +221,49 @@
 				background-image: var(--accent-gradient);
 				color: var(--card-bg) !important; 
 				border: none;
-				padding: calc(1rem + 2px) calc(2rem + 2px); 
 			}
 			.cta-btn-primary:hover {
 				opacity: 1;
 				box-shadow: 0 8px 15px rgba(20, 184, 166, 0.3);
-				transform: translateY(-3px);
+				transform: translateY(-3px) scale(1.02);
 			}
 
-			.cta-btn-secondary { background-color: transparent; color: var(--accent-start) !important; border: 2px solid var(--accent-start); }
-			.cta-btn-secondary:hover { background-color: var(--accent-tint); color: var(--accent-start) !important; transform: translateY(-3px); }
+			.cta-btn-secondary { 
+				background-color: transparent; 
+				color: var(--card-bg) !important; 
+				border: 2px solid var(--card-bg); 
+			}
+			.cta-btn-secondary:hover { 
+				background-color: var(--accent-tint); 
+				color: var(--card-bg) !important; 
+				border-color: var(--accent-end);
+				transform: translateY(-3px) scale(1.02); 
+			}
+			
+			.carousel-dots {
+				display: flex;
+				gap: 12px;
+			}
 
+			.dot {
+				cursor: pointer;
+				height: 12px;
+				width: 12px;
+				background-color: rgba(255, 255, 255, 0.4);
+				border-radius: 50%;
+				display: inline-block;
+				transition: all 0.3s ease;
+			}
+
+			.dot.active {
+				background-color: var(--accent-end);
+				transform: scale(1.2);
+			}
+
+			@media (max-width: 768px) {
+				.carousel-slide { min-height: 200px; }
+				.hero-cta-buttons { flex-direction: column; align-items: center; }
+			}
 
 			/* --- ABOUT SECTION --- */
 			h2.section-heading { text-align: center; margin-bottom: 4rem; font-size: clamp(28px, 5vw, 40px); position: relative; color: var(--text-primary); }
@@ -509,53 +547,56 @@
 			</div>
 		</nav>
 		<main id="main-content">
-			<!-- ============================ -->
-			<!-- ===== NEW HERO SECTION ===== -->
-			<!-- ============================ -->
+			<!-- ================================== -->
+			<!-- ===== REVISED HERO SECTION ===== -->
+			<!-- ================================== -->
 			<section id="hero">
-				<div id="tsparticles"></div>
-				
-				<div class="carousel-container">
-					<div class="carousel-track">
-						<!-- Slide 1 -->
-						<div class="carousel-slide active">
-							<div class="slide-content">
-								<p class="slide-intro">Niranjan Kumar</p>
-								<h1 class="slide-headline">Data Analyst & Storyteller</h1>
-								<p class="slide-subtext">I transform complex datasets into clear, actionable insights that drive strategic decisions. Welcome to my portfolio.</p>
+				<div class="hero-content-wrapper">
+			
+					<!-- Carousel for Text -->
+					<div class="carousel-container">
+						<div class="carousel-track">
+							<!-- Slide 1 -->
+							<div class="carousel-slide active">
+								<div class="slide-content">
+									<p class="slide-intro">Data Analyst</p>
+									<h1 class="slide-headline">I give data a voice</h1>
+								</div>
 							</div>
-						</div>
-						<!-- Slide 2 -->
-						<div class="carousel-slide">
-							<div class="slide-content">
-								<p class="slide-intro">My Expertise</p>
-								<h1 class="slide-headline">Mastery in SQL & Python</h1>
-								<p class="slide-subtext">Leveraging advanced SQL for data querying and Python (Pandas, NumPy) for manipulation and analysis to uncover the stories hidden in the data.</p>
+							<!-- Slide 2 -->
+							<div class="carousel-slide">
+								<div class="slide-content">
+									<p class="slide-intro">My Tools</p>
+									<h1 class="slide-headline">SQL & PYTHON MASTERY</h1>
+								</div>
 							</div>
-						</div>
-						<!-- Slide 3 -->
-						<div class="carousel-slide">
-							<div class="slide-content">
-								<p class="slide-intro">Visualizing Success</p>
-								<h1 class="slide-headline">Power BI & Tableau Specialist</h1>
-								<p class="slide-subtext">Building intuitive and interactive dashboards that make data accessible to everyone, empowering teams to see and understand trends at a glance.</p>
+							<!-- Slide 3 -->
+							<div class="carousel-slide">
+								<div class="slide-content">
+									<p class="slide-intro">My Craft</p>
+									<h1 class="slide-headline">INSIGHTS TO ACTION</h1>
+								</div>
 							</div>
-						</div>
-						<!-- Slide 4 -->
-						<div class="carousel-slide">
-							<div class="slide-content">
-								<p class="slide-intro">Let's Collaborate</p>
-								<h1 class="slide-headline">Ready for the Next Challenge</h1>
-								<div class="hero-cta-buttons">
-									<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
-									<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
+							<!-- Slide 4 -->
+							<div class="carousel-slide">
+								<div class="slide-content">
+									<p class="slide-intro">Your Data has a story</p>
+									<h1 class="slide-headline">LET'S TELL IT TOGETHER</h1>
 								</div>
 							</div>
 						</div>
 					</div>
+			
+					<!-- Static CTA Buttons -->
+					<div class="hero-cta-buttons">
+						<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
+						<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
+					</div>
+					
+					<!-- Carousel Dots -->
 					<div class="carousel-dots"></div>
+			
 				</div>
-
 			</section>
 
 
@@ -731,211 +772,4 @@
 								<span>Dribbble</span>
 							</a>
 							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="View my LinkedIn profile">
-								<i class="fab fa-linkedin"></i>
-								<span>LinkedIn</span>
-							</a>
-							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail" aria-label="Send me an email">
-								<i class="fas fa-envelope"></i>
-								<span>Gmail</span>
-							</a>
-							<a href="tel:+910000000000" class="contact-card phone" aria-label="Call me">
-								<i class="fas fa-phone"></i>
-								<span>Phone</span>
-							</a>
-							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram" aria-label="View my Instagram profile">
-								<i class="fab fa-instagram"></i>
-								<span>Instagram</span>
-							</a>
-						</div>
-					</div>
-			
-					<!-- Right Column: Contact Form -->
-					<div class="form-column">
-						<h3 class="contact-heading">Send a Message</h3>
-						<form action="https://formspree.io/f/xyzpaeop" method="POST" class="contact-form">
-							<input type="text" name="name" placeholder="Your Name" required />
-							<input type="email" name="email" placeholder="Your Email" required />
-							<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-							<button type="submit" class="send-message-btn">Send Message</button>
-						</form>
-					</div>
-			
-				</div>
-			</section>
-			
-		</main>
-
-		<footer class="footer"><a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a></footer>
-
-		<!-- CERTIFICATE MODAL -->
-		<div id="certModal" class="modal-overlay">
-			<div class="modal-content">
-				<button id="modalCloseBtn" class="modal-close-btn">&times;</button>
-				<img id="modalCertImage" src="" alt="Certificate Image" class="modal-cert-image" />
-				<div id="modalCertDetails" class="modal-cert-details">
-					<h2 id="modalCertTitle"></h2>
-					<p><strong>Issued by:</strong> <span id="modalCertIssuer"></span></p>
-					<p><strong>Completion Date:</strong> <span id="modalCertDate"></span></p>
-					<p><strong>Credential ID:</strong> <span id="modalCertId"></span></p>
-					<a id="modalVerifyLink" href="#" target="_blank" class="cta-btn cta-btn-primary"><span>Verify Credential</span></a>
-				</div>
-			</div>
-		</div>
-
-		<!-- tsparticles CDN -->
-		<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
-		
-		<script>
-			document.addEventListener("DOMContentLoaded", () => {
-				// --- tsParticles CONFIGURATION for hero section only ---
-				tsParticles.load("tsparticles", {
-					fpsLimit: 60,
-					interactivity: {
-						events: { onHover: { enable: true, mode: "grab" }, resize: true },
-						modes: { grab: { distance: 140, line_linked: { opacity: 1 } } },
-					},
-					particles: {
-						color: { value: "#5b6479" },
-						links: {
-							color: "#5b6479",
-							distance: 150,
-							enable: true,
-							opacity: 0.2,
-							width: 1,
-						},
-						collisions: { enable: false },
-						move: {
-							direction: "none",
-							enable: true,
-							outMode: "out",
-							random: false,
-							speed: 1.5,
-							straight: false,
-						},
-						number: { density: { enable: true, value_area: 800 }, value: 80 },
-						opacity: { value: 0.3 },
-						shape: { type: "circle" },
-						size: { random: true, value: {min: 1, max: 5} },
-					},
-					detectRetina: true,
-				});
-
-				// --- NEW HERO CAROUSEL LOGIC ---
-				const track = document.querySelector('.carousel-track');
-				const slides = Array.from(track.children);
-				const dotsNav = document.querySelector('.carousel-dots');
-				let slideInterval;
-
-				// Create dots
-				slides.forEach((slide, index) => {
-					const dot = document.createElement('button');
-					dot.classList.add('dot');
-					if (index === 0) dot.classList.add('active');
-					dot.addEventListener('click', e => {
-						moveToSlide(index);
-						resetInterval();
-					});
-					dotsNav.appendChild(dot);
-				});
-
-				const dots = Array.from(dotsNav.children);
-
-				const moveToSlide = (slideIndex) => {
-					track.style.transform = 'translateX(-' + 100 * slideIndex + '%)';
-
-					const currentSlide = track.querySelector('.active');
-					currentSlide.classList.remove('active');
-					slides[slideIndex].classList.add('active');
-
-					const currentDot = dotsNav.querySelector('.active');
-					currentDot.classList.remove('active');
-					dots[slideIndex].classList.add('active');
-				};
-
-				const nextSlide = () => {
-					const currentSlide = track.querySelector('.active');
-					const currentIndex = slides.findIndex(slide => slide === currentSlide);
-					const nextIndex = (currentIndex + 1) % slides.length;
-					moveToSlide(nextIndex);
-				};
-
-				const startInterval = () => {
-					slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-				};
-
-				const resetInterval = () => {
-					clearInterval(slideInterval);
-					startInterval();
-				};
-				
-				startInterval();
-
-				// --- CERTIFICATES DATA & LOGIC ---
-				const certificatesData = [
-					{ 
-						logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1280px-Microsoft_logo_%282012%29.svg.png', 
-						title: 'Career Essentials in Business Analysis', 
-						issuer: 'Microsoft & LinkedIn', 
-						fullImage: 'Certificates/Business Analyst certificate.png', 
-						date: 'Not Specified', 
-						id: 'Not Applicable', 
-						verifyLink: 'https://www.linkedin.com/learning/certificates/586492be7f0a6e80a1631e815a9aef7d817cf1992070dec8d3ec6545d78b9475' 
-					},
-					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
-					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
-					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Power BI Data Analyst', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'June 2025', id: 'MNO-345-PQR-678', verifyLink: '#' },
-					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Tableau_Software_logo.svg/1280px-Tableau_Software_logo.svg.png', title: 'Tableau Certified Associate', issuer: 'Tableau', fullImage: 'images/placeholder-cert.png', date: 'May 2025', id: 'STU-901-VWX-234', verifyLink: '#' },
-					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Python for Data Science', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'April 2025', id: 'YZA-567-BCD-890', verifyLink: '#' },
-					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Google Data Analytics', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'March 2025', id: 'EFG-123-HIJ-456', verifyLink: '#' },
-					{ logo: 'https://logowik.com/content/uploads/images/microsoft-certified-power-bi-data-analyst-associate3768.logowik.com.webp', title: 'Data Analysis with Python', issuer: 'Microsoft', fullImage: 'images/placeholder-cert.png', date: 'February 2025', id: 'KLM-789-NOP-012', verifyLink: '#' },
-					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Data Visualization in Python', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'January 2025', id: 'QRS-345-TUV-678', verifyLink: '#' }
-				];
-				const certsGrid = document.querySelector('.certs-grid');
-				certificatesData.forEach((cert, i) => { const card = document.createElement('li'); card.className = 'cert-card reveal'; card.style.setProperty('--delay', `${i*100}ms`); card.dataset.index = i; card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`; certsGrid.appendChild(card); });
-				const modal=document.getElementById('certModal'),modalCloseBtn=document.getElementById('modalCloseBtn'),allCertCards=document.querySelectorAll('.cert-card');
-				const openModal=(i)=>{const d=certificatesData[i];document.getElementById('modalCertImage').src=d.fullImage;document.getElementById('modalCertTitle').textContent=d.title;document.getElementById('modalCertIssuer').textContent=d.issuer;document.getElementById('modalCertDate').textContent=d.date;document.getElementById('modalCertId').textContent=d.id;document.getElementById('modalVerifyLink').href=d.verifyLink;modal.classList.add('active');document.body.classList.add('modal-open');};
-				const closeModal=()=>{modal.classList.remove('active');document.body.classList.remove('modal-open');};
-				allCertCards.forEach(c=>{c.addEventListener('click',()=>openModal(c.dataset.index));});
-				modalCloseBtn.addEventListener('click',closeModal);
-				modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
-
-				// --- GENERAL SCRIPTING & NAVIGATION ---
-				const revealElements = document.querySelectorAll(".reveal");
-				const revealObserver = new IntersectionObserver((e,o)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add("is-visible");o.unobserve(en.target);}});},{rootMargin:"0px 0px -100px 0px"});
-				revealElements.forEach(el=>revealObserver.observe(el));
-				const nav = document.getElementById("mainNav"),logo = document.getElementById("navLogoImage"),origSrc="Logo/Logo Dark.svg",scrolledSrc="Logo/Logo Dark.svg";
-				window.addEventListener("scroll",()=>{const s=window.scrollY>20;nav.classList.toggle("scrolled",s);if(logo)logo.src=s?scrolledSrc:origSrc;});
-				const hamburger=document.getElementById("hamburgerMenu"),navLinks=document.getElementById("navLinks");
-				
-				if (hamburger && navLinks) {
-					// Toggle mobile menu
-					hamburger.addEventListener("click", () => {
-						hamburger.classList.toggle("active");
-						navLinks.classList.toggle("active");
-					});
-
-					// Smooth scroll and mobile menu close functionality
-					navLinks.querySelectorAll("a[href^='#']").forEach(anchor => {
-						anchor.addEventListener('click', function(e) {
-							e.preventDefault(); // Prevent default anchor behavior
-
-							const targetId = this.getAttribute('href');
-							const targetElement = document.querySelector(targetId);
-
-							if (targetElement) {
-								// Close mobile menu before scrolling
-								hamburger.classList.remove('active');
-								navLinks.classList.remove('active');
-
-								// Scroll to the element
-								targetElement.scrollIntoView({
-									behavior: 'smooth'
-								});
-							}
-						});
-					});
-				}
-			});
-		</script>
-	</body>
-</html>
+								<i class="fa
