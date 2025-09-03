@@ -269,7 +269,7 @@
 				box-shadow: 0 6px 12px rgba(20, 184, 166, 0.25);
 			}
 
-			/* --- NEW CERTIFICATES STLES --- */
+			/* --- NEW CERTIFICATES STYLES --- */
 			#certs { background-color: var(--bg-main); margin: 0; padding: 100px 0; }
 			#certs .section-heading::after { background: var(--accent-gradient); }
 			.certs-grid { display: grid; gap: 2rem; list-style: none; padding: 0; margin: 0; }
@@ -289,7 +289,7 @@
 			@media (max-width: 768px) { .certs-grid { grid-template-columns: 1fr; } }
 
 
-			/* --- MODAL STLES --- */
+			/* --- MODAL STYLES --- */
 			.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; backdrop-filter: blur(5px); }
 			.modal-overlay.active { opacity: 1; visibility: visible; }
 			.modal-content { background: var(--card-bg); border-radius: 16px; padding: 2rem; max-width: 900px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
@@ -478,24 +478,13 @@
 			</div>
 		</nav>
 		<main id="main-content">
-			<!-- ============================ -->
-			<!-- ===== HERO SECTION ===== -->
-			<!-- ============================ -->
-			<section id="hero">
-				<div id="tsparticles"></div>
-		
-				<div class="hero-container">
-					<p class="hero-intro">Hi, my name is</p>
-					<h1 class="hero-headline">Niranjan Kumar.</h1>
-					<h1 class="hero-sub-headline">I turn data into decisions.</h1>
-					<p class="hero-subtext">I’m a Data Analyst who transforms messy datasets into clear strategies. Let me show you how data can predict, guide, and inspire.</p>
-					<div class="hero-cta-buttons">
-						<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
-						<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
-					</div>
-				</div>
-
-			</section>
+            <!-- Hero Section -->
+            <section id="home" class="hero">
+                <div class="slide slide1 active"><h1>Niranjan Kumar | Data Analyst</h1><p>Specializing in transforming raw datasets into clear insights that guide smarter business decisions.</p></div>
+                <div class="slide slide2"><h1>SQL | Python | Power BI</h1><p>From querying databases with SQL, cleaning data in Python, to building dashboards in Power BI — I turn numbers into actionable insights.</p></div>
+                <div class="slide slide3"><h1>Data → Stories → Decisions</h1><p>I love uncovering patterns, visualizing trends, and helping businesses make informed, data-driven decisions.</p></div>
+                <div class="slide slide4"><h1>From Data Analyst to Data Scientist</h1><p>Currently expanding into machine learning and AI to solve more complex, predictive problems.</p><a href="#projects" class="cta-button">View My Work</a></div>
+            </section>
 
 
 			<!-- "ABOUT ME" SECTION -->
