@@ -40,7 +40,7 @@
 				--font-serif: 'Inter', sans-serif;
 				--font-hero: 'Syne', sans-serif;
 				--border-radius: 4px;
-				--nav-height: 80px; /* REDUCED NAV-HEIGHT */
+				--nav-height: 100px;
 				--transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 				--transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 
@@ -70,6 +70,7 @@
 			.skip-to-content { position: absolute; top: auto; left: -9999px; width: 1px; height: 1px; overflow: hidden; z-index: -999; }
 			.skip-to-content:focus { left: 1rem; top: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; padding: 0.5rem 1rem; background: var(--accent-gradient); color: var(--card-bg); border-radius: var(--border-radius); font-weight: 700; }
 			
+            /* The main tag should NOT have position:relative to avoid stacking issues */
 			main { padding: 0 60px; }
 			section { padding: 100px 0; }
 			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 800; line-height: 1.2; }
@@ -93,6 +94,9 @@
 			.nav-links li a:not(.btn):not(.modern-pill-button):hover { color: var(--accent-start); }
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent-start); }
 			
+			/* ================================================= */
+			/* =========== CORRECTED HERO SECTION =========== */
+			/* ================================================= */
 			@keyframes animated-gradient {
 				0% { background-position: 0% 50%; }
 				50% { background-position: 100% 50%; }
@@ -100,73 +104,122 @@
 			}
 
 			#hero {
-				display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 0; margin: 0 -60px; /* COUNTERACTS MAIN PADDING */ position: relative; color: white; text-align: center; overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				padding: 0; /* REMOVED ALL PADDING */
+				margin: 0 -60px; /* ADDED NEGATIVE MARGIN TO COUNTERACT MAIN PADDING */
+				position: relative; 
+				color: white;
+				text-align: center;
+				overflow: hidden;
 				background: linear-gradient( 45deg, #081c24, #0d2e3a, #18556d, #14b8a6, #06b6d4, #18556d, #0d2e3a, #081c24 );
-				background-size: 400% 400%; animation: animated-gradient 15s ease infinite;
+				background-size: 400% 400%;
+				animation: animated-gradient 15s ease infinite;
 			}
-			#hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8, 28, 36, 0.5); z-index: 1; }
+			#hero::before {
+				content: '';
+				position: absolute;
+				top: 0; left: 0;
+				width: 100%; height: 100%;
+				background: rgba(8, 28, 36, 0.5); 
+				z-index: 1;
+			}
 			
-			.hero-content-wrapper { position: relative; z-index: 2; width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 25px; display: flex; flex-direction: column; align-items: center; }
-			.carousel-container { width: 100%; overflow: hidden; margin-bottom: 2.5rem; }
-			.carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
-			.carousel-slide { flex: 0 0 100%; width: 100%; padding: 1rem 0; min-height: 250px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-			.slide-content > * { opacity: 0; transform: translateY(25px); animation: slideUp 0.7s ease-out forwards; }
-			.carousel-slide.active .slide-content > * { animation-delay: 0.3s; } .carousel-slide.active .slide-content > *:nth-child(2) { animation-delay: 0.5s; }
+			.hero-content-wrapper {
+				position: relative;
+				z-index: 2;
+				width: 100%;
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 0 25px; /* Added padding here to keep content from touching edges */
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.carousel-container {
+				width: 100%;
+				overflow: hidden;
+				margin-bottom: 2.5rem;
+			}
+
+			.carousel-track {
+				display: flex;
+				transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+			}
+
+			.carousel-slide {
+				flex: 0 0 100%;
+				width: 100%;
+				padding: 1rem 0;
+				min-height: 250px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.slide-content > * {
+				opacity: 0;
+				transform: translateY(25px);
+				animation: slideUp 0.7s ease-out forwards;
+			}
+			
+			.carousel-slide.active .slide-content > * { animation-delay: 0.3s; }
+			.carousel-slide.active .slide-content > *:nth-child(2) { animation-delay: 0.5s; }
+
 			@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
-			.slide-intro { font-family: var(--font-sans); font-size: clamp(1rem, 3vw, 1.25rem); color: var(--accent-end); margin-bottom: 1.5rem; font-weight: 700; }
-			.slide-headline { font-family: var(--font-hero); font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1.1; color: var(--card-bg); margin: 0; text-transform: uppercase; font-weight: 800; }
-			
-			/* ============================================== */
-			/* =========== HERO TEXT DESIGN STYLES ========== */
-			/* ============================================== */
-			/* --- SLIDE 2 --- */
-			.headline-2 .highlight-text {
-				background-image: var(--accent-gradient);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-				color: transparent;
-			}
-			/* --- SLIDE 3 --- */
-			.headline-3 {
-				background-color: var(--card-bg);
-				color: var(--text-primary);
-				padding: 0.5rem 1.5rem;
-				line-height: 1.3;
-			}
-			.headline-3 .highlight-text {
-				color: var(--accent-start);
-			}
-			/* --- SLIDE 4 --- */
-			.headline-4 {
-				display: block;
-			}
-			.headline-4 .line-1 {
-				font-weight: 400;
+			.slide-intro {
 				font-family: var(--font-sans);
-				display: block;
-				font-size: clamp(1.5rem, 4vw, 2.5rem);
+				font-size: clamp(1rem, 3vw, 1.25rem);
 				color: var(--accent-end);
-				text-transform: none;
-			}
-			.headline-4 .line-2 {
-				display: block;
+				margin-bottom: 1.5rem;
+				font-weight: 700;
 			}
 
+			.slide-headline {
+				font-family: var(--font-hero);
+				font-size: clamp(2.5rem, 7vw, 4.5rem);
+				line-height: 1.1;
+				color: var(--card-bg); 
+				margin: 0;
+				text-transform: uppercase;
+				font-weight: 800;
+			}
+			
 			.hero-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; width: 100%; margin-bottom: 2.5rem; }
-			.cta-btn { display: inline-block; padding: 1rem 2rem; font-weight: 700; font-size: 1rem; border-radius: var(--border-radius); transition: all 0.2s ease; text-align: center; min-width: 200px; font-family: var(--font-hero); }
-			.cta-btn-primary { background-image: var(--accent-gradient); color: var(--card-bg) !important; border: none; }
-			.cta-btn-primary:hover { opacity: 1; box-shadow: 0 8px 15px rgba(20, 184, 166, 0.3); transform: translateY(-3px) scale(1.02); }
+			
+			.cta-btn {
+				display: inline-block; padding: 1rem 2rem; font-weight: 700; font-size: 1rem;
+				border-radius: var(--border-radius); transition: all 0.2s ease; text-align: center; min-width: 200px;
+				font-family: var(--font-hero);
+			}
+			
+			.cta-btn-primary { 
+				background-image: var(--accent-gradient);
+				color: var(--card-bg) !important; 
+				border: none;
+			}
+			.cta-btn-primary:hover {
+				opacity: 1;
+				box-shadow: 0 8px 15px rgba(20, 184, 166, 0.3);
+				transform: translateY(-3px) scale(1.02);
+			}
+
 			.cta-btn-secondary { background-color: transparent; color: var(--card-bg) !important; border: 2px solid var(--card-bg); }
 			.cta-btn-secondary:hover { background-color: var(--accent-tint); color: var(--card-bg) !important; border-color: var(--accent-end); transform: translateY(-3px) scale(1.02); }
+			
 			.carousel-dots { display: none; }
 			.dot { cursor: pointer; height: 12px; width: 12px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; }
 			.dot.active { background-color: var(--accent-end); transform: scale(1.2); }
 
 			@media (max-width: 768px) {
-				main { padding: 0 25px; } 
-                #hero { margin: 0 -25px; } /* Adjust negative margin */
+                main { padding: 0 25px; } 
+                #hero { margin: 0 -25px; } /* Adjust negative margin for smaller screens */
 				.carousel-slide { min-height: 200px; }
 				.hero-cta-buttons { flex-direction: column; align-items: center; }
 			}
@@ -214,6 +267,7 @@
 			.timeline-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent-start); font-weight: bold; font-size: 1.2rem; line-height: 1; }
 			@media screen and (max-width: 900px) { .timeline-container::after { left: 25px; } .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; } .timeline-item.left, .timeline-item.right { left: 0; } .timeline-item::after { left: 15px; } }
 			
+			/* Standardized Project Cards */
 			.projects-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 			.projects-footer { margin-top: 3rem; text-align: center; }
 			.project-card { background-color: var(--card-bg); display: flex; flex-direction: column; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); overflow: hidden; border: 1px solid var(--border-color); }
@@ -226,10 +280,24 @@
 			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
 			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent-start); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
 			.project-view-button {
-				display: inline-block; background-image: var(--accent-gradient); color: var(--card-bg) !important; padding: 10px 18px; border-radius: var(--border-radius); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; border: none;
+				display: inline-block;
+				background-image: var(--accent-gradient);
+				color: var(--card-bg) !important;
+				padding: 10px 18px;
+				border-radius: var(--border-radius);
+				font-size: 0.9rem;
+				font-weight: 600;
+				text-decoration: none;
+				transition: transform 0.2s ease, box-shadow 0.2s ease;
+				border: none;
 			}
-			.project-view-button:hover { opacity: 1; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(20, 184, 166, 0.25); }
+			.project-view-button:hover {
+				opacity: 1;
+				transform: translateY(-2px);
+				box-shadow: 0 6px 12px rgba(20, 184, 166, 0.25);
+			}
 
+			/* --- NEW CERTIFICATES STLES --- */
 			#certs { background-color: var(--bg-main); margin: 0; padding: 100px 0; }
 			#certs .section-heading::after { background: var(--accent-gradient); }
 			.certs-grid { display: grid; gap: 2rem; list-style: none; padding: 0; margin: 0; }
@@ -249,6 +317,7 @@
 			@media (max-width: 768px) { .certs-grid { grid-template-columns: 1fr; } }
 
 
+			/* --- MODAL STLES --- */
 			.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; backdrop-filter: blur(5px); }
 			.modal-overlay.active { opacity: 1; visibility: visible; }
 			.modal-content { background: var(--card-bg); border-radius: 16px; padding: 2rem; max-width: 900px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
@@ -263,14 +332,68 @@
 			.modal-verify-link { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 10px 20px; background: var(--accent-gradient); color: var(--card-bg) !important; border-radius: 8px; font-weight: 600; transition: var(--transition-fast); }
 			.modal-verify-link:hover { opacity: 1; filter: brightness(1.1); transform: translateY(-2px); }
 			
+            /* ================================================= */
+			/* =========== NEW CONTACT SECTION STYLES ========== */
+			/* ================================================= */
+
 			#contact .section-heading::after { background: var(--accent-gradient); }
-			.contact-subtext { text-align: center; font-size: 1.1rem; max-width: 60ch; margin: -2rem auto 4rem; color: var(--text-secondary); }
-			.contact-layout-grid { display: flex; gap: 3rem; align-items: flex-start; max-width: 1200px; margin: 0 auto; }
-			.connect-column, .form-column { flex: 1; }
-            h3.contact-heading { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-primary); }
-			.icon-grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
-			.contact-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; background-color: var(--card-bg); padding: 1.5rem; border-radius: 12px; box-shadow: 0 4px 15px var(--shadow-color); text-align: center; transition: var(--transition-fast); color: var(--text-primary); font-weight: 500; font-size: 0.9rem; border: 1px solid var(--border-color); }
-			.contact-card i { font-size: 2.5rem; transition: var(--transition-fast); }
+			
+			.contact-subtext {
+				text-align: center;
+				font-size: 1.1rem;
+				max-width: 60ch;
+				margin: -2rem auto 4rem;
+				color: var(--text-secondary);
+			}
+
+			.contact-layout-grid {
+				display: flex;
+				gap: 3rem;
+				align-items: flex-start;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+
+			.connect-column, .form-column {
+				flex: 1;
+			}
+            
+            h3.contact-heading {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 1.5rem;
+                color: var(--text-primary);
+            }
+			
+			.icon-grid-hub {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+				gap: 1rem;
+			}
+
+			.contact-card {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 0.75rem;
+				background-color: var(--card-bg);
+				padding: 1.5rem;
+				border-radius: 12px;
+				box-shadow: 0 4px 15px var(--shadow-color);
+				text-align: center;
+				transition: var(--transition-fast);
+				color: var(--text-primary);
+				font-weight: 500;
+				font-size: 0.9rem;
+				border: 1px solid var(--border-color);
+			}
+
+			.contact-card i {
+				font-size: 2.5rem; 
+				transition: var(--transition-fast);
+			}
+
 			.contact-card:hover { transform: translateY(-8px); opacity: 1; border-color: var(--accent-start); }
 			.contact-card:hover i { transform: scale(1.1); filter: brightness(1.1); }
 			.contact-card.github:hover i { color: var(--color-github); }
@@ -281,26 +404,97 @@
 			.contact-card.phone:hover i { color: var(--color-phone); }
 			.contact-card.instagram:hover i { color: var(--color-instagram); }
 
-			.contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
-			.contact-form input, .contact-form textarea { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); background-color: var(--card-bg); font-family: var(--font-sans); font-size: 1rem; color: var(--text-primary); transition: all 0.2s ease-in-out; }
-			.contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--text-secondary); opacity: 0.7; }
-			.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent-start); background-color: var(--card-bg); box-shadow: 0 0 0 4px var(--accent-tint); }
-			.send-message-btn { padding: 1rem 2rem; font-size: 1rem; font-weight: 600; color: white !important; background-image: var(--accent-gradient); border: none; border-radius: 8px; cursor: pointer; transition: var(--transition-fast); }
-			.send-message-btn:hover { opacity: 1; box-shadow: 0 8px 15px rgba(20, 184, 166, 0.3); transform: translateY(-3px); }
+
+			.contact-form {
+				display: flex;
+				flex-direction: column;
+				gap: 1.5rem;
+			}
+			
+			.contact-form input,
+			.contact-form textarea {
+				width: 100%;
+				padding: 1rem;
+				border-radius: 8px;
+				border: 1px solid var(--border-color);
+				background-color: var(--card-bg);
+				font-family: var(--font-sans);
+				font-size: 1rem;
+				color: var(--text-primary);
+				transition: all 0.2s ease-in-out;
+			}
+
+			.contact-form input::placeholder,
+			.contact-form textarea::placeholder {
+				color: var(--text-secondary);
+				opacity: 0.7;
+			}
+			
+			.contact-form input:focus,
+			.contact-form textarea:focus {
+				outline: none;
+				border-color: var(--accent-start);
+				background-color: var(--card-bg);
+				box-shadow: 0 0 0 4px var(--accent-tint);
+			}
+			
+			.send-message-btn {
+				padding: 1rem 2rem;
+				font-size: 1rem;
+				font-weight: 600;
+				color: white !important;
+				background-image: var(--accent-gradient);
+				border: none;
+				border-radius: 8px;
+				cursor: pointer;
+				transition: var(--transition-fast);
+			}
+
+			.send-message-btn:hover {
+				opacity: 1;
+				box-shadow: 0 8px 15px rgba(20, 184, 166, 0.3);
+				transform: translateY(-3px);
+			}
 
 			.footer { text-align: center; padding: 1.5rem; font-size: 0.8rem; margin-top: 60px; }
+
+			/* HAMBURGER & RESPONSIVE NAV */
 			.hamburger-menu { display: none; z-index: 1001; }
 			
-			@media (max-width: 992px) { .contact-layout-grid { flex-direction: column; gap: 4rem; } }
-			@media (max-width: 768px) { section { padding: 80px 0; } .main-nav { padding: 0 25px; } .nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } .nav-links.active { transform: translateX(0); } .nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } .hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } .hamburger-menu .bar { background-color: var(--text-primary); transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; } .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } .hamburger-menu.active .bar:nth-child(2) { opacity: 0; } .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } }
+			@media (max-width: 992px) {
+				.contact-layout-grid {
+					flex-direction: column;
+					gap: 4rem;
+				}
+			}
+
+			@media (max-width: 768px) { 
+				/* main { padding: 0 25px; } - ALREADY DEFINED ABOVE */
+				section { padding: 80px 0; } 
+				.main-nav { padding: 0 25px; } 
+				.nav-links { display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); background-color: var(--card-bg); flex-direction: column; justify-content: center; align-items: center; transform: translateX(100%); transition: transform 0.3s ease-out; z-index: 1000; box-shadow: -10px 0 30px -15px var(--shadow-color); } 
+				.nav-links.active { transform: translateX(0); } 
+				.nav-links ol { flex-direction: column; gap: 2rem; text-align: center; } 
+				.hamburger-menu { display: block; width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } 
+				.hamburger-menu .bar { background-color: var(--text-primary); transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; } 
+				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } 
+				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; } 
+				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+			 }
+
 
 		</style>
 	</head>
 	<body>
 		<a href="#main-content" class="skip-to-content">Skip to Content</a>
+
 		<nav class="main-nav" id="mainNav">
-			<div class="nav-logo"> <a href="#"><img id="navLogoImage" src="Logo/Logo Dark.svg" alt="Niranjan Kumar Logo"/></a> </div>
-			<button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu"> <div class="bar"></div><div class="bar"></div><div class="bar"></div> </button>
+			<div class="nav-logo">
+				<a href="#"><img id="navLogoImage" src="Logo/Logo Dark.svg" alt="Niranjan Kumar Logo"/></a>
+			</div>
+			<button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
+				<div class="bar"></div><div class="bar"></div><div class="bar"></div>
+			</button>
 			<div class="nav-links" id="navLinks">
 				<ol>
 					<li><a href="#about">About</a></li>
@@ -313,47 +507,55 @@
 		</nav>
         
 		<main id="main-content">
+			<!-- ================================== -->
+			<!-- ===== REVISED HERO SECTION ===== -->
+			<!-- ================================== -->
 			<section id="hero">
 				<div class="hero-content-wrapper">
+					<!-- Carousel for Text -->
 					<div class="carousel-container">
 						<div class="carousel-track">
+							<!-- Slide 1 -->
 							<div class="carousel-slide active">
 								<div class="slide-content">
 									<p class="slide-intro">Data Analyst</p>
 									<h1 class="slide-headline">I give data a voice</h1>
 								</div>
 							</div>
+							<!-- Slide 2 -->
 							<div class="carousel-slide">
 								<div class="slide-content">
 									<p class="slide-intro">My Tools</p>
-									<h1 class="slide-headline headline-2">SQL & Python <span class="highlight-text">Mastery</span></h1>
+									<h1 class="slide-headline">SQL & PYTHON MASTERY</h1>
 								</div>
 							</div>
+							<!-- Slide 3 -->
 							<div class="carousel-slide">
 								<div class="slide-content">
 									<p class="slide-intro">My Craft</p>
-									<h1 class="slide-headline headline-3"><span class="highlight-text">Insights</span> to Action</h1>
+									<h1 class="slide-headline">INSIGHTS TO ACTION</h1>
 								</div>
 							</div>
+							<!-- Slide 4 -->
 							<div class="carousel-slide">
 								<div class="slide-content">
 									<p class="slide-intro">Your Data has a story</p>
-									<h1 class="slide-headline headline-4">
-										<span class="line-1">Let's Tell It</span>
-										<span class="line-2">Together</span>
-									</h1>
+									<h1 class="slide-headline">LET'S TELL IT TOGETHER</h1>
 								</div>
 							</div>
 						</div>
 					</div>
+					<!-- Static CTA Buttons -->
 					<div class="hero-cta-buttons">
 						<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
 						<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
 					</div>
+					<!-- Carousel Dots -->
 					<div class="carousel-dots"></div>
 				</div>
 			</section>
 
+			<!-- "ABOUT ME" SECTION -->
 			<section id="about">
 				<div class="about-redesigned-container reveal">
 					<div class="avatar-column">
@@ -373,35 +575,94 @@
 						<h3 class="toolkit-heading">My Professional Toolkit</h3>
 						
 						<h4 class="toolkit-subheading">Data Manipulation & Analysis</h4>
-						<div class="skills-grid"> <div class="skill-badge"><i class="fas fa-database"></i><span>SQL & T-SQL</span></div> <div class="skill-badge"><i class="fab fa-python"></i><span>Python (Pandas, NumPy)</span></div> <div class="skill-badge"><i class="fas fa-file-excel"></i><span>Advanced Excel</span></div> <div class="skill-badge"><i class="fas fa-cogs"></i><span>ETL Processes</span></div> </div>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL & T-SQL</span></div>
+							<div class="skill-badge"><i class="fab fa-python"></i><span>Python (Pandas, NumPy)</span></div>
+							<div class="skill-badge"><i class="fas fa-file-excel"></i><span>Advanced Excel</span></div>
+							<div class="skill-badge"><i class="fas fa-cogs"></i><span>ETL Processes</span></div>
+						</div>
 			
 						<h4 class="toolkit-subheading">Data Visualization</h4>
-						<div class="skills-grid"> <div class="skill-badge"><i class="fas fa-chart-bar"></i><span>Power BI</span></div> <div class="skill-badge"><i class="fas fa-chart-pie"></i><span>Tableau</span></div> <div class="skill-badge"><i class="fab fa-python"></i><span>Seaborn & Matplotlib</span></div> </div>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-chart-bar"></i><span>Power BI</span></div>
+							<div class="skill-badge"><i class="fas fa-chart-pie"></i><span>Tableau</span></div>
+							<div class="skill-badge"><i class="fab fa-python"></i><span>Seaborn & Matplotlib</span></div>
+						</div>
 			
 						<h4 class="toolkit-subheading">Databases & Big Data</h4>
-						<div class="skills-grid"> <div class="skill-badge"><i class="fas fa-database"></i><span>MySQL</span></div> <div class="skill-badge"><i class="fas fa-database"></i><span>PostgreSQL</span></div> <div class="skill-badge"><i class="fas fa-cloud"></i><span>Microsoft Azure</span></div> <div class="skill-badge"><i class="fas fa-fire"></i><span>Apache Spark</span></div> </div>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-database"></i><span>MySQL</span></div>
+							<div class="skill-badge"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
+							<div class="skill-badge"><i class="fas fa-cloud"></i><span>Microsoft Azure</span></div>
+							<div class="skill-badge"><i class="fas fa-fire"></i><span>Apache Spark</span></div>
+						</div>
 			
 						<h4 class="toolkit-subheading">Machine Learning</h4>
-						<div class="skills-grid"> <div class="skill-badge"><i class="fas fa-robot"></i><span>Scikit-learn</span></div> <div class="skill-badge"><i class="fas fa-brain"></i><span>TensorFlow</span></div> <div class="skill-badge"><i class="fas fa-chart-line"></i><span>Regression & Classification</span></div> </div>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-robot"></i><span>Scikit-learn</span></div>
+							<div class="skill-badge"><i class="fas fa-brain"></i><span>TensorFlow</span></div>
+							<div class="skill-badge"><i class="fas fa-chart-line"></i><span>Regression & Classification</span></div>
+						</div>
 
 						<h4 class="toolkit-subheading">Developer Tools</h4>
-						<div class="skills-grid"> <div class="skill-badge"><i class="fab fa-git-alt"></i><span>Git & GitHub</span></div> <div class="skill-badge"><i class="fab fa-jira"></i><span>Jira</span></div> </div>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fab fa-git-alt"></i><span>Git & GitHub</span></div>
+							<div class="skill-badge"><i class="fab fa-jira"></i><span>Jira</span></div>
+						</div>
 					</div>
 				</div>
 			</section>
 
+			<!-- "MY JOURNEY" SECTION -->
 			<section id="journey">
 				<h2 class="section-heading reveal">My Journey</h2>
 				<div class="timeline-container">
-					<div class="timeline-item right reveal"> <div class="timeline-card"> <div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Analyst</h3><span class="org">Naresh i Technologies · Trainee</span></div></div> <div class="meta"><span><i class="fas fa-calendar-alt"></i> Feb 2025 – Jul 2025</span><span><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India</span></div> <ul><li>Completed an intensive on-site training program focusing on advanced data analysis techniques.</li><li>Leveraged SQL and Python for comprehensive data cleaning and reporting.</li></ul> </div> </div>
-					<div class="timeline-item left reveal"> <div class="timeline-card"> <div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>UX Designer</h3><span class="org">DevRiser · Full-time</span></div></div> <div class="meta"><span><i class="fas fa-calendar-alt"></i> Jun 2023 – Dec 2024</span><span><i class="fas fa-map-marker-alt"></i> London Area, United Kingdom (Remote)</span></div> <ul><li>Specialized in designing intuitive, data-driven dashboards for analytics applications.</li><li>Translated complex data requirements into clean, user-friendly visualization workflows.</li></ul> </div> </div>
-					<div class="timeline-item right reveal"> <div class="timeline-card"> <div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Bachelor of Technology, Computer Software Engineering</h3><span class="org">IPS College of Technology & Management</span></div></div> <div class="meta"><span><i class="fas fa-calendar-alt"></i> Aug 2019 – May 2023</span><span><i class="fas fa-map-marker-alt"></i> Gwalior</span></div> <ul><li>Graduated with a grade of 8.9, focusing on data structures, algorithms, and database management systems.</li></ul> </div> </div>
-					<div class="timeline-item left reveal"> <div class="timeline-card"> <div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Science with ML</h3><span class="org">TechieNest · Trainee</span></div></div> <div class="meta"><span><i class="fas fa-calendar-alt"></i> Jul 2022 – Aug 2022</span><span><i class="fas fa-map-marker-alt"></i> Jaipur, Rajasthan, India</span></div> <ul><li>Completed a 2-month on-site training program focused on Machine Learning principles.</li></ul> </div> </div>
-					<div class="timeline-item right reveal"> <div class="timeline-card"> <div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Senior Secondary, Science Stream</h3><span class="org">DAV Schools Network</span></div></div> <div class="meta"><span><i class="fas fa-calendar-alt"></i> Aug 2017 – May 2018</span></div> <ul><li>Achieved a grade of 8.7.</li></ul> </div> </div>
-					<div class="timeline-item left reveal"> <div class="timeline-card"> <div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Secondary Education (X)</h3><span class="org">DAV Schools Network</span></div></div> <div class="meta"><span><i class="fas fa-calendar-alt"></i> Apr 2015 – Jul 2016</span></div> <ul><li>Achieved a grade of 9.2.</li></ul> </div> </div>
+					<div class="timeline-item right reveal">
+						<div class="timeline-card">
+							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Analyst</h3><span class="org">Naresh i Technologies · Trainee</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Feb 2025 – Jul 2025</span><span><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana, India</span></div>
+							<ul><li>Completed an intensive on-site training program focusing on advanced data analysis techniques.</li><li>Leveraged SQL and Python for comprehensive data cleaning and reporting.</li></ul>
+						</div>
+					</div>
+					<div class="timeline-item left reveal">
+						<div class="timeline-card">
+							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>UX Designer</h3><span class="org">DevRiser · Full-time</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Jun 2023 – Dec 2024</span><span><i class="fas fa-map-marker-alt"></i> London Area, United Kingdom (Remote)</span></div>
+							<ul><li>Specialized in designing intuitive, data-driven dashboards for analytics applications.</li><li>Translated complex data requirements into clean, user-friendly visualization workflows.</li></ul>
+						</div>
+					</div>
+					<div class="timeline-item right reveal">
+						<div class="timeline-card">
+							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Bachelor of Technology, Computer Software Engineering</h3><span class="org">IPS College of Technology & Management</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Aug 2019 – May 2023</span><span><i class="fas fa-map-marker-alt"></i> Gwalior</span></div>
+							<ul><li>Graduated with a grade of 8.9, focusing on data structures, algorithms, and database management systems.</li></ul>
+						</div>
+					</div>
+					<div class="timeline-item left reveal">
+						<div class="timeline-card">
+							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Science with ML</h3><span class="org">TechieNest · Trainee</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Jul 2022 – Aug 2022</span><span><i class="fas fa-map-marker-alt"></i> Jaipur, Rajasthan, India</span></div>
+							<ul><li>Completed a 2-month on-site training program focused on Machine Learning principles.</li></ul>
+						</div>
+					</div>
+					<div class="timeline-item right reveal">
+						<div class="timeline-card">
+							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Senior Secondary, Science Stream</h3><span class="org">DAV Schools Network</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Aug 2017 – May 2018</span></div>
+							<ul><li>Achieved a grade of 8.7.</li></ul>
+						</div>
+					</div>
+					<div class="timeline-item left reveal">
+						<div class="timeline-card">
+							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Secondary Education (X)</h3><span class="org">DAV Schools Network</span></div></div>
+							<div class="meta"><span><i class="fas fa-calendar-alt"></i> Apr 2015 – Jul 2016</span></div>
+							<ul><li>Achieved a grade of 9.2.</li></ul>
+						</div>
+					</div>
 				</div>
 			</section>
 			
+			<!-- PROJECTS SECTION -->
 			<section id="projects">
 				<h2 class="section-heading reveal">Featured Projects</h2>
 				<ul class="projects-grid">
@@ -414,17 +675,25 @@
 					<li class="project-card reveal" style="--delay: 900ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div></div></li>
 				</ul>
-				<div class="projects-footer reveal"> <a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a> </div>
+				<div class="projects-footer reveal">
+					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a>
+				</div>
 			</section>
 
+			<!-- NEW CERTIFICATES SECTION -->
 			<section id="certs">
 				<h2 class="section-heading reveal">Credentials & Certificates</h2>
-				<ul class="certs-grid"></ul>
+				<ul class="certs-grid">
+					<!-- Certificate Cards are populated by JavaScript -->
+				</ul>
 			</section>
 
+			<!-- CONTACT SECTION -->
 			<section id="contact">
 				<h2 class="section-heading reveal">Let’s Connect & Collaborate 🚀</h2>
-				<p class="contact-subtext reveal"> I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions. </p>
+				<p class="contact-subtext reveal">
+					I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+				</p>
 			
 				<div class="contact-layout-grid reveal">
 					<div class="connect-column">
@@ -450,10 +719,12 @@
 					</div>
 				</div>
 			</section>
+			
 		</main>
 
 		<footer class="footer"><a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a></footer>
 
+		<!-- CERTIFICATE MODAL -->
 		<div id="certModal" class="modal-overlay">
 			<div class="modal-content">
 				<button id="modalCloseBtn" class="modal-close-btn">&times;</button>
@@ -470,23 +741,55 @@
 		
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
+				// --- HERO CAROUSEL LOGIC ---
 				const track = document.querySelector('.carousel-track');
 				if (track) {
 					const slides = Array.from(track.children);
 					const dotsNav = document.querySelector('.carousel-dots');
 					let slideInterval;
+
 					if (slides.length > 0 && dotsNav) {
-						slides.forEach((slide, index) => { const dot = document.createElement('button'); dot.classList.add('dot'); if (index === 0) dot.classList.add('active'); dot.setAttribute('aria-label', `Go to slide ${index + 1}`); dot.addEventListener('click', e => { moveToSlide(index); resetInterval(); }); dotsNav.appendChild(dot); });
+						slides.forEach((slide, index) => {
+							const dot = document.createElement('button');
+							dot.classList.add('dot');
+							if (index === 0) dot.classList.add('active');
+							dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+							dot.addEventListener('click', e => {
+								moveToSlide(index);
+								resetInterval();
+							});
+							dotsNav.appendChild(dot);
+						});
+
 						const dots = Array.from(dotsNav.children);
-						const moveToSlide = (slideIndex) => { track.style.transform = 'translateX(-' + 100 * slideIndex + '%)'; const currentSlide = track.querySelector('.active'); if (currentSlide) currentSlide.classList.remove('active'); slides[slideIndex].classList.add('active'); const currentDot = dotsNav.querySelector('.active'); if(currentDot) currentDot.classList.remove('active'); dots[slideIndex].classList.add('active'); };
-						const nextSlide = () => { const currentSlide = track.querySelector('.active'); const currentIndex = slides.findIndex(slide => slide === currentSlide); const nextIndex = (currentIndex + 1) % slides.length; moveToSlide(nextIndex); };
+						const moveToSlide = (slideIndex) => {
+							track.style.transform = 'translateX(-' + 100 * slideIndex + '%)';
+							const currentSlide = track.querySelector('.active');
+							if (currentSlide) currentSlide.classList.remove('active');
+							slides[slideIndex].classList.add('active');
+
+							const currentDot = dotsNav.querySelector('.active');
+							if(currentDot) currentDot.classList.remove('active');
+							dots[slideIndex].classList.add('active');
+						};
+						const nextSlide = () => {
+							const currentSlide = track.querySelector('.active');
+							const currentIndex = slides.findIndex(slide => slide === currentSlide);
+							const nextIndex = (currentIndex + 1) % slides.length;
+							moveToSlide(nextIndex);
+						};
 						const startInterval = () => { slideInterval = setInterval(nextSlide, 5000); };
 						const resetInterval = () => { clearInterval(slideInterval); startInterval(); };
 						startInterval();
 					}
 				}
 
-				const certificatesData = [ { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1280px-Microsoft_logo_%282012%29.svg.png', title: 'Career Essentials in Business Analysis', issuer: 'Microsoft & LinkedIn', fullImage: 'Certificates/Business Analyst certificate.png', date: 'Not Specified', id: 'Not Applicable', verifyLink: 'https://www.linkedin.com/learning/certificates/586492be7f0a6e80a1631e815a9aef7d817cf1992070dec8d3ec6545d78b9475' }, { logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' }, { logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' }, ];
+				// --- CERTIFICATES DATA & LOGIC ---
+				const certificatesData = [
+					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1280px-Microsoft_logo_%282012%29.svg.png', title: 'Career Essentials in Business Analysis', issuer: 'Microsoft & LinkedIn', fullImage: 'Certificates/Business Analyst certificate.png', date: 'Not Specified', id: 'Not Applicable', verifyLink: 'https://www.linkedin.com/learning/certificates/586492be7f0a6e80a1631e815a9aef7d817cf1992070dec8d3ec6545d78b9475' },
+					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
+				];
 				const certsGrid = document.querySelector('.certs-grid');
 				if (certsGrid) {
 					certificatesData.forEach((cert, i) => { const card = document.createElement('li'); card.className = 'cert-card reveal'; card.style.setProperty('--delay', `${i*100}ms`); card.dataset.index = i; card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`; certsGrid.appendChild(card); });
@@ -498,13 +801,23 @@
 					modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
 				}
 
+				// --- GENERAL SCRIPTING & NAVIGATION ---
 				const revealElements = document.querySelectorAll(".reveal");
 				const revealObserver = new IntersectionObserver((e,o)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add("is-visible");o.unobserve(en.target);}});},{rootMargin:"0px 0px -100px 0px"});
 				revealElements.forEach(el=>revealObserver.observe(el));
 				const nav = document.getElementById("mainNav"),logo = document.getElementById("navLogoImage"),origSrc="Logo/Logo Dark.svg",scrolledSrc="Logo/Logo Dark.svg";
 				window.addEventListener("scroll",()=>{const s=window.scrollY>20;nav.classList.toggle("scrolled",s);if(logo)logo.src=s?scrolledSrc:origSrc;});
 				const hamburger=document.getElementById("hamburgerMenu"),navLinks=document.getElementById("navLinks");
-				if (hamburger && navLinks) { hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navLinks.classList.toggle("active"); }); navLinks.querySelectorAll("a[href^='#']").forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId); if (targetElement) { hamburger.classList.remove('active'); navLinks.classList.remove('active'); targetElement.scrollIntoView({ behavior: 'smooth' }); } }); }); }
+				
+				if (hamburger && navLinks) {
+					hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navLinks.classList.toggle("active"); });
+					navLinks.querySelectorAll("a[href^='#']").forEach(anchor => {
+						anchor.addEventListener('click', function(e) {
+							e.preventDefault(); const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId);
+							if (targetElement) { hamburger.classList.remove('active'); navLinks.classList.remove('active'); targetElement.scrollIntoView({ behavior: 'smooth' }); }
+						});
+					});
+				}
 			});
 		</script>
 	</body>
