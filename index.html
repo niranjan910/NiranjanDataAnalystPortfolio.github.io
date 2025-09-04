@@ -8,10 +8,10 @@
 		
 		<link rel="icon" type="image/png" href="Logo/favicon.png" />
 
-		<!-- Google Fonts: Syne for Headings, Lato for Body -->
+		<!-- Google Fonts: Syne for Hero Headings, Inter for others -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 		<link
 			rel="stylesheet"
@@ -22,9 +22,8 @@
 		/>
 
 		<style>
-			/* --- CORE STYLES --- */
+			/* --- CORE STLES --- */
 			:root {
-				/* Modern Light Palette with Gradient */
 				--bg-main: #f5f7fa;
 				--card-bg: #ffffff;
 				--text-primary: #1d2d35;
@@ -32,21 +31,19 @@
 				--border-color: #dde4e9;
 				--shadow-color: rgba(11, 19, 43, 0.08);
 				
-				/* New Gradient Accent */
-				--accent-start: #14b8a6; /* Teal */
-				--accent-end: #06b6d4; /* Cyan */
+				--accent-start: #14b8a6; 
+				--accent-end: #06b6d4;
 				--accent-gradient: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-end) 100%);
 				--accent-tint: rgba(20, 184, 166, 0.1);
 
-				/* NEW FONTS: Syne & Lato */
-				--font-sans: 'Lato', sans-serif;
-				--font-serif: 'Syne', sans-serif;
+				--font-sans: 'Inter', sans-serif;
+				--font-serif: 'Inter', sans-serif;
+				--font-hero: 'Syne', sans-serif;
 				--border-radius: 4px;
 				--nav-height: 100px;
 				--transition-fast: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 				--transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-				/* Brand Colors for Contact Section */
 				--color-github: #333333;
 				--color-behance: #053eff;
 				--color-dribbble: #ea4c89;
@@ -65,17 +62,19 @@
 				color: var(--text-secondary);
 				-webkit-font-smoothing: antialiased;
 				background-color: var(--bg-main);
-				line-height: 1.6;
+				line-height: 1.5;
 				overflow-x: hidden;
 			}
 			body.modal-open { overflow: hidden; }
 			
 			.skip-to-content { position: absolute; top: auto; left: -9999px; width: 1px; height: 1px; overflow: hidden; z-index: -999; }
 			.skip-to-content:focus { left: 1rem; top: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; padding: 0.5rem 1rem; background: var(--accent-gradient); color: var(--card-bg); border-radius: var(--border-radius); font-weight: 700; }
-			main { padding: 0 60px; position: relative; }
+			
+            /* The main tag should NOT have position:relative to avoid stacking issues */
+			main { padding: 0 60px; }
 			section { padding: 100px 0; }
-			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 700; line-height: 1.2; }
-			p { margin-bottom: 1rem; max-width: 65ch; font-size: 1.125rem; }
+			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 800; line-height: 1.2; }
+			p { margin-bottom: 1rem; max-width: 65ch; font-size: 1.125rem; line-height: 1.6; }
 			a { text-decoration: none; color: var(--text-secondary); transition: var(--transition-fast); }
 			a:hover, button:hover { color: var(--accent-start); }
 			.reveal {
@@ -96,7 +95,7 @@
 			.nav-links li a:not(.btn):not(.modern-pill-button).active { font-weight: 700; color: var(--accent-start); }
 			
 			/* ================================================= */
-			/* =========== NEW RESPONSIVE HERO SECTION =========== */
+			/* =========== CORRECTED HERO SECTION =========== */
 			/* ================================================= */
 			@keyframes animated-gradient {
 				0% { background-position: 0% 50%; }
@@ -111,23 +110,11 @@
 				align-items: center;
 				min-height: 100vh;
 				padding: var(--nav-height) 25px 0 25px;
-				position: relative;
+				position: relative; /* Necessary for overlay and content positioning */
 				color: white;
 				text-align: center;
 				overflow: hidden;
-
-				/* Animated Gradient Background */
-				background: linear-gradient(
-					45deg,
-					#081c24,
-					#0d2e3a,
-					#18556d,
-					#14b8a6,
-					#06b6d4,
-					#18556d,
-					#0d2e3a,
-					#081c24
-				);
+				background: linear-gradient( 45deg, #081c24, #0d2e3a, #18556d, #14b8a6, #06b6d4, #18556d, #0d2e3a, #081c24 );
 				background-size: 400% 400%;
 				animation: animated-gradient 15s ease infinite;
 			}
@@ -136,7 +123,7 @@
 				position: absolute;
 				top: 0; left: 0;
 				width: 100%; height: 100%;
-				background: rgba(8, 28, 36, 0.5); /* Dark overlay for text contrast */
+				background: rgba(8, 28, 36, 0.5); 
 				z-index: 1;
 			}
 			
@@ -185,14 +172,15 @@
 			@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
 			.slide-intro {
+				font-family: var(--font-sans);
 				font-size: clamp(1rem, 3vw, 1.25rem);
 				color: var(--accent-end);
 				margin-bottom: 1.5rem;
 				font-weight: 700;
-				font-family: var(--font-sans);
 			}
 
 			.slide-headline {
+				font-family: var(--font-hero);
 				font-size: clamp(2.5rem, 7vw, 4.5rem);
 				line-height: 1.1;
 				color: var(--card-bg); 
@@ -201,20 +189,12 @@
 				font-weight: 800;
 			}
 			
-			/* Static Buttons */
-			.hero-cta-buttons { 
-				display: flex; 
-				flex-wrap: wrap; 
-				justify-content: center; 
-				gap: 1rem; 
-				width: 100%;
-				margin-bottom: 2.5rem;
-			}
+			.hero-cta-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; width: 100%; margin-bottom: 2.5rem; }
 			
 			.cta-btn {
 				display: inline-block; padding: 1rem 2rem; font-weight: 700; font-size: 1rem;
 				border-radius: var(--border-radius); transition: all 0.2s ease; text-align: center; min-width: 200px;
-				font-family: var(--font-serif);
+				font-family: var(--font-hero);
 			}
 			
 			.cta-btn-primary { 
@@ -228,37 +208,12 @@
 				transform: translateY(-3px) scale(1.02);
 			}
 
-			.cta-btn-secondary { 
-				background-color: transparent; 
-				color: var(--card-bg) !important; 
-				border: 2px solid var(--card-bg); 
-			}
-			.cta-btn-secondary:hover { 
-				background-color: var(--accent-tint); 
-				color: var(--card-bg) !important; 
-				border-color: var(--accent-end);
-				transform: translateY(-3px) scale(1.02); 
-			}
+			.cta-btn-secondary { background-color: transparent; color: var(--card-bg) !important; border: 2px solid var(--card-bg); }
+			.cta-btn-secondary:hover { background-color: var(--accent-tint); color: var(--card-bg) !important; border-color: var(--accent-end); transform: translateY(-3px) scale(1.02); }
 			
-			.carousel-dots {
-				display: flex;
-				gap: 12px;
-			}
-
-			.dot {
-				cursor: pointer;
-				height: 12px;
-				width: 12px;
-				background-color: rgba(255, 255, 255, 0.4);
-				border-radius: 50%;
-				display: inline-block;
-				transition: all 0.3s ease;
-			}
-
-			.dot.active {
-				background-color: var(--accent-end);
-				transform: scale(1.2);
-			}
+			.carousel-dots { display: flex; gap: 12px; }
+			.dot { cursor: pointer; height: 12px; width: 12px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; }
+			.dot.active { background-color: var(--accent-end); transform: scale(1.2); }
 
 			@media (max-width: 768px) {
 				.carousel-slide { min-height: 200px; }
@@ -281,8 +236,8 @@
 			.content-column .about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 3.5rem); }
 			.content-column .about-heading::after { display: block; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: var(--accent-gradient); }
 			.content-column p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; max-width: 70ch; color: var(--text-secondary); }
-			.toolkit-heading { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
-			.toolkit-subheading { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); margin-top: 1.5rem; margin-bottom: 1rem; }
+			.toolkit-heading { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
+			.toolkit-subheading { font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); margin-top: 1.5rem; margin-bottom: 1rem; }
 			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
 			.skill-badge { display: inline-flex; align-items: center; gap: 0.75rem; background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: 99px; font-weight: 500; color: var(--text-primary); transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: 0 2px 5px var(--shadow-color); }
 			.skill-badge:hover { transform: translateY(-4px); box-shadow: 0 8px 15px var(--shadow-color); }
@@ -546,13 +501,13 @@
 				</ol>
 			</div>
 		</nav>
+        
 		<main id="main-content">
 			<!-- ================================== -->
 			<!-- ===== REVISED HERO SECTION ===== -->
 			<!-- ================================== -->
 			<section id="hero">
 				<div class="hero-content-wrapper">
-			
 					<!-- Carousel for Text -->
 					<div class="carousel-container">
 						<div class="carousel-track">
@@ -586,19 +541,15 @@
 							</div>
 						</div>
 					</div>
-			
 					<!-- Static CTA Buttons -->
 					<div class="hero-cta-buttons">
 						<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
 						<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
 					</div>
-					
 					<!-- Carousel Dots -->
 					<div class="carousel-dots"></div>
-			
 				</div>
 			</section>
-
 
 			<!-- "ABOUT ME" SECTION -->
 			<section id="about">
@@ -662,7 +613,6 @@
 			<section id="journey">
 				<h2 class="section-heading reveal">My Journey</h2>
 				<div class="timeline-container">
-					<!-- Data Analyst Trainee -->
 					<div class="timeline-item right reveal">
 						<div class="timeline-card">
 							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Analyst</h3><span class="org">Naresh i Technologies · Trainee</span></div></div>
@@ -670,8 +620,6 @@
 							<ul><li>Completed an intensive on-site training program focusing on advanced data analysis techniques.</li><li>Leveraged SQL and Python for comprehensive data cleaning and reporting.</li></ul>
 						</div>
 					</div>
-			
-					<!-- UX Designer -->
 					<div class="timeline-item left reveal">
 						<div class="timeline-card">
 							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>UX Designer</h3><span class="org">DevRiser · Full-time</span></div></div>
@@ -679,8 +627,6 @@
 							<ul><li>Specialized in designing intuitive, data-driven dashboards for analytics applications.</li><li>Translated complex data requirements into clean, user-friendly visualization workflows.</li></ul>
 						</div>
 					</div>
-			
-					<!-- B.Tech -->
 					<div class="timeline-item right reveal">
 						<div class="timeline-card">
 							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Bachelor of Technology, Computer Software Engineering</h3><span class="org">IPS College of Technology & Management</span></div></div>
@@ -688,8 +634,6 @@
 							<ul><li>Graduated with a grade of 8.9, focusing on data structures, algorithms, and database management systems.</li></ul>
 						</div>
 					</div>
-			
-					<!-- Data Science Trainee -->
 					<div class="timeline-item left reveal">
 						<div class="timeline-card">
 							<div class="card-header"><span class="icon"><i class="fas fa-briefcase"></i></span><div><h3>Data Science with ML</h3><span class="org">TechieNest · Trainee</span></div></div>
@@ -697,8 +641,6 @@
 							<ul><li>Completed a 2-month on-site training program focused on Machine Learning principles.</li></ul>
 						</div>
 					</div>
-			
-					<!-- Senior Secondary -->
 					<div class="timeline-item right reveal">
 						<div class="timeline-card">
 							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Senior Secondary, Science Stream</h3><span class="org">DAV Schools Network</span></div></div>
@@ -706,8 +648,6 @@
 							<ul><li>Achieved a grade of 8.7.</li></ul>
 						</div>
 					</div>
-			
-					<!-- Secondary Education -->
 					<div class="timeline-item left reveal">
 						<div class="timeline-card">
 							<div class="card-header"><span class="icon"><i class="fas fa-graduation-cap"></i></span><div><h3>Secondary Education (X)</h3><span class="org">DAV Schools Network</span></div></div>
@@ -744,9 +684,7 @@
 				</ul>
 			</section>
 
-			<!-- ============================================= -->
-			<!-- ===== UPDATED CONTACT SECTION STRUCTURE ===== -->
-			<!-- ============================================= -->
+			<!-- CONTACT SECTION -->
 			<section id="contact">
 				<h2 class="section-heading reveal">Let’s Connect & Collaborate 🚀</h2>
 				<p class="contact-subtext reveal">
@@ -754,22 +692,129 @@
 				</p>
 			
 				<div class="contact-layout-grid reveal">
-			
-					<!-- Left Column: Connect Icons -->
 					<div class="connect-column">
 						<h3 class="contact-heading">Connect With Me</h3>
 						<div class="icon-grid-hub">
-							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github" aria-label="View my GitHub profile">
-								<i class="fab fa-github"></i>
-								<span>GitHub</span>
-							</a>
-							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance" aria-label="View my Behance profile">
-								<i class="fab fa-behance"></i>
-								<span>Behance</span>
-							</a>
-							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble" aria-label="View my Dribbble profile">
-								<i class="fab fa-dribbble"></i>
-								<span>Dribbble</span>
-							</a>
-							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="View my LinkedIn profile">
-								<i class="fa
+							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github" aria-label="View my GitHub profile"><i class="fab fa-github"></i><span>GitHub</span></a>
+							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance" aria-label="View my Behance profile"><i class="fab fa-behance"></i><span>Behance</span></a>
+							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble" aria-label="View my Dribbble profile"><i class="fab fa-dribbble"></i><span>Dribbble</span></a>
+							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="View my LinkedIn profile"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail" aria-label="Send me an email"><i class="fas fa-envelope"></i><span>Gmail</span></a>
+							<a href="tel:+910000000000" class="contact-card phone" aria-label="Call me"><i class="fas fa-phone"></i><span>Phone</span></a>
+							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram" aria-label="View my Instagram profile"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+						</div>
+					</div>
+					<div class="form-column">
+						<h3 class="contact-heading">Send a Message</h3>
+						<form action="https://formspree.io/f/xyzpaeop" method="POST" class="contact-form">
+							<input type="text" name="name" placeholder="Your Name" required />
+							<input type="email" name="email" placeholder="Your Email" required />
+							<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+							<button type="submit" class="send-message-btn">Send Message</button>
+						</form>
+					</div>
+				</div>
+			</section>
+			
+		</main>
+
+		<footer class="footer"><a href="https://github.com/niranjan910" target="_blank">Designed & Built by Niranjan Kumar</a></footer>
+
+		<!-- CERTIFICATE MODAL -->
+		<div id="certModal" class="modal-overlay">
+			<div class="modal-content">
+				<button id="modalCloseBtn" class="modal-close-btn">&times;</button>
+				<img id="modalCertImage" src="" alt="Certificate Image" class="modal-cert-image" />
+				<div id="modalCertDetails" class="modal-cert-details">
+					<h2 id="modalCertTitle"></h2>
+					<p><strong>Issued by:</strong> <span id="modalCertIssuer"></span></p>
+					<p><strong>Completion Date:</strong> <span id="modalCertDate"></span></p>
+					<p><strong>Credential ID:</strong> <span id="modalCertId"></span></p>
+					<a id="modalVerifyLink" href="#" target="_blank" class="cta-btn cta-btn-primary"><span>Verify Credential</span></a>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				// --- HERO CAROUSEL LOGIC ---
+				const track = document.querySelector('.carousel-track');
+				if (track) {
+					const slides = Array.from(track.children);
+					const dotsNav = document.querySelector('.carousel-dots');
+					let slideInterval;
+
+					if (slides.length > 0 && dotsNav) {
+						slides.forEach((slide, index) => {
+							const dot = document.createElement('button');
+							dot.classList.add('dot');
+							if (index === 0) dot.classList.add('active');
+							dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+							dot.addEventListener('click', e => {
+								moveToSlide(index);
+								resetInterval();
+							});
+							dotsNav.appendChild(dot);
+						});
+
+						const dots = Array.from(dotsNav.children);
+						const moveToSlide = (slideIndex) => {
+							track.style.transform = 'translateX(-' + 100 * slideIndex + '%)';
+							const currentSlide = track.querySelector('.active');
+							if (currentSlide) currentSlide.classList.remove('active');
+							slides[slideIndex].classList.add('active');
+
+							const currentDot = dotsNav.querySelector('.active');
+							if(currentDot) currentDot.classList.remove('active');
+							dots[slideIndex].classList.add('active');
+						};
+						const nextSlide = () => {
+							const currentSlide = track.querySelector('.active');
+							const currentIndex = slides.findIndex(slide => slide === currentSlide);
+							const nextIndex = (currentIndex + 1) % slides.length;
+							moveToSlide(nextIndex);
+						};
+						const startInterval = () => { slideInterval = setInterval(nextSlide, 5000); };
+						const resetInterval = () => { clearInterval(slideInterval); startInterval(); };
+						startInterval();
+					}
+				}
+
+				// --- CERTIFICATES DATA & LOGIC ---
+				const certificatesData = [
+					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1280px-Microsoft_logo_%282012%29.svg.png', title: 'Career Essentials in Business Analysis', issuer: 'Microsoft & LinkedIn', fullImage: 'Certificates/Business Analyst certificate.png', date: 'Not Specified', id: 'Not Applicable', verifyLink: 'https://www.linkedin.com/learning/certificates/586492be7f0a6e80a1631e815a9aef7d817cf1992070dec8d3ec6545d78b9475' },
+					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
+				];
+				const certsGrid = document.querySelector('.certs-grid');
+				if (certsGrid) {
+					certificatesData.forEach((cert, i) => { const card = document.createElement('li'); card.className = 'cert-card reveal'; card.style.setProperty('--delay', `${i*100}ms`); card.dataset.index = i; card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`; certsGrid.appendChild(card); });
+					const modal=document.getElementById('certModal'),modalCloseBtn=document.getElementById('modalCloseBtn'),allCertCards=document.querySelectorAll('.cert-card');
+					const openModal=(i)=>{const d=certificatesData[i];document.getElementById('modalCertImage').src=d.fullImage;document.getElementById('modalCertTitle').textContent=d.title;document.getElementById('modalCertIssuer').textContent=d.issuer;document.getElementById('modalCertDate').textContent=d.date;document.getElementById('modalCertId').textContent=d.id;document.getElementById('modalVerifyLink').href=d.verifyLink;modal.classList.add('active');document.body.classList.add('modal-open');};
+					const closeModal=()=>{modal.classList.remove('active');document.body.classList.remove('modal-open');};
+					allCertCards.forEach(c=>{c.addEventListener('click',()=>openModal(c.dataset.index));});
+					modalCloseBtn.addEventListener('click',closeModal);
+					modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+				}
+
+				// --- GENERAL SCRIPTING & NAVIGATION ---
+				const revealElements = document.querySelectorAll(".reveal");
+				const revealObserver = new IntersectionObserver((e,o)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add("is-visible");o.unobserve(en.target);}});},{rootMargin:"0px 0px -100px 0px"});
+				revealElements.forEach(el=>revealObserver.observe(el));
+				const nav = document.getElementById("mainNav"),logo = document.getElementById("navLogoImage"),origSrc="Logo/Logo Dark.svg",scrolledSrc="Logo/Logo Dark.svg";
+				window.addEventListener("scroll",()=>{const s=window.scrollY>20;nav.classList.toggle("scrolled",s);if(logo)logo.src=s?scrolledSrc:origSrc;});
+				const hamburger=document.getElementById("hamburgerMenu"),navLinks=document.getElementById("navLinks");
+				
+				if (hamburger && navLinks) {
+					hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navLinks.classList.toggle("active"); });
+					navLinks.querySelectorAll("a[href^='#']").forEach(anchor => {
+						anchor.addEventListener('click', function(e) {
+							e.preventDefault(); const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId);
+							if (targetElement) { hamburger.classList.remove('active'); navLinks.classList.remove('active'); targetElement.scrollIntoView({ behavior: 'smooth' }); }
+						});
+					});
+				}
+			});
+		</script>
+	</body>
+</html>
