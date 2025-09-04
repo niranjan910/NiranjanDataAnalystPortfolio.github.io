@@ -70,7 +70,6 @@
 			.skip-to-content { position: absolute; top: auto; left: -9999px; width: 1px; height: 1px; overflow: hidden; z-index: -999; }
 			.skip-to-content:focus { left: 1rem; top: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; padding: 0.5rem 1rem; background: var(--accent-gradient); color: var(--card-bg); border-radius: var(--border-radius); font-weight: 700; }
 			
-            /* The main tag should NOT have position:relative to avoid stacking issues */
 			main { padding: 0 60px; }
 			section { padding: 100px 0; }
 			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 800; line-height: 1.2; }
@@ -144,6 +143,20 @@
 				width: 100%;
 				overflow: hidden;
 				margin-bottom: 2.5rem;
+				position: relative; /* For aria-live region */
+			}
+
+			/* CORRECTION: Visually hidden but accessible to screen readers */
+			.visually-hidden {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				padding: 0;
+				margin: -1px;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+				white-space: nowrap;
+				border: 0;
 			}
 
 			.carousel-track {
@@ -154,8 +167,8 @@
 			.carousel-slide {
 				flex: 0 0 100%;
 				width: 100%;
-				padding: 1rem 0;
-				min-height: 250px;
+				/* CORRECTION: Replaced min-height with padding for flexibility */
+				padding: 3rem 0;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -213,14 +226,14 @@
 			.cta-btn-secondary { background-color: transparent; color: var(--card-bg) !important; border: 2px solid var(--card-bg); }
 			.cta-btn-secondary:hover { background-color: var(--accent-tint); color: var(--card-bg) !important; border-color: var(--accent-end); transform: translateY(-3px) scale(1.02); }
 			
-			.carousel-dots { display: none; }
-			.dot { cursor: pointer; height: 12px; width: 12px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; }
-			.dot.active { background-color: var(--accent-end); transform: scale(1.2); }
+			.carousel-dots { display: flex; justify-content: center; gap: 0.75rem; }
+			.dot { cursor: pointer; height: 12px; width: 12px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; border: none; }
+			.dot[aria-current="true"] { background-color: var(--accent-end); transform: scale(1.2); }
+
 
 			@media (max-width: 768px) {
                 main { padding: 0 25px; } 
-                #hero { margin: 0 -25px; } /* Adjust negative margin for smaller screens */
-				.carousel-slide { min-height: 200px; }
+                #hero { margin: 0 -25px; }
 				.hero-cta-buttons { flex-direction: column; align-items: center; }
 			}
 
@@ -270,7 +283,7 @@
 			/* Standardized Project Cards */
 			.projects-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
 			.projects-footer { margin-top: 3rem; text-align: center; }
-			.project-card { background-color: var(--card-bg); display: flex; flex-direction: column; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); overflow: hidden; border: 1px solid var(--border-color); }
+			.project-card { background-color: var(--card-bg); display: flex; flex-direction: column; border-radius: 12px; box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); overflow: hidden; border: 1px solid var(--border-color); height: 100%; /* CORRECTION: Ensures cards in the same row are the same height */ }
 			.project-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); border-color: var(--accent-start); }
 			.project-card .project-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
 			.project-card .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
@@ -481,8 +494,6 @@
 				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; } 
 				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 			 }
-
-
 		</style>
 	</head>
 	<body>
@@ -507,37 +518,36 @@
 		</nav>
         
 		<main id="main-content">
-			<!-- ================================== -->
-			<!-- ===== REVISED HERO SECTION ===== -->
-			<!-- ================================== -->
+
 			<section id="hero">
 				<div class="hero-content-wrapper">
-					<!-- Carousel for Text -->
 					<div class="carousel-container">
+						<!-- CORRECTION: This visually-hidden div will announce slide changes to screen readers -->
+						<div class="visually-hidden" aria-live="polite" aria-atomic="true" id="carousel-live-region"></div>
 						<div class="carousel-track">
 							<!-- Slide 1 -->
-							<div class="carousel-slide active">
+							<div class="carousel-slide active" role="group" aria-roledescription="slide" data-slide-name="I give data a voice">
 								<div class="slide-content">
 									<p class="slide-intro">Data Analyst</p>
 									<h1 class="slide-headline">I give data a voice</h1>
 								</div>
 							</div>
 							<!-- Slide 2 -->
-							<div class="carousel-slide">
+							<div class="carousel-slide" role="group" aria-roledescription="slide" data-slide-name="SQL & PYTHON MASTERY">
 								<div class="slide-content">
 									<p class="slide-intro">My Tools</p>
 									<h1 class="slide-headline">SQL & PYTHON MASTERY</h1>
 								</div>
 							</div>
 							<!-- Slide 3 -->
-							<div class="carousel-slide">
+							<div class="carousel-slide" role="group" aria-roledescription="slide" data-slide-name="INSIGHTS TO ACTION">
 								<div class="slide-content">
 									<p class="slide-intro">My Craft</p>
 									<h1 class="slide-headline">INSIGHTS TO ACTION</h1>
 								</div>
 							</div>
 							<!-- Slide 4 -->
-							<div class="carousel-slide">
+							<div class="carousel-slide" role="group" aria-roledescription="slide" data-slide-name="LET'S TELL IT TOGETHER">
 								<div class="slide-content">
 									<p class="slide-intro">Your Data has a story</p>
 									<h1 class="slide-headline">LET'S TELL IT TOGETHER</h1>
@@ -545,12 +555,10 @@
 							</div>
 						</div>
 					</div>
-					<!-- Static CTA Buttons -->
 					<div class="hero-cta-buttons">
 						<a href="#journey" class="cta-btn cta-btn-primary">View My Journey</a>
 						<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-secondary" target="_blank">Download Resume</a>
 					</div>
-					<!-- Carousel Dots -->
 					<div class="carousel-dots"></div>
 				</div>
 			</section>
@@ -665,6 +673,7 @@
 			<!-- PROJECTS SECTION -->
 			<section id="projects">
 				<h2 class="section-heading reveal">Featured Projects</h2>
+				<!-- CORRECTION: Each project is now correctly wrapped in a list item <li> -->
 				<ul class="projects-grid">
 					<li class="project-card reveal"><img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 150ms"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
@@ -673,7 +682,7 @@
 					<li class="project-card reveal" style="--delay: 600ms"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 750ms"><img src="images/Salary Trend.png" alt="Salary Trend Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 900ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul><a href="#" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul><!-- CORRECTION: Changed a dead link to a more useful placeholder --> <a href="https://github.com/niranjan910" class="project-view-button" target="_blank">View</a></div></div></li>
 				</ul>
 				<div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a>
@@ -699,13 +708,14 @@
 					<div class="connect-column">
 						<h3 class="contact-heading">Connect With Me</h3>
 						<div class="icon-grid-hub">
-							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github" aria-label="View my GitHub profile"><i class="fab fa-github"></i><span>GitHub</span></a>
-							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance" aria-label="View my Behance profile"><i class="fab fa-behance"></i><span>Behance</span></a>
-							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble" aria-label="View my Dribbble profile"><i class="fab fa-dribbble"></i><span>Dribbble</span></a>
-							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="View my LinkedIn profile"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
-							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail" aria-label="Send me an email"><i class="fas fa-envelope"></i><span>Gmail</span></a>
-							<a href="tel:+910000000000" class="contact-card phone" aria-label="Call me"><i class="fas fa-phone"></i><span>Phone</span></a>
-							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram" aria-label="View my Instagram profile"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+							<!-- CORRECTION: Simplified aria-labels for better screen reader experience -->
+							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github" aria-label="GitHub"><i class="fab fa-github"></i><span>GitHub</span></a>
+							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance" aria-label="Behance"><i class="fab fa-behance"></i><span>Behance</span></a>
+							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble" aria-label="Dribbble"><i class="fab fa-dribbble"></i><span>Dribbble</span></a>
+							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail" aria-label="Gmail"><i class="fas fa-envelope"></i><span>Gmail</span></a>
+							<a href="tel:+910000000000" class="contact-card phone" aria-label="Phone"><i class="fas fa-phone"></i><span>Phone</span></a>
+							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram" aria-label="Instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>
 						</div>
 					</div>
 					<div class="form-column">
@@ -746,15 +756,19 @@
 				if (track) {
 					const slides = Array.from(track.children);
 					const dotsNav = document.querySelector('.carousel-dots');
+					const liveRegion = document.getElementById('carousel-live-region');
 					let slideInterval;
 
 					if (slides.length > 0 && dotsNav) {
+						// Create dots
 						slides.forEach((slide, index) => {
 							const dot = document.createElement('button');
 							dot.classList.add('dot');
-							if (index === 0) dot.classList.add('active');
-							dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-							dot.addEventListener('click', e => {
+							// CORRECTION: Better accessibility for dots
+							dot.setAttribute('aria-label', `Go to slide ${index + 1}: ${slide.dataset.slideName}`);
+							if (index === 0) dot.setAttribute('aria-current', 'true');
+
+							dot.addEventListener('click', () => {
 								moveToSlide(index);
 								resetInterval();
 							});
@@ -762,59 +776,163 @@
 						});
 
 						const dots = Array.from(dotsNav.children);
+
 						const moveToSlide = (slideIndex) => {
-							track.style.transform = 'translateX(-' + 100 * slideIndex + '%)';
+							track.style.transform = `translateX(-${100 * slideIndex}%)`;
+							
 							const currentSlide = track.querySelector('.active');
 							if (currentSlide) currentSlide.classList.remove('active');
 							slides[slideIndex].classList.add('active');
 
-							const currentDot = dotsNav.querySelector('.active');
-							if(currentDot) currentDot.classList.remove('active');
-							dots[slideIndex].classList.add('active');
+							// CORRECTION: Update aria-current for accessibility
+							const currentDot = dotsNav.querySelector('[aria-current="true"]');
+							if (currentDot) currentDot.removeAttribute('aria-current');
+							dots[slideIndex].setAttribute('aria-current', 'true');
+
+							// CORRECTION: Announce the new slide to screen readers
+							if (liveRegion) {
+								liveRegion.textContent = `Slide ${slideIndex + 1} of ${slides.length}: ${slides[slideIndex].dataset.slideName}`;
+							}
 						};
+
 						const nextSlide = () => {
 							const currentSlide = track.querySelector('.active');
 							const currentIndex = slides.findIndex(slide => slide === currentSlide);
 							const nextIndex = (currentIndex + 1) % slides.length;
 							moveToSlide(nextIndex);
 						};
+						
 						const startInterval = () => { slideInterval = setInterval(nextSlide, 5000); };
 						const resetInterval = () => { clearInterval(slideInterval); startInterval(); };
+
 						startInterval();
 					}
 				}
 
 				// --- CERTIFICATES DATA & LOGIC ---
 				const certificatesData = [
-					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1280px-Microsoft_logo_%282012%29.svg.png', title: 'Career Essentials in Business Analysis', issuer: 'Microsoft & LinkedIn', fullImage: 'Certificates/Business Analyst certificate.png', date: 'Not Specified', id: 'Not Applicable', verifyLink: 'https://www.linkedin.com/learning/certificates/586492be7f0a6e80a1631e815a9aef7d817cf1992070dec8d3ec6545d78b9475' },
-					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
-					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
+					// CORRECTION: Added `alt` attribute for image accessibility
+					{ logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1280px-Microsoft_logo_%282012%29.svg.png', alt: 'Microsoft and LinkedIn Logo', title: 'Career Essentials in Business Analysis', issuer: 'Microsoft & LinkedIn', fullImage: 'Certificates/Business Analyst certificate.png', date: 'Not Specified', id: 'Not Applicable', verifyLink: 'https://www.linkedin.com/learning/certificates/586492be7f0a6e80a1631e815a9aef7d817cf1992070dec8d3ec6545d78b9475' },
+					{ logo: 'https://logowik.com/content/uploads/images/google-ai-2023-new-logo2153.jpg', alt: 'Google AI Logo', title: 'Foundations of Data Science', issuer: 'Google', fullImage: 'images/placeholder-cert.png', date: 'August 2025', id: 'ABC-123-DEF-456', verifyLink: '#' },
+					{ logo: 'https://logos-world.net/wp-content/uploads/2021/11/Udemy-Logo.png', alt: 'Udemy Logo', title: 'Advanced SQL Masterclass', issuer: 'Udemy', fullImage: 'images/placeholder-cert.png', date: 'July 2025', id: 'GHI-789-JKL-012', verifyLink: '#' },
 				];
+
 				const certsGrid = document.querySelector('.certs-grid');
-				if (certsGrid) {
-					certificatesData.forEach((cert, i) => { const card = document.createElement('li'); card.className = 'cert-card reveal'; card.style.setProperty('--delay', `${i*100}ms`); card.dataset.index = i; card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn">View Certificate</button>`; certsGrid.appendChild(card); });
-					const modal=document.getElementById('certModal'),modalCloseBtn=document.getElementById('modalCloseBtn'),allCertCards=document.querySelectorAll('.cert-card');
-					const openModal=(i)=>{const d=certificatesData[i];document.getElementById('modalCertImage').src=d.fullImage;document.getElementById('modalCertTitle').textContent=d.title;document.getElementById('modalCertIssuer').textContent=d.issuer;document.getElementById('modalCertDate').textContent=d.date;document.getElementById('modalCertId').textContent=d.id;document.getElementById('modalVerifyLink').href=d.verifyLink;modal.classList.add('active');document.body.classList.add('modal-open');};
-					const closeModal=()=>{modal.classList.remove('active');document.body.classList.remove('modal-open');};
-					allCertCards.forEach(c=>{c.addEventListener('click',()=>openModal(c.dataset.index));});
-					modalCloseBtn.addEventListener('click',closeModal);
-					modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+				const modal = document.getElementById('certModal');
+				const modalCloseBtn = document.getElementById('modalCloseBtn');
+				const modalContent = modal.querySelector('.modal-content');
+				
+				if (certsGrid && modal) {
+					// CORRECTION: Using a document fragment for better performance.
+					const fragment = document.createDocumentFragment();
+					certificatesData.forEach((cert, i) => { 
+						const card = document.createElement('li'); 
+						card.className = 'cert-card reveal'; 
+						card.style.setProperty('--delay', `${i*100}ms`); 
+						card.dataset.index = i; 
+						card.setAttribute('role', 'button');
+						card.setAttribute('tabindex', '0'); // Make it focusable
+						card.innerHTML = `<div class="cert-card-content"><img src="${cert.logo}" alt="${cert.alt}" class="cert-logo"><h3 class="cert-title">${cert.title}</h3><p class="cert-issuer">Issued by ${cert.issuer}</p><span class="verified-badge"><i class="fas fa-check-circle"></i> Verified</span></div><button class="view-cert-btn" tabindex="-1">View Certificate</button>`;
+						fragment.appendChild(card); 
+					});
+					certsGrid.appendChild(fragment);
+
+					const allCertCards = document.querySelectorAll('.cert-card');
+
+					const openModal = (index) => {
+						const d = certificatesData[index];
+						document.getElementById('modalCertImage').src = d.fullImage;
+						document.getElementById('modalCertImage').alt = d.title; // Set alt text for the modal image too
+						document.getElementById('modalCertTitle').textContent = d.title;
+						document.getElementById('modalCertIssuer').textContent = d.issuer;
+						document.getElementById('modalCertDate').textContent = d.date;
+						document.getElementById('modalCertId').textContent = d.id;
+						document.getElementById('modalVerifyLink').href = d.verifyLink;
+						modal.classList.add('active');
+						document.body.classList.add('modal-open');
+						modalCloseBtn.focus(); // Focus on the close button when opened
+					};
+
+					const closeModal = () => {
+						modal.classList.remove('active');
+						document.body.classList.remove('modal-open');
+					};
+
+					allCertCards.forEach(card => {
+						card.addEventListener('click', () => openModal(card.dataset.index));
+						card.addEventListener('keydown', (e) => {
+							if (e.key === 'Enter' || e.key === ' ') {
+								e.preventDefault();
+								openModal(card.dataset.index);
+							}
+						});
+					});
+
+					modalCloseBtn.addEventListener('click', closeModal);
+					modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+
+					// CORRECTION: Focus trapping for modal accessibility
+					const focusableElementsSelector = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+					let focusableElements;
+					modal.addEventListener('keydown', (e) => {
+						if (e.key !== 'Tab') return;
+						focusableElements = Array.from(modalContent.querySelectorAll(focusableElementsSelector));
+						const firstElement = focusableElements[0];
+						const lastElement = focusableElements[focusableElements.length - 1];
+
+						if (e.shiftKey) { // if shift + tab
+							if (document.activeElement === firstElement) {
+								lastElement.focus();
+								e.preventDefault();
+							}
+						} else { // if tab
+							if (document.activeElement === lastElement) {
+								firstElement.focus();
+								e.preventDefault();
+							}
+						}
+					});
 				}
 
 				// --- GENERAL SCRIPTING & NAVIGATION ---
 				const revealElements = document.querySelectorAll(".reveal");
-				const revealObserver = new IntersectionObserver((e,o)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add("is-visible");o.unobserve(en.target);}});},{rootMargin:"0px 0px -100px 0px"});
-				revealElements.forEach(el=>revealObserver.observe(el));
-				const nav = document.getElementById("mainNav"),logo = document.getElementById("navLogoImage"),origSrc="Logo/Logo Dark.svg",scrolledSrc="Logo/Logo Dark.svg";
-				window.addEventListener("scroll",()=>{const s=window.scrollY>20;nav.classList.toggle("scrolled",s);if(logo)logo.src=s?scrolledSrc:origSrc;});
-				const hamburger=document.getElementById("hamburgerMenu"),navLinks=document.getElementById("navLinks");
-				
+				const revealObserver = new IntersectionObserver((entries, observer) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("is-visible");
+							observer.unobserve(entry.target);
+						}
+					});
+				}, { rootMargin: "0px 0px -100px 0px" });
+				revealElements.forEach(el => revealObserver.observe(el));
+
+				const nav = document.getElementById("mainNav"), logo = document.getElementById("navLogoImage"), origSrc="Logo/Logo Dark.svg", scrolledSrc="Logo/Logo Dark.svg";
+				window.addEventListener("scroll",() => { 
+					const isScrolled = window.scrollY > 20;
+					nav.classList.toggle("scrolled", isScrolled);
+					if (logo) logo.src = isScrolled ? scrolledSrc : origSrc;
+				});
+
+				const hamburger = document.getElementById("hamburgerMenu"), navLinks = document.getElementById("navLinks");
 				if (hamburger && navLinks) {
-					hamburger.addEventListener("click", () => { hamburger.classList.toggle("active"); navLinks.classList.toggle("active"); });
+					hamburger.addEventListener("click", () => {
+						const isOpened = hamburger.classList.toggle("active");
+						navLinks.classList.toggle("active");
+						hamburger.setAttribute('aria-expanded', isOpened); // A11y
+					});
+					
 					navLinks.querySelectorAll("a[href^='#']").forEach(anchor => {
 						anchor.addEventListener('click', function(e) {
-							e.preventDefault(); const targetId = this.getAttribute('href'); const targetElement = document.querySelector(targetId);
-							if (targetElement) { hamburger.classList.remove('active'); navLinks.classList.remove('active'); targetElement.scrollIntoView({ behavior: 'smooth' }); }
+							hamburger.classList.remove('active'); 
+							navLinks.classList.remove('active');
+							hamburger.setAttribute('aria-expanded', 'false'); // A11y
+							
+							e.preventDefault();
+							const targetId = this.getAttribute('href'); 
+							const targetElement = document.querySelector(targetId);
+							if (targetElement) { 
+								targetElement.scrollIntoView({ behavior: 'smooth' }); 
+							}
 						});
 					});
 				}
