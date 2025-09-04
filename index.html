@@ -109,8 +109,8 @@
 				justify-content: center;
 				align-items: center;
 				min-height: 100vh;
-				padding: var(--nav-height) 25px 0 25px;
-				position: relative; /* Necessary for overlay and content positioning */
+				padding: 0 25px; /* Removed top and bottom padding */
+				position: relative; 
 				color: white;
 				text-align: center;
 				overflow: hidden;
@@ -211,7 +211,7 @@
 			.cta-btn-secondary { background-color: transparent; color: var(--card-bg) !important; border: 2px solid var(--card-bg); }
 			.cta-btn-secondary:hover { background-color: var(--accent-tint); color: var(--card-bg) !important; border-color: var(--accent-end); transform: translateY(-3px) scale(1.02); }
 			
-			.carousel-dots { display: flex; gap: 12px; }
+			.carousel-dots { display: none; } /* Removed the dots */
 			.dot { cursor: pointer; height: 12px; width: 12px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; }
 			.dot.active { background-color: var(--accent-end); transform: scale(1.2); }
 
