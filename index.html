@@ -70,8 +70,8 @@
 			.skip-to-content { position: absolute; top: auto; left: -9999px; width: 1px; height: 1px; overflow: hidden; z-index: -999; }
 			.skip-to-content:focus { left: 1rem; top: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; padding: 0.5rem 1rem; background: var(--accent-gradient); color: var(--card-bg); border-radius: var(--border-radius); font-weight: 700; }
 			
-			/* MODIFIED: Padding reduced */
-			main { padding: 0 10px; }
+			/* MODIFIED: Padding for main sections (non-hero) is now 40px */
+			main { padding: 0 40px; }
 			section { padding: 100px 0; }
 			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 800; line-height: 1.2; }
 			p { margin-bottom: 1rem; max-width: 65ch; font-size: 1.125rem; line-height: 1.6; }
@@ -101,14 +101,15 @@
 				100% { background-position: 0% 50%; }
 			}
 			#hero {
-				display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 0; 
-				/* MODIFIED: Negative margin updated to match new main padding */
-				margin: 0 -10px;
+				display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 0;
+				/* MODIFIED: Negative margin updated to match new main padding (40px) */
+				margin: 0 -40px;
 				position: relative; color: white; text-align: center; overflow: hidden; background: linear-gradient( 45deg, #081c24, #0d2e3a, #18556d, #14b8a6, #06b6d4, #18556d, #0d2e3a, #081c24 );
 				background-size: 400% 400%; animation: animated-gradient 15s ease infinite;
 			}
 			#hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8, 28, 36, 0.5); z-index: 1; }
-			.hero-content-wrapper { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; flex-direction: column; align-items: center; }
+			/* MODIFIED: Internal padding for hero content is now 15px */
+			.hero-content-wrapper { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 15px; display: flex; flex-direction: column; align-items: center; }
 			.carousel-container { width: 100%; overflow: hidden; margin-bottom: 2.5rem; position: relative; }
 			.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 			.carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
@@ -132,8 +133,10 @@
 			.dot { cursor: pointer; height: 8px; width: 8px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; border: none; }
 			.dot[aria-current="true"] { background-color: var(--accent-end); transform: scale(1.1); }
 			@media (max-width: 768px) { 
-				main { padding: 0 10px; } 
-				#hero { margin: 0 -10px; } 
+				/* MODIFIED: Reduced main padding for mobile view */
+				main { padding: 0 25px; } 
+				/* MODIFIED: Updated hero margin to match mobile padding */
+				#hero { margin: 0 -25px; } 
 				.hero-cta-buttons { flex-direction: column; align-items: center; } 
 			}
 
