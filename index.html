@@ -109,7 +109,7 @@
 				justify-content: center;
 				align-items: center;
 				min-height: 100vh;
-				padding: 0 25px; /* Removed top and bottom padding */
+				padding: 0; /* REMOVED ALL PADDING */
 				position: relative; 
 				color: white;
 				text-align: center;
@@ -133,6 +133,7 @@
 				width: 100%;
 				max-width: 1000px;
 				margin: 0 auto;
+				padding: 0 25px; /* Added padding here to keep content from touching edges */
 				display: flex;
 				flex-direction: column;
 				align-items: center;
@@ -211,7 +212,7 @@
 			.cta-btn-secondary { background-color: transparent; color: var(--card-bg) !important; border: 2px solid var(--card-bg); }
 			.cta-btn-secondary:hover { background-color: var(--accent-tint); color: var(--card-bg) !important; border-color: var(--accent-end); transform: translateY(-3px) scale(1.02); }
 			
-			.carousel-dots { display: none; } /* Removed the dots */
+			.carousel-dots { display: none; }
 			.dot { cursor: pointer; height: 12px; width: 12px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; }
 			.dot.active { background-color: var(--accent-end); transform: scale(1.2); }
 
