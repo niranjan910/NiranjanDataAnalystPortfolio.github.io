@@ -196,10 +196,9 @@
 			.toolkit-subheading { font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); margin-top: 1.5rem; margin-bottom: 1rem; }
 			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
 			
-			/* --- FIX: Toolkit icon visibility --- */
 			.skill-badge { 
 				display: inline-flex; align-items: center; gap: 0.75rem; 
-				background-color: #ffffff; /* Was dark, now light */
+				background-color: #ffffff;
 				border: 1px solid var(--border-color); 
 				padding: 0.6rem 1.2rem; border-radius: 99px; font-weight: 500; 
 				color: var(--text-primary); 
@@ -260,8 +259,32 @@
 			.project-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
 			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
 			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent-start); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
-			.project-view-button { display: inline-block; background-image: var(--accent-gradient); color: var(--card-bg) !important; padding: 10px 18px; border-radius: var(--border-radius); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; border: none; }
-			.project-view-button:hover { opacity: 1; transform: translateY(-2px); box-shadow: 0 6px 12px rgba(20, 184, 166, 0.25); }
+			
+			/* --- FIX: Consistent Button Styling for Project Cards --- */
+			.project-view-button {
+				display: inline-block;
+				padding: 0.6rem 1.2rem;
+				font-weight: 700;
+				font-size: 0.8rem;
+				border-radius: var(--border-radius-pill);
+				transition: all 0.3s ease;
+				text-align: center;
+				font-family: var(--font-hero);
+				-webkit-backdrop-filter: blur(10px);
+				backdrop-filter: blur(10px);
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				background-image: linear-gradient(90deg, rgba(20, 184, 166, 0.8) 0%, rgba(6, 182, 212, 0.8) 100%);
+				color: #ffffff !important;
+				box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+				text-decoration: none;
+				border: 1px solid transparent;
+			}
+			.project-view-button:hover {
+				box-shadow: 0 6px 20px rgba(6, 182, 212, 0.35);
+				transform: translateY(-3px) scale(1.05);
+				filter: brightness(1.1);
+			}
 			
             #certs { background-color: transparent; margin: 0; padding: 100px 0; }
 			#certs .section-heading::after { background: var(--accent-gradient); }
@@ -338,31 +361,28 @@
 			@media (max-width: 768px) { 
 				section { padding: 80px 0; }
 				
-				/* --- FIX: Remove white line by hiding empty nav bar on mobile --- */
 				.main-nav { background: transparent; border: none; box-shadow: none; width: 90%; }
-				.main-nav.nav-scrolled { background: transparent; } /* Keep it transparent even on scroll */
+				.main-nav.nav-scrolled { background: transparent; }
 
 				.nav-links { display: none; }
 				
-				/* --- FIX: Glassmorphism effect for mobile menu --- */
 				.nav-links.active { 
 					display: flex; position: fixed; top: 0; right: 0; height: 100vh; width: min(75vw, 350px); 
-					background: rgba(30, 41, 59, 0.85); /* Dark, semi-transparent background */
-					backdrop-filter: blur(20px);
-					-webkit-backdrop-filter: blur(20px);
+					background: rgba(30, 41, 59, 0.85);
+					backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
 					border-left: 1px solid rgba(255, 255, 255, 0.1);
 					flex-direction: column; justify-content: center; align-items: center; 
 					transform: translateX(0); z-index: 1000; box-shadow: -10px 0 30px -15px rgba(0,0,0,0.2); 
 				} 
 				
 				.nav-links.active ol { flex-direction: column; gap: 2rem; text-align: center; } 
-				.nav-links.active li a { color: rgba(255,255,255,0.8); } /* Light text for readability */
+				.nav-links.active li a { color: rgba(255,255,255,0.8); }
 				.nav-links.active li a.active, .nav-links.active li a:hover { color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); } 
 				
 				.hamburger-menu { display: block; position: fixed; top: 38px; right: 5%; transform: translateY(-50%); width: 30px; height: 25px; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; } 
 				.hamburger-menu .bar { background-color: #ffffff; transition: var(--transition-fast); width: 30px; height: 3px; border-radius: 3px; margin: 5px auto; } 
 				.main-nav.nav-scrolled + .hamburger-menu .bar { background-color: var(--text-primary); } 
-				.hamburger-menu.active .bar { background-color: #ffffff; } /* Hamburger color when menu is open */
+				.hamburger-menu.active .bar { background-color: #ffffff; }
 				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } 
 				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; } 
 				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } 
@@ -431,7 +451,8 @@
 				<div class="about-redesigned-container reveal">
 					<div class="avatar-column">
 						<div class="avatar-placeholder">
-							<img src="images/professional-headshot.jpg" alt="A professional headshot of Niranjan Kumar" />
+							<!-- --- FIX: Profile picture updated --- -->
+							<img src="https://images.unsplash.com/photo-1582233479534-11358357a6b2?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="A professional headshot of Niranjan Kumar" />
 						</div>
 						<ul class="about-icon-bar">
 							<li><i class="fas fa-briefcase"></i> Data Analyst | Data Scientist</li>
@@ -695,7 +716,6 @@
                     const handleNavScroll = () => {
 						const isScrolled = window.scrollY > heroSection.offsetHeight - 80;
                         mainNav.classList.toggle("nav-scrolled", isScrolled);
-						// We need to also pass the scrolled state to the hamburger menu parent for color change
 						hamburgerMenu.parentElement.classList.toggle("nav-scrolled", isScrolled);
 
                     };
@@ -750,7 +770,6 @@
 						pathWrapper.style.width = '1px';
 						pathWrapper.style.height = '1px';
 						
-						// The path is the element that determines travel distance
                         let path = document.createElement('div');
 						path.style.paddingBottom = `${pathHeight}vh`;
 
