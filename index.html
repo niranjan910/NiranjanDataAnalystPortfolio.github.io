@@ -88,15 +88,6 @@
 				border: 1px solid rgba(255, 255, 255, 0.2);
             }
 
-            .cta-btn::before {
-                content: '';
-                position: absolute;
-                top: 0; right: 0; bottom: 0; left: 0;
-                z-index: -1;
-                transition: opacity 0.3s ease;
-                opacity: 0;
-            }
-
             .cta-btn:hover {
                 transform: translateY(-4px) scale(1.02);
                 box-shadow: 0 10px 20px rgba(6, 182, 212, 0.25); /* Cyan glow */
@@ -122,6 +113,11 @@
 				color: var(--text-primary) !important;
 				border: 1px solid var(--border-color);
 			}
+            .cta-btn-secondary.dark-text:hover {
+                background: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            }
+
 
             .cta-btn-secondary:hover {
                 background: rgba(255, 255, 255, 0.2);
@@ -147,14 +143,10 @@
 
 			/* --- HERO SECTION --- */
 			@keyframes animated-gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-            @keyframes subtle-particles { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-1000px); opacity: 0; } }
             
 			#hero { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 0; margin: 0 -40px; position: relative; color: white; text-align: center; overflow: hidden; background: linear-gradient( 45deg, #081c24, #0d2e3a, #18556d, #14b8a6, #06b6d4, #18556d, #0d2e3a, #081c24 ); background-size: 400% 400%; animation: animated-gradient 15s ease infinite; }
 			#hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8, 28, 36, 0.6); z-index: 1; }
             
-            /* Subtle Animated Particles */
-            #particles-js { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-
 			.hero-content-wrapper { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 10px; display: flex; flex-direction: column; align-items: center; }
 			.carousel-container { width: 100%; overflow: hidden; position: relative; } 
 			.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
@@ -387,7 +379,6 @@
         
 		<main id="main-content">
 			<section id="hero">
-                <div id="particles-js"></div>
 				<div class="hero-content-wrapper">
 					<div class="carousel-container">
 						<div class="visually-hidden" aria-live="polite" aria-atomic="true" id="carousel-live-region"></div>
@@ -636,22 +627,73 @@
 					let slideInterval;
 
 					if (slides.length > 0 && dotsNav) {
-						// Your carousel JS logic here...
+						slides.forEach((slide, index) => {
+							const dot = document.createElement('button');
+							dot.classList.add('dot');
+							if (index === 0) dot.setAttribute('aria-current', 'true');
+							dot.addEventListener('click', () => { moveToSlide(index); resetInterval(); });
+							dotsNav.appendChild(dot);
+						});
+
+						const dots = Array.from(dotsNav.children);
+						const moveToSlide = (slideIndex) => {
+							track.style.transform = `translateX(-${100 * slideIndex}%)`;
+							slides.forEach((s, i) => s.classList.toggle('active', i === slideIndex));
+							dots.forEach((d, i) => d.setAttribute('aria-current', i === slideIndex));
+						};
+						const nextSlide = () => {
+							const currentIndex = slides.findIndex(s => s.classList.contains('active'));
+							moveToSlide((currentIndex + 1) % slides.length);
+						};
+						const startInterval = () => slideInterval = setInterval(nextSlide, 5000);
+						const resetInterval = () => { clearInterval(slideInterval); startInterval(); };
+						startInterval();
 					}
 				}
-				// All your other JS logic...
+
+				// --- CERTIFICATES LOGIC ---
+                // (Your existing certificate data and logic would go here)
+				
+				// --- GENERAL SCRIPTING & NAVIGATION ---
+				const revealElements = document.querySelectorAll(".reveal");
+				const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }); }, { rootMargin: "0px 0px -100px 0px" });
+				revealElements.forEach(el => revealObserver.observe(el));
+
+				const hamburger = document.getElementById("hamburgerMenu"), navLinks = document.getElementById("navLinks");
+				if (hamburger && navLinks) {
+					hamburger.addEventListener("click", () => { const isOpened = hamburger.classList.toggle("active"); navLinks.classList.toggle("active"); hamburger.setAttribute('aria-expanded', isOpened); });
+				}
+
+                // --- DYNAMIC NAVBAR STYLE ON SCROLL ---
+                const mainNav = document.getElementById("mainNav");
+                const heroSection = document.getElementById("hero");
+                if (mainNav && heroSection) {
+                    const handleNavScroll = () => {
+                        mainNav.classList.toggle("nav-scrolled", window.scrollY > heroSection.offsetHeight - 80);
+                    };
+                    window.addEventListener("scroll", handleNavScroll);
+                }
+				
+                // --- ACTIVE NAV LINK ON SCROLL ---
+                const sections = document.querySelectorAll("section[id]");
+                const navLi = document.querySelectorAll(".nav-links ol li a");
+                if(sections.length && navLi.length) {
+                    const observerOptions = { rootMargin: '-50% 0px -50% 0px' };
+                    const sectionObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                navLi.forEach(link => {
+                                    link.classList.remove("active");
+                                    if (link.getAttribute("href").substring(1) === entry.target.id) {
+                                        link.classList.add("active");
+                                    }
+                                });
+                            }
+                        });
+                    }, observerOptions);
+                    sections.forEach(section => sectionObserver.observe(section));
+                }
 			});
 		</script>
-        <!-- Optional: for animated particles background -->
-        <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-        <script>
-            // particles.js configuration
-            if (document.getElementById('particles-js')) {
-                particlesJS('particles-js', {
-                    "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle" }, "opacity": { "value": 0.5, "random": true }, "size": { "value": 3, "random": true }, "line_linked": { "enable": false }, "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" } },
-                    "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true } }, "retina_detect": true
-                });
-            }
-        </script>
 	</body>
 </html>
