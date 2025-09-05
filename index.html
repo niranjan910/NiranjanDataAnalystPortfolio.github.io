@@ -290,7 +290,7 @@
 			.certs-grid { display: grid; gap: 2rem; list-style: none; padding: 0; margin: 0; }
 
 			.cert-card { 
-				background-color: rgba(255,255,255,0.5); backdrop-filter: blur(15px);
+				background-color: rgba(255,255,255,0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
 				border-radius: var(--border-radius-large); 
 				box-shadow: 0 4px 12px var(--shadow-color); padding: 1.5rem; text-align: center; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(255,255,255,0.2); 
 			}
@@ -298,7 +298,8 @@
 			.cert-card .cert-logo { max-height: 50px; margin-bottom: 1rem; object-fit: contain; }
 			.cert-card h3.cert-title { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
 			.cert-card .cert-issuer { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem; }
-			.cert-card .verified-badge { display: inline-flex; align-items: center; gap: 0.3rem; background-color: #e0f2fe; color: #0c4a6e; font-size: 0.75rem; font-weight: 500; padding: 3px 8px; border-radius: 99px; }
+			.cert-card .verified-badge { display: inline-flex; align-items: center; gap: 0.3rem; background-color: var(--accent-tint); color: var(--accent-start); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 99px; }
+            .cert-card .verified-badge .fa-check { font-size: 0.7rem; }
 			.cert-card .view-cert-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, calc(-50% + 20px)); opacity: 0; background: var(--accent-gradient); color: white !important; padding: 10px 20px; border-radius: 50px; font-weight: 600; transition: all 0.3s ease; border: none; font-size: 0.9rem; white-space: nowrap; }
 			.cert-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); border-color: var(--accent-start); }
 			.cert-card:hover .view-cert-btn { transform: translate(-50%, -50%); opacity: 1; }
@@ -603,7 +604,9 @@
 
 			<section id="certs">
 				<h2 class="section-heading reveal">Credentials & Certificates</h2>
-				<ul class="certs-grid"></ul>
+				<ul class="certs-grid reveal">
+                    <!-- Certificates will be dynamically inserted here by JavaScript -->
+                </ul>
 			</section>
 
 			<section id="contact">
@@ -693,8 +696,92 @@
 					}
 				}
 
-				// --- CERTIFICATES LOGIC ---
-                // (Your existing certificate data and logic would go here)
+				// --- DYNAMIC CERTIFICATES & MODAL LOGIC ---
+                const certificates = [
+                    {
+                        title: 'Google Data Analytics',
+                        issuer: 'Google',
+                        date: 'Apr 2025',
+                        logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+                        image: 'images/google_cert.png', // Replace with your actual image path
+                        credentialId: 'XYZ-123-ABC',
+                        verifyLink: 'https://www.coursera.org/account/accomplishments/professional-cert/S94F2BNEY97N'
+                    },
+                    {
+                        title: 'Microsoft Certified: Power BI Data Analyst',
+                        issuer: 'Microsoft',
+                        date: 'Mar 2025',
+                        logo: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg',
+                        image: 'images/ms_cert.png', // Replace with your actual image path
+                        credentialId: 'ABC-456-XYZ',
+                        verifyLink: 'https://learn.microsoft.com/en-us/users/me/credentials/11E380A9A8456B75'
+                    },
+                    {
+                        title: 'SQL (Advanced)',
+                        issuer: 'HackerRank',
+                        date: 'Feb 2025',
+                        logo: 'https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png',
+                        image: 'images/sql_cert.png', // Replace with your actual image path
+                        credentialId: 'DEF-789-ABC',
+                        verifyLink: 'https://www.hackerrank.com/certificates/60226c276384'
+                    },
+                    {
+                        title: 'Python for Data Science and AI',
+                        issuer: 'IBM',
+                        date: 'Jan 2025',
+                        logo: 'https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg',
+                        image: 'images/ibm_cert.png', // Replace with your actual image path
+                        credentialId: 'GHI-101-XYZ',
+                        verifyLink: 'https://www.coursera.org/account/accomplishments/certificate/U32YVE267B78'
+                    }
+                ];
+
+                const certsGrid = document.querySelector('.certs-grid');
+                const modal = document.getElementById('certModal');
+                if (certsGrid && modal && certificates.length > 0) {
+                    certificates.forEach((cert, index) => {
+                        const certCardHTML = `
+                            <li class="cert-card" data-index="${index}">
+                                <div class="cert-card-content">
+                                    <img src="${cert.logo}" alt="${cert.issuer} Logo" class="cert-logo" />
+                                    <h3 class="cert-title">${cert.title}</h3>
+                                    <p class="cert-issuer">${cert.issuer}</p>
+                                    <span class="verified-badge"><i class="fas fa-check"></i> Verified</span>
+                                </div>
+                                <button class="view-cert-btn">View Certificate</button>
+                            </li>
+                        `;
+                        certsGrid.innerHTML += certCardHTML;
+                    });
+					
+                    const certCards = document.querySelectorAll('.cert-card');
+                    certCards.forEach(card => {
+                        card.addEventListener('click', () => {
+                            const cert = certificates[card.dataset.index];
+                            document.getElementById('modalCertImage').src = cert.image;
+                            document.getElementById('modalCertImage').alt = `${cert.title} Certificate`;
+                            document.getElementById('modalCertTitle').textContent = cert.title;
+                            document.getElementById('modalCertIssuer').textContent = cert.issuer;
+                            document.getElementById('modalCertDate').textContent = cert.date;
+                            document.getElementById('modalCertId').textContent = cert.credentialId;
+                            document.getElementById('modalVerifyLink').href = cert.verifyLink;
+                            modal.classList.add('active');
+                            document.body.classList.add('modal-open');
+                        });
+                    });
+
+                    const closeModal = () => {
+                        modal.classList.remove('active');
+                        document.body.classList.remove('modal-open');
+                    };
+
+                    document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+                    modal.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            closeModal();
+                        }
+                    });
+                }
 				
 				// --- GENERAL SCRIPTING & NAVIGATION ---
 				const revealElements = document.querySelectorAll(".reveal");
