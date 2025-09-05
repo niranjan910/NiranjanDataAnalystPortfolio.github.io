@@ -260,7 +260,6 @@
 			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
 			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent-start); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
 			
-			/* --- FIX: Consistent Button Styling for Project Cards --- */
 			.project-view-button {
 				display: inline-block;
 				padding: 0.6rem 1.2rem;
@@ -350,8 +349,8 @@
 				border: 1px solid rgba(255, 255, 255, 0.15);
 				box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 			}
-            .footer p { color: var(--text-secondary); margin-bottom: 1.5rem; }
-            .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; }
+            .footer p { color: var(--text-secondary); margin-bottom: 0; }
+            .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-top: 1.5rem;}
             .footer-links a { color: var(--text-secondary); font-size: 1.5rem; transition: var(--transition-fast); }
             .footer-links a:hover { color: var(--accent-start); transform: scale(1.1) translateY(-2px); }
 
@@ -451,8 +450,7 @@
 				<div class="about-redesigned-container reveal">
 					<div class="avatar-column">
 						<div class="avatar-placeholder">
-							<!-- --- FIX: Profile picture updated --- -->
-							<img src="https://images.unsplash.com/photo-1582233479534-11358357a6b2?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="A professional headshot of Niranjan Kumar" />
+							<img src="images/professional-headshot.jpg" alt="A professional headshot of Niranjan Kumar" />
 						</div>
 						<ul class="about-icon-bar">
 							<li><i class="fas fa-briefcase"></i> Data Analyst | Data Scientist</li>
