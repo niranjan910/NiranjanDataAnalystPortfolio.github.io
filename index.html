@@ -11,7 +11,6 @@
 		<!-- Google Fonts: Syne for Hero Headings, Inter for others -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<!-- MODIFIED: Added font-weight 400 for Syne font for the bottom line -->
 		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 
@@ -123,20 +122,16 @@
 			.carousel-slide { flex: 0 0 100%; width: 100%; padding: 1rem 0; display: flex; flex-direction: column; justify-content: center; }
 			.slide-content > * { opacity: 0; transform: translateY(25px); animation: slideUp 0.7s ease-out forwards; }
 			
-			/* MODIFIED: Animation delay for new 3-line structure */
 			.carousel-slide.active .slide-content > * { animation-delay: 0.3s; }
 			.carousel-slide.active .slide-content > *:nth-child(2) { animation-delay: 0.5s; }
 			.carousel-slide.active .slide-content > *:nth-child(3) { animation-delay: 0.7s; }
 
 			@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
-			/* MODIFIED: Changed font-family to Syne as requested */
 			.slide-intro { font-family: var(--font-hero); font-size: clamp(1rem, 3vw, 1.25rem); color: var(--accent-end); margin-bottom: 1.5rem; font-weight: 700; }
 			
-			/* MODIFIED: Added margin-bottom */
 			.slide-headline { font-family: var(--font-hero); font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1.1; color: var(--card-bg); margin: 0; text-transform: uppercase; font-weight: 800; margin-bottom: 1.5rem; }
 
-			/* NEW: Styling for the new bottom line text */
 			.slide-bottom-line {
 				font-family: var(--font-hero);
 				font-size: clamp(0.9rem, 2vw, 1.1rem);
@@ -154,9 +149,25 @@
 			.carousel-slide.slide-align-center { align-items: center; text-align: center; }
 			
 			.carousel-slide.slide-align-right { align-items: flex-end; text-align: right; }
+			
+            /* NEW: Rule to make text left-aligned on the third slide */
+            .carousel-slide.slide-align-right .slide-intro,
+            .carousel-slide.slide-align-right .slide-bottom-line {
+                text-align: left;
+            }
+
 			.carousel-slide.slide-align-right .slide-bottom-line { margin-left: auto; margin-right: 0; }
 
-			.carousel-dots { display: flex; justify-content: center; gap: 0.75rem; width: 100%; margin-top: 3rem; }
+            /* MODIFIED: Changed to absolute positioning for the dots */
+			.carousel-dots { 
+                position: absolute;
+                bottom: 50px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex; 
+                gap: 0.75rem; 
+                z-index: 3;
+            }
 			.dot { cursor: pointer; height: 8px; width: 8px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; border: none; }
 			.dot[aria-current="true"] { background-color: var(--accent-end); transform: scale(1.1); }
 			
@@ -174,12 +185,11 @@
 			.avatar-placeholder { width: 100%; max-width: 300px; aspect-ratio: 1 / 1; border-radius: 1.5rem; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; color: rgba(255, 255, 255, 0.8); background-color: #222; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 			.avatar-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: conic-gradient( var(--accent-start), #a855f7, #ec4899, #f59e0b, #06b6d4, #10b981, var(--accent-start) ); animation: spin 8s linear infinite; }
 			
-			/* NEW: Styling for the headshot image */
 			.avatar-placeholder img {
 				width: 100%;
 				height: 100%;
-				object-fit: cover; /* Ensures the image covers the area without distortion */
-				position: relative; /* Keeps it above the animated border pseudo-element */
+				object-fit: cover;
+				position: relative;
 				z-index: 2;
 			}
 			
@@ -354,7 +364,6 @@
 						<div class="visually-hidden" aria-live="polite" aria-atomic="true" id="carousel-live-region"></div>
 						<div class="carousel-track">
 							
-							<!-- SLIDE 1: UPDATED CONTENT -->
 							<div class="carousel-slide active slide-align-left" role="group" aria-roledescription="slide" data-slide-name="I GIVE DATA A VOICE">
 								<div class="slide-content">
 									<p class="slide-intro">Turning Numbers into Narratives</p>
@@ -363,7 +372,6 @@
 								</div>
 							</div>
 							
-							<!-- SLIDE 2: UPDATED CONTENT -->
 							<div class="carousel-slide slide-align-center" role="group" aria-roledescription="slide" data-slide-name="SQL & PYTHON MASTERY">
 								<div class="slide-content">
 									<p class="slide-intro">The Power Behind My Insights</p>
@@ -372,7 +380,6 @@
 								</div>
 							</div>
 							
-							<!-- SLIDE 3: UPDATED CONTENT -->
 							<div class="carousel-slide slide-align-right" role="group" aria-roledescription="slide" data-slide-name="DATA-DRIVEN DECISIONS">
 								<div class="slide-content">
 									<p class="slide-intro">Shaping the Future with Analytics</p>
@@ -382,15 +389,15 @@
 							</div>
 						</div>
 					</div>
-					<div class="carousel-dots"></div>
 				</div>
+                <!-- MODIFIED: Dots are moved out of the wrapper to be positioned relative to the hero section -->
+                <div class="carousel-dots"></div>
 			</section>
 
 			<section id="about">
 				<div class="about-redesigned-container reveal">
 					<div class="avatar-column">
 						<div class="avatar-placeholder">
-							<!-- IMPORTANT: Replace 'images/professional-headshot.jpg' with the actual path to your photo -->
 							<img src="images/professional-headshot.jpg" alt="A professional headshot of Niranjan Kumar" />
 						</div>
 						<ul class="about-icon-bar">
@@ -402,9 +409,7 @@
 					</div>
 					<div class="content-column">
 						<h2 class="section-heading about-heading">About Me</h2>
-						<!-- MODIFIED: Added quantifiable achievements -->
 						<p>As a detail-oriented Data Professional, I bridge the gap between raw data and strategic decision-making. In my projects, I've successfully engineered ETL pipelines that processed over 500,000 records, increasing data processing efficiency by 30%. My expertise spans the full data lifecycle, from cleaning complex datasets to deploying predictive machine learning models that have helped forecast trends with 90%+ accuracy.</p>
-						<!-- MODIFIED: Added a touch of personality -->
 						<p>I am driven by a passion for uncovering hidden patterns that lead to measurable business impact. I leverage advanced SQL, Python, and tools like Power BI to build intuitive dashboards that have empowered stakeholders to make smarter, data-driven decisions. Beyond the code and charts, I'm particularly fascinated by the application of AI in the retail analytics space, constantly exploring new ways to transform customer behavior data into actionable growth strategies.</p>
 						
 						<div class="about-cta-buttons">
