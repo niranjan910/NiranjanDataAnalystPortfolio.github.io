@@ -222,7 +222,7 @@
 			.avatar-placeholder { 
 				width: 100%; 
 				max-width: 300px; 
-				aspect-ratio: 3 / 4; /* CHANGED TO RECTANGLE */
+				aspect-ratio: 3 / 4; 
 				border-radius: 1.5rem; 
 				position: relative; 
 				overflow: hidden; 
@@ -282,22 +282,51 @@
 			.skill-badge:hover { transform: translateY(-4px); box-shadow: 0 8px 15px var(--shadow-color); }
 			.skill-badge i { color: var(--accent-start); font-size: 1.25rem; }
 			
+			/* --- MY JOURNEY SECTION REFINEMENT --- */
 			.stepper-container { max-width: 800px; margin: 0 auto; position: relative; }
 			.stepper-item { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; position: relative; padding-bottom: 2rem; }
-			.stepper-item::before { content: ''; position: absolute; left: 24px; top: 2.5rem; width: 2px; height: 100%; background: var(--border-color); z-index: 0; }
+			.stepper-item::before { 
+				content: ''; 
+				position: absolute; 
+				left: 24px; 
+				top: 2.5rem; 
+				width: 2px; 
+				height: 100%; 
+				background: var(--border-color); 
+				z-index: 0; /* Ensures line is in the back */
+			}
 			.stepper-item:last-child { padding-bottom: 0; }
 			.stepper-item:last-child::before { display: none; }
 			.stepper-meta { text-align: center; }
-			.stepper-icon { font-size: 1.8rem; color: var(--accent-start); background-color: var(--accent-tint); border-radius: 50%; width: 50px; height: 50px; display: inline-flex; align-items: center; justify-content: center; border: 3px solid #f0f4f8; position: relative; z-index: 1; }
-			.stepper-date { font-size: 0.85rem; font-weight: 500; margin-top: 0.75rem; color: var(--text-secondary); }
-			
+			.stepper-icon { 
+				font-size: 1.8rem; 
+				color: var(--accent-start); 
+				background-color: var(--card-bg); /* Opaque background */
+				border-radius: 50%; 
+				width: 50px; 
+				height: 50px; 
+				display: inline-flex; 
+				align-items: center; 
+				justify-content: center; 
+				border: 3px solid var(--accent-tint); 
+				position: relative; 
+				z-index: 1; /* Ensures icon is in the front */
+			}
+			.stepper-date { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-top: 0.75rem; }
 			.stepper-content .timeline-card { padding: 1.5rem; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: var(--border-radius-large); box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.2); }
 			.stepper-content .timeline-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); border-color: var(--accent-start); }
 			.stepper-content .timeline-card h3 { font-size: 1.25rem; margin: 0 0 0.25rem; }
 			.stepper-content .timeline-card .org { font-size: 1rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 1rem; display: block; }
-			.stepper-content .timeline-card ul { list-style-type: none; padding-left: 0; }
-			.stepper-content .timeline-card ul li { position: relative; padding-left: 1.5rem; font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; }
-			.stepper-content .timeline-card ul li::before { content: '•'; position: absolute; left: 0; color: var(--accent-start); font-weight: bold; font-size: 1.2rem; line-height: 1; }
+			.stepper-content .timeline-card p { font-size: 0.95rem; margin-bottom: 0; max-width: 100%; line-height: 1.7; }
+			.stepper-content .timeline-card .skills-highlight {
+				font-size: 0.9rem;
+				font-style: italic;
+				color: var(--text-secondary);
+				margin-top: 1rem;
+				padding-top: 1rem;
+				border-top: 1px solid var(--border-color);
+			}
+			
 			@media (max-width: 768px) { .stepper-item { grid-template-columns: 60px 1fr; gap: 1rem; } .stepper-item::before { left: 29px; } .stepper-icon { width: 40px; height: 40px; font-size: 1.5rem; } }
 			
 			#projects .section-heading { text-align: left; }
@@ -595,78 +624,78 @@
 			<section id="journey">
 				<h2 class="section-heading reveal">My Journey</h2>
 				<div class="stepper-container">
+					
 					<div class="stepper-item reveal">
 						<div class="stepper-meta">
 							<span class="stepper-icon"><i class="fas fa-briefcase"></i></span>
-							<p class="stepper-date">Feb 2025 – Jul 2025</p>
+							<p class="stepper-date">2025</p>
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
-								<h3>Data Analyst</h3>
+								<h3>Advanced Data Analytics Training</h3>
 								<span class="org">Naresh i Technologies · Trainee</span>
-								<ul>
-									<li>Completed an intensive on-site training program focusing on advanced data analysis techniques.</li>
-									<li>Leveraged SQL and Python for comprehensive data cleaning and reporting.</li>
-								</ul>
+								<p>Completed an intensive on-site program focused on advanced SQL, Python, and building comprehensive data reports.</p>
+								<p class="skills-highlight"><strong>Skills Refined:</strong> Advanced SQL, Reporting, Python for Data Analysis.</p>
 							</div>
 						</div>
 					</div>
+					
 					<div class="stepper-item reveal">
 						<div class="stepper-meta">
 							<span class="stepper-icon"><i class="fas fa-briefcase"></i></span>
-							<p class="stepper-date">Jun 2023 – Dec 2024</p>
+							<p class="stepper-date">Aug 2024 – Jan 2025</p>
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
-								<h3>UX Designer</h3>
-								<span class="org">DevRiser · Full-time</span>
-								<ul>
-									<li>Specialized in designing intuitive, data-driven dashboards for analytics applications.</li>
-									<li>Translated complex data requirements into clean, user-friendly visualization workflows.</li>
-								</ul>
+								<h3>Data Science & ML Internship</h3>
+								<span class="org">TechiNest · Jaipur</span>
+								<p>Applied machine learning principles to real-world datasets, developing predictive models to solve practical business problems.</p>
+								<p class="skills-highlight"><strong>Skills Gained:</strong> Predictive Modeling, Scikit-learn, Feature Engineering.</p>
 							</div>
 						</div>
 					</div>
+
 					<div class="stepper-item reveal">
 						<div class="stepper-meta">
 							<span class="stepper-icon"><i class="fas fa-graduation-cap"></i></span>
-							<p class="stepper-date">Aug 2019 – May 2023</p>
+							<p class="stepper-date">2019 – 2023</p>
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
 								<h3>Bachelor of Technology, CSE</h3>
 								<span class="org">IPS College of Technology & Management</span>
-								<ul>
-									<li>Graduated with a grade of 8.9, focusing on data structures, algorithms, and database management systems.</li>
-								</ul>
+								<p>Graduated with a grade of 8.9, building a strong foundation in data structures, algorithms, and database management.</p>
+								<p class="skills-highlight"><strong>Foundation:</strong> Algorithms, Database Management, CS Fundamentals.</p>
 							</div>
 						</div>
 					</div>
+
 					<div class="stepper-item reveal">
 						<div class="stepper-meta">
 							<span class="stepper-icon"><i class="fas fa-briefcase"></i></span>
-							<p class="stepper-date">Jul 2022 – Aug 2022</p>
+							<p class="stepper-date">2022</p>
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
-								<h3>Data Science with ML</h3>
+								<h3>Machine Learning Training</h3>
 								<span class="org">TechieNest · Trainee</span>
-								<ul>
-									<li>Completed a 2-month on-site training program focused on Machine Learning principles.</li>
-								</ul>
+								<p>Completed a 2-month on-site program focused on core machine learning principles and applications.</p>
+								<p class="skills-highlight"><strong>Introduction to:</strong> Machine Learning, Python Libraries.</p>
 							</div>
 						</div>
 					</div>
+
 					<div class="stepper-item reveal">
 						<div class="stepper-meta">
 							<span class="stepper-icon"><i class="fas fa-graduation-cap"></i></span>
-							<p class="stepper-date">Aug 2017 – May 2018</p>
+							<p class="stepper-date">2017 – 2018</p>
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
-								<h3>Senior Secondary, Science Stream</h3>
+								<h3>Senior Secondary, Science</h3>
 								<span class="org">DAV Schools Network</span>
-								<ul><li>Achieved a grade of 8.7.</li></ul>
+								<p>Graduated with a grade of 8.7, developing strong analytical and quantitative reasoning skills.</p>
+								<p class="skills-highlight"><strong>Skills:</strong> Analytical Reasoning, Quantitative Aptitude.</p>
 							</div>
 						</div>
 					</div>
@@ -709,7 +738,7 @@
 							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble" aria-label="Dribbble"><i class="fab fa-dribbble"></i><span>Dribbble</span></a>
 							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
 							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail" aria-label="Gmail"><i class="fas fa-envelope"></i><span>Gmail</span></a>
-							<a href="tel:+910000000000" class="contact-card phone" aria-label="Phone"><i class="fas fa-phone"></i><span>Phone</span></a>
+							<a href="tel:+919641143646" class="contact-card phone" aria-label="Phone"><i class="fas fa-phone"></i><span>Phone</span></a>
 							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram" aria-label="Instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>
 						</div>
 					</div>
