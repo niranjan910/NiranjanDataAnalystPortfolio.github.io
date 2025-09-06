@@ -8,10 +8,12 @@
 		
 		<link rel="icon" type="image/png" href="Logo/favicon.png" />
 
-		<!-- Google Fonts: Syne for Hero Headings, Inter for others -->
+		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<!-- Added Handwriting Font for Diary Note -->
+		<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
 
 		<link
@@ -40,6 +42,8 @@
 				--font-sans: 'Inter', sans-serif;
 				--font-serif: 'Inter', sans-serif;
 				--font-hero: 'Syne', sans-serif;
+				--font-handwriting: 'Patrick Hand', cursive; /* Handwriting Font Variable */
+
 				--border-radius: 4px;
 				--border-radius-large: 20px;
 				--border-radius-pill: 99px;
@@ -236,6 +240,42 @@
 			.avatar-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: conic-gradient( var(--accent-start), #a855f7, #ec4899, #f59e0b, #06b6d4, #10b981, var(--accent-start) ); animation: spin 8s linear infinite; }
 			.avatar-placeholder img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2; }
 			@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+			/* --- NEW DIARY NOTE STYLES --- */
+			.personal-note-notepad {
+				background-color: #fefde8;
+				border: 1px solid #ede8c6;
+				box-shadow: 3px 3px 8px rgba(0,0,0,0.08);
+				border-radius: 6px;
+				padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+				position: relative;
+				width: 100%;
+				max-width: 300px;
+				margin-top: 2.5rem;
+			}
+			.personal-note-notepad::before {
+				content: '';
+				position: absolute;
+				top: 15px;
+				left: 10px;
+				bottom: 15px;
+				width: 3px;
+				background-image: radial-gradient(circle at center, transparent 3px, transparent 3px),
+								  radial-gradient(circle at center, #bbb 2px, transparent 3px);
+				background-size: 3px 18px;
+				background-repeat: repeat-y;
+			}
+			.personal-note-notepad .note-content p {
+				font-family: var(--font-handwriting);
+				font-size: 1.15rem;
+				line-height: 1.7;
+				color: #525252;
+				margin-bottom: 1rem;
+			}
+			.personal-note-notepad .note-content p:last-child {
+				margin-bottom: 0;
+			}
+			
 			.about-icon-bar { list-style: none; padding: 0; width: 100%; max-width: 300px; }
 			.about-icon-bar li { display: flex; align-items: center; gap: 1rem; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-secondary); }
 			.about-icon-bar li i { font-size: 1.2rem; color: var(--accent-start); width: 20px; text-align: center; }
@@ -300,7 +340,7 @@
 			.stepper-meta { 
 				text-align: center; 
 				position: relative;
-				z-index: 1; /* FINAL FIX: Lifts icon AND date above the line */
+				z-index: 1;
 			}
 			.stepper-icon { 
 				font-size: 1.8rem; 
@@ -558,6 +598,17 @@
 						<div class="avatar-placeholder">
 							<img src="images/Instagram post - 165.png" alt="A professional headshot of Niranjan Kumar" />
 						</div>
+						
+						<div class="personal-note-notepad">
+							<div class="note-content">
+								<p>AI has been my silent mentor, helping me learn smarter, practice better, and build faster.</p>
+								<p>From mastering new tools to experimenting with projects, I’ve used AI to break down complex concepts into daily learning steps.</p>
+								<p>Every model I train, every dataset I explore — I’m not just learning data science, I’m learning how to learn with AI.</p>
+								<p>This journey isn’t about replacing my skills, but amplifying them with AI.</p>
+								<p>And that’s how I keep leveling up — one AI-powered step at a time.</p>
+							</div>
+						</div>
+
 						<ul class="about-icon-bar">
 							<li><i class="fas fa-briefcase"></i> Data Analyst | Data Scientist</li>
 							<li><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana</li>
