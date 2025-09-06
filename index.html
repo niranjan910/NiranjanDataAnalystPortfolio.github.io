@@ -199,15 +199,8 @@
 			.carousel-slide.slide-align-center { align-items: center; text-align: center; }
 			.carousel-slide.slide-align-right { align-items: flex-end; text-align: right; }
 			
-			/* --- BOTTOM LINE ALIGNMENT FIX --- */
-			.slide-align-center .slide-bottom-line {
-				margin-left: auto;
-				margin-right: auto;
-			}
-			.slide-align-right .slide-bottom-line {
-				margin-left: auto;
-				margin-right: 0;
-			}
+			.slide-align-center .slide-bottom-line { margin-left: auto; margin-right: auto; }
+			.slide-align-right .slide-bottom-line { margin-left: auto; margin-right: 0; }
 
 			.carousel-dots { display: flex; justify-content: center; gap: 0.75rem; width: 100%; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 5;}
 			.dot { cursor: pointer; height: 8px; width: 8px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; border: none; }
@@ -236,11 +229,35 @@
 			.content-column .about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 3.5rem); }
 			.content-column .about-heading::after { display: block; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: var(--accent-gradient); }
 			.content-column p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; max-width: 70ch; color: var(--text-secondary); }
-			.about-cta-buttons { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+			.about-cta-buttons { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0; }
 			.toolkit-heading { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
 			.toolkit-subheading { font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); margin-top: 1.5rem; margin-bottom: 1rem; }
 			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
 			
+			/* NEW STYLE FOR KEY HIGHLIGHTS */
+			.key-highlights {
+				list-style: none;
+				padding-left: 0;
+				margin: 2.5rem 0;
+			}
+			.key-highlights li {
+				position: relative;
+				padding-left: 1.75rem;
+				margin-bottom: 0.75rem;
+				font-size: 1.05rem;
+				line-height: 1.6;
+				color: var(--text-secondary);
+			}
+			.key-highlights li::before {
+				content: '✓';
+				position: absolute;
+				left: 0;
+				top: 4px;
+				color: var(--accent-start);
+				font-weight: 700;
+				font-size: 1.1rem;
+			}
+
 			.skill-badge { 
 				display: inline-flex; align-items: center; gap: 0.75rem; 
 				background-color: #ffffff;
@@ -507,44 +524,58 @@
 					</div>
 					<div class="content-column">
 						<h2 class="section-heading about-heading">About Me</h2>
-						<p>As a detail-oriented Data Professional, I bridge the gap between raw data and strategic decision-making. In my projects, I've successfully engineered ETL pipelines that processed over 500,000 records, increasing data processing efficiency by 30%. My expertise spans the full data lifecycle, from cleaning complex datasets to deploying predictive machine learning models that have helped forecast trends with 90%+ accuracy.</p>
-						<p>I am driven by a passion for uncovering hidden patterns that lead to measurable business impact. I leverage advanced SQL, Python, and tools like Power BI to build intuitive dashboards that have empowered stakeholders to make smarter, data-driven decisions. Beyond the code and charts, I'm particularly fascinated by the application of AI in the retail analytics space, constantly exploring new ways to transform customer behavior data into actionable growth strategies.</p>
+
+						<p>I’m a data enthusiast who believes every dataset hides a story. What started as a curiosity in analyzing cricket scores has now grown into a passion for transforming raw numbers into powerful business insights.</p>
+						<p>I specialize in bridging the gap between data and decision-making, using Python, SQL, and machine learning to deliver solutions that improve efficiency, growth, and innovation.</p>
+						<p>Beyond analytics, I’m an avid traveler — I’ve explored 17 states across India in the last 4 years, which has shaped my adaptability, curiosity, and love for discovery.</p>
+
 						<div class="about-cta-buttons">
 							<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-primary" target="_blank">Download Resume</a>
-							<a href="#journey" class="cta-btn cta-btn-secondary">View My Journey</a>
+							<a href="#projects" class="cta-btn cta-btn-secondary">View My Projects</a>
 						</div>
+						
+						<h3 class="toolkit-heading">Key Highlights</h3>
+						<ul class="key-highlights">
+							<li>Skilled in data wrangling, visualization, and predictive analytics.</li>
+							<li>Built ML models for healthcare, retail, and financial domains.</li>
+							<li>Strong expertise in SQL, Python, Power BI & cloud platforms.</li>
+							<li>Explorer at heart, blending curiosity with problem-solving.</li>
+						</ul>
+						
 						<h3 class="toolkit-heading">My Professional Toolkit</h3>
-						<h4 class="toolkit-subheading">Data Manipulation & Analysis</h4>
+
+						<h4 class="toolkit-subheading">Analytics & BI</h4>
 						<div class="skills-grid">
-							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL & T-SQL</span></div>
-							<div class="skill-badge"><i class="fab fa-python"></i><span>Python (Pandas, NumPy)</span></div>
 							<div class="skill-badge"><i class="fas fa-file-excel"></i><span>Advanced Excel</span></div>
-							<div class="skill-badge"><i class="fas fa-cogs"></i><span>ETL Processes</span></div>
-						</div>
-						<h4 class="toolkit-subheading">Data Visualization</h4>
-						<div class="skills-grid">
 							<div class="skill-badge"><i class="fas fa-chart-bar"></i><span>Power BI</span></div>
 							<div class="skill-badge"><i class="fas fa-chart-pie"></i><span>Tableau</span></div>
-							<div class="skill-badge"><i class="fab fa-python"></i><span>Seaborn & Matplotlib</span></div>
 						</div>
-						<h4 class="toolkit-subheading">Databases & Big Data</h4>
-						<div class="skills-grid">
-							<div class="skill-badge"><i class="fas fa-database"></i><span>MySQL</span></div>
-							<div class="skill-badge"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
-							<div class="skill-badge"><i class="fas fa-cloud"></i><span>Microsoft Azure</span></div>
-							<div class="skill-badge"><i class="fas fa-fire"></i><span>Apache Spark</span></div>
-						</div>
-						<h4 class="toolkit-subheading">Machine Learning</h4>
+
+						<h4 class="toolkit-subheading">ML & AI</h4>
 						<div class="skills-grid">
 							<div class="skill-badge"><i class="fas fa-robot"></i><span>Scikit-learn</span></div>
 							<div class="skill-badge"><i class="fas fa-brain"></i><span>TensorFlow</span></div>
 							<div class="skill-badge"><i class="fas fa-chart-line"></i><span>Regression & Classification</span></div>
 						</div>
-						<h4 class="toolkit-subheading">Developer Tools</h4>
+						
+						<h4 class="toolkit-subheading">Databases & Data Wrangling</h4>
 						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL & T-SQL</span></div>
+							<div class="skill-badge"><i class="fab fa-python"></i><span>Python (Pandas, NumPy)</span></div>
+							<div class="skill-badge"><i class="fas fa-database"></i><span>MySQL</span></div>
+							<div class="skill-badge"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
+						</div>
+						
+						<h4 class="toolkit-subheading">Cloud & Tools</h4>
+						<div class="skills-grid">
+							<div class="skill-badge"><i class="fas fa-cloud"></i><span>Microsoft Azure</span></div>
+							<div class="skill-badge"><i class="fas fa-fire"></i><span>Apache Spark</span></div>
+							<div class="skill-badge"><i class="fas fa-cogs"></i><span>ETL Processes</span></div>
 							<div class="skill-badge"><i class="fab fa-git-alt"></i><span>Git & GitHub</span></div>
 							<div class="skill-badge"><i class="fab fa-jira"></i><span>Jira</span></div>
 						</div>
+						
+						<p style="margin-top: 3rem; font-weight: 600; color: var(--text-primary);">I’m always open to new projects, collaborations, and data challenges — let’s connect and create impact together.</p>
 					</div>
 				</div>
 			</section>
