@@ -397,33 +397,38 @@
 				background-color: var(--card-bg); 
 				border-radius: var(--border-radius-large);
 				box-shadow: 0 4px 12px var(--shadow-color); 
-				transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); 
-				overflow: hidden; border: 1px solid var(--border-color);
-				position: relative;
+				overflow: hidden; 
+				border: 1px solid var(--border-color);
+				display: flex; /* ADDED FOR ALIGNMENT */
+				flex-direction: column; /* ADDED FOR ALIGNMENT */
 			}
-			/* HOVER EFFECT REMOVED
-			.project-card:hover, .dashboard-card:hover { 
-				transform: translateY(-8px) scale(1.03); 
-				box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); 
-				border-color: var(--accent-start); 
-			} */
 
 			.project-card .project-image, .dashboard-card .dashboard-image { 
 				width: 100%; height: 200px; object-fit: cover;
 				border-bottom: 1px solid var(--border-color); 
 			}
 			.project-card .card-body, .dashboard-card .dashboard-body { 
-				padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;
+				padding: 1.5rem; 
+				flex-grow: 1; 
+				display: flex; 
+				flex-direction: column;
 			}
 			.project-card h3.project-title, .dashboard-card .dashboard-title { 
 				font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 700; 
 			}
 			.project-card .project-description, .dashboard-card .dashboard-description { 
-				font-size: 1rem; line-height: 1.6; flex-grow: 1; margin-bottom: 1rem; 
+				font-size: 1rem; 
+				line-height: 1.6; 
+				flex-grow: 1; /* Pushes footer down */
+				margin-bottom: 1rem; 
 			}
 			.project-card .card-footer { 
-				display: flex; justify-content: space-between; align-items: center; margin-top: auto; 
-				padding-top: 1.5rem; border-top: 1px solid var(--border-color); 
+				display: flex; 
+				justify-content: space-between; 
+				align-items: center; 
+				margin-top: auto; 
+				padding-top: 1.5rem; 
+				border-top: 1px solid var(--border-color); 
 			}
 			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
 			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent-start); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
@@ -536,7 +541,9 @@
             .send-message-btn { width: 100%; border: none; cursor: pointer;}
 			
 			.footer { 
-				text-align: center; padding: 2rem; font-size: 0.9rem;
+				text-align: center; /* Ensures content is centered */
+				padding: 2rem; 
+				font-size: 0.9rem;
 				margin: 100px 40px 40px 40px;
 				background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
 				border-radius: var(--border-radius-large);
@@ -824,7 +831,7 @@
 				<ul class="projects-grid">
 					<li class="project-card reveal"><img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 150ms"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 300ms"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p<div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 300ms"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 450ms"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 600ms"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 750ms"><img src="images/Salary Trend.png" alt="Salary Trend Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
