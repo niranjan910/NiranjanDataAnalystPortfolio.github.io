@@ -401,11 +401,12 @@
 				overflow: hidden; border: 1px solid var(--border-color);
 				position: relative;
 			}
+			/* HOVER EFFECT REMOVED
 			.project-card:hover, .dashboard-card:hover { 
 				transform: translateY(-8px) scale(1.03); 
 				box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); 
 				border-color: var(--accent-start); 
-			}
+			} */
 
 			.project-card .project-image, .dashboard-card .dashboard-image { 
 				width: 100%; height: 200px; object-fit: cover;
@@ -522,7 +523,7 @@
 			.icon-grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
 			
 			.contact-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; background-color: rgba(255,255,255,0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 1.5rem; border-radius: var(--border-radius-large); box-shadow: 0 4px 15px var(--shadow-color); text-align: center; transition: var(--transition-fast); color: var(--text-primary); font-weight: 500; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.2); }
-			.contact-card i { font-size: 2.5rem; transition: var(--transition-fast); }
+			.contact-card i { font-size: 2rem; /* ICON SIZE REDUCED */ transition: var(--transition-fast); }
 			.contact-card:hover { transform: translateY(-8px); opacity: 1; border-color: var(--accent-start); }
 			.contact-card:hover i { transform: scale(1.1); filter: brightness(1.1); }
 			.contact-card.github:hover i { color: #333333; } .contact-card.behance:hover i { color: #053eff; } .contact-card.dribbble:hover i { color: #ea4c89; } .contact-card.linkedin:hover i { color: #0a66c2; } .contact-card.gmail:hover i { color: #ea4335; } .contact-card.phone:hover i { color: #10b981; } .contact-card.instagram:hover i { color: #e1306c; }
@@ -543,10 +544,7 @@
 				box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 			}
             .footer p { color: var(--text-secondary); margin-bottom: 0; }
-            .footer-links { display: flex; justify-content: center; gap: 2rem; list-style: none; margin-top: 1.5rem;}
-            .footer-links a { color: var(--text-secondary); font-size: 1.5rem; transition: var(--transition-fast); }
-            .footer-links a:hover { color: var(--accent-start); transform: scale(1.1) translateY(-2px); }
-
+			
 			/* HAMBURGER & RESPONSIVE NAV */
 			.hamburger-menu { display: none; z-index: 1001; }
 			@media (max-width: 992px) { .contact-layout-grid { flex-direction: column; gap: 4rem; } }
@@ -578,6 +576,38 @@
 				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); } 
 				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; } 
 				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } 
+			}
+
+			/* --- BACK TO TOP BUTTON --- */
+			#backToTopBtn {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background: var(--accent-gradient);
+				color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 1.2rem;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+				z-index: 1000;
+				opacity: 0;
+				visibility: hidden;
+				transform: translateY(20px);
+				transition: all 0.3s ease;
+			}
+			#backToTopBtn.visible {
+				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
+			}
+			#backToTopBtn:hover {
+				color: white;
+				filter: brightness(1.1);
+				transform: scale(1.05);
 			}
 		</style>
 	</head>
@@ -904,12 +934,6 @@
 
 		<footer class="footer">
             <p>&copy; 2025 | Designed & Built by Niranjan Kumar</p>
-            <ul class="footer-links">
-                <li><a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></li>
-                <li><a href="mailto:niranjan991100@gmail.com" aria-label="Gmail"><i class="fas fa-envelope"></i></a></li>
-                <li><a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
-            </ul>
         </footer>
 
 		<div id="certModal" class="modal-overlay">
@@ -925,6 +949,10 @@
 				</div>
 			</div>
 		</div>
+
+		<a href="#hero" id="backToTopBtn" aria-label="Go to top">
+			<i class="fas fa-arrow-up"></i>
+		</a>
 		
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
@@ -1127,6 +1155,19 @@
                         particlesContainer.appendChild(pathWrapper);
                     }
                 }
+
+				// --- BACK TO TOP BUTTON LOGIC ---
+				const backToTopBtn = document.getElementById("backToTopBtn");
+				if(backToTopBtn) {
+					window.addEventListener('scroll', () => {
+						if(window.scrollY > 300) { // Show button after 300px of scroll
+							backToTopBtn.classList.add('visible');
+						} else {
+							backToTopBtn.classList.remove('visible');
+						}
+					});
+				}
+
 			});
 		</script>
 	</body>
