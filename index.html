@@ -289,8 +289,8 @@
 				content: ''; 
 				position: absolute; 
 				left: 24px; 
-				top: 0; /* Align to top */
-				bottom: 0; /* Stretch to bottom */
+				top: 0; 
+				bottom: 0;
 				width: 2px; 
 				background: var(--border-color); 
 				z-index: 0; 
@@ -299,8 +299,8 @@
 			.stepper-item:last-child::before { display: none; }
 			.stepper-meta { 
 				text-align: center; 
-				position: relative; /* Line Fix */
-				z-index: 1;          /* Line Fix */
+				position: relative;
+				z-index: 1; /* FINAL FIX: Lifts icon AND date above the line */
 			}
 			.stepper-icon { 
 				font-size: 1.8rem; 
@@ -630,14 +630,14 @@
 					<div class="stepper-item reveal">
 						<div class="stepper-meta">
 							<span class="stepper-icon"><i class="fas fa-briefcase"></i></span>
-							<p class="stepper-date">2025</p>
+							<p class="stepper-date">Feb 2025 – Jul 2025</p>
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
-								<h3>Advanced Data Analytics Training</h3>
-								<span class="org">Naresh i Technologies · Trainee</span>
-								<p>Completed an intensive on-site program focused on advanced SQL, Python, and building comprehensive data reports.</p>
-								<p class="skills-highlight"><strong>Skills Refined:</strong> Advanced SQL, Reporting, Python for Data Analysis.</p>
+								<h3>Data Analyst</h3>
+								<span class="org">Naresh i Technologies · Trainee (Hyderabad, Telangana)</span>
+								<p>Completed an intensive training program covering end-to-end data analysis, from cleaning and statistical analysis to advanced visualization.</p>
+								<p class="skills-highlight"><strong>Skills:</strong> SQL, Python, Power BI, Tableau, ETL.</p>
 							</div>
 						</div>
 					</div>
@@ -649,10 +649,10 @@
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
-								<h3>Data Science & ML Internship</h3>
-								<span class="org">TechiNest · Jaipur</span>
-								<p>Applied machine learning principles to real-world datasets, developing predictive models to solve practical business problems.</p>
-								<p class="skills-highlight"><strong>Skills Gained:</strong> Predictive Modeling, Scikit-learn, Feature Engineering.</p>
+								<h3>Data Science with ML</h3>
+								<span class="org">TechieNest · Trainee (Jaipur, Rajasthan)</span>
+								<p>Gained hands-on experience by applying machine learning algorithms to real-world datasets to build and evaluate predictive models.</p>
+								<p class="skills-highlight"><strong>Skills:</strong> Machine Learning, Predictive Modeling, Python.</p>
 							</div>
 						</div>
 					</div>
@@ -660,29 +660,14 @@
 					<div class="stepper-item reveal">
 						<div class="stepper-meta">
 							<span class="stepper-icon"><i class="fas fa-graduation-cap"></i></span>
-							<p class="stepper-date">2019 – 2023</p>
+							<p class="stepper-date">Aug 2019 – May 2023</p>
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
 								<h3>Bachelor of Technology, CSE</h3>
-								<span class="org">IPS College of Technology & Management</span>
-								<p>Graduated with a grade of 8.9, building a strong foundation in data structures, algorithms, and database management.</p>
-								<p class="skills-highlight"><strong>Foundation:</strong> Algorithms, Database Management, CS Fundamentals.</p>
-							</div>
-						</div>
-					</div>
-
-					<div class="stepper-item reveal">
-						<div class="stepper-meta">
-							<span class="stepper-icon"><i class="fas fa-briefcase"></i></span>
-							<p class="stepper-date">2022</p>
-						</div>
-						<div class="stepper-content">
-							<div class="timeline-card">
-								<h3>Machine Learning Training</h3>
-								<span class="org">TechieNest · Trainee</span>
-								<p>Completed a 2-month on-site program focused on core machine learning principles and applications.</p>
-								<p class="skills-highlight"><strong>Introduction to:</strong> Machine Learning, Python Libraries.</p>
+								<span class="org">IPS College of Technology & Management, Gwalior</span>
+								<p>Graduated with a grade of 8.9, building a strong foundation in computer software engineering, data structures, and algorithms.</p>
+								<p class="skills-highlight"><strong>Foundation:</strong> Python, Algorithms, Database Management.</p>
 							</div>
 						</div>
 					</div>
@@ -690,14 +675,29 @@
 					<div class="stepper-item reveal">
 						<div class="stepper-meta">
 							<span class="stepper-icon"><i class="fas fa-graduation-cap"></i></span>
-							<p class="stepper-date">2017 – 2018</p>
+							<p class="stepper-date">Aug 2017 – May 2018</p>
 						</div>
 						<div class="stepper-content">
 							<div class="timeline-card">
-								<h3>Senior Secondary, Science</h3>
+								<h3>Senior Secondary, Science Stream</h3>
 								<span class="org">DAV Schools Network</span>
-								<p>Graduated with a grade of 8.7, developing strong analytical and quantitative reasoning skills.</p>
-								<p class="skills-highlight"><strong>Skills:</strong> Analytical Reasoning, Quantitative Aptitude.</p>
+								<p>Completed senior secondary education with a grade of 8.7, excelling in analytical and quantitative subjects.</p>
+								<p class="skills-highlight"><strong>Skills:</strong> Analytical Reasoning, Problem-Solving.</p>
+							</div>
+						</div>
+					</div>
+					
+					<div class="stepper-item reveal">
+						<div class="stepper-meta">
+							<span class="stepper-icon"><i class="fas fa-graduation-cap"></i></span>
+							<p class="stepper-date">Apr 2015 – Jul 2016</p>
+						</div>
+						<div class="stepper-content">
+							<div class="timeline-card">
+								<h3>Secondary Education (X)</h3>
+								<span class="org">DAV Schools Network</span>
+								<p>Achieved a grade of 9.2, establishing a strong academic foundation across all general studies.</p>
+								<p class="skills-highlight"><strong>Skills:</strong> Foundational Academics.</p>
 							</div>
 						</div>
 					</div>
