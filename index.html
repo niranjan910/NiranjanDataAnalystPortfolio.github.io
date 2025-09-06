@@ -131,7 +131,13 @@
             .main-nav { position: fixed; top: 25px; left: 50%; transform: translateX(-50%); z-index: 100; transition: all 0.3s ease-in-out; background: rgba(255, 255, 255, 0.1); -webkit-backdrop-filter: blur(15px); backdrop-filter: blur(15px); border-radius: 99px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.1); }
             .main-nav.nav-scrolled { background: rgba(245, 247, 250, 0.7); border: 1px solid var(--border-color); box-shadow: 0 8px 24px 0 var(--shadow-color); }
             .nav-logo { display: none; }
-            .nav-links { display: flex; height: 55px; padding: 0 1rem; align-items: center; }
+            .nav-links { 
+				display: flex; 
+				height: 55px; 
+				padding: 0 1rem; 
+				align-items: center; 
+				justify-content: center; /* ALIGNMENT FIX */
+			}
             .nav-links ol { list-style: none; display: flex; align-items: center; gap: 1.5rem; }
             .nav-links li { margin: 0; }
             .nav-links li a { color: rgba(255, 255, 255, 0.8); padding: 0.5rem 1rem; font-size: 0.95rem; font-weight: 500; transition: var(--transition-fast); }
@@ -858,7 +864,7 @@
 					<li class="project-card reveal" style="--delay: 600ms"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 750ms"><img src="images/Salary Trend.png" alt="Salary Trend Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 900ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul> <a href="https://github.com/niranjan910" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul> <a href="https://github.com/niranjan910" class="project-view-button" target="_blank">View</a></div></div></li>
 				</ul>
 				<div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a>
