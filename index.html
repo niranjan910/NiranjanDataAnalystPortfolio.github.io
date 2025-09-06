@@ -158,10 +158,11 @@
 			.carousel-slide {
 				flex: 0 0 100%;
 				width: 100%;
-				padding: 1rem;
+				padding: 1rem 4rem; /* ADJUSTED FOR BETTER SPACING */
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				box-sizing: border-box; /* Ensures padding is included in the width calculation */
 			}
 			.slide-content > * { 
 				opacity: 0; 
@@ -194,7 +195,12 @@
 			.carousel-dots { display: flex; justify-content: center; gap: 0.75rem; width: 100%; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 5;}
 			.dot { cursor: pointer; height: 8px; width: 8px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; border: none; }
 			.dot[aria-current="true"] { background-color: var(--accent-end); transform: scale(1.1); }
-			@media (max-width: 768px) { main { padding: 0 25px; } #hero { margin: 0 -25px; } }
+			
+			@media (max-width: 768px) { 
+				main { padding: 0 25px; } 
+				#hero { margin: 0 -25px; }
+				.carousel-slide { padding: 1rem 1.5rem; } /* Reduce padding on mobile */
+			}
 
 			/* --- ABOUT & OTHER SECTIONS --- */
 			h2.section-heading { text-align: center; margin-bottom: 4rem; font-size: clamp(28px, 5vw, 40px); position: relative; color: var(--text-primary); }
