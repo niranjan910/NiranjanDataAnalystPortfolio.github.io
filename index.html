@@ -158,11 +158,11 @@
 			.carousel-slide {
 				flex: 0 0 100%;
 				width: 100%;
-				padding: 1rem 4rem; /* ADJUSTED FOR BETTER SPACING */
+				padding: 1rem 4rem; 
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
-				box-sizing: border-box; /* Ensures padding is included in the width calculation */
+				box-sizing: border-box; 
 			}
 			.slide-content > * { 
 				opacity: 0; 
@@ -184,14 +184,31 @@
 				text-transform: uppercase; 
 				font-weight: 800; 
 				margin-bottom: 1.5rem; 
-				font-feature-settings: 'clig' off, 'liga' off; /* Fix for Syne font rendering bug */
+				font-feature-settings: 'clig' off, 'liga' off;
 			}
-			.slide-bottom-line { font-family: var(--font-hero); font-size: clamp(0.9rem, 2vw, 1.1rem); color: var(--card-bg); font-weight: 400; line-height: 1.6; max-width: 60ch; }
+			.slide-bottom-line { 
+				font-family: var(--font-hero); 
+				font-size: clamp(0.9rem, 2vw, 1.1rem); 
+				color: var(--card-bg); 
+				font-weight: 400; 
+				line-height: 1.6; 
+				max-width: 60ch; 
+			}
 			
 			.carousel-slide.slide-align-left { align-items: flex-start; text-align: left; }
 			.carousel-slide.slide-align-center { align-items: center; text-align: center; }
 			.carousel-slide.slide-align-right { align-items: flex-end; text-align: right; }
 			
+			/* --- BOTTOM LINE ALIGNMENT FIX --- */
+			.slide-align-center .slide-bottom-line {
+				margin-left: auto;
+				margin-right: auto;
+			}
+			.slide-align-right .slide-bottom-line {
+				margin-left: auto;
+				margin-right: 0;
+			}
+
 			.carousel-dots { display: flex; justify-content: center; gap: 0.75rem; width: 100%; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 5;}
 			.dot { cursor: pointer; height: 8px; width: 8px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; border: none; }
 			.dot[aria-current="true"] { background-color: var(--accent-end); transform: scale(1.1); }
@@ -199,7 +216,7 @@
 			@media (max-width: 768px) { 
 				main { padding: 0 25px; } 
 				#hero { margin: 0 -25px; }
-				.carousel-slide { padding: 1rem 1.5rem; } /* Reduce padding on mobile */
+				.carousel-slide { padding: 1rem 1.5rem; }
 			}
 
 			/* --- ABOUT & OTHER SECTIONS --- */
