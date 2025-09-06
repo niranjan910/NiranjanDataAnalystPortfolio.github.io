@@ -246,7 +246,7 @@
 			.avatar-placeholder img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2; }
 			@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
 			
-			/* --- DIARY NOTE STYLES --- */
+			/* --- NEW DIARY NOTE STYLES --- */
 			.personal-note-notepad {
 				background-color: #fefde8;
 				border: 1px solid #ede8c6;
@@ -377,108 +377,57 @@
 			
 			@media (max-width: 768px) { .stepper-item { grid-template-columns: 60px 1fr; gap: 1rem; } .stepper-item::before { left: 29px; } .stepper-icon { width: 40px; height: 40px; font-size: 1.5rem; } }
 			
-			#projects .section-heading { text-align: left; }
-			#projects .section-heading::after { left: 0; transform: none; }
-			.projects-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+			#projects .section-heading, #dashboards .section-heading { text-align: left; }
+			#projects .section-heading::after, #dashboards .section-heading::after { left: 0; transform: none; }
+			
+			.projects-grid, .dashboards-grid { 
+				list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; 
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+			}
 			.projects-footer { margin-top: 3rem; text-align: center; }
 
-			.project-card { 
-				background-color: var(--card-bg); display: flex; flex-direction: column; 
+			.project-card, .dashboard-card { 
+				background-color: var(--card-bg); 
 				border-radius: var(--border-radius-large);
 				box-shadow: 0 4px 12px var(--shadow-color); 
 				transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1); 
-				overflow: hidden; border: 1px solid var(--border-color); height: 100%; position: relative;
+				overflow: hidden; border: 1px solid var(--border-color);
+				position: relative;
 			}
-			.project-card::before {
-				content: ''; position: absolute; top: 0; left: 0;
-				width: 100%; height: 100%;
-				background: rgba(255, 255, 255, 0.1);
-				backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-				opacity: 0; transition: opacity 0.4s ease; z-index: 1;
-			}
-			.project-card:hover { 
+			.project-card:hover, .dashboard-card:hover { 
 				transform: translateY(-8px) scale(1.03); 
 				box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); 
 				border-color: var(--accent-start); 
 			}
-			.project-card:hover::before { opacity: 1; }
 
-			.project-card .project-image { width: 100%; height: 200px; object-fit: cover; border-bottom: 1px solid var(--border-color); }
-			.project-card .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; position: relative; z-index: 2;}
-			.project-card h3.project-title { font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 700; }
-			.project-card .project-description { font-size: 1rem; line-height: 1.6; flex-grow: 1; margin-bottom: 1rem; }
-			.project-card .card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
+			.project-card .project-image, .dashboard-card .dashboard-image { 
+				width: 100%; height: 200px; object-fit: cover;
+				border-bottom: 1px solid var(--border-color); 
+			}
+			.project-card .card-body, .dashboard-card .dashboard-body { 
+				padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column;
+			}
+			.project-card h3.project-title, .dashboard-card .dashboard-title { 
+				font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 700; 
+			}
+			.project-card .project-description, .dashboard-card .dashboard-description { 
+				font-size: 1rem; line-height: 1.6; flex-grow: 1; margin-bottom: 1rem; 
+			}
+			.project-card .card-footer { 
+				display: flex; justify-content: space-between; align-items: center; margin-top: auto; 
+				padding-top: 1.5rem; border-top: 1px solid var(--border-color); 
+			}
 			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
 			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent-start); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
 			
-			/* --- NEW DASHBOARDS SECTION --- */
-			#dashboards .section-heading {
-				text-align: left;
-			}
-			#dashboards .section-heading::after {
-				left: 0;
-				transform: none;
-			}
-			.dashboards-grid {
-				list-style: none;
-				padding: 0;
-				margin: 0;
-				display: grid;
-				gap: 2rem;
-				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-			}
-			.dashboard-card {
-				background-color: var(--card-bg);
-				border-radius: var(--border-radius-large);
-				box-shadow: 0 4px 12px var(--shadow-color);
-				transition: transform 0.4s cubic-bezier(0.215, 0.61, 0.355, 1), box-shadow 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-				overflow: hidden;
-				border: 1px solid var(--border-color);
-				position: relative;
-			}
-			.dashboard-card:hover {
-				transform: translateY(-8px) scale(1.03);
-				box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12);
-				border-color: var(--accent-start);
-			}
-			.dashboard-image-wrapper {
-				width: 100%;
-				height: 220px;
-				overflow: hidden;
-			}
-			.dashboard-image {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-				object-position: top center;
-				transition: transform 0.6s ease;
-			}
-			.dashboard-card:hover .dashboard-image {
-				transform: scale(1.1);
-			}
-			.dashboard-body {
-				padding: 1.5rem;
-				flex-grow: 1;
-				display: flex;
-				flex-direction: column;
-			}
-			.dashboard-title {
-				font-size: 1.25rem;
-				margin-bottom: 0.5rem;
-				font-weight: 700;
-			}
-			.dashboard-description {
-				font-size: 1rem;
-				line-height: 1.6;
-				margin-bottom: 1.5rem;
-				flex-grow: 1;
-			}
+			/* --- NEW DASHBOARDS SECTION SPECIFIC STYLES --- */
+			.dashboard-card .dashboard-image-wrapper { width: 100%; height: 220px; overflow: hidden; }
+			.dashboard-card .dashboard-image { border-bottom: none; object-position: top center; transition: transform 0.6s ease; }
+			.dashboard-card:hover .dashboard-image { transform: scale(1.1); }
+			
 			.dashboard-overlay {
 				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
+				top: 0; left: 0; right: 0; bottom: 0;
 				background: linear-gradient(to top, rgba(10, 25, 47, 0.98), rgba(10, 25, 47, 0.75));
 				color: #e6f1ff;
 				padding: 1.5rem;
@@ -490,33 +439,12 @@
 				justify-content: center;
 				align-items: flex-start;
 			}
-			.dashboard-card:hover .dashboard-overlay {
-				opacity: 1;
-				visibility: visible;
-			}
-			.dashboard-overlay h4 {
-				color: var(--accent-end);
-				font-weight: 700;
-				margin-bottom: 0.75rem;
-			}
-			.dashboard-overlay ul {
-				list-style: none;
-				padding: 0;
-				margin: 0 0 1.5rem 0;
-			}
-			.dashboard-overlay ul li {
-				font-size: 0.9rem;
-				margin-bottom: 0.5rem;
-				position: relative;
-				padding-left: 1.25rem;
-			}
-			.dashboard-overlay ul li::before {
-				content: '›';
-				position: absolute;
-				left: 0;
-				color: var(--accent-end);
-				font-weight: bold;
-			}
+			.dashboard-card:hover .dashboard-overlay { opacity: 1; visibility: visible; }
+			.dashboard-overlay h4 { color: var(--accent-end); font-weight: 700; margin-bottom: 0.75rem; }
+			.dashboard-overlay ul { list-style: none; padding: 0; margin: 0 0 1.5rem 0; }
+			.dashboard-overlay ul li { font-size: 0.9rem; margin-bottom: 0.5rem; position: relative; padding-left: 1.25rem; }
+			.dashboard-overlay ul li::before { content: '›'; position: absolute; left: 0; color: var(--accent-end); font-weight: bold; }
+
 			.project-view-button {
 				display: inline-block;
 				padding: 0.6rem 1.2rem;
@@ -864,7 +792,7 @@
 					<li class="project-card reveal" style="--delay: 600ms"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 750ms"><img src="images/Salary Trend.png" alt="Salary Trend Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 900ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul> <a href="https://github.com/niranjan910" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul> <a href="https://github.com/niranjan910" class="project-view-button" target="_blank">View</a></div></div></li>
 				</ul>
 				<div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a>
