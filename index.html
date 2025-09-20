@@ -115,12 +115,12 @@
 				transform: translateY(-4px) scale(1.03);
 			}
 			/* Secondary button on light background */
-			#about .cta-btn-secondary, #projects .cta-btn-secondary {
+			#about .cta-btn-secondary, #projects .cta-btn-secondary, #ml-projects .cta-btn-secondary {
 				background: rgba(255,255,255,0.2);
 				color: var(--accent-start) !important;
 				border: 2px solid var(--accent-start);
 			}
-			#about .cta-btn-secondary:hover, #projects .cta-btn-secondary:hover {
+			#about .cta-btn-secondary:hover, #projects .cta-btn-secondary:hover, #ml-projects .cta-btn-secondary:hover {
 				background-color: var(--accent-tint);
 			}
 
@@ -384,8 +384,8 @@
 			
 			@media (max-width: 768px) { .stepper-item { grid-template-columns: 60px 1fr; gap: 1rem; } .stepper-item::before { left: 29px; } .stepper-icon { width: 40px; height: 40px; font-size: 1.5rem; } }
 			
-			#projects .section-heading, #dashboards .section-heading { text-align: left; }
-			#projects .section-heading::after, #dashboards .section-heading::after { left: 0; transform: none; }
+			#projects .section-heading, #ml-projects .section-heading, #dashboards .section-heading { text-align: left; }
+			#projects .section-heading::after, #ml-projects .section-heading::after, #dashboards .section-heading::after { left: 0; transform: none; }
 			
 			.projects-grid, .dashboards-grid { 
 				list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; 
@@ -626,7 +626,8 @@
 				<ol>
 					<li><a href="#about" class="active">About</a></li>
 					<li><a href="#journey">My Journey</a></li>
-					<li><a href="#projects">Projects</a></li>
+					<li><a href="#projects">Data Analytics</a></li>
+					<li><a href="#ml-projects">Machine Learning</a></li>
 					<li><a href="#dashboards">Dashboards</a></li>
 					<li><a href="#certs">Certificates</a></li>
 					<li><a href="#contact">Contact</a></li>
@@ -826,16 +827,22 @@
 			</section>
 			
 			<section id="projects">
-				<h2 class="section-heading reveal">Featured Projects</h2>
+				<h2 class="section-heading reveal">Data Analytics Project</h2>
 				<ul class="projects-grid">
 					<li class="project-card reveal"><img src="images/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 150ms"><img src="images/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 300ms"><img src="images/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div></div></li>
 					<li class="project-card reveal" style="--delay: 450ms"><img src="images/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 600ms"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 750ms"><img src="images/Salary Trend.png" alt="Salary Trend Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 900ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 1050ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul> <a href="https://github.com/niranjan910" class="project-view-button" target="_blank">View</a></div></div></li>
+				</ul>
+			</section>
+			
+			<section id="ml-projects">
+				<h2 class="section-heading reveal">Machine Learning Project</h2>
+				<ul class="projects-grid">
+					<li class="project-card reveal"><img src="images/Retail.png" alt="UK Retail Analytics" class="project-image" /><div class="card-body"><h3 class="project-title">UK Retail Analytics</h3><p class="project-description">Power BI dashboard analyzing 500K+ UK retail CSV data for sales trends & customer insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>Excel</li></ul><a href="https://github.com/niranjan910/UK_Retail_Analytics" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 150ms"><img src="images/Salary Trend.png" alt="Salary Trend Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">Salary Trend Analysis</h3><p class="project-description">Created an interactive Tableau dashboard to analyze sales performance across different regions.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>CSV</li></ul><a href="https://github.com/niranjan910/Salary-Trend-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 300ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 450ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul> <a href="https://github.com/niranjan910" class="project-view-button" target="_blank">View</a></div></div></li>
 				</ul>
 				<div class="projects-footer reveal">
 					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a>
