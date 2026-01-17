@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niranjan | Precision Data Analytics</title>
+    <title>Niranjan | Data & Analytics Master</title>
 
     <link rel="icon" type="image/png" href="Logo/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,338 +17,306 @@
             --surface: #0a0a0a;
             --main-orange: #ff4d00;
             --text-main: #ffffff;
-            --text-dim: #555555;
+            --text-dim: #444444;
             --font-h: 'Montserrat', sans-serif;
             --font-b: 'Inter', sans-serif;
-            --radius-m: 10px;
-            --radius-l: 40px;
+            --radius-s: 8px;
+            --radius-m: 15px;
+            --radius-l: 45px;
             --transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* --- GLOBAL & SMOOTHING --- */
+        /* --- SMOOTH SCROLL & PROGRESS --- */
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
         html { scroll-behavior: smooth; }
-        body { background-color: #000; font-family: var(--font-b); color: var(--text-dim); line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--zed-black); font-family: var(--font-b); color: var(--text-dim); line-height: 1.5; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        #scroll-bar { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--main-orange); z-index: 2000; }
 
         h1, h2, h3 { font-family: var(--font-h); color: var(--text-main); letter-spacing: -0.04em; }
-        .label-orange { color: var(--main-orange); font-weight: 800; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.2em; display: inline-block; margin-bottom: 20px; }
+        .label-orange { color: var(--main-orange); font-weight: 800; text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.2em; display: inline-block; margin-bottom: 20px; }
 
-        /* --- SCROLL PROGRESS LINE --- */
-        #scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--main-orange); z-index: 1001; transition: width 0.1s linear; }
-
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION ISLAND --- */
         .nav-island {
-            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
-            background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(20px);
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(25px);
             padding: 5px; border-radius: 100px; border: 1px solid #1a1a1a;
-            display: flex; align-items: center; gap: 5px; z-index: 1000; transition: var(--transition);
+            display: flex; align-items: center; gap: 3px; z-index: 1000;
         }
         .nav-island a { 
-            color: #666; text-decoration: none; font-size: 0.65rem; font-weight: 700; font-family: var(--font-h);
-            text-transform: uppercase; padding: 10px 18px; border-radius: 50px; transition: 0.3s;
+            color: #555; text-decoration: none; font-size: 0.65rem; font-weight: 700; font-family: var(--font-h);
+            text-transform: uppercase; padding: 8px 16px; border-radius: 50px; transition: 0.3s;
         }
         .nav-island a:hover, .nav-island a.active { color: #fff; background: #111; }
-        .btn-mini-nav { background: #fff !important; color: #000 !important; font-weight: 800 !important; }
+        .btn-touch { background: #fff !important; color: #000 !important; font-weight: 900 !important; border-radius: 50px; display: flex; align-items: center; gap: 8px;}
 
-        /* --- HERO: KINETIC GRADIENT --- */
+        /* --- 01. HERO (DESIGN REPLICA) --- */
         #home {
-            position: relative; height: 100vh; background: #000;
-            display: flex; flex-direction: column; justify-content: center;
-            padding: 0 8%; overflow: hidden;
-            border-bottom: 1px solid #111;
+            position: relative; height: 100vh; min-height: 800px; padding: 0 6%;
+            display: flex; align-items: center; overflow: hidden;
+            background: radial-gradient(circle at top left, #3a0d00 0%, #000 60%);
+            border-bottom-left-radius: 60px; border-bottom-right-radius: 60px;
         }
-        .hero-glow {
-            position: absolute; width: 50%; height: 80%; top: -10%; left: -10%;
-            background: radial-gradient(circle, rgba(255, 77, 0, 0.2) 0%, transparent 70%);
-            animation: pulse-glow 8s infinite alternate;
+        .hero-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; width: 100%; position: relative; z-index: 10; align-items: center; }
+        .hero-layout h1 { font-size: clamp(3rem, 11vw, 7.5rem); line-height: 0.85; margin: 20px 0; }
+        .hero-right-info { margin-top: 150px; padding-left: 20%; }
+        .hero-right-info h2 { font-size: 1.6rem; color: #fff; margin-bottom: 20px; line-height: 1.2; text-transform: none; }
+        .hero-right-info p { font-size: 0.9rem; color: #666; max-width: 300px; font-weight: 300; }
+        
+        .hero-stats { position: absolute; bottom: 60px; left: 0; display: flex; gap: 80px; }
+        .stat-u span { color: var(--main-orange); font-weight: 900; font-size: 0.7rem; font-family: var(--font-h); }
+        .stat-u p { color: #fff; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; margin-top: 10px; }
+
+        /* --- INFINITE TICKER --- */
+        .ticker { background: #000; padding: 30px 0; border-top: 1px solid #111; display: flex; overflow: hidden; }
+        .ticker-inner { display: flex; gap: 60px; font-family: var(--font-h); font-weight: 900; font-size: 1.1rem; color: #0a0a0a; white-space: nowrap; animation: move-ticker 20s linear infinite; }
+        @keyframes move-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* --- 02. ABOUT SECTION (Portrait & Bio) --- */
+        #about { padding: 120px 6%; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: flex-start; }
+        .about-title { font-size: clamp(2rem, 5vw, 3.8rem); line-height: 1; margin-bottom: 30px; font-weight: 900; }
+        .about-sub { color: #fff; font-size: 1.35rem; font-weight: 600; line-height: 1.4; margin-bottom: 25px; }
+        .about-para { font-size: 0.95rem; line-height: 1.6; color: #555; margin-bottom: 15px; }
+
+        /* The Profile Picture Box */
+        .portrait-frame {
+            width: 100%; height: 600px; border-radius: var(--radius-l); 
+            overflow: hidden; border: 1px solid #111; position: relative; 
+            transition: var(--transition); transform: translateY(40px) scale(0.95); opacity: 0;
         }
-        @keyframes pulse-glow { from { opacity: 0.5; transform: scale(1); } to { opacity: 1; transform: scale(1.1); } }
-
-        .hero-content h1 { 
-            font-size: clamp(3rem, 12vw, 8rem); line-height: 0.82; position: relative; z-index: 10;
-            opacity: 0; transform: translateY(40px) scale(0.95); animation: heroReveal 1.2s forwards 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        .is-visible .portrait-frame { transform: translateY(0) scale(1); opacity: 1; }
+        .portrait-frame img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            filter: grayscale(1); transition: filter 0.8s;
         }
-        @keyframes heroReveal { to { opacity: 1; transform: translateY(0) scale(1); } }
+        .portrait-frame:hover img { filter: grayscale(0); }
 
-        .hero-details { display: grid; grid-template-columns: 1.5fr 1fr; gap: 50px; margin-top: 40px; align-items: flex-end; }
-        .hero-right p { font-size: 0.95rem; max-width: 320px; line-height: 1.6; color: #777; font-weight: 400; }
-
-        /* --- MARQUEE / TICKER PARTNERS --- */
-        .marquee-container { 
-            background: #000; padding: 40px 0; border-top: 1px solid #111; overflow: hidden; display: flex;
-        }
-        .marquee-content { 
-            display: flex; gap: 80px; font-family: var(--font-h); font-weight: 900; 
-            font-size: 1.4rem; color: #111; text-transform: uppercase; white-space: nowrap; animation: ticker 25s linear infinite; 
-        }
-        @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-        /* --- ABOUT: THE SPLIT --- */
-        #about { padding: 150px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: flex-start; }
-        .about-image { 
-            width: 100%; height: 600px; border-radius: var(--radius-l); overflow: hidden; border: 1px solid #111;
-            position: relative; transition: 1s cubic-bezier(0.16, 1, 0.3, 1); transform: scale(0.9); opacity: 0;
-        }
-        .about-image img { width: 100%; height: 100%; object-fit: cover; }
-        .is-visible .about-image { transform: scale(1); opacity: 1; }
-
-        .about-content h2 { font-size: clamp(2rem, 6vw, 4rem); line-height: 0.95; margin-bottom: 30px; }
-        .about-sub { color: #fff; font-size: 1.5rem; font-weight: 600; margin-bottom: 25px; line-height: 1.3; }
-
-        .pill-button { 
+        .btn-pill { 
             display: inline-flex; align-items: center; gap: 12px; background: #0c0c0c; 
-            color: #fff; padding: 8px 8px 8px 25px; border-radius: 50px; 
-            text-decoration: none; border: 1px solid #1a1a1a; font-size: 0.8rem; font-weight: 700; transition: var(--transition);
+            color: #fff; padding: 7px 7px 7px 22px; border-radius: 50px; 
+            text-decoration: none; border: 1px solid #1a1a1a; font-size: 0.75rem; font-weight: 700; 
         }
-        .pill-button:hover { background: #151515; border-color: #fff; }
-        .orange-dot { width: 34px; height: 34px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; }
+        .dot { width: 32px; height: 32px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.7rem; }
 
-        /* --- RECENT WORK: LIST PARALLAX --- */
-        #work-list { padding: 100px 8%; }
+        /* --- 03. RECENT WORK LIST --- */
+        #work { padding: 100px 6%; }
+        .list-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
+        .list-header h2 { font-size: 2.8rem; }
+        
         .list-row { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 40px 0; border-bottom: 1px solid #111; transition: var(--transition); opacity: 0; transform: translateY(30px);
+            display: flex; justify-content: space-between; align-items: center; padding: 35px 0; border-bottom: 1px solid #111; 
+            transition: 0.4s; opacity: 0; transform: translateY(20px); cursor: pointer;
         }
         .list-row.is-visible { opacity: 1; transform: translateY(0); }
-        .list-row:hover { padding-left: 20px; color: #fff; border-bottom-color: var(--main-orange); }
-        .list-row h3 { font-size: 1.8rem; text-transform: none; flex: 1; transition: 0.3s; }
-        .list-row .cat { font-family: var(--font-h); font-size: 0.7rem; color: #333; width: 200px; text-transform: uppercase; font-weight: 900; letter-spacing: 2px;}
-        .list-row .year { font-size: 0.7rem; color: #222; width: 50px; text-align: right; }
-        .list-row:hover .cat { color: var(--main-orange); }
+        .list-row:hover { padding-left: 15px; background: rgba(255, 77, 0, 0.02); }
+        .list-row .cat { color: var(--main-orange); font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; width: 200px; }
+        .list-row .title { font-size: 1.6rem; color: #fff; flex: 1; text-transform: none; }
+        .list-row .year { font-size: 0.65rem; font-family: var(--font-h); font-weight: 900; opacity: 0.2; }
+        .list-row:hover .year { opacity: 1; color: var(--text-main); }
 
-        /* --- PROJECTS GRID --- */
-        #projects-grid { padding: 100px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .proj-card { cursor: pointer; }
-        .proj-img-wrap { width: 100%; aspect-ratio: 16 / 10; border-radius: var(--radius-m); overflow: hidden; margin-bottom: 25px; }
-        .proj-img-wrap img { 
-            width: 100%; height: 110%; object-fit: cover; filter: grayscale(1); 
-            transition: transform 0.1s linear, filter 0.8s;
-        }
-        .proj-card:hover img { filter: grayscale(0); transform: translateY(-5%); }
-        .proj-card h4 { font-size: 1.5rem; margin-bottom: 10px; }
-        .proj-card p { font-size: 0.9rem; color: #444; line-height: 1.5; margin-bottom: 20px; max-width: 400px;}
+        /* --- 04. VISUAL CARDS --- */
+        #projects-grid { padding: 60px 6% 120px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .p-card { transition: var(--transition); transform: scale(0.9); opacity: 0; }
+        .p-card.is-visible { transform: scale(1); opacity: 1; }
+        .img-mask { width: 100%; aspect-ratio: 16/10; border-radius: var(--radius-m); overflow: hidden; margin-bottom: 25px; border: 1px solid #111;}
+        .img-mask img { width: 100%; height: 110%; object-fit: cover; filter: grayscale(1); transition: transform 0.2s linear; opacity: 0.5;}
+        .p-card:hover .img-mask img { opacity: 1; filter: grayscale(0); }
+        .p-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
 
-        /* --- CONTACT SECTION --- */
-        #contact { padding: 150px 8%; display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: center; }
-        .form-box { background: #050505; padding: 40px; border-radius: 20px; border: 1px solid #111; }
-        .input-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
-        .input-item label { display: block; color: #444; font-size: 0.65rem; font-weight: 800; margin-bottom: 10px; text-transform: uppercase; }
+        /* --- 05. CONTACT (THE NEW ONE) --- */
+        #contact { padding: 150px 6%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .form-island { background: #060606; padding: 40px; border-radius: 20px; border: 1px solid #111; }
+        .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .label-minimal { display: block; font-size: 0.6rem; color: #444; text-transform: uppercase; font-weight: 900; margin-bottom: 8px; }
         
         input, textarea { 
-            width: 100%; background: #000; border: 1px solid #1a1a1a; padding: 18px; border-radius: 8px; color: #fff; 
-            font-family: var(--font-b); transition: 0.3s;
+            width: 100%; background: #000; border: 1px solid #151515; padding: 18px; border-radius: 5px; color: #fff; font-family: var(--font-b);
         }
         input:focus, textarea:focus { border-color: var(--main-orange); outline: none; }
-        
-        .submit-btn { width: 100%; background: var(--main-orange); border: none; padding: 20px; border-radius: 50px; color: #fff; font-family: var(--font-h); font-weight: 900; cursor: pointer; font-size: 0.8rem; text-transform: uppercase; margin-top: 10px; }
+        .btn-send { background: var(--main-orange); width: 100%; padding: 18px; border: none; border-radius: 50px; color: #fff; font-weight: 900; text-transform: uppercase; cursor: pointer; font-family: var(--font-h); font-size: 0.7rem; margin-top: 15px; transition: 0.3s; }
+        .btn-send:hover { background: #d03e00; }
 
         /* REVEAL LOGIC */
-        .fade-in { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
-        .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-        footer { text-align: center; padding: 60px 0; border-top: 1px solid #111; font-family: var(--font-h); font-size: 0.65rem; letter-spacing: 0.2em; }
+        footer { text-align: center; padding: 50px 0; font-family: var(--font-h); font-size: 0.6rem; opacity: 0.2; letter-spacing: 0.2em; border-top: 1px solid #0a0a0a; }
 
-        @media (max-width: 992px) {
-            #contact, #about, #projects-grid, .hero-details, .input-pair { grid-template-columns: 1fr; }
-            #work-list .list-row .cat { width: 120px; }
+        @media (max-width: 900px) {
+            #about, #contact, #projects-grid, .hero-layout, .input-row { grid-template-columns: 1fr; }
+            .hero-right-info { padding-left: 0; margin-top: 30px; }
+            .list-row .cat { width: 100px; font-size: 0.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <div id="scroll-progress"></div>
+    <div id="scroll-bar"></div>
 
-    <nav class="nav-island" id="mainNav">
-        <a href="#home">Home</a>
-        <a href="#about">Profile</a>
-        <a href="#work-list">Analysis</a>
-        <a href="#contact" class="btn-mini-nav">Message</a>
+    <nav class="nav-island">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">Bio</a>
+        <a href="#work">Insights</a>
+        <a href="#contact" class="btn-touch">Connect <div class="dot"><i class="fas fa-arrow-right"></i></div></a>
     </nav>
 
+    <!-- Section 01: Hero Design -->
     <section id="home">
-        <div class="hero-glow"></div>
-        <div class="hero-content">
-            <span class="label-orange">Analyst Portfolio v.2026</span>
-            <h1 id="hero-title">ENGINEERING<br>DATA-VOICE</h1>
-            <div class="hero-details">
-                <div>
-                    <span class="label-orange" style="opacity:0.3">Systems Overview</span>
-                    <p>Providing precision strategies for industrial systems, AI modeling, and SQL database performance architecture.</p>
+        <div class="hero-layout">
+            <div class="hero-main">
+                <span class="label-orange">Analyst Edition / 2026</span>
+                <h1>ENGINEERING<br>DATA STORY.</h1>
+                <div class="hero-stats">
+                    <div class="stat-u"><span>#01</span><p>AI Modeling</p></div>
+                    <div class="stat-u"><span>#02</span><p>Visual Logics</p></div>
+                    <div class="stat-u"><span>#03</span><p>Performance</p></div>
                 </div>
-                <div class="hero-right">
-                    <div style="display:flex; gap:30px; margin-bottom:30px;">
-                        <span style="font-size:0.7rem; color:#444">01<br>LOGIC</span>
-                        <span style="font-size:0.7rem; color:#444">02<br>PREDICTION</span>
-                        <span style="font-size:0.7rem; color:#444">03<br>ARCHITECTURE</span>
-                    </div>
-                </div>
+            </div>
+            <div class="hero-right-info">
+                <h2>Invisible design, massive scale.</h2>
+                <p>Developing industrial strategies for Python predictive modeling and high-output SQL database systems.</p>
             </div>
         </div>
     </section>
 
-    <!-- Partners Infinite Ticker -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span>Precision Logic</span> / <span>Predictive Scale</span> / <span>Algorithmic Yield</span> / <span>Performance Framework</span> / <span>Precision Logic</span> / <span>Predictive Scale</span> / <span>Algorithmic Yield</span> / <span>Performance Framework</span> / 
+    <!-- Partners Ticker -->
+    <div class="ticker">
+        <div class="ticker-inner">
+            <span>SCALABLE DATA SYSTEMS</span> // <span>PREDICTIVE LOGIC MODELS</span> // <span>INDUSTRIAL INSIGHT CORE</span> // <span>HIGH-SPEED SQL INFRA</span> // <span>SCALABLE DATA SYSTEMS</span> // <span>PREDICTIVE LOGIC MODELS</span> // <span>INDUSTRIAL INSIGHT CORE</span> // <span>HIGH-SPEED SQL INFRA</span>
         </div>
     </div>
 
-    <!-- About Me Section -->
-    <section id="about">
-        <div class="about-image reveal">
-            <img src="Profile/Pic.png" alt="Profile Portfolio">
+    <!-- Section 02: About With Image -->
+    <section id="about" class="reveal">
+        <div class="portrait-frame">
+            <!-- Swap Profile/Pic.png with your image. Placeholder loaded from high-end portraits -->
+            <img src="Profile/Pic.png" alt="Niranjan Profile" 
+                 onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop'">
         </div>
-        <div class="about-content fade-in">
-            <span class="label-orange">01. THE PROFILE</span>
-            <h2>STRATEGIST.<br>ANALYST.<br>PARTNER.</h2>
-            <p class="about-sub">Solving industrial-scale complexity through algorithmic creativity.</p>
-            <p style="color:#777; margin-bottom:30px; font-size:0.95rem; line-height:1.7;">Based in Hyderabad, I apply an Engineering precision (8.9 CGPA) to the messy world of data. I help businesses transform metrics from a log file into a tactical blueprint.</p>
-            <a href="#" class="pill-button">
-                Review Expertise Log 
-                <div class="orange-dot"><i class="fas fa-arrow-right"></i></div>
-            </a>
+        <div class="about-content">
+            <span class="label-orange">Profile Profile</span>
+            <h2 class="about-title">STRATEGIST.<br>ANALYST.<br>PARTNER.</h2>
+            <p class="about-sub">Solving systemic business problems through mathematical logic.</p>
+            <p class="about-para">I bridge the gap between computer science precision (8.9 CGPA) and corporate strategy. Based in Hyderabad, I help teams unlock data trapped in siloed legacy systems.</p>
+            <p class="about-para" style="margin-bottom:30px">Exploring 17 Indian states has taught me that adaptability is the greatest variable. I apply that same curiosity to building Python ML models.</p>
+            <a href="#" class="btn-pill">Download Case Files <div class="dot"><i class="fas fa-file-pdf"></i></div></a>
         </div>
     </section>
 
-    <!-- Work List Section -->
-    <section id="work-list">
-        <div class="fade-in" style="margin-bottom: 60px;">
-            <span class="label-orange">02. WORK ENTRIES</span>
-            <h2 style="font-size:3rem">RECENT CASE SYSTEMS.</h2>
-        </div>
-
-        <div class="list-row reveal">
-            <span class="cat">B.I Diagnostics</span>
-            <h3>NYC Urban Environmental Ticker</h3>
-            <span class="year">'25</span>
+    <!-- Section 03: Recent Case Systems (Kin List) -->
+    <section id="work" class="reveal">
+        <div class="list-header">
+            <div>
+                <span class="label-orange">02. Selected Work</span>
+                <h2>RECENT CASES.</h2>
+            </div>
         </div>
         <div class="list-row reveal">
-            <span class="cat">Health A.I</span>
-            <h3>Neural Diagnostic Recognition</h3>
-            <span class="year">'24</span>
+            <span class="cat">B.I System</span>
+            <h3 class="title">NYC Environmental Diagnostics Lab</h3>
+            <span class="year">2025</span>
+        </div>
+        <div class="list-row reveal">
+            <span class="cat">A.I Module</span>
+            <h3 class="title">Lung Medical Predictive Suite</h3>
+            <span class="year">2024</span>
         </div>
         <div class="list-row reveal">
             <span class="cat">Quantitative Yield</span>
-            <h3>Regression Inventory Valuation</h3>
-            <span class="year">'23</span>
-        </div>
-        <div class="list-row reveal">
-            <span class="cat">Database Ops</span>
-            <h3>Scale Performance Optimizer</h3>
-            <span class="year">'22</span>
+            <h3 class="title">Automated Regression Valuation</h3>
+            <span class="year">2023</span>
         </div>
     </section>
 
-    <!-- Visual Grid -->
+    <!-- Section 04: Project Grid -->
     <section id="projects-grid">
-        <div class="proj-card reveal">
-            <div class="proj-img-wrap"><img src="DA Cards/Air_Pollution.png" alt="NYC Diagnostics" class="parallax-img"></div>
-            <h4>Urban Fluidity Lab</h4>
-            <p>Developing investigation sensor mapping for New York environmental diagnostics.</p>
-            <a href="#" class="pill-button" style="padding: 5px 5px 5px 15px; font-size: 0.65rem;">Explore <div class="orange-dot" style="width:26px; height:26px;"><i class="fas fa-arrow-up-right-from-square" style="font-size:0.6rem"></i></div></a>
+        <div class="p-card reveal">
+            <div class="img-mask"><img src="DA Cards/Air_Pollution.png" alt="NYC Logic" class="para-img"></div>
+            <h3>NYC Dynamic Sensory</h3>
+            <p style="color:#555; font-size: 0.8rem;">Investigative mapping of New York's atmospheric pollutants.</p>
         </div>
-        <div class="proj-card reveal">
-            <div class="proj-img-wrap"><img src="DA Cards/Lungs cancer.png" alt="Clinic logic" class="parallax-img"></div>
-            <h4>Clinic Logic Suite</h4>
-            <p>Custom SQL architecture powering diagnostics for real-time history monitoring.</p>
-            <a href="#" class="pill-button" style="padding: 5px 5px 5px 15px; font-size: 0.65rem;">Explore <div class="orange-dot" style="width:26px; height:26px;"><i class="fas fa-arrow-up-right-from-square" style="font-size:0.6rem"></i></div></a>
+        <div class="p-card reveal">
+            <div class="img-mask"><img src="DA Cards/Lungs cancer.png" alt="A.I Lab" class="para-img"></div>
+            <h3>Medical A.I Dashboard</h3>
+            <p style="color:#555; font-size: 0.8rem;">Real-time diagnostics connecting clinical SQL to Python logs.</p>
         </div>
     </section>
 
-    <!-- Contact Me -->
+    <!-- Section 05: Contact Form Design -->
     <section id="contact" class="reveal">
-        <div class="contact-info">
-            <span class="label-orange">03. COMMUNICATION</span>
-            <h2>SEND A<br>MINIMAL SIGNAL.</h2>
-            <p style="margin-top: 30px; font-weight:600; color:#fff">Establish Connection via Log form.</p>
-            <div style="margin-top:50px; font-size:0.75rem;">
-                <p><i class="fab fa-linkedin" style="color:#666"></i> LinkedIn/in/Niranjank</p>
-                <p><i class="fas fa-envelope" style="color:#666; margin-top:10px;"></i> Email/inquiry/data-voice</p>
+        <div>
+            <span class="label-orange">Connect Connect</span>
+            <h2 style="font-size:3.5rem">TRANSMIT<br>A SIGNAL.</h2>
+            <p style="color:#666; margin-top:30px; font-weight:600">Let's discuss visions or architectural gaps.</p>
+            <div style="margin-top:60px; font-size: 0.75rem;">
+                <p>LI / NIRANJANK</p>
+                <p style="margin-top:5px">GH / NIRANJAN910</p>
             </div>
         </div>
-
-        <div class="form-box">
+        <div class="form-island">
             <form action="https://formspree.io/f/xyzpaeop" method="POST">
-                <div class="input-pair">
-                    <div class="input-item">
-                        <label>Identifier_Name</label>
-                        <input type="text" placeholder="Entry Label..." required>
+                <div class="input-row">
+                    <div>
+                        <span class="label-minimal">Identification</span>
+                        <input type="text" placeholder="Your Label..." required>
                     </div>
-                    <div class="input-item">
-                        <label>Email_Reference</label>
-                        <input type="email" placeholder="example@system.com" required>
+                    <div>
+                        <span class="label-minimal">Contact Email</span>
+                        <input type="email" placeholder="example@node.com" required>
                     </div>
                 </div>
-                <div class="input-item" style="margin-bottom:30px;">
-                    <label>Transmission_Body</label>
-                    <textarea rows="5" placeholder="Define the vision or system inquiry..." required></textarea>
+                <div>
+                    <span class="label-minimal">Message Transmission</span>
+                    <textarea rows="4" placeholder="Briefly describe the inquiry or data vision..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Authorize Transmission</button>
+                <button type="submit" class="btn-send">Transmit Mission</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>NIRANJAN KUMAR 2026 // BLACK WHITE & PURE ORANGE // SYSTEMS DEPLOYED</p>
+        <p>NIRANJAN KUMAR 2026 // LOGIC ENGINE // HYDERABAD, IN</p>
     </footer>
 
     <script>
-        // --- SCROLL PROGRESS ---
+        // Scroll Bar Tracking
         window.addEventListener('scroll', () => {
-            const bar = document.getElementById('scroll-progress');
+            const bar = document.getElementById('scroll-bar');
             const total = document.body.scrollHeight - window.innerHeight;
             const progress = (window.pageYOffset / total) * 100;
             bar.style.width = progress + '%';
         });
 
-        // --- INTERSECTION REVEALS ---
-        const revealCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
+        // Dynamic Intersection Observer
+        const revealHandler = (entries, observer) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    observer.unobserve(e.target);
                 }
             });
         };
+        const obs = new IntersectionObserver(revealHandler, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, .list-row, .p-card').forEach(el => obs.observe(el));
 
-        const revealObserver = new IntersectionObserver(revealCallback, { threshold: 0.1 });
-        document.querySelectorAll('.reveal, .fade-in').forEach(el => revealObserver.observe(el));
-
-        // --- MOUSE MOVEMENT HERO PARALLAX ---
-        document.addEventListener('mousemove', (e) => {
-            const title = document.getElementById('hero-title');
-            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-            title.style.transform = `translate(${moveX}px, ${moveY}px)`;
-        });
-
-        // --- NAVIGATION HIGHLIGHT ---
+        // Parallax Imagery Script
         window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-island a');
-            let activeId = "";
-
-            sections.forEach(s => {
-                if(window.pageYOffset >= s.offsetTop - 300) {
-                    activeId = s.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('href').includes(activeId)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // --- SMOOTH PARALLAX IMAGES ---
-        window.addEventListener('scroll', () => {
-            document.querySelectorAll('.parallax-img').forEach(img => {
+            document.querySelectorAll('.para-img').forEach(img => {
                 const scrolled = window.pageYOffset;
                 const top = img.parentElement.offsetTop;
-                const movement = (scrolled - top) * 0.1;
-                img.style.transform = `translateY(${movement}px)`;
+                const pos = (scrolled - top) * 0.08;
+                img.style.transform = `translateY(${pos}px)`;
+            });
+        });
+
+        // Nav highlight
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navA = document.querySelectorAll('.nav-island a');
+            let activeId = "";
+            sections.forEach(s => { if(window.pageYOffset >= s.offsetTop - 300) activeId = s.getAttribute('id'); });
+            navA.forEach(a => {
+                a.classList.remove('active');
+                if(a.getAttribute('href').includes(activeId)) a.classList.add('active');
             });
         });
     </script>
