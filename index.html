@@ -13,23 +13,21 @@
 
     <style>
         :root {
-            --zed-black: #000000;
-            --surface: #0a0a0a;
+            --zed-black: #050505;
             --main-orange: #ff4d00;
             --text-main: #ffffff;
-            --text-gray: #999999;
+            --text-gray: #777777;
             --font-h: 'Montserrat', sans-serif;
             --font-b: 'Inter', sans-serif;
             --radius-big: 80px;
-            --radius-card: 40px;
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--zed-black); font-family: var(--font-b); color: var(--text-gray); overflow-x: hidden; line-height: 1.6; }
+        body { background-color: #000000; font-family: var(--font-b); color: var(--text-gray); overflow-x: hidden; line-height: 1.6; }
 
-        h1, h2, h3, .nav-island a, .pill-btn span { font-family: var(--font-h); text-transform: uppercase; color: #fff; }
+        h1, h2, h3 { font-family: var(--font-h); text-transform: none; color: #fff; }
 
         /* NAV ISLAND */
         .nav-island {
@@ -39,11 +37,11 @@
             display: flex; align-items: center; gap: 8px; z-index: 1000;
         }
         .nav-island a { 
-            color: #555; text-decoration: none; font-size: 0.75rem; font-weight: 700;
-            padding: 8px 18px; border-radius: 30px; transition: var(--transition);
+            color: #555; text-decoration: none; font-size: 0.75rem; font-weight: 700; font-family: var(--font-h);
+            text-transform: uppercase; padding: 8px 18px; border-radius: 30px; transition: var(--transition);
         }
         .nav-island a:hover, .nav-island a.active { color: #fff; }
-        .get-touch-btn { background: #fff !important; color: #000 !important; font-weight: 900 !important; margin-left: 5px; display: flex; align-items: center; gap: 10px; }
+        .get-touch-btn { background: #fff !important; color: #000 !important; margin-left: 5px; display: flex; align-items: center; gap: 10px; border-radius: 50px; }
 
         /* 01. HERO REPLICA - Silhouette Design */
         #home {
@@ -53,98 +51,72 @@
             border-bottom-right-radius: var(--radius-big);
             overflow: hidden; display: flex; flex-direction: column; z-index: 2;
         }
-
-        .hero-top-nav { display: flex; justify-content: space-between; padding: 40px 7%; font-family: var(--font-h); font-weight: 900; letter-spacing: -1px; font-size: 1.5rem; color: #fff; }
-        
-        .hero-body { flex: 1; padding: 0 7%; display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: center; margin-bottom: 150px; }
+        .hero-top-nav { padding: 40px 7%; font-family: var(--font-h); font-weight: 900; letter-spacing: -1px; font-size: 1.5rem; color: #fff; }
+        .hero-body { flex: 1; padding: 0 7%; display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: center; }
         .hero-left p { color: #fff; font-weight: 600; font-size: 1.2rem; margin-bottom: 25px; }
-        .hero-left h1 { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.82; letter-spacing: -4px; margin: 0; font-weight: 900; }
-        
+        .hero-left h1 { font-family: var(--font-h); font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.82; letter-spacing: -4px; font-weight: 900; }
         .hero-right { text-align: left; padding-left: 15%; margin-top: 150px; }
-        .hero-right h2 { font-size: 1.8rem; margin-bottom: 30px; line-height: 1.3; font-weight: 700; text-transform: none; color: #fff;}
-        .hero-right p { font-size: 1rem; color: #777; max-width: 320px; text-transform: none; font-family: var(--font-b);}
-
-        /* Floating stat bar inside Hero */
+        .hero-right h2 { font-size: 1.8rem; margin-bottom: 30px; line-height: 1.3; font-weight: 700; color: #fff; }
+        .hero-right p { font-size: 1rem; color: #777; max-width: 320px; }
         .hero-stat-bar { position: absolute; bottom: 80px; left: 7%; display: flex; gap: 100px; }
         .h-stat span { display: block; color: var(--main-orange); font-family: var(--font-h); font-weight: 900; font-size: 0.8rem; margin-bottom: 12px; }
-        .h-stat p { color: #fff; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; }
+        .h-stat p { color: #fff; font-weight: 700; font-size: 0.85rem; }
 
         /* 02. TRUSTED BY BAR */
-        .trusted-row { background: var(--zed-black); padding: 120px 7% 100px; display: flex; justify-content: space-between; align-items: center; margin-top: -30px; }
+        .trusted-row { background: #000; padding: 120px 7% 100px; display: flex; justify-content: space-between; align-items: center; margin-top: -30px; }
         .t-label { color: #444; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; max-width: 140px; }
         .t-logos { display: flex; gap: 60px; font-family: var(--font-h); font-weight: 900; font-size: 1.4rem; color: #fff; opacity: 0.8; }
-        .t-logos i { font-size: 1.6rem; margin-right: 12px; }
+        .t-logos span { display: flex; align-items: center; gap: 10px; }
 
-        /* 03. ABOUT SECTION - Screen Accuracy Layout */
-        #about { 
-            padding: 150px 7%; 
-            display: grid; 
-            grid-template-columns: 1.2fr 0.8fr; 
-            gap: 100px; 
-            align-items: flex-start; 
-        }
-        .about-lbl { color: var(--main-orange); font-weight: 800; display: block; margin-bottom: 30px; font-family: var(--font-h); font-size: 1.1rem; text-transform: capitalize; }
+        /* 03. ABOUT SECTION - Accuracy Layout */
+        #about { padding: 150px 7%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 100px; align-items: flex-start; background: #000; }
+        .about-lbl { color: var(--main-orange); font-weight: 800; display: block; margin-bottom: 30px; font-family: var(--font-h); font-size: 1.1rem; }
         .about-title { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 1; font-weight: 900; color: #fff; margin-bottom: 40px; }
         .about-sub { color: #fff; font-size: 1.6rem; font-weight: 700; line-height: 1.3; margin-bottom: 35px; max-width: 500px; }
-        .about-p { margin-bottom: 25px; font-size: 1rem; color: var(--text-gray); }
-
-        .about-image {
-            width: 100%; height: 700px; 
-            background: #111; 
-            border-radius: var(--radius-card); 
-            overflow: hidden; 
-            border: 1px solid #222;
-        }
+        .about-p { margin-bottom: 25px; font-size: 1rem; color: #888; max-width: 550px;}
+        .about-image { width: 100%; height: 700px; background: #111; border-radius: 40px; overflow: hidden; border: 1px solid #222; }
         .about-image img { width: 100%; height: 100%; object-fit: cover; }
+        .pill-btn-about { display: inline-flex; align-items: center; gap: 15px; background: #1a1a1a; color: #fff; padding: 10px 10px 10px 30px; border-radius: 50px; text-decoration: none; margin-top: 30px; font-weight: 600; font-size: 0.85rem; border: 1px solid #333; }
+        .bubble-arrow { width: 38px; height: 38px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.8rem;}
 
-        /* CTA PILL (Read More style) */
-        .pill-btn {
-            display: inline-flex; align-items: center; gap: 15px; 
-            background: #151515; color: #fff; padding: 10px 10px 10px 30px; 
-            border-radius: 50px; text-decoration: none; transition: var(--transition);
-            margin-top: 30px; font-weight: 600; font-size: 0.85rem; border: 1px solid #333;
+        /* --- 04. PROJECTS SECTION - Image Card Replica --- */
+        #projects { padding: 100px 7% 150px; background: #000; }
+        .project-grid-replica { display: grid; grid-template-columns: 1fr 1fr; gap: 80px 40px; margin-top: 60px; }
+        .p-card-replica { display: flex; flex-direction: column; cursor: pointer; }
+        .p-img-box { width: 100%; aspect-ratio: 1.2 / 1; border-radius: 24px; overflow: hidden; margin-bottom: 30px; border: 1px solid #222; }
+        .p-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .p-card-replica:hover .p-img-box img { transform: scale(1.05); }
+        .p-card-replica h3 { font-size: 2rem; margin-bottom: 15px; font-weight: 800; font-family: var(--font-h); }
+        .p-card-replica p { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; max-width: 90%; }
+        
+        /* Matching the orange arrow button from project screenshot */
+        .project-action-btn { 
+            display: inline-flex; align-items: center; gap: 12px; background: #1a1a1a; color: #fff; 
+            padding: 8px 8px 8px 25px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; width: fit-content; text-transform: capitalize; 
         }
-        .pill-btn:hover { background: #222; transform: translateY(-5px); border-color: #555; }
-        .bubble-arrow { 
-            width: 42px; height: 42px; background: var(--main-orange); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; color: #fff;
-        }
+        .p-mini-circle { width: 32px; height: 32px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
 
-        /* 04. PROJECTS */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; margin-top: 100px; }
-        .card { 
-            background: var(--surface); border-radius: 20px; overflow: hidden; 
-            border: 1px solid #111; transition: var(--transition); cursor: pointer;
-        }
-        .card:hover { transform: translateY(-10px); border-color: var(--main-orange); }
-        .card-img-wrap { width: 100%; height: 260px; filter: grayscale(1); transition: 0.4s; overflow: hidden; opacity: 0.8;}
-        .card:hover .card-img-wrap { filter: grayscale(0); opacity: 1; }
-        .card-content { padding: 40px; }
-        .card-content h3 { font-size: 1.2rem; margin-bottom: 20px; text-transform: none; }
-
-        /* CONTACT */
+        /* CONTACT & FOOTER */
         #contact { padding: 150px 7%; background: radial-gradient(circle at top left, #2a0c00 0%, #000 50%); }
         form { margin-top: 60px; max-width: 800px; display: grid; gap: 20px; }
-        input, textarea { background: #000; border: 1px solid #222; color: #fff; padding: 22px; border-radius: 12px; font-family: var(--font-b); width: 100%; }
-        input:focus { outline: none; border-color: var(--main-orange); }
-        .submit-trigger { background: #fff; border: none; padding: 22px; border-radius: 12px; font-family: var(--font-h); font-weight: 900; cursor: pointer; text-transform: uppercase;}
+        input, textarea { background: #000; border: 1px solid #222; color: #fff; padding: 22px; border-radius: 12px; width: 100%; }
+        .submit-trigger { background: #fff; border: none; padding: 22px; border-radius: 12px; font-family: var(--font-h); font-weight: 900; cursor: pointer; }
+        footer { text-align: center; padding: 60px; font-size: 0.65rem; text-transform: uppercase; font-family: var(--font-h); opacity: 0.3; letter-spacing: 2px; }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.1, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        footer { text-align: center; padding: 60px; font-size: 0.65rem; text-transform: uppercase; font-family: var(--font-h); opacity: 0.4; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
-    <nav class="nav-island" id="nav">
+    <nav class="nav-island">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#projects">Work</a>
-        <a href="#contact" class="get-touch-btn">Get In Touch <div class="bubble-arrow" style="width:28px; height:28px;"><i class="fas fa-arrow-right"></i></div></a>
+        <a href="#contact" class="get-touch-btn">Get In Touch <div class="bubble-arrow" style="width:24px; height:24px; font-size:0.6rem;"><i class="fas fa-arrow-right"></i></div></a>
     </nav>
 
-    <!-- 01. Hero Replice (Designer Edition) -->
+    <!-- 01. Hero -->
     <main id="home">
         <div class="hero-top-nav">Niranjan.</div>
         <div class="hero-body">
@@ -158,107 +130,88 @@
             </div>
         </div>
         <div class="hero-stat-bar">
-            <div class="h-stat"><span>#01</span><p>Insight Engineering</p></div>
+            <div class="h-stat"><span>#01</span><p>Insight Design</p></div>
             <div class="h-stat"><span>#02</span><p>Predictive Modeling</p></div>
-            <div class="h-stat"><span>#03</span><p>Visualization UX</p></div>
+            <div class="h-stat"><span>#03</span><p>UX Visualization</p></div>
             <div class="h-stat"><span>#04</span><p>SQL Performance</p></div>
         </div>
     </main>
 
     <!-- 02. Partners -->
     <div class="trusted-row">
-        <div class="t-label">Partners & Global Platforms</div>
+        <div class="t-label">Global Strategic Partners</div>
         <div class="t-logos">
-            <span><i class="far fa-dot-circle"></i> SUPA BLOX</span>
-            <span><i class="fas fa-hourglass"></i> HYPE BLOX</span>
-            <span><i class="fas fa-bullseye"></i> FRAME BLOX</span>
+            <span>SUPA BLOX</span>
+            <span>HYPE BLOX</span>
+            <span>FRAME BLOX</span>
         </div>
     </div>
 
-    <!-- 03. About (Accurate Section Layout) -->
+    <!-- 03. About -->
     <section id="about" class="reveal">
         <div class="about-content">
             <span class="about-lbl">About me</span>
             <h2 class="about-title">Analyst.<br>Strategist.<br>Insight partner.</h2>
             <h3 class="about-sub">Blending clarity and creativity to build data narratives with purpose.</h3>
-            
-            <p class="about-p">I’m Niranjan Kumar, an enthusiast bridging Computer Science Engineering precision (8.9 CGPA) with creative problem-solving.</p>
-            <p class="about-p">Having explored 17 Indian states, I prioritize adaptability—delivering systems where your data isn't just stored, but serves as a blueprint for scale.</p>
-
-            <a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="pill-btn">
-                <span>View Full CV</span>
-                <div class="bubble-arrow"><i class="fas fa-arrow-right"></i></div>
-            </a>
+            <p class="about-p">I’m Niranjan Kumar, a professional merging Engineering precision (8.9 CGPA) with creative problem-solving.</p>
+            <p class="about-p">Having traveled 17 Indian states, I prioritize adaptability—ensuring your data serve as blueprints for massive business growth.</p>
+            <a href="#contact" class="pill-btn-about">Explore Journey <div class="bubble-arrow"><i class="fas fa-arrow-right"></i></div></a>
         </div>
-        <div class="about-img-frame">
-            <div class="about-image">
-                <img src="Profile/Pic.png" alt="Profile Portfolio Photo" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'">
-            </div>
-        </div>
+        <div class="about-image"><img src="Profile/Pic.png" alt="Profile Portfolio Photo" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'"></div>
     </section>
 
-    <!-- 04. Analytics Work -->
-    <section id="projects" class="reveal" style="padding: 100px 7%;">
-        <span class="about-lbl" style="text-align: left; text-transform: uppercase;">Works Portfolio</span>
-        <h2 class="about-title">Data Case Studies</h2>
-        <div class="projects-grid">
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="DA Cards/Air_Pollution.png" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div class="card-content">
-                    <h3>New York Urban Analytics</h3>
-                    <p style="font-size: 0.75rem; text-transform: uppercase;">Python | EDA | Scikit-learn</p>
-                </div>
+    <!-- 04. Projects - Replicated from Screenshot -->
+    <section id="projects" class="reveal">
+        <div class="project-grid-replica">
+            <!-- Project 1 -->
+            <div class="p-card-replica">
+                <div class="p-img-box"><img src="DA Cards/Air_Pollution.png" alt="NYC Diagnostics"></div>
+                <h3>Urban Insights</h3>
+                <p>In-depth investigate study analyzing environmental sensor data to map pollutants in New York City with high visual precision.</p>
+                <div class="project-action-btn">View Project <div class="p-mini-circle"><i class="fas fa-arrow-right"></i></div></div>
             </div>
-            <div class="card">
-                <div class="card-img-wrap">
-                    <img src="DA Cards/Lungs cancer.png" style="width:100%; height:100%; object-fit:cover;">
-                </div>
-                <div class="card-content">
-                    <h3>AI Diagnostic Logic</h3>
-                    <p style="font-size: 0.75rem; text-transform: uppercase;">SQL | Power BI</p>
-                </div>
+            <!-- Project 2 -->
+            <div class="p-card-replica">
+                <div class="p-img-box"><img src="DA Cards/Lungs cancer.png" alt="Clinical AI"></div>
+                <h3>AI Logic Suite</h3>
+                <p>Development of clinical diagnostics dashboards connecting relational SQL logic with real-time patient analytics modules.</p>
+                <div class="project-action-btn">View Project <div class="p-mini-circle"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+            <!-- Project 3 -->
+            <div class="p-card-replica">
+                <div class="p-img-box"><img src="ML Cards image/Car Price prediction.png" alt="Price Engine"></div>
+                <h3>Predictive Yield</h3>
+                <p>Training advanced regression engines on real-market inventory datasets to provide high-accuracy automated valuations.</p>
+                <div class="project-action-btn">View Project <div class="p-mini-circle"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+            <!-- Project 4 -->
+            <div class="p-card-replica">
+                <div class="p-img-box"><img src="ML Cards image/Titanic Dataset.png" alt="Logic Engine"></div>
+                <h3>Liquid Probability</h3>
+                <p>A mathematical survival log leveraging demographic classifications to test logistical survival outcomes on historical events.</p>
+                <div class="project-action-btn">View Project <div class="p-mini-circle"><i class="fas fa-arrow-right"></i></div></div>
             </div>
         </div>
     </section>
 
     <!-- 05. Contact -->
     <section id="contact" class="reveal">
-        <h2 class="about-title">Let's Design <br>Insights.</h2>
+        <h2 class="about-title">Launch A <br>Mission.</h2>
         <form action="https://formspree.io/f/xyzpaeop" method="POST">
-            <input type="text" placeholder="Identity / Name" required>
+            <input type="text" placeholder="Your Identity" required>
             <input type="email" placeholder="Professional Email" required>
-            <textarea rows="5" placeholder="Project Description or Proposal..."></textarea>
-            <button type="submit" class="submit-trigger">Transmit Connection</button>
+            <textarea rows="5" placeholder="Signal / Project Proposal..."></textarea>
+            <button type="submit" class="submit-trigger">Transmit</button>
         </form>
     </section>
 
-    <footer>NIRANJAN KUMAR 2026 // BLACK WHITE & PURE ORANGE // ALL DATA REFINED</footer>
+    <footer>NIRANJAN KUMAR &copy; 2026 // MONOCHROME DATA // BUILT WITH LOGIC</footer>
 
     <script>
-        // Smooth intersection animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.15 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Nav Active Logic
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section, main');
-            const navLinks = document.querySelectorAll('.nav-island a');
-            let current = "";
-
-            sections.forEach(s => {
-                if(pageYOffset >= s.offsetTop - 200) current = s.getAttribute("id");
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove("active");
-                if(link.getAttribute("href").includes(current)) link.classList.add("active");
-            });
-        });
     </script>
 </body>
 </html>
