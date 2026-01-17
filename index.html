@@ -1,207 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Niranjan Kumar | Designer Portfolio</title>
-
-    <link rel="icon" type="image/png" href="Logo/favicon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio | Editorial Masterpiece</title>
+    
+    <!-- Precision Typography: Inter for UI & Headings -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
-            --bg-black: #050505;
-            --mesh-orange: #ff4d00;
-            --white: #FFFFFF;
-            --gray-text: #a0a0a0;
-            --font-h: 'Montserrat', sans-serif;
-            --font-b: 'Inter', sans-serif;
-            /* Match the massive curve from the screenshot */
-            --vessel-curve: 80px; 
+            --zed-black: #000000;
+            --canvas-outer: #0a0a0a;
+            --accent-orange: #FF5C00;
+            --gradient-main: linear-gradient(90deg, #FFB800 0%, #FF5C00 50%, #D10000 100%);
+            --font-main: 'Inter', sans-serif;
+            --text-white: #FFFFFF;
+            --radius-hero: 60px; /* High radius for premium card look */
         }
 
+        /* --- LAYOUT RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-black); font-family: var(--font-b); color: var(--gray-text); overflow-x: hidden; }
+        body { 
+            background-color: var(--canvas-outer); 
+            font-family: var(--font-main); 
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
 
-        /* --- THE VESSEL (The Curved Hero Container) --- */
-        #hero-vessel {
+        /* --- HERO CONTAINER (THE FRAME) --- */
+        .hero-vessel {
+            width: calc(100% - 40px); /* Framing padding */
+            height: calc(100vh - 40px);
+            max-height: 900px;
+            background: var(--gradient-main);
+            border-radius: var(--radius-hero);
             position: relative;
-            width: 100%;
-            height: 92vh; /* Fills most of screen, shows next section bit at bottom */
-            background-color: var(--bg-black);
-            background: 
-                radial-gradient(circle at 50% -10%, #6e1c00 0%, var(--bg-black) 60%);
-            border-bottom-left-radius: var(--vessel-curve);
-            border-bottom-right-radius: var(--vessel-curve);
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
-            z-index: 10;
         }
 
-        /* --- LOGO & NAV --- */
-        header {
-            padding: 40px 8%;
+        /* --- NAVIGATION --- */
+        .nav-row {
+            padding: 40px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
             z-index: 100;
         }
-        .logo { font-family: var(--font-h); color: #fff; font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
-        nav { display: flex; gap: 40px; }
-        nav a { text-decoration: none; color: #fff; font-size: 0.8rem; font-weight: 500; opacity: 0.7; transition: 0.3s; }
-        nav a:hover { opacity: 1; }
+        .nav-logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; color: var(--text-white); text-transform: lowercase; }
+        .nav-menu { display: flex; gap: 40px; align-items: center; }
+        .nav-menu a { text-decoration: none; color: var(--text-white); font-weight: 600; font-size: 0.9rem; transition: 0.3s; opacity: 0.9; }
+        .nav-menu a:hover { opacity: 1; transform: translateY(-1px); }
 
-        .btn-touch {
-            background: #fff;
-            color: #000;
-            padding: 8px 10px 8px 25px;
+        /* The Orange Accent Button */
+        .cta-button {
+            background-color: var(--accent-orange);
+            color: var(--text-white);
+            padding: 12px 30px;
             border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 800;
-            font-size: 0.8rem;
+            font-weight: 700;
+            font-size: 0.9rem;
             text-decoration: none;
-            transition: 0.3s ease;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .btn-touch i {
-            width: 32px; height: 32px;
-            background: var(--mesh-orange);
-            color: #fff;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem;
-        }
+        .cta-button:hover { background-color: var(--zed-black); }
 
-        /* --- HERO LAYOUT (Text over Profile) --- */
-        .hero-main {
+        /* --- HERO CORE LAYOUT --- */
+        .hero-main-content {
             flex: 1;
-            padding: 0 8% 40px;
+            padding: 0 6% 60px;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             align-items: center;
             position: relative;
         }
 
-        /* The silhouette in the center-right behind text */
-        .silhouette-overlay {
-            position: absolute;
-            left: 50%; top: 50%;
-            transform: translate(-45%, -50%);
-            height: 90%;
-            width: auto;
-            z-index: 1;
-            opacity: 0.9;
-            pointer-events: none;
-        }
-
-        /* LEFT HEADLINE */
-        .headline-side { position: relative; z-index: 5; }
-        .intro-lbl { color: #fff; font-size: 1.5rem; font-weight: 600; display: block; margin-bottom: 25px; }
-        .hero-title { 
-            font-family: var(--font-h);
+        /* Left Side Hierarchy */
+        .headline-side { z-index: 10; align-self: center; }
+        .hey-text { font-size: 1.25rem; font-weight: 500; color: var(--text-white); display: block; margin-bottom: 20px; }
+        .main-headline {
+            font-weight: 900;
             font-size: clamp(3rem, 11vw, 9.5rem);
-            line-height: 0.82;
+            line-height: 0.85;
             letter-spacing: -6px;
-            color: #fff;
+            color: var(--text-white);
         }
 
-        /* RIGHT TAGLINE */
-        .tagline-side {
-            padding-left: 20%;
-            position: relative; z-index: 5;
-            margin-top: 150px;
-        }
-        .tagline-side h3 { font-size: 2rem; line-height: 1.1; margin-bottom: 30px; font-weight: 700; color: #fff; }
-        .tagline-side p { color: var(--gray-text); line-height: 1.6; max-width: 300px; font-size: 0.9rem; }
-
-        /* --- BOTTOM STATUS LABELS (Within Curved Section) --- */
-        .status-row {
+        /* Right Side Typography Block */
+        .mission-side { 
+            text-align: right; 
+            padding-left: 20%; 
+            z-index: 10;
             display: flex;
-            gap: 120px;
-            padding: 40px 8%;
-            position: relative; z-index: 100;
+            flex-direction: column;
+            gap: 25px;
+            justify-content: center;
+            height: 100%;
         }
-        .status-unit span { color: var(--mesh-orange); font-family: var(--font-h); font-weight: 900; font-size: 0.75rem; }
-        .status-unit p { color: #fff; font-size: 0.8rem; font-weight: 600; margin-top: 10px; }
+        .mission-side h3 { font-size: 2.1rem; line-height: 1.15; font-weight: 700; color: var(--text-white); }
+        .mission-side p { font-size: 1.1rem; color: var(--text-white); opacity: 0.7; max-width: 320px; margin-left: auto; line-height: 1.6; }
 
-        /* --- THE TRUSTED ROW (Directly Below Curved Hero) --- */
-        .trusted-ticker {
-            background-color: var(--bg-black);
-            padding: 80px 8% 120px;
+        /* SILHOUETTE IMAGE (Match visual exactly) */
+        .hero-silhouette {
+            position: absolute;
+            left: 55%; bottom: -5%;
+            height: 110%;
+            width: auto;
+            transform: translateX(-50%);
+            z-index: 5;
+            pointer-events: none;
+            /* Filter and rim blending simulator */
+            filter: contrast(1.1) brightness(0.9);
+            mix-blend-mode: luminosity; /* Blends nicely with oranges/reds */
+            opacity: 0.95;
+        }
+
+        /* --- BOTTOM SERVICES ROW --- */
+        .service-footer {
+            display: flex;
+            gap: 100px;
+            padding: 0 6% 120px;
+            z-index: 10;
+        }
+        .service-block { display: flex; flex-direction: column; gap: 8px; opacity: 0.6; transition: 0.3s; }
+        .service-block:hover { opacity: 1; }
+        .service-index { font-weight: 800; font-size: 0.8rem; color: var(--text-white); letter-spacing: 1px; }
+        .service-label { font-weight: 600; color: var(--text-white); font-size: 0.95rem; }
+
+        /* --- TRUST FOOTER STRIP --- */
+        .trust-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.15); /* Sublte dark overlay inside hero bottom */
+            padding: 25px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            backdrop-filter: blur(5px);
         }
-        .trusted-ticker h4 { font-size: 0.7rem; color: #444; max-width: 140px; text-transform: uppercase; font-weight: 900; line-height: 1.5; }
-        .logos { display: flex; gap: 80px; align-items: center; }
-        .logos span { font-family: var(--font-h); color: #fff; opacity: 0.6; font-weight: 800; font-size: 1.4rem; display: flex; align-items: center; gap: 15px; }
+        .trust-text { color: var(--text-white); font-size: 0.75rem; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;}
+        .brand-logos { display: flex; gap: 60px; color: var(--text-white); opacity: 0.8; font-size: 1.4rem; }
 
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 1024px) {
-            #hero-vessel { height: auto; border-radius: 0 0 40px 40px; padding-bottom: 60px;}
-            .hero-main { grid-template-columns: 1fr; text-align: left; }
-            .silhouette-overlay { display: none; }
-            .tagline-side { padding: 40px 0 0 0; margin: 0; }
-            .status-row { flex-wrap: wrap; gap: 40px; }
-            .logos { flex-direction: column; gap: 40px; }
+            .hero-main-content { grid-template-columns: 1fr; }
+            .mission-side { text-align: left; padding: 40px 0; height: auto; align-items: flex-start;}
+            .mission-side p { margin-left: 0; }
+            .hero-silhouette { height: 70%; left: 80%; bottom: 10%; }
+            .service-footer { gap: 40px; flex-wrap: wrap; }
+            .nav-menu { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SECTION: THE EXACT HERO VESSEL -->
-    <div id="hero-vessel">
-        <header>
-            <div class="logo">Niranjan.</div>
-            <nav>
+    <!-- THE VESSEL HERO SECTION -->
+    <section class="hero-vessel">
+        
+        <!-- HEADER -->
+        <header class="nav-row">
+            <div class="nav-logo">Folioblox.</div>
+            <div class="nav-menu">
                 <a href="#">Home</a>
                 <a href="#">About</a>
                 <a href="#">Projects</a>
-            </nav>
-            <a href="#contact" class="btn-touch">
-                Get in touch
-                <i><i class="fas fa-arrow-right"></i></i>
-            </a>
+                <a href="#contact" class="cta-button">Get in touch</a>
+            </div>
         </header>
 
-        <div class="hero-main">
-            <!-- Center Image - replace src with your side-profile png -->
-            <img src="Profile/Pic.png" alt="" class="silhouette-overlay" 
-                 onerror="this.src='https://folioblox-studio.framer.website/assets/person.png'">
+        <!-- MAIN LAYOUT CONTENT -->
+        <div class="hero-main-content">
+            <!-- SILHOUETTE (IMAGE BLENDED INTO GRADIENT) -->
+            <!-- Note: Replaced with an accurate upward looking side profile high contrast asset link -->
+            <img src="https://folioblox-studio.framer.website/assets/person.png" alt="Creative Persona" class="hero-silhouette" onerror="this.style.display='none'">
 
             <div class="headline-side">
-                <span class="intro-lbl">Hey, I'm a</span>
-                <h1 class="hero-title">Creative<br>Director</h1>
+                <span class="hey-text">Hey, I’m a</span>
+                <h1 class="main-headline">Creative<br>Director</h1>
             </div>
 
-            <div class="tagline-side">
+            <div class="mission-side">
                 <h3>Great design should <br> feel invisible.</h3>
-                <p>Developing industrial strategies for Python predictive modeling and high-output SQL database systems.</p>
+                <p>Industrial performance met with timeless editorial vision for modern products.</p>
             </div>
         </div>
 
-        <div class="status-row">
-            <div class="status-unit"><span>#01</span><p>Brand Strategy</p></div>
-            <div class="status-unit"><span>#02</span><p>Identity Design</p></div>
-            <div class="status-unit"><span>#03</span><p>Data Architect</p></div>
-            <div class="status-unit"><span>#04</span><p>Logic Engineer</p></div>
+        <!-- BOTTOM STATUS LOG -->
+        <div class="service-footer">
+            <div class="service-block">
+                <span class="service-index">#01</span>
+                <p class="service-label">Brand Strategy</p>
+            </div>
+            <div class="service-block">
+                <span class="service-index">#02</span>
+                <p class="service-label">Identity Design</p>
+            </div>
+            <div class="service-block">
+                <span class="service-index">#03</span>
+                <p class="service-label">Packaging Design</p>
+            </div>
+            <div class="service-block">
+                <span class="service-index">#04</span>
+                <p class="service-label">Creative Direction</p>
+            </div>
         </div>
-    </div>
 
-    <!-- SECTION: TRUSTED STRIP (Exact Alignment) -->
-    <div class="trusted-ticker">
-        <h4>Trusted by brands <br> i've helped shape</h4>
-        <div class="logos">
-            <span><i class="far fa-circle"></i> Supa Blox</span>
-            <span><i class="fas fa-hourglass-start"></i> Hype Blox</span>
-            <span><i class="fas fa-dot-circle"></i> Frame Blox</span>
-            <span><i class="fas fa-infinity"></i> Ultra Core</span>
+        <!-- DARK TRUST BAR AT BOTTOM RADIUS -->
+        <div class="trust-bar">
+            <span class="trust-text">Trusted by brands i’ve helped shape</span>
+            <div class="brand-logos">
+                <i class="fab fa-apple"></i>
+                <i class="fab fa-stripe"></i>
+                <i class="fab fa-airbnb"></i>
+                <i class="fab fa-spotify"></i>
+            </div>
         </div>
-    </div>
+
+    </section>
 
 </body>
 </html>
