@@ -3,103 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folioblox | Creative Director</title>
+    <title>Designer & Strategist | Premium Studio</title>
     
-    <!-- Precision Font Loading -->
+    <!-- Precision Font Combination -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
             --zed-black: #000000;
-            --canvas: #060606;
+            --canvas: #0B0B0B;
+            --accent: #FF4D00;
             --white: #FFFFFF;
             
-            /* Gradient System: Golden Amber -> Vivid Orange -> Deep Crimson */
-            --g-left: #FFB347; 
-            --g-center: #FF4D00;
-            --g-right: #750D01;
-            
-            --radius-xl: 60px;
+            /* Typography Scale */
             --font-main: 'Inter', sans-serif;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --h1-size: clamp(3.5rem, 11vw, 9rem);
+            --h2-size: clamp(2.5rem, 6vw, 4.5rem);
+            
+            /* Component Settings */
+            --radius-hero: 60px;
+            --radius-card: 40px;
+            --container-gap: 8%;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* --- FRAME RESET --- */
+        /* --- FOUNDATION --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { 
             background-color: var(--zed-black); 
             font-family: var(--font-main); 
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: var(--white);
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- THE VESSEL (CONTAINER) --- */
+        /* --- GLOBAL UTILS --- */
+        .section-label { 
+            color: var(--accent); 
+            font-weight: 800; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            display: block; 
+            margin-bottom: 25px;
+        }
+
+        /* --- COMPONENT: BUTTONS --- */
+        .btn-base {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px 10px 10px 30px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .btn-dark {
+            background-color: #151515;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .btn-dark:hover {
+            border-color: var(--white);
+            background-color: #202020;
+            transform: translateY(-3px);
+        }
+
+        .orange-arrow-box {
+            width: 38px;
+            height: 38px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+        }
+
+        /* --- 01. HERO SECTION --- */
         .hero-vessel {
-            width: calc(100% - 60px);
-            height: calc(100vh - 60px);
-            max-height: 900px;
-            border-radius: var(--radius-xl);
+            width: calc(100% - 40px);
+            height: calc(100vh - 40px);
+            max-height: 950px;
+            margin: 20px auto;
+            border-radius: var(--radius-hero);
             position: relative;
             overflow: hidden;
-            background: linear-gradient(95deg, var(--g-left) 0%, var(--g-center) 45%, var(--g-right) 100%);
+            background: linear-gradient(95deg, #FFB347 0%, #FF4D00 45%, #750D01 100%);
             display: flex;
             flex-direction: column;
             box-shadow: 0 40px 100px -20px rgba(0,0,0,0.5);
         }
 
-        /* VIGNETTE LAYER FOR DEPTH */
-        .hero-vessel::after {
-            content: "";
-            position: absolute; inset: 0;
-            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.2) 100%);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        /* --- NAVIGATION --- */
         nav {
-            padding: 40px 6%;
+            padding: 40px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
             z-index: 100;
         }
-        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1.2px; color: var(--white); }
+
+        .logo { font-weight: 800; font-size: 1.6rem; letter-spacing: -1.5px; }
+
         .nav-links { display: flex; gap: 40px; align-items: center; }
-        .nav-links a { 
-            text-decoration: none; color: var(--white); font-weight: 500; font-size: 0.85rem; 
-            opacity: 0.85; transition: var(--transition); 
-        }
+        .nav-links a { text-decoration: none; color: white; font-weight: 500; font-size: 0.9rem; opacity: 0.8; transition: 0.3s; }
         .nav-links a:hover { opacity: 1; transform: translateY(-1px); }
 
-        /* CTA WITH HOVER GLOW */
-        .cta-btn {
-            background-color: #fff;
-            color: #000;
+        .hero-cta-btn {
+            background: white;
+            color: black;
             padding: 12px 35px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.85rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        .cta-btn:hover {
-            transform: scale(1.05);
-            background: var(--white);
-            box-shadow: 0 0 30px rgba(255,255,255,0.4);
         }
 
-        /* --- CORE CONTENT --- */
-        .hero-layout {
+        .hero-content {
             flex: 1;
-            padding: 0 6% 60px;
+            padding: 0 var(--container-gap) 100px;
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             align-items: center;
@@ -107,135 +137,167 @@
             z-index: 10;
         }
 
-        /* Left Side Hierarchy */
-        .intro-text { 
-            font-size: 1.15rem; font-weight: 500; color: var(--white); 
-            opacity: 0.8; margin-bottom: 20px; display: block;
-        }
-        .headline {
+        .hero-headline {
             font-weight: 900;
-            font-size: clamp(3rem, 10vw, 8.5rem);
+            font-size: var(--h1-size);
             line-height: 0.82;
-            letter-spacing: -0.05em; /* Tightened per instructions */
-            color: var(--white);
+            letter-spacing: -6px;
         }
 
-        /* Right Side Hierarchy */
-        .mission-text { text-align: right; display: flex; flex-direction: column; gap: 30px; }
-        .mission-text h3 { 
-            font-size: 2.2rem; line-height: 1.25; font-weight: 700; color: var(--white); 
-            text-transform: none;
-        }
-        .mission-text p { 
-            font-size: 1.05rem; line-height: 1.8; /* Increased line-height */
-            color: var(--white); opacity: 0.7; /* 70% opacity */
-            max-width: 360px; margin-left: auto; font-weight: 400; 
-        }
+        .hero-tagline-box { text-align: right; margin-top: 150px; }
+        .hero-tagline-box h3 { font-size: 2rem; margin-bottom: 25px; line-height: 1.2; font-weight: 700; }
+        .hero-tagline-box p { font-size: 1rem; opacity: 0.7; max-width: 280px; margin-left: auto; line-height: 1.6; }
 
-        /* SILHOUETTE IMAGE (Visual Balance Only) */
+        /* HERO SILHOUETTE MASK */
         .silhouette {
             position: absolute; left: 52%; bottom: -5%;
-            height: 110%; width: auto; transform: translateX(-50%);
-            z-index: 5; pointer-events: none; opacity: 0.92;
-            mix-blend-mode: luminosity; /* Smooth blend with warm reds */
+            height: 110%; z-index: 5; pointer-events: none;
+            mix-blend-mode: luminosity; opacity: 0.9;
         }
 
-        /* --- BOTTOM SERVICES ROW --- */
-        .service-footer {
-            display: flex; gap: 80px; /* Increased spacing */
-            padding: 0 6% 120px;
-            z-index: 10;
-            opacity: 0.8; /* Slightly reduced brightness overall */
+        /* --- 02. ABOUT ME SECTION --- */
+        #about-me {
+            background-color: var(--canvas);
+            padding: 160px var(--container-gap);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: center;
         }
-        .s-item { display: flex; flex-direction: column; gap: 8px; }
-        .s-num { font-weight: 800; font-size: 0.75rem; color: var(--white); opacity: 0.5; letter-spacing: 1px; }
-        .s-lbl { font-weight: 600; color: var(--white); font-size: 0.95rem; }
 
-        /* --- INTERNAL TRUST STRIP --- */
-        .internal-strip {
-            position: absolute; bottom: 0; left: 0; width: 100%;
-            background: rgba(0,0,0,0.18); /* Vignette bottom border mimic */
-            padding: 22px 6%;
-            display: flex; justify-content: space-between; align-items: center;
-            backdrop-filter: blur(8px);
-            border-top: 1px solid rgba(255,255,255,0.05);
+        .about-text-col h2 {
+            font-size: var(--h2-size);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -2px;
+            margin-bottom: 35px;
         }
-        .trust-h { font-size: 0.75rem; font-weight: 600; color: var(--white); opacity: 0.6; text-transform: uppercase; letter-spacing: 0.8px; }
-        .trust-logos { display: flex; gap: 50px; color: var(--white); opacity: 0.8; font-size: 1.3rem; }
+
+        .about-highlight {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--white);
+            opacity: 0.8; /* 80% opacity */
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+
+        .about-body {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--white);
+            opacity: 0.65; /* 65% opacity */
+            max-width: 520px;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        /* IMAGE CARD REPLICA */
+        .about-img-frame {
+            width: 100%;
+            height: 720px;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            background: radial-gradient(circle at center, #ff8a47 0%, #ff5c00 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+        }
+
+        /* Internal rim-lit simulator on card edge */
+        .about-img-frame::after {
+            content: "";
+            position: absolute; inset: 0;
+            box-shadow: inset 0 0 60px rgba(0,0,0,0.2);
+            pointer-events: none;
+        }
+
+        .about-img-frame img {
+            height: 110%; /* Larger so we see body/neck silhouette */
+            width: auto;
+            object-fit: cover;
+            filter: contrast(1.1) brightness(0.95);
+            /* This mimics editorial lighting */
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
 
         /* --- MOBILE ADAPTABILITY --- */
-        @media (max-width: 1024px) {
-            .hero-vessel { width: calc(100% - 20px); height: calc(100vh - 20px); }
-            .hero-layout { grid-template-columns: 1fr; }
-            .mission-text { text-align: left; margin-top: 60px; }
-            .mission-text p { margin-left: 0; }
-            .service-footer { gap: 40px; flex-wrap: wrap; }
-            .silhouette { display: none; }
+        @media (max-width: 1100px) {
+            .hero-vessel { width: 100%; height: auto; margin: 0; border-radius: 0 0 40px 40px; padding-bottom: 100px;}
+            .hero-content, #about-me { grid-template-columns: 1fr; gap: 60px; }
+            .hero-tagline-box, #about-me { text-align: left; }
+            .hero-tagline-box p { margin-left: 0; }
+            .hero-headline { letter-spacing: -3px; }
+            .about-img-frame { height: 500px; order: -1; }
+            nav .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- STARK ZED CONTAINER FRAME -->
+    <!-- SECTION: HERO -->
     <div class="hero-vessel">
-        
-        <nav>
-            <div class="logo">folioblox.</div>
-            <div class="nav-links">
+        <header>
+            <div class="logo">folioblox</div>
+            <nav class="nav-links">
                 <a href="#">home</a>
                 <a href="#">about</a>
                 <a href="#">projects</a>
-                <a href="#contact" class="cta-btn">get in touch</a>
+                <a href="#" class="cta-button">get in touch</a>
+            </nav>
+        </header>
+
+        <main class="hero-content">
+            <!-- Center Silhouette Simulator -->
+            <img src="https://folioblox-studio.framer.website/assets/person.png" alt="" class="silhouette">
+
+            <div class="hero-headline-box">
+                <span class="intro-line" style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 20px; display: block; font-weight: 500;">Hey, I’m a</span>
+                <h1 class="hero-headline">Creative<br>Director</h1>
             </div>
-        </nav>
 
-        <div class="hero-layout">
-            <!-- OPTIONAL PROFILE OVERLAY: REMOVE IF NOT IN PREV. ASSET LOG -->
-            <img src="https://folioblox-studio.framer.website/assets/person.png" alt="" class="silhouette" onerror="this.style.display='none'">
-
-            <div class="headline-container">
-                <span class="intro-text">Hey, I’m a</span>
-                <h1 class="headline">Creative<br>Director</h1>
-            </div>
-
-            <div class="mission-text">
+            <div class="hero-tagline-box">
                 <h3>Great design should <br> feel invisible.</h3>
-                <p>Establishing digital legacies through mathematical balance and timeless editorial intuition for modern industry leaders.</p>
+                <p>Translating mathematical logic and premium industrial intuition into timeless product experiences.</p>
             </div>
-        </div>
-
-        <!-- SERVICE INDEX -->
-        <div class="service-footer">
-            <div class="s-item">
-                <span class="s-num">#01</span>
-                <span class="s-lbl">Brand Strategy</span>
-            </div>
-            <div class="s-item">
-                <span class="s-num">#02</span>
-                <span class="s-lbl">Identity Design</span>
-            </div>
-            <div class="s-item">
-                <span class="s-num">#03</span>
-                <span class="s-lbl">Digital Architecture</span>
-            </div>
-            <div class="s-item">
-                <span class="s-num">#04</span>
-                <span class="s-lbl">Editorial Lead</span>
-            </div>
-        </div>
-
-        <!-- HIDDEN TRUST BAR -->
-        <div class="internal-strip">
-            <span class="trust-h">Trusted by global partners</span>
-            <div class="trust-logos">
-                <i class="fab fa-apple"></i>
-                <i class="fab fa-amazon"></i>
-                <i class="fab fa-stripe"></i>
-                <i class="fab fa-google"></i>
-            </div>
-        </div>
-
+        </main>
     </div>
+
+    <!-- SECTION: ABOUT ME (NEW) -->
+    <section id="about-me">
+        <div class="about-text-col">
+            <span class="section-label">About me</span>
+            <h2 class="about-headline">
+                Designer.<br>
+                Strategist.<br>
+                Creative partner.
+            </h2>
+
+            <p class="about-highlight">
+                Blending clarity and creativity to build brands with purpose.
+            </p>
+
+            <p class="about-body">
+                Through a systematic engineering foundation and a decade of design discovery, I create identities that solve business challenges. I help organizations define their story with precision and aesthetic impact.
+            </p>
+
+            <a href="#" class="btn-base btn-dark">
+                Read more 
+                <div class="orange-arrow-box">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <div class="about-image-col">
+            <div class="about-img-frame">
+                <!-- Replace with upward profile photo. Using placeholder for visualization -->
+                <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=600&auto=format&fit=crop" alt="Editorial Portrait">
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
