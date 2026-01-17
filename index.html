@@ -3,52 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio | Editorial Masterpiece</title>
+    <title>Folioblox | Creative Director</title>
     
-    <!-- Precision Typography: Inter for UI & Headings -->
+    <!-- Precision Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
             --zed-black: #000000;
-            --canvas-outer: #0a0a0a;
-            --accent-orange: #FF5C00;
-            --gradient-main: linear-gradient(90deg, #FFB800 0%, #FF5C00 50%, #D10000 100%);
+            --canvas: #060606;
+            --white: #FFFFFF;
+            
+            /* Gradient System: Golden Amber -> Vivid Orange -> Deep Crimson */
+            --g-left: #FFB347; 
+            --g-center: #FF4D00;
+            --g-right: #750D01;
+            
+            --radius-xl: 60px;
             --font-main: 'Inter', sans-serif;
-            --text-white: #FFFFFF;
-            --radius-hero: 60px; /* High radius for premium card look */
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* --- LAYOUT RESET --- */
+        /* --- FRAME RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            background-color: var(--canvas-outer); 
+            background-color: var(--zed-black); 
             font-family: var(--font-main); 
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- HERO CONTAINER (THE FRAME) --- */
+        /* --- THE VESSEL (CONTAINER) --- */
         .hero-vessel {
-            width: calc(100% - 40px); /* Framing padding */
-            height: calc(100vh - 40px);
+            width: calc(100% - 60px);
+            height: calc(100vh - 60px);
             max-height: 900px;
-            background: var(--gradient-main);
-            border-radius: var(--radius-hero);
+            border-radius: var(--radius-xl);
             position: relative;
             overflow: hidden;
+            background: linear-gradient(95deg, var(--g-left) 0%, var(--g-center) 45%, var(--g-right) 100%);
             display: flex;
             flex-direction: column;
+            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.5);
+        }
+
+        /* VIGNETTE LAYER FOR DEPTH */
+        .hero-vessel::after {
+            content: "";
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.2) 100%);
+            pointer-events: none;
+            z-index: 2;
         }
 
         /* --- NAVIGATION --- */
-        .nav-row {
+        nav {
             padding: 40px 6%;
             display: flex;
             justify-content: space-between;
@@ -56,178 +71,171 @@
             position: relative;
             z-index: 100;
         }
-        .nav-logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; color: var(--text-white); text-transform: lowercase; }
-        .nav-menu { display: flex; gap: 40px; align-items: center; }
-        .nav-menu a { text-decoration: none; color: var(--text-white); font-weight: 600; font-size: 0.9rem; transition: 0.3s; opacity: 0.9; }
-        .nav-menu a:hover { opacity: 1; transform: translateY(-1px); }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1.2px; color: var(--white); }
+        .nav-links { display: flex; gap: 40px; align-items: center; }
+        .nav-links a { 
+            text-decoration: none; color: var(--white); font-weight: 500; font-size: 0.85rem; 
+            opacity: 0.85; transition: var(--transition); 
+        }
+        .nav-links a:hover { opacity: 1; transform: translateY(-1px); }
 
-        /* The Orange Accent Button */
-        .cta-button {
-            background-color: var(--accent-orange);
-            color: var(--text-white);
-            padding: 12px 30px;
+        /* CTA WITH HOVER GLOW */
+        .cta-btn {
+            background-color: #fff;
+            color: #000;
+            padding: 12px 35px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-decoration: none;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: var(--transition);
         }
-        .cta-button:hover { background-color: var(--zed-black); }
+        .cta-btn:hover {
+            transform: scale(1.05);
+            background: var(--white);
+            box-shadow: 0 0 30px rgba(255,255,255,0.4);
+        }
 
-        /* --- HERO CORE LAYOUT --- */
-        .hero-main-content {
+        /* --- CORE CONTENT --- */
+        .hero-layout {
             flex: 1;
             padding: 0 6% 60px;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
+            grid-template-columns: 1.2fr 0.8fr;
             align-items: center;
             position: relative;
+            z-index: 10;
         }
 
         /* Left Side Hierarchy */
-        .headline-side { z-index: 10; align-self: center; }
-        .hey-text { font-size: 1.25rem; font-weight: 500; color: var(--text-white); display: block; margin-bottom: 20px; }
-        .main-headline {
+        .intro-text { 
+            font-size: 1.15rem; font-weight: 500; color: var(--white); 
+            opacity: 0.8; margin-bottom: 20px; display: block;
+        }
+        .headline {
             font-weight: 900;
-            font-size: clamp(3rem, 11vw, 9.5rem);
-            line-height: 0.85;
-            letter-spacing: -6px;
-            color: var(--text-white);
+            font-size: clamp(3rem, 10vw, 8.5rem);
+            line-height: 0.82;
+            letter-spacing: -0.05em; /* Tightened per instructions */
+            color: var(--white);
         }
 
-        /* Right Side Typography Block */
-        .mission-side { 
-            text-align: right; 
-            padding-left: 20%; 
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            justify-content: center;
-            height: 100%;
+        /* Right Side Hierarchy */
+        .mission-text { text-align: right; display: flex; flex-direction: column; gap: 30px; }
+        .mission-text h3 { 
+            font-size: 2.2rem; line-height: 1.25; font-weight: 700; color: var(--white); 
+            text-transform: none;
         }
-        .mission-side h3 { font-size: 2.1rem; line-height: 1.15; font-weight: 700; color: var(--text-white); }
-        .mission-side p { font-size: 1.1rem; color: var(--text-white); opacity: 0.7; max-width: 320px; margin-left: auto; line-height: 1.6; }
+        .mission-text p { 
+            font-size: 1.05rem; line-height: 1.8; /* Increased line-height */
+            color: var(--white); opacity: 0.7; /* 70% opacity */
+            max-width: 360px; margin-left: auto; font-weight: 400; 
+        }
 
-        /* SILHOUETTE IMAGE (Match visual exactly) */
-        .hero-silhouette {
-            position: absolute;
-            left: 55%; bottom: -5%;
-            height: 110%;
-            width: auto;
-            transform: translateX(-50%);
-            z-index: 5;
-            pointer-events: none;
-            /* Filter and rim blending simulator */
-            filter: contrast(1.1) brightness(0.9);
-            mix-blend-mode: luminosity; /* Blends nicely with oranges/reds */
-            opacity: 0.95;
+        /* SILHOUETTE IMAGE (Visual Balance Only) */
+        .silhouette {
+            position: absolute; left: 52%; bottom: -5%;
+            height: 110%; width: auto; transform: translateX(-50%);
+            z-index: 5; pointer-events: none; opacity: 0.92;
+            mix-blend-mode: luminosity; /* Smooth blend with warm reds */
         }
 
         /* --- BOTTOM SERVICES ROW --- */
         .service-footer {
-            display: flex;
-            gap: 100px;
+            display: flex; gap: 80px; /* Increased spacing */
             padding: 0 6% 120px;
             z-index: 10;
+            opacity: 0.8; /* Slightly reduced brightness overall */
         }
-        .service-block { display: flex; flex-direction: column; gap: 8px; opacity: 0.6; transition: 0.3s; }
-        .service-block:hover { opacity: 1; }
-        .service-index { font-weight: 800; font-size: 0.8rem; color: var(--text-white); letter-spacing: 1px; }
-        .service-label { font-weight: 600; color: var(--text-white); font-size: 0.95rem; }
+        .s-item { display: flex; flex-direction: column; gap: 8px; }
+        .s-num { font-weight: 800; font-size: 0.75rem; color: var(--white); opacity: 0.5; letter-spacing: 1px; }
+        .s-lbl { font-weight: 600; color: var(--white); font-size: 0.95rem; }
 
-        /* --- TRUST FOOTER STRIP --- */
-        .trust-bar {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background: rgba(0,0,0,0.15); /* Sublte dark overlay inside hero bottom */
-            padding: 25px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(5px);
+        /* --- INTERNAL TRUST STRIP --- */
+        .internal-strip {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: rgba(0,0,0,0.18); /* Vignette bottom border mimic */
+            padding: 22px 6%;
+            display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-        .trust-text { color: var(--text-white); font-size: 0.75rem; font-weight: 600; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;}
-        .brand-logos { display: flex; gap: 60px; color: var(--text-white); opacity: 0.8; font-size: 1.4rem; }
+        .trust-h { font-size: 0.75rem; font-weight: 600; color: var(--white); opacity: 0.6; text-transform: uppercase; letter-spacing: 0.8px; }
+        .trust-logos { display: flex; gap: 50px; color: var(--white); opacity: 0.8; font-size: 1.3rem; }
 
-        /* --- RESPONSIVE ADJUSTMENTS --- */
+        /* --- MOBILE ADAPTABILITY --- */
         @media (max-width: 1024px) {
-            .hero-main-content { grid-template-columns: 1fr; }
-            .mission-side { text-align: left; padding: 40px 0; height: auto; align-items: flex-start;}
-            .mission-side p { margin-left: 0; }
-            .hero-silhouette { height: 70%; left: 80%; bottom: 10%; }
+            .hero-vessel { width: calc(100% - 20px); height: calc(100vh - 20px); }
+            .hero-layout { grid-template-columns: 1fr; }
+            .mission-text { text-align: left; margin-top: 60px; }
+            .mission-text p { margin-left: 0; }
             .service-footer { gap: 40px; flex-wrap: wrap; }
-            .nav-menu { display: none; }
+            .silhouette { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- THE VESSEL HERO SECTION -->
-    <section class="hero-vessel">
+    <!-- STARK ZED CONTAINER FRAME -->
+    <div class="hero-vessel">
         
-        <!-- HEADER -->
-        <header class="nav-row">
-            <div class="nav-logo">Folioblox.</div>
-            <div class="nav-menu">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Projects</a>
-                <a href="#contact" class="cta-button">Get in touch</a>
+        <nav>
+            <div class="logo">folioblox.</div>
+            <div class="nav-links">
+                <a href="#">home</a>
+                <a href="#">about</a>
+                <a href="#">projects</a>
+                <a href="#contact" class="cta-btn">get in touch</a>
             </div>
-        </header>
+        </nav>
 
-        <!-- MAIN LAYOUT CONTENT -->
-        <div class="hero-main-content">
-            <!-- SILHOUETTE (IMAGE BLENDED INTO GRADIENT) -->
-            <!-- Note: Replaced with an accurate upward looking side profile high contrast asset link -->
-            <img src="https://folioblox-studio.framer.website/assets/person.png" alt="Creative Persona" class="hero-silhouette" onerror="this.style.display='none'">
+        <div class="hero-layout">
+            <!-- OPTIONAL PROFILE OVERLAY: REMOVE IF NOT IN PREV. ASSET LOG -->
+            <img src="https://folioblox-studio.framer.website/assets/person.png" alt="" class="silhouette" onerror="this.style.display='none'">
 
-            <div class="headline-side">
-                <span class="hey-text">Hey, I’m a</span>
-                <h1 class="main-headline">Creative<br>Director</h1>
+            <div class="headline-container">
+                <span class="intro-text">Hey, I’m a</span>
+                <h1 class="headline">Creative<br>Director</h1>
             </div>
 
-            <div class="mission-side">
+            <div class="mission-text">
                 <h3>Great design should <br> feel invisible.</h3>
-                <p>Industrial performance met with timeless editorial vision for modern products.</p>
+                <p>Establishing digital legacies through mathematical balance and timeless editorial intuition for modern industry leaders.</p>
             </div>
         </div>
 
-        <!-- BOTTOM STATUS LOG -->
+        <!-- SERVICE INDEX -->
         <div class="service-footer">
-            <div class="service-block">
-                <span class="service-index">#01</span>
-                <p class="service-label">Brand Strategy</p>
+            <div class="s-item">
+                <span class="s-num">#01</span>
+                <span class="s-lbl">Brand Strategy</span>
             </div>
-            <div class="service-block">
-                <span class="service-index">#02</span>
-                <p class="service-label">Identity Design</p>
+            <div class="s-item">
+                <span class="s-num">#02</span>
+                <span class="s-lbl">Identity Design</span>
             </div>
-            <div class="service-block">
-                <span class="service-index">#03</span>
-                <p class="service-label">Packaging Design</p>
+            <div class="s-item">
+                <span class="s-num">#03</span>
+                <span class="s-lbl">Digital Architecture</span>
             </div>
-            <div class="service-block">
-                <span class="service-index">#04</span>
-                <p class="service-label">Creative Direction</p>
+            <div class="s-item">
+                <span class="s-num">#04</span>
+                <span class="s-lbl">Editorial Lead</span>
             </div>
         </div>
 
-        <!-- DARK TRUST BAR AT BOTTOM RADIUS -->
-        <div class="trust-bar">
-            <span class="trust-text">Trusted by brands i’ve helped shape</span>
-            <div class="brand-logos">
+        <!-- HIDDEN TRUST BAR -->
+        <div class="internal-strip">
+            <span class="trust-h">Trusted by global partners</span>
+            <div class="trust-logos">
                 <i class="fab fa-apple"></i>
+                <i class="fab fa-amazon"></i>
                 <i class="fab fa-stripe"></i>
-                <i class="fab fa-airbnb"></i>
-                <i class="fab fa-spotify"></i>
+                <i class="fab fa-google"></i>
             </div>
         </div>
 
-    </section>
+    </div>
 
 </body>
 </html>
