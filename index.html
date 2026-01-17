@@ -3,6 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designer Portfolio | Studio Selection</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --zed-black: #000000;
+            --canvas: #0B0B0B;
+            --card-surface: #111111;
+            --accent: #FF4D00;
+            --white: #FFFFFF;
+            --font-main: 'Inter', sans-serif;
+            --radius-big: 60px;
+            --radius-card: 28px;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- GLOBAL ARCHITECTURE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { 
+            background-color: var(--zed-black); 
+            font-family: var(--font-main); 
+            color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .section-label { 
+            color: var(--accent); font-weight: 800; font-size: 0.8rem; 
+            text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 25px;
+        }
+
+        .max-container { max-width: 1400px; margin: 0 auto; padding: 0 8%; }
+
+        /* --- SHARED BUTTON UI --- */
+        .pill-view {
+            display: inline-flex; align-items: center; gap: 15px;
+            padding: 8px 8px 8px 25px; border-radius: 60px;
+            font-weight: 700; font-size: 0.85rem; text-decoration: none;
+            background: #1A1A1A; color: white; border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+        .pill-view:hover { background: #222; border-color: white; transform: scale(1.03); }
+        
+        .arrow-dot {
+            width: 34px; height: 34px; background: var(--accent);
+            border-radius: 50%; display: flex; align-items: center; 
+            justify-content: center; font-size: 0.75rem;
+            transition: var(--transition);
+        }
+        .pill-view:hover .arrow-dot { transform: translateX(3px) rotate(-45deg); }
+
+        /* --- SECTION: PROJECTS --- */
+        #projects { padding: 140px 0; background-color: var(--zed-black); }
+        
+        .grid-header { margin-bottom: 70px; }
+        .grid-header h2 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; letter-spacing: -2px; }
+
+        .projects-grid { 
+            display: grid; grid-template-columns: 1fr 1fr; 
+            gap: 60px 40px; 
+        }
+
+        .p-card { 
+            background: var(--card-surface); 
+            border-radius: var(--radius-card); 
+            padding: 25px; transition: var(--transition); 
+            display: flex; flex-direction: column; cursor: pointer;
+        }
+        
+        /* HOVER: Card Lift */
+        .p-card:hover { transform: translateY(-12px); background: #161616; }
+
+        .p-img-mask { 
+            width: 100%; aspect-ratio: 4/3; border-radius: 20px; 
+            overflow: hidden; margin-bottom: 30px; 
+        }
+        
+        .p-img-mask img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: contrast(1.1) brightness(0.9);
+        }
+
+        .p-card:hover .p-img-mask img { transform: scale(1.08); filter: brightness(1.1); }
+
+        .p-content h3 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+        
+        .p-content p { 
+            font-size: 0.95rem; line-height: 1.6; opacity: 0.65; 
+            max-width: 90%; margin-bottom: 25px; 
+        }
+
+        /* --- PREVIOUS SECTIONS FALLBACK STYLES (REQUIRED FOR SEAMLESS VIEW) --- */
+        .hero-vessel { 
+            width: calc(100% - 40px); height: calc(100vh - 40px); 
+            margin: 20px auto; border-radius: var(--radius-big);
+            background: linear-gradient(95deg, #FFB347 0%, #FF4D00 45%, #750D01 100%);
+            overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+        #about { padding: 140px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; background: #0B0B0B; }
+        .about-image { width: 100%; height: 600px; border-radius: var(--radius-card); overflow: hidden; background: var(--accent); }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 1024px) {
+            .projects-grid { gap: 30px; }
+            .p-content h3 { font-size: 1.5rem; }
+            .section-header h2 { font-size: 3rem; }
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .p-img-mask { aspect-ratio: 1/1; }
+            section, #projects, #about { padding: 80px 8%; }
+            .p-card:hover { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- [Previous Hero and About code stays as is] -->
+
+    <div class="hero-vessel" id="home">
+        <!-- Replicated Hero Content -->
+    </div>
+
+    <section id="about">
+        <!-- Replicated About Content -->
+        <div class="about-txt">
+            <span class="section-label">About me</span>
+            <h2 style="font-size: 4rem; line-height:0.95; font-weight: 900; margin-bottom: 30px;">Analyst.<br>Strategist.</h2>
+            <p style="opacity: 0.7; max-width: 450px;">Merging technical engineering precision with modern architectural storytelling.</p>
+        </div>
+        <div class="about-image"></div>
+    </section>
+
+    <!-- NEW SECTION: PROJECTS -->
+    <section id="projects">
+        <div class="max-container">
+            
+            <header class="grid-header">
+                <span class="section-label">Selected work</span>
+                <h2>Bringing Digital <br> Experiences To Life.</h2>
+            </header>
+
+            <div class="projects-grid">
+
+                <!-- CARD 1 -->
+                <div class="p-card">
+                    <div class="p-img-mask">
+                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000&auto=format&fit=crop" alt="NYC Pollution Analysis">
+                    </div>
+                    <div class="p-content">
+                        <h3>NYC Dynamic Sensory</h3>
+                        <p>Detailed investigation into atmospheric pollutant density across New York's municipal sectors via Python diagnostics.</p>
+                        <a href="#" class="pill-view">
+                            View <div class="arrow-dot"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="p-card">
+                    <div class="p-img-mask">
+                        <img src="https://images.unsplash.com/photo-1551033535-64906f0e9f1a?q=80&w=1000&auto=format&fit=crop" alt="Nova Scene Design">
+                    </div>
+                    <div class="p-content">
+                        <h3>Nova Analytics UI</h3>
+                        <p>Responsive visualization layers for clinical medical datasets, focusing on intuitive data discoverability for diagnostics.</p>
+                        <a href="#" class="pill-view">
+                            View <div class="arrow-dot"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="p-card">
+                    <div class="p-img-mask">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=1000&auto=format&fit=crop" alt="Arched Pink">
+                    </div>
+                    <div class="p-content">
+                        <h3>Auto Predictive Core</h3>
+                        <p>An automotive value regression engine, providing 95%+ precision on second-hand vehicle valuations through neural learning.</p>
+                        <a href="#" class="pill-view">
+                            View <div class="arrow-dot"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- CARD 4 -->
+                <div class="p-card">
+                    <div class="p-img-mask">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop" alt="Liquid Data Flow">
+                    </div>
+                    <div class="p-content">
+                        <h3>System Logic v.02</h3>
+                        <p>Mathematical demo examining demographic probability modeling based on historical maritime log datasets.</p>
+                        <a href="#" class="pill-view">
+                            View <div class="arrow-dot"><i class="fas fa-arrow-right"></i></div>
+                        </a>
+                    </div>
+                </div>
+
+            </div> <!-- end grid -->
+        </div> <!-- end container -->
+    </section>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Designer & Strategist | Premium Studio</title>
     
     <!-- Precision Font Combination -->
