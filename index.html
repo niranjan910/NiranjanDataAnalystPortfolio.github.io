@@ -8,6 +8,7 @@
     <link rel="icon" type="image/png" href="Logo/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Headings: Montserrat | Body: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -16,25 +17,27 @@
             --zed-black: #000000;
             --surface: #0a0a0a;
             --main-orange: #ff4d00;
-            --text-main: #ffffff;
-            --text-gray: #777777;
+            --text-white: #ffffff;
+            --text-dim: #777777;
             --font-h: 'Montserrat', sans-serif;
             --font-b: 'Inter', sans-serif;
-            --radius-big: 80px;
-            --radius-card: 24px;
+            --radius-xl: 80px;
+            --radius-m: 24px;
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* RESET & BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background-color: #000000; font-family: var(--font-b); color: var(--text-gray); overflow-x: hidden; line-height: 1.6; }
+        body { background-color: #000000; font-family: var(--font-b); color: var(--text-dim); overflow-x: hidden; line-height: 1.6; }
 
-        h1, h2, h3 { font-family: var(--font-h); color: #fff; }
+        h1, h2, h3, h4 { font-family: var(--font-h); color: var(--text-white); }
+        .label-orange { color: var(--main-orange); font-weight: 800; text-transform: capitalize; font-family: var(--font-h); font-size: 1rem; margin-bottom: 25px; display: block; }
 
-        /* --- 00. NAVIGATION --- */
+        /* --- 00. NAVIGATION ISLAND --- */
         .nav-island {
             position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
-            background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(20px);
+            background: rgba(15, 15, 15, 0.8); backdrop-filter: blur(20px);
             padding: 10px 15px; border-radius: 50px; border: 1px solid #222;
             display: flex; align-items: center; gap: 8px; z-index: 1000;
         }
@@ -42,221 +45,239 @@
             color: #555; text-decoration: none; font-size: 0.75rem; font-weight: 700; font-family: var(--font-h);
             text-transform: uppercase; padding: 8px 18px; border-radius: 30px; transition: var(--transition);
         }
-        .nav-island a:hover, .nav-island a.active { color: #fff; }
-        .get-touch-btn { background: #fff !important; color: #000 !important; margin-left: 5px; display: flex; align-items: center; gap: 10px; border-radius: 50px; }
+        .nav-island a:hover, .nav-island a.active { color: var(--text-white); }
+        .btn-mini-nav { background: #fff !important; color: #000 !important; border-radius: 50px; display: flex; align-items: center; gap: 10px; margin-left: 5px; }
 
-        /* --- 01. HERO SECTION (Silhouette Glow) --- */
+        /* --- 01. HERO REPLICA (Silhouette Glow) --- */
         #home {
             position: relative; height: 100vh; min-height: 850px;
             background: linear-gradient(135deg, #441100 0%, #150300 35%, #000000 75%);
-            border-bottom-left-radius: var(--radius-big);
-            border-bottom-right-radius: var(--radius-big);
+            border-bottom-left-radius: var(--radius-xl); border-bottom-right-radius: var(--radius-xl);
             overflow: hidden; display: flex; flex-direction: column; z-index: 2;
         }
-        .hero-top-nav { padding: 40px 7%; font-family: var(--font-h); font-weight: 900; letter-spacing: -1px; font-size: 1.5rem; color: #fff; }
-        .hero-body { flex: 1; padding: 0 7%; display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: center; }
-        .hero-left p { color: #fff; font-weight: 600; font-size: 1.2rem; margin-bottom: 25px; }
-        .hero-left h1 { font-family: var(--font-h); font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.82; letter-spacing: -4px; font-weight: 900; }
-        .hero-right { text-align: left; padding-left: 15%; margin-top: 150px; }
-        .hero-right h2 { font-size: 1.8rem; margin-bottom: 30px; line-height: 1.3; font-weight: 700; color: #fff; }
-        .hero-right p { font-size: 1rem; color: #777; max-width: 320px; }
-        .hero-stat-bar { position: absolute; bottom: 80px; left: 7%; display: flex; gap: 100px; }
-        .h-stat span { display: block; color: var(--main-orange); font-family: var(--font-h); font-weight: 900; font-size: 0.8rem; margin-bottom: 12px; }
-        .h-stat p { color: #fff; font-weight: 700; font-size: 0.85rem; }
+        .hero-logo-row { padding: 40px 7%; font-family: var(--font-h); font-weight: 900; letter-spacing: -1px; font-size: 1.5rem; color: #fff; }
+        .hero-content { flex: 1; padding: 0 7%; display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; }
+        .hero-content h1 { font-size: clamp(3rem, 10vw, 8.5rem); line-height: 0.82; letter-spacing: -4px; font-weight: 900; }
+        .hero-right-side { text-align: left; padding-left: 15%; margin-top: 150px; }
+        .hero-right-side h2 { font-size: 1.8rem; margin-bottom: 25px; color: #fff; line-height: 1.2; font-weight: 700; }
+        .hero-stat-row { position: absolute; bottom: 80px; left: 7%; display: flex; gap: 80px; }
+        .h-stat-unit span { color: var(--main-orange); font-weight: 900; font-size: 0.8rem; display: block; margin-bottom: 10px; }
+        .h-stat-unit p { color: #fff; font-weight: 700; font-size: 0.85rem; font-family: var(--font-h); }
 
-        /* --- 02. PARTNER ROW --- */
-        .trusted-row { background: #000; padding: 120px 7% 100px; display: flex; justify-content: space-between; align-items: center; margin-top: -30px; }
-        .t-label { color: #444; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; max-width: 140px; }
-        .t-logos { display: flex; gap: 60px; font-family: var(--font-h); font-weight: 900; font-size: 1.4rem; color: #fff; opacity: 0.8; }
-        .t-logos span { display: flex; align-items: center; gap: 10px; }
+        /* --- 02. TRUSTED BY TRANSITION --- */
+        .trusted-transition { background: #000; padding: 120px 7% 100px; display: flex; justify-content: space-between; align-items: center; margin-top: -30px; }
+        .trust-lbl { color: #444; font-size: 0.7rem; text-transform: uppercase; font-weight: 800; max-width: 140px; }
+        .trust-brands { display: flex; gap: 50px; font-family: var(--font-h); font-weight: 900; font-size: 1.4rem; color: #fff; opacity: 0.8; }
 
         /* --- 03. ABOUT SECTION --- */
-        #about { padding: 150px 7%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 100px; align-items: flex-start; background: #000; }
-        .label-orange { color: var(--main-orange); font-weight: 800; display: block; margin-bottom: 30px; font-family: var(--font-h); font-size: 1.1rem; }
+        #about { padding: 150px 7%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: flex-start; background: #000; }
         .about-title { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 1; font-weight: 900; color: #fff; margin-bottom: 40px; }
-        .about-sub { color: #fff; font-size: 1.6rem; font-weight: 700; line-height: 1.3; margin-bottom: 35px; max-width: 500px; }
-        .about-p { margin-bottom: 25px; font-size: 1rem; color: #888; max-width: 550px;}
-        .about-image { width: 100%; height: 700px; background: #111; border-radius: 40px; overflow: hidden; border: 1px solid #222; }
-        .about-image img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* --- 04. NEW RECENT WORK LIST (As per Screenshot) --- */
-        #recent-work-list { padding: 100px 7% 50px; background: #000; }
-        .recent-header-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: flex-end; margin-bottom: 80px; }
-        .recent-header-grid p { color: #fff; font-size: 1.3rem; line-height: 1.4; max-width: 450px; }
+        .about-highlight { color: #fff; font-size: 1.5rem; font-weight: 600; line-height: 1.4; margin-bottom: 30px; }
+        .about-text { margin-bottom: 25px; color: #888; max-width: 580px; font-size: 1rem; }
+        .about-img { width: 100%; height: 700px; background: #111; border-radius: 40px; overflow: hidden; border: 1px solid #222; }
+        .about-img img { width: 100%; height: 100%; object-fit: cover; }
         
-        .work-list-item { 
-            background: #0d0d0d; border-radius: var(--radius-card); padding: 50px; 
-            border: 1px solid #1a1a1a; display: flex; flex-direction: column; 
-            margin-bottom: 20px; transition: var(--transition); position: relative;
+        .btn-pill-action { 
+            display: inline-flex; align-items: center; gap: 15px; background: #1a1a1a; color: #fff; padding: 10px 10px 10px 30px; 
+            border-radius: 50px; text-decoration: none; margin-top: 30px; font-weight: 600; font-size: 0.85rem; border: 1px solid #333; 
         }
-        .work-list-item:hover { background: #111; border-color: #333; transform: scale(0.99); }
-        .work-cat { color: var(--main-orange); font-size: 0.85rem; font-weight: 700; margin-bottom: 15px; display: block; }
-        .work-title { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 20px; font-family: var(--font-h); }
-        .work-desc { font-size: 0.95rem; color: #555; max-width: 600px; }
-        .work-year { 
-            position: absolute; top: 50%; right: 50px; transform: translateY(-50%); 
-            background: #1a1a1a; padding: 10px 20px; border-radius: 30px; 
-            font-size: 0.75rem; color: #555; font-weight: 700; border: 1px solid #222;
+        .orange-arrow-circle { width: 38px; height: 38px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        /* --- 04. RECENT WORK LIST (Box Style) --- */
+        #work-list { padding: 100px 7% 50px; background: #000; }
+        .recent-header-flex { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 70px; }
+        .recent-header-flex h2 { font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1; max-width: 600px; }
+        .recent-header-flex p { font-size: 1.3rem; max-width: 450px; color: #fff; }
+        
+        .list-card { 
+            background: #0d0d0d; border-radius: var(--radius-m); padding: 50px; border: 1px solid #111; margin-bottom: 20px; 
+            position: relative; transition: var(--transition); 
         }
+        .list-card:hover { border-color: #222; transform: scale(0.99); }
+        .work-cat { color: var(--main-orange); font-weight: 800; font-size: 0.85rem; margin-bottom: 15px; display: block; text-transform: uppercase; }
+        .work-h { font-size: 2.2rem; font-weight: 800; color: #fff; font-family: var(--font-h); margin-bottom: 15px; }
+        .work-d { font-size: 0.9rem; color: #444; }
+        .year-tag { position: absolute; right: 50px; top: 50%; transform: translateY(-50%); font-size: 0.7rem; color: #333; font-weight: 900; background: #000; padding: 10px 20px; border-radius: 20px; }
 
-        /* --- 05. PROJECTS GRID SECTION --- */
-        #projects { padding: 80px 7% 150px; background: #000; }
-        .project-grid-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 60px 40px; }
-        .p-card { display: flex; flex-direction: column; cursor: pointer; }
-        .p-img { width: 100%; aspect-ratio: 1.2 / 1; border-radius: 24px; overflow: hidden; margin-bottom: 30px; border: 1px solid #222; }
-        .p-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0.7; }
-        .p-card:hover .p-img img { transform: scale(1.05); filter: grayscale(0); opacity: 1; }
-        .p-card h3 { font-size: 2rem; margin-bottom: 15px; font-weight: 800; }
-        .p-card p { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
-        .project-btn { display: inline-flex; align-items: center; gap: 12px; background: #1a1a1a; color: #fff; padding: 8px 8px 8px 25px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; width: fit-content; text-transform: capitalize; }
-        .mini-circle { width: 32px; height: 32px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff;}
+        /* --- 05. PROJECTS GRID (Nova Card Style) --- */
+        #projects-grid { padding: 100px 7%; background: #000; display: grid; grid-template-columns: 1fr 1fr; gap: 80px 40px; }
+        .project-card-ui { cursor: pointer; display: flex; flex-direction: column; }
+        .img-mask { width: 100%; aspect-ratio: 1.2 / 1; border-radius: 24px; overflow: hidden; margin-bottom: 30px; }
+        .img-mask img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.7s; opacity: 0.7;}
+        .project-card-ui:hover .img-mask img { filter: grayscale(0); opacity: 1; transform: scale(1.05); }
+        .project-card-ui h3 { font-size: 2.2rem; margin-bottom: 15px; }
+        .project-card-ui p { color: #555; font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; max-width: 90%; }
+        .view-case-btn { display: flex; align-items: center; gap: 15px; background: #1a1a1a; width: fit-content; border-radius: 50px; padding: 8px 8px 8px 25px; color: #fff; font-size: 0.8rem; font-weight: 700; text-decoration: none; }
+        .mini-arrow { width: 30px; height: 30px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
-        /* --- 06. CONTACT & FOOTER --- */
-        #contact { padding: 150px 7%; background: radial-gradient(circle at top left, #2a0c00 0%, #000 50%); }
-        form { margin-top: 60px; max-width: 800px; display: grid; gap: 20px; }
-        input, textarea { background: #000; border: 1px solid #222; color: #fff; padding: 22px; border-radius: 12px; width: 100%; font-family: var(--font-b); }
-        .submit-trigger { background: #fff; border: none; padding: 22px; border-radius: 12px; font-family: var(--font-h); font-weight: 900; cursor: pointer; }
-        footer { text-align: center; padding: 60px; font-size: 0.65rem; text-transform: uppercase; font-family: var(--font-h); opacity: 0.3; letter-spacing: 2px; }
+        /* --- 06. CONTACT ME SECTION (The New One) --- */
+        #contact { padding: 150px 7% 100px; background: #000; display: grid; grid-template-columns: 1fr 1.1fr; gap: 100px; align-items: center; }
+        .contact-left h2 { font-size: clamp(3rem, 6vw, 4.5rem); line-height: 0.95; font-weight: 900; margin-bottom: 40px; letter-spacing: -2px; }
+        .contact-left p.sub { font-size: 1.4rem; font-weight: 600; color: #fff; line-height: 1.3; margin-bottom: 35px; }
+        .contact-left p.hint { color: #444; font-size: 1.05rem; line-height: 1.6; }
+        
+        .contact-form-card { background: #0d0d0d; border-radius: 24px; padding: 50px; border: 1px solid #111; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .input-group { display: flex; flex-direction: column; gap: 12px; }
+        .input-group label { color: #555; font-size: 0.75rem; font-weight: 700; font-family: var(--font-h); }
+        .input-group label span { color: var(--main-orange); }
+        
+        .contact-input { background: #151515; border: 1px solid #222; border-radius: 40px; padding: 15px 30px; color: #fff; font-family: var(--font-b); font-size: 0.9rem; width: 100%; outline: none; transition: 0.3s; }
+        .contact-input:focus { border-color: var(--main-orange); }
+        textarea.contact-input { border-radius: 20px; min-height: 150px; }
+        
+        .submit-full-btn { background: var(--main-orange); color: #fff; border: none; width: 100%; padding: 22px; border-radius: 40px; font-family: var(--font-h); font-weight: 900; text-transform: uppercase; cursor: pointer; font-size: 0.85rem; transition: var(--transition); }
+        .submit-full-btn:hover { filter: brightness(1.1); transform: translateY(-3px); }
 
-        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.1, 0, 0, 1); }
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.1, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        
+
+        footer { text-align: center; padding: 60px; font-family: var(--font-h); font-size: 0.65rem; color: #222; text-transform: uppercase; letter-spacing: 2px; }
+
         @media (max-width: 1000px) {
-            #about, .recent-header-grid, .project-grid-visual, .hero-body { grid-template-columns: 1fr; }
-            .hero-right, .work-year { position: static; padding: 0; transform: none; margin-top: 20px; width: fit-content;}
-            .hero-body { margin-bottom: 20px; }
-            .hero-stat-bar { gap: 20px; flex-wrap: wrap; }
+            #contact, #projects-grid, #about, .hero-content, .recent-header-flex, .form-row { grid-template-columns: 1fr; }
+            .year-tag, .hero-right-side { position: relative; left: 0; padding: 0; top: 0; margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Nav -->
     <nav class="nav-island">
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#recent-work-list">Work</a>
-        <a href="#contact" class="get-touch-btn">Get In Touch <div class="mini-circle"><i class="fas fa-arrow-right"></i></div></a>
+        <a href="#work-list">Work</a>
+        <a href="#contact" class="get-touch-btn btn-mini-nav">Get In Touch <div class="orange-arrow-circle" style="width:28px; height:28px; font-size: 0.6rem;"><i class="fas fa-arrow-right"></i></div></a>
     </nav>
 
-    <!-- HERO -->
+    <!-- 01 Hero -->
     <main id="home">
-        <div class="hero-top-nav">Niranjan.</div>
-        <div class="hero-body">
-            <div class="hero-left">
-                <p>Hey, I'm a</p>
+        <div class="hero-logo-row">Folioblox</div>
+        <div class="hero-content">
+            <div class="hero-main">
+                <p style="color:#fff; font-weight: 600; margin-bottom: 25px; font-size: 1.1rem;">Hey, I'm a</p>
                 <h1>Creative<br>Director</h1>
+                <div class="hero-stat-row">
+                    <div class="h-stat-unit"><span>#01</span><p>Insight Systems</p></div>
+                    <div class="h-stat-unit"><span>#02</span><p>AI Logistics</p></div>
+                    <div class="h-stat-unit"><span>#03</span><p>Performance UX</p></div>
+                </div>
             </div>
-            <div class="hero-right">
+            <div class="hero-right-side">
                 <h2>Great design should feel invisible.</h2>
-                <p>Translating mathematical logic and scalable patterns into impactful identities.</p>
+                <p>Translating mathematical logic and industrial scale patterns into premium impactful identities.</p>
             </div>
-        </div>
-        <div class="hero-stat-bar">
-            <div class="h-stat"><span>#01</span><p>Data Design</p></div>
-            <div class="h-stat"><span>#02</span><p>AI Modeling</p></div>
-            <div class="h-stat"><span>#03</span><p>Visualization</p></div>
-            <div class="h-stat"><span>#04</span><p>Performance</p></div>
         </div>
     </main>
 
-    <!-- LOGOS -->
-    <div class="trusted-row">
-        <div class="t-label">Strategic Alliances</div>
-        <div class="t-logos">
+    <!-- Brands -->
+    <div class="trusted-transition">
+        <div class="trust-lbl">Data Strategic Partners</div>
+        <div class="trust-brands">
             <span>SUPA BLOX</span>
             <span>HYPE BLOX</span>
             <span>FRAME BLOX</span>
         </div>
     </div>
 
-    <!-- ABOUT -->
+    <!-- About -->
     <section id="about" class="reveal">
-        <div class="about-content">
+        <div class="about-content-left">
             <span class="label-orange">About me</span>
             <h2 class="about-title">Analyst.<br>Strategist.<br>Insight partner.</h2>
-            <h3 class="about-sub">Blending clarity and creativity to build data narratives with purpose.</h3>
-            <p class="about-p">Engineering precision (8.9 CGPA) combined with professional pattern discovery across industries.</p>
-            <p class="about-p">Having traveled across 17 Indian states, I prioritize global scalability—building blueprints for massive growth.</p>
+            <p class="about-highlight">Blending clarity and creativity to build data narratives with business purpose.</p>
+            <p class="about-text">Niranjan Kumar—Engineering professional merging systematic logic (8.9 CGPA) with innovative predictive visualization strategies.</p>
+            <p class="about-text">Leveraging experiences across 17 Indian states to provide an adaptive, world-class analytical approach to scale your vision.</p>
+            <a href="#" class="btn-pill-action">Full Professional CV <div class="orange-arrow-circle"><i class="fas fa-arrow-right"></i></div></a>
         </div>
-        <div class="about-image"><img src="Profile/Pic.png" alt="Profile" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'"></div>
+        <div class="about-img"><img src="Profile/Pic.png" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'"></div>
     </section>
 
-    <!-- NEW RECENT WORK LIST (Top of projects) -->
-    <section id="recent-work-list" class="reveal">
-        <div class="recent-header-grid">
+    <!-- Recent Work (List Section) -->
+    <section id="work-list" class="reveal">
+        <div class="recent-header-flex">
             <div>
                 <span class="label-orange">Recent Work</span>
                 <h2 class="about-title">Latest Projects & Collaborations</h2>
             </div>
-            <p>A look at what I've been working on lately—designs, stories, and creative partnerships.</p>
+            <p>A high-level view of my analytical systems—designs, architectures, and predictive strategies.</p>
         </div>
 
-        <div class="work-list-item">
-            <span class="work-cat">Business Intelligence Architecture</span>
-            <h3 class="work-title">NYC Logistics Data Core</h3>
-            <p class="work-desc">Comprehensive investigation mapping environmental and sensory patterns for urban planning modules.</p>
-            <span class="work-year">2025</span>
+        <div class="list-card">
+            <span class="work-cat">Logistics Engine</span>
+            <h3 class="work-h">NYC Diagnostics Suite</h3>
+            <p class="work-d">Mapping environmental sensory patterns to create urban efficiency benchmarks for municipal datasets.</p>
+            <span class="year-tag">2025</span>
         </div>
-
-        <div class="work-list-item">
-            <span class="work-cat">AI Predictive Modeling</span>
-            <h3 class="work-title">Clinical Diagnostics Engine</h3>
-            <p class="work-desc">Automating disease identification marker detection using relational SQL logic and Scikit modules.</p>
-            <span class="work-year">2024</span>
-        </div>
-
-        <div class="work-list-item">
-            <span class="work-cat">Financial System Design</span>
-            <h3 class="work-title">Portfolio Strategy Lab</h3>
-            <p class="work-desc">Refining large-market inventory datasets to provide 90% valuation accuracy in automotive trading.</p>
-            <span class="work-year">2023</span>
+        <div class="list-card">
+            <span class="work-cat">Healthcare AI</span>
+            <h3 class="work-h">Disease Prediction Core</h3>
+            <p class="work-d">Leveraging Scikit classification modules to automate diagnostics based on structured patient history logs.</p>
+            <span class="year-tag">2024</span>
         </div>
     </section>
 
-    <!-- PROJECTS GRID -->
-    <section id="projects" class="reveal">
-        <div class="project-grid-visual">
-            <div class="p-card">
-                <div class="p-img"><img src="DA Cards/Air_Pollution.png"></div>
-                <h3>Urban Insights</h3>
-                <p>Environmental sensor mapping with high visual precision for large scale metropolitan monitoring.</p>
-                <div class="project-btn">View Report <div class="mini-circle"><i class="fas fa-arrow-right"></i></div></div>
-            </div>
-            <div class="p-card">
-                <div class="p-img"><img src="DA Cards/Lungs cancer.png"></div>
-                <h3>Logic Modules</h3>
-                <p>Clinical diagnostic dashboards connecting SQL databases with real-time analytics interfaces.</p>
-                <div class="project-btn">View Live <div class="mini-circle"><i class="fas fa-arrow-right"></i></div></div>
-            </div>
+    <!-- Visual Grid -->
+    <section id="projects-grid" class="reveal">
+        <div class="project-card-ui">
+            <div class="img-mask"><img src="DA Cards/Air_Pollution.png"></div>
+            <h3>Urban Dynamics</h3>
+            <p>Developing high-accuracy investigative sensor mapping to solve large-scale metropolitan logistics puzzles.</p>
+            <a href="#" class="view-case-btn">Details <div class="mini-arrow"><i class="fas fa-arrow-right"></i></div></a>
+        </div>
+        <div class="project-card-ui">
+            <div class="img-mask"><img src="DA Cards/Lungs cancer.png"></div>
+            <h3>Clinical Logic</h3>
+            <p>Custom SQL architectures powering interactive diagnostic visualizer modules for real-time patient observation.</p>
+            <a href="#" class="view-case-btn">Explore <div class="mini-arrow"><i class="fas fa-arrow-right"></i></div></a>
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- Contact Me (Final Update Section) -->
     <section id="contact" class="reveal">
-        <h2 class="about-title">Launch A <br>Mission.</h2>
-        <form action="https://formspree.io/f/xyzpaeop" method="POST">
-            <input type="text" placeholder="Identity Name" required>
-            <input type="email" placeholder="Professional Email" required>
-            <textarea rows="5" placeholder="Project Description / Proposal..."></textarea>
-            <button type="submit" class="submit-trigger">Transmit Link</button>
-        </form>
+        <div class="contact-left">
+            <span class="label-orange">Contact me</span>
+            <h2>Let's Create<br>Something<br>Meaningful</h2>
+            <p class="about-highlight" style="font-size: 1.1rem;">Whether you're starting from scratch or need a brand refresh, I'm here to help bring your vision to life.</p>
+            <p class="contact-left hint">Ready to talk? Fill out the form or drop me a message—let's see how we can work together.</p>
+        </div>
+
+        <div class="contact-form-card">
+            <form action="https://formspree.io/f/xyzpaeop" method="POST">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>First name <span>*</span></label>
+                        <input type="text" name="first_name" placeholder="Niranjan" class="contact-input" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Last name <span>*</span></label>
+                        <input type="text" name="last_name" placeholder="Kumar" class="contact-input" required>
+                    </div>
+                </div>
+                
+                <div class="input-group" style="margin-bottom: 30px;">
+                    <label>Email <span>*</span></label>
+                    <input type="email" name="email" placeholder="example@email.com" class="contact-input" required>
+                </div>
+
+                <div class="input-group" style="margin-bottom: 30px;">
+                    <label>Message <span>*</span></label>
+                    <textarea name="message" placeholder="Describe your vision or inquiry details..." class="contact-input" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-full-btn">Submit Signal</button>
+            </form>
+        </div>
     </section>
 
-    <footer>NIRANJAN KUMAR 2026 // SYSTEM: ZED BLACK & WHITE // BUILT WITH DATA</footer>
+    <footer>Niranjan Kumar &copy; 2026 // MONO-ACCENT PERFORMANCE FRAMEWORK // DATA-FIRST</footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section, main');
-            const navLinks = document.querySelectorAll('.nav-island a');
-            let current = "";
-            sections.forEach(s => { if(pageYOffset >= s.offsetTop - 300) current = s.getAttribute("id"); });
-            navLinks.forEach(link => { link.classList.remove("active"); if(link.getAttribute("href").includes(current)) link.classList.add("active"); });
-        });
     </script>
 </body>
 </html>
