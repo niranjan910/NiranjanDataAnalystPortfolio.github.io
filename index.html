@@ -5,241 +5,270 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niranjan Kumar | Designer Portfolio</title>
     
-    <!-- Premium Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Modern High-End Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
-            --bg: #000000;
-            --surface: #0a0a0a;
-            --accent: #FF5500; /* Vibrant Orange */
-            --accent-glow: rgba(255, 85, 0, 0.3);
-            --glass: rgba(255, 255, 255, 0.05);
-            --border: rgba(255, 255, 255, 0.1);
-            --text-main: #FFFFFF;
-            --text-dim: #A0A0A0;
-            --radius: 30px;
+            --bg-black: #050505;
+            --accent-orange: #ff4d00;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --font-head: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --rounded: 60px; /* Strong curves as per reference */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.5; overflow-x: hidden; }
-
-        h1, h2, h3 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -2px; line-height: 0.9; }
-
-        /* Navigation Island */
-        .nav-island {
-            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
-            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px);
-            padding: 8px 12px; border-radius: 50px; border: 1px solid var(--border);
-            display: flex; align-items: center; gap: 20px; z-index: 1000;
+        body { 
+            background-color: var(--bg-black); 
+            font-family: var(--font-body); 
+            color: var(--text-white); 
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
-        .nav-island a { color: var(--text-dim); text-decoration: none; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; padding: 8px 15px; border-radius: 20px; }
-        .nav-island a:hover, .nav-island a.active { color: white; background: var(--glass); }
-        .get-touch-btn { background: var(--accent) !important; color: white !important; }
 
-        section { padding: 120px 7% 50px; position: relative; }
-
-        /* HERO SECTION */
-        #hero { 
-            min-height: 100vh; display: flex; align-items: center; 
-            background: radial-gradient(circle at 80% 20%, #441100 0%, transparent 40%),
-                        radial-gradient(circle at 20% 80%, #110022 0%, transparent 40%);
+        /* --- HOME / HERO SECTION --- */
+        #hero-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 800px;
+            background: linear-gradient(135deg, #7c1a00 0%, #3e0d00 30%, #000000 70%);
+            /* We simulate the mesh glow using pseudo elements for maximum impact */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border-bottom-left-radius: var(--rounded);
+            border-bottom-right-radius: var(--rounded);
         }
-        .hero-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; width: 100%; }
-        .hero-content h1 { font-size: clamp(3rem, 10vw, 8rem); margin-bottom: 30px; }
-        .hero-desc { color: var(--text-dim); max-width: 400px; margin-bottom: 40px; font-size: 1.1rem; }
+
+        /* Glow effect in background */
+        #hero-container::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 60%;
+            height: 70%;
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.4) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        header {
+            width: 100%;
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo { font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+
+        nav ul { list-style: none; display: flex; align-items: center; gap: 30px; }
+        nav ul li a { text-decoration: none; color: var(--text-white); font-weight: 500; font-size: 0.9rem; opacity: 0.8; transition: 0.3s; }
+        nav ul li a:hover { opacity: 1; }
+
+        .btn-touch {
+            background: #fff;
+            color: #000;
+            padding: 8px 12px 8px 25px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-touch .arrow-circle {
+            width: 35px;
+            height: 35px;
+            background: var(--accent-orange);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-main {
+            flex-grow: 1;
+            padding: 0 8% 50px;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-title-area span { 
+            font-size: 1.1rem; 
+            display: block; 
+            margin-bottom: 20px; 
+            font-weight: 600; 
+        }
+
+        .hero-title-area h1 {
+            font-family: var(--font-head);
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.85;
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+
+        .hero-side-text { margin-bottom: 80px; }
+        .hero-side-text h2 { font-size: 1.8rem; margin-bottom: 20px; line-height: 1.3; max-width: 300px; }
+        .hero-side-text p { color: var(--text-gray); max-width: 250px; line-height: 1.6; }
+
+        .hero-image {
+            position: absolute;
+            right: 0%;
+            bottom: 0;
+            height: 90%;
+            width: auto;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        /* --- MINI CARDS AT HERO BOTTOM --- */
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+            margin-top: 50px;
+        }
+        .stat-item h3 { color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 10px; }
+        .stat-item p { font-size: 0.85rem; font-weight: 500; }
+
+        /* --- TRUSTED SECTION (The Transition) --- */
+        .trusted-bar {
+            background-color: var(--bg-black);
+            padding: 80px 8% 100px;
+            margin-top: -30px; /* Pull it up to hide corners behind curves */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .trusted-text { font-size: 0.85rem; color: var(--text-gray); max-width: 150px; font-weight: 500; }
         
-        /* THE PERSON BEHIND THE IMAGE (Mimics circular glow in photo) */
-        .hero-visual { position: relative; width: 100%; height: 600px; }
-        .hero-img-box {
-            width: 100%; height: 100%; background: #151515; border-radius: var(--radius);
-            overflow: hidden; position: relative; border: 1px solid var(--border);
-        }
-        .hero-img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .floating-badge {
-            position: absolute; bottom: 30px; left: -30px; background: var(--glass);
-            backdrop-filter: blur(15px); padding: 25px; border-radius: 20px; 
-            border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
+        .partner-logos { display: flex; align-items: center; gap: 50px; }
+        .partner-logos span { font-weight: 800; font-family: var(--font-head); opacity: 0.7; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
+        .partner-logos i { font-size: 1.5rem; }
 
-        /* CLIENT/PARTNER LOGO BAR */
-        .partner-bar { display: flex; justify-content: center; gap: 60px; opacity: 0.4; padding: 40px 0; border-top: 1px solid var(--border); }
-        .partner-bar span { font-family: 'Montserrat'; font-weight: 800; }
-
-        /* PORTFOLIO GRID */
-        .section-tag { color: var(--accent); text-transform: uppercase; font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 20px; letter-spacing: 2px; }
-        .grid-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
-        .grid-header h2 { font-size: 4rem; max-width: 600px; }
+        /* --- SUBSEQUENT SECTIONS (Styled like your image) --- */
+        section { padding: 120px 8%; }
+        .label { color: var(--accent-orange); text-transform: uppercase; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; display: block; margin-bottom: 25px; }
+        .section-header h2 { font-family: var(--font-head); font-size: 3rem; margin-bottom: 40px; }
         
-        .project-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; }
-        .card { 
-            position: relative; height: 600px; border-radius: var(--radius); 
-            overflow: hidden; border: 1px solid var(--border); transition: 0.4s; 
+        .projects-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
+        .project-img-box {
+            width: 100%; height: 500px;
+            background: #151515; border-radius: 30px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 25px;
         }
-        .card:hover { transform: scale(0.98); }
-        .card-img { width: 100%; height: 100%; object-fit: cover; }
-        .card-overlay { 
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px;
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-        }
-        .orange-btn { width: 50px; height: 50px; border-radius: 50%; background: var(--accent); border: none; color: white; cursor: pointer; float: right; }
-
-        /* SERVICES STACK */
-        .services-stack { display: flex; flex-direction: column; gap: 15px; margin-top: 50px; }
-        .service-row {
-            padding: 40px; background: var(--surface); border: 1px solid var(--border); 
-            border-radius: var(--radius); display: flex; justify-content: space-between; align-items: center;
-        }
-        .service-row:hover { background: #111; border-color: var(--accent); }
-
-        /* CONTACT SECTION WITH MASSIVE ACCENT */
-        #contact { background: radial-gradient(circle at bottom right, #552200, transparent 60%); padding: 150px 7%; }
-        .contact-big-title { font-size: clamp(4rem, 15vw, 12rem); opacity: 0.9; }
-
-        /* Form styling as seen in Bottom */
-        form { margin-top: 60px; max-width: 800px; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
-        input, textarea { 
-            width: 100%; padding: 25px; background: #0c0c0c; border: 1px solid var(--border);
-            border-radius: 15px; color: white; font-family: 'Inter'; font-size: 1rem;
-        }
-        .submit-btn { width: 100%; padding: 25px; background: var(--accent); border: none; border-radius: 15px; color: white; font-weight: 700; text-transform: uppercase; cursor: pointer; }
-
-        /* --- UTILS --- */
-        .reveal { opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.2, 1, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .project-img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
+        .project-img-box:hover img { filter: grayscale(0%); }
 
         @media (max-width: 900px) {
-            .hero-layout, .project-grid { grid-template-columns: 1fr; }
-            .hero-visual { height: 400px; }
+            .hero-main { grid-template-columns: 1fr; }
+            .hero-image { display: none; }
+            header nav { display: none; }
+            .projects-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <nav class="nav-island">
-        <a href="#hero" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact" class="get-touch-btn">Get in Touch</a>
-    </nav>
+    <!-- Home Section (Exact UI) -->
+    <div id="hero-container">
+        <header>
+            <div class="logo">Niranjan.</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#journey">Journey</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact" class="btn-touch">
+                        Get in touch 
+                        <div class="arrow-circle"><i class="fas fa-arrow-right"></i></div>
+                    </a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <section id="hero">
-        <div class="hero-layout">
-            <div class="hero-content">
-                <span class="section-tag">Hey, I'm Niranjan</span>
-                <h1>Creative Director</h1>
-                <p class="hero-desc">Building bold, scalable experiences and converting complex data into visual stories that drive impact.</p>
-                <button class="cta-btn submit-btn" style="width: auto; padding: 20px 50px;">View Case Studies</button>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-img-box">
-                    <img src="Profile/Pic.png" alt="Creative Look" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop'">
+        <div class="hero-main">
+            <div class="hero-title-area">
+                <span>Hey, I'm a</span>
+                <h1>Creative<br>Analyst</h1>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>#01</h3>
+                        <p>Machine Learning</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>#02</h3>
+                        <p>Visual Intelligence</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>#03</h3>
+                        <p>SQL Optimization</p>
+                    </div>
                 </div>
-                <div class="floating-badge">
-                    <h3>Impact-Led<br>Designer</h3>
-                    <p style="font-size: 0.8rem; margin-top: 10px; color: var(--text-dim);">8.9 CGPA Engineering Precision</p>
+            </div>
+
+            <div class="hero-side-area">
+                <div class="hero-side-text">
+                    <h2>Great design should feel invisible.</h2>
+                    <p>Building high-accuracy predictive models and data-driven narratives for global brands.</p>
                 </div>
             </div>
+            
+            <!-- Absolute position image simulating your photo placement -->
+            <img src="Profile/Pic.png" alt="Creative Design Look" class="hero-image" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=600&auto=format&fit=crop'">
         </div>
-    </section>
-
-    <div class="partner-bar">
-        <span>/ SUBA BLOX</span>
-        <span>/ HYPE INDEX</span>
-        <span>/ FRAME DATA</span>
-        <span>/ ULTRA CORE</span>
     </div>
 
-    <section id="projects" class="reveal">
-        <div class="grid-header">
-            <div>
-                <span class="section-tag">Selected Works</span>
-                <h2>Shaping Brands & Systems That Drive Scale</h2>
-            </div>
+    <!-- Trusted By / Logo Section (Curve Transition) -->
+    <div class="trusted-bar">
+        <div class="trusted-text">Trusted by Data Teams globally</div>
+        <div class="partner-logos">
+            <span><i class="far fa-circle"></i> Supa Blox</span>
+            <span><i class="fas fa-hourglass-start"></i> Hype Blox</span>
+            <span><i class="fas fa-adjust"></i> Frame Blox</span>
+            <span><i class="fab fa-cloudversify"></i> Ultra Core</span>
         </div>
+    </div>
 
-        <div class="project-grid">
-            <div class="card">
-                <img src="DA Cards/Air_Pollution.png" class="card-img" onerror="this.src='https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop'">
-                <div class="card-overlay">
-                    <h3>NYC Analytics Suite</h3>
-                    <p>Open Source Visual Interface</p>
-                    <button class="orange-btn"><i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-            <div class="card" style="height: auto;">
-                <div style="background: var(--surface); height: 100%; padding: 50px;">
-                    <span class="section-tag">Services</span>
-                    <h2 style="font-size: 2.5rem; margin: 30px 0;">Solving complex problems through clean logic.</h2>
-                    <p class="hero-desc">From SQL architectures to Power BI dashboard design, I deliver data-backed creative.</p>
-                </div>
-            </div>
+    <!-- Analytics Showcase Section -->
+    <section id="projects">
+        <span class="label">Featured Insights</span>
+        <div class="section-header">
+            <h2>Building Models That Move Business.</h2>
         </div>
-    </section>
-
-    <section id="services" class="reveal">
-        <span class="section-tag">Specializations</span>
-        <div class="services-stack">
-            <div class="service-row">
-                <h3>01 / Brand Identity Design</h3>
-                <i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="service-row">
-                <h3>02 / Machine Learning Models</h3>
-                <i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="service-row">
-                <h3>03 / UX & System Strategy</h3>
-                <i class="fas fa-chevron-right"></i>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="reveal">
-        <span class="section-tag">Connect</span>
-        <h1 class="contact-big-title">CONTACT</h1>
         
-        <form>
-            <div class="form-grid">
-                <input type="text" placeholder="First Name*">
-                <input type="email" placeholder="Email*">
+        <div class="projects-row">
+            <div class="project-card">
+                <div class="project-img-box">
+                    <img src="DA Cards/Air_Pollution.png" alt="Analytics View">
+                </div>
+                <h3>New York Urban Logistics Analysis</h3>
             </div>
-            <textarea rows="5" placeholder="Tell me about your project..."></textarea>
-            <button class="submit-btn" style="margin-top: 20px;">Launch Signal <i class="fas fa-paper-plane"></i></button>
-        </form>
+            <div class="project-card">
+                <div class="project-img-box">
+                    <img src="DA Cards/Lungs cancer.png" alt="Machine Learning View">
+                </div>
+                <h3>AI-Driven Diagnostic Visualization</h3>
+            </div>
+        </div>
     </section>
 
-    <footer style="padding: 100px 7%; text-align: center; border-top: 1px solid var(--border);">
-        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Niranjan Kumar</h2>
-        <p style="opacity: 0.5;">Designed in Hyderabad | &copy; 2025 Edition</p>
-    </footer>
-
-    <script>
-        // Reveal on scroll
-        window.addEventListener('scroll', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            reveals.forEach(reveal => {
-                const windowHeight = window.innerHeight;
-                const revealTop = reveal.getBoundingClientRect().top;
-                if (revealTop < windowHeight - 150) {
-                    reveal.classList.add('active');
-                }
-            });
-
-            // Nav link tracking
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-island a');
-            sections.forEach(section => {
-                if (window.scrollY >= section.offsetTop - 200) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href').includes(section.id)) link.classList.add('active');
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
