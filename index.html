@@ -2,279 +2,272 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Niranjan Kumar | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Portfolio of Niranjan Kumar - Professional Data Analyst & Strategist." />
+    <title>Niranjan Kumar | Logic & Data</title>
 
     <link rel="icon" type="image/png" href="Logo/favicon.png" />
     
-    <!-- Optimized Font Strategy -->
+    <!-- Google Fonts optimized for fast loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
             --bg: #000000;
             --surface: #0a0a0a;
-            --accent: #FF4D00; /* Signature Orange */
+            --accent: #FF4D00;
             --white: #FFFFFF;
             --text-gray: #777777;
-            --border: #1a1a1a;
-            --radius-input: 50px;
-            --radius-card: 28px;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-h: 'Montserrat', sans-serif;
+            --font-b: 'Inter', sans-serif;
+            --radius-ui: 50px;
         }
 
-        /* --- STARK PERFORMANCE RESET --- */
+        /* PERFORMANCE RESET */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { 
-            background-color: var(--bg); 
-            font-family: 'Inter', sans-serif; 
-            color: var(--text-gray); 
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg); font-family: var(--font-b); color: var(--text-gray); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; display: block; content-visibility: auto; }
 
-        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; color: var(--white); font-weight: 800; letter-spacing: -0.02em; }
-        a { text-decoration: none; color: inherit; transition: 0.2s ease; }
+        /* Typography logic: Fluid resizing for mobile/desktop */
+        h1, h2, h3, h4 { font-family: var(--font-h); color: var(--white); text-transform: none; }
+        .hero-title { font-size: clamp(2.5rem, 10vw, 7.5rem); line-height: 0.82; letter-spacing: -4px; font-weight: 900; }
+        .sec-h { font-size: clamp(1.8rem, 5vw, 3.5rem); line-height: 1; margin-bottom: 25px; }
 
-        /* --- MINIMAL NAV --- */
+        /* NAV: Center-island logic for mobile/web consistency */
         .nav-island {
-            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
-            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px);
+            position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(15px);
             padding: 8px 12px; border-radius: 50px; border: 1px solid var(--border);
-            display: flex; align-items: center; gap: 4px; z-index: 10000;
+            display: flex; align-items: center; gap: 2px; z-index: 10000; width: fit-content;
         }
+        /* Hidden on tiny mobile if too wide, we handle this via media query */
         .nav-island a { 
-            color: #555; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; 
-            padding: 8px 16px; border-radius: 40px; 
+            color: #666; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; 
+            padding: 10px 15px; border-radius: 40px; text-decoration: none; transition: 0.2s;
         }
-        .nav-island a:hover, .nav-island a.active { color: var(--white); background: #1a1a1a; }
-        .get-touch-btn { background: var(--white) !important; color: #000 !important; font-weight: 800 !important; margin-left: 8px; }
+        .nav-island a:hover, .nav-island a.active { color: var(--white); background: rgba(255,255,255,0.05); }
 
-        section { padding: 120px 8%; max-width: 1400px; margin: 0 auto; }
-        .sec-lbl { color: var(--accent); text-transform: uppercase; font-size: 0.75rem; font-weight: 900; letter-spacing: 0.1em; display: block; margin-bottom: 20px; }
+        /* GENERAL UTILS */
+        section { padding: 100px 7%; max-width: 1350px; margin: 0 auto; content-visibility: auto; contain-intrinsic-size: 1px 1000px; }
+        .label-s { color: var(--accent); text-transform: uppercase; font-size: 0.75rem; font-weight: 900; letter-spacing: 0.15em; display: block; margin-bottom: 20px; }
 
-        /* --- 01. FULL SCREEN HERO --- */
+        /* SECTION: HERO (Fills device screen) */
         #home {
-            height: 100vh;
+            height: 100vh; height: 100svh; /* svh for mobile address bar stability */
             display: flex; flex-direction: column; justify-content: center;
-            background: radial-gradient(circle at bottom right, #240c00 0%, #000000 65%);
+            padding: 0 10%; background: radial-gradient(circle at bottom right, #240c00 0%, #000 65%);
             border-bottom: 1px solid var(--border);
         }
-        .hero-title { font-size: clamp(3rem, 11vw, 7.5rem); line-height: 0.85; letter-spacing: -5px; margin: 20px 0; }
-        .hero-p { color: #fff; font-size: 1.1rem; max-width: 500px; font-weight: 300; }
+        .hero-desc { color: #fff; font-size: clamp(0.9rem, 2vw, 1.15rem); max-width: 450px; font-weight: 300; opacity: 0.9; margin-top: 15px;}
 
-        /* --- 02. PROFILE --- */
-        .grid-profile { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 80px; align-items: start; }
-        .p-headline { font-size: 3rem; margin-bottom: 30px; line-height: 1.1; }
-        .p-img { width: 100%; height: 500px; border-radius: var(--radius-card); border: 1px solid var(--border); overflow: hidden; }
-        .p-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); }
+        /* SECTION: PROFILE GRID */
+        .p-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .p-img-frame { width: 100%; aspect-ratio: 4 / 5; border-radius: 25px; border: 1px solid var(--border); overflow: hidden; }
+        .p-img-frame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
 
-        /* --- 03. RECORDS LOG (Exp & Education Combined) --- */
-        .log-entry { display: grid; grid-template-columns: 160px 1fr 100px; padding: 40px 0; border-bottom: 1px solid var(--border); }
-        .log-entry:hover { background: rgba(255, 77, 0, 0.02); }
-        .log-meta { font-size: 0.65rem; font-weight: 800; color: #444; text-transform: uppercase; }
-        .log-org { font-size: 0.7rem; color: var(--accent); font-weight: 800; letter-spacing: 1px; display: block; margin-bottom: 5px; }
-        .log-title { font-size: 1.6rem; color: #fff; text-transform: none; line-height: 1.2; }
+        /* LOG ENTRY DATA PATTERN */
+        .log { display: grid; grid-template-columns: 140px 1fr; padding: 40px 0; border-bottom: 1px solid var(--border); gap: 20px; }
+        .l-date { font-size: 0.65rem; color: #444; font-weight: 900; }
+        .l-h { font-size: clamp(1.1rem, 2.5vw, 1.6rem); color: #fff; }
 
-        /* --- 04. COMPACT 4-CARD GRID --- */
-        .grid-small-work { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; }
-        .p-card { background: var(--surface); padding: 25px; border-radius: 20px; border: 1px solid var(--border); }
-        .p-img-box { width: 100%; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; border: 1px solid #151515; margin-bottom: 25px; }
-        .p-img-box img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(100%); transition: 0.3s; }
-        .p-card:hover img { opacity: 1; filter: grayscale(0%); }
-        .p-title { font-size: 1.4rem; margin-bottom: 10px; }
+        /* PROJECT GRID: 2x2 Logic */
+        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .w-card { background: var(--surface); padding: 25px; border-radius: 24px; border: 1px solid var(--border); text-decoration: none; }
+        .w-mask { width: 100%; aspect-ratio: 3/2; border-radius: 12px; overflow: hidden; border: 1px solid #151515; margin-bottom: 25px; }
+        .w-mask img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s ease-out; opacity: 0.6; filter: grayscale(1); }
+        .w-card:hover .w-mask img { opacity: 1; filter: grayscale(0); }
+        .pill-a { display: inline-flex; align-items: center; gap: 10px; background: #000; padding: 6px 6px 6px 18px; border-radius: 50px; border: 1px solid #222; font-size: 0.75rem; font-weight: 800; color: #fff;}
+        .o-dot { width: 28px; height: 28px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        /* CONTACT FORM: Reference Match */
+        #contact { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .c-high { font-size: 1.25rem; font-weight: 500; color: #fff; margin-bottom: 30px; line-height: 1.3; }
+        .form-wrap { background: var(--surface); padding: clamp(20px, 5vw, 50px); border-radius: 30px; border: 1px solid var(--border); }
+        .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .field label { font-size: 0.7rem; color: #444; font-weight: 800; display: block; margin-bottom: 10px; font-family: var(--font-h); }
+        .field label span { color: var(--accent); }
         
-        .action-pill { 
-            display: inline-flex; align-items: center; gap: 10px; background: #000; color: #fff; padding: 6px 6px 6px 20px; border-radius: 40px; border: 1px solid #1a1a1a; 
-            font-size: 0.75rem; font-weight: 800; text-transform: uppercase; 
-        }
-        .orange-dot { width: 30px; height: 30px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
-
-        /* --- 05. CONTACT (REPLICA) --- */
-        #contact { display: grid; grid-template-columns: 1fr 1.1fr; gap: 100px; align-items: center; }
-        .contact-text h2 { font-size: clamp(3rem, 6vw, 4rem); line-height: 1.0; font-weight: 900; color: #fff; margin-bottom: 30px; letter-spacing: -2px;}
-        .contact-high { font-size: 1.3rem; font-weight: 600; color: #fff; margin-bottom: 30px; max-width: 450px; line-height: 1.3; }
-        .contact-hint { color: #333; font-size: 0.95rem; }
-
-        .form-island { background: var(--surface); padding: 50px; border-radius: 32px; border: 1px solid var(--border); }
-        .row-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
-        .lbl-node { display: block; font-size: 0.7rem; color: #555; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; font-family: 'Montserrat'; }
-        .lbl-node span { color: var(--accent); }
-
-        input, textarea { width: 100%; background: #000; border: 1px solid #1a1a1a; padding: 18px 28px; border-radius: var(--radius-input); color: #fff; font-family: 'Inter'; outline: none; font-size: 0.9rem; }
+        input, textarea { width: 100%; background: #000; border: 1px solid #1a1a1a; padding: 18px 25px; color: #fff; border-radius: var(--radius-ui); outline: none; font-size: 0.95rem; }
         textarea { border-radius: 20px; min-height: 140px; resize: none; }
-        input:focus { border-color: #333; }
+        input:focus { border-color: #444; }
+        
+        .submit-btn { width: 100%; background: var(--accent); color: #fff; border: none; padding: 22px; border-radius: var(--radius-ui); font-family: var(--font-h); font-weight: 900; text-transform: uppercase; cursor: pointer; transition: 0.2s; font-size: 0.8rem;}
+        .submit-btn:hover { background: #d03e00; }
 
-        .final-btn { 
-            width: 100%; background: var(--accent); color: #fff; border: none; padding: 22px; 
-            border-radius: var(--radius-input); font-family: 'Montserrat'; font-weight: 900; 
-            text-transform: uppercase; cursor: pointer; transition: 0.2s; font-size: 0.8rem;
-        }
-        .final-btn:hover { background: #e04500; transform: translateY(-2px); }
+        footer { text-align: center; padding: 80px 0 140px; border-top: 1px solid var(--border); font-size: 0.6rem; color: #333; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
 
-        footer { text-align: center; padding: 50px; font-size: 0.65rem; color: #222; border-top: 1px solid var(--border); font-family: 'Montserrat'; letter-spacing: 2px;}
-
-        /* MOBILE ADJUSTMENTS */
+        /* RESPONSIVE REVOLUTION: One Breakpoint logic for high speed */
         @media (max-width: 992px) {
-            #home { padding-top: 100px; height: auto; padding-bottom: 100px;}
-            .grid-profile, #contact, .grid-small-work, .log-entry, .row-split { grid-template-columns: 1fr; gap: 40px; }
-            section { padding-top: 80px; }
-            .hero-title { font-size: 4rem; }
-            .log-entry { text-align: center; justify-items: center; }
+            .p-grid, .work-grid, #contact { grid-template-columns: 1fr; }
+            .p-grid div:nth-child(1) { order: 2; } /* Mobile priority: Text after Image */
+            .p-grid div:nth-child(2) { order: 1; margin-bottom: 30px;}
+            section { padding: 80px 7%; }
+            .hero-title { letter-spacing: -2px; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-island a { padding: 8px 10px; font-size: 0.6rem; }
+            .nav-island { width: 95%; justify-content: center; }
+            .input-row { grid-template-columns: 1fr; gap: 25px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- MOBILE-PERFECT NAVIGATION -->
     <nav class="nav-island">
         <a href="#home">Home</a>
-        <a href="#about">Bio</a>
-        <a href="#history">Log</a>
-        <a href="#edu">Acadamy</a>
-        <a href="#projects">Work</a>
-        <a href="#contact" class="get-touch-btn">Get touch</a>
+        <a href="#profile">Bio</a>
+        <a href="#records">Log</a>
+        <a href="#edu">Acad</a>
+        <a href="#work">Work</a>
+        <a href="#contact" class="get-touch-btn">Get Touch</a>
     </nav>
 
-    <!-- HERO: SCREEN FIT -->
+    <!-- FULL SCREEN START -->
     <main id="home">
-        <span class="sec-lbl">Niranjan Kumar // Portfolio // 2026</span>
+        <span class="label-s">Initial Pulse // Niranjan 2026</span>
         <h1 class="hero-title">PRECISION<br>DATA VISION.</h1>
-        <p class="hero-p">Strategist developing systematic analytical frameworks through mathematical modeling and logic optimization.</p>
+        <p class="hero-desc">Data Strategist engineering mathematical logic models into scalable business blueprints.</p>
     </main>
 
-    <!-- BIO: PROFILE -->
-    <section id="about" class="grid-profile">
-        <div>
-            <span class="sec-lbl">01 // The Persona</span>
-            <h2 class="p-headline">Analyst.<br>Strategist.</h2>
-            <p style="color:#fff; margin-bottom: 25px; font-size:1.15rem; font-weight:600;">Systematic software logic applied to Industrial-Scale business variables.</p>
-            <p>I apply an Engineering background (8.9 CGPA) to uncover growth systems in legacy metrics. My adaptability, defined by travel across 17 Indian states, is the absolute core of my logic.</p>
+    <!-- BIO: DUAL COLUMN -->
+    <section id="profile" class="p-grid">
+        <div class="text-p">
+            <span class="label-s">01 // Identity</span>
+            <h2 class="sec-h">Analyst.<br>Strategist.</h2>
+            <p class="c-high">Applied computer science precision to global-scale metrics.</p>
+            <p>I am Niranjan Kumar. Based in Hyderabad, I apply an 8.9 CGPA B.Tech engineering core to identify logic patterns in data. Curiosity is my absolute constant.</p>
         </div>
-        <div class="p-img">
-            <!-- Swap "Profile/Pic.png" with your actual photo path -->
-            <img src="Profile/Pic.png" alt="Profile" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'">
-        </div>
-    </section>
-
-    <!-- LOG: EXPERIENCE -->
-    <section id="history">
-        <span class="sec-lbl">02 // Experience Log</span>
-        <div class="log-entry">
-            <span class="log-meta">LOG // 2025</span>
-            <div>
-                <span class="log-org">ADVANCED DATA ANALYST // HYD</span>
-                <h3 class="log-title">Naresh i Technologies</h3>
-            </div>
-            <span class="log-meta">ONGOING</span>
-        </div>
-        <div class="log-entry" style="border-bottom: none;">
-            <span class="log-meta">LOG // 2024</span>
-            <div>
-                <span class="log-org">ML TRAINEE ENGINEER</span>
-                <h3 class="log-title">TechieNest Intern</h3>
-            </div>
-            <span class="log-meta">COMPLETED</span>
+        <div class="p-img-frame">
+            <img src="Profile/Pic.png" alt="Profile" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'" loading="eager">
         </div>
     </section>
 
-    <!-- LOG: EDUCATION RECORD -->
-    <section id="edu" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-        <span class="sec-lbl">03 // Credentials</span>
-        
-        <div class="log-entry">
-            <span class="log-meta">GRAD 2023</span>
+    <!-- HISTORY TRACKS -->
+    <section id="records">
+        <span class="label-s">02 // Tracking History</span>
+        <div class="log">
+            <span class="l-date">LOGGED // 2025</span>
             <div>
-                <span class="log-org">IPS COLLEGE OF TECH & MGMT</span>
-                <h3 class="log-title">B.Tech (CSE) — Software logic Portfolio 8.9 CGPA</h3>
+                <p style="color:var(--accent); font-weight:900; font-size:0.65rem; letter-spacing:2px; margin-bottom:5px;">NARESH I TECH (HYD)</p>
+                <h3 class="l-h">Advanced Data Analyst (Trainee)</h3>
             </div>
-            <span class="log-meta">GWL, IN</span>
         </div>
-
-        <div class="log-entry" style="border:none;">
-            <span class="log-meta">SCHOOLING</span>
+        <div class="log" style="border:none;">
+            <span class="l-date">LOGGED // 2024</span>
             <div>
-                <span class="log-org">DAV PUBLIC SCHOOL (CBSE)</span>
-                <h3 class="log-title">Senior Sec High Honors — Grade: 8.7</h3>
-            </div>
-            <span class="log-meta">WB, India</span>
-        </div>
-    </section>
-
-    <!-- WORK: 4 CARDS -->
-    <section id="projects">
-        <span class="sec-lbl">04 // Select Insights</span>
-        <div class="grid-small-work">
-            <div class="p-card">
-                <div class="p-img-box"><img src="DA Cards/Air_Pollution.png"></div>
-                <h4 class="p-title">NYC Sensory hub</h4>
-                <p style="font-size: 0.8rem; margin-bottom: 20px;">Environmental sensor investigative mapping.</p>
-                <a href="#" class="action-pill">Study <div class="orange-dot"><i class="fas fa-arrow-right"></i></div></a>
-            </div>
-
-            <div class="p-card">
-                <div class="p-img-box"><img src="DA Cards/Lungs cancer.png"></div>
-                <h4 class="p-title">Clinical AI Engine</h4>
-                <p style="font-size: 0.8rem; margin-bottom: 20px;">SQL architecture powering health diagnostics.</p>
-                <a href="#" class="action-pill">Review <div class="orange-dot"><i class="fas fa-arrow-right"></i></div></a>
-            </div>
-
-            <div class="p-card">
-                <div class="p-img-box"><img src="ML Cards image/Car Price prediction.png"></div>
-                <h4 class="p-title">Yield predictor</h4>
-                <p style="font-size: 0.8rem; margin-bottom: 20px;">Auto inventory regression valuation model.</p>
-                <a href="#" class="action-pill">Log <div class="orange-dot"><i class="fas fa-arrow-right"></i></div></a>
-            </div>
-
-            <div class="p-card">
-                <div class="p-img-box"><img src="ML Cards image/Titanic Dataset.png"></div>
-                <h4 class="p-title">Demographics</h4>
-                <p style="font-size: 0.8rem; margin-bottom: 20px;">Probability classification surviving outcomes.</p>
-                <a href="#" class="action-pill">Details <div class="orange-dot"><i class="fas fa-arrow-right"></i></div></a>
+                <p style="color:var(--accent); font-weight:900; font-size:0.65rem; letter-spacing:2px; margin-bottom:5px;">TECHIENEST INTERN</p>
+                <h3 class="l-h">ML & Python Neural Systems</h3>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT: SCREENSHOT REPLICA DESIGN -->
+    <!-- EDUCATION: RE-INTEGRATED -->
+    <section id="edu" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+        <span class="label-s">03 // Academics</span>
+        <div class="log">
+            <span class="l-date">CLASS // 2023</span>
+            <div><p style="color:#444; font-size:0.7rem; margin-bottom:5px;">IPS COLLEGE OF TECH & MGMT</p>
+            <h3 class="l-h">B.Tech - Computer Science Engineering // 8.9</h3></div>
+        </div>
+        <div class="log" style="border:none;">
+            <span class="l-date">CLASS // 2018</span>
+            <div><p style="color:#444; font-size:0.7rem; margin-bottom:5px;">DAV PUBLIC SCHOOL</p>
+            <h3 class="l-h">Senior Secondary High Honors // 8.7</h3></div>
+        </div>
+    </section>
+
+    <!-- WORK: COMPACT SMALL 4 CARDS -->
+    <section id="work">
+        <span class="label-s">04 // Select Insights</span>
+        <div class="work-grid">
+            <div class="w-card">
+                <div class="w-mask"><img src="DA Cards/Air_Pollution.png"></div>
+                <h4 style="margin-bottom:15px; font-size:1.3rem;">NYC Sensory Hub</h4>
+                <p style="font-size:0.8rem; margin-bottom:20px;">Mapping urban air quality metrics with high visual fidelity.</p>
+                <div class="pill-a">Case <div class="o-dot"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+            <div class="w-card">
+                <div class="w-mask"><img src="DA Cards/Lungs cancer.png"></div>
+                <h4 style="margin-bottom:15px; font-size:1.3rem;">A.I Logic Module</h4>
+                <p style="font-size:0.8rem; margin-bottom:20px;">Relational diagnostic patterns via clinic SQL archives.</p>
+                <div class="pill-a">Explore <div class="o-dot"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+            <div class="w-card">
+                <div class="w-mask"><img src="ML Cards image/Car Price prediction.png"></div>
+                <h4 style="margin-bottom:15px; font-size:1.3rem;">Yield Predictor</h4>
+                <p style="font-size:0.8rem; margin-bottom:20px;">Inventory regression valuation via ML neural modelling.</p>
+                <div class="pill-a">Log <div class="o-dot"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+            <div class="w-card">
+                <div class="w-mask"><img src="ML Cards image/Titanic Dataset.png"></div>
+                <h4 style="margin-bottom:15px; font-size:1.3rem;">Log Log Data</h4>
+                <p style="font-size:0.8rem; margin-bottom:20px;">Statistical survival demographics utilizing probability engines.</p>
+                <div class="pill-a">Read <div class="o-dot"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT: REFERENCE ACCURACY DESIGN -->
     <section id="contact">
-        <div class="contact-text">
-            <span class="sec-lbl">Contact me</span>
-            <h2>Let’s Create<br>Something<br>Meaningful</h2>
-            <p class="contact-high">Whether you're starting from scratch or need an industrial model refresh, I'm here to help bring your vision to life.</p>
-            <p class="contact-hint">Ready to talk? Fill out the form or established a connection link via terminal logs.</p>
+        <div class="c-info">
+            <span class="label-s">Contact me</span>
+            <h2 class="sec-h" style="font-weight:900; letter-spacing:-2px;">Let’s Create<br>Something<br>Meaningful</h2>
+            <p class="c-high">Start a new project from scratch or industrialize existing workflows. Bring vision into the logical terminal.</p>
+            <p style="color:#222; font-weight:900; font-size:0.8rem;">READY TO TALK? // NIRANJANKUMAR // LOGIC_ENABLED</p>
         </div>
 
-        <div class="form-island">
+        <div class="form-wrap">
             <form action="https://formspree.io/f/xyzpaeop" method="POST">
-                <div class="row-split">
-                    <div>
-                        <label class="lbl-node">First name <span>*</span></label>
-                        <input type="text" name="fn" placeholder="Your name" required>
+                <div class="input-row">
+                    <div class="field">
+                        <label>First name <span>*</span></label>
+                        <input type="text" name="fn" placeholder="Label..." required>
                     </div>
-                    <div>
-                        <label class="lbl-node">Last name <span>*</span></label>
-                        <input type="text" name="ln" placeholder="Identification" required>
+                    <div class="field">
+                        <label>Last name <span>*</span></label>
+                        <input type="text" name="ln" placeholder="Identification..." required>
                     </div>
                 </div>
 
-                <div style="margin-bottom: 30px;">
-                    <label class="lbl-node">Email <span>*</span></label>
+                <div class="field" style="margin-bottom:25px;">
+                    <label>Email <span>*</span></label>
                     <input type="email" name="em" placeholder="example@node.com" required>
                 </div>
 
-                <div style="margin-bottom: 30px;">
-                    <label class="lbl-node">Message <span>*</span></label>
-                    <textarea name="message" placeholder="Type your message / inquiry details..."></textarea>
+                <div class="field" style="margin-bottom:30px;">
+                    <label>Message <span>*</span></label>
+                    <textarea name="message" placeholder="Details of vision or system requirements..."></textarea>
                 </div>
 
-                <button type="submit" class="final-btn">Submit Link</button>
+                <button type="submit" class="submit-btn">Authorize Link Signal</button>
             </form>
         </div>
     </section>
 
-    <footer>NIRANJAN KUMAR 2026 // MONO-CORE SYSTEMS // LOGIC ABOVE ALL</footer>
+    <footer>NIRANJAN KUMAR &copy; 2026 // MONO PERFORMANCE SYSTEMS // ALL LOGS REFINED</footer>
 
+    <script>
+        // High-Performance Anchor Active Highlighter
+        const sections = document.querySelectorAll('section, main');
+        const links = document.querySelectorAll('.nav-island a');
+        
+        window.onscroll = () => {
+            let current = "";
+            sections.forEach(s => {
+                if(pageYOffset >= (s.offsetTop - 300)) current = s.getAttribute("id");
+            });
+            links.forEach(l => {
+                l.classList.remove("active");
+                if(l.getAttribute("href").includes(current)) l.classList.add("active");
+            });
+        };
+    </script>
 </body>
 </html>
