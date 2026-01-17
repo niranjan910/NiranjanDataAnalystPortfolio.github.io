@@ -3,272 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niranjan Kumar | Designer Portfolio</title>
+    <title>Niranjan Kumar | Designer & Data Strategist</title>
     
-    <!-- Modern High-End Typography -->
+    <!-- Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
-            --bg-black: #050505;
-            --accent-orange: #ff4d00;
-            --text-white: #ffffff;
-            --text-gray: #a0a0a0;
-            --font-head: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --rounded: 60px; /* Strong curves as per reference */
+            --bg-black: #000000;
+            --surface: #0a0a0a;
+            --accent-orange: #ff4d00; /* Re-added from image for impact */
+            --text-main: #ffffff;
+            --text-dim: #909090;
+            --border: #222222;
+            --rounded: 60px; /* Big curves from the design */
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* RESET & BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body { 
             background-color: var(--bg-black); 
-            font-family: var(--font-body); 
-            color: var(--text-white); 
+            font-family: 'Inter', sans-serif; 
+            color: var(--text-dim); 
+            line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
-        /* --- HOME / HERO SECTION --- */
-        #hero-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 800px;
-            background: linear-gradient(135deg, #7c1a00 0%, #3e0d00 30%, #000000 70%);
-            /* We simulate the mesh glow using pseudo elements for maximum impact */
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+        h1, h2, h3, .nav-island a { font-family: 'Montserrat', sans-serif; text-transform: uppercase; font-weight: 900; color: #fff; }
+
+        /* NAVIGATION ISLAND */
+        .nav-island {
+            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px);
+            padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border);
+            display: flex; align-items: center; gap: 5px; z-index: 1000; transition: var(--transition);
+        }
+        .nav-island a { 
+            color: #666; text-decoration: none; font-size: 0.75rem; 
+            padding: 8px 18px; border-radius: 30px; transition: var(--transition); 
+        }
+        .nav-island a:hover, .nav-island a.active { color: #fff; background: rgba(255,255,255,0.05); }
+        .get-touch-btn { background: #fff !important; color: #000 !important; font-weight: 700; margin-left: 10px; display: flex; align-items: center; gap: 10px;}
+
+        /* SECTION REVEAL */
+        .reveal { opacity: 0; transform: translateY(50px); transition: 1s cubic-bezier(0.1, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- 01. HOME SECTION (Glow Design) --- */
+        #hero-home {
+            position: relative; height: 100vh; min-height: 800px;
+            background: linear-gradient(135deg, #300a00 0%, #100300 20%, #000 60%);
             border-bottom-left-radius: var(--rounded);
             border-bottom-right-radius: var(--rounded);
+            display: flex; align-items: center; padding: 0 8%;
+            overflow: hidden; z-index: 5;
         }
+        .hero-glow { position: absolute; top: -20%; left: -10%; width: 50%; height: 70%; background: radial-gradient(circle, rgba(255, 77, 0, 0.3) 0%, transparent 70%); }
 
-        /* Glow effect in background */
-        #hero-container::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -10%;
-            width: 60%;
-            height: 70%;
-            background: radial-gradient(circle, rgba(255, 77, 0, 0.4) 0%, transparent 70%);
-            z-index: 1;
-        }
+        .hero-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; width: 100%; position: relative; z-index: 10; align-items: center; }
+        .hero-layout h1 { font-size: clamp(3.5rem, 12vw, 9.5rem); line-height: 0.82; letter-spacing: -4px; margin: 30px 0; }
+        .hero-tagline { color: #fff; font-size: 1.1rem; max-width: 320px; font-weight: 500; }
+        .hero-portrait { height: 90vh; position: absolute; right: -5%; bottom: -5%; pointer-events: none; opacity: 0.95; }
 
-        header {
-            width: 100%;
-            padding: 40px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            z-index: 10;
-        }
+        /* HERO STATS BAR */
+        .hero-stats { display: flex; gap: 60px; margin-top: 40px; }
+        .stat-card span { color: var(--accent-orange); font-family: 'Montserrat'; font-size: 0.9rem; }
+        .stat-card p { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: #fff; }
 
-        .logo { font-family: var(--font-head); font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        /* TRUSTED PARTNERS TRANSITION */
+        .partners-bar { padding: 80px 8% 100px; display: flex; justify-content: space-between; align-items: center; background: #000; margin-top: -30px;}
+        .partners-list { display: flex; gap: 60px; opacity: 0.6; align-items: center;}
+        .partners-list span { font-family: 'Montserrat'; font-weight: 800; font-size: 1.2rem; display: flex; align-items: center; gap: 10px; }
 
-        nav ul { list-style: none; display: flex; align-items: center; gap: 30px; }
-        nav ul li a { text-decoration: none; color: var(--text-white); font-weight: 500; font-size: 0.9rem; opacity: 0.8; transition: 0.3s; }
-        nav ul li a:hover { opacity: 1; }
-
-        .btn-touch {
-            background: #fff;
-            color: #000;
-            padding: 8px 12px 8px 25px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-        .btn-touch .arrow-circle {
-            width: 35px;
-            height: 35px;
-            background: var(--accent-orange);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-main {
-            flex-grow: 1;
-            padding: 0 8% 50px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            align-items: center;
-            position: relative;
-            z-index: 5;
-        }
-
-        .hero-title-area span { 
-            font-size: 1.1rem; 
-            display: block; 
-            margin-bottom: 20px; 
-            font-weight: 600; 
-        }
-
-        .hero-title-area h1 {
-            font-family: var(--font-head);
-            font-size: clamp(3rem, 10vw, 8rem);
-            line-height: 0.85;
-            font-weight: 900;
-            margin-bottom: 40px;
-        }
-
-        .hero-side-text { margin-bottom: 80px; }
-        .hero-side-text h2 { font-size: 1.8rem; margin-bottom: 20px; line-height: 1.3; max-width: 300px; }
-        .hero-side-text p { color: var(--text-gray); max-width: 250px; line-height: 1.6; }
-
-        .hero-image {
-            position: absolute;
-            right: 0%;
-            bottom: 0;
-            height: 90%;
-            width: auto;
-            opacity: 0.9;
-            pointer-events: none;
-        }
-
-        /* --- MINI CARDS AT HERO BOTTOM --- */
-        .hero-stats {
-            display: flex;
-            gap: 60px;
-            margin-top: 50px;
-        }
-        .stat-item h3 { color: var(--accent-orange); font-size: 0.8rem; margin-bottom: 10px; }
-        .stat-item p { font-size: 0.85rem; font-weight: 500; }
-
-        /* --- TRUSTED SECTION (The Transition) --- */
-        .trusted-bar {
-            background-color: var(--bg-black);
-            padding: 80px 8% 100px;
-            margin-top: -30px; /* Pull it up to hide corners behind curves */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .trusted-text { font-size: 0.85rem; color: var(--text-gray); max-width: 150px; font-weight: 500; }
+        /* --- 02. ABOUT ME SECTION (As requested) --- */
+        #about { padding: 150px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; background: #000; }
+        .about-label { color: var(--accent-orange); text-transform: uppercase; font-weight: 800; font-size: 0.8rem; margin-bottom: 30px; display: block; letter-spacing: 3px;}
+        .about-headline { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 0.95; margin-bottom: 40px; font-weight: 900; }
+        .about-intro { font-size: 1.6rem; color: #fff; font-weight: 600; line-height: 1.4; margin-bottom: 30px; }
+        .about-text { margin-bottom: 25px; max-width: 580px; }
         
-        .partner-logos { display: flex; align-items: center; gap: 50px; }
-        .partner-logos span { font-weight: 800; font-family: var(--font-head); opacity: 0.7; display: flex; align-items: center; gap: 10px; font-size: 1.2rem; }
-        .partner-logos i { font-size: 1.5rem; }
+        /* High Curved Image */
+        .about-img-frame { width: 100%; height: 680px; border-radius: 45px; overflow: hidden; border: 1px solid #222; position: relative; }
+        .about-img-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- SUBSEQUENT SECTIONS (Styled like your image) --- */
-        section { padding: 120px 8%; }
-        .label { color: var(--accent-orange); text-transform: uppercase; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; display: block; margin-bottom: 25px; }
-        .section-header h2 { font-family: var(--font-head); font-size: 3rem; margin-bottom: 40px; }
-        
-        .projects-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
-        .project-img-box {
-            width: 100%; height: 500px;
-            background: #151515; border-radius: 30px; overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin-bottom: 25px;
+        /* Premium Pill Button */
+        .pill-btn {
+            display: inline-flex; align-items: center; gap: 15px; 
+            background: #151515; color: #fff; padding: 10px 10px 10px 30px;
+            border-radius: 50px; text-decoration: none; font-weight: 700;
+            text-transform: uppercase; font-size: 0.8rem; transition: var(--transition); border: 1px solid #333;
         }
-        .project-img-box img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%); transition: 0.5s; }
-        .project-img-box:hover img { filter: grayscale(0%); }
+        .pill-btn:hover { border-color: #fff; background: #1a1a1a; transform: translateY(-3px); }
+        .arrow-bubble { 
+            width: 40px; height: 40px; background: var(--accent-orange); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: #fff;
+        }
 
-        @media (max-width: 900px) {
-            .hero-main { grid-template-columns: 1fr; }
-            .hero-image { display: none; }
-            header nav { display: none; }
-            .projects-row { grid-template-columns: 1fr; }
+        /* --- 03. CASE STUDIES / PROJECTS --- */
+        section.content { padding: 120px 8%; background: #000; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 35px; }
+        .card { 
+            background: #0d0d0d; border: 1px solid #1a1a1a; 
+            transition: var(--transition); border-radius: 20px; overflow: hidden; 
+        }
+        .card:hover { transform: translateY(-10px); border-color: var(--accent-orange); }
+        .card img { 
+            width: 100%; height: 260px; object-fit: cover; filter: grayscale(1); 
+            transition: var(--transition); opacity: 0.8; 
+        }
+        .card:hover img { filter: grayscale(0); opacity: 1; }
+        .card-inner { padding: 40px; }
+        .card-inner h3 { margin-bottom: 15px; font-size: 1.3rem; letter-spacing: -1px; }
+        .tag { font-size: 0.65rem; border: 1px solid #333; padding: 4px 10px; color: #888; text-transform: uppercase; margin-right: 8px; }
+
+        /* --- CONTACT --- */
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 100px 8%; background: radial-gradient(circle at bottom right, #220800, transparent 40%); }
+        input, textarea { 
+            width: 100%; background: #0a0a0a; border: 1px solid #222; padding: 25px; 
+            color: #fff; font-family: 'Inter'; margin-bottom: 15px; border-radius: 12px;
+        }
+        input:focus { border-color: var(--accent-orange); outline: none; }
+        .submit-btn { width: 100%; padding: 25px; background: #fff; color: #000; font-weight: 800; text-transform: uppercase; border-radius: 12px; border: none; cursor: pointer; }
+
+        footer { text-align: center; padding: 100px 0; font-family: 'Montserrat'; font-size: 0.7rem; color: #333; border-top: 1px solid #111;}
+
+        @media (max-width: 1024px) {
+            .hero-layout, #about, .contact-layout { grid-template-columns: 1fr; }
+            .hero-portrait { display: none; }
+            .hero-main h1 { font-size: 5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Home Section (Exact UI) -->
-    <div id="hero-container">
-        <header>
-            <div class="logo">Niranjan.</div>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#journey">Journey</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact" class="btn-touch">
-                        Get in touch 
-                        <div class="arrow-circle"><i class="fas fa-arrow-right"></i></div>
-                    </a></li>
-                </ul>
-            </nav>
-        </header>
+    <nav class="nav-island" id="mainNav">
+        <a href="#hero-home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Work</a>
+        <a href="#contact" class="get-touch-btn">Get In Touch <div class="arrow-bubble" style="width:24px; height:24px; font-size:0.6rem;"><i class="fas fa-arrow-right"></i></div></a>
+    </nav>
 
-        <div class="hero-main">
-            <div class="hero-title-area">
-                <span>Hey, I'm a</span>
-                <h1>Creative<br>Analyst</h1>
-                
+    <!-- 01. Hero / Home -->
+    <main id="hero-home">
+        <div class="hero-glow"></div>
+        <div class="hero-layout">
+            <div class="hero-main">
+                <p class="hero-tagline">Professional Creative Direction & Scalable Data Architecture.</p>
+                <h1>CREATIVE<br>STRATEGY</h1>
                 <div class="hero-stats">
-                    <div class="stat-item">
-                        <h3>#01</h3>
-                        <p>Machine Learning</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>#02</h3>
-                        <p>Visual Intelligence</p>
-                    </div>
-                    <div class="stat-item">
-                        <h3>#03</h3>
-                        <p>SQL Optimization</p>
-                    </div>
+                    <div class="stat-card"><span>#01</span><p>Insight Design</p></div>
+                    <div class="stat-card"><span>#02</span><p>AI Predictive Modelling</p></div>
+                    <div class="stat-card"><span>#03</span><p>SQL Performance</p></div>
                 </div>
             </div>
+        </div>
+        <!-- Portrait Overlay mimicking your reference image positioning -->
+        <img src="Profile/Pic.png" alt="Creative Lead" class="hero-portrait" onerror="this.src='https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=700&auto=format&fit=crop'">
+    </main>
 
-            <div class="hero-side-area">
-                <div class="hero-side-text">
-                    <h2>Great design should feel invisible.</h2>
-                    <p>Building high-accuracy predictive models and data-driven narratives for global brands.</p>
-                </div>
-            </div>
+    <!-- Transition / Partner Section -->
+    <div class="partners-bar">
+        <p style="font-size: 0.75rem; font-weight: 700; color: #444; text-transform: uppercase; letter-spacing: 2px;">Data Partnerships</p>
+        <div class="partners-list">
+            <span><i class="far fa-dot-circle"></i> Supa Blox</span>
+            <span><i class="fas fa-link"></i> Hype Blox</span>
+            <span><i class="fas fa-circle-notch"></i> Frame Blox</span>
+            <span><i class="fas fa-dice-d20"></i> Ultra Core</span>
+        </div>
+    </div>
+
+    <!-- 02. About Section (Updated Visual Layout) -->
+    <section id="about" class="reveal">
+        <div class="about-info">
+            <span class="about-label">About me</span>
+            <h2 class="about-headline">Analyst.<br>Strategist.<br>Growth partner.</h2>
+            <p class="about-intro">Merging mathematical logic with industrial creativity to scale brands with purpose.</p>
+            <p class="about-text">Based in Hyderabad, I leverage an Engineering background (8.9 CGPA) to navigate the complexities of data-driven business modeling. Having traversed 17 Indian states, I prioritize adaptability in every workflow.</p>
+            <p class="about-text" style="color: #666; font-size: 0.9rem;">From complex Python ML automation to SQL performance tuning, I focus on the ROI of every metric analyzed.</p>
             
-            <!-- Absolute position image simulating your photo placement -->
-            <img src="Profile/Pic.png" alt="Creative Design Look" class="hero-image" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=600&auto=format&fit=crop'">
+            <a href="#projects" class="pill-btn">
+                Read Resume
+                <div class="arrow-bubble"><i class="fas fa-arrow-right"></i></div>
+            </a>
         </div>
-    </div>
-
-    <!-- Trusted By / Logo Section (Curve Transition) -->
-    <div class="trusted-bar">
-        <div class="trusted-text">Trusted by Data Teams globally</div>
-        <div class="partner-logos">
-            <span><i class="far fa-circle"></i> Supa Blox</span>
-            <span><i class="fas fa-hourglass-start"></i> Hype Blox</span>
-            <span><i class="fas fa-adjust"></i> Frame Blox</span>
-            <span><i class="fab fa-cloudversify"></i> Ultra Core</span>
-        </div>
-    </div>
-
-    <!-- Analytics Showcase Section -->
-    <section id="projects">
-        <span class="label">Featured Insights</span>
-        <div class="section-header">
-            <h2>Building Models That Move Business.</h2>
-        </div>
-        
-        <div class="projects-row">
-            <div class="project-card">
-                <div class="project-img-box">
-                    <img src="DA Cards/Air_Pollution.png" alt="Analytics View">
-                </div>
-                <h3>New York Urban Logistics Analysis</h3>
-            </div>
-            <div class="project-card">
-                <div class="project-img-box">
-                    <img src="DA Cards/Lungs cancer.png" alt="Machine Learning View">
-                </div>
-                <h3>AI-Driven Diagnostic Visualization</h3>
+        <div class="about-visual">
+            <div class="about-img-frame">
+                <img src="Profile/Pic.png" alt="Niranjan Profile">
             </div>
         </div>
     </section>
 
+    <!-- 03. Portfolio Grid -->
+    <section class="content reveal" id="projects">
+        <span class="about-label">Featured Projects</span>
+        <h2 style="font-size: 2.5rem; margin-bottom: 60px;">Transforming Raw Data into Performance Systems.</h2>
+        
+        <div class="projects-grid">
+            <div class="card">
+                <img src="DA Cards/Air_Pollution.png" alt="Project Image">
+                <div class="card-inner">
+                    <h3>NYC Environmental Diagnostics</h3>
+                    <div><span class="tag">EDA</span> <span class="tag">Python</span> <span class="tag">Analytics</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="DA Cards/Lungs cancer.png" alt="Project Image">
+                <div class="card-inner">
+                    <h3>Lung Medical Logic Dash</h3>
+                    <div><span class="tag">Power BI</span> <span class="tag">SQL Architecture</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 04. Contact Section -->
+    <section id="contact" class="reveal">
+        <div class="contact-layout">
+            <div>
+                <span class="about-label">Launch Signal</span>
+                <h2 style="font-size: 3.5rem; line-height: 0.9;">LET'S WORK <br>TOGETHER</h2>
+                <p style="margin-top: 40px; color: #fff;">Available for contract roles and advanced data consulting inquiries.</p>
+            </div>
+            <form action="https://formspree.io/f/xyzpaeop" method="POST">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Professional Email" required>
+                <textarea rows="5" placeholder="Details of Inquiry..." required></textarea>
+                <button type="submit" class="submit-btn">Transmit Connection</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        NIRANJAN KUMAR | DESIGNED IN BLACK & PURE ORANGE | 2025 ALL RIGHTS RESERVED
+    </footer>
+
+    <script>
+        // Smooth Section Revelations
+        const reveals = document.querySelectorAll('.reveal');
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
+        }, observerOptions);
+        reveals.forEach(r => observer.observe(r));
+
+        // Active Link Highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section, main');
+            const navLinks = document.querySelectorAll('.nav-island a');
+            let current = "";
+
+            sections.forEach(s => {
+                const sTop = s.offsetTop;
+                if(pageYOffset >= sTop - 250) current = s.getAttribute("id");
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if(link.getAttribute("href").includes(current)) link.classList.add("active");
+            });
+        });
+    </script>
 </body>
 </html>
