@@ -2,284 +2,307 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Niranjan Kumar | Professional Data Analyst Portfolio - Specializing in SQL, Python, Power BI, and Machine Learning." />
+    <meta name="description" content="Niranjan Kumar | Professional Data Analyst Portfolio - Monochromatic Tech Edition." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Niranjan Kumar | Data Analyst Portfolio</title>
     
     <link rel="icon" type="image/png" href="Logo/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
-            --bg-body: #f0f4f8;
-            --text-primary: #1d2d35;
-            --text-secondary: #5b6479;
-            --card-bg: rgba(255, 255, 255, 0.9);
-            --border-color: #dde4e9;
-            --accent-start: #14b8a6; 
-            --accent-end: #06b6d4;
-            --accent-gradient: linear-gradient(90deg, var(--accent-start) 0%, var(--accent-end) 100%);
-            --shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.1);
+            /* Palette: Zed Black & Pure White */
+            --bg-deep: #000000;
+            --bg-surface: #0a0a0a;
+            --bg-card: #121212;
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --accent: #ffffff;
+            --border: #222222;
             --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-body); color: var(--text-secondary); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-deep); color: var(--text-dim); line-height: 1.6; overflow-x: hidden; }
         
         .skip-to-content { position: absolute; left: -1000px; }
-        .skip-to-content:focus { left: 10px; top: 10px; background: white; padding: 10px; z-index: 9999; }
-
         section { padding: 100px 5%; max-width: 1300px; margin: 0 auto; }
-        h1, h2, h3 { color: var(--text-primary); font-family: 'Syne', sans-serif; }
-        .section-heading { font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: 3rem; text-align: left; position: relative; }
-        .section-heading::after { content: ''; display: block; width: 60px; height: 4px; background: var(--accent-gradient); margin-top: 10px; }
+        h1, h2, h3 { color: var(--text-main); font-family: 'Syne', sans-serif; letter-spacing: -1px; }
+        
+        .section-heading { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 3.5rem; text-transform: uppercase; }
+        .section-heading::after { content: ''; display: block; width: 50px; height: 2px; background: var(--accent); margin-top: 15px; }
 
-        /* Navigation */
-        .main-nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: fit-content; border-radius: 50px; padding: 5px; transition: var(--transition); background: rgba(10, 25, 47, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        .main-nav.nav-scrolled { background: white; box-shadow: var(--shadow); border: 1px solid var(--border-color); }
+        /* Navigation - Sleek Monochromatic */
+        .main-nav { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; width: fit-content; border-radius: 10px; padding: 5px; transition: var(--transition); background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(15px); border: 1px solid var(--border); }
+        .main-nav.nav-scrolled { border-color: #444; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .nav-links ol { display: flex; list-style: none; padding: 0 10px; }
-        .nav-links li a { padding: 10px 15px; display: block; font-size: 0.9rem; font-weight: 500; transition: var(--transition); color: white; border-radius: 20px; }
-        .main-nav.nav-scrolled .nav-links li a { color: var(--text-secondary); }
-        .nav-links li a:hover, .nav-links li a.active { color: var(--accent-start) !important; }
+        .nav-links li a { padding: 10px 20px; display: block; font-size: 0.8rem; font-weight: 600; transition: var(--transition); color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links li a:hover, .nav-links li a.active { color: var(--text-main) !important; }
 
-        /* Hero */
-        #hero { min-height: 100vh; background: #0a192f; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; max-width: 100%; padding: 0; text-align: center; }
-        .hero-bg { position: absolute; inset: 0; background: linear-gradient(45deg, #0a192f, #112240); z-index: 0; }
+        /* Hero Section */
+        #hero { min-height: 100vh; background: var(--bg-deep); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; max-width: 100%; padding: 0; text-align: center; border-bottom: 1px solid var(--border); }
         .hero-content { position: relative; z-index: 10; color: white; width: 90%; }
-        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1); }
         .carousel-slide { flex: 0 0 100%; padding: 20px; }
-        .slide-intro { color: var(--accent-start); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-        .slide-headline { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1; margin: 20px 0; text-transform: uppercase; }
+        .slide-intro { color: var(--text-dim); font-weight: 400; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 10px; font-size: 0.9rem;}
+        .slide-headline { font-size: clamp(2.5rem, 9vw, 6rem); line-height: 0.9; margin: 20px 0; text-transform: uppercase; font-weight: 800; }
 
-        /* Buttons */
-        .cta-btn { display: inline-block; padding: 1rem 2rem; border-radius: 50px; font-weight: 700; transition: var(--transition); cursor: pointer; text-decoration: none; border: none; font-family: 'Syne', sans-serif; text-transform: uppercase; font-size: 0.8rem; }
-        .cta-btn-primary { background: var(--accent-gradient); color: white; box-shadow: 0 4px 15px rgba(20, 184, 166, 0.3); }
-        .cta-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(20, 184, 166, 0.5); }
-        .cta-btn-secondary { border: 2px solid var(--accent-start); color: var(--accent-start); margin-left: 10px; }
+        /* Modern Stark Buttons */
+        .cta-btn { display: inline-block; padding: 1.2rem 2.5rem; border-radius: 4px; font-weight: 700; transition: var(--transition); cursor: pointer; text-decoration: none; border: 1px solid var(--accent); font-family: 'Syne', sans-serif; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .cta-btn-primary { background: var(--accent); color: var(--bg-deep); }
+        .cta-btn-primary:hover { background: transparent; color: var(--accent); transform: scale(1.05); }
+        .cta-btn-secondary { background: transparent; color: var(--accent); margin-left: 15px; }
+        .cta-btn-secondary:hover { background: rgba(255,255,255,0.05); transform: scale(1.05); }
 
-        /* Cards Style (Standardized) */
-        .projects-grid, .dashboards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
-        .project-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); display: flex; flex-direction: column; height: 100%; border: 1px solid var(--border-color); }
-        .project-card:hover { transform: translateY(-10px); }
-        .project-image { width: 100%; height: 200px; object-fit: cover; }
-        .card-body { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .project-description { font-size: 0.95rem; margin-bottom: 1.5rem; flex-grow: 1; }
-        .tech-badge { background: #f0fdfa; color: #0d9488; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; margin-right: 5px; }
+        /* Data Card Grids */
+        .projects-grid, .dashboards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px; }
+        .project-card { background: var(--bg-surface); border-radius: 0px; overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; height: 100%; border: 1px solid var(--border); }
+        .project-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .project-image { width: 100%; height: 230px; object-fit: cover; filter: grayscale(100%); transition: var(--transition); opacity: 0.7; }
+        .project-card:hover .project-image { filter: grayscale(0%); opacity: 1; }
+        .card-body { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-body h3 { font-size: 1.4rem; margin-bottom: 1rem; }
+        .project-description { font-size: 0.9rem; color: #888; margin-bottom: 2rem; flex-grow: 1; font-weight: 300; }
+        .tech-badge { border: 1px solid #333; color: #fff; padding: 5px 15px; font-size: 0.7rem; font-weight: 400; margin-right: 8px; text-transform: uppercase; }
 
-        /* About Section (New Layout Fix) */
-        .about-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: flex-start; }
-        .avatar-box img { width: 100%; border-radius: 20px; box-shadow: var(--shadow); border: 4px solid white; }
-        .notepad { background: #fefce8; padding: 25px; border-radius: 10px; box-shadow: 5px 5px 15px rgba(0,0,0,0.05); border-left: 5px solid #fbbf24; margin-top: 30px; font-family: 'Patrick Hand', cursive; font-size: 1.2rem; }
+        /* About Section */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: flex-start; }
+        .avatar-box img { width: 100%; border-radius: 0; filter: grayscale(100%); border: 1px solid var(--border); }
+        .notepad { background: #111; color: #fff; padding: 30px; border-radius: 0; border: 1px solid #333; margin-top: 30px; font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.8; position: relative; }
+        .notepad::before { content: "SYSTEM LOG"; display: block; font-size: 0.7rem; color: #555; margin-bottom: 10px; font-weight: bold; }
 
-        /* Journey Stepper */
-        .journey-line { border-left: 2px dashed var(--border-color); margin-left: 20px; padding-left: 30px; }
-        .journey-item { position: relative; margin-bottom: 40px; }
-        .journey-item::before { content: '\f0b1'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; left: -44px; top: 0; background: var(--bg-body); color: var(--accent-start); width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; }
+        /* Timeline Items */
+        .journey-line { border-left: 1px solid var(--border); margin-left: 20px; padding-left: 40px; }
+        .journey-item { position: relative; margin-bottom: 50px; }
+        .journey-item::before { content: ''; position: absolute; left: -46px; top: 5px; background: var(--bg-deep); border: 2px solid var(--accent); width: 10px; height: 10px; border-radius: 50%; }
+        .journey-item h4 { font-size: 1.2rem; text-transform: uppercase; }
+        .journey-item p strong { color: var(--accent); }
 
-        /* Mobile */
+        /* Contact Form Formats */
+        input, textarea { background: #000; border: 1px solid var(--border); color: #fff; padding: 18px; width: 100%; font-family: 'Inter'; font-size: 0.9rem; }
+        input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+
+        /* Particle Stars Effect Background */
+        .stars { position: absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; }
+
         @media (max-width: 992px) {
             .about-grid { grid-template-columns: 1fr; }
-            .main-nav { width: 95%; overflow-x: auto; }
-            .journey-line { margin-left: 10px; }
+            .nav-links li a { font-size: 0.7rem; padding: 10px 10px; }
+            .main-nav { width: 95%; }
         }
 
-        /* Animation class */
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.2, 0, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <a href="#main-content" class="skip-to-content">Skip to content</a>
-
     <nav class="main-nav" id="mainNav">
         <div class="nav-links">
             <ol>
-                <li><a href="#about">About</a></li>
+                <li><a href="#about" class="active">About</a></li>
                 <li><a href="#journey">Journey</a></li>
-                <li><a href="#projects">Analysis</a></li>
-                <li><a href="#ml-projects">ML</a></li>
-                <li><a href="#dashboards">Visuals</a></li>
+                <li><a href="#projects">Analytics</a></li>
+                <li><a href="#ml-projects">Machine Learning</a></li>
+                <li><a href="#dashboards">Dashboards</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ol>
         </div>
     </nav>
 
     <main id="main-content">
+        <!-- Hero Section with Zed Black Design -->
         <section id="hero">
-            <div class="hero-bg"></div>
+            <canvas class="stars" id="starCanvas"></canvas>
             <div class="hero-content">
-                <div class="carousel-container">
-                    <div class="carousel-track" id="heroTrack">
-                        <div class="carousel-slide">
-                            <p class="slide-intro">Data Strategist</p>
-                            <h1 class="slide-headline">I GIVE DATA<br><span style="color: var(--accent-start)">A VOICE</span></h1>
-                            <p>Transforming complex datasets into clear, actionable narratives.</p>
-                        </div>
-                        <div class="carousel-slide">
-                            <p class="slide-intro">Predictive Analytics</p>
-                            <h1 class="slide-headline">MACHINE LEARNING<br><span style="color: var(--accent-end)">MASTERY</span></h1>
-                            <p>Building high-accuracy models to solve real-world problems.</p>
-                        </div>
+                <div class="carousel-track" id="heroTrack">
+                    <div class="carousel-slide">
+                        <p class="slide-intro">Modern Analytics</p>
+                        <h1 class="slide-headline">DATA INTO <br>PRECISION.</h1>
+                        <p>Bridging the gap between raw data and actionable strategy.</p>
+                    </div>
+                    <div class="carousel-slide">
+                        <p class="slide-intro">Engineering Growth</p>
+                        <h1 class="slide-headline">DECODING <br>COMPLEXITY.</h1>
+                        <p>Leveraging SQL, Python, and ML to find the truth in numbers.</p>
                     </div>
                 </div>
-                <div style="margin-top: 30px;">
-                    <a href="#projects" class="cta-btn cta-btn-primary">View Portfolio</a>
-                    <a href="mailto:niranjan991100@gmail.com" class="cta-btn cta-btn-secondary" style="color:white; border-color:white;">Let's Talk</a>
+                <div style="margin-top: 50px;">
+                    <a href="#projects" class="cta-btn cta-btn-primary">View Repositories</a>
+                    <a href="#contact" class="cta-btn cta-btn-secondary">Get In Touch</a>
                 </div>
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about" class="reveal">
-            <h2 class="section-heading">About Me</h2>
+            <h2 class="section-heading">01. Professional Profile</h2>
             <div class="about-grid">
                 <div class="about-left">
                     <div class="avatar-box">
-                        <img src="Profile/Pic.png" alt="Niranjan Kumar Headshot" onerror="this.src='https://via.placeholder.com/300x400?text=Profile+Pic'">
+                        <img src="Profile/Pic.png" alt="Niranjan Kumar" onerror="this.src='https://via.placeholder.com/400x500/111/fff?text=Niranjan+Kumar'">
                     </div>
                     <div class="notepad">
-                        <p>"AI isn't a replacement for my skill; it's my multiplier. Every model I build and every dataset I clean is powered by a curious human mind and a silent AI mentor."</p>
+                        <p>"In the modern era, data is the most valuable asset. My role is to refine it, analyze it, and build models that don't just predict the future—they help shape it."</p>
                     </div>
                 </div>
                 <div class="about-right">
-                    <h3>Solving Problems with Logic and Data.</h3>
-                    <p style="margin: 20px 0;">I'm a Data Enthusiast based in Hyderabad with a passion for uncovering hidden trends. I've improved data processing efficiency by up to 30% for stakeholders through SQL and Python optimization.</p>
+                    <p style="font-size: 1.2rem; color: #fff; margin-bottom: 30px; font-weight: 300;">I am Niranjan Kumar, a Hyderabad-based Data Analyst specialized in uncovering efficiency through technical innovation.</p>
+                    <p>Over the last few years, I've traversed 17 states in India, bringing the same adaptability and curiosity to my code. My background in Computer Science Engineering (8.9 CGPA) allows me to think algorithmically while analyzing business metrics.</p>
                     
-                    <h4 style="margin: 30px 0 15px;">Technical Arsenal</h4>
-                    <div class="skills">
-                        <span class="tech-badge">Python (Pandas, Scikit-learn)</span>
-                        <span class="tech-badge">SQL (MySQL, PostgreSQL)</span>
-                        <span class="tech-badge">Power BI & Tableau</span>
+                    <h3 style="margin: 50px 0 20px; font-size: 1rem; color: #666; text-transform: uppercase;">Technical Competencies</h3>
+                    <div class="skills" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span class="tech-badge">Python (Pandas, Scikit)</span>
+                        <span class="tech-badge">PostgreSQL</span>
                         <span class="tech-badge">Machine Learning</span>
-                        <span class="tech-badge">Azure Basics</span>
-                        <span class="tech-badge">Excel (VBA/Power Query)</span>
+                        <span class="tech-badge">Power BI Expert</span>
+                        <span class="tech-badge">ETL Optimization</span>
+                        <span class="tech-badge">Advanced Excel</span>
                     </div>
 
-                    <div style="margin-top: 40px;">
-                        <a href="#" class="cta-btn cta-btn-primary">Download Resume</a>
+                    <div style="margin-top: 60px;">
+                        <a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-primary" target="_blank">Access Full CV</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Timeline -->
         <section id="journey" class="reveal">
-            <h2 class="section-heading">Professional Journey</h2>
+            <h2 class="section-heading">02. Career Timeline</h2>
             <div class="journey-line">
                 <div class="journey-item">
-                    <h4>Data Analyst Trainee</h4>
-                    <p><strong>Naresh i Technologies</strong> | 2025 - Present</p>
-                    <p>Focusing on advanced visualization and complex SQL optimizations for business intelligence.</p>
+                    <h4>Advanced Data Analysis</h4>
+                    <p><strong>Naresh i Technologies</strong> | Hyderabad | 2025</p>
+                    <p>Specialized focus on Big Data workflows and SQL database architecture.</p>
                 </div>
                 <div class="journey-item">
-                    <h4>Data Science Trainee</h4>
-                    <p><strong>TechieNest</strong> | 2024 - 2025</p>
-                    <p>Developed 10+ predictive models using Regression and Classification techniques.</p>
+                    <h4>Machine Learning Engineering</h4>
+                    <p><strong>TechieNest</strong> | 2024</p>
+                    <p>End-to-end model development for Car Price Prediction and Health Diagnostics.</p>
                 </div>
                 <div class="journey-item">
                     <h4>B.Tech, CSE</h4>
-                    <p><strong>IPS College of Tech & Management</strong> | 2019 - 2023</p>
-                    <p>Graduated with 8.9 CGPA. Foundation in Algorithms and Python.</p>
+                    <p><strong>IPS College of Management</strong> | 2019 - 2023</p>
+                    <p>Focused on Data Structures, Python optimization, and Algorithms.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Analysis Section -->
         <section id="projects" class="reveal">
-            <h2 class="section-heading">Data Analytics Projects</h2>
+            <h2 class="section-heading">03. Case Studies</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <img src="DA Cards/Air_Pollution.png" class="project-image" alt="Air quality project">
+                    <img src="DA Cards/Air_Pollution.png" class="project-image" alt="Air pollution code">
                     <div class="card-body">
-                        <h3>NYC Air Quality Analysis</h3>
-                        <p class="project-description">Analyzed correlation between vehicular traffic and pollutant levels using Seaborn and NumPy.</p>
+                        <h3>NYC Air Analytics</h3>
+                        <p class="project-description">Data-driven investigation into New York City air quality using massive open-source sensor datasets.</p>
                         <div>
                             <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Data Wrangling</span>
+                            <span class="tech-badge">EDA</span>
                         </div>
-                        <a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="cta-btn cta-btn-secondary" style="margin: 15px 0 0; display:block; text-align:center;">View Code</a>
+                        <a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="cta-btn-primary cta-btn" style="margin-top: 20px; text-align:center;">View Codebase</a>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <img src="DA Cards/Lungs cancer.png" class="project-image" alt="AI Health">
+                    <img src="DA Cards/Lungs cancer.png" class="project-image" alt="Diagnostics">
                     <div class="card-body">
-                        <h3>AI Lung Diagnostics</h3>
-                        <p class="project-description">End-to-end medical dashboard featuring automated data mining from hospital record CSVs.</p>
+                        <h3>Health ML Diagnostics</h3>
+                        <p class="project-description">A multi-platform diagnostic dashboard connecting SQL databases to interactive visual models.</p>
                         <div>
                             <span class="tech-badge">Power BI</span>
-                            <span class="tech-badge">SQL</span>
+                            <span class="tech-badge">ML</span>
                         </div>
-                        <a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="cta-btn cta-btn-secondary" style="margin: 15px 0 0; display:block; text-align:center;">View Project</a>
+                        <a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="cta-btn-primary cta-btn" style="margin-top: 20px; text-align:center;">View Full Dashboard</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact" class="reveal">
-            <h2 class="section-heading">Get In Touch</h2>
-            <div class="about-grid" style="align-items: center;">
+            <h2 class="section-heading">04. Transmission</h2>
+            <div class="about-grid">
                 <div>
-                    <p>Looking for a data-driven mind for your team? Or just want to discuss a project? Drop me a message.</p>
-                    <div style="margin-top: 30px; display: grid; gap: 10px;">
-                        <span><i class="fab fa-linkedin color-accent"></i> <a href="https://www.linkedin.com/in/niranjan-k-a83517229/" style="text-decoration: none; color: inherit;">linkedin.com/in/niranjank</a></span>
-                        <span><i class="fas fa-envelope color-accent"></i> niranjan991100@gmail.com</span>
+                    <p style="color: #fff;">Let’s connect to build the next generation of data-driven products.</p>
+                    <div style="margin-top: 40px;">
+                        <p style="margin-bottom: 10px;"><i class="fab fa-linkedin"></i> /niranjank-a83517229</p>
+                        <p style="margin-bottom: 10px;"><i class="fas fa-at"></i> niranjan991100@gmail.com</p>
+                        <p><i class="fas fa-location-dot"></i> Hyderabad, India</p>
                     </div>
                 </div>
-                <form action="https://formspree.io/f/xyzpaeop" method="POST" id="contact-form">
+                <form action="https://formspree.io/f/xyzpaeop" method="POST">
                     <div style="display: grid; gap: 15px;">
-                        <input type="text" name="name" placeholder="Name" required style="padding:15px; border-radius:10px; border:1px solid #ccc;">
-                        <input type="email" name="email" placeholder="Email" required style="padding:15px; border-radius:10px; border:1px solid #ccc;">
-                        <textarea name="message" rows="5" placeholder="Your Message" required style="padding:15px; border-radius:10px; border:1px solid #ccc;"></textarea>
-                        <button type="submit" class="cta-btn cta-btn-primary">Send Message</button>
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="email" name="email" placeholder="Email ID" required>
+                        <textarea name="message" rows="5" placeholder="Inquiry details..." required></textarea>
+                        <button type="submit" class="cta-btn cta-btn-primary" style="width: 100%;">Establish Connection</button>
                     </div>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer style="text-align: center; padding: 50px; border-top: 1px solid #ddd;">
-        <p>&copy; 2025 Niranjan Kumar. Built with SQL-precision & Modern Design.</p>
+    <footer style="text-align: center; padding: 60px 5%; border-top: 1px solid var(--border);">
+        <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;">Niranjan Kumar &copy; 2025 | Developed in Zed Black & Pure White</p>
     </footer>
 
     <script>
-        // Hero Carousel
+        // Hero Slide Cycle
         const track = document.getElementById('heroTrack');
         let index = 0;
         setInterval(() => {
             index = (index + 1) % 2;
             track.style.transform = `translateX(-${index * 100}%)`;
-        }, 5000);
+        }, 5500);
 
-        // Intersection Observer for Scroll Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) entry.target.classList.add('active');
+        // Visual Stars Background
+        const canvas = document.getElementById('starCanvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, stars = [];
+        
+        function initStars() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            stars = [];
+            for (let i = 0; i < 150; i++) {
+                stars.push({ x: Math.random() * w, y: Math.random() * h, size: Math.random() * 1.5, speed: Math.random() * 0.5 });
+            }
+        }
+        
+        function drawStars() {
+            ctx.clearRect(0,0,w,h);
+            ctx.fillStyle = "#ffffff";
+            stars.forEach(s => {
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                ctx.fill();
+                s.y -= s.speed;
+                if(s.y < 0) s.y = h;
             });
-        }, { threshold: 0.15 });
+            requestAnimationFrame(drawStars);
+        }
+        window.addEventListener('resize', initStars);
+        initStars(); drawStars();
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Combined Scroll Listener
+        // Scroll Logic for Active Section
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('mainNav');
             const sections = document.querySelectorAll('section');
+            const nav = document.getElementById('mainNav');
             const navLinks = document.querySelectorAll('.nav-links a');
 
-            // Toggle Nav Design
-            if (window.scrollY > 100) {
-                nav.classList.add('nav-scrolled');
-            } else {
-                nav.classList.remove('nav-scrolled');
-            }
+            if (window.scrollY > 150) nav.classList.add('nav-scrolled');
+            else nav.classList.remove('nav-scrolled');
 
-            // Highlight Active Link
             let current = "";
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 120) {
+                if (pageYOffset >= (section.offsetTop - 150)) {
                     current = section.getAttribute("id");
                 }
             });
@@ -290,11 +313,12 @@
                     link.classList.add("active");
                 }
             });
-        });
 
-        // Contact Form Handling
-        document.getElementById('contact-form').addEventListener('submit', function() {
-            setTimeout(() => { this.reset(); alert('Thank you! Your message has been sent.'); }, 500);
+            // Reveal animations
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if(rect.top < window.innerHeight * 0.85) el.classList.add('active');
+            });
         });
     </script>
 </body>
