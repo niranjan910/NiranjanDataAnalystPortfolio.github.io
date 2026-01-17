@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="Logo/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Precise Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
@@ -16,11 +15,11 @@
         :root {
             --bg: #000000;
             --surface: #0a0a0a;
-            --accent: #FF4D00;
+            --accent: #FF4D00; /* Vibrant Orange */
             --text-main: #FFFFFF;
             --text-dim: #777777;
             --border: #1a1a1a;
-            --radius-card: 28px;
+            --radius-card: 20px;
         }
 
         /* --- STARK RESET --- */
@@ -35,97 +34,94 @@
         }
 
         h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; color: var(--text-main); font-weight: 800; }
-        a { text-decoration: none; transition: 0.2s ease; }
+        a { text-decoration: none; }
 
-        /* --- MINIMAL NAV --- */
+        /* --- COMPACT NAV --- */
         .nav-island {
-            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
-            background: rgba(10, 10, 10, 0.95);
-            padding: 10px 15px; border-radius: 50px; border: 1px solid var(--border);
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.98);
+            padding: 8px 12px; border-radius: 50px; border: 1px solid var(--border);
             display: flex; align-items: center; gap: 5px; z-index: 2000;
         }
         .nav-island a { 
-            color: #666; font-size: 0.75rem; font-weight: 700;
-            text-transform: uppercase; padding: 10px 20px; border-radius: 40px; 
+            color: #555; font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; padding: 8px 16px; border-radius: 40px; 
         }
         .nav-island a:hover { color: #fff; background: #111; }
-        .get-touch-btn { background: #fff !important; color: #000 !important; display: flex; align-items: center; gap: 10px; margin-left: 10px;}
+        .get-touch-btn { background: #fff !important; color: #000 !important; display: flex; align-items: center; gap: 10px; margin-left: 5px;}
 
-        section { padding: 120px 7%; max-width: 1400px; margin: 0 auto; }
-        .section-label { color: var(--accent); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; display: block; }
+        section { padding: 80px 7%; max-width: 1300px; margin: 0 auto; }
+        .section-label { color: var(--accent); font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block; }
 
-        /* --- 01. HOME (Static) --- */
+        /* --- 01. HERO (Condensed) --- */
         #home { 
-            height: 85vh; display: flex; flex-direction: column; justify-content: center;
+            height: 70vh; display: flex; flex-direction: column; justify-content: center;
             border-bottom: 1px solid var(--border);
         }
-        .hero-title { font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; letter-spacing: -4px; margin: 15px 0; font-weight: 900; }
-        .hero-desc { color: #fff; font-size: 1.1rem; max-width: 450px; margin-top: 10px; }
+        .hero-title { font-size: clamp(2.5rem, 8vw, 6rem); line-height: 0.85; letter-spacing: -3px; font-weight: 900; }
+        .hero-desc { color: #fff; font-size: 1rem; max-width: 400px; margin-top: 15px; }
 
         /* --- 02. PROFILE --- */
-        #profile { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-        .p-headline { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; margin-bottom: 35px; }
-        .p-highlight { color: #fff; font-size: 1.5rem; font-weight: 600; line-height: 1.4; margin-bottom: 30px; }
-        .p-img-box { width: 100%; height: 600px; border-radius: var(--radius-card); border: 1px solid var(--border); overflow: hidden; }
+        #profile { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: start; }
+        .p-headline { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1; margin-bottom: 30px; }
+        .p-highlight { color: #fff; font-size: 1.3rem; font-weight: 600; line-height: 1.4; margin-bottom: 25px; }
+        .p-img-box { width: 100%; height: 500px; border-radius: 30px; border: 1px solid var(--border); overflow: hidden; }
         .p-img-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- 03. LOG STYLE (Exp & Edu) --- */
-        .log-section { padding: 60px 0; }
-        .log-item { display: grid; grid-template-columns: 180px 1fr 100px; padding: 40px 0; border-bottom: 1px solid var(--border); }
-        .log-meta { font-weight: 900; font-size: 0.75rem; color: #333; }
-        .log-org { font-weight: 800; color: var(--accent); font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 8px; display: block;}
-        .log-name { color: white; font-size: 1.8rem; font-weight: 800; margin-bottom: 10px; }
-        .log-desc { font-size: 0.95rem; }
+        /* --- 03. LOGS (Small UI) --- */
+        .log-item { display: grid; grid-template-columns: 140px 1fr; padding: 30px 0; border-bottom: 1px solid var(--border); }
+        .log-org { font-weight: 900; color: var(--accent); font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px; display: block;}
+        .log-name { color: white; font-size: 1.4rem; font-weight: 800; }
+        .log-meta { font-size: 0.7rem; color: #444; font-weight: 900; }
 
-        /* --- 04. PROJECTS (4 CARDS GRID) --- */
-        #projects { background: #000; padding-top: 50px; }
-        .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px 40px; } /* Result: 2 cols x 2 rows = 4 Cards */
-        .p-card { display: flex; flex-direction: column; }
-        .p-visual { width: 100%; aspect-ratio: 1 / 1; border-radius: var(--radius-card); overflow: hidden; margin-bottom: 25px; border: 1px solid var(--border); }
-        .p-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        .p-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 12px; }
-        .p-desc { font-size: 0.9rem; margin-bottom: 25px; line-height: 1.6; }
+        /* --- 04. PROJECTS (SMALL CARD GRID) --- */
+        .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 30px; }
+        .p-card { background: var(--surface); padding: 25px; border-radius: var(--radius-card); border: 1px solid var(--border); }
+        .p-visual { 
+            width: 100%; aspect-ratio: 16 / 10; border-radius: 12px; 
+            overflow: hidden; margin-bottom: 20px; background: #000;
+        }
+        .p-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(1); transition: 0.3s; }
+        .p-card:hover img { opacity: 1; filter: grayscale(0); }
+        .p-title { font-size: 1.3rem; margin-bottom: 10px; }
+        .p-desc { font-size: 0.85rem; line-height: 1.5; margin-bottom: 20px; }
         
-        /* Screenshot Accurate View Button */
-        .view-action-btn { 
-            display: inline-flex; align-items: center; gap: 12px; background: #151515; 
-            color: #fff; padding: 10px 10px 10px 25px; border-radius: 50px; 
-            font-weight: 700; font-size: 0.8rem; width: fit-content;
+        /* Smaller Action Button */
+        .small-btn { 
+            display: inline-flex; align-items: center; gap: 10px; background: #000; 
+            color: #fff; padding: 7px 7px 7px 20px; border-radius: 50px; 
+            font-weight: 700; font-size: 0.7rem; text-transform: uppercase; border: 1px solid #1a1a1a;
         }
-        .orange-arrow { 
-            width: 32px; height: 32px; background: var(--accent); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
-        }
+        .small-btn .dot-orange { width: 26px; height: 26px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
 
         /* --- 05. CONTACT (Screenshot Match) --- */
         #contact { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .contact-h { font-size: 3.8rem; line-height: 1; color: white; margin-bottom: 25px; }
-        .form-island { background: var(--surface); padding: 50px; border-radius: var(--radius-card); border: 1px solid var(--border); }
+        .contact-h { font-size: 3rem; line-height: 1; color: white; margin-bottom: 20px; }
+        .form-island { background: var(--surface); padding: 40px; border-radius: 24px; border: 1px solid var(--border); }
         
-        .name-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
-        .label-meta { display: block; font-size: 0.7rem; color: #555; font-weight: 700; text-transform: capitalize; margin-bottom: 10px; }
-        .label-meta span { color: var(--accent); }
+        .name-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .label-meta { font-size: 0.65rem; color: #555; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; display: block; }
         
         input, textarea { 
             width: 100%; background: #000; border: 1px solid var(--border); color: #fff; 
-            padding: 18px 25px; border-radius: 50px; font-family: 'Inter'; outline: none; 
+            padding: 15px 20px; border-radius: 40px; font-family: 'Inter'; font-size: 0.85rem; outline: none; 
         }
-        textarea { border-radius: 20px; min-height: 150px; }
+        textarea { border-radius: 15px; min-height: 120px; }
         input:focus { border-color: #333; }
         
         .submit-btn { 
-            width: 100%; background: var(--accent); border: none; padding: 22px; 
-            border-radius: 50px; color: #fff; font-family: 'Montserrat'; font-weight: 900; 
-            text-transform: uppercase; cursor: pointer; font-size: 0.8rem; margin-top: 10px;
+            width: 100%; background: var(--accent); border: none; padding: 18px; 
+            border-radius: 40px; color: #fff; font-family: 'Montserrat'; font-weight: 900; 
+            text-transform: uppercase; cursor: pointer; font-size: 0.75rem; 
         }
 
-        footer { text-align: center; padding: 60px; border-top: 1px solid var(--border); font-size: 0.65rem; color: #333; letter-spacing: 2px; text-transform: uppercase;}
+        footer { text-align: center; padding: 40px; font-size: 0.6rem; color: #1a1a1a; letter-spacing: 2px; }
 
-        @media (max-width: 992px) {
-            #home { height: auto; padding-top: 150px; padding-bottom: 50px;}
-            #profile, #contact, .project-grid, .log-item, .name-row { grid-template-columns: 1fr; gap: 30px; }
-            .log-year { text-align: left; margin-top: 10px; }
+        @media (max-width: 900px) {
+            #profile, #contact, .project-grid, .log-item, .name-row { grid-template-columns: 1fr; }
             section { padding-top: 60px; }
+            .hero-title { font-size: 3rem; }
+            .nav-island { width: 90%; }
         }
     </style>
 </head>
@@ -133,104 +129,94 @@
 
     <nav class="nav-island">
         <a href="#home">Home</a>
-        <a href="#profile">Bio</a>
-        <a href="#experience">History</a>
+        <a href="#profile">Profile</a>
         <a href="#projects">Work</a>
-        <a href="#contact" class="get-touch-btn">Signal <div class="orange-arrow" style="width:24px; height:24px; font-size:0.6rem;"><i class="fas fa-arrow-right"></i></div></a>
+        <a href="#contact" class="get-touch-btn">Signal <div class="dot-orange"><i class="fas fa-arrow-right"></i></div></a>
     </nav>
 
     <!-- SECTION: HOME -->
     <main id="home">
         <section style="padding: 0;">
-            <span class="section-label">Professionally Engineered Portfolio</span>
+            <span class="section-label">00 // Initial Signal</span>
             <h1 class="hero-title">PRECISION<br>DATA LOGIC.</h1>
-            <p class="hero-desc">Data Strategist and Analyst specialized in turning complex logic into actionable growth systems.</p>
+            <p class="hero-desc">Data Strategist merging systematic software logic with predictive pattern analysis.</p>
         </section>
     </main>
 
-    <!-- SECTION: BIO -->
+    <!-- SECTION: PROFILE -->
     <section id="profile">
         <div>
-            <span class="section-label">01 / The Profile</span>
-            <h2 class="p-headline">Analyst.<br>Strategist.</h2>
-            <p class="p-highlight">Scaling vision through algorithmic precision.</p>
-            <p>I am Niranjan Kumar. Based in Hyderabad, I apply an Engineering foundation (8.9 CGPA) to uncover efficiency in messy datasets. Having visited 17 Indian states, adaptability is built into my workflow.</p>
+            <span class="section-label">01 // The Persona</span>
+            <h2 class="p-headline">Strategist.<br>Analyst.</h2>
+            <p class="p-highlight">Solving systemic business problems through data precision.</p>
+            <p>I apply a Computer Science background (8.9 CGPA) to architect systems where data isn't just stored, but serves as a blueprint for business scale.</p>
         </div>
         <div class="p-img-box">
-            <img src="Profile/Pic.png" alt="Profile" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'">
+            <img src="Profile/Pic.png" alt="Niranjan Portrait" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=600&auto=format&fit=crop'">
         </div>
     </section>
 
-    <!-- SECTION: HISTORY (EXP & EDU) -->
-    <section id="experience">
-        <span class="section-label">02 / Records</span>
-        <h2 style="font-size: 3rem; margin-bottom: 40px;">Professional History</h2>
+    <!-- SECTION: RECORDS -->
+    <section id="records">
+        <span class="section-label">02 // The Record</span>
+        <h2 style="font-size: 2.5rem; margin-bottom: 40px;">Academic & Professional History</h2>
 
-        <!-- EXP 01 -->
         <div class="log-item">
-            <span class="log-meta">LOG // EXPERIENCE</span>
+            <span class="log-meta">LOG // 2025</span>
             <div>
-                <span class="log-org">TRAINEE ANALYST (HYD)</span>
+                <span class="log-org">ADVANCED DATA ANALYTICS (HYD)</span>
                 <h3 class="log-name">Naresh i Technologies</h3>
-                <p class="log-desc">Developing SQL pipelines and Power BI Visualization architectures for industrial data logs.</p>
             </div>
-            <span class="log-year">FEB 2025</span>
         </div>
 
-        <!-- EDU 01 -->
         <div class="log-item">
-            <span class="log-meta">LOG // EDUCATION</span>
+            <span class="log-meta">LOG // 2023</span>
             <div>
-                <span class="log-org">BACHELOR OF TECHNOLOGY (CSE)</span>
-                <h3 class="log-name">8.9 Grade Portfolio</h3>
-                <p class="log-desc">IPS College of Technology & Management, Gwalior. Foundation in algorithmic design and Python automation.</p>
+                <span class="log-org">8.9 GRADE B.TECH (CSE)</span>
+                <h3 class="log-name">IPS College of Technology</h3>
             </div>
-            <span class="log-year">2019-2023</span>
         </div>
 
-        <!-- EDU 02 -->
         <div class="log-item">
-            <span class="log-meta">LOG // SCHOOLING</span>
+            <span class="log-meta">LOG // 2018</span>
             <div>
-                <span class="log-org">SENIOR SECONDARY</span>
-                <h3 class="log-name">DAV Public School</h3>
-                <p class="log-desc">Science and Computer Science Stream (West Bengal). Grade: 8.7.</p>
+                <span class="log-org">DAV PUBLIC SCHOOL (X-XII)</span>
+                <h3 class="log-name">8.7 - 9.2 Scholastic Performance</h3>
             </div>
-            <span class="log-year">2017-2018</span>
         </div>
     </section>
 
-    <!-- SECTION: WORK (4 CARD GRID) -->
+    <!-- SECTION: PROJECTS (4 SMALL CARDS) -->
     <section id="projects">
-        <span class="section-label">03 / Case Studies</span>
+        <span class="section-label">03 // Visual Intelligence</span>
         <div class="project-grid">
             
             <div class="p-card">
-                <div class="p-visual"><img src="DA Cards/Air_Pollution.png" onerror="this.src='https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop'"></div>
-                <h3 class="p-title">NYC Sensory Investigation</h3>
-                <p class="p-desc">Deep study of air pollutant concentration in New York City via investigative Python sensors.</p>
-                <a href="#" class="view-action-btn">View Study <div class="orange-arrow"><i class="fas fa-arrow-right"></i></div></a>
+                <div class="p-visual"><img src="DA Cards/Air_Pollution.png"></div>
+                <h3 class="p-title">NYC Sensory Hub</h3>
+                <p class="p-desc">Deep-analysis investigating New York air pollutant concentrations.</p>
+                <a href="#" class="small-btn">Details <div class="dot-orange"><i class="fas fa-arrow-right"></i></div></a>
             </div>
 
             <div class="p-card">
-                <div class="p-visual"><img src="DA Cards/Lungs cancer.png" onerror="this.src='https://images.unsplash.com/photo-1532187896946-2fbc5d98df6c?q=80&w=800&auto=format&fit=crop'"></div>
-                <h3 class="p-title">A.I Clinical Logic</h3>
-                <p class="p-desc">Constructing relational diagnostics using lung cancer marker SQL databases.</p>
-                <a href="#" class="view-action-btn">View Dashboard <div class="orange-arrow"><i class="fas fa-arrow-right"></i></div></a>
+                <div class="p-visual"><img src="DA Cards/Lungs cancer.png"></div>
+                <h3 class="p-title">AI Diagnostics</h3>
+                <p class="p-desc">Clinical logic modeling for lung diagnostics based on SQL data sets.</p>
+                <a href="#" class="small-btn">View <div class="dot-orange"><i class="fas fa-arrow-right"></i></div></a>
             </div>
 
             <div class="p-card">
-                <div class="p-visual"><img src="ML Cards image/Car Price prediction.png" onerror="this.src='https://via.placeholder.com/600x600/111/fff?text=Car+Price+ML'"></div>
-                <h3 class="p-title">Price Predictive Yield</h3>
-                <p class="p-desc">Automated car price regression model trained on massive real-world inventory data.</p>
-                <a href="#" class="view-action-btn">View Code <div class="orange-arrow"><i class="fas fa-arrow-right"></i></div></a>
+                <div class="p-visual"><img src="ML Cards image/Car Price prediction.png"></div>
+                <h3 class="p-title">Price Prediction</h3>
+                <p class="p-desc">Trained regression engine identifying inventory value patterns.</p>
+                <a href="#" class="small-btn">View Code <div class="dot-orange"><i class="fas fa-arrow-right"></i></div></a>
             </div>
 
             <div class="p-card">
-                <div class="p-visual"><img src="ML Cards image/Titanic Dataset.png" onerror="this.src='https://via.placeholder.com/600x600/111/fff?text=Survival+ML'"></div>
-                <h3 class="p-title">Demographic Probability</h3>
-                <p class="p-desc">A survival prediction logic engine utilizing Logistic Regression on Titanic data.</p>
-                <a href="#" class="view-action-btn">View Log <div class="orange-arrow"><i class="fas fa-arrow-right"></i></div></a>
+                <div class="p-visual"><img src="ML Cards image/Titanic Dataset.png"></div>
+                <h3 class="p-title">Demographics</h3>
+                <p class="p-desc">Statistical survival probability modeling with Logistic Regression.</p>
+                <a href="#" class="small-btn">Log <div class="dot-orange"><i class="fas fa-arrow-right"></i></div></a>
             </div>
 
         </div>
@@ -239,37 +225,37 @@
     <!-- SECTION: CONTACT -->
     <section id="contact">
         <div class="contact-info">
-            <span class="section-label">04 / Terminal</span>
-            <h2 class="contact-h">Let's Create<br>Something<br>Meaningful.</h2>
-            <p>Ready to solve systemic logic problems or build predictive analytics architectures. Establish a signal today.</p>
+            <span class="section-label">04 // Connect</span>
+            <h2 class="contact-h">Transmit A Signal Today.</h2>
+            <p>Ready to deploy high-accuracy data architecture or AI modeling for industrial missions.</p>
         </div>
 
         <div class="form-island">
             <form action="https://formspree.io/f/xyzpaeop" method="POST">
                 <div class="name-row">
                     <div>
-                        <label class="label-meta">First Name <span>*</span></label>
+                        <label class="label-meta">First_Name</label>
                         <input type="text" placeholder="Entry Label..." required>
                     </div>
                     <div>
-                        <label class="label-meta">Last Name <span>*</span></label>
-                        <input type="text" placeholder="Kumar" required>
+                        <label class="label-meta">Last_Name</label>
+                        <input type="text" placeholder="Identity" required>
                     </div>
                 </div>
-                <div style="margin-bottom: 25px;">
-                    <label class="label-meta">Contact Email <span>*</span></label>
+                <div style="margin-bottom: 20px;">
+                    <label class="label-meta">Email_Reference</label>
                     <input type="email" placeholder="example@node.com" required>
                 </div>
-                <div style="margin-bottom: 25px;">
-                    <label class="label-meta">Inquiry Message <span>*</span></label>
-                    <textarea placeholder="Define your vision or data requirements..." required></textarea>
+                <div style="margin-bottom: 20px;">
+                    <label class="label-meta">Signal_Details</label>
+                    <textarea placeholder="Vision description..." required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Transmit Connection Link</button>
+                <button type="submit" class="submit-btn">Transmit Mission Link</button>
             </form>
         </div>
     </section>
 
-    <footer>NIRANJAN KUMAR 2026 // BLACK WHITE ACCENT ORANGE // HYDERABAD, IN</footer>
+    <footer>NIRANJAN KUMAR 2026 // SYSTEM: ZED BLACK // ALL LOGS REFINED</footer>
 
 </body>
 </html>
