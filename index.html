@@ -1,180 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Director | Premium Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Niranjan Kumar - Premium Designer & Data Analyst Portfolio // 2026 Edition." />
+    <title>Niranjan Kumar | Master Portfolio</title>
+
+    <link rel="icon" type="image/png" href="Logo/favicon.png" />
     
-    <!-- Premium Google Fonts -->
+    <!-- Ultra-Fast Loading Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
-            --zed-black: #000000;
-            --rim-light: #FF4D00; /* Warm Cinematic Orange */
-            --charcoal: #0a0a0a;
-            --text-main: #FFFFFF;
-            --text-gray: #666666;
-            --font-header: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --bg: #000000;
+            --surface: #0a0a0a;
+            --accent: #FF4D00; /* Warm Cinematic Orange */
+            --white: #FFFFFF;
+            --gray-sub: #777777;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-h: 'Montserrat', sans-serif;
+            --font-b: 'Inter', sans-serif;
         }
 
-        /* --- STARK PERFORMANCE ARCHITECTURE --- */
+        /* --- GLOBAL PERFORMANCE ARCHITECTURE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
         body { 
-            background-color: var(--zed-black); 
-            font-family: var(--font-body); 
-            color: var(--text-main); 
-            overflow: hidden; /* Lock hero to viewport for impact */
-            -webkit-font-smoothing: antialiased;
+            background: var(--bg); font-family: var(--font-b); color: var(--gray-sub); 
+            overflow-x: hidden; -webkit-font-smoothing: antialiased; 
         }
+        
+        h1, h2, h3, h4 { font-family: var(--font-h); color: var(--white); text-transform: none; }
+        a { text-decoration: none; transition: 0.2s ease; color: inherit; }
 
-        /* --- NOISE TEXTURE OVERLAY --- */
-        body::before {
-            content: "";
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3e%3cfilter id='noiseFilter'%3e%3cturbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3e%3c/svg%3e");
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 50;
+        /* --- MODERN TOP-FIXED NAVIGATION --- */
+        .nav-island {
+            position: fixed; top: 25px; left: 50%; transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(25px);
+            padding: 8px 12px; border-radius: 50px; border: 1px solid var(--border);
+            display: flex; align-items: center; gap: 2px; z-index: 99999;
+            width: fit-content;
         }
+        .nav-island a { 
+            color: #555; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; 
+            padding: 10px 14px; border-radius: 40px; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-island a:hover, .nav-island a.active { color: var(--white); background: rgba(255,255,255,0.06); }
+        .btn-touch { background: var(--white) !important; color: #000 !important; font-weight: 900 !important; }
 
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed; top: 0; width: 100%;
-            padding: 40px 6%;
-            display: flex; justify-content: space-between; align-items: center;
-            z-index: 1000;
+        /* --- HERO: PREVIOUS CINEMATIC SILHOUETTE DESIGN --- */
+        #home {
+            position: relative; height: 100vh; height: 100svh; width: 100%;
+            display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center;
+            padding: 0 7%;
+            background: radial-gradient(circle at 80% 40%, #3d1200 0%, #000 55%);
+            border-bottom: 1px solid var(--border); overflow: hidden;
         }
-        .logo { font-family: var(--font-header); font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; cursor: pointer; }
-        .nav-links { display: flex; gap: 40px; }
-        .nav-links a { 
-            text-decoration: none; color: #777; font-size: 0.75rem; 
-            font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
-        }
-        .nav-links a:hover { color: #fff; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
+        .hero-headline-box { position: relative; z-index: 10; }
+        .hero-intro { font-size: 1.5rem; font-weight: 600; color: #fff; opacity: 0.8; display: block; margin-bottom: 20px; }
+        .hero-title { font-size: clamp(3rem, 11vw, 9rem); line-height: 0.82; letter-spacing: -6px; font-weight: 900; }
 
-        .btn-touch {
-            background: #fff; color: #000; padding: 10px 10px 10px 25px;
-            border-radius: 50px; font-weight: 800; font-size: 0.8rem;
-            display: flex; align-items: center; gap: 15px; cursor: pointer; transition: 0.3s ease-out;
-        }
-        .btn-touch:hover { transform: scale(1.05); }
-        .btn-touch i { 
-            background: var(--rim-light); color: #fff; width: 32px; height: 32px; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            position: relative; height: 100vh; width: 100%;
-            display: grid; grid-template-columns: 1.2fr 0.8fr;
-            align-items: center; padding: 0 6%;
-            /* CINEMATIC LIGHTING ENGINE */
-            background: radial-gradient(circle at 80% 40%, #3d1200 0%, var(--zed-black) 55%);
-        }
-
-        /* SILHOUETTE PROFILE PLACEHOLDER */
+        /* SILHOUETTE PROFILE MASK */
         .silhouette {
             position: absolute; right: 0; bottom: 0; height: 95%; width: 50%;
             background: url('Profile/Pic.png') center bottom / contain no-repeat;
-            mask-image: linear-gradient(to left, rgba(0,0,0,1) 30%, transparent 100%);
-            filter: contrast(1.2) brightness(0.7);
-            z-index: 1;
-            /* Shadow on side profile to match cinematic prompt */
-            box-shadow: inset -50px 0 100px #000;
+            mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, transparent 100%);
+            filter: contrast(1.1) brightness(0.8); z-index: 1;
         }
+        
+        .hero-right-side { position: relative; z-index: 10; padding-top: 150px; padding-left: 10%; }
+        .hero-right-side h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.1; margin-bottom: 25px; }
+        .hero-right-side p { color: #555; font-size: 1rem; max-width: 300px; line-height: 1.6; }
 
-        /* TYPOGRAPHY */
-        .headline-box { position: relative; z-index: 10; }
-        .intro-line { font-size: 1.5rem; font-weight: 600; color: #fff; opacity: 0.8; display: block; margin-bottom: 20px; }
-        .main-title { 
-            font-family: var(--font-header); 
-            font-size: clamp(3rem, 11vw, 9rem);
-            line-height: 0.85; letter-spacing: -6px;
+        .bottom-labels {
+            position: absolute; bottom: 60px; left: 7%;
+            display: flex; gap: 60px; z-index: 10;
         }
+        .label-u span { color: var(--accent); font-weight: 900; font-size: 0.75rem; font-family: var(--font-h); }
+        .label-u p { font-size: 0.8rem; color: #fff; font-weight: 600; text-transform: uppercase; margin-top: 8px; }
 
-        /* RIGHT TAGLINE */
-        .tagline-box {
-            position: relative; z-index: 10; padding-top: 200px;
-        }
-        .tagline-box h2 { 
-            font-size: 2.1rem; line-height: 1.1; font-weight: 700; margin-bottom: 30px; 
-            text-transform: none; text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .tagline-box p { color: var(--text-gray); font-size: 1.1rem; max-width: 320px; line-height: 1.6; font-weight: 300; }
+        /* --- CONTENT SECTION ARCHITECTURE --- */
+        section { padding: 120px 7%; max-width: 1350px; margin: 0 auto; content-visibility: auto; }
+        .lbl { color: var(--accent); text-transform: uppercase; font-size: 0.7rem; font-weight: 900; letter-spacing: 0.15em; display: block; margin-bottom: 25px; }
 
-        /* BOTTOM LABELS */
-        .bottom-services {
-            position: absolute; bottom: 80px; left: 6%;
-            display: flex; gap: 80px;
-        }
-        .service-label { display: flex; flex-direction: column; gap: 10px; }
-        .service-label span { color: var(--rim-light); font-weight: 900; font-size: 0.75rem; font-family: var(--font-header); }
-        .service-label p { font-size: 0.85rem; color: #fff; font-weight: 600; letter-spacing: 0.5px; opacity: 0.9; }
+        .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+        .p-image { width: 100%; aspect-ratio: 4/5; border-radius: 30px; border: 1px solid var(--border); overflow: hidden; filter: grayscale(1); transition: 0.4s; }
+        .p-image:hover { filter: grayscale(0); border-color: var(--accent); }
+        .p-image img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* RESPONSIVE */
-        @media (max-width: 1100px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-mission, .silhouette { display: none; }
-            .tagline-box { padding: 40px 0 0 0; }
-            .tagline-box p { margin: 0 auto; }
-            .main-title { letter-spacing: -2px; }
-            .bottom-services { display: none; }
-            nav .nav-links { display: none; }
+        /* HISTORY TABLES */
+        .log-row { display: grid; grid-template-columns: 150px 1fr 100px; padding: 40px 0; border-bottom: 1px solid var(--border); align-items: center; }
+        .log-row:hover { background: rgba(255, 77, 0, 0.02); }
+        .l-meta { font-size: 0.65rem; color: #333; font-weight: 900; }
+        .l-org { font-size: 0.7rem; color: var(--accent); font-weight: 800; display: block; margin-bottom: 4px; }
+        .l-h { font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: #fff; text-transform: none; }
+
+        /* COMPACT WORK GRID */
+        .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 35px; }
+        .w-card { background: var(--surface); padding: 30px; border-radius: 24px; border: 1px solid var(--border); cursor: pointer; }
+        .w-visual { width: 100%; aspect-ratio: 16/10; border-radius: 12px; overflow: hidden; border: 1px solid #1a1a1a; margin-bottom: 25px; }
+        .w-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; filter: grayscale(1); transition: 0.3s; }
+        .w-card:hover .w-visual img { opacity: 1; filter: grayscale(0); }
+        
+        /* PROJECT VIEW PILL */
+        .btn-v { display: inline-flex; align-items: center; gap: 12px; background: #000; padding: 7px 7px 7px 20px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; border: 1px solid #1a1a1a; }
+        .o-bubble { width: 30px; height: 30px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; }
+
+        /* CONTACT FORM: PRECISE REPLICA */
+        #contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 100px; align-items: center; }
+        .form-island { background: var(--surface); padding: clamp(25px, 5vw, 55px); border-radius: 35px; border: 1px solid var(--border); }
+        .input-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px; }
+        .field label { display: block; font-size: 0.65rem; color: #444; font-weight: 900; font-family: var(--font-h); margin-bottom: 12px; text-transform: uppercase; }
+        .field label span { color: var(--accent); }
+        input, textarea { width: 100%; background: #000; border: 1px solid #1a1a1a; padding: 18px 25px; color: #fff; border-radius: 50px; outline: none; font-size: 0.95rem; font-family: var(--font-b); }
+        textarea { border-radius: 20px; min-height: 150px; resize: none; }
+        .submit-btn { width: 100%; background: var(--accent); color: #fff; padding: 22px; border: none; border-radius: 50px; font-family: var(--font-h); font-weight: 900; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .submit-btn:hover { background: #e04500; transform: translateY(-2px); }
+
+        footer { text-align: center; padding: 60px 0 100px; border-top: 1px solid var(--border); font-size: 0.6rem; color: #333; letter-spacing: 3px; font-weight: 900; text-transform: uppercase; }
+
+        /* RESPONSIVE FLUIDITY */
+        @media (max-width: 1024px) {
+            #home { grid-template-columns: 1fr; height: auto; padding: 180px 7% 100px; text-align: center; }
+            .silhouette { display: none; }
+            .hero-right-side { padding: 50px 0 0 0; text-align: center; }
+            .hero-right-side p { margin: 0 auto; }
+            .bottom-labels { position: relative; bottom: 0; left: 0; flex-wrap: wrap; margin-top: 80px; justify-content: center; }
+            .bio-grid, #contact, .work-grid, .log-row, .input-2 { grid-template-columns: 1fr; }
+            .p-image { order: -1; margin-bottom: 40px; height: 400px;}
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">NIRANJAN</div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Projects</a>
-        </div>
-        <div class="btn-touch">
-            Get in touch
-            <i><i class="fas fa-arrow-right"></i></i>
-        </div>
+    <!-- NAV -->
+    <nav class="nav-island">
+        <a href="#home">Home</a>
+        <a href="#about">Bio</a>
+        <a href="#history">Log</a>
+        <a href="#work">Case</a>
+        <a href="#contact" class="btn-touch">Connect</a>
     </nav>
 
-    <main class="hero">
-        <div class="silhouette" aria-hidden="true"></div>
-
-        <div class="headline-box">
-            <span class="intro-line">Hey, I’m a</span>
-            <h1 class="main-title">Creative<br>Director</h1>
+    <!-- SECTION 01: CINEMATIC HERO -->
+    <main id="home">
+        <div class="silhouette"></div>
+        <div class="hero-headline-box">
+            <span class="hero-intro">Hey, I’m a</span>
+            <h1 class="hero-title">Creative<br>Director</h1>
         </div>
 
-        <div class="tagline-box">
+        <div class="hero-right-side">
             <h2>Great design should <br> feel invisible.</h2>
-            <p>I blend technical precision with cinematic visual language to build timeless digital products.</p>
+            <p>Developing industrial strategies for Python predictive modeling and high-output SQL database systems.</p>
         </div>
 
-        <div class="bottom-services">
-            <div class="service-label">
-                <span>#01</span>
-                <p>Brand Strategy</p>
-            </div>
-            <div class="service-label">
-                <span>#02</span>
-                <p>Identity Design</p>
-            </div>
-            <div class="service-label">
-                <span>#03</span>
-                <p>Packaging Design</p>
-            </div>
-            <div class="service-label">
-                <span>#04</span>
-                <p>Creative Direction</p>
-            </div>
+        <div class="bottom-labels">
+            <div class="label-u"><span>#01</span><p>Brand Strategy</p></div>
+            <div class="label-u"><span>#02</span><p>Visual Intelligence</p></div>
+            <div class="label-u"><span>#03</span><p>Data Design</p></div>
+            <div class="label-u"><span>#04</span><p>Core Logic</p></div>
         </div>
     </main>
 
+    <!-- SECTION 02: BIO -->
+    <section id="about" class="bio-grid">
+        <div class="bio-txt">
+            <span class="lbl">01 // The Engine Profile</span>
+            <h2 style="font-size: clamp(2rem, 5vw, 3.8rem); line-height:1; margin-bottom: 30px; letter-spacing: -3px;">Analyst.<br>Strategist.</h2>
+            <p style="color:#fff; font-size:1.15rem; font-weight:600; margin-bottom: 25px;">Merging Engineering Foundations with Big-Data industrial systems.</p>
+            <p>I am Niranjan Kumar. Based in Hyderabad, I apply an 8.9 CGPA B.Tech software foundation to decode cluttered metrics into tactical visual growth plans. 17 states across India traveled — curiosity remains my constant.</p>
+        </div>
+        <div class="p-image">
+            <img src="Profile/Pic.png" alt="About Profile" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'">
+        </div>
+    </section>
+
+    <!-- SECTION 03: HISTORY -->
+    <section id="history">
+        <span class="lbl">02 // The Tracking Log</span>
+        <div class="log-row">
+            <span class="l-meta">CURRENT // 2025</span>
+            <div><span class="l-org">TRAINEE ANALYST (HYDERABAD)</span><h3 class="l-h">Naresh i Tech Advanced Studies</h3></div>
+            <span class="l-meta">ONGOING</span>
+        </div>
+        <div class="log-row">
+            <span class="l-meta">GRAD // 2023</span>
+            <div><span class="l-org">BACHELOR OF TECH (CSE)</span><h3 class="l-h">IPS College / Portfolio: 8.9 GPA</h3></div>
+            <span class="l-meta">GWT, IN</span>
+        </div>
+        <div class="log-row" style="border:none;">
+            <span class="l-meta">CORE // 2018</span>
+            <div><span class="l-org">DAV PUBLIC SCHOOL (CBSE)</span><h3 class="l-h">HS Schooling / Sci & Comp: 8.7</h3></div>
+            <span class="l-meta">WB, IN</span>
+        </div>
+    </section>
+
+    <!-- SECTION 04: WORK -->
+    <section id="work">
+        <span class="lbl">03 // Select Case Studies</span>
+        <div class="work-grid">
+            <div class="w-card">
+                <div class="w-visual"><img src="DA Cards/Air_Pollution.png"></div>
+                <h4 style="margin-bottom:12px; font-size: 1.5rem;">NYC Atmospheric Data Hub</h4>
+                <p style="font-size:0.85rem; line-height:1.4; margin-bottom:20px;">Mapping urban sensor patterns with high-precision investigative viz models.</p>
+                <div class="btn-v">Review Case <div class="o-bubble"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+            <div class="w-card">
+                <div class="w-visual"><img src="DA Cards/Lungs cancer.png"></div>
+                <h4 style="margin-bottom:12px; font-size: 1.5rem;">AI Logical Diagnostics</h4>
+                <p style="font-size:0.85rem; line-height:1.4; margin-bottom:20px;">Structured lung diagnosis architecture connecting clinical SQL to visual interfaces.</p>
+                <div class="btn-v">Access Lab <div class="o-bubble"><i class="fas fa-arrow-right"></i></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 05: CONTACT -->
+    <section id="contact">
+        <div class="c-info">
+            <span class="lbl">Establish Transmission Link</span>
+            <h2 style="font-size: clamp(2.5rem, 8vw, 4.2rem); line-height: 1; letter-spacing: -4px;">Let's Design<br>Industrial Meaning.</h2>
+            <p style="color: #fff; margin-top: 30px; font-weight: 500;">Ready to engineer model logic for new industrial missions.</p>
+        </div>
+
+        <div class="form-island">
+            <form action="https://formspree.io/f/xyzpaeop" method="POST">
+                <div class="input-2">
+                    <div class="field"><label>First_Name <span>*</span></label><input type="text" name="fn" placeholder="Label" required></div>
+                    <div class="field"><label>Last_Name <span>*</span></label><input type="text" name="ln" placeholder="Ref ID" required></div>
+                </div>
+                <div class="field" style="margin-bottom:25px;">
+                    <label>Official_Email <span>*</span></label><input type="email" name="em" placeholder="user@node.com" required>
+                </div>
+                <div class="field" style="margin-bottom:30px;">
+                    <label>Inquiry_Description</label><textarea name="message" placeholder="Details of vision or system architecture requirement..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Authorize Link Signal</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>NIRANJAN KUMAR &copy; 2026 // MONO-ACCENT SYSTEMS OPERATOR // DESIGNED BY HAND</footer>
+
+    <script>
+        const sections = document.querySelectorAll('section, main');
+        const navAs = document.querySelectorAll('.nav-island a');
+        
+        window.addEventListener('scroll', () => {
+            let curr = "";
+            sections.forEach(s => {
+                if(pageYOffset >= (s.offsetTop - 400)) curr = s.getAttribute("id");
+            });
+            navAs.forEach(a => {
+                a.classList.remove("active");
+                if(a.getAttribute("href").includes(curr)) a.classList.add("active");
+            });
+        }, {passive: true});
+    </script>
 </body>
 </html>
