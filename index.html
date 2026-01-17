@@ -13,13 +13,15 @@
 
     <style>
         :root {
-            --zed-black: #050505;
+            --zed-black: #000000;
+            --surface: #0a0a0a;
             --main-orange: #ff4d00;
             --text-main: #ffffff;
             --text-gray: #777777;
             --font-h: 'Montserrat', sans-serif;
             --font-b: 'Inter', sans-serif;
             --radius-big: 80px;
+            --radius-card: 24px;
             --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -27,9 +29,9 @@
         html { scroll-behavior: smooth; }
         body { background-color: #000000; font-family: var(--font-b); color: var(--text-gray); overflow-x: hidden; line-height: 1.6; }
 
-        h1, h2, h3 { font-family: var(--font-h); text-transform: none; color: #fff; }
+        h1, h2, h3 { font-family: var(--font-h); color: #fff; }
 
-        /* NAV ISLAND */
+        /* --- 00. NAVIGATION --- */
         .nav-island {
             position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
             background: rgba(15, 15, 15, 0.85); backdrop-filter: blur(20px);
@@ -43,7 +45,7 @@
         .nav-island a:hover, .nav-island a.active { color: #fff; }
         .get-touch-btn { background: #fff !important; color: #000 !important; margin-left: 5px; display: flex; align-items: center; gap: 10px; border-radius: 50px; }
 
-        /* 01. HERO REPLICA - Silhouette Design */
+        /* --- 01. HERO SECTION (Silhouette Glow) --- */
         #home {
             position: relative; height: 100vh; min-height: 850px;
             background: linear-gradient(135deg, #441100 0%, #150300 35%, #000000 75%);
@@ -62,49 +64,69 @@
         .h-stat span { display: block; color: var(--main-orange); font-family: var(--font-h); font-weight: 900; font-size: 0.8rem; margin-bottom: 12px; }
         .h-stat p { color: #fff; font-weight: 700; font-size: 0.85rem; }
 
-        /* 02. TRUSTED BY BAR */
+        /* --- 02. PARTNER ROW --- */
         .trusted-row { background: #000; padding: 120px 7% 100px; display: flex; justify-content: space-between; align-items: center; margin-top: -30px; }
         .t-label { color: #444; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; max-width: 140px; }
         .t-logos { display: flex; gap: 60px; font-family: var(--font-h); font-weight: 900; font-size: 1.4rem; color: #fff; opacity: 0.8; }
         .t-logos span { display: flex; align-items: center; gap: 10px; }
 
-        /* 03. ABOUT SECTION - Accuracy Layout */
+        /* --- 03. ABOUT SECTION --- */
         #about { padding: 150px 7%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 100px; align-items: flex-start; background: #000; }
-        .about-lbl { color: var(--main-orange); font-weight: 800; display: block; margin-bottom: 30px; font-family: var(--font-h); font-size: 1.1rem; }
+        .label-orange { color: var(--main-orange); font-weight: 800; display: block; margin-bottom: 30px; font-family: var(--font-h); font-size: 1.1rem; }
         .about-title { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 1; font-weight: 900; color: #fff; margin-bottom: 40px; }
         .about-sub { color: #fff; font-size: 1.6rem; font-weight: 700; line-height: 1.3; margin-bottom: 35px; max-width: 500px; }
         .about-p { margin-bottom: 25px; font-size: 1rem; color: #888; max-width: 550px;}
         .about-image { width: 100%; height: 700px; background: #111; border-radius: 40px; overflow: hidden; border: 1px solid #222; }
         .about-image img { width: 100%; height: 100%; object-fit: cover; }
-        .pill-btn-about { display: inline-flex; align-items: center; gap: 15px; background: #1a1a1a; color: #fff; padding: 10px 10px 10px 30px; border-radius: 50px; text-decoration: none; margin-top: 30px; font-weight: 600; font-size: 0.85rem; border: 1px solid #333; }
-        .bubble-arrow { width: 38px; height: 38px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 0.8rem;}
 
-        /* --- 04. PROJECTS SECTION - Image Card Replica --- */
-        #projects { padding: 100px 7% 150px; background: #000; }
-        .project-grid-replica { display: grid; grid-template-columns: 1fr 1fr; gap: 80px 40px; margin-top: 60px; }
-        .p-card-replica { display: flex; flex-direction: column; cursor: pointer; }
-        .p-img-box { width: 100%; aspect-ratio: 1.2 / 1; border-radius: 24px; overflow: hidden; margin-bottom: 30px; border: 1px solid #222; }
-        .p-img-box img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .p-card-replica:hover .p-img-box img { transform: scale(1.05); }
-        .p-card-replica h3 { font-size: 2rem; margin-bottom: 15px; font-weight: 800; font-family: var(--font-h); }
-        .p-card-replica p { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; max-width: 90%; }
+        /* --- 04. NEW RECENT WORK LIST (As per Screenshot) --- */
+        #recent-work-list { padding: 100px 7% 50px; background: #000; }
+        .recent-header-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: flex-end; margin-bottom: 80px; }
+        .recent-header-grid p { color: #fff; font-size: 1.3rem; line-height: 1.4; max-width: 450px; }
         
-        /* Matching the orange arrow button from project screenshot */
-        .project-action-btn { 
-            display: inline-flex; align-items: center; gap: 12px; background: #1a1a1a; color: #fff; 
-            padding: 8px 8px 8px 25px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; width: fit-content; text-transform: capitalize; 
+        .work-list-item { 
+            background: #0d0d0d; border-radius: var(--radius-card); padding: 50px; 
+            border: 1px solid #1a1a1a; display: flex; flex-direction: column; 
+            margin-bottom: 20px; transition: var(--transition); position: relative;
         }
-        .p-mini-circle { width: 32px; height: 32px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+        .work-list-item:hover { background: #111; border-color: #333; transform: scale(0.99); }
+        .work-cat { color: var(--main-orange); font-size: 0.85rem; font-weight: 700; margin-bottom: 15px; display: block; }
+        .work-title { font-size: 2.2rem; font-weight: 800; color: #fff; margin-bottom: 20px; font-family: var(--font-h); }
+        .work-desc { font-size: 0.95rem; color: #555; max-width: 600px; }
+        .work-year { 
+            position: absolute; top: 50%; right: 50px; transform: translateY(-50%); 
+            background: #1a1a1a; padding: 10px 20px; border-radius: 30px; 
+            font-size: 0.75rem; color: #555; font-weight: 700; border: 1px solid #222;
+        }
 
-        /* CONTACT & FOOTER */
+        /* --- 05. PROJECTS GRID SECTION --- */
+        #projects { padding: 80px 7% 150px; background: #000; }
+        .project-grid-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 60px 40px; }
+        .p-card { display: flex; flex-direction: column; cursor: pointer; }
+        .p-img { width: 100%; aspect-ratio: 1.2 / 1; border-radius: 24px; overflow: hidden; margin-bottom: 30px; border: 1px solid #222; }
+        .p-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0.7; }
+        .p-card:hover .p-img img { transform: scale(1.05); filter: grayscale(0); opacity: 1; }
+        .p-card h3 { font-size: 2rem; margin-bottom: 15px; font-weight: 800; }
+        .p-card p { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
+        .project-btn { display: inline-flex; align-items: center; gap: 12px; background: #1a1a1a; color: #fff; padding: 8px 8px 8px 25px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; width: fit-content; text-transform: capitalize; }
+        .mini-circle { width: 32px; height: 32px; background: var(--main-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: #fff;}
+
+        /* --- 06. CONTACT & FOOTER --- */
         #contact { padding: 150px 7%; background: radial-gradient(circle at top left, #2a0c00 0%, #000 50%); }
         form { margin-top: 60px; max-width: 800px; display: grid; gap: 20px; }
-        input, textarea { background: #000; border: 1px solid #222; color: #fff; padding: 22px; border-radius: 12px; width: 100%; }
+        input, textarea { background: #000; border: 1px solid #222; color: #fff; padding: 22px; border-radius: 12px; width: 100%; font-family: var(--font-b); }
         .submit-trigger { background: #fff; border: none; padding: 22px; border-radius: 12px; font-family: var(--font-h); font-weight: 900; cursor: pointer; }
         footer { text-align: center; padding: 60px; font-size: 0.65rem; text-transform: uppercase; font-family: var(--font-h); opacity: 0.3; letter-spacing: 2px; }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: 1s cubic-bezier(0.1, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        @media (max-width: 1000px) {
+            #about, .recent-header-grid, .project-grid-visual, .hero-body { grid-template-columns: 1fr; }
+            .hero-right, .work-year { position: static; padding: 0; transform: none; margin-top: 20px; width: fit-content;}
+            .hero-body { margin-bottom: 20px; }
+            .hero-stat-bar { gap: 20px; flex-wrap: wrap; }
+        }
     </style>
 </head>
 <body>
@@ -112,11 +134,11 @@
     <nav class="nav-island">
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#projects">Work</a>
-        <a href="#contact" class="get-touch-btn">Get In Touch <div class="bubble-arrow" style="width:24px; height:24px; font-size:0.6rem;"><i class="fas fa-arrow-right"></i></div></a>
+        <a href="#recent-work-list">Work</a>
+        <a href="#contact" class="get-touch-btn">Get In Touch <div class="mini-circle"><i class="fas fa-arrow-right"></i></div></a>
     </nav>
 
-    <!-- 01. Hero -->
+    <!-- HERO -->
     <main id="home">
         <div class="hero-top-nav">Niranjan.</div>
         <div class="hero-body">
@@ -130,16 +152,16 @@
             </div>
         </div>
         <div class="hero-stat-bar">
-            <div class="h-stat"><span>#01</span><p>Insight Design</p></div>
-            <div class="h-stat"><span>#02</span><p>Predictive Modeling</p></div>
-            <div class="h-stat"><span>#03</span><p>UX Visualization</p></div>
-            <div class="h-stat"><span>#04</span><p>SQL Performance</p></div>
+            <div class="h-stat"><span>#01</span><p>Data Design</p></div>
+            <div class="h-stat"><span>#02</span><p>AI Modeling</p></div>
+            <div class="h-stat"><span>#03</span><p>Visualization</p></div>
+            <div class="h-stat"><span>#04</span><p>Performance</p></div>
         </div>
     </main>
 
-    <!-- 02. Partners -->
+    <!-- LOGOS -->
     <div class="trusted-row">
-        <div class="t-label">Global Strategic Partners</div>
+        <div class="t-label">Strategic Alliances</div>
         <div class="t-logos">
             <span>SUPA BLOX</span>
             <span>HYPE BLOX</span>
@@ -147,71 +169,94 @@
         </div>
     </div>
 
-    <!-- 03. About -->
+    <!-- ABOUT -->
     <section id="about" class="reveal">
         <div class="about-content">
-            <span class="about-lbl">About me</span>
+            <span class="label-orange">About me</span>
             <h2 class="about-title">Analyst.<br>Strategist.<br>Insight partner.</h2>
             <h3 class="about-sub">Blending clarity and creativity to build data narratives with purpose.</h3>
-            <p class="about-p">I’m Niranjan Kumar, a professional merging Engineering precision (8.9 CGPA) with creative problem-solving.</p>
-            <p class="about-p">Having traveled 17 Indian states, I prioritize adaptability—ensuring your data serve as blueprints for massive business growth.</p>
-            <a href="#contact" class="pill-btn-about">Explore Journey <div class="bubble-arrow"><i class="fas fa-arrow-right"></i></div></a>
+            <p class="about-p">Engineering precision (8.9 CGPA) combined with professional pattern discovery across industries.</p>
+            <p class="about-p">Having traveled across 17 Indian states, I prioritize global scalability—building blueprints for massive growth.</p>
         </div>
-        <div class="about-image"><img src="Profile/Pic.png" alt="Profile Portfolio Photo" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'"></div>
+        <div class="about-image"><img src="Profile/Pic.png" alt="Profile" onerror="this.src='https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop'"></div>
     </section>
 
-    <!-- 04. Projects - Replicated from Screenshot -->
+    <!-- NEW RECENT WORK LIST (Top of projects) -->
+    <section id="recent-work-list" class="reveal">
+        <div class="recent-header-grid">
+            <div>
+                <span class="label-orange">Recent Work</span>
+                <h2 class="about-title">Latest Projects & Collaborations</h2>
+            </div>
+            <p>A look at what I've been working on lately—designs, stories, and creative partnerships.</p>
+        </div>
+
+        <div class="work-list-item">
+            <span class="work-cat">Business Intelligence Architecture</span>
+            <h3 class="work-title">NYC Logistics Data Core</h3>
+            <p class="work-desc">Comprehensive investigation mapping environmental and sensory patterns for urban planning modules.</p>
+            <span class="work-year">2025</span>
+        </div>
+
+        <div class="work-list-item">
+            <span class="work-cat">AI Predictive Modeling</span>
+            <h3 class="work-title">Clinical Diagnostics Engine</h3>
+            <p class="work-desc">Automating disease identification marker detection using relational SQL logic and Scikit modules.</p>
+            <span class="work-year">2024</span>
+        </div>
+
+        <div class="work-list-item">
+            <span class="work-cat">Financial System Design</span>
+            <h3 class="work-title">Portfolio Strategy Lab</h3>
+            <p class="work-desc">Refining large-market inventory datasets to provide 90% valuation accuracy in automotive trading.</p>
+            <span class="work-year">2023</span>
+        </div>
+    </section>
+
+    <!-- PROJECTS GRID -->
     <section id="projects" class="reveal">
-        <div class="project-grid-replica">
-            <!-- Project 1 -->
-            <div class="p-card-replica">
-                <div class="p-img-box"><img src="DA Cards/Air_Pollution.png" alt="NYC Diagnostics"></div>
+        <div class="project-grid-visual">
+            <div class="p-card">
+                <div class="p-img"><img src="DA Cards/Air_Pollution.png"></div>
                 <h3>Urban Insights</h3>
-                <p>In-depth investigate study analyzing environmental sensor data to map pollutants in New York City with high visual precision.</p>
-                <div class="project-action-btn">View Project <div class="p-mini-circle"><i class="fas fa-arrow-right"></i></div></div>
+                <p>Environmental sensor mapping with high visual precision for large scale metropolitan monitoring.</p>
+                <div class="project-btn">View Report <div class="mini-circle"><i class="fas fa-arrow-right"></i></div></div>
             </div>
-            <!-- Project 2 -->
-            <div class="p-card-replica">
-                <div class="p-img-box"><img src="DA Cards/Lungs cancer.png" alt="Clinical AI"></div>
-                <h3>AI Logic Suite</h3>
-                <p>Development of clinical diagnostics dashboards connecting relational SQL logic with real-time patient analytics modules.</p>
-                <div class="project-action-btn">View Project <div class="p-mini-circle"><i class="fas fa-arrow-right"></i></div></div>
-            </div>
-            <!-- Project 3 -->
-            <div class="p-card-replica">
-                <div class="p-img-box"><img src="ML Cards image/Car Price prediction.png" alt="Price Engine"></div>
-                <h3>Predictive Yield</h3>
-                <p>Training advanced regression engines on real-market inventory datasets to provide high-accuracy automated valuations.</p>
-                <div class="project-action-btn">View Project <div class="p-mini-circle"><i class="fas fa-arrow-right"></i></div></div>
-            </div>
-            <!-- Project 4 -->
-            <div class="p-card-replica">
-                <div class="p-img-box"><img src="ML Cards image/Titanic Dataset.png" alt="Logic Engine"></div>
-                <h3>Liquid Probability</h3>
-                <p>A mathematical survival log leveraging demographic classifications to test logistical survival outcomes on historical events.</p>
-                <div class="project-action-btn">View Project <div class="p-mini-circle"><i class="fas fa-arrow-right"></i></div></div>
+            <div class="p-card">
+                <div class="p-img"><img src="DA Cards/Lungs cancer.png"></div>
+                <h3>Logic Modules</h3>
+                <p>Clinical diagnostic dashboards connecting SQL databases with real-time analytics interfaces.</p>
+                <div class="project-btn">View Live <div class="mini-circle"><i class="fas fa-arrow-right"></i></div></div>
             </div>
         </div>
     </section>
 
-    <!-- 05. Contact -->
+    <!-- CONTACT -->
     <section id="contact" class="reveal">
         <h2 class="about-title">Launch A <br>Mission.</h2>
         <form action="https://formspree.io/f/xyzpaeop" method="POST">
-            <input type="text" placeholder="Your Identity" required>
+            <input type="text" placeholder="Identity Name" required>
             <input type="email" placeholder="Professional Email" required>
-            <textarea rows="5" placeholder="Signal / Project Proposal..."></textarea>
-            <button type="submit" class="submit-trigger">Transmit</button>
+            <textarea rows="5" placeholder="Project Description / Proposal..."></textarea>
+            <button type="submit" class="submit-trigger">Transmit Link</button>
         </form>
     </section>
 
-    <footer>NIRANJAN KUMAR &copy; 2026 // MONOCHROME DATA // BUILT WITH LOGIC</footer>
+    <footer>NIRANJAN KUMAR 2026 // SYSTEM: ZED BLACK & WHITE // BUILT WITH DATA</footer>
 
     <script>
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section, main');
+            const navLinks = document.querySelectorAll('.nav-island a');
+            let current = "";
+            sections.forEach(s => { if(pageYOffset >= s.offsetTop - 300) current = s.getAttribute("id"); });
+            navLinks.forEach(link => { link.classList.remove("active"); if(link.getAttribute("href").includes(current)) link.classList.add("active"); });
+        });
     </script>
 </body>
 </html>
