@@ -1,161 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Director | Premium Hero</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --accent-orange: #FF5A1F;
-            --dark-charcoal: #111111;
-        }
-        body {
-            background-color: #000000;
-            font-family: 'Inter', sans-serif;
-            color: #FFFFFF;
-            margin: 0;
-            padding: 0;
-        }
+<!-- THE DESIGN SYSTEM: FRAME-IN-FRAME OVERLAP -->
+<section class="bg-black w-full min-h-screen flex flex-col items-center pt-8 pb-32">
 
-        /* Hero Image Container with Editorial Gradient Overlay */
-        .hero-image-container {
-            position: relative;
-            background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=2000');
-            background-size: cover;
-            background-position: center;
-        }
+    <!-- 1. THE OUTER BASE FRAME (The Dark Layer from your image) -->
+    <!-- This provides the bottom shadow depth seen in your reference -->
+    <div class="relative w-[92%] max-w-[1400px] bg-[#111111] rounded-b-[80px] pb-12 shadow-2xl overflow-visible">
 
-        /* Specified Gradient Overlay (65-75% Opacity) */
-        .hero-image-container::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255, 90, 31, 0.75) 0%, rgba(207, 35, 0, 0.65) 50%, rgba(0, 0, 0, 0.8) 100%);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .headline-massive {
-            line-height: 0.85;
-            letter-spacing: -0.05em;
-            font-weight: 900;
-        }
-
-        .floating-card {
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            background-color: var(--dark-charcoal);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .pill-cta-hover:hover .arrow-icon {
-            transform: rotate(45deg);
-            background-color: white;
-            color: var(--accent-orange);
-        }
-    </style>
-</head>
-<body class="antialiased">
-
-    <!-- SECTION 1: HERO CONTAINER -->
-    <!-- THE PREMIUM HERO SYSTEM -->
-<section class="bg-black w-full min-h-[90vh] flex flex-col items-center pt-10 pb-20 relative">
-
-    <!-- 1. TOP HERO CARD (PRIMARY LAYER) -->
-    <div class="relative w-[90%] max-w-[1300px] h-[75vh] min-h-[600px] rounded-[40px] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] z-10">
-        
-        <!-- IMAGE & GRADIENT LAYER -->
-        <div class="absolute inset-0 z-0">
-            <!-- Background Image -->
-            <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&q=80&w=1500" 
-                 class="w-full h-full object-cover object-center scale-105" alt="Creative Portrait">
+        <!-- 2. THE TOP CONTENT FRAME (The Red Layer from your image) -->
+        <!-- Background matches the vibrant orange-red (#FF3B1D) -->
+        <div class="relative w-full h-[70vh] min-h-[600px] bg-[#FF3B1D] rounded-b-[80px] overflow-hidden flex flex-col justify-between p-8 md:p-14 text-white">
             
-            <!-- Specific Overlay: Orange → Red → Black -->
-            <div class="absolute inset-0" 
-                 style="background: linear-gradient(135deg, rgba(255, 90, 31, 0.75) 0%, rgba(207, 35, 0, 0.65) 50%, rgba(0, 0, 0, 0.95) 100%);">
-            </div>
-        </div>
+            <!-- GRADIENT TEXTURE FOR EDITORIAL FEEL -->
+            <div class="absolute inset-0 bg-gradient-to-br from-white/10 to-black/30 pointer-events-none"></div>
 
-        <!-- HERO CARD CONTENT -->
-        <div class="relative z-20 h-full flex flex-col justify-between p-8 md:p-14 text-white">
-            
-            <!-- NAV INSIDE CARD -->
-            <nav class="flex justify-between items-center">
-                <div class="text-xl font-bold tracking-tighter uppercase">Marshall<span class="text-white/40 italic">™</span></div>
+            <!-- CONTENT STARTS HERE -->
+            <div class="relative z-10 flex flex-col h-full justify-between">
                 
-                <div class="hidden md:flex gap-10 text-sm font-medium text-white/70 uppercase tracking-widest">
-                    <a href="#" class="hover:text-white transition-all">Home</a>
-                    <a href="#" class="hover:text-white transition-all">About</a>
-                    <a href="#" class="hover:text-white transition-all">Projects</a>
-                </div>
-
-                <button class="group flex items-center bg-white text-black py-2 pl-6 pr-2 rounded-full transition-transform active:scale-95">
-                    <span class="text-xs font-black uppercase tracking-tight mr-4">Get in touch</span>
-                    <div class="w-8 h-8 rounded-full bg-[#FF5A1F] flex items-center justify-center text-white transition-transform group-hover:rotate-45">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                <!-- NAVIGATION -->
+                <nav class="flex justify-between items-center">
+                    <div class="text-xl font-black tracking-tighter uppercase italic">Marshall<span class="opacity-50 italic">®</span></div>
+                    
+                    <div class="hidden md:flex gap-10 text-[10px] font-bold text-white uppercase tracking-[0.3em]">
+                        <a href="#" class="hover:opacity-50 transition-all">Work</a>
+                        <a href="#" class="hover:opacity-50 transition-all">About</a>
+                        <a href="#" class="hover:opacity-50 transition-all">Archive</a>
                     </div>
-                </button>
-            </nav>
 
-            <!-- TYPOGRAPHY BODY -->
-            <div class="grid md:grid-cols-2 gap-8 items-center mb-10">
-                <div>
-                    <span class="block text-sm uppercase tracking-[0.3em] text-white/70 mb-2">Hey, I’m a</span>
-                    <h1 class="text-7xl lg:text-[10rem] font-black uppercase leading-[0.85] tracking-tight">
-                        Creative<br>Director
-                    </h1>
-                </div>
-                <div class="md:pl-16">
-                    <h2 class="text-3xl font-bold max-w-sm mb-4 leading-tight">Great design should feel invisible.</h2>
-                    <p class="text-white/60 text-lg leading-relaxed max-w-sm">Crafting premium visual identities for high-level creative agencies and digital product startups.</p>
-                </div>
-            </div>
+                    <button class="bg-black text-white px-5 py-2 rounded-full flex items-center gap-3 transition-transform active:scale-95 shadow-xl">
+                        <span class="text-[10px] font-bold uppercase tracking-widest">Connect</span>
+                        <div class="w-2 h-2 rounded-full bg-[#FF3B1D] animate-pulse"></div>
+                    </button>
+                </nav>
 
-            <!-- SKILL STRIP -->
-            <div class="flex flex-wrap gap-8 md:gap-14 border-t border-white/10 pt-10">
-                <div class="flex items-center gap-4">
-                    <span class="text-[#FF5A1F] font-bold text-xs uppercase tracking-tighter">#01</span>
-                    <span class="text-xs uppercase font-medium tracking-[0.2em] opacity-80">Branding</span>
+                <!-- HERO TYPOGRAPHY -->
+                <div class="grid lg:grid-cols-12 gap-8 items-end">
+                    <div class="lg:col-span-8">
+                        <span class="inline-block text-[11px] font-bold uppercase tracking-[0.4em] bg-black/10 px-3 py-1 rounded mb-4">Aiden Marshall Studio — 2025</span>
+                        <h1 class="text-7xl lg:text-[11rem] font-black uppercase leading-[0.8] tracking-tighter">
+                            Creative<br>Director
+                        </h1>
+                    </div>
+                    <div class="lg:col-span-4 lg:pl-10">
+                        <p class="text-xl md:text-2xl font-medium leading-tight text-white mb-6">
+                            I build visual narratives that bridge the gap between human emotion and digital commerce.
+                        </p>
+                        <div class="h-[2px] w-20 bg-white/30"></div>
+                    </div>
                 </div>
-                <div class="flex items-center gap-4">
-                    <span class="text-[#FF5A1F] font-bold text-xs uppercase tracking-tighter">#02</span>
-                    <span class="text-xs uppercase font-medium tracking-[0.2em] opacity-80">UX Systems</span>
-                </div>
-                <div class="flex items-center gap-4">
-                    <span class="text-[#FF5A1F] font-bold text-xs uppercase tracking-tighter">#03</span>
-                    <span class="text-xs uppercase font-medium tracking-[0.2em] opacity-80">Interactive</span>
+
+                <!-- BOTTOM SKILLS LINE -->
+                <div class="flex flex-wrap gap-10 items-center opacity-80 pt-10">
+                   <div class="flex flex-col">
+                        <span class="text-[9px] font-black uppercase opacity-50 tracking-[0.2em] mb-1">Services</span>
+                        <div class="text-[11px] font-bold uppercase tracking-widest flex gap-4">
+                            <span>01 / Branding</span>
+                            <span>02 / UI/UX</span>
+                            <span>03 / 3D Art</span>
+                        </div>
+                   </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 2. FLOATING PILL LOGO BAR (OVERLAY LAYER) -->
-    <!-- translate-y-1/2 creates the overlap on the bottom of the card above -->
-    <div class="relative z-30 -translate-y-1/2 flex justify-center w-full px-4">
-        <div class="bg-[#0F0F0F] rounded-full py-5 px-10 flex flex-col md:flex-row items-center justify-center gap-8 shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-white/[0.03]">
-            
-            <!-- PILL CONTENT: TEXT LEFT -->
-            <span class="text-[rgba(255,255,255,0.4)] text-[10px] uppercase font-bold tracking-[0.3em] whitespace-nowrap md:border-r border-white/10 md:pr-10">
-                Trusted by brands I’ve helped shape
-            </span>
+        <!-- 3. THE FLOATING PILL (Overlaying the frame transition) -->
+        <!-- Matches your logo bar request - Overlaps the red card onto the dark card -->
+        <div class="absolute left-1/2 -translate-x-1/2 -bottom-6 w-max z-20">
+            <div class="bg-[#0D0D0D] rounded-full py-4 px-10 flex flex-col md:flex-row items-center gap-10 shadow-2xl border border-white/5">
+                
+                <span class="text-[10px] font-bold text-white/30 uppercase tracking-[0.4em] md:border-r border-white/10 md:pr-10">
+                    Trusted by partners
+                </span>
 
-            <!-- PILL CONTENT: LOGOS RIGHT -->
-            <div class="flex items-center gap-8 md:gap-12 opacity-40 hover:opacity-80 transition-opacity">
-                <!-- Generic Monochrome Icons for Branding Purpose -->
-                <svg width="60" height="20" class="fill-current text-white"><rect width="100%" height="100%" rx="2"/></svg>
-                <svg width="40" height="20" class="fill-current text-white"><circle cx="20" cy="10" r="10"/></svg>
-                <svg width="70" height="20" class="fill-current text-white"><polygon points="0,20 35,0 70,20"/></svg>
-                <svg width="50" height="20" class="fill-current text-white"><ellipse cx="25" cy="10" rx="25" ry="10"/></svg>
-                <svg width="40" height="20" class="fill-current text-white"><rect width="40" height="15" y="2.5" transform="rotate(45)"/></svg>
+                <div class="flex items-center gap-10">
+                   <!-- Monochrome Placeholders -->
+                    <div class="w-16 h-4 bg-white/10 rounded flex-shrink-0"></div>
+                    <div class="w-20 h-4 bg-white/10 rounded flex-shrink-0"></div>
+                    <div class="w-14 h-4 bg-white/10 rounded flex-shrink-0"></div>
+                    <div class="w-12 h-4 bg-white/10 rounded flex-shrink-0"></div>
+                </div>
+
             </div>
-
         </div>
     </div>
 </section>
-</body>
-</html>
