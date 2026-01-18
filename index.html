@@ -142,71 +142,68 @@
     </section>
 
     <!-- ABOUT SECTION -->
-<section id="about" class="relative w-full h-screen bg-black overflow-hidden flex items-center justify-center px-4 md:px-8">
-    
-    <!-- INNER FRAME (Matching the Hero curve language) -->
-    <div class="relative w-full h-[90%] bg-[#0D0D0D] rounded-[60px] md:rounded-[100px] overflow-hidden flex flex-col md:flex-row items-center justify-between p-8 md:p-20">
+<!-- ABOUT ME SECTION: EXACT REFERENCE MATCH -->
+<section id="about" class="bg-black w-full min-h-screen py-24 px-6 md:px-20">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         
-        <!-- LEFT COLUMN: STRATEGIC TEXT -->
-        <div class="w-full md:w-1/2 flex flex-col justify-center">
-            <div class="mb-6 flex items-center gap-3">
-                <span class="text-[#FF3B1D] text-xs font-black uppercase tracking-[0.4em]">02 — About</span>
-                <div class="w-10 h-[1px] bg-white/20"></div>
-            </div>
+        <!-- LEFT CONTENT -->
+        <div class="order-2 lg:order-1 pt-10 lg:pt-0">
+            <!-- Label -->
+            <span class="text-[#FF5A1F] text-lg font-bold tracking-tight mb-8 block">
+                About me
+            </span>
 
-            <h2 class="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase leading-[0.9] tracking-tighter mb-8">
+            <!-- Main Headline -->
+            <h2 class="text-white text-5xl md:text-7xl lg:text-[85px] font-black leading-[1.05] tracking-tight mb-10">
                 Designer.<br>
                 Strategist.<br>
-                <span class="text-white/20 italic">Partner.</span>
+                Creative<br>
+                partner.
             </h2>
 
-            <div class="max-w-md">
-                <p class="text-lg md:text-xl text-white/70 font-medium leading-relaxed mb-10">
-                    I solve complex brand problems through aggressive simplicity and visual precision. My work exists at the intersection of high-fashion editorial and brutalist digital functionality.
+            <!-- Bold Subheader -->
+            <h3 class="text-white text-2xl md:text-3xl font-bold leading-snug mb-8 max-w-lg">
+                Blending clarity and creativity to build brands with purpose.
+            </h3>
+
+            <!-- Body Text (Lower Opacity for Editorial Look) -->
+            <div class="space-y-6 max-w-lg mb-12">
+                <p class="text-white/40 text-sm md:text-base font-medium leading-relaxed">
+                    I'm Dominic Wagner, a freelance brand designer with 15 years of experience helping startups, creatives, and growing businesses build identities that feel like them. With a background in design, marketing, art direction, and brand strategy.
                 </p>
-
-                <!-- CTA -->
-                <a href="#" class="group relative inline-flex items-center gap-6 overflow-hidden">
-                    <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-[#FF3B1D] group-hover:border-[#FF3B1D] transition-all duration-500">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" class="group-hover:translate-x-1 transition-transform">
-                            <path d="M5 12h14m-7-7l7 7-7 7"/>
-                        </svg>
-                    </div>
-                    <span class="text-xs font-black uppercase tracking-[0.3em] text-white">Full Manifesto</span>
-                </a>
+                <p class="text-white/40 text-sm md:text-base font-medium leading-relaxed">
+                    I bring a balance of strategy and style to every project. Whether it's your first brand or a full refresh, I'm here to guide you every step of the way.
+                </p>
             </div>
-        </div>
 
-        <!-- RIGHT COLUMN: EDITORIAL PORTRAIT CARD -->
-        <div class="hidden md:flex w-full md:w-[40%] h-full items-center justify-end">
-            <div class="relative w-full aspect-[4/5] bg-[#1A1A1A] rounded-[40px] md:rounded-[80px] overflow-hidden shadow-2xl group">
-                
-                <!-- Overlay Color Splash (Active on Hover) -->
-                <div class="absolute inset-0 bg-gradient-to-t from-[#FF3B1D]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10"></div>
-
-                <!-- PORTRAIT PLACEHOLDER -->
-                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1200" 
-                     class="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-out" 
-                     alt="Creative Portrait">
-
-                <!-- Badge on Portrait -->
-                <div class="absolute bottom-10 left-10 z-20">
-                    <div class="bg-black/80 backdrop-blur-xl border border-white/10 px-5 py-3 rounded-2xl">
-                        <p class="text-[9px] text-white/50 uppercase font-bold tracking-widest mb-1">Based in</p>
-                        <p class="text-xs text-white font-black uppercase tracking-wider">New York City, NY</p>
-                    </div>
+            <!-- CTA BUTTON (Reference Style) -->
+            <button class="bg-white/10 hover:bg-white/20 px-8 py-3 rounded-full flex items-center gap-4 transition-all group">
+                <span class="text-white text-xs font-bold uppercase tracking-widest">Read more</span>
+                <div class="bg-[#FF5A1F] w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
+                        <path d="M5 12h14m-7-7l7 7-7 7"/>
+                    </svg>
                 </div>
+            </button>
+        </div>
+
+        <!-- RIGHT CONTENT: THE IMAGE CARD -->
+        <div class="order-1 lg:order-2 w-full flex justify-end">
+            <div class="relative w-full aspect-[4/5] rounded-[48px] overflow-hidden shadow-2xl">
+                <!-- VIBRANT BACKGROUND (ORANGE AS IN REF) -->
+                <div class="absolute inset-0 bg-[#FF5A1F] pointer-events-none"></div>
+                
+                <!-- PORTRAIT IMAGE (The model facing up/sideways per ref) -->
+                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1200" 
+                     class="absolute inset-0 w-full h-full object-cover grayscale brightness-110 contrast-110 transition-all duration-700 hover:grayscale-0"
+                     alt="Dominic Wagner Portrait">
+
+                <!-- The overlay shadow at the bottom for image depth -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
             </div>
         </div>
 
     </div>
-
-    <!-- BACKGROUND TEXT DECORATION (Editorial Detail) -->
-    <div class="absolute -right-20 top-1/2 -translate-y-1/2 opacity-[0.02] pointer-events-none hidden lg:block">
-        <h3 class="text-[30rem] font-black uppercase leading-none">STRAT</h3>
-    </div>
-
 </section>
-
 </body>
 </html>
