@@ -16,7 +16,7 @@
             scroll-behavior: smooth;
         }
 
-        /* --- THE HERO FRAME SYSTEM (TOP PRIORITY - EXACT REFERENCE MATCH) --- */
+        /* --- THE HERO FRAME SYSTEM --- */
         .hero-dark-base {
             background-color: #111; 
             width: 100%;
@@ -62,11 +62,6 @@
         .animate-spin-slow {
             animation: spin-slow 12s linear infinite;
         }
-
-        #project-slider {
-            display: flex;
-            transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
-        }
     </style>
 </head>
 <body class="antialiased text-white">
@@ -106,7 +101,8 @@
                 </div>
             </div>
 
-            <div class="px-6 md:px-14 py-8 border-t border-white/10 flex justify-between items-center overflow-x-auto whitespace-nowrap">
+            <!-- Removed border-t border-white/10 from the line below -->
+            <div class="px-6 md:px-14 py-8 flex justify-between items-center overflow-x-auto whitespace-nowrap">
                 <div class="flex gap-8 md:gap-16">
                     <div><span class="text-white/40 block text-[9px] font-black uppercase mb-1">Status</span><span class="text-white text-[11px] font-bold uppercase tracking-widest">Dev @ Smartschool</span></div>
                     <div><span class="text-white/40 block text-[9px] font-black uppercase mb-1">Training</span><span class="text-white text-[11px] font-bold uppercase tracking-widest">Data Analytics Focus</span></div>
@@ -127,7 +123,6 @@
                     <p>My journey is built on two pillars: Structural Engineering and Digital Art. Since graduating with a B.Tech in 2023, I masters UX as a freelancer before deep-diving into Data Analytics to drive objective design decisions.</p>
                     <p>I currently operate as a Frontend Developer at Smartschool, focusing on educational technology that bridges human emotion with robust technical systems.</p>
                 </div>
-                <!-- Button style with orange circle circle ref -->
                 <button onclick="window.location.href='#timeline'" class="w-fit bg-[#111] hover:bg-zinc-800 pr-2 pl-8 py-2 rounded-full flex items-center gap-8 transition-all group border border-white/5">
                     <span class="text-white text-xs font-bold uppercase tracking-widest">My Progress</span>
                     <div class="bg-[#FF3B1D] w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
@@ -147,7 +142,7 @@
         </div>
     </section>
 
-    <!-- 03: EGN PROJECT SHOWCASE (LIVE RECENT WORK) -->
+    <!-- 03: EGN PROJECT SHOWCASE (REMOVED CAROUSEL) -->
     <section id="featured-project" class="bg-black w-full min-h-screen py-32 px-8 md:px-20 overflow-hidden border-t border-white/5">
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             
@@ -178,28 +173,8 @@
             <div class="lg:col-span-7 order-1 lg:order-2">
                 <div class="relative group">
                     <div class="relative aspect-video w-full rounded-[60px] overflow-hidden border border-white/10 bg-[#0F0F0F] shadow-[0_40px_100px_rgba(255,59,29,0.1)]">
-                        <!-- CAROUSEL -->
-                        <div id="project-slider" class="w-full h-full">
-                            <img src="Smartschool/1.jpg" class="min-w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000">
-                            <img src="Smartschool/2.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/3.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/4.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/5.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/6.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/7.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/8.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/9.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/10.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/11.jpg" class="min-w-full h-full object-cover">
-                            <img src="Smartschool/12.jpg" class="min-w-full h-full object-cover">
-                        </div>
-                        
-                        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 px-6 py-2 bg-black/60 backdrop-blur-xl rounded-full border border-white/10 text-[#FF3B1D] text-[10px] font-black tracking-widest shadow-2xl">
-                            <span id="slider-count">01 / 12</span>
-                        </div>
-
-                        <button onclick="slidePrev()" class="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">←</button>
-                        <button onclick="slideNext()" class="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">→</button>
+                        <!-- Removed carousel container and replaced with single image -->
+                        <img src="Smartschool/1.jpg" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000">
                     </div>
                 </div>
             </div>
@@ -244,7 +219,6 @@
                 <p class="text-white/60 text-xl font-bold italic leading-snug">Engineering handles the function. Design handles the feeling.</p>
             </div>
         </div>
-        <!-- Cascade Grid from Reference -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5"><img src="https://images.unsplash.com/photo-1544022613-e87ce71c784d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105"></div>
             <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5 md:translate-y-20"><img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105"></div>
@@ -255,7 +229,6 @@
     <!-- 06: GALLERY -->
     <section id="projects" class="bg-black w-full py-40 px-8 md:px-20 mt-40">
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-40">
-            <!-- P1 -->
             <div class="group">
                 <div class="aspect-video bg-zinc-900 rounded-[60px] mb-12 overflow-hidden border border-white/5 shadow-2xl">
                     <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition-all duration-700 grayscale group-hover:scale-110">
@@ -263,7 +236,6 @@
                 <h3 class="text-white text-5xl font-black uppercase tracking-tighter mb-4">Liquid Art</h3>
                 <p class="text-white/30 max-w-sm text-sm mb-10 leading-relaxed uppercase font-bold tracking-widest italic">Research Project / Interactive Physics</p>
             </div>
-            <!-- P2 -->
             <div class="group">
                 <div class="aspect-video bg-zinc-900 rounded-[60px] mb-12 overflow-hidden border border-white/5 shadow-2xl">
                     <img src="https://images.unsplash.com/photo-1550411234-7473fa6622e5?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition-all duration-700 grayscale group-hover:scale-110">
@@ -307,31 +279,5 @@
             <a href="#" class="hover:text-white transition-all">Archive</a>
         </div>
     </footer>
-
-    <!-- LOGIC FOR EGN PROJECT CAROUSEL -->
-    <script>
-        const slider = document.getElementById('project-slider');
-        const countDisplay = document.getElementById('slider-count');
-        const total = 12;
-        let index = 0;
-
-        function updateSlider() {
-            slider.style.transform = `translateX(-${index * 100}%)`;
-            countDisplay.innerText = `${(index + 1).toString().padStart(2, '0')} / ${total}`;
-        }
-
-        function slideNext() {
-            index = (index + 1) % total;
-            updateSlider();
-        }
-
-        function slidePrev() {
-            index = (index - 1 + total) % total;
-            updateSlider();
-        }
-
-        // Initialize Automatic Progression every 5 seconds
-        setInterval(slideNext, 5000);
-    </script>
 </body>
 </html>
