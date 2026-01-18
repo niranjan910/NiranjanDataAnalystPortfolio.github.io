@@ -1,3 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Director | Premium Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-orange: #FF5A1F;
+            --dark-charcoal: #111111;
+        }
+        body {
+            background-color: #000000;
+            font-family: 'Inter', sans-serif;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Image Container with Editorial Gradient Overlay */
+        .hero-image-container {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Specified Gradient Overlay (65-75% Opacity) */
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 90, 31, 0.75) 0%, rgba(207, 35, 0, 0.65) 50%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .headline-massive {
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+        }
+
+        .floating-card {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            background-color: var(--dark-charcoal);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pill-cta-hover:hover .arrow-icon {
+            transform: rotate(45deg);
+            background-color: white;
+            color: var(--accent-orange);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
 <!-- THE DESIGN SYSTEM: FRAME-IN-FRAME OVERLAP -->
 <section class="bg-black w-full min-h-screen flex flex-col items-center pt-8 pb-32">
 
@@ -82,3 +146,5 @@
         </div>
     </div>
 </section>
+</body>
+</html>
