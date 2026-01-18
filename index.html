@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aiden Marshall | Creative Director</title>
+    <title>Marshall | Creative Director</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -13,11 +13,12 @@
             background-color: #000000;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* 1. DARK BASE - This fills 100% of the viewport height on all devices */
+        /* --- THE HERO FRAME SYSTEM --- */
         .hero-dark-base {
-            background-color: #1A1A1A; /* Premium Deep Charcoal */
+            background-color: #111; 
             width: 100%;
             height: 100vh;
             border-bottom-left-radius: 60px;
@@ -25,12 +26,10 @@
             position: relative;
             z-index: 10;
         }
-
-        /* 2. RED OVERLAY - Exactly as the reference image proportions */
         .hero-red-overlay {
-            background-color: #FF3B1D; /* Specific Vibrant Red */
+            background-color: #FF5A1F; 
             width: 100%;
-            height: 78vh; /* Proportionately shorter to show base beneath */
+            height: 78vh; 
             border-bottom-left-radius: 60px;
             border-bottom-right-radius: 60px;
             position: absolute;
@@ -41,8 +40,6 @@
             display: flex;
             flex-direction: column;
         }
-
-        /* Desktop specific large curves */
         @media (min-width: 1024px) {
             .hero-dark-base, .hero-red-overlay {
                 border-bottom-left-radius: 120px;
@@ -57,475 +54,237 @@
             font-weight: 900;
             text-transform: uppercase;
         }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 10s linear infinite;
+        }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
+    <!-- 01: HERO SECTION -->
     <section class="relative w-full h-screen">
-
-        <!-- THE BOTTOM LAYER (Covers Entire Screen) -->
         <div class="hero-dark-base">
-            <!-- Space for subtle logo/scroll text at the very bottom dark bar -->
             <div class="absolute bottom-6 w-full flex justify-center opacity-30">
                 <p class="text-white text-[10px] uppercase tracking-[0.5em]">Scroll to Explore</p>
             </div>
         </div>
 
-        <!-- THE TOP LAYER (The Red Card) -->
         <div class="hero-red-overlay">
-            
-            <!-- NAV AREA -->
             <nav class="flex justify-between items-center px-6 md:px-14 pt-10">
-                <div class="text-white text-xl font-black uppercase italic tracking-tighter">
+                <div class="text-white text-xl font-black uppercase italic tracking-tighter cursor-default">
                     MARSHALL<span class="opacity-50 font-normal italic">®</span>
                 </div>
-                
                 <div class="hidden md:flex gap-10 text-white/70 text-[10px] font-bold uppercase tracking-[0.4em]">
-                    <a href="#" class="hover:text-white transition-all">Work</a>
-                    <a href="#" class="hover:text-white transition-all">Profile</a>
-                    <a href="#" class="hover:text-white transition-all">Studio</a>
+                    <a href="#about" class="hover:text-white transition-all">About</a>
+                    <a href="#work" class="hover:text-white transition-all">Work</a>
+                    <a href="#projects" class="hover:text-white transition-all">Projects</a>
+                    <a href="#contact" class="hover:text-white transition-all">Contact</a>
                 </div>
-
-                <div class="flex items-center gap-4">
-                    <span class="hidden sm:block text-[10px] text-white/50 uppercase font-bold tracking-widest">Available 2025</span>
-                    <button class="bg-black text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest border border-white/10 hover:invert transition-all">
-                        Contact
-                    </button>
-                </div>
+                <button class="bg-black text-white px-6 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                    Connect
+                </button>
             </nav>
 
-            <!-- HERO CENTER CONTENT -->
             <div class="flex-1 flex flex-col justify-end px-6 md:px-14 pb-16">
                 <div class="mb-4 flex items-center gap-4">
                     <div class="w-10 h-[2px] bg-white"></div>
-                    <span class="text-white text-[10px] md:text-[12px] font-bold uppercase tracking-[0.4em]">
-                        Award-Winning Designer
-                    </span>
+                    <span class="text-white text-[10px] md:text-[12px] font-bold uppercase tracking-[0.4em]">Aiden Marshall Studio — 2025</span>
                 </div>
-                
-                <h1 class="massive-text text-white">
-                    Creative<br>Director
-                </h1>
-                
+                <h1 class="massive-text text-white">Creative<br>Director</h1>
                 <div class="mt-8 grid md:grid-cols-2 max-w-4xl">
-                    <p class="text-white/80 text-sm md:text-xl font-medium leading-tight">
-                        Crafting digital excellence through precision, grit, and visual storytelling for high-end creative agencies.
-                    </p>
+                    <p class="text-white/80 text-sm md:text-xl font-medium leading-tight">Crafting digital excellence through precision, grit, and visual storytelling.</p>
                 </div>
             </div>
 
-            <!-- SKILL STRIP (Anchored to bottom of Red overlay) -->
             <div class="px-6 md:px-14 py-8 border-t border-white/10 flex justify-between items-center overflow-x-auto whitespace-nowrap">
                 <div class="flex gap-8 md:gap-16">
                     <div>
-                        <span class="text-[9px] text-white/40 block font-bold mb-1 uppercase tracking-tighter">Focus</span>
-                        <span class="text-white text-[11px] font-bold uppercase tracking-widest">Visual Identity</span>
-                    </div>
-                    <div>
-                        <span class="text-[9px] text-white/40 block font-bold mb-1 uppercase tracking-tighter">Service</span>
+                        <span class="text-[9px] text-white/40 block font-bold mb-1 uppercase">Services</span>
                         <span class="text-white text-[11px] font-bold uppercase tracking-widest">Brand Strategy</span>
                     </div>
                     <div>
-                        <span class="text-[9px] text-white/40 block font-bold mb-1 uppercase tracking-tighter">Tools</span>
-                        <span class="text-white text-[11px] font-bold uppercase tracking-widest">3D & Interaction</span>
+                        <span class="text-[9px] text-white/40 block font-bold mb-1 uppercase">Aesthetic</span>
+                        <span class="text-white text-[11px] font-bold uppercase tracking-widest">Modern Brutalism</span>
                     </div>
                 </div>
-                
-                <!-- Circular Micro-Badge -->
                 <div class="hidden lg:flex items-center justify-center w-12 h-12 border border-white/20 rounded-full animate-spin-slow">
-                     <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
+                     <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>
                 </div>
             </div>
-
         </div>
-
     </section>
 
-    <!-- ABOUT SECTION -->
-<!-- ABOUT ME SECTION: EXACT REFERENCE MATCH -->
-<section id="about" class="bg-black w-full min-h-screen py-24 px-6 md:px-20">
-    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        
-        <!-- LEFT CONTENT -->
-        <div class="order-2 lg:order-1 pt-10 lg:pt-0">
-            <!-- Label -->
-            <span class="text-[#FF5A1F] text-lg font-bold tracking-tight mb-8 block">
-                About me
-            </span>
-
-            <!-- Main Headline -->
-            <h2 class="text-white text-5xl md:text-7xl lg:text-[85px] font-black leading-[1.05] tracking-tight mb-10">
-                Designer.<br>
-                Strategist.<br>
-                Creative<br>
-                partner.
-            </h2>
-
-            <!-- Bold Subheader -->
-            <h3 class="text-white text-2xl md:text-3xl font-bold leading-snug mb-8 max-w-lg">
-                Blending clarity and creativity to build brands with purpose.
-            </h3>
-
-            <!-- Body Text (Lower Opacity for Editorial Look) -->
-            <div class="space-y-6 max-w-lg mb-12">
-                <p class="text-white/40 text-sm md:text-base font-medium leading-relaxed">
-                    I'm Dominic Wagner, a freelance brand designer with 15 years of experience helping startups, creatives, and growing businesses build identities that feel like them. With a background in design, marketing, art direction, and brand strategy.
-                </p>
-                <p class="text-white/40 text-sm md:text-base font-medium leading-relaxed">
-                    I bring a balance of strategy and style to every project. Whether it's your first brand or a full refresh, I'm here to guide you every step of the way.
-                </p>
-            </div>
-
-            <!-- CTA BUTTON (Reference Style) -->
-            <button class="bg-white/10 hover:bg-white/20 px-8 py-3 rounded-full flex items-center gap-4 transition-all group">
-                <span class="text-white text-xs font-bold uppercase tracking-widest">Read more</span>
-                <div class="bg-[#FF5A1F] w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-                        <path d="M5 12h14m-7-7l7 7-7 7"/>
-                    </svg>
+    <!-- 02: ABOUT ME -->
+    <section id="about" class="bg-black w-full min-h-screen py-32 px-6 md:px-20 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            <div class="flex flex-col pt-4">
+                <span class="text-[#FF5A1F] text-lg font-bold tracking-tight mb-8 block uppercase tracking-tighter">About me</span>
+                <h2 class="text-white text-5xl md:text-7xl lg:text-[90px] font-black leading-[0.95] tracking-tight mb-12">Designer.<br>Strategist.<br>Creative<br>partner.</h2>
+                <h3 class="text-white text-2xl md:text-3xl font-bold leading-tight mb-8 max-w-lg">Blending clarity and creativity to build brands with purpose.</h3>
+                <div class="space-y-6 max-w-lg mb-12 text-white/40 font-medium">
+                    <p>I’m Aiden Marshall, a freelance brand designer with 15 years of experience helping startups, creatives, and growing businesses build identities that feel like them.</p>
+                    <p>I bring a balance of strategy and style to every project to guide you every step of the way.</p>
                 </div>
-            </button>
-        </div>
-
-        <!-- RIGHT CONTENT: THE IMAGE CARD -->
-        <div class="order-1 lg:order-2 w-full flex justify-end">
-            <div class="relative w-full aspect-[4/5] rounded-[48px] overflow-hidden shadow-2xl">
-                <!-- VIBRANT BACKGROUND (ORANGE AS IN REF) -->
-                <div class="absolute inset-0 bg-[#FF5A1F] pointer-events-none"></div>
-                
-                <!-- PORTRAIT IMAGE (The model facing up/sideways per ref) -->
-                <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=1200" 
-                     class="absolute inset-0 w-full h-full object-cover grayscale brightness-110 contrast-110 transition-all duration-700 hover:grayscale-0"
-                     alt="Dominic Wagner Portrait">
-
-                <!-- The overlay shadow at the bottom for image depth -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                <button class="w-fit bg-[#1A1A1A] hover:bg-[#222] pr-2 pl-8 py-2 rounded-full flex items-center gap-6 transition-all group border border-white/5">
+                    <span class="text-white text-xs font-bold uppercase tracking-widest">Read more</span>
+                    <div class="bg-[#FF5A1F] w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:rotate-45">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+                    </div>
+                </button>
+            </div>
+            <div class="relative w-full lg:max-w-[600px] aspect-[3/4] rounded-[48px] overflow-hidden">
+                <div class="absolute inset-0 bg-[#FF5A1F]"></div>
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=1200" 
+                     class="absolute inset-0 w-full h-full object-cover grayscale brightness-110 hover:grayscale-0 transition-all duration-700">
+                <div class="absolute bottom-8 left-8 bg-black/40 backdrop-blur-md p-4 rounded-3xl border border-white/10">
+                    <p class="text-white/40 text-[9px] uppercase font-bold tracking-widest">Stationed in</p>
+                    <p class="text-white text-[12px] font-black uppercase tracking-tight">London, United Kingdom</p>
+                </div>
             </div>
         </div>
+    </section>
 
-    </div>
-</section>
-<!-- WORK PHILOSOPHY SECTION -->
-<section id="work-philosophy" class="bg-black w-full min-h-screen py-24 px-6 md:px-20 overflow-hidden">
-    <div class="max-w-[1400px] mx-auto">
-        
-        <!-- TOP TEXT GRID -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start mb-20">
-            
-            <!-- Left Side: Massive Title -->
-            <div class="lg:col-span-7 flex flex-col">
-                <span class="text-[#FF5A1F] text-xl font-bold tracking-tight mb-8 block">
-                    Behind the Designs
-                </span>
-                <h2 class="text-white text-5xl md:text-7xl lg:text-[85px] font-black leading-[1.05] tracking-tight max-w-2xl">
-                    Shaping<br>
-                    Experiences That<br>
-                    Make Life Simpler
-                </h2>
+    <!-- 03: BEHIND THE DESIGNS (SHOWCASE PHILOSOPHY) -->
+    <section class="bg-black w-full min-h-screen py-32 px-6 md:px-20 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20">
+                <div class="lg:col-span-7">
+                    <span class="text-[#FF5A1F] text-xl font-bold tracking-tight mb-8 block uppercase tracking-tighter">Behind the Designs</span>
+                    <h2 class="text-white text-5xl md:text-7xl lg:text-[85px] font-black leading-[1.05] tracking-tight">Shaping Experiences That Make Life Simpler</h2>
+                </div>
+                <div class="lg:col-span-5 lg:pt-14 flex flex-col items-end text-right lg:text-left lg:items-start">
+                    <p class="text-white text-2xl font-bold leading-tight mb-8">I'm a product designer focused on building clean, intuitive interfaces that solve real-world problems.</p>
+                    <div class="border-t border-white/10 pt-8 w-full">
+                        <p class="text-white/30 italic text-sm mb-6">Let’s Build Something Meaningful Together</p>
+                        <button class="bg-[#FF5A1F] text-white px-8 py-3 rounded-full flex items-center gap-3 font-bold text-[11px] uppercase group transition-all">
+                            Get in touch
+                            <div class="bg-white w-6 h-6 rounded-full flex items-center justify-center transition-transform group-hover:rotate-45">
+                                <svg width="12" height="12" viewBox="0 0 24 24" stroke="#FF5A1F" stroke-width="4"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
+                            </div>
+                        </button>
+                    </div>
+                </div>
             </div>
+            <!-- STAGGERED GRID FROM REF -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10">
+                <div class="aspect-[3/4] bg-zinc-900 rounded-[48px] overflow-hidden border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1544022613-e87ce71c784d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale brightness-75 hover:scale-105 transition-transform">
+                </div>
+                <div class="aspect-[3/4] bg-zinc-900 rounded-[48px] overflow-hidden border border-white/5 md:translate-y-12">
+                    <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale brightness-75 hover:scale-105 transition-transform">
+                </div>
+                <div class="aspect-[3/4] bg-zinc-900 rounded-[48px] overflow-hidden border border-white/5 md:translate-y-24">
+                    <img src="https://images.unsplash.com/photo-1618221651585-802773b0632b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale brightness-75 hover:scale-105 transition-transform">
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- Right Side: Philosophy Statement & CTA -->
-            <div class="lg:col-span-5 flex flex-col pt-4 lg:pt-14">
-                <p class="text-white text-2xl md:text-3xl font-bold leading-tight mb-10 max-w-lg">
-                    I'm a product designer focused on building clean, intuitive interfaces that solve real-world problems.
-                </p>
-                
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-10 border-t border-white/10 pt-10">
-                    <p class="text-white/30 text-sm font-medium tracking-wide uppercase italic leading-snug">
-                        Let's Build Something<br>Meaningful Together
-                    </p>
-                    
-                    <!-- Orange Get in Touch Button (Reference Match) -->
-                    <button class="w-fit bg-[#FF5A1F] hover:brightness-110 px-8 py-3 rounded-full flex items-center gap-3 transition-all duration-300 shadow-[0_10px_30px_rgba(255,90,31,0.3)] active:scale-95 group">
-                        <span class="text-white text-xs font-bold uppercase tracking-widest">Get in touch</span>
-                        <div class="bg-white w-7 h-7 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-45">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FF5A1F" stroke-width="3">
-                                <path d="M5 12h14m-7-7l7 7-7 7"/>
-                            </svg>
+    <!-- 04: RECENT WORK DIRECTORY -->
+    <section id="work" class="bg-black w-full min-h-screen py-32 px-6 md:px-20 mt-20 md:mt-40">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20 items-end">
+            <div class="lg:col-span-8">
+                <span class="text-[#FF5A1F] text-lg font-bold tracking-tight mb-8 block">Recent Work</span>
+                <h2 class="text-white text-6xl md:text-[85px] font-black uppercase leading-[0.9]">Latest Projects & Collaborations</h2>
+            </div>
+            <div class="lg:col-span-4 lg:pl-10 pb-2">
+                <p class="text-white text-2xl font-bold leading-tight">A look at what I’ve been working on lately.</p>
+            </div>
+        </div>
+        <div class="space-y-4 max-w-[1400px] mx-auto">
+            <div class="bg-[#111] p-10 rounded-[32px] flex flex-col md:flex-row justify-between items-start md:items-center hover:bg-zinc-900 transition-all border border-white/5 cursor-pointer">
+                <div>
+                    <p class="text-[#FF5A1F] font-bold text-xs uppercase mb-3">Brand Identity Design</p>
+                    <h4 class="text-white text-3xl font-black mb-2 uppercase">Kin Studio</h4>
+                    <p class="text-white/30 max-w-lg">A minimalist wellness brand focused on self-care.</p>
+                </div>
+                <div class="mt-8 md:mt-0 text-[10px] bg-white/5 px-4 py-2 rounded-full font-bold uppercase tracking-widest text-white/50">2024</div>
+            </div>
+            <div class="bg-[#111] p-10 rounded-[32px] flex flex-col md:flex-row justify-between items-start md:items-center hover:bg-zinc-900 transition-all border border-white/5 cursor-pointer">
+                <div>
+                    <p class="text-[#FF5A1F] font-bold text-xs uppercase mb-3">Packaging Design</p>
+                    <h4 class="text-white text-3xl font-black mb-2 uppercase">Field Coffee Co.</h4>
+                    <p class="text-white/30 max-w-lg">Crafted a warm, earthy system for specialty roasting.</p>
+                </div>
+                <div class="mt-8 md:mt-0 text-[10px] bg-white/5 px-4 py-2 rounded-full font-bold uppercase tracking-widest text-white/50">2023</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05: FEATURED PROJECTS GRID -->
+    <section id="projects" class="bg-black w-full py-32 px-6 md:px-20">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-32">
+            <!-- PROJECT -->
+            <div class="group">
+                <div class="aspect-video bg-zinc-900 rounded-[40px] mb-8 overflow-hidden relative border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <h3 class="text-white text-4xl font-black uppercase mb-3">Orange Blox</h3>
+                <p class="text-white/40 mb-8 max-w-sm">Ethereal flowing shapes created for a visual experiment.</p>
+                <button class="bg-[#1A1A1A] pr-2 pl-6 py-1.5 rounded-full flex items-center gap-4 transition-all hover:bg-zinc-800 border border-white/10 group/btn">
+                    <span class="text-white text-[11px] font-bold uppercase tracking-widest">View Project</span>
+                    <div class="bg-[#FF5A1F] w-9 h-9 rounded-full flex items-center justify-center transition-transform group-hover/btn:rotate-45">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                    </div>
+                </button>
+            </div>
+            <!-- PROJECT 2 -->
+            <div class="group">
+                <div class="aspect-video bg-zinc-900 rounded-[40px] mb-8 overflow-hidden relative border border-white/5">
+                    <img src="https://images.unsplash.com/photo-1583421171928-847bbad2a106?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <h3 class="text-white text-4xl font-black uppercase mb-3">Nova Scene</h3>
+                <p class="text-white/40 mb-8 max-w-sm">Deep blues and purples exploring light and glass.</p>
+                <button class="bg-[#1A1A1A] pr-2 pl-6 py-1.5 rounded-full flex items-center gap-4 transition-all hover:bg-zinc-800 border border-white/10 group/btn">
+                    <span class="text-white text-[11px] font-bold uppercase tracking-widest">View Project</span>
+                    <div class="bg-[#FF5A1F] w-9 h-9 rounded-full flex items-center justify-center transition-transform group-hover/btn:rotate-45">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06: CONTACT ME SECTION -->
+    <section id="contact" class="bg-black w-full min-h-screen py-32 px-6 md:px-20 flex items-center overflow-hidden relative">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-32 relative z-10">
+            <div class="lg:col-span-6 flex flex-col justify-center">
+                <span class="text-[#FF5A1F] text-xl font-bold mb-8 uppercase tracking-tighter">Contact me</span>
+                <h2 class="text-white text-5xl md:text-7xl lg:text-[85px] font-black uppercase leading-[1.05] tracking-tight mb-8">Let's Create<br>Something<br>Meaningful</h2>
+                <p class="text-white text-2xl font-bold max-w-lg mb-12">I'm here to help bring your brand vision to life with precision and style.</p>
+                <p class="text-white/30 text-sm italic tracking-widest uppercase">London / Available Global — 2025</p>
+            </div>
+            <!-- FORM CARD FROM REF -->
+            <div class="lg:col-span-6 flex justify-end">
+                <div class="bg-[#111] p-10 md:p-14 rounded-[48px] w-full max-w-xl border border-white/5 shadow-3xl">
+                    <form action="#" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="space-y-3"><label class="text-white/50 text-[10px] font-black uppercase ml-1">First name <span class="text-[#FF5A1F]">*</span></label><input type="text" placeholder="John" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF5A1F]"></div>
+                            <div class="space-y-3"><label class="text-white/50 text-[10px] font-black uppercase ml-1">Last name <span class="text-[#FF5A1F]">*</span></label><input type="text" placeholder="Doe" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF5A1F]"></div>
                         </div>
-                    </button>
+                        <div class="space-y-3"><label class="text-white/50 text-[10px] font-black uppercase ml-1">Email <span class="text-[#FF5A1F]">*</span></label><input type="email" placeholder="john@email.com" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF5A1F]"></div>
+                        <div class="space-y-3"><label class="text-white/50 text-[10px] font-black uppercase ml-1">Message <span class="text-[#FF5A1F]">*</span></label><textarea rows="4" placeholder="Brief project description..." class="w-full bg-white/[0.04] border border-white/10 rounded-3xl py-4 px-6 text-white focus:outline-none focus:border-[#FF5A1F] resize-none"></textarea></div>
+                        <button type="submit" class="w-full bg-[#FF5A1F] py-5 rounded-full font-black text-white text-[12px] uppercase tracking-[0.4em] shadow-lg shadow-[#FF5A1F]/20 active:scale-95 transition-transform mt-4">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- BOTTOM IMAGE GRID (Reference Match) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            
-            <!-- Card 1: Apparel/Product -->
-            <div class="relative aspect-[3/4] bg-[#111] rounded-[48px] overflow-hidden group">
-                <img src="https://images.unsplash.com/photo-1544022613-e87ce71c784d?auto=format&fit=crop&q=80&w=1000" 
-                     alt="Design Philosophy Concept" 
-                     class="w-full h-full object-cover grayscale brightness-110 contrast-125 transition-transform duration-1000 group-hover:scale-110">
-            </div>
-
-            <!-- Card 2: Lifestyle/Tech -->
-            <div class="relative aspect-[3/4] bg-[#111] rounded-[48px] overflow-hidden group md:translate-y-6">
-                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=1000" 
-                     alt="Clean intuitive interfaces" 
-                     class="w-full h-full object-cover grayscale brightness-110 contrast-125 transition-transform duration-1000 group-hover:scale-110">
-            </div>
-
-            <!-- Card 3: Form/Branding -->
-            <div class="relative aspect-[3/4] bg-[#111] rounded-[48px] overflow-hidden group md:translate-y-12">
-                <img src="https://images.unsplash.com/photo-1618221651585-802773b0632b?auto=format&fit=crop&q=80&w=1000" 
-                     alt="Real world problem solving" 
-                     class="w-full h-full object-cover grayscale brightness-110 contrast-125 transition-transform duration-1000 group-hover:scale-110">
-            </div>
-
+    <!-- FOOTER -->
+    <footer class="bg-black py-20 px-6 md:px-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-white/30 text-[10px] font-bold uppercase tracking-[0.4em]">
+        <span>© Aiden Marshall Studio 2025</span>
+        <div class="flex gap-10 mt-6 md:mt-0">
+            <a href="#" class="hover:text-white transition-all">Behance</a>
+            <a href="#" class="hover:text-white transition-all">Dribbble</a>
+            <a href="#" class="hover:text-white transition-all">Linkedin</a>
         </div>
+    </footer>
 
-    </div>
-</section>
-<!-- RECENT WORK SECTION -->
-<section id="work" class="bg-black w-full min-h-screen py-24 px-6 md:px-20">
-    <div class="max-w-[1400px] mx-auto">
-        
-        <!-- TOP TEXT GRID (Reference Match) -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-16">
-            <div class="lg:col-span-7">
-                <span class="text-[#FF5A1F] text-lg font-bold tracking-tight mb-8 block">
-                    Recent Work
-                </span>
-                <h2 class="text-white text-5xl md:text-7xl lg:text-[80px] font-black leading-[1.05] tracking-tight">
-                    Latest Projects &<br>Collaborations
-                </h2>
-            </div>
-            <div class="lg:col-span-5 lg:pt-20">
-                <p class="text-white text-2xl font-bold leading-tight max-w-sm">
-                    A look at what I’ve been working on lately—designs, stories, and creative partnerships.
-                </p>
-            </div>
-        </div>
-
-        <!-- PROJECT LIST -->
-        <div class="space-y-4">
-
-            <!-- PROJECT 1: Kin Studio -->
-            <div class="bg-[#111111] rounded-[32px] p-10 flex flex-col md:flex-row justify-between items-start md:items-center group hover:bg-[#1A1A1A] transition-all duration-500 cursor-pointer">
-                <div>
-                    <span class="text-[#FF5A1F] text-xs font-bold uppercase tracking-widest mb-4 block">Brand Identity Design</span>
-                    <h4 class="text-white text-3xl font-bold mb-3">Kin Studio</h4>
-                    <p class="text-white/30 text-sm max-w-lg leading-relaxed font-medium">
-                        A calming, minimalist identity for a boutique wellness brand focused on balance and self-care.
-                    </p>
-                </div>
-                <div class="mt-8 md:mt-0 flex items-center gap-6">
-                    <span class="bg-white/5 px-4 py-1.5 rounded-full text-[10px] text-white/40 font-bold uppercase tracking-widest">2024</span>
-                </div>
-            </div>
-
-            <!-- PROJECT 2: Field Coffee Co. -->
-            <div class="bg-[#111111] rounded-[32px] p-10 flex flex-col md:flex-row justify-between items-start md:items-center group hover:bg-[#1A1A1A] transition-all duration-500 cursor-pointer">
-                <div>
-                    <span class="text-[#FF5A1F] text-xs font-bold uppercase tracking-widest mb-4 block">Packaging Design</span>
-                    <h4 class="text-white text-3xl font-bold mb-3">Field Coffee Co.</h4>
-                    <p class="text-white/30 text-sm max-w-lg leading-relaxed font-medium">
-                        Crafted a warm, earthy visual system for a specialty coffee shop blending community and quality.
-                    </p>
-                </div>
-                <div class="mt-8 md:mt-0 flex items-center gap-6">
-                    <span class="bg-white/5 px-4 py-1.5 rounded-full text-[10px] text-white/40 font-bold uppercase tracking-widest">2023</span>
-                </div>
-            </div>
-
-            <!-- PROJECT 3: Nord Agency -->
-            <div class="bg-[#111111] rounded-[32px] p-10 flex flex-col md:flex-row justify-between items-start md:items-center group hover:bg-[#1A1A1A] transition-all duration-500 cursor-pointer">
-                <div>
-                    <span class="text-[#FF5A1F] text-xs font-bold uppercase tracking-widest mb-4 block">Brand Strategy</span>
-                    <h4 class="text-white text-3xl font-bold mb-3">Nord Agency</h4>
-                    <p class="text-white/30 text-sm max-w-lg leading-relaxed font-medium">
-                        Rebranding a digital agency with a bold, modern identity that reflects clarity and confidence.
-                    </p>
-                </div>
-                <div class="mt-8 md:mt-0 flex items-center gap-6">
-                    <span class="bg-white/5 px-4 py-1.5 rounded-full text-[10px] text-white/40 font-bold uppercase tracking-widest">2022</span>
-                </div>
-            </div>
-
-            <!-- PROJECT 4: Lune Journal -->
-            <div class="bg-[#111111] rounded-[32px] p-10 flex flex-col md:flex-row justify-between items-start md:items-center group hover:bg-[#1A1A1A] transition-all duration-500 cursor-pointer">
-                <div>
-                    <span class="text-[#FF5A1F] text-xs font-bold uppercase tracking-widest mb-4 block">Art Direction</span>
-                    <h4 class="text-white text-3xl font-bold mb-3">Lune Journal</h4>
-                    <p class="text-white/30 text-sm max-w-lg leading-relaxed font-medium">
-                        Developed a soft, editorial brand for an independent print publication focused on slow living.
-                    </p>
-                </div>
-                <div class="mt-8 md:mt-0 flex items-center gap-6">
-                    <span class="bg-white/5 px-4 py-1.5 rounded-full text-[10px] text-white/40 font-bold uppercase tracking-widest">2021</span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!-- FEATURED PROJECTS GALLERY -->
-<section id="projects" class="bg-black w-full min-h-screen py-24 px-6 md:px-20">
-    <div class="max-w-[1400px] mx-auto">
-        
-        <!-- PROJECT GRID -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-
-            <!-- PROJECT 1: Orange Blox -->
-            <div class="group cursor-pointer">
-                <div class="relative aspect-video md:aspect-[5/4] lg:aspect-video rounded-[40px] overflow-hidden mb-8">
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1000" 
-                         alt="Orange Blox" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                </div>
-                <h3 class="text-white text-4xl font-black mb-4 tracking-tight">Orange Blox</h3>
-                <p class="text-white/40 text-sm leading-relaxed mb-8 max-w-md">
-                    The image shows flowing shapes in iridescent hues, from deep blues and purples to vibrant pinks and oranges, creating an ethereal effect.
-                </p>
-                <button class="bg-white/5 hover:bg-white/10 pr-2 pl-6 py-1.5 rounded-full flex items-center gap-4 transition-all group/btn border border-white/5">
-                    <span class="text-white text-[11px] font-bold uppercase tracking-widest">View</span>
-                    <div class="bg-[#FF5A1F] w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover/btn:rotate-45">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
-                        </svg>
-                    </div>
-                </button>
-            </div>
-
-            <!-- PROJECT 2: Nova Scene -->
-            <div class="group cursor-pointer">
-                <div class="relative aspect-video md:aspect-[5/4] lg:aspect-video rounded-[40px] overflow-hidden mb-8">
-                    <img src="https://images.unsplash.com/photo-1583421171928-847bbad2a106?auto=format&fit=crop&q=80&w=1000" 
-                         alt="Nova Scene" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                </div>
-                <h3 class="text-white text-4xl font-black mb-4 tracking-tight">Nova Scene</h3>
-                <p class="text-white/40 text-sm leading-relaxed mb-8 max-w-md">
-                    The image shows flowing shapes in iridescent hues, from deep blues and purples to vibrant pinks and oranges, creating an ethereal effect.
-                </p>
-                <button class="bg-white/5 hover:bg-white/10 pr-2 pl-6 py-1.5 rounded-full flex items-center gap-4 transition-all group/btn border border-white/5">
-                    <span class="text-white text-[11px] font-bold uppercase tracking-widest">View</span>
-                    <div class="bg-[#FF5A1F] w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover/btn:rotate-45">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
-                        </svg>
-                    </div>
-                </button>
-            </div>
-
-            <!-- PROJECT 3: Arched Pink -->
-            <div class="group cursor-pointer">
-                <div class="relative aspect-video md:aspect-[5/4] lg:aspect-video rounded-[40px] overflow-hidden mb-8">
-                    <img src="https://images.unsplash.com/photo-1550411234-7473fa6622e5?auto=format&fit=crop&q=80&w=1000" 
-                         alt="Arched Pink" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                </div>
-                <h3 class="text-white text-4xl font-black mb-4 tracking-tight">Arched Pink</h3>
-                <p class="text-white/40 text-sm leading-relaxed mb-8 max-w-md">
-                    The image shows flowing shapes in iridescent hues, from deep blues and purples to vibrant pinks and oranges, creating an ethereal effect.
-                </p>
-                <button class="bg-white/5 hover:bg-white/10 pr-2 pl-6 py-1.5 rounded-full flex items-center gap-4 transition-all group/btn border border-white/5">
-                    <span class="text-white text-[11px] font-bold uppercase tracking-widest">View</span>
-                    <div class="bg-[#FF5A1F] w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover/btn:rotate-45">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
-                        </svg>
-                    </div>
-                </button>
-            </div>
-
-            <!-- PROJECT 4: Liquid -->
-            <div class="group cursor-pointer">
-                <div class="relative aspect-video md:aspect-[5/4] lg:aspect-video rounded-[40px] overflow-hidden mb-8">
-                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1000" 
-                         alt="Liquid" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                </div>
-                <h3 class="text-white text-4xl font-black mb-4 tracking-tight">Liquid</h3>
-                <p class="text-white/40 text-sm leading-relaxed mb-8 max-w-md">
-                    The image shows flowing shapes in iridescent hues, from deep blues and purples to vibrant pinks and oranges, creating an ethereal effect.
-                </p>
-                <button class="bg-white/5 hover:bg-white/10 pr-2 pl-6 py-1.5 rounded-full flex items-center gap-4 transition-all group/btn border border-white/5">
-                    <span class="text-white text-[11px] font-bold uppercase tracking-widest">View</span>
-                    <div class="bg-[#FF5A1F] w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover/btn:rotate-45">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
-                            <path d="M7 17l9.2-9.2M17 17V7H7"/>
-                        </svg>
-                    </div>
-                </button>
-            </div>
-
-        </div>
-    </div>
-</section>
-<!-- CONTACT SECTION -->
-<section id="contact" class="bg-black w-full min-h-screen py-24 px-6 md:px-20 flex items-center">
-    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-        
-        <!-- LEFT COLUMN: COPY -->
-        <div class="flex flex-col justify-center">
-            <!-- Orange Label -->
-            <span class="text-[#FF5A1F] text-xl font-bold tracking-tight mb-8 block">
-                Contact me
-            </span>
-
-            <!-- Massive Headline -->
-            <h2 class="text-white text-5xl md:text-7xl lg:text-[80px] font-black leading-[1.05] tracking-tight mb-10">
-                Let’s Create<br>
-                Something<br>
-                Meaningful
-            </h2>
-
-            <!-- Supporting Paragraph -->
-            <p class="text-white text-xl md:text-2xl font-bold leading-tight mb-8 max-w-lg">
-                Whether you're starting from scratch or need a brand refresh, I'm here to help bring your vision to life.
-            </p>
-
-            <!-- Muted Instructional Text -->
-            <p class="text-white/30 text-sm md:text-base font-medium leading-relaxed max-w-sm">
-                Ready to talk? Fill out the form or drop me a message—let’s see how we can work together.
-            </p>
-        </div>
-
-        <!-- RIGHT COLUMN: FORM CARD -->
-        <div class="flex items-center justify-center">
-            <div class="bg-[#111111] w-full max-w-xl rounded-[40px] p-8 md:p-12 shadow-2xl border border-white/5">
-                <form action="#" class="space-y-6">
-                    
-                    <!-- Row: Names -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-white/60 text-xs font-bold uppercase tracking-widest ml-1">First name <span class="text-[#FF5A1F]">*</span></label>
-                            <input type="text" placeholder="Jane" 
-                                   class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF5A1F] transition-all">
-                        </div>
-                        <div class="space-y-2">
-                            <label class="text-white/60 text-xs font-bold uppercase tracking-widest ml-1">Last name <span class="text-[#FF5A1F]">*</span></label>
-                            <input type="text" placeholder="Smith" 
-                                   class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF5A1F] transition-all">
-                        </div>
-                    </div>
-
-                    <!-- Email Input -->
-                    <div class="space-y-2">
-                        <label class="text-white/60 text-xs font-bold uppercase tracking-widest ml-1">Email <span class="text-[#FF5A1F]">*</span></label>
-                        <input type="email" placeholder="jane@email.com" 
-                               class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF5A1F] transition-all">
-                    </div>
-
-                    <!-- Message Input -->
-                    <div class="space-y-2">
-                        <label class="text-white/60 text-xs font-bold uppercase tracking-widest ml-1">Message <span class="text-[#FF5A1F]">*</span></label>
-                        <textarea rows="4" placeholder="Type your message..." 
-                                  class="w-full bg-white/5 border border-white/10 rounded-3xl py-4 px-6 text-white placeholder:text-white/20 focus:outline-none focus:border-[#FF5A1F] transition-all resize-none"></textarea>
-                    </div>
-
-                    <!-- Submit Button (Vibrant Orange Reference Match) -->
-                    <button type="submit" 
-                            class="w-full bg-[#FF5A1F] hover:brightness-110 text-white font-black uppercase tracking-[0.2em] py-5 rounded-full shadow-[0_15px_30px_rgba(255,90,31,0.2)] transition-all active:scale-95 mt-4">
-                        Submit
-                    </button>
-
-                </form>
-            </div>
-        </div>
-
-    </div>
-</section>
 </body>
 </html>
