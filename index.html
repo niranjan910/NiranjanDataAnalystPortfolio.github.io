@@ -3,517 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer Portfolio | Studio Selection</title>
+    <title>Designer & Strategist | Premium Studio Portfolio</title>
     
+    <link rel="icon" type="image/png" href="Logo/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Modern Editorial Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <style>
         :root {
-            --zed-black: #000000;
-            --canvas: #0B0B0B;
-            --card-surface: #111111;
-            --accent: #FF4D00;
+            /* Palette */
+            --bg-black: #000000;
+            --bg-dark: #0A0A0A;
+            --surface: #111111;
+            --accent-orange: #FF4D00;
             --white: #FFFFFF;
-            --font-main: 'Inter', sans-serif;
-            --radius-big: 60px;
-            --radius-card: 28px;
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* --- GLOBAL ARCHITECTURE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { 
-            background-color: var(--zed-black); 
-            font-family: var(--font-main); 
-            color: var(--white);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .section-label { 
-            color: var(--accent); font-weight: 800; font-size: 0.8rem; 
-            text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 25px;
-        }
-
-        .max-container { max-width: 1400px; margin: 0 auto; padding: 0 8%; }
-
-        /* --- SHARED BUTTON UI --- */
-        .pill-view {
-            display: inline-flex; align-items: center; gap: 15px;
-            padding: 8px 8px 8px 25px; border-radius: 60px;
-            font-weight: 700; font-size: 0.85rem; text-decoration: none;
-            background: #1A1A1A; color: white; border: 1px solid rgba(255,255,255,0.05);
-            transition: var(--transition);
-        }
-        .pill-view:hover { background: #222; border-color: white; transform: scale(1.03); }
-        
-        .arrow-dot {
-            width: 34px; height: 34px; background: var(--accent);
-            border-radius: 50%; display: flex; align-items: center; 
-            justify-content: center; font-size: 0.75rem;
-            transition: var(--transition);
-        }
-        .pill-view:hover .arrow-dot { transform: translateX(3px) rotate(-45deg); }
-
-        /* --- SECTION: PROJECTS --- */
-        #projects { padding: 140px 0; background-color: var(--zed-black); }
-        
-        .grid-header { margin-bottom: 70px; }
-        .grid-header h2 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; letter-spacing: -2px; }
-
-        .projects-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; 
-            gap: 60px 40px; 
-        }
-
-        .p-card { 
-            background: var(--card-surface); 
-            border-radius: var(--radius-card); 
-            padding: 25px; transition: var(--transition); 
-            display: flex; flex-direction: column; cursor: pointer;
-        }
-        
-        /* HOVER: Card Lift */
-        .p-card:hover { transform: translateY(-12px); background: #161616; }
-
-        .p-img-mask { 
-            width: 100%; aspect-ratio: 4/3; border-radius: 20px; 
-            overflow: hidden; margin-bottom: 30px; 
-        }
-        
-        .p-img-mask img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            filter: contrast(1.1) brightness(0.9);
-        }
-
-        .p-card:hover .p-img-mask img { transform: scale(1.08); filter: brightness(1.1); }
-
-        .p-content h3 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
-        
-        .p-content p { 
-            font-size: 0.95rem; line-height: 1.6; opacity: 0.65; 
-            max-width: 90%; margin-bottom: 25px; 
-        }
-
-        /* --- PREVIOUS SECTIONS FALLBACK STYLES (REQUIRED FOR SEAMLESS VIEW) --- */
-        .hero-vessel { 
-            width: calc(100% - 40px); height: calc(100vh - 40px); 
-            margin: 20px auto; border-radius: var(--radius-big);
-            background: linear-gradient(95deg, #FFB347 0%, #FF4D00 45%, #750D01 100%);
-            overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-        }
-        #about { padding: 140px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; background: #0B0B0B; }
-        .about-image { width: 100%; height: 600px; border-radius: var(--radius-card); overflow: hidden; background: var(--accent); }
-
-        /* --- RESPONSIVENESS --- */
-        @media (max-width: 1024px) {
-            .projects-grid { gap: 30px; }
-            .p-content h3 { font-size: 1.5rem; }
-            .section-header h2 { font-size: 3rem; }
-        }
-
-        @media (max-width: 768px) {
-            .projects-grid { grid-template-columns: 1fr; }
-            .p-img-mask { aspect-ratio: 1/1; }
-            section, #projects, #about { padding: 80px 8%; }
-            .p-card:hover { transform: translateY(-5px); }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- [Previous Hero and About code stays as is] -->
-
-    <div class="hero-vessel" id="home">
-        <!-- Replicated Hero Content -->
-    </div>
-
-    <section id="about">
-        <!-- Replicated About Content -->
-        <div class="about-txt">
-            <span class="section-label">About me</span>
-            <h2 style="font-size: 4rem; line-height:0.95; font-weight: 900; margin-bottom: 30px;">Analyst.<br>Strategist.</h2>
-            <p style="opacity: 0.7; max-width: 450px;">Merging technical engineering precision with modern architectural storytelling.</p>
-        </div>
-        <div class="about-image"></div>
-    </section>
-
-    <!-- NEW SECTION: PROJECTS -->
-    <section id="projects">
-        <div class="max-container">
+            --text-muted: rgba(255, 255, 255, 0.65);
+            --text-sub: rgba(255, 255, 255, 0.4);
             
-            <header class="grid-header">
-                <span class="section-label">Selected work</span>
-                <h2>Bringing Digital <br> Experiences To Life.</h2>
-            </header>
-
-            <div class="projects-grid">
-
-                <!-- CARD 1 -->
-                <div class="p-card">
-                    <div class="p-img-mask">
-                        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000&auto=format&fit=crop" alt="NYC Pollution Analysis">
-                    </div>
-                    <div class="p-content">
-                        <h3>NYC Dynamic Sensory</h3>
-                        <p>Detailed investigation into atmospheric pollutant density across New York's municipal sectors via Python diagnostics.</p>
-                        <a href="#" class="pill-view">
-                            View <div class="arrow-dot"><i class="fas fa-arrow-right"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- CARD 2 -->
-                <div class="p-card">
-                    <div class="p-img-mask">
-                        <img src="https://images.unsplash.com/photo-1551033535-64906f0e9f1a?q=80&w=1000&auto=format&fit=crop" alt="Nova Scene Design">
-                    </div>
-                    <div class="p-content">
-                        <h3>Nova Analytics UI</h3>
-                        <p>Responsive visualization layers for clinical medical datasets, focusing on intuitive data discoverability for diagnostics.</p>
-                        <a href="#" class="pill-view">
-                            View <div class="arrow-dot"><i class="fas fa-arrow-right"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- CARD 3 -->
-                <div class="p-card">
-                    <div class="p-img-mask">
-                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=1000&auto=format&fit=crop" alt="Arched Pink">
-                    </div>
-                    <div class="p-content">
-                        <h3>Auto Predictive Core</h3>
-                        <p>An automotive value regression engine, providing 95%+ precision on second-hand vehicle valuations through neural learning.</p>
-                        <a href="#" class="pill-view">
-                            View <div class="arrow-dot"><i class="fas fa-arrow-right"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- CARD 4 -->
-                <div class="p-card">
-                    <div class="p-img-mask">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop" alt="Liquid Data Flow">
-                    </div>
-                    <div class="p-content">
-                        <h3>System Logic v.02</h3>
-                        <p>Mathematical demo examining demographic probability modeling based on historical maritime log datasets.</p>
-                        <a href="#" class="pill-view">
-                            View <div class="arrow-dot"><i class="fas fa-arrow-right"></i></div>
-                        </a>
-                    </div>
-                </div>
-
-            </div> <!-- end grid -->
-        </div> <!-- end container -->
-    </section>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer & Strategist | Premium Studio</title>
-    
-    <!-- Precision Font Combination -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-    <style>
-        :root {
-            --zed-black: #000000;
-            --canvas: #0B0B0B;
-            --accent: #FF4D00;
-            --white: #FFFFFF;
-            
-            /* Typography Scale */
-            --font-main: 'Inter', sans-serif;
-            --h1-size: clamp(3.5rem, 11vw, 9rem);
-            --h2-size: clamp(2.5rem, 6vw, 4.5rem);
-            
-            /* Component Settings */
-            --radius-hero: 60px;
+            /* Sizing & Transitions */
+            --radius-big: 80px;
             --radius-card: 40px;
-            --container-gap: 8%;
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --padding-side: 8%;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --transition: all 0.6s var(--ease);
         }
 
         /* --- FOUNDATION --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
         html { scroll-behavior: smooth; }
         body { 
-            background-color: var(--zed-black); 
-            font-family: var(--font-main); 
-            color: var(--white);
+            background-color: var(--bg-black); 
+            font-family: 'Inter', sans-serif; 
+            color: var(--white); 
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- GLOBAL UTILS --- */
-        .section-label { 
-            color: var(--accent); 
-            font-weight: 800; 
-            font-size: 0.8rem; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            display: block; 
-            margin-bottom: 25px;
-        }
+        h1, h2, h3, h4 { font-weight: 900; line-height: 1; letter-spacing: -0.04em; text-transform: none; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        .section-label { color: var(--accent-orange); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; display: block; margin-bottom: 25px; }
 
-        /* --- COMPONENT: BUTTONS --- */
-        .btn-base {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px 10px 10px 30px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            transition: var(--transition);
-        }
-
-        .btn-dark {
-            background-color: #151515;
-            color: var(--white);
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .btn-dark:hover {
-            border-color: var(--white);
-            background-color: #202020;
-            transform: translateY(-3px);
-        }
-
-        .orange-arrow-box {
-            width: 38px;
-            height: 38px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.75rem;
-        }
-
-        /* --- 01. HERO SECTION --- */
-        .hero-vessel {
-            width: calc(100% - 40px);
-            height: calc(100vh - 40px);
-            max-height: 950px;
-            margin: 20px auto;
-            border-radius: var(--radius-hero);
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(95deg, #FFB347 0%, #FF4D00 45%, #750D01 100%);
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 40px 100px -20px rgba(0,0,0,0.5);
-        }
-
+        /* --- NAVIGATION --- */
         nav {
-            padding: 40px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
+            position: fixed; top: 35px; left: 50%; transform: translateX(-50%);
+            display: flex; align-items: center; justify-content: space-between;
+            width: calc(100% - var(--padding-side)*2); max-width: 1400px;
+            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px);
+            padding: 10px 10px 10px 30px; border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.08); z-index: 1000;
+        }
+        .nav-logo { font-weight: 900; font-size: 1.4rem; letter-spacing: -2px; }
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { font-size: 0.75rem; font-weight: 700; color: #777; text-transform: uppercase; letter-spacing: 1px;}
+        .nav-links a:hover, .nav-links a.active { color: white; }
+        .cta-touch { background: #fff; color: #000; padding: 12px 30px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; display: flex; align-items: center; gap: 15px; }
+        .cta-touch i { background: var(--accent-orange); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+        /* --- SECTION 1: HERO VESSEL --- */
+        #home { padding: 20px; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .hero-vessel {
+            width: 100%; height: 95vh; background: radial-gradient(circle at 80% 30%, #441200 0%, #1c0600 40%, #000000 80%);
+            border-radius: var(--radius-big); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 0 var(--padding-side);
+        }
+        .hero-content { display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: center; z-index: 5; }
+        .hero-title { font-size: clamp(3rem, 11vw, 9.5rem); line-height: 0.82; letter-spacing: -5px; }
+        .hero-right-meta { padding-left: 20%; position: relative; top: 150px;}
+        .hero-right-meta h3 { font-size: 1.8rem; margin-bottom: 30px; line-height: 1.2; text-transform: none;}
+        .hero-right-meta p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; max-width: 320px; }
+
+        /* The silhouette profile simulation */
+        .silhouette { position: absolute; left: 55%; top: 10%; height: 95%; pointer-events: none; opacity: 0.95; mix-blend-mode: luminosity; }
+
+        /* Bottom Row labels in Hero */
+        .bottom-services { position: absolute; bottom: 80px; left: var(--padding-side); display: flex; gap: 100px; }
+        .s-unit span { color: var(--accent-orange); font-size: 0.7rem; font-weight: 800; display: block; margin-bottom: 10px; }
+        .s-unit p { font-size: 0.85rem; font-weight: 700; color: #fff; text-transform: none;}
+
+        /* --- SECTION 2: ABOUT --- */
+        #about { padding: 160px var(--padding-side); background: #000; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .about-text-area h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; margin-bottom: 40px; }
+        .about-high { font-size: 1.5rem; color: #fff; font-weight: 600; line-height: 1.4; margin-bottom: 30px; }
+        .about-para { color: var(--text-muted); font-size: 1rem; margin-bottom: 50px; line-height: 1.7; max-width: 520px; }
+        
+        .p-img-card { width: 100%; height: 680px; border-radius: var(--radius-card); background: radial-gradient(circle at 40% 50%, #441501 0%, #200900 100%); overflow: hidden; display: flex; justify-content: center; align-items: flex-end; border: 1px solid #111;}
+        .p-img-card img { height: 100%; width: 100%; object-fit: cover; opacity: 0.95; }
+
+        /* --- SHARED BUTTON UI --- */
+        .action-btn { display: inline-flex; align-items: center; gap: 15px; background: #0d0d0d; border: 1px solid #1a1a1a; padding: 10px 10px 10px 30px; border-radius: 100px; color: #fff; font-weight: 700; font-size: 0.8rem; }
+        .action-btn i { width: 40px; height: 40px; background: var(--accent-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+        .action-btn:hover { background: #1a1a1a; transform: translateY(-5px); border-color: #555;}
+
+        /* --- SECTION 3: PROJECTS --- */
+        #projects { padding: 120px var(--padding-side); background: #000; }
+        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 40px; margin-top: 60px; }
+        .w-card { display: flex; flex-direction: column; cursor: pointer; transition: var(--transition); position: relative; top: 0;}
+        .w-img-box { width: 100%; aspect-ratio: 4/5; border-radius: var(--radius-card); overflow: hidden; border: 1px solid #0f0f0f; margin-bottom: 30px; }
+        .w-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); filter: brightness(0.85); transform: scale(1.0); }
+        .w-card:hover { transform: translateY(-20px); }
+        .w-card:hover img { transform: scale(1.05); filter: brightness(1); }
+        .w-card h4 { font-size: 2.1rem; color: #fff; margin-bottom: 12px; }
+        .w-card p { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 30px; max-width: 90%; }
+
+        /* --- SECTION 5: CONTACT --- */
+        #contact { padding: 200px 7%; background: radial-gradient(circle at center top, #1c0600 0%, #000000 70%); text-align: center; border-top: 1px solid #080808;}
+        .contact-h { font-size: clamp(3rem, 10vw, 8rem); margin-bottom: 40px; letter-spacing: -4px; }
+        .contact-p { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 60px; font-weight: 500;}
+
+        /* --- FOOTER --- */
+        footer { padding: 80px var(--padding-side); border-top: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }
+        .f-logo { font-size: 0.9rem; font-weight: 900; letter-spacing: 1px; color: var(--text-sub); }
+        .socials { display: flex; gap: 40px; font-size: 0.75rem; color: #444; text-transform: uppercase; font-weight: 900; }
+        .socials a:hover { color: #fff; }
+
+        /* --- MOBILE RE-LOGIC --- */
+        @media (max-width: 1024px) {
+            :root { --padding-side: 6%; --radius-big: 40px; }
+            .hero-content, #about, .projects-grid { grid-template-columns: 1fr; text-align: left; }
+            .hero-vessel { height: auto; padding: 150px var(--padding-side) 100px; }
+            .silhouette { display: none; }
+            .hero-right-meta { padding: 0; top: 0; margin-top: 50px; text-align: left; }
+            .hero-right-meta p { margin: 0; }
+            .bottom-services { position: relative; bottom: 0; left: 0; margin-top: 100px; flex-wrap: wrap; gap: 40px; }
+            .nav-links { display: none; }
+            .p-img-card { order: -1; margin-bottom: 40px; height: 500px; }
+            .w-img-box { aspect-ratio: 1/1; }
         }
 
-        .logo { font-weight: 800; font-size: 1.6rem; letter-spacing: -1.5px; }
-
-        .nav-links { display: flex; gap: 40px; align-items: center; }
-        .nav-links a { text-decoration: none; color: white; font-weight: 500; font-size: 0.9rem; opacity: 0.8; transition: 0.3s; }
-        .nav-links a:hover { opacity: 1; transform: translateY(-1px); }
-
-        .hero-cta-btn {
-            background: white;
-            color: black;
-            padding: 12px 35px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        .hero-content {
-            flex: 1;
-            padding: 0 var(--container-gap) 100px;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            align-items: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-headline {
-            font-weight: 900;
-            font-size: var(--h1-size);
-            line-height: 0.82;
-            letter-spacing: -6px;
-        }
-
-        .hero-tagline-box { text-align: right; margin-top: 150px; }
-        .hero-tagline-box h3 { font-size: 2rem; margin-bottom: 25px; line-height: 1.2; font-weight: 700; }
-        .hero-tagline-box p { font-size: 1rem; opacity: 0.7; max-width: 280px; margin-left: auto; line-height: 1.6; }
-
-        /* HERO SILHOUETTE MASK */
-        .silhouette {
-            position: absolute; left: 52%; bottom: -5%;
-            height: 110%; z-index: 5; pointer-events: none;
-            mix-blend-mode: luminosity; opacity: 0.9;
-        }
-
-        /* --- 02. ABOUT ME SECTION --- */
-        #about-me {
-            background-color: var(--canvas);
-            padding: 160px var(--container-gap);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
-        }
-
-        .about-text-col h2 {
-            font-size: var(--h2-size);
-            font-weight: 900;
-            line-height: 0.95;
-            letter-spacing: -2px;
-            margin-bottom: 35px;
-        }
-
-        .about-highlight {
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: var(--white);
-            opacity: 0.8; /* 80% opacity */
-            line-height: 1.4;
-            margin-bottom: 30px;
-        }
-
-        .about-body {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--white);
-            opacity: 0.65; /* 65% opacity */
-            max-width: 520px;
-            margin-bottom: 50px;
-            font-weight: 400;
-        }
-
-        /* IMAGE CARD REPLICA */
-        .about-img-frame {
-            width: 100%;
-            height: 720px;
-            border-radius: var(--radius-card);
-            overflow: hidden;
-            background: radial-gradient(circle at center, #ff8a47 0%, #ff5c00 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            position: relative;
-        }
-
-        /* Internal rim-lit simulator on card edge */
-        .about-img-frame::after {
-            content: "";
-            position: absolute; inset: 0;
-            box-shadow: inset 0 0 60px rgba(0,0,0,0.2);
-            pointer-events: none;
-        }
-
-        .about-img-frame img {
-            height: 110%; /* Larger so we see body/neck silhouette */
-            width: auto;
-            object-fit: cover;
-            filter: contrast(1.1) brightness(0.95);
-            /* This mimics editorial lighting */
-            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-        }
-
-        /* --- MOBILE ADAPTABILITY --- */
-        @media (max-width: 1100px) {
-            .hero-vessel { width: 100%; height: auto; margin: 0; border-radius: 0 0 40px 40px; padding-bottom: 100px;}
-            .hero-content, #about-me { grid-template-columns: 1fr; gap: 60px; }
-            .hero-tagline-box, #about-me { text-align: left; }
-            .hero-tagline-box p { margin-left: 0; }
-            .hero-headline { letter-spacing: -3px; }
-            .about-img-frame { height: 500px; order: -1; }
-            nav .nav-links { display: none; }
-        }
+        /* Kinetic Animations */
+        [data-reveal] { opacity: 0; transform: translateY(40px); transition: var(--transition); }
+        [data-reveal].active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <!-- SECTION: HERO -->
-    <div class="hero-vessel">
-        <header>
-            <div class="logo">folioblox</div>
-            <nav class="nav-links">
-                <a href="#">home</a>
-                <a href="#">about</a>
-                <a href="#">projects</a>
-                <a href="#" class="cta-button">get in touch</a>
-            </nav>
-        </header>
-
-        <main class="hero-content">
-            <!-- Center Silhouette Simulator -->
-            <img src="https://folioblox-studio.framer.website/assets/person.png" alt="" class="silhouette">
-
-            <div class="hero-headline-box">
-                <span class="intro-line" style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 20px; display: block; font-weight: 500;">Hey, I’m a</span>
-                <h1 class="hero-headline">Creative<br>Director</h1>
-            </div>
-
-            <div class="hero-tagline-box">
-                <h3>Great design should <br> feel invisible.</h3>
-                <p>Translating mathematical logic and premium industrial intuition into timeless product experiences.</p>
-            </div>
-        </main>
-    </div>
-
-    <!-- SECTION: ABOUT ME (NEW) -->
-    <section id="about-me">
-        <div class="about-text-col">
-            <span class="section-label">About me</span>
-            <h2 class="about-headline">
-                Designer.<br>
-                Strategist.<br>
-                Creative partner.
-            </h2>
-
-            <p class="about-highlight">
-                Blending clarity and creativity to build brands with purpose.
-            </p>
-
-            <p class="about-body">
-                Through a systematic engineering foundation and a decade of design discovery, I create identities that solve business challenges. I help organizations define their story with precision and aesthetic impact.
-            </p>
-
-            <a href="#" class="btn-base btn-dark">
-                Read more 
-                <div class="orange-arrow-box">
-                    <i class="fas fa-arrow-right"></i>
-                </div>
-            </a>
+    <!-- Pill Navigation Island -->
+    <nav>
+        <div class="nav-logo">FOLIOBLOX.</div>
+        <div class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Work</a>
         </div>
+        <a href="#contact" class="cta-touch">
+            Get in touch <i><i class="fas fa-arrow-right"></i></i>
+        </a>
+    </nav>
 
-        <div class="about-image-col">
-            <div class="about-img-frame">
-                <!-- Replace with upward profile photo. Using placeholder for visualization -->
-                <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=600&auto=format&fit=crop" alt="Editorial Portrait">
+    <!-- Section 1: Editorial Hero Vessel -->
+    <section id="home">
+        <div class="hero-vessel">
+            <!-- Simulated Side-Profile High Contrast Placeholder (using absolute positioning behind grid) -->
+            <img src="https://folioblox-studio.framer.website/assets/person.png" class="silhouette" alt="">
+
+            <div class="hero-content">
+                <div class="hero-left" data-reveal>
+                    <span class="hero-tag" style="font-weight: 600; font-size: 1.5rem; opacity: 0.8; margin-bottom: 30px; display: block;">Hey, I'm a</span>
+                    <h1 class="hero-title">Creative<br>Director</h1>
+                </div>
+
+                <div class="hero-right-meta" data-reveal>
+                    <h3>Great design should <br> feel invisible.</h3>
+                    <p>I establish industrial-grade systems meeting editorial vision for timeless business narratives.</p>
+                </div>
+            </div>
+
+            <!-- Stats/Labels Inside Vessel -->
+            <div class="bottom-services">
+                <div class="s-unit"><span>#01</span><p>Brand Strategy</p></div>
+                <div class="s-unit"><span>#02</span><p>Visual Intelligence</p></div>
+                <div class="s-unit"><span>#03</span><p>Product Strategy</p></div>
+                <div class="s-unit"><span>#04</span><p>Logic Engineer</p></div>
             </div>
         </div>
     </section>
 
+    <!-- Section 2: Personal Strategy -->
+    <section id="about">
+        <div class="about-text-area" data-reveal>
+            <span class="section-label">About me</span>
+            <h2>Designer.<br>Strategist.<br>Creative partner.</h2>
+            <p class="about-high">Blending clarity and industrial precision to scale business purpose.</p>
+            <p class="about-para">I help teams uncover the tactical blueprints trapped within their metrics. I turn raw complexity into editorial digital artifacts that build enduring credibility.</p>
+            <a href="#" class="action-btn">
+                Read Resume <i><i class="fas fa-arrow-right"></i></i>
+            </a>
+        </div>
+
+        <div class="about-visual-area" data-reveal>
+            <div class="p-img-card">
+                <!-- Replace src with professional upward portrait silhouette -->
+                <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop" alt="The Designer Portrait">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Selected Cases -->
+    <section id="projects">
+        <span class="section-label" data-reveal>Portfolio Selection</span>
+        <h2 style="font-size: 4rem;" data-reveal>Selected work</h2>
+
+        <div class="projects-grid">
+            <div class="w-card" data-reveal>
+                <div class="w-img-box"><img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop" alt="Work Thumbnail"></div>
+                <h4>Orange Blox</h4>
+                <p>Establishing urban diagnostic mapping through flowing shapes in iridescent hues for municipal environmental sectors.</p>
+                <a href="#" class="action-btn" style="padding: 5px 5px 5px 25px; font-size: 0.7rem;">View <i><i class="fas fa-chevron-right"></i></i></a>
+            </div>
+
+            <div class="w-card" data-reveal style="transition-delay: 0.2s;">
+                <div class="w-img-box"><img src="https://images.unsplash.com/photo-1551033535-64906f0e9f1a?q=80&w=800&auto=format&fit=crop" alt="Work Thumbnail"></div>
+                <h4>Nova Scene</h4>
+                <p>Industrial diagnostic visualization layer connecting deep relational clinical SQL databases to intuitive healthcare dashboards.</p>
+                <a href="#" class="action-btn" style="padding: 5px 5px 5px 25px; font-size: 0.7rem;">View <i><i class="fas fa-chevron-right"></i></i></a>
+            </div>
+
+            <div class="w-card" data-reveal>
+                <div class="w-img-box"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Work Thumbnail"></div>
+                <h4>Arched Pink</h4>
+                <p>A premium automotive valuation engine delivering 95% market accuracy on luxury inventory through predictive modelling.</p>
+                <a href="#" class="action-btn" style="padding: 5px 5px 5px 25px; font-size: 0.7rem;">View <i><i class="fas fa-chevron-right"></i></i></a>
+            </div>
+
+            <div class="w-card" data-reveal style="transition-delay: 0.2s;">
+                <div class="w-img-box"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Work Thumbnail"></div>
+                <h4>System Logic</h4>
+                <p>Modernized logistics core for maritime cargo routing optimized through systematic probability logic modeling.</p>
+                <a href="#" class="action-btn" style="padding: 5px 5px 5px 25px; font-size: 0.7rem;">View <i><i class="fas fa-chevron-right"></i></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Transmission Core -->
+    <section id="contact" class="reveal">
+        <h2 class="contact-h">LET'S DESIGN<br>THE FUTURE.</h2>
+        <p class="contact-p">Available for global projects starting scratch to industrialization.</p>
+        <a href="mailto:connect@folioblox.studio" class="action-btn" style="font-size: 1rem; padding: 25px 35px; margin: 0 auto; display: flex; width: fit-content; text-transform: none;">
+            Establish Connection <i><i class="fas fa-paper-plane"></i></i>
+        </a>
+    </section>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="f-logo">NIRANJAN. // STUDIO CORE EDITION</div>
+        <div class="socials">
+            <a href="#">GH / NINJAN910</a>
+            <a href="#">LI / IN / NIRANJANK</a>
+            <a href="#">INS / NIRANJ.AN</a>
+        </div>
+    </footer>
+
+    <script>
+        // Precision intersection observer for editorial reveals
+        const reveal = () => {
+            const reveals = document.querySelectorAll("[data-reveal]");
+            reveals.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.9) {
+                    el.classList.add("active");
+                }
+            });
+        };
+
+        window.addEventListener("scroll", reveal);
+        window.onload = reveal;
+    </script>
 </body>
 </html>
