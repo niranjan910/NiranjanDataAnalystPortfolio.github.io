@@ -3,272 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Designer & Strategist | Premium Studio Portfolio</title>
-    
-    <link rel="icon" type="image/png" href="Logo/favicon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Modern Editorial Font: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+    <title>Creative Director | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            /* Palette */
-            --bg-black: #000000;
-            --bg-dark: #0A0A0A;
-            --surface: #111111;
-            --accent-orange: #FF4D00;
-            --white: #FFFFFF;
-            --text-muted: rgba(255, 255, 255, 0.65);
-            --text-sub: rgba(255, 255, 255, 0.4);
-            
-            /* Sizing & Transitions */
-            --radius-big: 80px;
-            --radius-card: 40px;
-            --padding-side: 8%;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
-            --transition: all 0.6s var(--ease);
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0D0D0D;
+            color: white;
+            scroll-behavior: smooth;
         }
 
-        /* --- FOUNDATION --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
-        html { scroll-behavior: smooth; }
-        body { 
-            background-color: var(--bg-black); 
-            font-family: 'Inter', sans-serif; 
-            color: var(--white); 
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+        .hero-gradient {
+            background: linear-gradient(135deg, #FFB347 0%, #FF6B00 50%, #CF2300 100%);
         }
 
-        h1, h2, h3, h4 { font-weight: 900; line-height: 1; letter-spacing: -0.04em; text-transform: none; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        .section-label { color: var(--accent-orange); font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.2em; display: block; margin-bottom: 25px; }
-
-        /* --- NAVIGATION --- */
-        nav {
-            position: fixed; top: 35px; left: 50%; transform: translateX(-50%);
-            display: flex; align-items: center; justify-content: space-between;
-            width: calc(100% - var(--padding-side)*2); max-width: 1400px;
-            background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(20px);
-            padding: 10px 10px 10px 30px; border-radius: 100px;
-            border: 1px solid rgba(255,255,255,0.08); z-index: 1000;
-        }
-        .nav-logo { font-weight: 900; font-size: 1.4rem; letter-spacing: -2px; }
-        .nav-links { display: flex; gap: 40px; }
-        .nav-links a { font-size: 0.75rem; font-weight: 700; color: #777; text-transform: uppercase; letter-spacing: 1px;}
-        .nav-links a:hover, .nav-links a.active { color: white; }
-        .cta-touch { background: #fff; color: #000; padding: 12px 30px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; display: flex; align-items: center; gap: 15px; }
-        .cta-touch i { background: var(--accent-orange); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-
-        /* --- SECTION 1: HERO VESSEL --- */
-        #home { padding: 20px; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-        .hero-vessel {
-            width: 100%; height: 95vh; background: radial-gradient(circle at 80% 30%, #441200 0%, #1c0600 40%, #000000 80%);
-            border-radius: var(--radius-big); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 0 var(--padding-side);
-        }
-        .hero-content { display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: center; z-index: 5; }
-        .hero-title { font-size: clamp(3rem, 11vw, 9.5rem); line-height: 0.82; letter-spacing: -5px; }
-        .hero-right-meta { padding-left: 20%; position: relative; top: 150px;}
-        .hero-right-meta h3 { font-size: 1.8rem; margin-bottom: 30px; line-height: 1.2; text-transform: none;}
-        .hero-right-meta p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; max-width: 320px; }
-
-        /* The silhouette profile simulation */
-        .silhouette { position: absolute; left: 55%; top: 10%; height: 95%; pointer-events: none; opacity: 0.95; mix-blend-mode: luminosity; }
-
-        /* Bottom Row labels in Hero */
-        .bottom-services { position: absolute; bottom: 80px; left: var(--padding-side); display: flex; gap: 100px; }
-        .s-unit span { color: var(--accent-orange); font-size: 0.7rem; font-weight: 800; display: block; margin-bottom: 10px; }
-        .s-unit p { font-size: 0.85rem; font-weight: 700; color: #fff; text-transform: none;}
-
-        /* --- SECTION 2: ABOUT --- */
-        #about { padding: 160px var(--padding-side); background: #000; display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
-        .about-text-area h2 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05; margin-bottom: 40px; }
-        .about-high { font-size: 1.5rem; color: #fff; font-weight: 600; line-height: 1.4; margin-bottom: 30px; }
-        .about-para { color: var(--text-muted); font-size: 1rem; margin-bottom: 50px; line-height: 1.7; max-width: 520px; }
-        
-        .p-img-card { width: 100%; height: 680px; border-radius: var(--radius-card); background: radial-gradient(circle at 40% 50%, #441501 0%, #200900 100%); overflow: hidden; display: flex; justify-content: center; align-items: flex-end; border: 1px solid #111;}
-        .p-img-card img { height: 100%; width: 100%; object-fit: cover; opacity: 0.95; }
-
-        /* --- SHARED BUTTON UI --- */
-        .action-btn { display: inline-flex; align-items: center; gap: 15px; background: #0d0d0d; border: 1px solid #1a1a1a; padding: 10px 10px 10px 30px; border-radius: 100px; color: #fff; font-weight: 700; font-size: 0.8rem; }
-        .action-btn i { width: 40px; height: 40px; background: var(--accent-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; }
-        .action-btn:hover { background: #1a1a1a; transform: translateY(-5px); border-color: #555;}
-
-        /* --- SECTION 3: PROJECTS --- */
-        #projects { padding: 120px var(--padding-side); background: #000; }
-        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px 40px; margin-top: 60px; }
-        .w-card { display: flex; flex-direction: column; cursor: pointer; transition: var(--transition); position: relative; top: 0;}
-        .w-img-box { width: 100%; aspect-ratio: 4/5; border-radius: var(--radius-card); overflow: hidden; border: 1px solid #0f0f0f; margin-bottom: 30px; }
-        .w-img-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); filter: brightness(0.85); transform: scale(1.0); }
-        .w-card:hover { transform: translateY(-20px); }
-        .w-card:hover img { transform: scale(1.05); filter: brightness(1); }
-        .w-card h4 { font-size: 2.1rem; color: #fff; margin-bottom: 12px; }
-        .w-card p { color: var(--text-sub); font-size: 0.95rem; margin-bottom: 30px; max-width: 90%; }
-
-        /* --- SECTION 5: CONTACT --- */
-        #contact { padding: 200px 7%; background: radial-gradient(circle at center top, #1c0600 0%, #000000 70%); text-align: center; border-top: 1px solid #080808;}
-        .contact-h { font-size: clamp(3rem, 10vw, 8rem); margin-bottom: 40px; letter-spacing: -4px; }
-        .contact-p { font-size: 1.3rem; color: var(--text-muted); margin-bottom: 60px; font-weight: 500;}
-
-        /* --- FOOTER --- */
-        footer { padding: 80px var(--padding-side); border-top: 1px solid #111; display: flex; justify-content: space-between; align-items: center; }
-        .f-logo { font-size: 0.9rem; font-weight: 900; letter-spacing: 1px; color: var(--text-sub); }
-        .socials { display: flex; gap: 40px; font-size: 0.75rem; color: #444; text-transform: uppercase; font-weight: 900; }
-        .socials a:hover { color: #fff; }
-
-        /* --- MOBILE RE-LOGIC --- */
-        @media (max-width: 1024px) {
-            :root { --padding-side: 6%; --radius-big: 40px; }
-            .hero-content, #about, .projects-grid { grid-template-columns: 1fr; text-align: left; }
-            .hero-vessel { height: auto; padding: 150px var(--padding-side) 100px; }
-            .silhouette { display: none; }
-            .hero-right-meta { padding: 0; top: 0; margin-top: 50px; text-align: left; }
-            .hero-right-meta p { margin: 0; }
-            .bottom-services { position: relative; bottom: 0; left: 0; margin-top: 100px; flex-wrap: wrap; gap: 40px; }
-            .nav-links { display: none; }
-            .p-img-card { order: -1; margin-bottom: 40px; height: 500px; }
-            .w-img-box { aspect-ratio: 1/1; }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Kinetic Animations */
-        [data-reveal] { opacity: 0; transform: translateY(40px); transition: var(--transition); }
-        [data-reveal].active { opacity: 1; transform: translateY(0); }
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        .editorial-line {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        ::-webkit-scrollbar { width: 0px; }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <!-- Pill Navigation Island -->
-    <nav>
-        <div class="nav-logo">FOLIOBLOX.</div>
-        <div class="nav-links">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Work</a>
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center pointer-events-none">
+        <div class="text-xl font-bold tracking-tighter pointer-events-auto cursor-pointer uppercase">
+            Aiden Marshall<span class="text-[#FF6B00]">™</span>
         </div>
-        <a href="#contact" class="cta-touch">
-            Get in touch <i><i class="fas fa-arrow-right"></i></i>
-        </a>
+        <div class="hidden md:flex gap-8 items-center pointer-events-auto bg-[#1a1a1a]/80 py-3 px-8 rounded-full border border-white/10 backdrop-blur-md">
+            <a href="#" class="text-sm uppercase tracking-widest hover:text-[#FF6B00] transition-colors">About</a>
+            <a href="#projects" class="text-sm uppercase tracking-widest hover:text-[#FF6B00] transition-colors">Projects</a>
+            <button class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold uppercase hover:bg-[#FF6B00] hover:text-white transition-all">Get in Touch</button>
+        </div>
     </nav>
 
-    <!-- Section 1: Editorial Hero Vessel -->
-    <section id="home">
-        <div class="hero-vessel">
-            <!-- Simulated Side-Profile High Contrast Placeholder (using absolute positioning behind grid) -->
-            <img src="https://folioblox-studio.framer.website/assets/person.png" class="silhouette" alt="">
+    <!-- SECTION 1: HERO -->
+    <main class="p-4 md:p-6 h-screen min-h-[800px]">
+        <div class="hero-gradient h-full w-full rounded-[32px] relative overflow-hidden flex flex-col justify-between p-8 md:p-16">
+            <!-- Subtle Vignette Over the Gradient -->
+            <div class="absolute inset-0 bg-black/10"></div>
 
-            <div class="hero-content">
-                <div class="hero-left" data-reveal>
-                    <span class="hero-tag" style="font-weight: 600; font-size: 1.5rem; opacity: 0.8; margin-bottom: 30px; display: block;">Hey, I'm a</span>
-                    <h1 class="hero-title">Creative<br>Director</h1>
+            <div class="relative z-10 mt-20 flex flex-col md:flex-row justify-between items-end md:items-start">
+                <div class="w-full md:w-1/2">
+                    <span class="text-white/80 font-medium mb-4 block">Hey, I’m a</span>
+                    <h1 class="text-7xl md:text-[10rem] font-extrabold leading-[0.85] tracking-tighter uppercase italic md:not-italic">
+                        Creative<br>Director
+                    </h1>
                 </div>
-
-                <div class="hero-right-meta" data-reveal>
-                    <h3>Great design should <br> feel invisible.</h3>
-                    <p>I establish industrial-grade systems meeting editorial vision for timeless business narratives.</p>
+                <div class="w-full md:w-1/3 mt-12 md:mt-4 border-l border-white/20 pl-8">
+                    <h2 class="text-2xl md:text-3xl font-light leading-snug mb-6">
+                        "Great design should feel invisible."
+                    </h2>
+                    <p class="text-white/70 text-lg leading-relaxed max-w-sm">
+                        Leading visual identities and digital experiences for high-growth brands globally.
+                    </p>
                 </div>
             </div>
 
-            <!-- Stats/Labels Inside Vessel -->
-            <div class="bottom-services">
-                <div class="s-unit"><span>#01</span><p>Brand Strategy</p></div>
-                <div class="s-unit"><span>#02</span><p>Visual Intelligence</p></div>
-                <div class="s-unit"><span>#03</span><p>Product Strategy</p></div>
-                <div class="s-unit"><span>#04</span><p>Logic Engineer</p></div>
+            <!-- Trust Bar / Services -->
+            <div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/20 pt-10">
+                <div class="group cursor-default">
+                    <span class="block text-xs font-bold mb-2 opacity-50 uppercase tracking-widest">#01</span>
+                    <span class="text-xl font-medium group-hover:text-black transition-colors underline decoration-black/20">Branding</span>
+                </div>
+                <div class="group cursor-default">
+                    <span class="block text-xs font-bold mb-2 opacity-50 uppercase tracking-widest">#02</span>
+                    <span class="text-xl font-medium group-hover:text-black transition-colors underline decoration-black/20">UI/UX Strategy</span>
+                </div>
+                <div class="group cursor-default">
+                    <span class="block text-xs font-bold mb-2 opacity-50 uppercase tracking-widest">#03</span>
+                    <span class="text-xl font-medium group-hover:text-black transition-colors underline decoration-black/20">Motion</span>
+                </div>
+                <div class="group cursor-default">
+                    <span class="block text-xs font-bold mb-2 opacity-50 uppercase tracking-widest">#04</span>
+                    <span class="text-xl font-medium group-hover:text-black transition-colors underline decoration-black/20">Creative Ops</span>
+                </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Section 2: Personal Strategy -->
-    <section id="about">
-        <div class="about-text-area" data-reveal>
-            <span class="section-label">About me</span>
-            <h2>Designer.<br>Strategist.<br>Creative partner.</h2>
-            <p class="about-high">Blending clarity and industrial precision to scale business purpose.</p>
-            <p class="about-para">I help teams uncover the tactical blueprints trapped within their metrics. I turn raw complexity into editorial digital artifacts that build enduring credibility.</p>
-            <a href="#" class="action-btn">
-                Read Resume <i><i class="fas fa-arrow-right"></i></i>
+    <!-- SECTION 2: ABOUT -->
+    <section class="py-24 px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+            <span class="text-[#FF6B00] font-bold uppercase tracking-[0.2em] text-sm mb-6 block">About me</span>
+            <h3 class="text-5xl md:text-6xl font-bold tracking-tighter leading-tight mb-8">
+                Designer.<br>Strategist.<br>Creative Partner.
+            </h3>
+            <p class="text-white/60 text-xl leading-relaxed mb-10 max-w-lg">
+                I help agencies and startups navigate the gap between concept and commercial success. Currently building digital systems that blend high-fashion editorial aesthetics with brutalist efficiency.
+            </p>
+            <a href="#" class="inline-flex items-center gap-4 px-8 py-4 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all group">
+                Read full story 
+                <span class="text-[#FF6B00] group-hover:translate-x-1 transition-transform">→</span>
             </a>
         </div>
-
-        <div class="about-visual-area" data-reveal>
-            <div class="p-img-card">
-                <!-- Replace src with professional upward portrait silhouette -->
-                <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?q=80&w=700&auto=format&fit=crop" alt="The Designer Portrait">
+        <div class="relative h-[600px] w-full bg-[#1A1A1A] rounded-[32px] overflow-hidden group">
+            <div class="absolute inset-0 bg-[#FF6B00]/20 group-hover:bg-transparent transition-all duration-700"></div>
+            <!-- Replacement for Image -->
+            <div class="flex items-center justify-center h-full text-white/10 uppercase font-black text-8xl italic">
+                Portrait
+            </div>
+            <!-- Imagine a fashion portrait here -->
+            <div class="absolute bottom-8 left-8">
+                <div class="bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs tracking-widest">STATIONED IN NYC</div>
             </div>
         </div>
     </section>
 
-    <!-- Section 3: Selected Cases -->
-    <section id="projects">
-        <span class="section-label" data-reveal>Portfolio Selection</span>
-        <h2 style="font-size: 4rem;" data-reveal>Selected work</h2>
+    <!-- SECTION 3: PROJECTS -->
+    <section id="projects" class="py-24 px-8 md:px-16">
+        <div class="flex justify-between items-end mb-16">
+            <div>
+                <span class="text-white/40 font-bold uppercase tracking-[0.2em] text-sm mb-2 block">Selected Work</span>
+                <h3 class="text-5xl font-bold tracking-tight">Digital Products</h3>
+            </div>
+            <div class="hidden md:block text-white/40 text-sm italic underline decoration-[#FF6B00] underline-offset-8">
+                Scroll to explore projects
+            </div>
+        </div>
 
-        <div class="projects-grid">
-            <div class="w-card" data-reveal>
-                <div class="w-img-box"><img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=800&auto=format&fit=crop" alt="Work Thumbnail"></div>
-                <h4>Orange Blox</h4>
-                <p>Establishing urban diagnostic mapping through flowing shapes in iridescent hues for municipal environmental sectors.</p>
-                <a href="#" class="action-btn" style="padding: 5px 5px 5px 25px; font-size: 0.7rem;">View <i><i class="fas fa-chevron-right"></i></i></a>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- PROJECT CARD 1 -->
+            <div class="group project-card cursor-pointer">
+                <div class="h-[500px] bg-[#1a1a1a] rounded-[32px] mb-6 overflow-hidden relative">
+                    <div class="project-image w-full h-full bg-neutral-800 transition-transform duration-700 flex items-center justify-center text-white/5 font-bold text-4xl">NEURAL BRANDING 2024</div>
+                    <div class="absolute bottom-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <span class="bg-white text-black px-6 py-2 rounded-full text-xs font-bold uppercase flex items-center gap-2">View Project <span class="text-[#FF6B00]">→</span></span>
+                    </div>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 uppercase tracking-tight">Kinetic Architecture</h4>
+                <p class="text-white/40">Visual Identity • Web Performance</p>
             </div>
 
-            <div class="w-card" data-reveal style="transition-delay: 0.2s;">
-                <div class="w-img-box"><img src="https://images.unsplash.com/photo-1551033535-64906f0e9f1a?q=80&w=800&auto=format&fit=crop" alt="Work Thumbnail"></div>
-                <h4>Nova Scene</h4>
-                <p>Industrial diagnostic visualization layer connecting deep relational clinical SQL databases to intuitive healthcare dashboards.</p>
-                <a href="#" class="action-btn" style="padding: 5px 5px 5px 25px; font-size: 0.7rem;">View <i><i class="fas fa-chevron-right"></i></i></a>
-            </div>
-
-            <div class="w-card" data-reveal>
-                <div class="w-img-box"><img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=800&auto=format&fit=crop" alt="Work Thumbnail"></div>
-                <h4>Arched Pink</h4>
-                <p>A premium automotive valuation engine delivering 95% market accuracy on luxury inventory through predictive modelling.</p>
-                <a href="#" class="action-btn" style="padding: 5px 5px 5px 25px; font-size: 0.7rem;">View <i><i class="fas fa-chevron-right"></i></i></a>
-            </div>
-
-            <div class="w-card" data-reveal style="transition-delay: 0.2s;">
-                <div class="w-img-box"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Work Thumbnail"></div>
-                <h4>System Logic</h4>
-                <p>Modernized logistics core for maritime cargo routing optimized through systematic probability logic modeling.</p>
-                <a href="#" class="action-btn" style="padding: 5px 5px 5px 25px; font-size: 0.7rem;">View <i><i class="fas fa-chevron-right"></i></i></a>
+            <!-- PROJECT CARD 2 -->
+            <div class="group project-card cursor-pointer md:mt-24">
+                <div class="h-[500px] bg-[#1a1a1a] rounded-[32px] mb-6 overflow-hidden relative">
+                    <div class="project-image w-full h-full bg-neutral-800 transition-transform duration-700 flex items-center justify-center text-white/5 font-bold text-4xl">OAK & IRON LUXE</div>
+                    <div class="absolute bottom-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <span class="bg-white text-black px-6 py-2 rounded-full text-xs font-bold uppercase flex items-center gap-2">View Project <span class="text-[#FF6B00]">→</span></span>
+                    </div>
+                </div>
+                <h4 class="text-2xl font-bold mb-2 uppercase tracking-tight">Oak & Iron Luxe</h4>
+                <p class="text-white/40">UX Design • E-Commerce Strategy</p>
             </div>
         </div>
     </section>
 
-    <!-- Section 5: Transmission Core -->
-    <section id="contact" class="reveal">
-        <h2 class="contact-h">LET'S DESIGN<br>THE FUTURE.</h2>
-        <p class="contact-p">Available for global projects starting scratch to industrialization.</p>
-        <a href="mailto:connect@folioblox.studio" class="action-btn" style="font-size: 1rem; padding: 25px 35px; margin: 0 auto; display: flex; width: fit-content; text-transform: none;">
-            Establish Connection <i><i class="fas fa-paper-plane"></i></i>
+    <!-- SECTION 5: CTA -->
+    <section class="py-40 flex flex-col items-center justify-center text-center px-8">
+        <h2 class="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-12">
+            Let's work<br><span class="text-transparent outline-text hover:text-white transition-all cursor-default" style="-webkit-text-stroke: 1px white;">Together.</span>
+        </h2>
+        <a href="mailto:hello@designer.com" class="group relative">
+            <div class="absolute -inset-1 bg-[#FF6B00] rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
+            <button class="relative px-12 py-6 bg-white text-black rounded-full font-bold text-lg hover:bg-black hover:text-white transition-all">
+                Send a Proposal
+            </button>
         </a>
     </section>
 
-    <!-- Global Footer -->
-    <footer>
-        <div class="f-logo">NIRANJAN. // STUDIO CORE EDITION</div>
-        <div class="socials">
-            <a href="#">GH / NINJAN910</a>
-            <a href="#">LI / IN / NIRANJANK</a>
-            <a href="#">INS / NIRANJ.AN</a>
+    <!-- FOOTER -->
+    <footer class="p-8 md:p-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-start text-sm">
+        <div class="mb-12 md:mb-0">
+            <span class="font-bold uppercase tracking-tighter text-xl">Marshall™</span>
+            <p class="mt-4 text-white/30 uppercase tracking-[0.3em]">&copy; 2025 Creative Dir. Studio</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-16 uppercase font-medium tracking-widest text-white/60">
+            <div class="flex flex-col gap-4">
+                <span class="text-white mb-2 font-bold opacity-20 italic">Navigation</span>
+                <a href="#" class="hover:text-white">Home</a>
+                <a href="#" class="hover:text-white">Work</a>
+                <a href="#" class="hover:text-white">Studio</a>
+            </div>
+            <div class="flex flex-col gap-4">
+                <span class="text-white mb-2 font-bold opacity-20 italic">Socials</span>
+                <a href="#" class="hover:text-white">LinkedIn</a>
+                <a href="#" class="hover:text-white">Behance</a>
+                <a href="#" class="hover:text-white">Instagram</a>
+            </div>
+            <div class="hidden md:flex flex-col gap-4">
+                <span class="text-white mb-2 font-bold opacity-20 italic">Status</span>
+                <span class="text-green-500 flex items-center gap-2">● <span class="text-white/60">Available</span></span>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Precision intersection observer for editorial reveals
-        const reveal = () => {
-            const reveals = document.querySelectorAll("[data-reveal]");
-            reveals.forEach((el) => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.9) {
-                    el.classList.add("active");
-                }
-            });
-        };
-
-        window.addEventListener("scroll", reveal);
-        window.onload = reveal;
-    </script>
 </body>
 </html>
