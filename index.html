@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Portfolio | Creative Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
@@ -63,6 +63,14 @@
             font-weight: 900;
             text-transform: uppercase;
         }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 12s linear infinite;
+        }
     </style>
 </head>
 <body class="antialiased text-white">
@@ -70,13 +78,15 @@
     <!-- 01: HERO SECTION -->
     <section class="relative w-full h-screen">
         <div class="hero-dark-base">
-            <!-- Background bottom text removed -->
+            <div class="absolute bottom-6 w-full flex justify-center opacity-30">
+                <p class="text-white text-[10px] uppercase tracking-[0.5em]">Creative Arts 2025</p>
+            </div>
         </div>
 
         <div class="hero-red-overlay">
             <nav class="flex justify-between items-center px-6 md:px-14 pt-10">
                 <div class="text-white text-xl font-black uppercase italic tracking-tighter">
-                    <!-- Name Removed -->
+                    STUDIO<span class="opacity-50 font-normal italic">®</span>
                 </div>
                 <div class="hidden md:flex gap-10 text-white/70 text-[10px] font-bold uppercase tracking-[0.4em]">
                     <a href="#about" class="hover:text-white transition-all">About</a>
@@ -89,16 +99,22 @@
                 </a>
             </nav>
 
-            <div class="flex-1 flex flex-col justify-end px-6 md:px-14 pb-24">
-                <h1 class="massive-text text-white">
-                    <!-- Aiden Marshall Text Removed -->
-                </h1>
+            <div class="flex-1 flex flex-col justify-end px-6 md:px-14 pb-16">
+                <!-- Large central text area emptied as requested -->
+                <h1 class="massive-text text-white">Design<br>Creative</h1>
                 <div class="mt-8 grid md:grid-cols-2 max-w-4xl">
-                    <!-- Bio Text Removed -->
+                    <p class="text-white/80 text-sm md:text-xl font-medium leading-tight italic sm:not-italic">Visualizing concepts through technical precision and high-end aesthetics.</p>
                 </div>
             </div>
 
-            <!-- Bottom Info Bar (Status, Training, Born) Completely Removed -->
+            <div class="px-6 md:px-14 py-8 flex justify-between items-center overflow-x-auto whitespace-nowrap">
+                <div class="flex gap-8 md:gap-16">
+                    <!-- Identity placeholders updated -->
+                    <div><span class="text-white/40 block text-[9px] font-black uppercase mb-1">Focus</span><span class="text-white text-[11px] font-bold uppercase tracking-widest">Interactive UI</span></div>
+                    <div><span class="text-white/40 block text-[9px] font-black uppercase mb-1">Sector</span><span class="text-white text-[11px] font-bold uppercase tracking-widest">Digital Systems</span></div>
+                    <div><span class="text-white/40 block text-[9px] font-black uppercase mb-1">Base</span><span class="text-white text-[11px] font-bold uppercase tracking-widest">Available Global</span></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -107,14 +123,14 @@
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <div class="flex flex-col pt-4 order-2 lg:order-1">
                 <span class="text-[#FF3B1D] text-lg font-bold tracking-tight mb-8 block uppercase">Story</span>
-                <h2 class="text-white text-5xl md:text-7xl lg:text-[90px] font-black leading-[0.95] tracking-tight mb-12 italic lg:not-italic">Creative.<br>Partner.</h2>
+                <h2 class="text-white text-5xl md:text-7xl lg:text-[90px] font-black leading-[0.95] tracking-tight mb-12 italic lg:not-italic">Simple.<br>Modern.<br>Partner.</h2>
                 <h3 class="text-white text-2xl md:text-3xl font-bold leading-tight mb-8 max-w-lg italic">Logic and creativity don't fight; they dance.</h3>
                 <div class="space-y-6 max-w-lg mb-12 text-white/40 font-medium leading-relaxed">
-                    <p>My journey is built on two pillars: Structural design and Digital Art. Since graduating, I mastered UX as a freelancer before deep-diving into Data Analytics to drive objective design decisions.</p>
-                    <p>I currently operate as a Frontend Developer at Smartschool, focusing on educational technology that bridges human emotion with robust technical systems.</p>
+                    <p>I build experiences on two pillars: Structural Logic and Digital Art. Since launching my practice, I have specialized in UX to drive objective design decisions.</p>
+                    <p>I currently focus on bridging human emotion with robust technical systems through refined interfaces and interactive narratives.</p>
                 </div>
                 <button onclick="window.location.href='#timeline'" class="w-fit bg-[#111] hover:bg-zinc-800 pr-2 pl-8 py-2 rounded-full flex items-center gap-8 transition-all group border border-white/5">
-                    <span class="text-white text-xs font-bold uppercase tracking-widest">My Progress</span>
+                    <span class="text-white text-xs font-bold uppercase tracking-widest">The Timeline</span>
                     <div class="bg-[#FF3B1D] w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:translate-x-1">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M5 12h14m-7-7l7 7-7 7"/></svg>
                     </div>
@@ -122,35 +138,35 @@
             </div>
             <div class="relative w-full aspect-[4/5] rounded-[56px] overflow-hidden order-1 lg:order-2 border border-white/5 shadow-2xl">
                 <div class="absolute inset-0 bg-[#FF3B1D]"></div>
-                <img src="https://images.unsplash.com/photo-1519085184581-2c974c81a547?auto=format&fit=crop&q=80&w=1200" 
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200" 
                      class="absolute inset-0 w-full h-full object-cover grayscale brightness-110">
                 <div class="absolute bottom-8 right-8 bg-black/60 backdrop-blur-xl p-5 rounded-3xl border border-white/10">
-                    <p class="text-white/40 text-[9px] uppercase font-bold tracking-widest mb-1">Background</p>
-                    <p class="text-white text-[12px] font-black uppercase italic">Professional Development — 2025</p>
+                    <p class="text-white/40 text-[9px] uppercase font-bold tracking-widest mb-1">Visual Vision</p>
+                    <p class="text-white text-[12px] font-black uppercase italic">Editorial Style — 2025</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 03: SHOWCASE -->
+    <!-- 03: PROJECT SHOWCASE -->
     <section id="featured-project" class="bg-black w-full min-h-screen py-32 px-8 md:px-20 overflow-hidden border-t border-white/5">
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             <div class="lg:col-span-5 flex flex-col order-2 lg:order-1">
                 <span class="text-[#FF3B1D] text-xl font-bold tracking-tight mb-8 block uppercase tracking-widest italic">Live Platform Case Study</span>
                 <h2 class="text-white text-5xl md:text-8xl font-black leading-[1.0] tracking-tight mb-10 italic lg:not-italic uppercase">EGN India<br>Expo portal</h2>
-                <p class="text-white/70 text-xl font-medium leading-relaxed mb-10 max-w-lg">Designed and developed for the high-traffic Education Expo. A data-heavy platform optimized for discovery, built with an uncompromising editorial visual language.</p>
+                <p class="text-white/70 text-xl font-medium leading-relaxed mb-10 max-w-lg">A data-heavy platform optimized for discovery, built with an uncompromising editorial visual language for high-traffic environments.</p>
                 <div class="grid grid-cols-2 gap-8 py-8 border-y border-white/10 mb-10">
                     <div class="space-y-4">
-                        <span class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em] block italic">Used Tools</span>
-                        <p class="text-[12px] text-white font-bold uppercase leading-relaxed tracking-wider">React.js / Next<br>Tailwind Core<br>Data API Integrations</p>
+                        <span class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em] block italic">Stack</span>
+                        <p class="text-[12px] text-white font-bold uppercase leading-relaxed tracking-wider">React.js / Next<br>Tailwind Core<br>Data APIs</p>
                     </div>
                     <div class="space-y-4">
-                        <span class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em] block italic">Skill Logic</span>
-                        <p class="text-[12px] text-white font-bold uppercase leading-relaxed tracking-wider">Frontend Planning<br>Architectural Systems<br>UI Refinement</p>
+                        <span class="text-[10px] text-white/40 font-black uppercase tracking-[0.2em] block italic">Architecture</span>
+                        <p class="text-[12px] text-white font-bold uppercase leading-relaxed tracking-wider">Frontend Systems<br>UX Planning<br>Refined UI</p>
                     </div>
                 </div>
-                <a href="https://egnindia.com/expo" target="_blank" class="w-fit bg-[#FF3B1D] hover:bg-white pr-2 pl-10 py-3 rounded-full flex items-center gap-10 transition-all group">
-                    <span class="text-white group-hover:text-black text-xs font-bold uppercase tracking-widest">Visit Site</span>
+                <a href="#" target="_blank" class="w-fit bg-[#FF3B1D] hover:bg-white pr-2 pl-10 py-3 rounded-full flex items-center gap-10 transition-all group">
+                    <span class="text-white group-hover:text-black text-xs font-bold uppercase tracking-widest">Visit Case Study</span>
                     <div class="bg-black w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:rotate-45">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
                     </div>
@@ -158,24 +174,97 @@
             </div>
             <div class="lg:col-span-7 order-1 lg:order-2">
                 <div class="relative aspect-video w-full rounded-[60px] overflow-hidden border border-white/10 bg-[#0F0F0F]">
-                    <div class="w-full h-full bg-zinc-900"></div>
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover grayscale">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 04: TIMELINE -->
+    <!-- 04: PATH EVOLUTION -->
     <section id="timeline" class="bg-black w-full py-32 px-8 md:px-20 border-t border-white/5">
         <div class="max-w-[1400px] mx-auto">
-            <h2 class="text-white/20 text-xs font-black uppercase tracking-[0.5em] mb-16 italic">Progress Timeline</h2>
+            <h2 class="text-white/20 text-xs font-black uppercase tracking-[0.5em] mb-16 italic">Evolution</h2>
             <div class="space-y-6">
                 <div class="bg-[#111] p-12 rounded-[48px] border border-white/5 flex flex-col md:flex-row justify-between items-center transition-colors hover:border-[#FF3B1D]/20">
                     <div class="text-center md:text-left">
-                        <span class="text-[#FF3B1D] text-[10px] font-black uppercase tracking-widest mb-3 block">Currently At</span>
-                        <h4 class="text-white text-4xl font-black italic uppercase">Lead Designer</h4>
-                        <p class="text-white/30 mt-2 font-medium">Shaping the next era of educational experiences.</p>
+                        <span class="text-[#FF3B1D] text-[10px] font-black uppercase tracking-widest mb-3 block">Now Active</span>
+                        <h4 class="text-white text-4xl font-black italic uppercase">Project Lead</h4>
+                        <p class="text-white/30 mt-2 font-medium">Developing high-impact educational interfaces.</p>
                     </div>
                     <span class="bg-white/5 text-white/50 text-[11px] font-black px-8 py-2 rounded-full mt-6 md:mt-0 uppercase tracking-widest italic">Jan '24 — Present</span>
+                </div>
+                <div class="bg-[#111] p-12 rounded-[48px] border border-white/5 flex flex-col md:flex-row justify-between items-center opacity-60">
+                    <div class="text-center md:text-left">
+                        <span class="text-white/20 text-[10px] font-black uppercase mb-3 block">Background</span>
+                        <h4 class="text-white text-4xl font-black italic uppercase">Technical Studio</h4>
+                        <p class="text-white/40 mt-2">Professional certification in UI Systems and Computational Arts.</p>
+                    </div>
+                    <span class="bg-white/5 text-white/20 text-[11px] font-black px-8 py-2 rounded-full mt-6 md:mt-0 uppercase">2023 Cycle</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05: PHILOSOPHY -->
+    <section class="bg-black w-full py-32 px-8 md:px-20">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24 items-end">
+            <div class="lg:col-span-8">
+                <span class="text-[#FF3B1D] text-lg font-black tracking-tight mb-8 block uppercase">Inside the process</span>
+                <h2 class="text-white text-6xl md:text-[95px] font-black leading-[0.85] tracking-tighter uppercase italic md:not-italic">Logic.<br>Feelings.<br>Precision.</h2>
+            </div>
+            <div class="lg:col-span-4 border-l border-[#FF3B1D] pl-8 pb-4">
+                <p class="text-white/60 text-xl font-bold italic leading-snug mb-8">Engineering handles the function. Design handles the feeling.</p>
+                <p class="text-white/40 text-sm font-medium leading-relaxed uppercase tracking-wider">
+                    I approach every interface with a focus on logic, stress-testing decisions before applying a layer of high-fidelity aesthetics. The goal is simple: durable and luxurious digital experiences.
+                </p>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5"><img src="https://images.unsplash.com/photo-1544022613-e87ce71c784d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105"></div>
+            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5 md:translate-y-20"><img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105"></div>
+            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5 md:translate-y-40"><img src="https://images.unsplash.com/photo-1618221651585-802773b0632b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105"></div>
+        </div>
+    </section>
+
+    <!-- 06: GALLERY -->
+    <section id="projects" class="bg-black w-full py-40 px-8 md:px-20 mt-40">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-40">
+            <div class="group">
+                <div class="aspect-video bg-zinc-900 rounded-[60px] mb-12 overflow-hidden border border-white/5 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition-all duration-700 grayscale group-hover:scale-110">
+                </div>
+                <h3 class="text-white text-5xl font-black uppercase tracking-tighter mb-4">Experimental Art</h3>
+                <p class="text-white/30 max-w-sm text-sm mb-10 leading-relaxed uppercase font-bold tracking-widest italic">Research Project / Interactive</p>
+            </div>
+            <div class="group">
+                <div class="aspect-video bg-zinc-900 rounded-[60px] mb-12 overflow-hidden border border-white/5 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1550411234-7473fa6622e5?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover transition-all duration-700 grayscale group-hover:scale-110">
+                </div>
+                <h3 class="text-white text-5xl font-black uppercase tracking-tighter mb-4">Core Branding</h3>
+                <p class="text-white/30 max-w-sm text-sm mb-10 leading-relaxed uppercase font-bold tracking-widest italic">Identity Systems / Minimal Form</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 07: CONTACT (LET'S CONNECT) -->
+    <section id="contact" class="bg-black w-full py-40 px-8 md:px-20">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+            <div class="lg:col-span-6 text-center lg:text-left">
+                <span class="text-[#FF3B1D] text-xl font-black uppercase tracking-widest mb-8 block">Connect</span>
+                <h2 class="text-white text-5xl md:text-9xl font-black uppercase leading-[0.95] tracking-tight">Let's build<br>together.</h2>
+                <div class="h-[3px] w-24 bg-[#FF3B1D] mx-auto lg:mx-0 mt-12 animate-pulse"></div>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="bg-[#111] p-10 md:p-16 rounded-[60px] border border-white/10 shadow-[0_50px_100px_-15px_rgba(255,59,29,0.15)]">
+                    <form action="#" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="space-y-4"><label class="text-[10px] text-white/40 font-black uppercase ml-1">First <span class="text-[#FF3B1D]">*</span></label><input type="text" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF3B1D]"></div>
+                            <div class="space-y-4"><label class="text-[10px] text-white/40 font-black uppercase ml-1">Last <span class="text-[#FF3B1D]">*</span></label><input type="text" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF3B1D]"></div>
+                        </div>
+                        <div class="space-y-4"><label class="text-[10px] text-white/40 font-black uppercase ml-1">Email <span class="text-[#FF3B1D]">*</span></label><input type="email" placeholder="project@studio.com" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF3B1D]"></div>
+                        <div class="space-y-4"><label class="text-[10px] text-white/40 font-black uppercase ml-1">Inquiry <span class="text-[#FF3B1D]">*</span></label><textarea rows="4" class="w-full bg-white/[0.04] border border-white/10 rounded-3xl py-4 px-6 text-white focus:outline-none focus:border-[#FF3B1D] resize-none"></textarea></div>
+                        <button type="submit" class="w-full bg-[#FF3B1D] py-5 rounded-full text-white font-black text-xs uppercase tracking-[0.4em] transition-transform active:scale-95 shadow-lg shadow-[#FF3B1D]/20">Start Collaboration</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -183,11 +272,11 @@
 
     <!-- FOOTER -->
     <footer class="bg-black py-20 px-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center opacity-30 text-[10px] font-bold uppercase tracking-[0.3em] gap-8">
-        <div class="italic">DESIGN STUDIO © 2025</div>
+        <div class="italic">GLOBAL DESIGN STUDIO — MMXXV</div>
         <div class="flex gap-12">
-            <a href="#" class="hover:text-white transition-all">Behance</a>
-            <a href="#" class="hover:text-white transition-all">Dribbble</a>
-            <a href="#" class="hover:text-white transition-all">Archive</a>
+            <a href="#" class="hover:text-white transition-all">Instagram</a>
+            <a href="#" class="hover:text-white transition-all">LinkedIn</a>
+            <a href="#" class="hover:text-white transition-all">Twitter</a>
         </div>
     </footer>
 </body>
