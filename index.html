@@ -16,7 +16,7 @@
             scroll-behavior: smooth;
         }
 
-        /* --- HIDE SCROLLBAR --- */
+        /* --- REMOVE SCROLLBAR VIEW --- */
         *::-webkit-scrollbar {
             display: none;
         }
@@ -63,6 +63,14 @@
             font-weight: 900;
             text-transform: uppercase;
         }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 12s linear infinite;
+        }
     </style>
 </head>
 <body class="antialiased text-white">
@@ -98,11 +106,11 @@
                 </div>
                 <h1 class="massive-text text-white">Digital<br>Engineer</h1>
                 <div class="mt-8 grid md:grid-cols-2 max-w-4xl">
-                    <p class="text-white/80 text-sm md:text-xl font-medium leading-tight italic">Combining B.Tech logic with high-end creative vision. Graduated '23, pushing pixels in 2025.</p>
+                    <p class="text-white/80 text-sm md:text-xl font-medium leading-tight italic sm:not-italic">Combining B.Tech logic with high-end creative vision. Graduated '23, pushing pixels in 2025.</p>
                 </div>
             </div>
 
-            <!-- Hero bottom info: Border-t removed as requested previously -->
+            <!-- Removed border top thin line -->
             <div class="px-6 md:px-14 py-8 flex justify-between items-center overflow-x-auto whitespace-nowrap">
                 <div class="flex gap-8 md:gap-16">
                     <div><span class="text-white/40 block text-[9px] font-black uppercase mb-1">Status</span><span class="text-white text-[11px] font-bold uppercase tracking-widest">Dev @ Smartschool</span></div>
@@ -118,7 +126,7 @@
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             <div class="flex flex-col pt-4 order-2 lg:order-1">
                 <span class="text-[#FF3B1D] text-lg font-bold tracking-tight mb-8 block uppercase">Story</span>
-                <h2 class="text-white text-5xl md:text-7xl lg:text-[90px] font-black leading-[0.95] tracking-tight mb-12 uppercase">Designer.<br>Engineer.<br>Partner.</h2>
+                <h2 class="text-white text-5xl md:text-7xl lg:text-[90px] font-black leading-[0.95] tracking-tight mb-12 italic lg:not-italic">Designer.<br>Engineer.<br>Partner.</h2>
                 <h3 class="text-white text-2xl md:text-3xl font-bold leading-tight mb-8 max-w-lg italic">Logic and creativity don't fight; they dance.</h3>
                 <div class="space-y-6 max-w-lg mb-12 text-white/40 font-medium leading-relaxed">
                     <p>My journey is built on two pillars: Structural Engineering and Digital Art. Since graduating with a B.Tech in 2023, I masters UX as a freelancer before deep-diving into Data Analytics to drive objective design decisions.</p>
@@ -148,7 +156,7 @@
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             <div class="lg:col-span-5 flex flex-col order-2 lg:order-1">
                 <span class="text-[#FF3B1D] text-xl font-bold tracking-tight mb-8 block uppercase tracking-widest italic">Live Platform Case Study</span>
-                <h2 class="text-white text-5xl md:text-8xl font-black leading-[1.0] tracking-tight mb-10 uppercase">EGN India<br>Expo portal</h2>
+                <h2 class="text-white text-5xl md:text-8xl font-black leading-[1.0] tracking-tight mb-10 italic lg:not-italic uppercase">EGN India<br>Expo portal</h2>
                 <p class="text-white/70 text-xl font-medium leading-relaxed mb-10 max-w-lg">Designed and developed for the high-traffic Education Expo. A data-heavy platform optimized for discovery, built with an uncompromising editorial visual language.</p>
                 <div class="grid grid-cols-2 gap-8 py-8 border-y border-white/10 mb-10">
                     <div class="space-y-4">
@@ -175,7 +183,32 @@
         </div>
     </section>
 
-    <!-- 04: PHILOSOPHY & AXIS ALIGNMENT -->
+    <!-- 04: PATH EVOLUTION (YOUR TIMELINE) -->
+    <section id="timeline" class="bg-black w-full py-32 px-8 md:px-20 border-t border-white/5">
+        <div class="max-w-[1400px] mx-auto">
+            <h2 class="text-white/20 text-xs font-black uppercase tracking-[0.5em] mb-16 italic">Progress Timeline</h2>
+            <div class="space-y-6">
+                <div class="bg-[#111] p-12 rounded-[48px] border border-white/5 flex flex-col md:flex-row justify-between items-center transition-colors hover:border-[#FF3B1D]/20">
+                    <div class="text-center md:text-left">
+                        <span class="text-[#FF3B1D] text-[10px] font-black uppercase tracking-widest mb-3 block">Currently At</span>
+                        <h4 class="text-white text-4xl font-black italic uppercase">Smartschool</h4>
+                        <p class="text-white/30 mt-2 font-medium">Shaping the next era of Educational UX as a Frontend Lead.</p>
+                    </div>
+                    <span class="bg-white/5 text-white/50 text-[11px] font-black px-8 py-2 rounded-full mt-6 md:mt-0 uppercase tracking-widest italic">Jan '24 — Present</span>
+                </div>
+                <div class="bg-[#111] p-12 rounded-[48px] border border-white/5 flex flex-col md:flex-row justify-between items-center opacity-60">
+                    <div class="text-center md:text-left">
+                        <span class="text-white/20 text-[10px] font-black uppercase mb-3 block">Origins</span>
+                        <h4 class="text-white text-4xl font-black italic uppercase">Engineering Grad</h4>
+                        <p class="text-white/40 mt-2">B.Tech Degree Completion — Architectural Computing Labs.</p>
+                    </div>
+                    <span class="bg-white/5 text-white/20 text-[11px] font-black px-8 py-2 rounded-full mt-6 md:mt-0 uppercase">Graduated 2023</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05: PHILOSOPHY + WORK DESCRIPTION ADDED HERE -->
     <section class="bg-black w-full py-32 px-8 md:px-20">
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24 items-end">
             <div class="lg:col-span-8">
@@ -184,30 +217,21 @@
             </div>
             <div class="lg:col-span-4 border-l border-[#FF3B1D] pl-8 pb-4">
                 <p class="text-white/60 text-xl font-bold italic leading-snug mb-8">Engineering handles the function. Design handles the feeling.</p>
+                <!-- Work description block -->
                 <p class="text-white/40 text-sm font-medium leading-relaxed uppercase tracking-wider">
                     My methodology is rooted in structural precision. I approach every interface with an engineer's focus on logic, stress-testing every decision before applying a layer of high-fidelity aesthetics. From raw blueprint to final browser experience, I ensure that durability and visual luxury coexist seamlessly.
                 </p>
             </div>
         </div>
-
-        <!-- IMAGE GRID: NOW ALL ON THE SAME AXIS -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5">
-                <img src="https://images.unsplash.com/photo-1544022613-e87ce71c784d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105">
-            </div>
-            <!-- Vertical translate removed below -->
-            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5">
-                <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105">
-            </div>
-            <!-- Vertical translate removed below -->
-            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5">
-                <img src="https://images.unsplash.com/photo-1618221651585-802773b0632b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105">
-            </div>
+            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5"><img src="https://images.unsplash.com/photo-1544022613-e87ce71c784d?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105"></div>
+            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5 md:translate-y-20"><img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105"></div>
+            <div class="aspect-[3/4] bg-[#0F0F0F] rounded-[56px] overflow-hidden border border-white/5 md:translate-y-40"><img src="https://images.unsplash.com/photo-1618221651585-802773b0632b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale transition-transform duration-1000 hover:scale-105"></div>
         </div>
     </section>
 
-    <!-- 05: GALLERY -->
-    <section id="projects" class="bg-black w-full py-40 px-8 md:px-20">
+    <!-- 06: GALLERY -->
+    <section id="projects" class="bg-black w-full py-40 px-8 md:px-20 mt-40">
         <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-40">
             <div class="group">
                 <div class="aspect-video bg-zinc-900 rounded-[60px] mb-12 overflow-hidden border border-white/5 shadow-2xl">
@@ -226,9 +250,33 @@
         </div>
     </section>
 
+    <!-- 07: CONTACT -->
+    <section id="contact" class="bg-black w-full py-40 px-8 md:px-20">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+            <div class="lg:col-span-6 text-center lg:text-left">
+                <span class="text-[#FF3B1D] text-xl font-black uppercase tracking-widest mb-8 block">Connect</span>
+                <h2 class="text-white text-5xl md:text-9xl font-black uppercase leading-[0.95] tracking-tight">Let's build<br>the future.</h2>
+                <div class="h-[3px] w-24 bg-[#FF3B1D] mx-auto lg:mx-0 mt-12 animate-pulse"></div>
+            </div>
+            <div class="lg:col-span-6">
+                <div class="bg-[#111] p-10 md:p-16 rounded-[60px] border border-white/10 shadow-[0_50px_100px_-15px_rgba(255,59,29,0.15)]">
+                    <form action="#" class="space-y-6">
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="space-y-4"><label class="text-[10px] text-white/40 font-black uppercase ml-1">First <span class="text-[#FF3B1D]">*</span></label><input type="text" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF3B1D]"></div>
+                            <div class="space-y-4"><label class="text-[10px] text-white/40 font-black uppercase ml-1">Last <span class="text-[#FF3B1D]">*</span></label><input type="text" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF3B1D]"></div>
+                        </div>
+                        <div class="space-y-4"><label class="text-[10px] text-white/40 font-black uppercase ml-1">Email <span class="text-[#FF3B1D]">*</span></label><input type="email" placeholder="project@start.com" class="w-full bg-white/[0.04] border border-white/10 rounded-2xl py-4 px-6 text-white focus:outline-none focus:border-[#FF3B1D]"></div>
+                        <div class="space-y-4"><label class="text-[10px] text-white/40 font-black uppercase ml-1">Story <span class="text-[#FF3B1D]">*</span></label><textarea rows="4" class="w-full bg-white/[0.04] border border-white/10 rounded-3xl py-4 px-6 text-white focus:outline-none focus:border-[#FF3B1D] resize-none"></textarea></div>
+                        <button type="submit" class="w-full bg-[#FF3B1D] py-5 rounded-full text-white font-black text-xs uppercase tracking-[0.4em] transition-transform active:scale-95 shadow-lg shadow-[#FF3B1D]/20">Start Project</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="bg-black py-20 px-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center opacity-30 text-[10px] font-bold uppercase tracking-[0.3em] gap-8">
-        <div class="italic uppercase">Marshall Architecture Studio</div>
+        <div class="italic">MARSHALL® ARCHITECTURE STUDIO</div>
         <div class="flex gap-12">
             <a href="#" class="hover:text-white transition-all">Behance</a>
             <a href="#" class="hover:text-white transition-all">Dribbble</a>
