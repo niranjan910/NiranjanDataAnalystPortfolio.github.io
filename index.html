@@ -3,206 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Director | Portfolio</title>
+    <title>Creative Director | Premium Hero</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --accent-orange: #FF5A1F;
+            --dark-charcoal: #111111;
+        }
         body {
+            background-color: #000000;
             font-family: 'Inter', sans-serif;
-            background-color: #0D0D0D;
-            color: white;
-            scroll-behavior: smooth;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
         }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, #FFB347 0%, #FF6B00 50%, #CF2300 100%);
+        /* Hero Image Container with Editorial Gradient Overlay */
+        .hero-image-container {
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Specified Gradient Overlay (65-75% Opacity) */
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 90, 31, 0.75) 0%, rgba(207, 35, 0, 0.65) 50%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
         }
 
-        .project-card:hover .project-image {
-            transform: scale(1.05);
+        .hero-content {
+            position: relative;
+            z-index: 10;
         }
 
-        .editorial-line {
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            width: 100%;
+        .headline-massive {
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            font-weight: 900;
         }
 
-        /* Hide scrollbar but keep functionality */
-        ::-webkit-scrollbar { width: 0px; }
+        .floating-card {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            background-color: var(--dark-charcoal);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pill-cta-hover:hover .arrow-icon {
+            transform: rotate(45deg);
+            background-color: white;
+            color: var(--accent-orange);
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- NAVIGATION -->
-    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center pointer-events-none">
-        <div class="text-xl font-bold tracking-tighter pointer-events-auto cursor-pointer uppercase">
-            Aiden Marshall<span class="text-[#FF6B00]">™</span>
-        </div>
-        <div class="hidden md:flex gap-8 items-center pointer-events-auto bg-[#1a1a1a]/80 py-3 px-8 rounded-full border border-white/10 backdrop-blur-md">
-            <a href="#" class="text-sm uppercase tracking-widest hover:text-[#FF6B00] transition-colors">About</a>
-            <a href="#projects" class="text-sm uppercase tracking-widest hover:text-[#FF6B00] transition-colors">Projects</a>
-            <button class="bg-white text-black px-5 py-2 rounded-full text-xs font-bold uppercase hover:bg-[#FF6B00] hover:text-white transition-all">Get in Touch</button>
-        </div>
-    </nav>
-
-    <!-- SECTION 1: HERO -->
-    <main class="p-4 md:p-6 h-screen min-h-[800px]">
-        <div class="hero-gradient h-full w-full rounded-[32px] relative overflow-hidden flex flex-col justify-between p-8 md:p-16">
-            <!-- Subtle Vignette Over the Gradient -->
-            <div class="absolute inset-0 bg-black/10"></div>
-
-            <div class="relative z-10 mt-20 flex flex-col md:flex-row justify-between items-end md:items-start">
-                <div class="w-full md:w-1/2">
-                    <span class="text-white/80 font-medium mb-4 block">Hey, I’m a</span>
-                    <h1 class="text-7xl md:text-[10rem] font-extrabold leading-[0.85] tracking-tighter uppercase italic md:not-italic">
-                        Creative<br>Director
-                    </h1>
-                </div>
-                <div class="w-full md:w-1/3 mt-12 md:mt-4 border-l border-white/20 pl-8">
-                    <h2 class="text-2xl md:text-3xl font-light leading-snug mb-6">
-                        "Great design should feel invisible."
-                    </h2>
-                    <p class="text-white/70 text-lg leading-relaxed max-w-sm">
-                        Leading visual identities and digital experiences for high-growth brands globally.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Trust Bar / Services -->
-            <div class="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/20 pt-10">
-                <div class="group cursor-default">
-                    <span class="block text-xs font-bold mb-2 opacity-50 uppercase tracking-widest">#01</span>
-                    <span class="text-xl font-medium group-hover:text-black transition-colors underline decoration-black/20">Branding</span>
-                </div>
-                <div class="group cursor-default">
-                    <span class="block text-xs font-bold mb-2 opacity-50 uppercase tracking-widest">#02</span>
-                    <span class="text-xl font-medium group-hover:text-black transition-colors underline decoration-black/20">UI/UX Strategy</span>
-                </div>
-                <div class="group cursor-default">
-                    <span class="block text-xs font-bold mb-2 opacity-50 uppercase tracking-widest">#03</span>
-                    <span class="text-xl font-medium group-hover:text-black transition-colors underline decoration-black/20">Motion</span>
-                </div>
-                <div class="group cursor-default">
-                    <span class="block text-xs font-bold mb-2 opacity-50 uppercase tracking-widest">#04</span>
-                    <span class="text-xl font-medium group-hover:text-black transition-colors underline decoration-black/20">Creative Ops</span>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- SECTION 2: ABOUT -->
-    <section class="py-24 px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <div>
-            <span class="text-[#FF6B00] font-bold uppercase tracking-[0.2em] text-sm mb-6 block">About me</span>
-            <h3 class="text-5xl md:text-6xl font-bold tracking-tighter leading-tight mb-8">
-                Designer.<br>Strategist.<br>Creative Partner.
-            </h3>
-            <p class="text-white/60 text-xl leading-relaxed mb-10 max-w-lg">
-                I help agencies and startups navigate the gap between concept and commercial success. Currently building digital systems that blend high-fashion editorial aesthetics with brutalist efficiency.
-            </p>
-            <a href="#" class="inline-flex items-center gap-4 px-8 py-4 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all group">
-                Read full story 
-                <span class="text-[#FF6B00] group-hover:translate-x-1 transition-transform">→</span>
-            </a>
-        </div>
-        <div class="relative h-[600px] w-full bg-[#1A1A1A] rounded-[32px] overflow-hidden group">
-            <div class="absolute inset-0 bg-[#FF6B00]/20 group-hover:bg-transparent transition-all duration-700"></div>
-            <!-- Replacement for Image -->
-            <div class="flex items-center justify-center h-full text-white/10 uppercase font-black text-8xl italic">
-                Portrait
-            </div>
-            <!-- Imagine a fashion portrait here -->
-            <div class="absolute bottom-8 left-8">
-                <div class="bg-black/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs tracking-widest">STATIONED IN NYC</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: PROJECTS -->
-    <section id="projects" class="py-24 px-8 md:px-16">
-        <div class="flex justify-between items-end mb-16">
-            <div>
-                <span class="text-white/40 font-bold uppercase tracking-[0.2em] text-sm mb-2 block">Selected Work</span>
-                <h3 class="text-5xl font-bold tracking-tight">Digital Products</h3>
-            </div>
-            <div class="hidden md:block text-white/40 text-sm italic underline decoration-[#FF6B00] underline-offset-8">
-                Scroll to explore projects
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <!-- PROJECT CARD 1 -->
-            <div class="group project-card cursor-pointer">
-                <div class="h-[500px] bg-[#1a1a1a] rounded-[32px] mb-6 overflow-hidden relative">
-                    <div class="project-image w-full h-full bg-neutral-800 transition-transform duration-700 flex items-center justify-center text-white/5 font-bold text-4xl">NEURAL BRANDING 2024</div>
-                    <div class="absolute bottom-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <span class="bg-white text-black px-6 py-2 rounded-full text-xs font-bold uppercase flex items-center gap-2">View Project <span class="text-[#FF6B00]">→</span></span>
-                    </div>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 uppercase tracking-tight">Kinetic Architecture</h4>
-                <p class="text-white/40">Visual Identity • Web Performance</p>
-            </div>
-
-            <!-- PROJECT CARD 2 -->
-            <div class="group project-card cursor-pointer md:mt-24">
-                <div class="h-[500px] bg-[#1a1a1a] rounded-[32px] mb-6 overflow-hidden relative">
-                    <div class="project-image w-full h-full bg-neutral-800 transition-transform duration-700 flex items-center justify-center text-white/5 font-bold text-4xl">OAK & IRON LUXE</div>
-                    <div class="absolute bottom-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                        <span class="bg-white text-black px-6 py-2 rounded-full text-xs font-bold uppercase flex items-center gap-2">View Project <span class="text-[#FF6B00]">→</span></span>
-                    </div>
-                </div>
-                <h4 class="text-2xl font-bold mb-2 uppercase tracking-tight">Oak & Iron Luxe</h4>
-                <p class="text-white/40">UX Design • E-Commerce Strategy</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 5: CTA -->
-    <section class="py-40 flex flex-col items-center justify-center text-center px-8">
-        <h2 class="text-6xl md:text-8xl font-black tracking-tighter uppercase mb-12">
-            Let's work<br><span class="text-transparent outline-text hover:text-white transition-all cursor-default" style="-webkit-text-stroke: 1px white;">Together.</span>
-        </h2>
-        <a href="mailto:hello@designer.com" class="group relative">
-            <div class="absolute -inset-1 bg-[#FF6B00] rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000"></div>
-            <button class="relative px-12 py-6 bg-white text-black rounded-full font-bold text-lg hover:bg-black hover:text-white transition-all">
-                Send a Proposal
-            </button>
-        </a>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="p-8 md:p-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-start text-sm">
-        <div class="mb-12 md:mb-0">
-            <span class="font-bold uppercase tracking-tighter text-xl">Marshall™</span>
-            <p class="mt-4 text-white/30 uppercase tracking-[0.3em]">&copy; 2025 Creative Dir. Studio</p>
-        </div>
+    <!-- SECTION 1: HERO CONTAINER -->
+    <section class="relative w-full min-h-screen flex flex-col items-center justify-start pt-10">
         
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-16 uppercase font-medium tracking-widest text-white/60">
-            <div class="flex flex-col gap-4">
-                <span class="text-white mb-2 font-bold opacity-20 italic">Navigation</span>
-                <a href="#" class="hover:text-white">Home</a>
-                <a href="#" class="hover:text-white">Work</a>
-                <a href="#" class="hover:text-white">Studio</a>
-            </div>
-            <div class="flex flex-col gap-4">
-                <span class="text-white mb-2 font-bold opacity-20 italic">Socials</span>
-                <a href="#" class="hover:text-white">LinkedIn</a>
-                <a href="#" class="hover:text-white">Behance</a>
-                <a href="#" class="hover:text-white">Instagram</a>
-            </div>
-            <div class="hidden md:flex flex-col gap-4">
-                <span class="text-white mb-2 font-bold opacity-20 italic">Status</span>
-                <span class="text-green-500 flex items-center gap-2">● <span class="text-white/60">Available</span></span>
+        <!-- FRAME 1: PRIMARY HERO CARD -->
+        <div class="hero-image-container w-[85%] h-[75vh] rounded-[40px] overflow-hidden shadow-2xl relative">
+            
+            <div class="hero-content h-full w-full flex flex-col justify-between p-10 md:p-14">
+                
+                <!-- NAVIGATION (Inside Frame) -->
+                <nav class="flex justify-between items-center w-full">
+                    <div class="text-xl font-bold tracking-tighter">
+                        ADRIAN MARSHALL<span class="text-white/50">®</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center gap-10 text-[rgba(255,255,255,0.7)] text-sm font-medium">
+                        <a href="#" class="hover:text-white transition-colors">Home</a>
+                        <a href="#" class="hover:text-white transition-colors">About</a>
+                        <a href="#" class="hover:text-white transition-colors">Projects</a>
+                    </div>
+
+                    <button class="pill-cta-hover bg-white text-black px-2 py-2 pr-6 rounded-full flex items-center gap-3 transition-all">
+                        <span class="bg-[#FF5A1F] text-white w-8 h-8 rounded-full flex items-center justify-center arrow-icon transition-all duration-300">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                        </span>
+                        <span class="text-xs font-bold uppercase tracking-tight">Get in touch</span>
+                    </button>
+                </nav>
+
+                <!-- HERO MAIN TEXT -->
+                <div class="grid grid-cols-12 gap-8 items-center mt-12">
+                    <!-- Left Side -->
+                    <div class="col-span-12 md:col-span-7">
+                        <p class="text-[rgba(255,255,255,0.7)] text-sm font-medium mb-4 uppercase tracking-widest">Hey, I'm a</p>
+                        <h1 class="headline-massive text-7xl md:text-[9rem] uppercase">
+                            Creative<br>Director
+                        </h1>
+                    </div>
+
+                    <!-- Right Side -->
+                    <div class="col-span-12 md:col-span-5 md:pl-12 border-l border-white/10 hidden md:block">
+                        <h2 class="text-2xl lg:text-3xl font-bold leading-tight mb-4 max-w-[280px]">
+                            Great design should feel invisible.
+                        </h2>
+                        <p class="text-[rgba(255,255,255,0.6)] text-sm leading-relaxed max-w-[320px]">
+                            Strategic creative direction for modern brands that value precision, high-contrast aesthetics, and lasting impact.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SKILL STRIP -->
+                <div class="flex flex-wrap gap-12 border-t border-white/10 pt-8">
+                    <div class="flex flex-col gap-1">
+                        <span class="text-[#FF5A1F] text-xs font-bold tracking-widest">#01</span>
+                        <span class="text-xs font-medium uppercase tracking-tighter opacity-80">Branding</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-[#FF5A1F] text-xs font-bold tracking-widest">#02</span>
+                        <span class="text-xs font-medium uppercase tracking-tighter opacity-80">UX Strategy</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-[#FF5A1F] text-xs font-bold tracking-widest">#03</span>
+                        <span class="text-xs font-medium uppercase tracking-tighter opacity-80">Interactive</span>
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-[#FF5A1F] text-xs font-bold tracking-widest">#04</span>
+                        <span class="text-xs font-medium uppercase tracking-tighter opacity-80">Film & Art</span>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </footer>
+
+        <!-- FRAME 2: LOGO OVERLAY CARD -->
+        <div class="floating-card w-[75%] max-w-4xl py-6 px-10 rounded-[32px] absolute bottom-[15vh] z-20 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0 transform translate-y-1/2">
+            
+            <div class="flex flex-col md:flex-row items-center gap-4">
+                <span class="text-[rgba(255,255,255,0.4)] text-[10px] uppercase font-bold tracking-[0.2em] whitespace-nowrap">
+                    Trusted by brands I’ve helped shape
+                </span>
+                <div class="hidden md:block w-8 h-[1px] bg-white/10"></div>
+            </div>
+
+            <!-- Monochrome Logo Row -->
+            <div class="flex items-center justify-center gap-8 md:gap-12 opacity-40">
+                <svg width="80" height="24" viewBox="0 0 100 25" fill="white" class="grayscale"><rect width="100" height="25" rx="4" fill="currentColor"/></svg>
+                <svg width="80" height="24" viewBox="0 0 100 25" fill="white" class="grayscale"><circle cx="50" cy="12.5" r="12" fill="currentColor"/></svg>
+                <svg width="80" height="24" viewBox="0 0 100 25" fill="white" class="grayscale"><rect x="10" y="5" width="80" height="15" rx="2" fill="currentColor"/></svg>
+                <svg width="80" height="24" viewBox="0 0 100 25" fill="white" class="grayscale"><polygon points="0,25 50,0 100,25" fill="currentColor"/></svg>
+            </div>
+
+        </div>
+
+    </section>
 
 </body>
 </html>
