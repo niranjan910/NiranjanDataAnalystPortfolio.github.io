@@ -22,569 +22,681 @@
 		/>
 
 		<style>
-			/* --- CORE STLES: MODERN SAAS AESTHETIC --- */
+			/* --- MODERN SAAS AESTHETIC VARIABLES --- */
 			:root {
 				/* Backgrounds */
 				--bg-body: #ffffff;
 				--bg-subtle: #f9fafb;
-				--bg-card: #ffffff;
+				--bg-surface: #ffffff;
 				
 				/* Text Colors */
-				--text-primary: #111111; /* Nearly black */
-				--text-secondary: #52525b; /* Cool Gray */
+				--text-primary: #0a0a0a; 
+				--text-secondary: #52525b; 
 				--text-tertiary: #a1a1aa;
 				
-				/* Accents (Blue Glow) */
-				--accent-glow: #e0f2fe; /* Light blue wash */
-				--accent-primary: #000000; /* Buttons are black now */
+				/* Accents */
+				--accent-primary: #000000;
+				--border-light: #e4e4e7;
+				--focus-ring: rgba(0,0,0,0.1);
+
+				/* Shapes */
+				--radius-card: 12px;
+				--radius-pill: 9999px;
 				
 				/* Font Settings */
-				--font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-				
-				--border-color: #e4e4e7;
-				--radius-sm: 8px;
-				--radius-card: 16px;
-				--radius-pill: 9999px;
-
-				--transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+				--font-main: 'Inter', sans-serif;
 			}
 
+			/* --- RESET & BASICS --- */
 			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 			html { scroll-behavior: smooth; }
-
+			
 			body {
 				font-family: var(--font-main);
 				color: var(--text-secondary);
 				background-color: var(--bg-body);
-				/* The "Top Glow" Gradient */
-				background-image: radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, rgba(255,255,255,0) 50%);
+				/* Top Glow Effect */
+				background-image: radial-gradient(circle at 50% 0%, #f0f9ff 0%, transparent 40%);
 				background-attachment: fixed;
 				line-height: 1.6;
 				overflow-x: hidden;
 				-webkit-font-smoothing: antialiased;
 			}
 			
+			/* --- TYPOGRAPHY --- */
 			h1, h2, h3, h4 {
 				font-family: var(--font-main);
 				color: var(--text-primary);
 				font-weight: 800; 
-				letter-spacing: -0.035em; 
+				letter-spacing: -0.03em; /* Tight tracking for modern feel */
 				line-height: 1.1;
 			}
+			p { max-width: 65ch; }
 
+			a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
+			a:hover { opacity: 0.8; }
+			ul { list-style: none; padding: 0; margin: 0; }
+			
+			/* --- LAYOUT UTILS --- */
 			section { padding: 100px 0; max-width: 1200px; margin: 0 auto; padding-left: 20px; padding-right: 20px;}
-			
-			/* UTILITIES */
-			a { text-decoration: none; color: inherit; transition: var(--transition); }
-			ul { list-style: none; padding: 0; margin: 0; } /* Ensure list style is none globally for UL */
-			
-			/* --- NAVIGATION --- */
-			.main-nav {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				z-index: 100;
-				background: rgba(255, 255, 255, 0.8);
-				backdrop-filter: blur(12px);
-				border-bottom: 1px solid rgba(0,0,0,0.05);
-			}
-			.nav-container {
-				max-width: 1200px;
-				margin: 0 auto;
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 1rem 2rem;
-			}
-			.nav-links ul { 
-				display: flex; 
-				gap: 2rem; 
-				font-size: 0.9rem; 
-				font-weight: 500;
-				list-style: none; /* Forced removal of numbers/bullets */
-				margin: 0;
-				padding: 0;
-			}
-			.nav-links a { color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; }
-			.nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
-
-			/* --- BUTTONS --- */
-			.cta-btn {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				padding: 0.85rem 1.75rem;
-				font-weight: 600;
-				font-size: 1rem;
-				border-radius: var(--radius-pill);
-				transition: var(--transition);
-				text-align: center;
-				letter-spacing: -0.01em;
-				cursor: pointer;
-			}
-			.cta-btn-primary {
-				background-color: #000000;
-				color: #ffffff !important;
-				border: 1px solid #000000;
-			}
-			.cta-btn-primary:hover {
-				background-color: #222; 
-				transform: translateY(-2px);
-				box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-			}
-			.cta-btn-secondary {
-				background-color: transparent;
-				color: var(--text-primary) !important;
-				border: 1px solid var(--border-color);
-			}
-			.cta-btn-secondary:hover {
-				border-color: #000;
-				background-color: var(--bg-subtle);
-			}
-
-			/* BADGES */
-			.badge-pill {
-				display: inline-block;
-				background-color: #f1f5f9; 
-				color: #475569; 
-				font-size: 0.85rem;
-				font-weight: 600;
-				padding: 0.4rem 1rem;
-				border-radius: var(--radius-pill);
-				margin-bottom: 1.5rem;
-				border: 1px solid #e2e8f0;
-			}
-			.prof-badge {
-				background: #000; color: #fff; padding: 4px 10px; border-radius: 99px;
-				font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-				display: inline-block; margin-bottom: 1rem;
-			}
-
-			/* --- HERO --- */
-			#hero {
-				padding: 160px 20px 100px;
-				text-align: center;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-			}
-
-			.slide-headline {
-				font-size: clamp(3rem, 6vw, 5rem);
-				color: #000000;
-				letter-spacing: -0.04em;
-				line-height: 1.05;
-				margin-bottom: 1.5rem;
-				max-width: 900px;
-			}
-			.slide-bottom-line {
-				font-size: 1.25rem;
-				color: var(--text-secondary);
-				max-width: 600px;
-				margin: 0 auto 2.5rem;
-				font-weight: 400;
-			}
-
 			.reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease; }
 			.reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-			/* --- CARDS & GRID --- */
-			.section-heading { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; }
-			
-			.project-card, .dashboard-card, .cert-card, .prof-project-card {
-				background: white;
-				border: 1px solid var(--border-color);
+			/* --- COMPONENTS: BUTTONS --- */
+			.cta-btn {
+				display: inline-flex; align-items: center; justify-content: center;
+				padding: 0.75rem 1.5rem; font-weight: 600; font-size: 0.95rem;
+				border-radius: 8px; transition: all 0.2s ease;
+				text-align: center; cursor: pointer;
+			}
+			/* Solid Black Button */
+			.cta-btn-primary {
+				background-color: var(--accent-primary);
+				color: #ffffff !important;
+				border: 1px solid var(--accent-primary);
+				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+			}
+			.cta-btn-primary:hover {
+				background-color: #333; border-color: #333; opacity: 1;
+				transform: translateY(-2px);
+			}
+			/* Outline Button */
+			.cta-btn-secondary {
+				background-color: transparent;
+				color: var(--text-primary) !important;
+				border: 1px solid var(--border-light);
+			}
+			.cta-btn-secondary:hover {
+				background-color: var(--bg-subtle);
+				border-color: #d4d4d8; opacity: 1;
+			}
+
+			/* --- COMPONENTS: PILLS & BADGES --- */
+			.badge-pill {
+				display: inline-block;
+				background-color: #f4f4f5; 
+				color: var(--text-secondary);
+				font-size: 0.85rem; font-weight: 500;
+				padding: 0.25rem 0.75rem; border-radius: var(--radius-pill);
+				border: 1px solid var(--border-light);
+			}
+			.tag-dark {
+				background: #000; color: #fff; padding: 4px 10px; border-radius: 99px;
+				font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+				display: inline-block; margin-bottom: 0.75rem;
+			}
+			.live-dot { height: 8px; width: 8px; background: #22c55e; border-radius: 50%; display: inline-block; margin-right: 6px; }
+
+			/* --- NAVIGATION --- */
+			.main-nav {
+				position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+				background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px);
+				border-bottom: 1px solid rgba(0,0,0,0.05);
+			}
+			.nav-container {
+				max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;
+			}
+			.logo-text { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.05em; color: var(--text-primary); }
+			.nav-links ul { display: flex; gap: 2.5rem; }
+			.nav-links a { color: var(--text-secondary); font-size: 0.9rem; font-weight: 500; }
+			.nav-links a:hover, .nav-links a.active { color: var(--text-primary); opacity: 1; }
+
+			/* --- COMPONENT: CARDS --- */
+			.bento-card {
+				background: var(--bg-surface);
+				border: 1px solid var(--border-light);
 				border-radius: var(--radius-card);
 				overflow: hidden;
-				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-				transition: var(--transition);
+				transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
 			}
-			.project-card:hover, .dashboard-card:hover, .cert-card:hover, .prof-project-card:hover {
-				transform: translateY(-4px);
-				box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-				border-color: #cbd5e1;
+			.bento-card:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+				border-color: #d4d4d8;
 			}
 
-			/* --- EXPERIENCE --- */
-			.experience-item {
-				display: flex;
-				gap: 1.5rem;
-				margin-bottom: 2rem;
-				padding: 1.5rem;
-				background: white;
-				border-radius: var(--radius-card);
-				border: 1px solid transparent;
-				transition: var(--transition);
+			/* --- SECTION: HERO --- */
+			#hero { padding: 160px 20px 80px; text-align: center; }
+			.hero-content { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+			.hero-headline {
+				font-size: clamp(3rem, 7vw, 5rem);
+				line-height: 1.05;
+				margin-top: 1rem;
 			}
-			.experience-item:hover {
-				border-color: var(--border-color);
-				background: var(--bg-subtle);
-			}
-			.company-logo {
-				width: 50px;
-				height: 50px;
-				min-width: 50px;
-				background: #000;
-				color: #fff;
-				border-radius: 12px;
-				display: flex; 
-				align-items: center; 
-				justify-content: center;
-				font-size: 1.5rem;
-			}
-			.exp-role { font-size: 1.1rem; color: #000; font-weight: 700; margin-bottom: 4px; }
-			.exp-company { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; }
-			.exp-meta { font-size: 0.85rem; color: var(--text-tertiary); }
-			
-			/* --- SKILLS --- */
-			.skills-category h4 { color: #000; font-size: 1.1rem; margin-bottom: 1rem; }
-			.skills-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
-			.skill-badge {
-				background: white;
-				border: 1px solid var(--border-color);
+			.hero-sub {
+				font-size: 1.25rem;
 				color: var(--text-secondary);
-				padding: 0.5rem 1rem;
-				border-radius: 6px;
-				font-size: 0.9rem;
-				font-weight: 500;
-				display: flex; align-items: center; gap: 8px;
+				max-width: 600px;
+				font-weight: 400;
 			}
-			.skill-badge i { color: #000; }
+			.hero-actions { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
 
-			/* --- METHODOLOGY --- */
-			.work-philosophy-grid {
-				display: grid; 
-				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-				gap: 1.5rem;
-			}
-			.philosophy-card {
-				padding: 2rem;
-				border-radius: var(--radius-card);
-				border: 1px solid var(--border-color);
-				background: white;
-				text-align: left;
-			}
-			.philosophy-icon { font-size: 1.5rem; color: #000; margin-bottom: 1rem; }
+			/* --- SECTION: ABOUT & PROFILE --- */
+			.profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: center; }
+			.profile-img { width: 100%; max-width: 300px; border-radius: var(--radius-card); border: 1px solid var(--border-light); padding: 1rem; background: white; }
+			.profile-img img { width: 100%; border-radius: 8px; display: block; filter: grayscale(100%); transition: 0.3s; }
+			.profile-img:hover img { filter: grayscale(0%); }
 
-			/* --- PROJECTS --- */
-			.prof-project-img {
-				background: #f1f5f9; 
-				color: #000;
-				display: flex; justify-content: center; align-items: center;
-				font-size: 3rem; padding: 3rem;
-				min-height: 220px;
-			}
-			.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+			/* --- SECTION: WORKFLOW (Cards) --- */
+			.workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+			.workflow-card { padding: 2rem; }
+			.workflow-card i { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary); }
+			.workflow-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+			.workflow-card p { font-size: 0.95rem; color: var(--text-secondary); margin: 0; }
 
-			/* --- FOOTER & MISC --- */
-			.footer {
-				text-align: center; padding: 4rem 2rem;
-				border-top: 1px solid var(--border-color);
-				margin-top: 4rem;
-				background: var(--bg-subtle);
+			/* --- SECTION: EXPERIENCE (List) --- */
+			.exp-list { display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+			.exp-item { display: flex; gap: 1.5rem; padding: 1.5rem; align-items: flex-start; }
+			.company-logo {
+				width: 48px; height: 48px; min-width: 48px;
+				background: #000; color: #fff;
+				border-radius: 10px;
+				display: flex; align-items: center; justify-content: center;
+				font-size: 1.25rem;
 			}
-			.contact-form input, .contact-form textarea {
-				width: 100%; padding: 1rem; border-radius: 8px;
-				border: 1px solid var(--border-color);
-				background: white;
-				font-family: var(--font-main); color: var(--text-primary);
-				margin-bottom: 1rem; font-size: 0.95rem;
-			}
-			.contact-form input:focus, .contact-form textarea:focus { outline: 2px solid #000; border-color: transparent; }
-            
-            .icon-grid-hub { display: flex; gap: 1.5rem; font-size: 1.5rem; }
+			.exp-details { flex: 1; }
+			.exp-role { font-weight: 700; color: var(--text-primary); font-size: 1.1rem; margin-bottom: 2px; }
+			.exp-meta { font-size: 0.9rem; margin-bottom: 8px; color: var(--text-secondary); }
+			.exp-desc { font-size: 0.95rem; line-height: 1.6; }
 
-            /* Responsive */
-            @media (max-width: 768px) {
-                #hero { padding-top: 120px; }
-                .nav-container { padding: 1rem; }
-                .nav-links { display: none; }
-                .hamburger-menu { display: block; position: fixed; right: 20px; top: 20px; z-index: 1001; background: none; border: none; cursor: pointer; }
-                .hamburger-menu .bar { width: 25px; height: 3px; background: #000; margin: 4px 0; transition: 0.3s; }
-				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
-				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-                
-                .nav-links.active {
-                    display: flex; flex-direction: column; 
-                    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-                    background: white; padding-top: 80px; align-items: center; gap: 2rem;
-                    z-index: 1000;
+			/* --- SECTION: SKILLS (Badges) --- */
+			.skills-wrapper { background: var(--bg-subtle); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); width: 100%; padding: 3rem 0;}
+			.skills-container { max-width: 1000px; margin: 0 auto; }
+			.skill-category h4 { margin-bottom: 1rem; font-size: 1rem; color: var(--text-primary); }
+			.skill-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+			.skill-tag {
+				background: #fff; border: 1px solid var(--border-light); padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 8px;
+			}
+			.skill-tag i { font-size: 1rem; color: #333; }
+
+			/* --- SECTION: PROJECTS (Feature & Grid) --- */
+			.section-header { margin-bottom: 3rem; text-align: center; }
+			.section-header h2 { font-size: 2.25rem; margin-bottom: 0.5rem; }
+
+			/* Featured Project */
+			.featured-project { 
+				display: grid; grid-template-columns: 1fr; 
+				border: 1px solid var(--border-light); background: #fff;
+				border-radius: var(--radius-card); overflow: hidden; margin-bottom: 4rem;
+				box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+			}
+			@media(min-width: 800px) { .featured-project { grid-template-columns: 1fr 1.2fr; } }
+			.feat-img-container {
+				background: #f4f4f5; 
+				display: flex; align-items: center; justify-content: center;
+				padding: 3rem; min-height: 300px; color: #d4d4d8; border-right: 1px solid var(--border-light);
+			}
+			.feat-content { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
+			.feat-list { list-style: none; margin: 1.5rem 0; }
+			.feat-list li { margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem; font-size: 0.95rem; }
+			.feat-list li::before { content: "→"; position: absolute; left: 0; color: #000; }
+
+			/* Project & Dashboard Grid */
+			.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+			.card-thumb { height: 200px; background: #f4f4f5; overflow: hidden; border-bottom: 1px solid var(--border-light); position: relative;}
+			.card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+			.card-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+			.card-title { font-size: 1.15rem; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center; }
+			.card-desc { font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-secondary); flex-grow: 1; }
+			.tech-stack { font-size: 0.8rem; color: var(--text-tertiary); margin-top: auto; display: flex; gap: 8px; flex-wrap: wrap;}
+			.tech-pill { background: var(--bg-subtle); padding: 2px 8px; border-radius: 4px; }
+            .card-link { margin-top: 1rem; display: block; font-weight: 600; font-size: 0.9rem; text-decoration: underline;}
+
+            /* --- SECTION: CERTIFICATIONS --- */
+            .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+            .cert-card { padding: 1.5rem; align-items: flex-start; position: relative; cursor: pointer;}
+            .cert-logo { height: 40px; margin-bottom: 1rem; object-fit: contain; }
+            .verified-icon { position: absolute; top: 1.5rem; right: 1.5rem; color: var(--bg-subtle); }
+            .cert-card:hover .verified-icon { color: #22c55e; }
+
+			/* --- CONTACT SECTION --- */
+			#contact { background: #000; color: #fff; padding: 5rem 20px; border-radius: 20px 20px 0 0; margin-top: 5rem; text-align: center; }
+			.contact-heading { color: #fff; margin-bottom: 1rem; }
+			.contact-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; font-size: 1.5rem; }
+			.contact-links a { color: #a1a1aa; transition: 0.3s; }
+			.contact-links a:hover { color: #fff; transform: translateY(-3px); }
+
+			/* --- FOOTER --- */
+			footer { padding: 2rem; text-align: center; font-size: 0.9rem; color: var(--text-secondary); border-top: 1px solid var(--border-light); }
+
+			/* --- MOBILE --- */
+			.hamburger { display: none; cursor: pointer; border: none; background: none; font-size: 1.5rem; }
+			@media (max-width: 768px) {
+				.nav-links { 
+                    display: none; 
+                    position: fixed; top: 70px; left: 0; width: 100%; background: #fff; 
+                    padding: 2rem; border-bottom: 1px solid var(--border-light);
+                    flex-direction: column; align-items: center; gap: 2rem;
                 }
-				.nav-links.active ul { flex-direction: column; gap: 2rem; }
-            }
+				.nav-links.active { display: flex; }
+				.hamburger { display: block; }
+                .hero-headline { font-size: 3rem; }
+                .feat-img-container { min-height: 200px; padding: 1rem; }
+			}
+            
+            /* Modal Styles for Certs */
+            .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none; align-items: center; justify-content: center; z-index: 9999; backdrop-filter: blur(4px); }
+            .modal-content { background: #fff; padding: 2rem; border-radius: var(--radius-card); max-width: 600px; width: 90%; position: relative; }
+            .modal-close { position: absolute; top: 1rem; right: 1rem; font-size: 1.5rem; cursor: pointer; border: none; background: none; }
+            .modal-overlay.open { display: flex; }
+
 		</style>
 	</head>
 	<body>
-		<a href="#main-content" style="position: absolute; opacity: 0;">Skip to Content</a>
 
 		<nav class="main-nav">
 			<div class="nav-container">
-				<a href="#" style="font-weight:800; font-size:1.2rem; color: #000; letter-spacing: -0.05em;">NK.</a>
+				<a href="#" class="logo-text">NK.</a>
 				
+                <!-- No ordered list, strictly unorderd -->
                 <div class="nav-links" id="navLinks">
-					<!-- Removed Ordered List (<ol>) to remove numbers. Using Unordered List (<ul>) -->
-                    <ul>
+					<ul>
 						<li><a href="#about">Profile</a></li>
-						<li><a href="#how-i-work">Workflow</a></li>
+						<li><a href="#workflow">Workflow</a></li>
 						<li><a href="#experience">Experience</a></li>
 						<li><a href="#skills">Skills</a></li>
 						<li><a href="#projects">Work</a></li>
+                        <li><a href="#certifications">Certs</a></li>
+                        <li><a href="#contact">Contact</a></li>
 					</ul>
 				</div>
 
-                <button class="hamburger-menu" id="hamburgerMenu">
-                    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                <button class="hamburger" id="menuBtn">
+                   <i class="fas fa-bars"></i>
                 </button>
 			</div>
 		</nav>
-        
-		<main id="main-content">
-			<!-- HERO -->
-			<section id="hero">
-				<div class="hero-content">
-					<div class="reveal">
-						<span class="badge-pill">Developer Ready & Business Aware</span>
-					</div>
 
-					<h1 class="slide-headline reveal" style="transition-delay: 100ms;">
+		<main>
+			<!-- HERO SECTION -->
+			<section id="hero">
+				<div class="hero-content reveal">
+					<div>
+                        <span class="badge-pill">Developer Ready & Business Aware</span>
+                    </div>
+					<h1 class="hero-headline">
 						Keep Data Connected
 					</h1>
-					<p class="slide-bottom-line reveal" style="transition-delay: 200ms;">
-						I improve operational resilience by turning raw data into actionable insights with SQL, Python, and Power BI.
+					<p class="hero-sub">
+						I improve operational resilience by turning raw data into actionable insights using SQL, Python, and Power BI. Built for scalability.
 					</p>
-					
-					<div class="reveal" style="transition-delay: 300ms; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+					<div class="hero-actions">
 						<a href="#projects" class="cta-btn cta-btn-primary">View Selected Work</a>
-						<a href="#contact" class="cta-btn cta-btn-secondary">Contact Me</a>
+						<a href="#contact" class="cta-btn cta-btn-secondary">Get in Touch</a>
 					</div>
 				</div>
 			</section>
 
-            <!-- ABOUT ME -->
+			<!-- ABOUT / PROFILE SECTION -->
 			<section id="about">
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; align-items: center;" class="reveal">
-					<div class="content-column">
-						<h2 style="font-size: 2rem; margin-bottom: 1.5rem;">Professional Profile</h2>
-						<p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+				<div class="profile-grid reveal">
+					<div class="profile-text">
+						<h2 style="margin-bottom: 1.5rem;">Professional Profile</h2>
+						<p style="margin-bottom: 1rem;">
 							I am a <strong>Data Analyst</strong> who designs systems, not just spreadsheets. 
 						</p>
-                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                            Currently working with <strong>SmartSchool Education Ltd</strong>, I bridge the gap between technical data processes and strategic marketing initiatives. My approach is defined by "Product Thinking"—clean code, version control, and automation are at the core of my workflow.
+                        <p style="margin-bottom: 1rem;">
+                            Currently working with <strong>SmartSchool Education Ltd</strong>, I bridge the gap between technical data processes and strategic marketing initiatives. 
                         </p>
-						<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" target="_blank" style="text-decoration: underline; font-weight: 600; color: #000;">Download Resume &nearr;</a>
+                        <p style="margin-bottom: 2rem;">
+                            My approach is defined by "Product Thinking"—clean code, version control (Git), and automation are at the core of my workflow to ensure data products are maintainable and scalable.
+                        </p>
+                        <a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" target="_blank" style="text-decoration: underline; font-weight: 600;">Download Resume (PDF)</a>
 					</div>
-					<div style="text-align: center;">
-						<img src="Profile/Pic.png" alt="Niranjan Kumar" style="max-width: 300px; width: 100%; border-radius: 20px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);" />
+					<div class="profile-img-container">
+                        <div class="profile-img">
+                            <!-- Placeholder image path -->
+						    <img src="Profile/Pic.png" alt="Niranjan Kumar Headshot" />
+                        </div>
 					</div>
 				</div>
 			</section>
 
-            <!-- METHODOLOGY -->
-            <section id="how-i-work">
-                <h2 class="section-heading reveal">Methodology</h2>
-                <div class="work-philosophy-grid reveal">
-                    <div class="philosophy-card">
-                        <i class="fab fa-git-alt philosophy-icon"></i>
+            <!-- WORKFLOW / METHODOLOGY SECTION -->
+            <section id="workflow">
+                <div class="section-header reveal">
+                    <h2>Methodology</h2>
+                    <p>How I ensure quality and speed in every delivery.</p>
+                </div>
+                <div class="workflow-grid reveal">
+                    <div class="bento-card workflow-card">
+                        <i class="fab fa-git-alt"></i>
                         <h3>Version Control</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Everything lives in Git. I ensure my analysis is reproducible and my code history is clean.</p>
+                        <p>Everything lives in Git. I ensure my analysis is reproducible and my code history is transparent.</p>
                     </div>
-                    <div class="philosophy-card">
-                        <i class="fas fa-code philosophy-icon"></i>
+                    <div class="bento-card workflow-card">
+                        <i class="fas fa-code"></i>
                         <h3>Maintainability</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Modular Python and formatted SQL. I write code that the next person can actually understand.</p>
+                        <p>Modular Python and formatted SQL. I write code that the next person can actually understand.</p>
                     </div>
-                    <div class="philosophy-card">
-                        <i class="fas fa-chart-line philosophy-icon"></i>
+                    <div class="bento-card workflow-card">
+                        <i class="fas fa-chart-line"></i>
                         <h3>Business First</h3>
-                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Tech is a tool. My focus is always on LTV, Conversion Rates, and Marketing ROAS.</p>
+                        <p>Tech is a tool. My focus is always on LTV, Conversion Rates, and Marketing ROAS impact.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- EXPERIENCE -->
+			<!-- EXPERIENCE SECTION -->
 			<section id="experience">
-				<h2 class="section-heading reveal">Experience</h2>
-				<div class="experience-section reveal" style="max-width: 800px; margin: 0 auto;">
-                    
-                    <div class="experience-item">
+				<div class="section-header reveal">
+                    <h2>Experience</h2>
+                </div>
+				<div class="exp-list reveal">
+                    <!-- Job 1 -->
+                    <div class="bento-card exp-item">
                         <div class="company-logo"><i class="fas fa-building"></i></div>
-                        <div style="flex: 1;">
+                        <div class="exp-details">
                             <div class="exp-role">Marketing Specialist</div>
-                            <div class="exp-company">SmartSchool Education Ltd</div>
-                            <div class="exp-meta">Nov 2025 – Present</div>
-                            <p style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--text-secondary);">Optimizing digital channels using SEO data, Ahrefs, and analytics pipelines.</p>
+                            <div class="exp-company">SmartSchool Education Ltd <span style="font-weight:400; color: #a1a1aa;">&middot; Full-time</span></div>
+                            <div class="exp-meta">Nov 2025 – Present &middot; Noida, India</div>
+                            <p class="exp-desc">Optimizing digital marketing channels using SEO data, Ahrefs, and building analytics pipelines to track performance metrics.</p>
                         </div>
                     </div>
         
-                    <div class="experience-item">
+                    <!-- Job 2 -->
+                    <div class="bento-card exp-item">
                         <div class="company-logo"><i class="fas fa-user-tie"></i></div>
-                        <div style="flex: 1;">
+                        <div class="exp-details">
                             <div class="exp-role">Presales Specialist</div>
-                            <div class="exp-company">SmartSchool Education Ltd</div>
-                            <div class="exp-meta">Oct 2025 – Jan 2026</div>
-                            <p style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--text-secondary);">Technical requirement gathering and client solutions engineering.</p>
+                            <div class="exp-company">SmartSchool Education Ltd <span style="font-weight:400; color: #a1a1aa;">&middot; Full-time</span></div>
+                            <div class="exp-meta">Oct 2025 – Jan 2026 &middot; Noida, India</div>
+                            <p class="exp-desc">Handled technical requirement gathering and solutions engineering to align client needs with product capabilities.</p>
                         </div>
                     </div>
                     
-                     <div class="experience-item">
+                    <!-- Job 3 -->
+                     <div class="bento-card exp-item">
                         <div class="company-logo"><i class="fas fa-laptop-code"></i></div>
-                        <div style="flex: 1;">
-                            <div class="exp-role">Data Trainee</div>
+                        <div class="exp-details">
+                            <div class="exp-role">Data & ML Trainee</div>
                             <div class="exp-company">Naresh i Technologies & TechieNest</div>
-                            <div class="exp-meta">2024 – 2025</div>
-                            <p style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--text-secondary);">Intensive bootcamps on ML predictive modeling and full-stack data analytics.</p>
+                            <div class="exp-meta">2024 – 2025 &middot; India</div>
+                            <p class="exp-desc">Completed intensive bootcamps focused on ML predictive modeling, full-stack data analytics, and ETL processes.</p>
                         </div>
                     </div>
 				</div>
 			</section>
 
-            <!-- SKILLS -->
-            <section id="skills" style="background-color: #fafafa;">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <h2 class="section-heading reveal">Stack</h2>
+            <!-- SKILLS SECTION -->
+            <section id="skills" class="skills-wrapper">
+                <div class="skills-container reveal">
+                     <div class="section-header">
+                        <h2>Technical Stack</h2>
+                    </div>
                     
-                    <div class="reveal">
-                         <div class="skills-category">
+                    <div class="skills-grid-wrapper" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                         <div class="skill-category">
                             <h4>Analysis & Engineering</h4>
-                            <div class="skills-grid">
-                                <div class="skill-badge"><i class="fas fa-database"></i> SQL (MySQL)</div>
-                                <div class="skill-badge"><i class="fab fa-python"></i> Python (Pandas)</div>
-                                <div class="skill-badge"><i class="fas fa-table"></i> Advanced Excel</div>
+                            <div class="skill-grid">
+                                <span class="skill-tag"><i class="fas fa-database"></i> SQL (MySQL)</span>
+                                <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                                <span class="skill-tag"><i class="fas fa-table"></i> Excel/VBA</span>
                             </div>
                         </div>
             
-                        <div class="skills-category">
-                            <h4>Visualization</h4>
-                            <div class="skills-grid">
-                                <div class="skill-badge"><i class="fas fa-chart-bar"></i> Power BI</div>
-                                <div class="skill-badge"><i class="fas fa-chart-pie"></i> Tableau</div>
-                                <div class="skill-badge"><i class="fas fa-code"></i> Matplotlib</div>
+                        <div class="skill-category">
+                            <h4>Visualization & BI</h4>
+                            <div class="skill-grid">
+                                <span class="skill-tag"><i class="fas fa-chart-bar"></i> Power BI</span>
+                                <span class="skill-tag"><i class="fas fa-chart-pie"></i> Tableau</span>
+                                <span class="skill-tag"><i class="fas fa-code"></i> Matplotlib/Seaborn</span>
                             </div>
                         </div>
 
-                         <div class="skills-category">
+                         <div class="skill-category">
                             <h4>Production Tools</h4>
-                            <div class="skills-grid">
-                                <div class="skill-badge"><i class="fab fa-git-alt"></i> Git</div>
-                                <div class="skill-badge"><i class="fab fa-github"></i> GitHub</div>
-                                <div class="skill-badge"><i class="fab fa-html5"></i> Web Tech</div>
+                            <div class="skill-grid">
+                                <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+                                <span class="skill-tag"><i class="fab fa-github"></i> GitHub</span>
+                                <span class="skill-tag"><i class="fab fa-html5"></i> Web Technologies</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-			
-			<!-- PROJECTS -->
+
+            <!-- WORK (PROJECTS) SECTION -->
 			<section id="projects">
-                <!-- Highlight -->
-                <div class="reveal" style="margin-bottom: 4rem;">
-                    <div class="prof-project-card" style="display: flex; flex-direction: column; overflow: hidden; max-width: 900px; margin: 0 auto;">
-                        <div class="prof-project-img" style="background: #f8fafc; border-bottom: 1px solid var(--border-color);">
-                            <i class="fas fa-window-maximize" style="font-size: 4rem; color: #cbd5e1;"></i>
-                        </div>
-                        <div style="padding: 2.5rem;">
-                            <span class="prof-badge">Featured Production</span>
-                            <h3>EGN Expo Website Ecosystem</h3>
-                            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                                A scalable, version-controlled web system for visitor registration and event management. Features optimized asset loading and clean SEO architecture.
-                            </p>
-                            <a href="https://github.com/niranjan910" target="_blank" style="text-decoration: underline; font-weight: 600;">View Codebase</a>
+                <div class="section-header reveal">
+                    <h2>Professional Work</h2>
+                </div>
+
+                <!-- FEATURED PROJECT (EGN) -->
+                <div class="featured-project reveal">
+                    <div class="feat-img-container">
+                        <!-- Icon representation since no image provided for EGN -->
+                         <i class="fas fa-window-maximize" style="font-size: 5rem;"></i>
+                    </div>
+                    <div class="feat-content">
+                        <span class="tag-dark">Featured Production</span>
+                        <h3>EGN Expo Website Ecosystem</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            Developed and maintained the digital infrastructure for a major exposition event. This is a production-grade system handling distinct user flows for registration and stall management.
+                        </p>
+                        <ul class="feat-list">
+                            <li>Architecture optimized for SEO and fast asset loading.</li>
+                            <li>Separate portals for General Info, Book Stalls, and Registration.</li>
+                            <li>Full Git version control for maintainability.</li>
+                        </ul>
+                        <div style="margin-top: 1.5rem;">
+                             <a href="https://github.com/niranjan910" target="_blank" class="cta-btn cta-btn-primary">View on GitHub</a>
                         </div>
                     </div>
                 </div>
 
-                <h3 style="text-align: center; margin-bottom: 2rem;" class="reveal">Analytics Projects</h3>
-				<div class="projects-grid reveal">
-					<div class="project-card">
-                        <div style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                            <img src="DA Cards/Air_Pollution.png" alt="NYC Air" style="width: 100%; height: 100%; object-fit: cover;" />
+                <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-end;">
+                     <h3>Selected Analysis</h3>
+                </div>
+
+                <!-- ANALYTICS GRID -->
+				<div class="card-grid reveal">
+                    <!-- Project 1 -->
+					<div class="bento-card">
+                        <div class="card-thumb">
+                            <img src="DA Cards/Air_Pollution.png" alt="NYC Air" />
                         </div>
-                        <div style="padding: 1.5rem; display: flex; flex-direction: column; height: 100%;">
-                            <h3>NYC Air Quality</h3>
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); flex-grow: 1;">Quantifying health impacts using Python & real-time sensors.</p>
-                             <div style="margin-top: 1rem;">
-                                <span class="badge-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Pandas</span>
-                            </div>
+                        <div class="card-body">
+                            <h3 class="card-title">NYC Air Quality Impact</h3>
+                            <p class="card-desc">Quantifying health impacts using Python & real-time monitoring sensor data.</p>
+                            <div class="tech-stack"><span class="tech-pill">Pandas</span> <span class="tech-pill">Seaborn</span></div>
+                            <a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="card-link" target="_blank">View Code</a>
                         </div>
                     </div>
 
-                    <div class="project-card">
-                         <div style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                            <img src="ML Cards image/Car Price prediction.png" alt="Car Price" style="width: 100%; height: 100%; object-fit: cover;" />
+                    <!-- Project 2 -->
+                    <div class="bento-card">
+                         <div class="card-thumb">
+                            <img src="ML Cards image/Car Price prediction.png" alt="Car Price" />
                         </div>
-                        <div style="padding: 1.5rem; display: flex; flex-direction: column; height: 100%;">
-                            <h3>Price Prediction</h3>
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); flex-grow: 1;">87% Accuracy ML Model for market valuation.</p>
-                             <div style="margin-top: 1rem;">
-                                <span class="badge-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Scikit-Learn</span>
-                            </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Car Price Prediction</h3>
+                            <p class="card-desc">87% Accuracy Linear Regression model for automotive market valuation.</p>
+                            <div class="tech-stack"><span class="tech-pill">Scikit-Learn</span> <span class="tech-pill">ML</span></div>
+                            <a href="https://github.com/niranjan910/Car-Price-Prediction-LinearRegression" class="card-link" target="_blank">View Model</a>
                         </div>
                     </div>
                     
-                    <div class="project-card">
-                         <div style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                            <img src="DA Cards/Lungs cancer.png" alt="Lung Cancer BI" style="width: 100%; height: 100%; object-fit: cover;" />
+                    <!-- Project 3 -->
+                    <div class="bento-card">
+                         <div class="card-thumb">
+                            <img src="DA Cards/Lungs cancer.png" alt="Lung Cancer BI" />
                         </div>
-                        <div style="padding: 1.5rem; display: flex; flex-direction: column; height: 100%;">
-                            <h3>Medical BI Dashboard</h3>
-                            <p style="font-size: 0.9rem; color: var(--text-secondary); flex-grow: 1;">Diagnostic trends visualized with SQL & Power BI.</p>
-                             <div style="margin-top: 1rem;">
-                                <span class="badge-pill" style="font-size: 0.7rem; padding: 2px 8px; margin: 0;">Power BI</span>
-                            </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Medical BI Dashboard</h3>
+                            <p class="card-desc">Diagnostic trends and survival indicators visualized with SQL mining & Power BI.</p>
+                            <div class="tech-stack"><span class="tech-pill">Power BI</span> <span class="tech-pill">SQL</span></div>
+                            <a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="card-link" target="_blank">View Dashboard</a>
                         </div>
                     </div>
 				</div>
-                <div style="text-align: center; margin-top: 3rem;">
-					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">See All on GitHub</a>
-				</div>
+
+                 <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: flex-end;">
+                     <h3>Live Dashboards</h3>
+                </div>
+
+                <!-- DASHBOARDS GRID (Included based on request) -->
+                <div class="card-grid reveal">
+                     <div class="bento-card">
+                        <div class="card-body">
+                             <div style="display:flex; justify-content:space-between; margin-bottom: 1rem;">
+                                <i class="fas fa-cloud-sun" style="font-size:2rem; color: #333;"></i>
+                                <span class="badge-pill"><span class="live-dot"></span>Live</span>
+                            </div>
+                            <h3 class="card-title">Weather App</h3>
+                            <p class="card-desc">Real-time forecast using Streamlit & OpenWeather API.</p>
+                             <a href="https://pro-weather-aqi-dashboard-xtbjpiv8uwftmnmznvambh.streamlit.app/" target="_blank" class="card-link">Launch App</a>
+                        </div>
+                    </div>
+                     <div class="bento-card">
+                        <div class="card-body">
+                             <div style="display:flex; justify-content:space-between; margin-bottom: 1rem;">
+                                <i class="fab fa-bitcoin" style="font-size:2rem; color: #333;"></i>
+                            </div>
+                            <h3 class="card-title">Crypto Tracker</h3>
+                            <p class="card-desc">Bitcoin fluctuation tracking with automated alert logging.</p>
+                             <a href="#" target="_blank" class="card-link">View Repo</a>
+                        </div>
+                    </div>
+                    <div class="bento-card">
+                        <div class="card-body">
+                             <div style="display:flex; justify-content:space-between; margin-bottom: 1rem;">
+                                <i class="fas fa-robot" style="font-size:2rem; color: #333;"></i>
+                            </div>
+                            <h3 class="card-title">AI Job Market 2025</h3>
+                            <p class="card-desc">Market demand analysis and skill gap visualization.</p>
+                             <a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" target="_blank" class="card-link">See Analysis</a>
+                        </div>
+                    </div>
+                </div>
+
 			</section>
 
-			<!-- CONTACT -->
-			<section id="contact" style="background: #000; color: #fff; margin-top: 5rem; padding: 5rem 2rem; border-radius: 20px 20px 0 0; max-width: 100%;">
-                <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-				    <h2 class="reveal" style="color: #fff; margin-bottom: 1rem;">Start a Conversation</h2>
-				    <p class="reveal" style="color: #a1a1aa; margin-bottom: 3rem;">Open for data analysis roles and collaborative projects.</p>
+            <!-- CERTIFICATIONS SECTION (Included based on request) -->
+            <section id="certifications">
+                 <div class="section-header reveal">
+                    <h2>Credentials</h2>
+                </div>
+                <div class="cert-grid reveal">
+                    <!-- Google -->
+                    <div class="bento-card cert-card" data-img="images/google_cert.png" data-title="Google Data Analytics">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="cert-logo">
+                        <i class="fas fa-check-circle verified-icon"></i>
+                        <h4>Google Data Analytics</h4>
+                        <p style="font-size:0.8rem; color:var(--text-secondary);">Verified Certification</p>
+                    </div>
+                    <!-- Microsoft -->
+                     <div class="bento-card cert-card" data-img="images/ms_cert.png" data-title="Microsoft Power BI">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft" class="cert-logo">
+                         <i class="fas fa-check-circle verified-icon"></i>
+                        <h4>Power BI Analyst</h4>
+                         <p style="font-size:0.8rem; color:var(--text-secondary);">Verified Certification</p>
+                    </div>
+                    <!-- IBM -->
+                     <div class="bento-card cert-card" data-img="images/ibm_cert.png" data-title="IBM Data Science">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" alt="IBM" class="cert-logo">
+                         <i class="fas fa-check-circle verified-icon"></i>
+                        <h4>Data Science & AI</h4>
+                         <p style="font-size:0.8rem; color:var(--text-secondary);">Verified Certification</p>
+                    </div>
+                    <!-- HackerRank -->
+                     <div class="bento-card cert-card" data-img="images/sql_cert.png" data-title="HackerRank SQL">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/HackerRank_Icon-1000px.png" alt="HackerRank" class="cert-logo">
+                         <i class="fas fa-check-circle verified-icon"></i>
+                        <h4>SQL Advanced</h4>
+                         <p style="font-size:0.8rem; color:var(--text-secondary);">Verified Assessment</p>
+                    </div>
+                </div>
+            </section>
+
+			<!-- CONTACT SECTION -->
+			<section id="contact">
+				<div class="reveal">
+                    <p style="text-transform: uppercase; font-weight: 700; color: #71717a; font-size: 0.9rem;">What's Next?</p>
+				    <h2 class="contact-heading">Start a Conversation</h2>
+				    <p style="color: #a1a1aa; margin: 0 auto 3rem;">Open for full-time data roles and technical collaborations.</p>
                     
-                    <div class="reveal" style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
-                         <a href="mailto:niranjan991100@gmail.com" class="cta-btn" style="background: #fff; color: #000;">niranjan991100@gmail.com</a>
-                         <div class="icon-grid-hub">
-                             <a href="https://github.com/niranjan910" style="color: #fff;"><i class="fab fa-github"></i></a>
-                             <a href="https://www.linkedin.com/in/niranjan-k-a83517229/" style="color: #fff;"><i class="fab fa-linkedin"></i></a>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                         <a href="mailto:niranjan991100@gmail.com" class="cta-btn" style="background: #fff; color: #000; font-weight: 700;">niranjan991100@gmail.com</a>
+                         <div style="display: flex; gap: 1rem;">
+                             <a href="https://github.com/niranjan910" class="cta-btn cta-btn-secondary" style="border-color:#333; color:#fff !important;">GitHub</a>
+                             <a href="https://www.linkedin.com/in/niranjan-k-a83517229/" class="cta-btn cta-btn-secondary" style="border-color:#333; color:#fff !important;">LinkedIn</a>
                          </div>
                     </div>
                 </div>
 			</section>
 		</main>
 
-        <footer class="footer">
-            <p>&copy; 2026 Niranjan Kumar. Built with code, not builders.</p>
+        <footer>
+            <p>&copy; 2026 Niranjan Kumar. Built for production.</p>
         </footer>
 
+        <!-- CERT MODAL (Simplified) -->
+        <div class="modal-overlay" id="certModal">
+            <div class="modal-content">
+                <button class="modal-close" id="modalClose">&times;</button>
+                <h3 id="modalTitle" style="margin-bottom:1rem;">Certificate</h3>
+                <div style="background:#eee; height:300px; display:flex; align-items:center; justify-content:center; border-radius: 8px;">
+                     <!-- Real image would go here, text is placeholder -->
+                    <p style="color:#777;">Certificate Preview</p> 
+                    <!-- <img id="modalImg" src="" style="max-width:100%; height:auto;" /> -->
+                </div>
+            </div>
+        </div>
+
 		<script>
+            // --- Reveal Animations ---
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('is-visible');
-					}
+					if (entry.isIntersecting) entry.target.classList.add('is-visible');
 				});
 			}, { threshold: 0.1 });
 			document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-            const burger = document.getElementById('hamburgerMenu');
-            const navLinks = document.getElementById('navLinks');
-            burger.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                burger.classList.toggle('active');
+            // --- Navigation Logic ---
+            const btn = document.getElementById('menuBtn');
+            const links = document.getElementById('navLinks');
+            
+            btn.addEventListener('click', () => {
+                links.classList.toggle('active');
+                const i = btn.querySelector('i');
+                if(links.classList.contains('active')){
+                     i.classList.remove('fa-bars');
+                     i.classList.add('fa-times');
+                } else {
+                     i.classList.add('fa-bars');
+                     i.classList.remove('fa-times');
+                }
             });
             
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    burger.classList.remove('active');
+            // Close mobile menu on click
+            document.querySelectorAll('.nav-links a').forEach(l => {
+                l.addEventListener('click', () => {
+                     links.classList.remove('active');
+                     const i = btn.querySelector('i');
+                     i.classList.add('fa-bars');
+                     i.classList.remove('fa-times');
                 });
             });
+
+            // --- Modal Logic (Basic) ---
+            const modal = document.getElementById('certModal');
+            const close = document.getElementById('modalClose');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            document.querySelectorAll('.cert-card').forEach(c => {
+                c.addEventListener('click', () => {
+                    modalTitle.innerText = c.dataset.title;
+                    // In a real scenario, switch image src: document.getElementById('modalImg').src = c.dataset.img;
+                    modal.classList.add('open');
+                });
+            });
+            
+            close.addEventListener('click', () => modal.classList.remove('open'));
+            modal.addEventListener('click', (e) => {
+                if(e.target === modal) modal.classList.remove('open');
+            });
+
 		</script>
 	</body>
 </html>
