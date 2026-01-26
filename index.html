@@ -8,7 +8,7 @@
 		
 		<link rel="icon" type="image/png" href="Logo/favicon.png" />
 
-		<!-- Google Fonts: ONLY Inter is needed for this clean look -->
+		<!-- Google Fonts: Inter -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -56,7 +56,7 @@
 				font-family: var(--font-main);
 				color: var(--text-secondary);
 				background-color: var(--bg-body);
-				/* The "Top Glow" Gradient from the image */
+				/* The "Top Glow" Gradient */
 				background-image: radial-gradient(circle at 50% 0%, var(--accent-glow) 0%, rgba(255,255,255,0) 50%);
 				background-attachment: fixed;
 				line-height: 1.6;
@@ -64,12 +64,11 @@
 				-webkit-font-smoothing: antialiased;
 			}
 			
-			/* Global Typography Matches Image */
 			h1, h2, h3, h4 {
 				font-family: var(--font-main);
 				color: var(--text-primary);
 				font-weight: 800; 
-				letter-spacing: -0.035em; /* This is KEY for the "Modern Tech" look */
+				letter-spacing: -0.035em; 
 				line-height: 1.1;
 			}
 
@@ -77,7 +76,7 @@
 			
 			/* UTILITIES */
 			a { text-decoration: none; color: inherit; transition: var(--transition); }
-			ul { list-style: none; }
+			ul { list-style: none; padding: 0; margin: 0; } /* Ensure list style is none globally for UL */
 			
 			/* --- NAVIGATION --- */
 			.main-nav {
@@ -98,11 +97,19 @@
 				align-items: center;
 				padding: 1rem 2rem;
 			}
-			.nav-links ol { display: flex; gap: 2rem; font-size: 0.9rem; font-weight: 500; }
+			.nav-links ul { 
+				display: flex; 
+				gap: 2rem; 
+				font-size: 0.9rem; 
+				font-weight: 500;
+				list-style: none; /* Forced removal of numbers/bullets */
+				margin: 0;
+				padding: 0;
+			}
 			.nav-links a { color: var(--text-secondary); font-weight: 500; font-size: 0.95rem; }
 			.nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
 
-			/* --- BUTTONS: Black Pills (Matches "Create an AI Agent") --- */
+			/* --- BUTTONS --- */
 			.cta-btn {
 				display: inline-flex;
 				align-items: center;
@@ -116,20 +123,16 @@
 				letter-spacing: -0.01em;
 				cursor: pointer;
 			}
-			
-			/* Primary Button: Solid Black */
 			.cta-btn-primary {
 				background-color: #000000;
 				color: #ffffff !important;
 				border: 1px solid #000000;
 			}
 			.cta-btn-primary:hover {
-				background-color: #222; /* slightly lighter black */
+				background-color: #222; 
 				transform: translateY(-2px);
 				box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 			}
-
-			/* Secondary Button: Clean Outline */
 			.cta-btn-secondary {
 				background-color: transparent;
 				color: var(--text-primary) !important;
@@ -140,11 +143,11 @@
 				background-color: var(--bg-subtle);
 			}
 
-			/* BADGE: "Developer Ready" Pill style */
+			/* BADGES */
 			.badge-pill {
 				display: inline-block;
-				background-color: #f1f5f9; /* very light grey/blue */
-				color: #475569; /* slate grey */
+				background-color: #f1f5f9; 
+				color: #475569; 
 				font-size: 0.85rem;
 				font-weight: 600;
 				padding: 0.4rem 1rem;
@@ -152,28 +155,29 @@
 				margin-bottom: 1.5rem;
 				border: 1px solid #e2e8f0;
 			}
+			.prof-badge {
+				background: #000; color: #fff; padding: 4px 10px; border-radius: 99px;
+				font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+				display: inline-block; margin-bottom: 1rem;
+			}
 
-			/* --- HERO SECTION RE-DESIGNED --- */
+			/* --- HERO --- */
 			#hero {
 				padding: 160px 20px 100px;
 				text-align: center;
-				min-height: auto;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				/* Removes old gradients */
-				background: none; 
 			}
 
 			.slide-headline {
-				font-size: clamp(3rem, 6vw, 5rem); /* Massive bold text */
+				font-size: clamp(3rem, 6vw, 5rem);
 				color: #000000;
 				letter-spacing: -0.04em;
 				line-height: 1.05;
 				margin-bottom: 1.5rem;
 				max-width: 900px;
 			}
-			
 			.slide-bottom-line {
 				font-size: 1.25rem;
 				color: var(--text-secondary);
@@ -182,27 +186,18 @@
 				font-weight: 400;
 			}
 
-			/* Animation (Optional but simple) */
 			.reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease; }
 			.reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-			/* --- CARDS & GRIDS (Projects, Exp, Etc) --- */
-			.section-heading {
-				text-align: center;
-				margin-bottom: 3rem;
-				font-size: 2.5rem;
-			}
-			.projects-grid, .dashboards-grid, .experience-section, .skills-category, .certs-grid {
-				/* Adds slight structure if needed */
-			}
-
-			/* --- CARDS: Clean White aesthetic --- */
+			/* --- CARDS & GRID --- */
+			.section-heading { text-align: center; margin-bottom: 3rem; font-size: 2.5rem; }
+			
 			.project-card, .dashboard-card, .cert-card, .prof-project-card {
 				background: white;
 				border: 1px solid var(--border-color);
 				border-radius: var(--radius-card);
 				overflow: hidden;
-				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* very subtle shadow */
+				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 				transition: var(--transition);
 			}
 			.project-card:hover, .dashboard-card:hover, .cert-card:hover, .prof-project-card:hover {
@@ -211,7 +206,7 @@
 				border-color: #cbd5e1;
 			}
 
-			/* --- EXPERIENCE (LINKEDIN STYLE - Cleaned up) --- */
+			/* --- EXPERIENCE --- */
 			.experience-item {
 				display: flex;
 				gap: 1.5rem;
@@ -230,7 +225,7 @@
 				width: 50px;
 				height: 50px;
 				min-width: 50px;
-				background: #000; /* Black squares */
+				background: #000;
 				color: #fff;
 				border-radius: 12px;
 				display: flex; 
@@ -250,14 +245,14 @@
 				border: 1px solid var(--border-color);
 				color: var(--text-secondary);
 				padding: 0.5rem 1rem;
-				border-radius: 6px; /* slightly squared corners look cleaner */
+				border-radius: 6px;
 				font-size: 0.9rem;
 				font-weight: 500;
 				display: flex; align-items: center; gap: 8px;
 			}
-			.skill-badge i { color: #000; } /* Icons black */
+			.skill-badge i { color: #000; }
 
-			/* --- HOW I WORK GRID --- */
+			/* --- METHODOLOGY --- */
 			.work-philosophy-grid {
 				display: grid; 
 				grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
@@ -272,52 +267,33 @@
 			}
 			.philosophy-icon { font-size: 1.5rem; color: #000; margin-bottom: 1rem; }
 
-			/* --- FORMS & CONTACT --- */
-			.contact-form input, .contact-form textarea {
-				width: 100%;
-				padding: 1rem;
-				border-radius: 8px;
-				border: 1px solid var(--border-color);
-				background: white;
-				font-family: var(--font-main);
-				color: var(--text-primary);
-				margin-bottom: 1rem;
-				font-size: 0.95rem;
+			/* --- PROJECTS --- */
+			.prof-project-img {
+				background: #f1f5f9; 
+				color: #000;
+				display: flex; justify-content: center; align-items: center;
+				font-size: 3rem; padding: 3rem;
+				min-height: 220px;
 			}
-			.contact-form input:focus, .contact-form textarea:focus {
-				outline: 2px solid #000;
-				border-color: transparent;
-			}
-			
-			.contact-card {
-				background: white; border: 1px solid var(--border-color); color: var(--text-primary);
-				border-radius: 12px; padding: 1.5rem; text-align: center;
-				transition: var(--transition);
-			}
-			.contact-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-			.icon-grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
-			
-			/* Footer */
+			.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+
+			/* --- FOOTER & MISC --- */
 			.footer {
 				text-align: center; padding: 4rem 2rem;
 				border-top: 1px solid var(--border-color);
 				margin-top: 4rem;
 				background: var(--bg-subtle);
 			}
-
-			/* Projects styling specifics */
-			.prof-badge {
-				background: #000; color: #fff; padding: 4px 10px; border-radius: 99px;
-				font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-				display: inline-block; margin-bottom: 1rem;
+			.contact-form input, .contact-form textarea {
+				width: 100%; padding: 1rem; border-radius: 8px;
+				border: 1px solid var(--border-color);
+				background: white;
+				font-family: var(--font-main); color: var(--text-primary);
+				margin-bottom: 1rem; font-size: 0.95rem;
 			}
-			.prof-project-img {
-				background: #f1f5f9; /* Light grey instead of dark blue */
-				color: #000;
-				display: flex; justify-content: center; align-items: center;
-				font-size: 3rem; padding: 3rem;
-				min-height: 220px;
-			}
+			.contact-form input:focus, .contact-form textarea:focus { outline: 2px solid #000; border-color: transparent; }
+            
+            .icon-grid-hub { display: flex; gap: 1.5rem; font-size: 1.5rem; }
 
             /* Responsive */
             @media (max-width: 768px) {
@@ -327,14 +303,16 @@
                 .hamburger-menu { display: block; position: fixed; right: 20px; top: 20px; z-index: 1001; background: none; border: none; cursor: pointer; }
                 .hamburger-menu .bar { width: 25px; height: 3px; background: #000; margin: 4px 0; transition: 0.3s; }
 				.hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+				.hamburger-menu.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+				.hamburger-menu.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
                 
-				/* Mobile menu active state styling */
                 .nav-links.active {
                     display: flex; flex-direction: column; 
                     position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
                     background: white; padding-top: 80px; align-items: center; gap: 2rem;
                     z-index: 1000;
                 }
+				.nav-links.active ul { flex-direction: column; gap: 2rem; }
             }
 		</style>
 	</head>
@@ -344,28 +322,28 @@
 		<nav class="main-nav">
 			<div class="nav-container">
 				<a href="#" style="font-weight:800; font-size:1.2rem; color: #000; letter-spacing: -0.05em;">NK.</a>
-				<div class="nav-links" id="navLinks">
-					<ol>
+				
+                <div class="nav-links" id="navLinks">
+					<!-- Removed Ordered List (<ol>) to remove numbers. Using Unordered List (<ul>) -->
+                    <ul>
 						<li><a href="#about">Profile</a></li>
 						<li><a href="#how-i-work">Workflow</a></li>
 						<li><a href="#experience">Experience</a></li>
 						<li><a href="#skills">Skills</a></li>
 						<li><a href="#projects">Work</a></li>
-					</ol>
+					</ul>
 				</div>
+
                 <button class="hamburger-menu" id="hamburgerMenu">
                     <div class="bar"></div><div class="bar"></div><div class="bar"></div>
                 </button>
 			</div>
-			<div style="text-align: right; padding-right: 2rem; display: none;"> <!-- placeholder for desktop action --> </div>
 		</nav>
         
 		<main id="main-content">
-            
-            <!-- HERO: Clean SaaS Style -->
+			<!-- HERO -->
 			<section id="hero">
 				<div class="hero-content">
-					<!-- BADGE PILL -->
 					<div class="reveal">
 						<span class="badge-pill">Developer Ready & Business Aware</span>
 					</div>
@@ -393,18 +371,17 @@
 							I am a <strong>Data Analyst</strong> who designs systems, not just spreadsheets. 
 						</p>
                         <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
-                            Currently working with <strong>SmartSchool Education Ltd</strong>, I bridge the gap between technical data processes and strategic marketing initiatives. My approach is defined by "Product Thinking"—clean code, version control, and automation are at the core of my workflow, not afterthoughts.
+                            Currently working with <strong>SmartSchool Education Ltd</strong>, I bridge the gap between technical data processes and strategic marketing initiatives. My approach is defined by "Product Thinking"—clean code, version control, and automation are at the core of my workflow.
                         </p>
 						<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" target="_blank" style="text-decoration: underline; font-weight: 600; color: #000;">Download Resume &nearr;</a>
 					</div>
 					<div style="text-align: center;">
-						<!-- Profile Image area: Clean & Simple -->
 						<img src="Profile/Pic.png" alt="Niranjan Kumar" style="max-width: 300px; width: 100%; border-radius: 20px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);" />
 					</div>
 				</div>
 			</section>
 
-            <!-- HOW I WORK (Cards) -->
+            <!-- METHODOLOGY -->
             <section id="how-i-work">
                 <h2 class="section-heading reveal">Methodology</h2>
                 <div class="work-philosophy-grid reveal">
@@ -426,7 +403,7 @@
                 </div>
             </section>
 
-            <!-- EXPERIENCE (Clean List) -->
+            <!-- EXPERIENCE -->
 			<section id="experience">
 				<h2 class="section-heading reveal">Experience</h2>
 				<div class="experience-section reveal" style="max-width: 800px; margin: 0 auto;">
@@ -520,7 +497,6 @@
 
                 <h3 style="text-align: center; margin-bottom: 2rem;" class="reveal">Analytics Projects</h3>
 				<div class="projects-grid reveal">
-                    <!-- Project 1 -->
 					<div class="project-card">
                         <div style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                             <img src="DA Cards/Air_Pollution.png" alt="NYC Air" style="width: 100%; height: 100%; object-fit: cover;" />
@@ -534,7 +510,6 @@
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
                     <div class="project-card">
                          <div style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                             <img src="ML Cards image/Car Price prediction.png" alt="Car Price" style="width: 100%; height: 100%; object-fit: cover;" />
@@ -548,7 +523,6 @@
                         </div>
                     </div>
                     
-                     <!-- Project 3 -->
                     <div class="project-card">
                          <div style="height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; overflow: hidden;">
                             <img src="DA Cards/Lungs cancer.png" alt="Lung Cancer BI" style="width: 100%; height: 100%; object-fit: cover;" />
@@ -575,7 +549,7 @@
                     
                     <div class="reveal" style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
                          <a href="mailto:niranjan991100@gmail.com" class="cta-btn" style="background: #fff; color: #000;">niranjan991100@gmail.com</a>
-                         <div class="icon-grid-hub" style="display: flex; gap: 1.5rem; font-size: 1.5rem;">
+                         <div class="icon-grid-hub">
                              <a href="https://github.com/niranjan910" style="color: #fff;"><i class="fab fa-github"></i></a>
                              <a href="https://www.linkedin.com/in/niranjan-k-a83517229/" style="color: #fff;"><i class="fab fa-linkedin"></i></a>
                          </div>
@@ -589,7 +563,6 @@
         </footer>
 
 		<script>
-			// Minimal script for Reveal animations & Mobile menu
 			const observer = new IntersectionObserver((entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
@@ -606,7 +579,6 @@
                 burger.classList.toggle('active');
             });
             
-            // Close menu when clicking a link
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
