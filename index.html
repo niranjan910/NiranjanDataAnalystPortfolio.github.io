@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="The portfolio of Niranjan Kumar, a professional Data Analyst specializing in SQL, Python, Power BI, and turning data into actionable insights." />
+		<meta name="description" content="Professional portfolio of Niranjan Kumar, a Data Analyst and Frontend Specialist building scalable, business-driven data solutions." />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Niranjan Kumar | Data Analyst Portfolio</title>
 		
@@ -13,7 +13,6 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-
 
 		<link
 			rel="stylesheet"
@@ -51,7 +50,6 @@
 				--transition-slow: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 			}
 
-
 			*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 			html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--border-color) transparent; }
 
@@ -69,7 +67,7 @@
 			.skip-to-content:focus { left: 1rem; top: 1rem; width: auto; height: auto; overflow: auto; z-index: 10000; padding: 0.5rem 1rem; background: var(--accent-gradient); color: var(--card-bg); border-radius: var(--border-radius); font-weight: 700; }
 			
 			main { padding: 0 40px; }
-			section { padding: 120px 0; }
+			section { padding: 100px 0; }
 			h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--text-primary); font-weight: 800; line-height: 1.2; }
 			p { margin-bottom: 1rem; max-width: 65ch; font-size: 1.125rem; line-height: 1.6; }
 			a { text-decoration: none; color: var(--text-secondary); transition: var(--transition-fast); }
@@ -114,7 +112,6 @@
 				color: #ffffff !important;
 				transform: translateY(-4px) scale(1.03);
 			}
-			/* Secondary button on light background */
 			#about .cta-btn-secondary, #projects .cta-btn-secondary, #ml-projects .cta-btn-secondary {
 				background: rgba(255,255,255,0.2);
 				color: var(--accent-start) !important;
@@ -146,7 +143,7 @@
                 font-size: 0.95rem;
                 font-weight: 500;
                 transition: var(--transition-fast);
-                white-space: nowrap; /* PREVENTS TEXT FROM WRAPPING */
+                white-space: nowrap;
             }
             .nav-links li a:hover { color: #ffffff; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
             .nav-links li a.active { font-weight: 700; color: #ffffff; }
@@ -160,9 +157,8 @@
 			#hero { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: 0; margin: 0 -40px; position: relative; color: white; text-align: center; overflow: hidden; background: linear-gradient( 45deg, #081c24, #0d2e3a, #18556d, #14b8a6, #06b6d4, #18556d, #0d2e3a, #081c24 ); background-size: 400% 400%; animation: animated-gradient 15s ease infinite; }
 			#hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(8, 28, 36, 0.5); z-index: 1; }
 			
-			/* --- Animated Particles Background --- */
-			@keyframes move { 100% { transform: translate3d(0, 0, 1px) rotate(360deg); } }
 			.particles { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none;}
+			@keyframes move { 100% { transform: translate3d(0, 0, 1px) rotate(360deg); } }
 			.particle { position: absolute; left: 50%; top: 50%; width: 2px; height: 2px; border-radius: 50%; background: white; }
 
             .hero-content-wrapper { position: relative; z-index: 2; width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; flex-direction: column; align-items: center; }
@@ -170,7 +166,6 @@
 			.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 			.carousel-track { display: flex; transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
 			
-			/* --- NEW CAROUSEL STYLES --- */
 			.carousel-slide {
 				flex: 0 0 100%;
 				width: 100%;
@@ -221,20 +216,15 @@
 			.carousel-dots { display: flex; justify-content: center; gap: 0.75rem; width: 100%; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 5;}
 			.dot { cursor: pointer; height: 8px; width: 8px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; display: inline-block; transition: all 0.3s ease; border: none; }
 			.dot[aria-current="true"] { background-color: var(--accent-end); transform: scale(1.1); }
-			
-			@media (max-width: 768px) { 
-				main { padding: 0 25px; } 
-				#hero { margin: 0 -25px; }
-				.carousel-slide { padding: 1rem 1.5rem; }
-			}
 
-			/* --- ABOUT & OTHER SECTIONS --- */
+			/* --- ABOUT SECTION --- */
 			h2.section-heading { text-align: center; margin-bottom: 4rem; font-size: clamp(28px, 5vw, 40px); position: relative; color: var(--text-primary); }
 			h2.section-heading::after { content: ''; position: absolute; width: 60px; height: 3px; background: var(--accent-gradient); bottom: -15px; left: 50%; transform: translateX(-50%); }
 			
 			.about-redesigned-container { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: flex-start; background-color: rgba(255, 255, 255, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 2rem; border-radius: var(--border-radius-large); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15); border: 1px solid rgba(255, 255, 255, 0.2); }
 			@media (min-width: 992px) { .about-redesigned-container { grid-template-columns: 1fr 2fr; padding: 4rem; } }
-			.avatar-column { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; }
+			
+            .avatar-column { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.5rem; }
 			.avatar-placeholder { 
 				width: 100%; 
 				max-width: 300px; 
@@ -252,77 +242,137 @@
 			.avatar-placeholder::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200%; height: 200%; background: conic-gradient( var(--accent-start), #a855f7, #ec4899, #f59e0b, #06b6d4, #10b981, var(--accent-start) ); animation: spin 8s linear infinite; }
 			.avatar-placeholder img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 2; }
 			@keyframes spin { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-			
-			/* --- DIARY NOTE STYLES --- */
-			.personal-note-notepad {
-				background-color: #fefde8;
-				border: 1px solid #ede8c6;
-				box-shadow: 3px 3px 8px rgba(0,0,0,0.08);
-				border-radius: 6px;
-				padding: 1.5rem 1.5rem 1.5rem 2.5rem;
-				position: relative;
-				width: 100%;
-				max-width: 300px;
-				margin-top: 2.5rem;
-			}
-			.personal-note-notepad::before {
-				content: '';
-				position: absolute;
-				top: 15px;
-				left: 10px;
-				bottom: 15px;
-				width: 3px;
-				background-image: radial-gradient(circle at center, transparent 3px, transparent 3px),
-								  radial-gradient(circle at center, #bbb 2px, transparent 3px);
-				background-size: 3px 18px;
-				background-repeat: repeat-y;
-			}
-			.personal-note-notepad .note-content p {
-				font-family: var(--font-handwriting);
-				font-size: 1.15rem;
-				line-height: 1.7;
-				color: #525252;
-				margin-bottom: 1rem;
-			}
-			.personal-note-notepad .note-content p:last-child {
-				margin-bottom: 0;
-			}
-
 
 			.about-icon-bar { list-style: none; padding: 0; width: 100%; max-width: 300px; }
 			.about-icon-bar li { display: flex; align-items: center; gap: 1rem; font-size: 0.95rem; margin-bottom: 0.75rem; color: var(--text-secondary); }
 			.about-icon-bar li i { font-size: 1.2rem; color: var(--accent-start); width: 20px; text-align: center; }
-			.content-column .about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 3.5rem); }
+			
+            .content-column .about-heading { text-align: left; margin-bottom: 2rem; font-size: clamp(2.5rem, 5vw, 3.5rem); }
 			.content-column .about-heading::after { display: block; position: relative; left: 0; bottom: -10px; transform: none; width: 80px; height: 4px; background: var(--accent-gradient); }
 			.content-column p { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; max-width: 70ch; color: var(--text-secondary); }
 			.about-cta-buttons { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0; }
-			.toolkit-heading { font-family: var(--font-sans); font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.5rem; color: var(--text-primary); }
-			.toolkit-subheading { font-size: 1.1rem; font-weight: 600; color: var(--text-secondary); margin-top: 1.5rem; margin-bottom: 1rem; }
-			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
-			
-			.key-highlights {
-				list-style: none;
-				padding-left: 0;
-				margin: 2.5rem 0;
-			}
-			.key-highlights li {
-				position: relative;
-				padding-left: 1.75rem;
-				margin-bottom: 0.75rem;
-				font-size: 1.05rem;
-				line-height: 1.6;
-				color: var(--text-secondary);
-			}
-			.key-highlights li::before {
-				content: '✓';
-				position: absolute;
-				left: 0;
-				top: 4px;
-				color: var(--accent-start);
-				font-weight: 700;
-				font-size: 1.1rem;
-			}
 
+            /* --- HOW I WORK GRID --- */
+            .work-philosophy-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+            }
+            .philosophy-card {
+                background: rgba(255,255,255,0.5);
+                padding: 2rem;
+                border-radius: var(--border-radius-large);
+                border: 1px solid rgba(255,255,255,0.3);
+                text-align: center;
+                transition: transform 0.3s ease;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            }
+            .philosophy-card:hover {
+                transform: translateY(-5px);
+                background: #fff;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            }
+            .philosophy-icon {
+                font-size: 2.2rem;
+                color: var(--accent-start);
+                margin-bottom: 1.2rem;
+            }
+            .philosophy-card h3 {
+                font-size: 1.15rem;
+                margin-bottom: 0.75rem;
+                color: var(--text-primary);
+            }
+            .philosophy-card p {
+                font-size: 0.95rem;
+                color: var(--text-secondary);
+                line-height: 1.6;
+            }
+
+            /* --- LINKEDIN STYLE EXPERIENCE --- */
+            .experience-section {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+            .experience-item {
+                display: flex;
+                gap: 1.5rem;
+                margin-bottom: 2.5rem;
+                position: relative;
+            }
+            /* Vertical connector */
+            .experience-item:not(:last-child)::before {
+                content: '';
+                position: absolute;
+                top: 55px;
+                left: 24px; /* Centered in the 50px box */
+                width: 2px;
+                height: calc(100% - 30px);
+                background-color: var(--border-color);
+                z-index: 0;
+            }
+            .company-logo {
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
+                background-color: white;
+                border: 1px solid var(--border-color);
+                border-radius: 8px; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1;
+                font-size: 1.5rem;
+                color: var(--accent-start);
+                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            }
+            .experience-content {
+                flex: 1;
+                padding-top: 0;
+            }
+            .exp-role {
+                font-size: 1.15rem;
+                font-weight: 700;
+                color: var(--text-primary);
+                margin-bottom: 0.1rem;
+            }
+            .exp-company {
+                font-size: 1rem;
+                color: var(--text-primary);
+                margin-bottom: 0.1rem;
+            }
+            .exp-meta {
+                font-size: 0.9rem;
+                color: var(--text-secondary);
+                display: block;
+                margin-bottom: 1rem;
+            }
+            .exp-skills {
+                font-size: 0.9rem;
+                color: var(--text-secondary);
+                margin-top: 0.5rem;
+                font-style: italic;
+            }
+            .exp-skills i { color: var(--accent-start); margin-right: 5px; }
+
+			/* --- SKILLS UPDATES --- */
+            .skills-category {
+                background: rgba(255, 255, 255, 0.4);
+                border: 1px solid rgba(255,255,255,0.2);
+                padding: 1.5rem;
+                border-radius: var(--border-radius-large);
+                margin-bottom: 1.5rem;
+                backdrop-filter: blur(10px);
+            }
+            .skills-category h4 {
+                color: var(--text-primary);
+                margin-bottom: 1.25rem;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+			.skills-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
 			.skill-badge { 
 				display: inline-flex; align-items: center; gap: 0.75rem; 
 				background-color: #ffffff;
@@ -334,93 +384,88 @@
 			}
 			.skill-badge:hover { transform: translateY(-4px); box-shadow: 0 8px 15px var(--shadow-color); }
 			.skill-badge i { color: var(--accent-start); font-size: 1.25rem; }
-			
-			/* --- MY JOURNEY SECTION REFINEMENT --- */
-			.stepper-container { max-width: 800px; margin: 0 auto; position: relative; }
-			.stepper-item { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; position: relative; padding-bottom: 2rem; }
-			.stepper-item::before { 
-				content: ''; 
-				position: absolute; 
-				left: 24px; 
-				top: 0; 
-				bottom: 0;
-				width: 2px; 
-				background: var(--border-color); 
-				z-index: 0; 
-			}
-			.stepper-item:last-child { padding-bottom: 0; }
-			.stepper-item:last-child::before { display: none; }
-			.stepper-meta { 
-				text-align: center; 
-				position: relative;
-				z-index: 1;
-			}
-			.stepper-icon { 
-				font-size: 1.8rem; 
-				color: var(--accent-start); 
-				background-color: #f0f4f8; 
-				border-radius: 50%; 
-				width: 50px; 
-				height: 50px; 
-				display: inline-flex; 
-				align-items: center; 
-				justify-content: center; 
-				position: relative;
-			}
-			.stepper-date { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); margin-top: 0.75rem; }
-			.stepper-content .timeline-card { padding: 1.5rem; background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: var(--border-radius-large); box-shadow: 0 4px 12px var(--shadow-color); transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.2); }
-			.stepper-content .timeline-card:hover { transform: translateY(-8px); box-shadow: 0 12px 24px rgba(20, 184, 166, 0.12); border-color: var(--accent-start); }
-			.stepper-content .timeline-card h3 { font-size: 1.25rem; margin: 0 0 0.25rem; }
-			.stepper-content .timeline-card .org { font-size: 1rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 1rem; display: block; }
-			.stepper-content .timeline-card p { font-size: 0.95rem; margin-bottom: 0; max-width: 100%; line-height: 1.7; }
-			.stepper-content .timeline-card .skills-highlight {
-				font-size: 0.9rem;
-				font-style: italic;
-				color: var(--text-secondary);
-				margin-top: 1rem;
-				padding-top: 1rem;
-				border-top: 1px solid var(--border-color);
-			}
-			
-			@media (max-width: 768px) { .stepper-item { grid-template-columns: 60px 1fr; gap: 1rem; } .stepper-item::before { left: 29px; } .stepper-icon { width: 40px; height: 40px; font-size: 1.5rem; } }
-			
-			#projects .section-heading, #ml-projects .section-heading, #dashboards .section-heading { text-align: left; }
-			#projects .section-heading::after, #ml-projects .section-heading::after, #dashboards .section-heading::after { left: 0; transform: none; }
-			
-			.projects-grid, .dashboards-grid { 
-				list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; 
-				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-			}
-			.projects-footer { margin-top: 3rem; text-align: center; }
 
+			/* --- PROJECT CARDS & GRIDS --- */
+            .projects-grid, .dashboards-grid { 
+				list-style: none; padding: 0; margin: 0; display: grid; gap: 2rem; 
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+			}
+            
+            /* Professional Highlight Card */
+            .prof-project-container { margin-bottom: 3rem; }
+            .prof-project-card {
+                display: flex;
+                flex-direction: column;
+                background: white;
+                border: 1px solid rgba(20, 184, 166, 0.2);
+                border-radius: var(--border-radius-large);
+                overflow: hidden;
+                box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            }
+            @media (min-width: 768px) {
+                .prof-project-card { flex-direction: row; }
+                .prof-project-img { width: 40%; min-height: 250px; }
+                .prof-project-content { width: 60%; padding: 2.5rem; }
+            }
+            .prof-project-img {
+                background: var(--bg-main);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-family: var(--font-hero);
+                font-size: 3rem;
+                padding: 2rem;
+            }
+            .prof-project-content {
+                padding: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .prof-badge {
+                background: var(--accent-gradient);
+                color: white;
+                padding: 4px 12px;
+                border-radius: 99px;
+                font-size: 0.75rem;
+                font-weight: 700;
+                width: fit-content;
+                margin-bottom: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            /* Regular Project Cards */
 			.project-card, .dashboard-card { 
 				background-color: var(--card-bg); 
 				border-radius: var(--border-radius-large);
 				box-shadow: 0 4px 12px var(--shadow-color); 
 				overflow: hidden; 
 				border: 1px solid var(--border-color);
-				display: flex; /* ADDED FOR ALIGNMENT */
-				flex-direction: column; /* ADDED FOR ALIGNMENT */
+				display: flex;
+				flex-direction: column; 
 			}
 
-			.project-card .project-image, .dashboard-card .dashboard-image { 
+			.project-card .project-image { 
 				width: 100%; height: 200px; object-fit: cover;
 				border-bottom: 1px solid var(--border-color); 
 			}
-			.project-card .card-body, .dashboard-card .dashboard-body { 
+			.project-card .card-body { 
 				padding: 1.5rem; 
 				flex-grow: 1; 
 				display: flex; 
 				flex-direction: column;
 			}
-			.project-card h3.project-title, .dashboard-card .dashboard-title { 
+			.project-card h3.project-title { 
 				font-size: 1.25rem; margin-bottom: 0.5rem; font-weight: 700; 
 			}
-			.project-card .project-description, .dashboard-card .dashboard-description { 
+			.project-card .project-description { 
 				font-size: 1rem; 
 				line-height: 1.6; 
-				flex-grow: 1; /* Pushes footer down */
+				flex-grow: 1;
 				margin-bottom: 1rem; 
+                color: var(--text-secondary);
 			}
 			.project-card .card-footer { 
 				display: flex; 
@@ -432,31 +477,7 @@
 			}
 			.project-card .project-tech-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0; }
 			.project-card .project-tech-list li { background: var(--accent-tint); color: var(--accent-start); font-size: 0.8rem; font-weight: 500; padding: 5px 12px; border-radius: 99px; }
-			
-			/* --- NEW DASHBOARDS SECTION SPECIFIC STYLES --- */
-			.dashboard-card .dashboard-image-wrapper { width: 100%; height: 220px; overflow: hidden; }
-			.dashboard-card .dashboard-image { border-bottom: none; object-position: top center; transition: transform 0.6s ease; }
-			.dashboard-card:hover .dashboard-image { transform: scale(1.1); }
-			
-			.dashboard-overlay {
-				position: absolute;
-				top: 0; left: 0; right: 0; bottom: 0;
-				background: linear-gradient(to top, rgba(10, 25, 47, 0.98), rgba(10, 25, 47, 0.75));
-				color: #e6f1ff;
-				padding: 1.5rem;
-				opacity: 0;
-				visibility: hidden;
-				transition: opacity 0.4s ease, visibility 0.4s ease;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: flex-start;
-			}
-			.dashboard-card:hover .dashboard-overlay { opacity: 1; visibility: visible; }
-			.dashboard-overlay h4 { color: var(--accent-end); font-weight: 700; margin-bottom: 0.75rem; }
-			.dashboard-overlay ul { list-style: none; padding: 0; margin: 0 0 1.5rem 0; }
-			.dashboard-overlay ul li { font-size: 0.9rem; margin-bottom: 0.5rem; position: relative; padding-left: 1.25rem; }
-			.dashboard-overlay ul li::before { content: '›'; position: absolute; left: 0; color: var(--accent-end); font-weight: bold; }
+            .projects-footer { margin-top: 3rem; text-align: center; }
 
 			.project-view-button {
 				display: inline-block;
@@ -483,10 +504,9 @@
 				filter: brightness(1.1);
 			}
 			
-            #certs { background-color: transparent; margin: 0; padding: 100px 0; }
+            /* --- CERTS GRID --- */
 			#certs .section-heading::after { background: var(--accent-gradient); }
 			.certs-grid { display: grid; gap: 2rem; list-style: none; padding: 0; margin: 0; }
-
 			.cert-card { 
 				background-color: rgba(255,255,255,0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
 				border-radius: var(--border-radius-large); 
@@ -506,6 +526,7 @@
 			@media (min-width: 769px) and (max-width: 1200px) { .certs-grid { grid-template-columns: repeat(2, 1fr); } }
 			@media (max-width: 768px) { .certs-grid { grid-template-columns: 1fr; } }
 			
+            /* --- MODALS --- */
 			.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; opacity: 0; visibility: hidden; transition: all 0.3s ease; backdrop-filter: blur(5px); }
 			.modal-overlay.active { opacity: 1; visibility: visible; }
 			.modal-content { background: var(--card-bg); border-radius: 16px; padding: 2rem; max-width: 900px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; transform: scale(0.9); transition: transform 0.3s ease; }
@@ -520,6 +541,7 @@
 			.modal-verify-link { display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; padding: 10px 20px; background: var(--accent-gradient); color: var(--card-bg) !important; border-radius: 8px; font-weight: 600; transition: var(--transition-fast); }
 			.modal-verify-link:hover { opacity: 1; filter: brightness(1.1); transform: translateY(-2px); }
 			
+            /* --- CONTACT --- */
             #contact .section-heading::after { background: var(--accent-gradient); }
 			.contact-subtext { text-align: center; font-size: 1.1rem; max-width: 60ch; margin: -2rem auto 4rem; color: var(--text-secondary); }
 			.contact-layout-grid { display: flex; gap: 3rem; align-items: flex-start; max-width: 1200px; margin: 0 auto; }
@@ -528,20 +550,19 @@
 			.icon-grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; }
 			
 			.contact-card { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; background-color: rgba(255,255,255,0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 1.5rem; border-radius: var(--border-radius-large); box-shadow: 0 4px 15px var(--shadow-color); text-align: center; transition: var(--transition-fast); color: var(--text-primary); font-weight: 500; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.2); }
-			.contact-card i { font-size: 2rem; /* ICON SIZE REDUCED */ transition: var(--transition-fast); }
+			.contact-card i { font-size: 2rem; transition: var(--transition-fast); }
 			.contact-card:hover { transform: translateY(-8px); opacity: 1; border-color: var(--accent-start); }
 			.contact-card:hover i { transform: scale(1.1); filter: brightness(1.1); }
-			.contact-card.github:hover i { color: #333333; } .contact-card.behance:hover i { color: #053eff; } .contact-card.dribbble:hover i { color: #ea4c89; } .contact-card.linkedin:hover i { color: #0a66c2; } .contact-card.gmail:hover i { color: #ea4335; } .contact-card.phone:hover i { color: #10b981; } .contact-card.instagram:hover i { color: #e1306c; }
+			.contact-card.github:hover i { color: #333333; } .contact-card.linkedin:hover i { color: #0a66c2; } .contact-card.gmail:hover i { color: #ea4335; } .contact-card.phone:hover i { color: #10b981; }
 			
 			.contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
 			.contact-form input, .contact-form textarea { width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.3); background-color: rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); font-family: var(--font-sans); font-size: 1rem; color: var(--text-primary); transition: all 0.2s ease-in-out; box-shadow: 0 4px 10px rgba(0,0,0,0.05);}
 			.contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--text-secondary); opacity: 0.7; }
 			.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent-start); background-color: rgba(255, 255, 255, 0.7); box-shadow: 0 0 0 4px var(--accent-tint); }
-			
             .send-message-btn { width: 100%; border: none; cursor: pointer;}
 			
 			.footer { 
-				text-align: center; /* Ensures content is centered */
+				text-align: center; 
 				padding: 2rem; 
 				font-size: 0.9rem;
 				margin: 100px 40px 40px 40px;
@@ -556,7 +577,10 @@
 			.hamburger-menu { display: none; z-index: 1001; }
 			@media (max-width: 992px) { .contact-layout-grid { flex-direction: column; gap: 4rem; } }
 			@media (max-width: 768px) { 
-				section { padding: 80px 0; }
+				section { padding: 60px 0; }
+				main { padding: 0 25px; } 
+				#hero { margin: 0 -25px; }
+				.carousel-slide { padding: 1rem 1.5rem; }
 				
 				.main-nav { background: transparent; border: none; box-shadow: none; width: 90%; }
 				.main-nav.nav-scrolled { background: transparent; }
@@ -606,69 +630,61 @@
 				transform: translateY(20px);
 				transition: all 0.3s ease;
 			}
-			#backToTopBtn.visible {
-				opacity: 1;
-				visibility: visible;
-				transform: translateY(0);
-			}
-			#backToTopBtn:hover {
-				color: white;
-				filter: brightness(1.1);
-				transform: scale(1.05);
-			}
+			#backToTopBtn.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+			#backToTopBtn:hover { color: white; filter: brightness(1.1); transform: scale(1.05); }
 		</style>
 	</head>
 	<body>
 		<a href="#main-content" class="skip-to-content">Skip to Content</a>
 
-		<nav class="main-nav" id="mainNav">
-			<div class="nav-links" id="navLinks">
-				<ol>
-					<li><a href="#about" class="active">About</a></li>
-					<li><a href="#journey">My Journey</a></li>
-					<li><a href="#projects">Data Analytics</a></li>
-					<li><a href="#ml-projects">Machine Learning</a></li>
-					<li><a href="#dashboards">Dashboards</a></li>
-					<li><a href="#certs">Certificates</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ol>
-			</div>
-		</nav>
+        <!-- NAV BAR (Updated links order) -->
+        <nav class="main-nav" id="mainNav">
+            <div class="nav-links" id="navLinks">
+                <ol>
+                    <li><a href="#about" class="active">Profile</a></li>
+                    <li><a href="#how-i-work">Workflow</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Work</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ol>
+            </div>
+        </nav>
+
         <button class="hamburger-menu" id="hamburgerMenu" aria-label="Open Menu">
             <div class="bar"></div><div class="bar"></div><div class="bar"></div>
         </button>
         
 		<main id="main-content">
+            <!-- 1. HERO SECTION -->
 			<section id="hero">
-                <div class="particles">
-                    <!-- Particles will be generated by JS -->
-                </div>
+                <div class="particles"></div>
 				<div class="hero-content-wrapper">
 					<div class="carousel-container">
 						<div class="visually-hidden" aria-live="polite" aria-atomic="true" id="carousel-live-region"></div>
 						<div class="carousel-track">
-							<!-- Slide 1: Left Aligned -->
-							<div class="carousel-slide active slide-align-left" role="group" aria-roledescription="slide" data-slide-name="I GIVE DATA A VOICE">
+							<!-- Slide 1 -->
+							<div class="carousel-slide active slide-align-left">
 								<div class="slide-content">
-									<p class="slide-intro">Turning Numbers into Narratives</p>
-									<h1 class="slide-headline">I GIVE DATA A VOICE</h1>
-									<p class="slide-bottom-line">By uncovering hidden patterns and presenting them in a way that everyone can understand and act upon.</p>
+									<p class="slide-intro">Hi, I'm Niranjan</p>
+									<h1 class="slide-headline">DATA ANALYST <br> SQL, PYTHON, POWER BI</h1>
+									<p class="slide-bottom-line">I build scalable data solutions and turn complex datasets into clear, actionable business strategies.</p>
 								</div>
 							</div>
-							<!-- Slide 2: Center Aligned -->
-							<div class="carousel-slide slide-align-center" role="group" aria-roledescription="slide" data-slide-name="SQL & PYTHON MASTERY">
+							<!-- Slide 2 -->
+							<div class="carousel-slide slide-align-center">
 								<div class="slide-content">
-									<p class="slide-intro">The Power Behind My Insights</p>
-									<h1 class="slide-headline">SQL & PYTHON MASTERY</h1>
-									<p class="slide-bottom-line">With strong command over SQL and Python, I transform raw, scattered data into meaningful insights that drive smarter decisions.</p>
+									<p class="slide-intro">Beyond the Code</p>
+									<h1 class="slide-headline">BUSINESS-FOCUSED ANALYTICS</h1>
+									<p class="slide-bottom-line">I don't just run queries. I maintain production-ready code, collaborate across teams, and solve actual business problems.</p>
 								</div>
 							</div>
-							<!-- Slide 3: Right Aligned -->
-							<div class="carousel-slide slide-align-right" role="group" aria-roledescription="slide" data-slide-name="DATA-DRIVEN DECISIONS">
+							<!-- Slide 3 -->
+							<div class="carousel-slide slide-align-right">
 								<div class="slide-content">
-									<p class="slide-intro">Shaping the Future with Analytics</p>
-									<h1 class="slide-headline">DATA-DRIVEN DECISIONS</h1>
-									<p class="slide-bottom-line">I turn analysis into actionable strategies that help organizations grow with clarity and confidence.</p>
+									<p class="slide-intro">Technical Workflow</p>
+									<h1 class="slide-headline">VERSION CONTROL & AUTOMATION</h1>
+									<p class="slide-bottom-line">Leveraging Git, GitHub, and Python automation to ensure data integrity and reliable reporting.</p>
 								</div>
 							</div>
 						</div>
@@ -677,6 +693,7 @@
                 <div class="carousel-dots"></div>
 			</section>
 
+            <!-- 2. ABOUT ME SECTION -->
 			<section id="about">
 				<div class="about-redesigned-container reveal">
 					<div class="avatar-column">
@@ -685,259 +702,213 @@
 						</div>
 
 						<ul class="about-icon-bar">
-							<li><i class="fas fa-briefcase"></i> Data Analyst | Data Scientist</li>
-							<li><i class="fas fa-map-marker-alt"></i> Hyderabad, Telangana</li>
-							<li><i class="fas fa-envelope"></i> <a href="mailto:niranjan991100@gmail.com">niranjan991100@gmail.com</a></li>
-							<li><i class="fas fa-phone"></i> <a href="tel:+919641143646">+91 964-114-3646</a></li>
+                            <li><i class="fas fa-briefcase"></i> Data Analyst</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Noida & Hyderabad, India</li>
+                            <li><i class="fab fa-github"></i> <a href="https://github.com/niranjan910" target="_blank">github.com/niranjan910</a></li>
 						</ul>
-						
-						<div class="personal-note-notepad">
-							<div class="note-content">
-								<p>AI has been my silent mentor, helping me learn smarter, practice better, and build faster.</p>
-								<p>From mastering new tools to experimenting with projects, I’ve used AI to break down complex concepts into daily learning steps.</p>
-								<p>Every model I train, every dataset I explore — I’m not just learning data science, I’m learning how to learn with AI.</p>
-								<p>This journey isn’t about replacing my skills, but amplifying them with AI.</p>
-								<p>And that’s how I keep leveling up — one AI-powered step at a time.</p>
-							</div>
-						</div>
-
 					</div>
 					<div class="content-column">
-						<h2 class="section-heading about-heading">About Me</h2>
-						<p>I’m a data enthusiast who believes every dataset hides a story. What started as a curiosity in analyzing cricket scores has now grown into a passion for transforming raw numbers into powerful business insights.</p>
-						<p>I specialize in bridging the gap between data and decision-making, delivering solutions that have improved data processing efficiency by up to 30% through Python, SQL, and machine learning.</p>
-						<p>Beyond analytics, I’m an avid traveler — I’ve explored 17 states across India in the last 4 years, which has shaped my adaptability, curiosity, and love for discovery.</p>
-						<div class="about-cta-buttons">
+						<h2 class="section-heading about-heading">Professional Profile</h2>
+						<p>I am a <strong>Data Analyst and Frontend Specialist</strong> with a focus on maintainable, scalable, and business-driven solutions. </p>
+                        <p>Currently working with <strong>SmartSchool Education Ltd</strong>, I bridge the gap between technical data processes and strategic marketing initiatives. My experience spans from designing full-scale production websites (handling visitor registration and information flow) to deploying predictive models for pricing and adoption.</p>
+                        <p>I operate with a product-first mindset—using <strong>Git</strong> for version control and <strong>Python</strong> to automate manual workflows—ensuring that the insights I deliver are not just accurate, but reproducible and easy to maintain long-term.</p>
+						
+                        <div class="about-cta-buttons">
 							<a href="https://drive.google.com/file/d/15AzYYz-2upPrIMtQ5fvUyfEJKmSGanrm/view?usp=drive_link" class="cta-btn cta-btn-primary" target="_blank">Download Resume</a>
-							<a href="#projects" class="cta-btn cta-btn-secondary">View My Projects</a>
+							<a href="#experience" class="cta-btn cta-btn-secondary">View Experience</a>
 						</div>
-						<h3 class="toolkit-heading">Key Highlights</h3>
-						<ul class="key-highlights">
-							<li>Skilled in end-to-end data wrangling, visualization, and predictive analytics.</li>
-							<li>Designed and deployed predictive ML models that forecasted trends with over 90% accuracy in retail and healthcare.</li>
-							<li>Strong expertise in SQL, Python, Power BI & cloud platforms to deliver actionable insights.</li>
-							<li>An explorer at heart, blending deep curiosity with a relentless problem-solving mindset.</li>
-						</ul>
-						<h3 class="toolkit-heading">My Professional Toolkit</h3>
-						<h4 class="toolkit-subheading">Analytics & BI</h4>
-						<div class="skills-grid">
-							<div class="skill-badge"><i class="fas fa-file-excel"></i><span>Advanced Excel</span></div>
-							<div class="skill-badge"><i class="fas fa-chart-bar"></i><span>Power BI</span></div>
-							<div class="skill-badge"><i class="fas fa-chart-pie"></i><span>Tableau</span></div>
-						</div>
-						<h4 class="toolkit-subheading">ML & AI</h4>
-						<div class="skills-grid">
-							<div class="skill-badge"><i class="fas fa-robot"></i><span>Scikit-learn</span></div>
-							<div class="skill-badge"><i class="fas fa-brain"></i><span>TensorFlow</span></div>
-							<div class="skill-badge"><i class="fas fa-chart-line"></i><span>Regression & Classification</span></div>
-						</div>
-						<h4 class="toolkit-subheading">Databases & Data Wrangling</h4>
-						<div class="skills-grid">
-							<div class="skill-badge"><i class="fas fa-database"></i><span>SQL</span></div>
-							<div class="skill-badge"><i class="fab fa-python"></i><span>Python (Pandas, NumPy)</span></div>
-							<div class="skill-badge"><i class="fas fa-database"></i><span>MySQL</span></div>
-						</div>
-						<h4 class="toolkit-subheading">Cloud & Tools</h4>
-						<div class="skills-grid">
-							<div class="skill-badge"><i class="fas fa-cloud"></i><span>Microsoft Azure</span></div>
-							<div class="skill-badge"><i class="fas fa-fire"></i><span>Apache Spark</span></div>
-							<div class="skill-badge"><i class="fas fa-cogs"></i><span>ETL Processes</span></div>
-							<div class="skill-badge"><i class="fab fa-git-alt"></i><span>Git & GitHub</span></div>
-							<div class="skill-badge"><i class="fab fa-jira"></i><span>Jira</span></div>
-						</div>
-						<p style="margin-top: 3rem; font-weight: 600; color: var(--text-primary);">I’m always open to new projects, collaborations, and data challenges — let’s connect and create impact together.</p>
 					</div>
 				</div>
 			</section>
 
-			<section id="journey">
-				<h2 class="section-heading reveal">My Journey</h2>
-				<div class="stepper-container">
-					<div class="stepper-item reveal">
-						<div class="stepper-meta">
-							<span class="stepper-icon"><i class="fas fa-briefcase"></i></span>
-							<p class="stepper-date">Feb 2025 – Jul 2025</p>
-						</div>
-						<div class="stepper-content">
-							<div class="timeline-card">
-								<h3>Data Analyst</h3>
-								<span class="org">Naresh i Technologies · Trainee (Hyderabad, Telangana)</span>
-								<p>Completed an intensive training program covering end-to-end data analysis, from cleaning and statistical analysis to advanced visualization.</p>
-								<p class="skills-highlight"><strong>Skills:</strong> SQL, Python, Power BI, Tableau, Excel.</p>
-							</div>
-						</div>
-					</div>
-					<div class="stepper-item reveal">
-						<div class="stepper-meta">
-							<span class="stepper-icon"><i class="fas fa-briefcase"></i></span>
-							<p class="stepper-date">Aug 2024 – Jan 2025</p>
-						</div>
-						<div class="stepper-content">
-							<div class="timeline-card">
-								<h3>Data Science with ML</h3>
-								<span class="org">TechieNest · Trainee (Jaipur, Rajasthan)</span>
-								<p>Gained hands-on experience by applying machine learning algorithms to real-world datasets to build and evaluate predictive models.</p>
-								<p class="skills-highlight"><strong>Skills:</strong> Machine Learning, Predictive Modeling, Python.</p>
-							</div>
-						</div>
-					</div>
-					<div class="stepper-item reveal">
-						<div class="stepper-meta">
-							<span class="stepper-icon"><i class="fas fa-graduation-cap"></i></span>
-							<p class="stepper-date">Aug 2019 – May 2023</p>
-						</div>
-						<div class="stepper-content">
-							<div class="timeline-card">
-								<h3>Bachelor of Technology, CSE</h3>
-								<span class="org">IPS College of Technology & Management, Gwalior</span>
-								<p>Graduated with a grade of 8.9, building a strong foundation in computer software engineering, data structures, and algorithms.</p>
-								<p class="skills-highlight"><strong>Foundation:</strong> Python, Algorithms, Data Science.</p>
-							</div>
-						</div>
-					</div>
-					<div class="stepper-item reveal">
-						<div class="stepper-meta">
-							<span class="stepper-icon"><i class="fas fa-graduation-cap"></i></span>
-							<p class="stepper-date">Aug 2017 – May 2018</p>
-						</div>
-						<div class="stepper-content">
-							<div class="timeline-card">
-								<h3>Senior Secondary (XII), Computer Science Stream</h3>
-								<span class="org">DAV Public School, West Baengal</span>
-								<p>Completed senior secondary education with a grade of 8.7, excelling in analytical and quantitative subjects.</p>
-								<p class="skills-highlight"><strong>Skills:</strong> Analytical Reasoning, Problem-Solving.</p>
-							</div>
-						</div>
-					</div>
-					<div class="stepper-item reveal">
-						<div class="stepper-meta">
-							<span class="stepper-icon"><i class="fas fa-graduation-cap"></i></span>
-							<p class="stepper-date">Apr 2015 – Jul 2016</p>
-						</div>
-						<div class="stepper-content">
-							<div class="timeline-card">
-								<h3>Secondary Education (X)</h3>
-								<span class="org">DAV Public School, West Bengal</span>
-								<p>Achieved a grade of 9.2, establishing a strong academic foundation across all general studies.</p>
-								<p class="skills-highlight"><strong>Skills:</strong> Foundational Academics.</p>
-							</div>
-						</div>
-					</div>
+            <!-- 3. HOW I WORK SECTION -->
+            <section id="how-i-work">
+                <div class="hero-content-wrapper reveal">
+                    <h2 class="section-heading" style="text-align: center;">How I Work</h2>
+                    <p style="text-align: center; margin: 0 auto 3rem;">I bring professional rigor to every project, moving beyond "making it work" to "making it sustainable."</p>
+                    
+                    <div class="work-philosophy-grid">
+                        <div class="philosophy-card">
+                            <i class="fab fa-git-alt philosophy-icon"></i>
+                            <h3>Version Control First</h3>
+                            <p>I use Git & GitHub for all projects. Clean commit histories and branches ensure that my work is trackable, collaborative, and roll-back ready.</p>
+                        </div>
+                        <div class="philosophy-card">
+                            <i class="fas fa-code philosophy-icon"></i>
+                            <h3>Maintainable Code</h3>
+                            <p>I write modular Python and clean SQL. Documentation isn't an afterthought—it's part of the delivery to ensure team continuity.</p>
+                        </div>
+                        <div class="philosophy-card">
+                            <i class="fas fa-briefcase philosophy-icon"></i>
+                            <h3>Business Integration</h3>
+                            <p>Data doesn't exist in a vacuum. I focus on Presales and Marketing metrics (SEO, conversion) to align technical output with revenue goals.</p>
+                        </div>
+                        <div class="philosophy-card">
+                            <i class="fas fa-layer-group philosophy-icon"></i>
+                            <h3>Production Readiness</h3>
+                            <p>From organizing Expo assets to deploying models, I treat every project as a production deliverable, optimized for uptime and usability.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. EXPERIENCE SECTION (Vertical LinkedIn Style) -->
+			<section id="experience">
+				<h2 class="section-heading reveal" style="text-align: center;">Professional Experience</h2>
+				<div class="experience-section reveal">
+                    
+                    <!-- Job 1 -->
+                    <div class="experience-item">
+                        <div class="company-logo"><i class="fas fa-building"></i></div>
+                        <div class="experience-content">
+                            <div class="exp-role">Marketing Specialist</div>
+                            <div class="exp-company">SmartSchool Education Ltd · Full-time</div>
+                            <span class="exp-meta">Nov 2025 – Present · Noida, Uttar Pradesh, India (On-site)</span>
+                            <p>Leading digital asset management and analytics to optimize marketing channels.</p>
+                            <div class="exp-skills"><i class="fas fa-tools"></i> <strong>Skills:</strong> Ahrefs, Figma, SEO, Marketing Analytics, Google Analytics.</div>
+                        </div>
+                    </div>
+        
+                    <!-- Job 2 -->
+                    <div class="experience-item">
+                        <div class="company-logo"><i class="fas fa-user-tie"></i></div>
+                        <div class="experience-content">
+                            <div class="exp-role">Presales Specialist</div>
+                            <div class="exp-company">SmartSchool Education Ltd · Full-time</div>
+                            <span class="exp-meta">Oct 2025 – Jan 2026 · Noida, Uttar Pradesh, India (On-site)</span>
+                            <p>Bridged technical product capabilities with client business requirements to drive solution adoption.</p>
+                            <div class="exp-skills"><i class="fas fa-tools"></i> <strong>Focus:</strong> Technical Presales, Requirements Engineering, Client Communication.</div>
+                        </div>
+                    </div>
+        
+                    <!-- Job 3 -->
+                    <div class="experience-item">
+                        <div class="company-logo"><i class="fas fa-code-branch"></i></div>
+                        <div class="experience-content">
+                            <div class="exp-role">Data Analyst Trainee</div>
+                            <div class="exp-company">Naresh i Technologies</div>
+                            <span class="exp-meta">Feb 2025 – Jul 2025 · Hyderabad</span>
+                            <p>Intensive hands-on development in full-stack data analysis cycles (ETL, Visualization, Reporting).</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Job 4 -->
+                    <div class="experience-item">
+                        <div class="company-logo"><i class="fas fa-brain"></i></div>
+                        <div class="experience-content">
+                            <div class="exp-role">Machine Learning Trainee</div>
+                            <div class="exp-company">TechieNest</div>
+                            <span class="exp-meta">Aug 2024 – Jan 2025 · Jaipur</span>
+                            <p>Built and evaluated predictive models using real-world datasets for business forecasting.</p>
+                        </div>
+                    </div>
 				</div>
 			</section>
+
+            <!-- 5. SKILLS SECTION -->
+            <section id="skills">
+                <h2 class="section-heading reveal" style="text-align: center;">Technical Toolkit</h2>
+                <div class="reveal" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    
+                    <div class="skills-category">
+                        <h4><i class="fas fa-database"></i> Data Analysis & Engineering</h4>
+                        <div class="skills-grid">
+                            <div class="skill-badge"><i class="fas fa-database"></i> SQL (MySQL)</div>
+                            <div class="skill-badge"><i class="fab fa-python"></i> Python (Pandas/NumPy)</div>
+                            <div class="skill-badge"><i class="fas fa-file-excel"></i> Advanced Excel</div>
+                        </div>
+                    </div>
+        
+                    <div class="skills-category">
+                        <h4><i class="fas fa-chart-pie"></i> Data Visualization</h4>
+                        <div class="skills-grid">
+                            <div class="skill-badge"><i class="fas fa-chart-bar"></i> Power BI</div>
+                            <div class="skill-badge"><i class="fas fa-chart-area"></i> Tableau</div>
+                            <div class="skill-badge"><i class="fas fa-search-dollar"></i> Seaborn/Matplotlib</div>
+                        </div>
+                    </div>
+        
+                    <div class="skills-category">
+                        <h4><i class="fas fa-laptop-code"></i> Workflow & Version Control</h4>
+                        <div class="skills-grid">
+                            <div class="skill-badge"><i class="fab fa-git-alt"></i> Git</div>
+                            <div class="skill-badge"><i class="fab fa-github"></i> GitHub</div>
+                            <div class="skill-badge"><i class="fas fa-project-diagram"></i> SDLC Concepts</div>
+                        </div>
+                    </div>
+        
+                    <div class="skills-category">
+                        <h4><i class="fas fa-globe"></i> Web Development (Support)</h4>
+                        <div class="skills-grid">
+                            <div class="skill-badge"><i class="fab fa-html5"></i> HTML5</div>
+                            <div class="skill-badge"><i class="fab fa-css3-alt"></i> CSS3</div>
+                            <div class="skill-badge"><i class="fab fa-js"></i> JavaScript</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 			
+			<!-- 6. PROFESSIONAL & PROJECT WORK -->
 			<section id="projects">
-				<h2 class="section-heading reveal">Data Analytics Project</h2>
-				<ul class="projects-grid">
-					<li class="project-card reveal"><img src="DA Cards/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Excel</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 150ms"><img src="DA Cards/Covid 19.png" alt="Covid dashboard" class="project-image" /><div class="card-body"><h3 class="project-title">COVID-19 Hospitalization</h3><p class="project-description">Visualized COVID-19 hospitalization rates by processing real-time JSON data with Python.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>JSON</li></ul><a href="https://github.com/niranjan910/COVID-19_Hospitalization_Rates_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 300ms"><img src="DA Cards/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 450ms"><img src="DA Cards/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">AI Lung Diagnostics</h3><p class="project-description">Developed interactive Power BI dashboards for lung cancer diagnostics, powered by SQL data mining.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View</a></div></div></li>
-				</ul>
-			</section>
-			
-			<section id="ml-projects">
-				<h2 class="section-heading reveal">Machine Learning Project</h2>
-				<ul class="projects-grid">
-					<li class="project-card reveal"><img src="ML Cards image/Car Price prediction.png" alt="Car Price Prediction" class="project-image" /><div class="card-body"><h3 class="project-title">Car Price prediction</h3><p class="project-description">Built a car price prediction model using Linear Regression with 87% test accuracy through EDA, feature engineering, and cross-validation.</p><div class="card-footer"><ul class="project-tech-list"><li>Machine Learning</li><li>Linear Regression</li></ul><a href="https://github.com/niranjan910/Car-Price-Prediction-LinearRegression" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 150ms"><img src="ML Cards image/Titanic Dataset.png" alt="Titanic Survival: Logistic Regression”" class="project-image" /><div class="card-body"><h3 class="project-title">Titanic Survival: Logistic Regression”</h3><p class="project-description">Predicting passenger survival on the Titanic using Logistic Regression and key demographic & travel features.</p><div class="card-footer"><ul class="project-tech-list"><li>LogisticRegression</li><li>MachineLearning</li></ul><a href="https://github.com/niranjan910/Titanic-Survival-Prediction-Logistic-Regression" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 300ms"><img src="images/EV Project image.png" alt="U.S. EV Adoption Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">U.S. EV Adoption Analysis</h3><p class="project-description">An end-to-end project leveraging Python and SQL to build a data pipeline and deliver actionable insights.</p><div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>SQL</li></ul><a href="https://github.com/niranjan910/U.S._Electric_Vehicle_Adoption_Analysis" class="project-view-button" target="_blank">View</a></div></div></li>
-					<li class="project-card reveal" style="--delay: 450ms"><img src="images/placeholder.png" alt="Excel Financial Modeling" class="project-image" /><div class="card-body"><h3 class="project-title">Excel Financial Modeling</h3><p class="project-description">Developed a comprehensive financial model in Excel for business planning and valuation.</p<div class="card-footer"><ul class="project-tech-list"><li>Excel</li><li>Finance</li></ul> <a href="https://github.com/niranjan910" class="project-view-button" target="_blank">View</a></div></div></li>
-				</ul>
-				<div class="projects-footer reveal">
-					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View All on GitHub</a>
-				</div>
-			</section>
+                <!-- PROFESSIONAL WORK HIGHLIGHT -->
+                <div class="prof-project-container reveal">
+                    <h3 class="contact-heading">Professional Development Work</h3>
+                    <div class="prof-project-card">
+                        <div class="prof-project-img">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="prof-project-content">
+                            <span class="prof-badge">Live Production</span>
+                            <h3>EGN Expo Website Ecosystem</h3>
+                            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Developed and maintained the digital infrastructure for a major exposition event. This was a dynamic business tool handling distinct user flows rather than just a static page.</p>
+                            <ul style="list-style: none; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 0.95rem;">
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color:var(--accent-start); margin-right: 8px;"></i> Designed specific portals for General Expo Info, Book Stall Management, and User Registration.</li>
+                                <li style="margin-bottom: 0.5rem;"><i class="fas fa-check" style="color:var(--accent-start); margin-right: 8px;"></i> Managed version control and continuous updates via GitHub for long-term maintainability.</li>
+                                <li><i class="fas fa-check" style="color:var(--accent-start); margin-right: 8px;"></i> Optimized HTML/CSS structure for SEO performance and fast loading speeds.</li>
+                            </ul>
+                            <a href="https://github.com/niranjan910" target="_blank" class="project-view-button">View Contribution on GitHub</a>
+                        </div>
+                    </div>
+                </div>
 
-			<section id="dashboards">
-				<h2 class="section-heading reveal">Interactive Dashboards </h2>
-				<ul class="dashboards-grid">
-					<li class="dashboard-card reveal" style="--delay: 0ms">
-						<div class="dashboard-image-wrapper">
-							<img src="Dashboard/Weather Forecast App.png" alt="Weather Forecast App Thumbnail" class="dashboard-image" />
-							<div class="dashboard-overlay">
-								<h4>Accurate Forecasts </h4>
-								<ul>
-									<li>Integrated OpenWeatherMap API and processed JSON data for accurate forecasts.</li>
-									<li>Displayed hourly and weekly weather trends with interactive visuals.</li>
-									<li>Tools Used: Python, Pandas, Requests, Jupyter Notebook.</li>
-								</ul>
-								<a href="https://pro-weather-aqi-dashboard-xtbjpiv8uwftmnmznvambh.streamlit.app/" class="project-view-button" target="_blank">View Live Dashboard</a>
-							</div>
-						</div>
-						<div class="dashboard-body">
-							<h3 class="dashboard-title">Weather Forecast App </h3>
-							<p class="dashboard-description">Get real-time weather updates and 7-day forecasts for any city worldwide.</p>
-						</div>
-					</li>
-					<li class="dashboard-card reveal" style="--delay: 150ms">
-						<div class="dashboard-image-wrapper">
-							<img src="images/Crypto Tracking.png" alt="Crypto Tracker Dashboard Thumbnail" class="dashboard-image" />
-							<div class="dashboard-overlay">
-								<h4>Business Impact & KPIs </h4>
-								<ul>
-									<li>>Monitored real-time Bitcoin price fluctuations with automated alerts.</li>
-									<li>Logged historical price data for trend analysis and reporting.</li>
-									<li>Tools Used: Python, CoinGecko, Pandas, Matplotlib, Numpy, Sklearn</li>
-								</ul>
-								<a href="#" class="project-view-button" target="_blank">View Project</a>
-							</div>
-						</div>
-						<div class="dashboard-body">
-							<h3 class="dashboard-title">Crypto Price Tracker</h3>
-							<p class="dashboard-description">A real-time cryptocurrency tracking system with live visualization, alert triggers, and historical data logging for analysis.</p>
-						</div>
-					</li>
-					<li class="dashboard-card reveal" style="--delay: 300ms">
-						<div class="dashboard-image-wrapper">
-							<img src="images/AI Job  image.png" alt="Job Market Dashboard Thumbnail" class="dashboard-image" />
-							<div class="dashboard-overlay">
-								<h4>Business Impact & KPIs </h4>
-								<ul>
-									<li>Analyzed demand for different AI roles and required skills.</li>
-									<li>Identified emerging trends in the 2025 AI job market landscape.</li>
-									<li>Tools Used: Python (Seaborn, Matplotlib).</li>
-								</ul>
-								<a href="#" class="project-view-button" target="_blank">See Full Report</a>
-							</div>
-						</div>
-						<div class="dashboard-body">
-							<h3 class="dashboard-title">AI Job Market Insights</h3>
-							<p class="dashboard-description">A visual report using Python to analyze and present trends, salaries, and key roles in the AI job market.</p>
-						</div>
-					</li>
+                <h3 class="contact-heading reveal" style="margin-top: 4rem;">Selected Analytical Projects</h3>
+				<ul class="projects-grid">
+					<li class="project-card reveal"><img src="DA Cards/Air_Pollution.png" alt="New-York City Air Quality" class="project-image" /><div class="card-body"><h3 class="project-title">New-York City Air Quality Analysis</h3><p class="project-description">A comprehensive data-driven study of NYC air quality and its health implications based on real-time monitoring data.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Pandas</li></ul><a href="https://github.com/niranjan910/New-York-City-Air-Quality-Analysis" class="project-view-button" target="_blank">View Code</a></div></div></li>
+					<li class="project-card reveal" style="--delay: 150ms"><img src="ML Cards image/Car Price prediction.png" alt="Car Price Prediction" class="project-image" /><div class="card-body"><h3 class="project-title">Car Price Predictive Model</h3><p class="project-description">Deployed a Linear Regression model with 87% test accuracy, featuring rigorous cross-validation and feature engineering.</p><div class="card-footer"><ul class="project-tech-list"><li>ML</li><li>Scikit-Learn</li></ul><a href="https://github.com/niranjan910/Car-Price-Prediction-LinearRegression" class="project-view-button" target="_blank">View Model</a></div></div></li>
+                    <li class="project-card reveal" style="--delay: 300ms"><img src="DA Cards/Lungs cancer.png" alt="AI Lung Diagnostics" class="project-image" /><div class="card-body"><h3 class="project-title">Healthcare BI Dashboard</h3><p class="project-description">End-to-end lung cancer diagnostics dashboard. Mined data with SQL and visualized survival indicators in Power BI.</p><div class="card-footer"><ul class="project-tech-list"><li>Power BI</li><li>SQL</li></ul><a href="https://github.com/niranjan910/AI-Lung-Diagnostics" class="project-view-button" target="_blank">View Dashboard</a></div></div></li>
+                    <li class="project-card reveal" style="--delay: 450ms"><img src="DA Cards/AI Job  image.png" alt="AI Job Market Analysis" class="project-image" /><div class="card-body"><h3 class="project-title">AI Job Market Analysis</h3><p class="project-description">A market analysis of 2025 AI jobs, using Python and Seaborn to uncover actionable trends.</p><div class="card-footer"><ul class="project-tech-list"><li>Python</li><li>Seaborn</li></ul><a href="https://github.com/niranjan910/AI-Job-Market-Analysis-2025" class="project-view-button" target="_blank">View Analysis</a></div></div></li>
 				</ul>
+                <div class="projects-footer reveal">
+					<a href="https://github.com/niranjan910?tab=repositories" class="cta-btn cta-btn-secondary" target="_blank">View Professional Code History</a>
+				</div>
 			</section>
 
 			<section id="certs">
-				<h2 class="section-heading reveal">Credentials & Certificates</h2>
+				<h2 class="section-heading reveal">Certifications & Learning</h2>
 				<ul class="certs-grid reveal">
                     <!-- Certificates will be dynamically inserted here by JavaScript -->
                 </ul>
 			</section>
 
 			<section id="contact">
-				<h2 class="section-heading reveal">Let’s Connect & Collaborate </h2>
-				<p class="contact-subtext reveal">I’m always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
+				<h2 class="section-heading reveal">Collaborate</h2>
+				<p class="contact-subtext reveal">Looking for a professional who understands both code and business strategy? Let’s talk.</p>
 				<div class="contact-layout-grid reveal">
 					<div class="connect-column">
 						<h3 class="contact-heading">Connect With Me</h3>
 						<div class="icon-grid-hub">
 							<a href="https://github.com/niranjan910" target="_blank" rel="noopener noreferrer" class="contact-card github" aria-label="GitHub"><i class="fab fa-github"></i><span>GitHub</span></a>
-							<a href="https://www.behance.net/niranjandesign" target="_blank" rel="noopener noreferrer" class="contact-card behance" aria-label="Behance"><i class="fab fa-behance"></i><span>Behance</span></a>
-							<a href="https://dribbble.com/niranjan2000" target="_blank" rel="noopener noreferrer" class="contact-card dribbble" aria-label="Dribbble"><i class="fab fa-dribbble"></i><span>Dribbble</span></a>
 							<a href="https://www.linkedin.com/in/niranjan-k-a83517229/" target="_blank" rel="noopener noreferrer" class="contact-card linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
 							<a href="mailto:niranjan991100@gmail.com" class="contact-card gmail" aria-label="Gmail"><i class="fas fa-envelope"></i><span>Gmail</span></a>
 							<a href="tel:+919641143646" class="contact-card phone" aria-label="Phone"><i class="fas fa-phone"></i><span>Phone</span></a>
-							<a href="https://www.instagram.com/_aethyra_/" target="_blank" rel="noopener noreferrer" class="contact-card instagram" aria-label="Instagram"><i class="fab fa-instagram"></i><span>Instagram</span></a>
 						</div>
 					</div>
 					<div class="form-column">
-						<h3 class="contact-heading">Send a Message</h3>
+						<h3 class="contact-heading">Direct Inquiry</h3>
 						<form action="https://formspree.io/f/xyzpaeop" method="POST" class="contact-form">
-							<input type="text" name="name" placeholder="Your Name" required />
-							<input type="email" name="email" placeholder="Your Email" required />
-							<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+							<input type="text" name="name" placeholder="Name" required />
+							<input type="email" name="email" placeholder="Email" required />
+							<textarea name="message" rows="5" placeholder="Business Context / Project Details" required></textarea>
 							<button type="submit" class="cta-btn cta-btn-primary send-message-btn">Send Message</button>
 						</form>
 					</div>
@@ -946,7 +917,7 @@
 		</main>
 
 		<footer class="footer">
-            <p>&copy; 2025 | Designed & Built by Niranjan Kumar</p>
+            <p>&copy; 2026 | Designed & Built by Niranjan Kumar</p>
         </footer>
 
 		<div id="certModal" class="modal-overlay">
@@ -1173,7 +1144,7 @@
 				const backToTopBtn = document.getElementById("backToTopBtn");
 				if(backToTopBtn) {
 					window.addEventListener('scroll', () => {
-						if(window.scrollY > 300) { // Show button after 300px of scroll
+						if(window.scrollY > 300) { 
 							backToTopBtn.classList.add('visible');
 						} else {
 							backToTopBtn.classList.remove('visible');
