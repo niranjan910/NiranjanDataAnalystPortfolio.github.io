@@ -455,6 +455,18 @@
 			.timeline-org { font-size: 1rem; color: var(--text-secondary); font-weight: 500; margin-bottom: 1rem; display: block; }
 			.timeline-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0; }
 			
+			/* Specific style for promotion box inside card */
+			.timeline-promotion-box {
+				background: rgba(20, 184, 166, 0.1); /* light accent background */
+				padding: 12px;
+				border-radius: 8px;
+				margin: 12px 0;
+				border-left: 3px solid var(--accent-start);
+				text-align: left;
+			}
+			.timeline-promotion-box .promo-tag { font-size: 0.85rem; font-weight: 700; color: var(--text-primary); display: block; margin-bottom: 4px; }
+			.timeline-promotion-box p { margin: 0; font-size: 0.85rem; color: var(--text-secondary); max-width: 100%; }
+
 			/* Skills Tag styling inside card */
 			.timeline-tags {
 				margin-top: 1rem;
@@ -866,8 +878,32 @@
 				<h2 class="section-heading reveal">My Journey</h2>
 				<div class="timeline">
 					
-					<!-- Item 1: Latest -->
+					<!-- Item 1: SmartSchool (Latest - New Promotion) -->
 					<div class="timeline-container left-container reveal">
+						<div class="timeline-icon-box">
+							<i class="fas fa-bullhorn"></i>
+						</div>
+						<div class="timeline-card-box">
+							<span class="timeline-date">Oct 2025 – Present</span>
+							<h3 class="timeline-title">Marketing Executive</h3>
+							<span class="timeline-org">SmartSchool Education Ltd (Hybrid)</span>
+							
+							<div class="timeline-promotion-box">
+								<span class="promo-tag"><i class="fas fa-rocket"></i> Fast-Track Promotion</span>
+								<p>Joined as <strong>Presales Executive</strong> in Oct 2025 and was promoted to Marketing Executive within 1 month due to exceptional performance in client acquisition.</p>
+							</div>
+
+							<p class="timeline-desc">Leading strategic marketing initiatives and analyzing customer engagement data to optimize outreach campaigns.</p>
+							<div class="timeline-tags">
+								<span class="t-tag">#MarketingAnalytics</span>
+								<span class="t-tag">#Growth</span>
+								<span class="t-tag">#CRM</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Item 2 -->
+					<div class="timeline-container right-container reveal">
 						<div class="timeline-icon-box">
 							<i class="fas fa-briefcase"></i>
 						</div>
@@ -885,8 +921,8 @@
 						</div>
 					</div>
 
-					<!-- Item 2 -->
-					<div class="timeline-container right-container reveal">
+					<!-- Item 3 -->
+					<div class="timeline-container left-container reveal">
 						<div class="timeline-icon-box">
 							<i class="fas fa-brain"></i>
 						</div>
@@ -903,8 +939,8 @@
 						</div>
 					</div>
 
-					<!-- Item 3 -->
-					<div class="timeline-container left-container reveal">
+					<!-- Item 4 -->
+					<div class="timeline-container right-container reveal">
 						<div class="timeline-icon-box">
 							<i class="fas fa-graduation-cap"></i>
 						</div>
@@ -921,8 +957,8 @@
 						</div>
 					</div>
 
-					<!-- Item 4 -->
-					<div class="timeline-container right-container reveal">
+					<!-- Item 5 -->
+					<div class="timeline-container left-container reveal">
 						<div class="timeline-icon-box">
 							<i class="fas fa-school"></i>
 						</div>
@@ -938,8 +974,8 @@
 						</div>
 					</div>
 
-					<!-- Item 5 -->
-					<div class="timeline-container left-container reveal">
+					<!-- Item 6 -->
+					<div class="timeline-container right-container reveal">
 						<div class="timeline-icon-box">
 							<i class="fas fa-book-reader"></i>
 						</div>
@@ -1301,7 +1337,7 @@
                     }
                 }
 
-				// --- BACK TO TOP BUTTON LOGIC ---
+				// --- BACK TO TOP BUTTON ---
 				const backToTopBtn = document.getElementById("backToTopBtn");
 				if(backToTopBtn) {
 					window.addEventListener('scroll', () => {
